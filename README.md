@@ -1,3 +1,4 @@
+
  -- Genome Updater - v0.01 --
 
  -d Database [all, genbank, refseq]
@@ -10,7 +11,9 @@
         Default: all
  -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
         Default: genomic.fna.gz
+ -x Delete any extra files inside the folder
  -o Output folder
         Default: db/
  -t Threads
         Default: 1
+
