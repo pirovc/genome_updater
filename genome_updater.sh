@@ -107,7 +107,7 @@ function showhelp {
 	echo $' -d Database [all, genbank, refseq]\n\tDefault: refseq'
 	echo $' -g Organism group [archaea, bacteria, fungi, invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]\n\tDefault: bacteria'
 	echo $' -c RefSeq Category [all, reference genome, representative genome, na]\n\tDefault: all'
-	echo $' -l Assembly lebal [all, Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: all'
+	echo $' -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: all'
 	echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]\n\tDefault: genomic.fna.gz'
 	echo $' -x Delete any extra files inside the folder'
 	echo $' -o Output folder\n\tDefault: db/'
@@ -148,6 +148,7 @@ echo "Organims group: $organism_group" |& tee -a ${log_file}
 echo "RefSeq category: $refseq_category" |& tee -a ${log_file}
 echo "Assembly level: $assembly_level" |& tee -a ${log_file}
 echo "File formats: $file_formats" |& tee -a ${log_file}
+echo "Delete extra files: $delete_extra_files" |& tee -a ${log_file}
 echo "Threads: $threads" |& tee -a ${log_file}
 echo "Output folder: $output_folder" |& tee -a ${log_file}
 echo "" |& tee -a ${log_file}
@@ -248,4 +249,4 @@ else # update
 fi
 
 echo ""
-echo "Done. Current version: `basename ${new_assembly_summary}`"
+#echo "Done. Current version: `basename ${new_assembly_summary}`"
