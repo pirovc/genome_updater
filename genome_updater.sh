@@ -172,7 +172,7 @@ else # update
 	assembly_summary=`readlink -m ${std_assembly_summary}`
 	
 	# Check for missing files on current version
-	echo "Checking for missing files..."
+	echo "Checking for missing files..." |& tee -a ${log_file}
 	missing=${output_folder}/missing.txt
 	check_missing_files ${assembly_summary} "20" "${file_formats}" > ${missing}
 	missing_lines=`wc -l ${missing} | cut -f1 -d' '`
@@ -184,7 +184,7 @@ else # update
 	echo ""
 	rm ${missing}
 	
-	echo "Checking for extra files..."
+	echo "Checking for extra files..." |& tee -a ${log_file}
 	extra=${output_folder}/extra.txt
 	join <(ls -1 ${files} | sort) <(list_files ${assembly_summary} "20" "${file_formats}" | sed -e 's/.*\///' | sort) -v 1 > ${extra}
 	extra_lines=`wc -l ${extra} | cut -f1 -d' '`
@@ -192,7 +192,7 @@ else # update
 		echo " - ${extra_lines} extra files on current folder [${files}]" |& tee -a ${log_file}
 		cat ${extra} >> ${log_file}
 		if [ "$delete_extra_files" -eq 1 ]; then
-			echo " - Deleting ${extra_lines} files..."
+			echo " - Deleting ${extra_lines} files..." |& tee -a ${log_file}
 			remove_files "${extra}" "1"
 		fi
 	fi
@@ -220,7 +220,7 @@ else # update
 	join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' ${new_assembly_summary} | sort -k 1,1) <(cut -f 1 ${assembly_summary} | sed 's/\.[0-9]*//g' | sort) -o "1.2,1.3" -v 1 | tr ' ' '\t' > ${new}
 	new_lines=`wc -l ${new} | cut -f1 -d' '`
 	
-	echo "`basename ${assembly_summary}` --> `basename ${new_assembly_summary}`"
+	echo "`basename ${assembly_summary}` --> `basename ${new_assembly_summary}`" |& tee -a ${log_file}
 	echo " - ${updated_lines} updated entries, ${deleted_lines} deleted entries, ${new_lines} new entries" |& tee -a ${log_file}
 
 	if [ "$updated_lines" -gt 0 ]; then
@@ -232,7 +232,7 @@ else # update
 	fi
 	rm ${updated}
 	if [ "$deleted_lines" -gt 0 ]; then
-		echo " - DELETE: Deleting ${deleted_lines} files..."
+		echo " - DELETE: Deleting ${deleted_lines} files..." |& tee -a ${log_file}
 		remove_files "${deleted}" "2" "${file_formats}"
 	fi
 	rm ${deleted}
@@ -249,4 +249,4 @@ else # update
 fi
 
 echo ""
-#echo "Done. Current version: `basename ${new_assembly_summary}`"
+echo "Done. Current version: ${DATE}" |& tee -a ${log_file}
