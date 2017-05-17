@@ -23,13 +23,16 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+wget_tries=5
+wget_timeout=20
+
 get_assembly_summary() # parameter: assembly_summary file
 {
 	for d in ${database//,/ }
 	do
 		for g in ${organism_group//,/ }
 		do
-			 wget -qO- ftp://ftp.ncbi.nlm.nih.gov/genomes/$d/$g/assembly_summary.txt | tail -n+3 >> ${1}
+			 wget --tries="${wget_tries}" --read-timeout="${wget_timeout}" -qO- ftp://ftp.ncbi.nlm.nih.gov/genomes/$d/$g/assembly_summary.txt | tail -n+3 >> ${1}
 		done
 	done
 	wc -l ${1} | cut -f1 -d' ' #return number of lines
@@ -49,11 +52,11 @@ download_files() # parameter: ${1} file, ${2} field [url], ${3} extension
 {
 	if [ -z "${3}" ] #direct download (full url)
 	then
-		cut --fields="${2}" ${1} | parallel -j ${threads} 'wget --no-verbose --continue {1} --append-output='"${log_file}"' -P '"${files}"''
+		cut --fields="${2}" ${1} | parallel -j ${threads} 'wget --no-verbose --continue {1} --tries='"${wget_tries}"' --read-timeout='"${wget_timeout}"' --append-output='"${log_file}"' -P '"${files}"''
 	else
 		for f in ${3//,/ }
 		do
-			cut --fields="${2}" ${1} | awk -F "\t" -v ext="${f}" '{url_count=split($1,url,"/"); print $1"/"url[url_count] "_" ext}' | parallel -j ${threads} 'wget --no-verbose --continue {1} --append-output='"${log_file}"' -P '"${files}"''
+			cut --fields="${2}" ${1} | awk -F "\t" -v ext="${f}" '{url_count=split($1,url,"/"); print $1"/"url[url_count] "_" ext}' | parallel -j ${threads} 'wget --no-verbose --continue --tries='"${wget_tries}"' --read-timeout='"${wget_timeout}"' {1} --append-output='"${log_file}"' -P '"${files}"''
 		done
 	fi
 }
@@ -90,13 +93,14 @@ list_files() # parameter: ${1} file, ${2} field [url], ${3} extension - returns 
 }
 
 # Defaults
-version="0.01"
+version="0.02"
 database="refseq"
 organism_group="bacteria"
 refseq_category="all"
 assembly_level="all"
 file_formats="genomic.fna.gz"
 delete_extra_files=0
+output_updated_indices=0
 output_folder="db"
 threads=1
 
@@ -110,13 +114,14 @@ function showhelp {
 	echo $' -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: all'
 	echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]\n\tDefault: genomic.fna.gz'
 	echo $' -x Delete any extra files inside the folder'
+	echo $' -u Output list of updated indices (added/removed)'
 	echo $' -o Output folder\n\tDefault: db/'
 	echo $' -t Threads\n\tDefault: 1'
 	echo
 }
 		
 OPTIND=1 # Reset getopts
-while getopts "d:g:c:l:o:t:f:xh" opt; do
+while getopts "d:g:c:l:o:t:f:xuh" opt; do
   case $opt in
     d) database=$OPTARG ;;
     g) organism_group=$OPTARG ;;
@@ -126,6 +131,7 @@ while getopts "d:g:c:l:o:t:f:xh" opt; do
 	t) threads=$OPTARG ;;
 	f) file_formats=$OPTARG ;;
 	x) delete_extra_files=1 ;;
+	u) output_updated_indices=1 ;;
     h|\?) showhelp; exit 1 ;;
     :) echo "Option -$OPTARG requires an argument." >&2; exit 1 ;;
   esac
@@ -149,14 +155,17 @@ echo "RefSeq category: $refseq_category" |& tee -a ${log_file}
 echo "Assembly level: $assembly_level" |& tee -a ${log_file}
 echo "File formats: $file_formats" |& tee -a ${log_file}
 echo "Delete extra files: $delete_extra_files" |& tee -a ${log_file}
+echo "Output updated indices: $output_updated_indices" |& tee -a ${log_file}
 echo "Threads: $threads" |& tee -a ${log_file}
 echo "Output folder: $output_folder" |& tee -a ${log_file}
 echo "" |& tee -a ${log_file}
 
 # new download
 if [ ! -f "${std_assembly_summary}" ]; then
+	echo "-- NEW --" |& tee -a ${log_file}
+	
 	assembly_summary=${output_folder}/${DATE}_assembly_summary.txt
-    echo "Downloading new assembly summary [`basename ${assembly_summary}`]..." |& tee -a ${log_file}
+    echo "Downloading assembly summary [`basename ${assembly_summary}`]..." |& tee -a ${log_file}
 	all_lines=$(get_assembly_summary "${assembly_summary}")
 	filtered_lines=$(filter_assembly_summary "${assembly_summary}")
 	echo " - $((all_lines-filtered_lines)) out of ${all_lines} entries removed [RefSeq category: $refseq_category, Assembly level: $assembly_level]" |& tee -a ${log_file}
@@ -168,6 +177,8 @@ if [ ! -f "${std_assembly_summary}" ]; then
 	
 else # update
 
+	echo "-- UPDATE --" |& tee -a ${log_file}
+	
 	# Current assembly summary
 	assembly_summary=`readlink -m ${std_assembly_summary}`
 	
@@ -190,10 +201,11 @@ else # update
 	extra_lines=`wc -l ${extra} | cut -f1 -d' '`
 	if [ "$extra_lines" -gt 0 ]; then
 		echo " - ${extra_lines} extra files on current folder [${files}]" |& tee -a ${log_file}
-		cat ${extra} >> ${log_file}
 		if [ "$delete_extra_files" -eq 1 ]; then
 			echo " - Deleting ${extra_lines} files..." |& tee -a ${log_file}
 			remove_files "${extra}" "1"
+		else
+			cat ${extra} >> ${log_file}
 		fi
 	fi
 	echo ""
@@ -201,49 +213,54 @@ else # update
 	
 	# Check for updates on NCBI
 	new_assembly_summary=${output_folder}/${DATE}_assembly_summary.txt
-	echo "Downloading updated assembly summary [`basename ${new_assembly_summary}`]..." |& tee -a ${log_file}
+	echo "Downloading assembly summary [`basename ${new_assembly_summary}`]..." |& tee -a ${log_file}
 	all_lines=$(get_assembly_summary "${new_assembly_summary}")
 	filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
 	echo " - $((all_lines-filtered_lines)) out of ${all_lines} entries removed [RefSeq category: $refseq_category, Assembly level: $assembly_level]" |& tee -a ${log_file}
 	echo ""
 	
-	updated=${output_folder}/${DATE}_updated.txt
-	deleted=${output_folder}/${DATE}_deleted.txt
+	update=${output_folder}/${DATE}_update.txt
+	delete=${output_folder}/${DATE}_delete.txt
 	new=${output_folder}/${DATE}_new.txt
 	# UPDATED (verify if version or date changed)
-	join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' ${new_assembly_summary} | sort -k 1,1) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' ${assembly_summary} | sort -k 1,1) -o "1.2,1.3,1.4,2.2,2.3,2.4" | awk '{if($2>$5 || $1!=$4){print $1"\t"$3"\t"$4"\t"$6}}' > ${updated}
-	updated_lines=`wc -l ${updated} | cut -f1 -d' '`
+	join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' ${new_assembly_summary} | sort -k 1,1) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' ${assembly_summary} | sort -k 1,1) -o "1.2,1.3,1.4,2.2,2.3,2.4" | awk '{if($2>$5 || $1!=$4){print $1"\t"$3"\t"$4"\t"$6}}' > ${update}
+	update_lines=`wc -l ${update} | cut -f1 -d' '`
 	# DELETED
-	join <(cut -f 1 ${new_assembly_summary} | sed 's/\.[0-9]*//g' | sort) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' ${assembly_summary} | sort -k 1,1) -v 2 -o "2.2,2.3" > ${deleted}
-	deleted_lines=`wc -l ${deleted} | cut -f1 -d' '`
+	join <(cut -f 1 ${new_assembly_summary} | sed 's/\.[0-9]*//g' | sort) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' ${assembly_summary} | sort -k 1,1) -v 2 -o "2.2,2.3" | tr ' ' '\t' > ${delete}
+	delete_lines=`wc -l ${delete} | cut -f1 -d' '`
 	# NEW
 	join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' ${new_assembly_summary} | sort -k 1,1) <(cut -f 1 ${assembly_summary} | sed 's/\.[0-9]*//g' | sort) -o "1.2,1.3" -v 1 | tr ' ' '\t' > ${new}
 	new_lines=`wc -l ${new} | cut -f1 -d' '`
 	
 	echo "`basename ${assembly_summary}` --> `basename ${new_assembly_summary}`" |& tee -a ${log_file}
-	echo " - ${updated_lines} updated entries, ${deleted_lines} deleted entries, ${new_lines} new entries" |& tee -a ${log_file}
+	echo " - ${update_lines} updated, ${delete_lines} deleted, ${new_lines} new entries" |& tee -a ${log_file}
 
-	if [ "$updated_lines" -gt 0 ]; then
-		echo " - UPDATE: Downloading $((updated_lines*(n_formats+1))) files with $threads threads..."	|& tee -a ${log_file}
+	if [ "$update_lines" -gt 0 ]; then
+		echo " - UPDATE: Deleting $((update_lines*(n_formats+1))) files, Downloading $((update_lines*(n_formats+1))) files with $threads threads..."	|& tee -a ${log_file}
 		# delete old version
-		remove_files "${updated}" "4" "${file_formats}"
+		remove_files "${update}" "4" "${file_formats}"
 		# download new version
-		download_files "${updated}" "2" "${file_formats}"
+		download_files "${update}" "2" "${file_formats}"
 	fi
-	rm ${updated}
-	if [ "$deleted_lines" -gt 0 ]; then
-		echo " - DELETE: Deleting ${deleted_lines} files..." |& tee -a ${log_file}
-		remove_files "${deleted}" "2" "${file_formats}"
+	if [ "$delete_lines" -gt 0 ]; then
+		echo " - DELETE: Deleting ${delete_lines} files..." |& tee -a ${log_file}
+		remove_files "${delete}" "2" "${file_formats}"
 	fi
-	rm ${deleted}
 	if [ "$new_lines" -gt 0 ]; then
 		echo " - NEW: Downloading $((new_lines*(n_formats+1))) files with $threads threads..."	|& tee -a ${log_file}
 		download_files "${new}" "2" "${file_formats}"
-	fi
-	rm ${new}
+	fi 
 	
+	# UPDATED INDICES (added/removed)
+	if [ "$output_updated_indices" -eq 1 ]; then 
+		cut -f 1 ${update} > ${output_folder}/${DATE}_added.txt
+		cut -f 1 ${new} >> ${output_folder}/${DATE}_added.txt
+		cut -f 3 ${update} > ${output_folder}/${DATE}_removed.txt
+		cut -f 1 ${delete} >> ${output_folder}/${DATE}_removed.txt
+	fi
+		
 	# Replace STD assembly summary with the new version
-	rm ${std_assembly_summary} 
+	rm ${update} ${delete} ${new} ${std_assembly_summary} 
 	ln -s `readlink -m ${new_assembly_summary}` "${std_assembly_summary}"
 	
 fi
