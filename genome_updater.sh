@@ -93,7 +93,7 @@ list_files() # parameter: ${1} file, ${2} field [url], ${3} extension - returns 
 }
 
 # Defaults
-version="0.02"
+version="0.03"
 database="refseq"
 organism_group="bacteria"
 refseq_category="all"
@@ -101,18 +101,19 @@ assembly_level="all"
 file_formats="genomic.fna.gz"
 delete_extra_files=0
 output_updated_indices=0
+just_check=0
 output_folder="db"
 threads=1
 
 function showhelp {
-	echo
-	echo " -- Genome Updater - v${version} --"
+	echo "Genome Updater v${version} by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pirovc)"
 	echo
 	echo $' -d Database [all, genbank, refseq]\n\tDefault: refseq'
 	echo $' -g Organism group [archaea, bacteria, fungi, invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]\n\tDefault: bacteria'
 	echo $' -c RefSeq Category [all, reference genome, representative genome, na]\n\tDefault: all'
 	echo $' -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: all'
 	echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]\n\tDefault: genomic.fna.gz'
+	echo $' -k Just check for updates, keep current version'
 	echo $' -x Delete any extra files inside the folder'
 	echo $' -u Output list of updated indices (added/removed)'
 	echo $' -o Output folder\n\tDefault: db/'
@@ -121,7 +122,7 @@ function showhelp {
 }
 		
 OPTIND=1 # Reset getopts
-while getopts "d:g:c:l:o:t:f:xuh" opt; do
+while getopts "d:g:c:l:o:t:f:kxuh" opt; do
   case $opt in
     d) database=$OPTARG ;;
     g) organism_group=$OPTARG ;;
@@ -130,6 +131,7 @@ while getopts "d:g:c:l:o:t:f:xuh" opt; do
 	o) output_folder=$OPTARG ;;
 	t) threads=$OPTARG ;;
 	f) file_formats=$OPTARG ;;
+	k) just_check=1 ;;
 	x) delete_extra_files=1 ;;
 	u) output_updated_indices=1 ;;
     h|\?) showhelp; exit 1 ;;
@@ -149,35 +151,50 @@ std_assembly_summary=${output_folder}/assembly_summary.txt
 n_formats=`echo ${file_formats} | tr -cd , | wc -c`
 log_file=${output_folder}/${DATE}.log
 
+echo "GenomeUpdater version: ${version}" |& tee -a ${log_file}
 echo "Database: $database" |& tee -a ${log_file}
 echo "Organims group: $organism_group" |& tee -a ${log_file}
 echo "RefSeq category: $refseq_category" |& tee -a ${log_file}
 echo "Assembly level: $assembly_level" |& tee -a ${log_file}
 echo "File formats: $file_formats" |& tee -a ${log_file}
+echo "Just check for updates: $just_check" |& tee -a ${log_file}
 echo "Delete extra files: $delete_extra_files" |& tee -a ${log_file}
 echo "Output updated indices: $output_updated_indices" |& tee -a ${log_file}
 echo "Threads: $threads" |& tee -a ${log_file}
 echo "Output folder: $output_folder" |& tee -a ${log_file}
+echo "Output files: $files" |& tee -a ${log_file}
 echo "" |& tee -a ${log_file}
 
 # new download
 if [ ! -f "${std_assembly_summary}" ]; then
-	echo "-- NEW --" |& tee -a ${log_file}
+	if [ "$just_check" -eq 1 ]; then
+		echo "-- CHECK --" |& tee -a ${log_file}
+	else
+		echo "-- NEW --" |& tee -a ${log_file}
+	fi
 	
 	assembly_summary=${output_folder}/${DATE}_assembly_summary.txt
     echo "Downloading assembly summary [`basename ${assembly_summary}`]..." |& tee -a ${log_file}
 	all_lines=$(get_assembly_summary "${assembly_summary}")
 	filtered_lines=$(filter_assembly_summary "${assembly_summary}")
 	echo " - $((all_lines-filtered_lines)) out of ${all_lines} entries removed [RefSeq category: $refseq_category, Assembly level: $assembly_level]" |& tee -a ${log_file}
+	echo " - ${filtered_lines} entries available" |& tee -a ${log_file}
 	
-	ln -s `readlink -m ${assembly_summary}` "${std_assembly_summary}"
-	
-	echo " - Downloading $((filtered_lines*(n_formats+1))) files with $threads threads..."	|& tee -a ${log_file}
-	download_files "${assembly_summary}" "20" "${file_formats}"
+	if [ "$just_check" -eq 1 ]; then
+		rm -r ${assembly_summary} ${log_file} ${files}
+	else
+		ln -s `readlink -m ${assembly_summary}` "${std_assembly_summary}"
+		echo " - Downloading $((filtered_lines*(n_formats+1))) files with $threads threads..."	|& tee -a ${log_file}
+		download_files "${assembly_summary}" "20" "${file_formats}"
+	fi
 	
 else # update
 
-	echo "-- UPDATE --" |& tee -a ${log_file}
+	if [ "$just_check" -eq 1 ]; then
+		echo "-- CHECK --" |& tee -a ${log_file}
+	else
+		echo "-- UPDATE --" |& tee -a ${log_file}
+	fi
 	
 	# Current assembly summary
 	assembly_summary=`readlink -m ${std_assembly_summary}`
@@ -189,8 +206,12 @@ else # update
 	missing_lines=`wc -l ${missing} | cut -f1 -d' '`
 	if [ "$missing_lines" -gt 0 ]; then
 		echo " - ${missing_lines} missing files on current version [`basename ${assembly_summary}`]" |& tee -a ${log_file}
-		echo " - Downloading ${missing_lines} files with $threads threads..."	|& tee -a ${log_file}
-		download_files "${missing}" "1"
+		if [ "$just_check" -eq 0 ]; then
+			echo " - Downloading ${missing_lines} files with $threads threads..."	|& tee -a ${log_file}
+			download_files "${missing}" "1"
+		fi
+	else
+		echo " - None" |& tee -a ${log_file}
 	fi
 	echo ""
 	rm ${missing}
@@ -201,12 +222,16 @@ else # update
 	extra_lines=`wc -l ${extra} | cut -f1 -d' '`
 	if [ "$extra_lines" -gt 0 ]; then
 		echo " - ${extra_lines} extra files on current folder [${files}]" |& tee -a ${log_file}
-		if [ "$delete_extra_files" -eq 1 ]; then
-			echo " - Deleting ${extra_lines} files..." |& tee -a ${log_file}
-			remove_files "${extra}" "1"
-		else
-			cat ${extra} >> ${log_file}
+		if [ "$just_check" -eq 0 ]; then
+			if [ "$delete_extra_files" -eq 1 ]; then
+				echo " - Deleting ${extra_lines} files..." |& tee -a ${log_file}
+				remove_files "${extra}" "1"
+			else
+				cat ${extra} >> ${log_file} #List file in the log when -x is not enabled
+			fi
 		fi
+	else
+		echo " - None" |& tee -a ${log_file}
 	fi
 	echo ""
 	rm ${extra}
@@ -217,6 +242,7 @@ else # update
 	all_lines=$(get_assembly_summary "${new_assembly_summary}")
 	filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
 	echo " - $((all_lines-filtered_lines)) out of ${all_lines} entries removed [RefSeq category: $refseq_category, Assembly level: $assembly_level]" |& tee -a ${log_file}
+	echo " - ${filtered_lines} entries available" |& tee -a ${log_file}
 	echo ""
 	
 	update=${output_folder}/${DATE}_update.txt
@@ -235,35 +261,41 @@ else # update
 	echo "`basename ${assembly_summary}` --> `basename ${new_assembly_summary}`" |& tee -a ${log_file}
 	echo " - ${update_lines} updated, ${delete_lines} deleted, ${new_lines} new entries" |& tee -a ${log_file}
 
-	if [ "$update_lines" -gt 0 ]; then
-		echo " - UPDATE: Deleting $((update_lines*(n_formats+1))) files, Downloading $((update_lines*(n_formats+1))) files with $threads threads..."	|& tee -a ${log_file}
-		# delete old version
-		remove_files "${update}" "4" "${file_formats}"
-		# download new version
-		download_files "${update}" "2" "${file_formats}"
-	fi
-	if [ "$delete_lines" -gt 0 ]; then
-		echo " - DELETE: Deleting ${delete_lines} files..." |& tee -a ${log_file}
-		remove_files "${delete}" "2" "${file_formats}"
-	fi
-	if [ "$new_lines" -gt 0 ]; then
-		echo " - NEW: Downloading $((new_lines*(n_formats+1))) files with $threads threads..."	|& tee -a ${log_file}
-		download_files "${new}" "2" "${file_formats}"
-	fi 
-	
-	# UPDATED INDICES (added/removed)
-	if [ "$output_updated_indices" -eq 1 ]; then 
-		cut -f 1 ${update} > ${output_folder}/${DATE}_added.txt
-		cut -f 1 ${new} >> ${output_folder}/${DATE}_added.txt
-		cut -f 3 ${update} > ${output_folder}/${DATE}_removed.txt
-		cut -f 1 ${delete} >> ${output_folder}/${DATE}_removed.txt
-	fi
+	if [ "$just_check" -eq 1 ]; then
+		rm ${update} ${delete} ${new} ${new_assembly_summary} ${log_file}
+	else
+		if [ "$update_lines" -gt 0 ]; then
+			echo " - UPDATE: Deleting $((update_lines*(n_formats+1))) files, Downloading $((update_lines*(n_formats+1))) files with $threads threads..."	|& tee -a ${log_file}
+			# delete old version
+			remove_files "${update}" "4" "${file_formats}"
+			# download new version
+			download_files "${update}" "2" "${file_formats}"
+		fi
+		if [ "$delete_lines" -gt 0 ]; then
+			echo " - DELETE: Deleting ${delete_lines} files..." |& tee -a ${log_file}
+			remove_files "${delete}" "2" "${file_formats}"
+		fi
+		if [ "$new_lines" -gt 0 ]; then
+			echo " - NEW: Downloading $((new_lines*(n_formats+1))) files with $threads threads..."	|& tee -a ${log_file}
+			download_files "${new}" "2" "${file_formats}"
+		fi 
 		
-	# Replace STD assembly summary with the new version
-	rm ${update} ${delete} ${new} ${std_assembly_summary} 
-	ln -s `readlink -m ${new_assembly_summary}` "${std_assembly_summary}"
-	
+		# UPDATED INDICES (added/removed)
+		if [ "$output_updated_indices" -eq 1 ]; then 
+			cut -f 1 ${update} > ${output_folder}/${DATE}_added.txt
+			cut -f 1 ${new} >> ${output_folder}/${DATE}_added.txt
+			cut -f 3 ${update} > ${output_folder}/${DATE}_removed.txt
+			cut -f 1 ${delete} >> ${output_folder}/${DATE}_removed.txt
+		fi
+		
+		# Replace STD assembly summary with the new version
+		rm ${update} ${delete} ${new} ${std_assembly_summary} 
+		ln -s `readlink -m ${new_assembly_summary}` "${std_assembly_summary}"
+
+	fi
 fi
 
-echo ""
-echo "Done. Current version: ${DATE}" |& tee -a ${log_file}
+if [ "$just_check" -eq 0 ]; then
+	echo ""
+	echo "Done. Current version: ${DATE}" |& tee -a ${log_file}
+fi
