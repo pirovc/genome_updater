@@ -282,10 +282,10 @@ else # update
 		
 		# UPDATED INDICES (added/removed)
 		if [ "$output_updated_indices" -eq 1 ]; then 
-			cut -f 1 ${update} > ${output_folder}/${DATE}_added.txt
-			cut -f 1 ${new} >> ${output_folder}/${DATE}_added.txt
-			cut -f 3 ${update} > ${output_folder}/${DATE}_removed.txt
-			cut -f 1 ${delete} >> ${output_folder}/${DATE}_removed.txt
+			cut -f 1,2 ${update} > ${output_folder}/${DATE}_added.txt
+			cut -f 1,2 ${new} >> ${output_folder}/${DATE}_added.txt
+			cut -f 3,4 ${update} > ${output_folder}/${DATE}_removed.txt
+			cut -f 1,2 ${delete} >> ${output_folder}/${DATE}_removed.txt
 		fi
 		
 		# Replace STD assembly summary with the new version
