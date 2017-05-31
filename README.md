@@ -1,4 +1,4 @@
-Genome Updater v0.03 by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pirovc)
+genome_updater v0.04 by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pirovc)
 
  -d Database [all, genbank, refseq]
         Default: refseq
@@ -15,7 +15,11 @@ Genome Updater v0.03 by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pi
  -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
         Default: genomic.fna.gz
 		
+ -a Download current version of the Taxonomy database (taxdump.tar.gz)
+ 
  -k Just check for updates, keep current version
+ 
+ -i Just fix files based on the current version, do not look for updates
  
  -x Delete any extra files inside the folder
  
@@ -27,3 +31,4 @@ Genome Updater v0.03 by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pi
  -t Threads
         Default: 1
 		
+
