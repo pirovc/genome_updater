@@ -30,6 +30,7 @@ get_taxonomy()
 {
 	wget -qO- ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz > ${1}
 }
+
 get_assembly_summary() # parameter: assembly_summary file
 {
 	for d in ${database//,/ }
@@ -96,8 +97,18 @@ list_files() # parameter: ${1} file, ${2} field [url], ${3} extension - returns 
 	done
 }
 
+output_assembly_accession() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} mode (A/R)
+{
+	cut --fields="${2}" ${1} | sed "s/^/${3}\t/"
+}
+output_sequence_accession() # parameters: ${1} file, ${2} field [assembly accession], ${3} mode (A/R), ${4} assembly_summary
+{
+	cut --fields="${2}" ${1} | sort -k 1,1 | join - <(sort -k 1,1 ${4}) -t$'\t' -o "2.6,2.20" | awk -F "\t" -v files="${files}" '{url_count=split($2,url,"/"); print $1 "\t" files url[url_count] "_assembly_report.txt"}' | parallel --colsep "\t" 'grep "^[^#]" {2} | tr -d "\r" | cut -f 5,7,9 | sed s/$/\\t{1}/' | sed "s/^/${3}\t/"
+}
+
+
 # Defaults
-version="0.04"
+version="0.05"
 database="refseq"
 organism_group="bacteria"
 refseq_category="all"
@@ -105,7 +116,8 @@ assembly_level="all"
 file_formats="genomic.fna.gz"
 download_taxonomy=0
 delete_extra_files=0
-output_updated_indices=0
+updated_assembly_accession=0
+updated_sequence_accession=0
 just_check=0
 just_fix=0
 output_folder="db"
@@ -119,18 +131,22 @@ function showhelp {
 	echo $' -c RefSeq Category [all, reference genome, representative genome, na]\n\tDefault: all'
 	echo $' -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: all'
 	echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]\n\tDefault: genomic.fna.gz'
+	echo
 	echo $' -a Download current version of the Taxonomy database (taxdump.tar.gz)'
 	echo $' -k Just check for updates, keep current version'
 	echo $' -i Just fix files based on the current version, do not look for updates'
 	echo $' -x Delete any extra files inside the folder'
-	echo $' -u Output list of updated indices (added/removed)'
+	echo
+	echo $' -u Output list of updated entries (assembly accession, url)'
+	echo $' -r Output list of updated entries (refseq accession, genbank accession, sequence length, taxid). Only available with file format assembly_report.txt'
+	echo
 	echo $' -o Output folder\n\tDefault: db/'
 	echo $' -t Threads\n\tDefault: 1'
 	echo
 }
 		
 OPTIND=1 # Reset getopts
-while getopts "d:g:c:l:o:t:f:akixuh" opt; do
+while getopts "d:g:c:l:o:t:f:akixurh" opt; do
   case $opt in
     d) database=$OPTARG ;;
     g) organism_group=$OPTARG ;;
@@ -143,7 +159,8 @@ while getopts "d:g:c:l:o:t:f:akixuh" opt; do
 	k) just_check=1 ;;
 	i) just_fix=1 ;;
 	x) delete_extra_files=1 ;;
-	u) output_updated_indices=1 ;;
+	u) updated_assembly_accession=1 ;;
+	r) updated_sequence_accession=1 ;;
     h|\?) showhelp; exit 1 ;;
     :) echo "Option -$OPTARG requires an argument." >&2; exit 1 ;;
   esac
@@ -171,17 +188,21 @@ echo "Download taxonomy: $download_taxonomy" |& tee -a ${log_file}
 echo "Just check for updates: $just_check" |& tee -a ${log_file}
 echo "Just fix current version: $just_fix" |& tee -a ${log_file}
 echo "Delete extra files: $delete_extra_files" |& tee -a ${log_file}
-echo "Output updated indices: $output_updated_indices" |& tee -a ${log_file}
+echo "Output updated assembly accessions: $updated_assembly_accession" |& tee -a ${log_file}
+echo "Output updated sequence accessions: $updated_sequence_accession" |& tee -a ${log_file}
 echo "Threads: $threads" |& tee -a ${log_file}
 echo "Output folder: $output_folder" |& tee -a ${log_file}
 echo "Output files: $files" |& tee -a ${log_file}
 echo "" |& tee -a ${log_file}
 	
-# Print mode	
-	
+# PROGRAM MODE (check, fix, new or update)
 if [ "$just_check" -eq 1 ]; then
 	echo "-- CHECK --" |& tee -a ${log_file}
 elif [ ! -f "${std_assembly_summary}" ]; then
+	if [ "$just_fix" -eq 1 ]; then
+		echo "No current version found [`readlink -m $output_folder`]"
+		exit
+	fi
 	echo "-- NEW --" |& tee -a ${log_file}
 elif [ "$just_fix" -eq 1 ]; then
 	echo "-- FIX --" |& tee -a ${log_file}
@@ -189,9 +210,12 @@ else
 	echo "-- UPDATE --" |& tee -a ${log_file}
 fi
 
+if [ "$updated_assembly_accession" -eq 1 ]; then updated_assembly_accession_file=${output_folder}/${DATE}_updated_assembly_accession.txt; fi
+if [ "$updated_sequence_accession" -eq 1 ]; then updated_sequence_accession_file=${output_folder}/${DATE}_updated_sequence_accession.txt; fi
+
 # new download
 if [ ! -f "${std_assembly_summary}" ]; then
-	
+
 	assembly_summary=${output_folder}/${DATE}_assembly_summary.txt
     echo "Downloading assembly summary [`basename ${assembly_summary}`]..." |& tee -a ${log_file}
 	all_lines=$(get_assembly_summary "${assembly_summary}")
@@ -205,6 +229,15 @@ if [ ! -f "${std_assembly_summary}" ]; then
 		ln -s `readlink -m ${assembly_summary}` "${std_assembly_summary}"
 		echo " - Downloading $((filtered_lines*(n_formats+1))) files with $threads threads..."	|& tee -a ${log_file}
 		download_files "${assembly_summary}" "20" "${file_formats}"
+		
+		# UPDATED INDICES assembly accession
+		if [ "$updated_assembly_accession" -eq 1 ]; then 
+			output_assembly_accession "${assembly_summary}" "1,20" "A" > ${updated_assembly_accession_file}
+		fi
+		# UPDATED INDICES sequence accession
+		if [[ "$file_formats" =~ "assembly_report.txt" ]] && [ "$updated_sequence_accession" -eq 1 ]; then
+			output_sequence_accession "${assembly_summary}" "1" "A" "${assembly_summary}" > ${updated_sequence_accession_file}
+		fi
 	fi
 	
 else # update
@@ -260,9 +293,9 @@ else # update
 		echo " - ${filtered_lines} entries available" |& tee -a ${log_file}
 		echo ""
 		
-		update=${output_folder}/${DATE}_update.txt
-		delete=${output_folder}/${DATE}_delete.txt
-		new=${output_folder}/${DATE}_new.txt
+		update=${output_folder}/update.txt
+		delete=${output_folder}/delete.txt
+		new=${output_folder}/new.txt
 		# UPDATED (verify if version or date changed)
 		join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' ${new_assembly_summary} | sort -k 1,1) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' ${assembly_summary} | sort -k 1,1) -o "1.2,1.3,1.4,2.2,2.3,2.4" | awk '{if($2>$5 || $1!=$4){print $1"\t"$3"\t"$4"\t"$6}}' > ${update}
 		update_lines=`wc -l ${update} | cut -f1 -d' '`
@@ -279,6 +312,20 @@ else # update
 		if [ "$just_check" -eq 1 ]; then
 			rm ${update} ${delete} ${new} ${new_assembly_summary} ${log_file}
 		else
+			# UPDATED INDICES assembly accession
+			if [ "$updated_assembly_accession" -eq 1 ]; then 
+				output_assembly_accession "${update}" "3,4" "R" > ${updated_assembly_accession_file} 
+				output_assembly_accession "${delete}" "1,2" "R" >> ${updated_assembly_accession_file}
+				output_assembly_accession "${update}" "1,2" "A" >> ${updated_assembly_accession_file}
+				output_assembly_accession "${new}" "1,2" "A" >> ${updated_assembly_accession_file}
+			fi
+			# UPDATED INDICES sequence accession (removed entries - do it before deleting them)
+			if [[ "$file_formats" =~ "assembly_report.txt" ]] && [ "$updated_sequence_accession" -eq 1 ]; then
+				output_sequence_accession "${update}" "3" "R" "${std_assembly_summary}" > ${updated_sequence_accession_file}
+				output_sequence_accession "${delete}" "1" "R" "${std_assembly_summary}" >> ${updated_sequence_accession_file}
+			fi
+			
+			# Execute updates
 			if [ "$update_lines" -gt 0 ]; then
 				echo " - UPDATE: Deleting $((update_lines*(n_formats+1))) files, Downloading $((update_lines*(n_formats+1))) files with $threads threads..."	|& tee -a ${log_file}
 				# delete old version
@@ -294,13 +341,11 @@ else # update
 				echo " - NEW: Downloading $((new_lines*(n_formats+1))) files with $threads threads..."	|& tee -a ${log_file}
 				download_files "${new}" "2" "${file_formats}"
 			fi 
-			
-			# UPDATED INDICES (added/removed)
-			if [ "$output_updated_indices" -eq 1 ]; then 
-				cut -f 1,2 ${update} > ${output_folder}/${DATE}_added.txt
-				cut -f 1,2 ${new} >> ${output_folder}/${DATE}_added.txt
-				cut -f 3,4 ${update} > ${output_folder}/${DATE}_removed.txt
-				cut -f 1,2 ${delete} >> ${output_folder}/${DATE}_removed.txt
+
+			# UPDATED INDICES sequence accession (added entries - do it after downloading them)
+			if [[ "$file_formats" =~ "assembly_report.txt" ]] && [ "$updated_sequence_accession" -eq 1 ]; then
+				output_sequence_accession "${update}" "1" "A" "${new_assembly_summary}" >> ${updated_sequence_accession_file}
+				output_sequence_accession "${new}" "1" "A" "${new_assembly_summary}" >> ${updated_sequence_accession_file}
 			fi
 			
 			# Replace STD assembly summary with the new version
