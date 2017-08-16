@@ -53,15 +53,47 @@ filter_assembly_summary() # parameter: assembly_summary file
 	wc -l ${1} | cut -f1 -d' ' #return number of lines
 }
 
+print_progress() # parameter: ${1} file number, ${2} total number of files
+{
+	echo -ne "   ${1}/${2} (`bc -l <<< "scale=4;(${1}/${2})*100"`%)\r"
+}
+export -f print_progress #export it to be accessible to the parallel call
+
+# It is necessary to pass global variables (files and log file) because this function will be accessed from another environment (parallel)
+check_md5_ftp() # parameter: ${1} url, ${2} files (directory), ${3} log file 
+{
+	url_dir=`dirname ${1}` # ftp directory
+	file_name=`basename ${1}` # downloaded file name
+	ftp_md5=`wget -qO- "${url_dir}/md5checksums.txt" | grep "${file_name}$" | cut -f1 -d' '`
+	file_md5=`md5sum ${2}/${file_name} | cut -f1 -d' '`
+	#echo ${ftp_md5} ${file_md5}
+	if [ "${file_md5}" != "${ftp_md5}" ]; then
+		echo "MD5 check failed: ${file_name}" |& tee -a ${3}
+	fi	
+}
+export -f check_md5_ftp #export it to be accessible to the parallel call
+
 download_files() # parameter: ${1} file, ${2} field [url], ${3} extension
 {
+	lines=`wc -l ${1} | cut -f1 -d' '`
 	if [ -z "${3}" ] #direct download (full url)
 	then
-		cut --fields="${2}" ${1} | parallel -j ${threads} 'wget --no-verbose --continue {1} --tries='"${wget_tries}"' --read-timeout='"${wget_timeout}"' --append-output='"${log_file}"' -P '"${files}"''
+		cut --fields="${2}" ${1} | 
+		parallel -j ${threads} '
+			wget --no-verbose --continue {1} --tries='"${wget_tries}"' --read-timeout='"${wget_timeout}"' --append-output='"${log_file}"' -P '"${files}"'; 
+			if [ '"${check_md5}"' -eq 1 ]; then check_md5_ftp "{1}" '"${files}"' '"${log_file}"'; fi; 
+			print_progress "{#}" '"${lines}"'
+		'
 	else
 		for f in ${3//,/ }
 		do
-			cut --fields="${2}" ${1} | awk -F "\t" -v ext="${f}" '{url_count=split($1,url,"/"); print $1"/"url[url_count] "_" ext}' | parallel -j ${threads} 'wget --no-verbose --continue --tries='"${wget_tries}"' --read-timeout='"${wget_timeout}"' {1} --append-output='"${log_file}"' -P '"${files}"''
+			cut --fields="${2}" ${1} | 
+			awk -F "\t" -v ext="${f}" '{url_count=split($1,url,"/"); print $1"/"url[url_count] "_" ext}' | 
+			parallel -j ${threads} '
+				wget --no-verbose --continue --tries='"${wget_tries}"' --read-timeout='"${wget_timeout}"' {1} --append-output='"${log_file}"' -P '"${files}"'; 
+				if [ '"${check_md5}"' -eq 1 ]; then check_md5_ftp "{1}" '"${files}"' '"${log_file}"'; fi; 
+				print_progress "{#}" '"${lines}"'
+			'
 		done
 	fi
 }
@@ -108,7 +140,7 @@ output_sequence_accession() # parameters: ${1} file, ${2} field [assembly access
 
 
 # Defaults
-version="0.05"
+version="0.06"
 database="refseq"
 organism_group="bacteria"
 refseq_category="all"
@@ -116,6 +148,7 @@ assembly_level="all"
 file_formats="genomic.fna.gz"
 download_taxonomy=0
 delete_extra_files=0
+check_md5=0
 updated_assembly_accession=0
 updated_sequence_accession=0
 just_check=0
@@ -136,6 +169,7 @@ function showhelp {
 	echo $' -k Just check for updates, keep current version'
 	echo $' -i Just fix files based on the current version, do not look for updates'
 	echo $' -x Delete any extra files inside the folder'
+	echo $' -m Check md5 (after download only)'
 	echo
 	echo $' -u Output list of updated entries (assembly accession, url)'
 	echo $' -r Output list of updated entries (refseq accession, genbank accession, sequence length, taxid). Only available with file format assembly_report.txt'
@@ -146,7 +180,7 @@ function showhelp {
 }
 		
 OPTIND=1 # Reset getopts
-while getopts "d:g:c:l:o:t:f:akixurh" opt; do
+while getopts "d:g:c:l:o:t:f:akixmurh" opt; do
   case $opt in
     d) database=$OPTARG ;;
     g) organism_group=$OPTARG ;;
@@ -159,6 +193,7 @@ while getopts "d:g:c:l:o:t:f:akixurh" opt; do
 	k) just_check=1 ;;
 	i) just_fix=1 ;;
 	x) delete_extra_files=1 ;;
+	m) check_md5=1 ;;
 	u) updated_assembly_accession=1 ;;
 	r) updated_sequence_accession=1 ;;
     h|\?) showhelp; exit 1 ;;
@@ -188,6 +223,7 @@ echo "Download taxonomy: $download_taxonomy" |& tee -a ${log_file}
 echo "Just check for updates: $just_check" |& tee -a ${log_file}
 echo "Just fix current version: $just_fix" |& tee -a ${log_file}
 echo "Delete extra files: $delete_extra_files" |& tee -a ${log_file}
+echo "Check md5: $check_md5" |& tee -a ${log_file}
 echo "Output updated assembly accessions: $updated_assembly_accession" |& tee -a ${log_file}
 echo "Output updated sequence accessions: $updated_sequence_accession" |& tee -a ${log_file}
 echo "Threads: $threads" |& tee -a ${log_file}
