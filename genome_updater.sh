@@ -63,24 +63,24 @@ export -f print_progress #export it to be accessible to the parallel call
 # It is necessary to pass global variables (files and log file) because this function will be accessed from another environment (parallel)
 check_md5_ftp() # parameter: ${1} url 
 {
-	url_dir=$(dirname ${1}) # ftp directory
+	md5checksums_url="$(dirname ${1})/md5checksums.txt" # ftp directory
 	file_name=$(basename ${1}) # downloaded file name
-	md5checksums=$(wget -qO- --tries="${wget_tries}" --read-timeout="${wget_timeout}" "${url_dir}/md5checksums.txt")
-	if [ -z "${md5checksums}" ]; then
-		echo "MD5 download failed: ${url_dir}/md5checksums.txt" |& tee -a ${log_file}
+	md5checksums_file=$(wget -qO- --tries="${wget_tries}" --read-timeout="${wget_timeout}" "${md5checksums_url}")
+	if [ -z "${md5checksums_file}" ]; then
+		echo "MD5 download failed: ${md5checksums_url}" |& tee -a ${log_file}
 	else
-		ftp_md5=$(echo "${md5checksums}" | grep "${file_name}$" | cut -f1 -d' ')
+		ftp_md5=$(echo "${md5checksums_file}" | grep "${file_name}$" | cut -f1 -d' ')
 		if [ -z "${ftp_md5}" ]; then
-			echo "MD5 [${file_name}] not available: ${url_dir}/md5checksums.txt" |& tee -a ${log_file}
+			echo "MD5 [${file_name}] not available: ${md5checksums_url}" |& tee -a ${log_file}
 		else
 			file_md5=$(md5sum ${files}/${file_name} | cut -f1 -d' ')
 			if [ "${file_md5}" != "${ftp_md5}" ]; then
-				echo "MD5 [${file_name}] not matching: ${url_dir}/md5checksums.txt" |& tee -a ${log_file}
+				echo "MD5 [${file_name}] not matching: ${md5checksums_url}" |& tee -a ${log_file}
 				# Remove file only when MD5 doesn't match
 				rm ${files}/${file_name}
 			else
 				# Outputs checked md5 only on log
-				echo "MD5 checked ${file_md5} [${file_name}]: ${url_dir}/md5checksums.txt" >> ${log_file}
+				echo "MD5 checked ${file_md5} [${file_name}]: ${md5checksums_url}" >> ${log_file}
 			fi	
 		fi
 	fi
