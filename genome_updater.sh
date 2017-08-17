@@ -25,10 +25,11 @@
 
 wget_tries=5
 wget_timeout=20
+export wget_tries wget_timeout
 
 get_taxonomy()
 {
-	wget -qO- ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz > ${1}
+	wget -qO- --tries="${wget_tries}" --read-timeout="${wget_timeout}" ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz > ${1}
 }
 
 get_assembly_summary() # parameter: assembly_summary file
@@ -60,42 +61,52 @@ print_progress() # parameter: ${1} file number, ${2} total number of files
 export -f print_progress #export it to be accessible to the parallel call
 
 # It is necessary to pass global variables (files and log file) because this function will be accessed from another environment (parallel)
-check_md5_ftp() # parameter: ${1} url, ${2} files (directory), ${3} log file 
+check_md5_ftp() # parameter: ${1} url 
 {
-	url_dir=`dirname ${1}` # ftp directory
-	file_name=`basename ${1}` # downloaded file name
-	ftp_md5=`wget -qO- "${url_dir}/md5checksums.txt" | grep "${file_name}$" | cut -f1 -d' '`
-	file_md5=`md5sum ${2}/${file_name} | cut -f1 -d' '`
-	#echo ${ftp_md5} ${file_md5}
-	if [ "${file_md5}" != "${ftp_md5}" ]; then
-		echo "MD5 check failed: ${file_name}" |& tee -a ${3}
-	fi	
+	url_dir=$(dirname ${1}) # ftp directory
+	file_name=$(basename ${1}) # downloaded file name
+	md5checksums=$(wget -qO- --tries="${wget_tries}" --read-timeout="${wget_timeout}" "${url_dir}/md5checksums.txt")
+	if [ -z "${md5checksums}" ]; then
+		echo "MD5 download failed: ${url_dir}/md5checksums.txt" |& tee -a ${log_file}
+	else
+		ftp_md5=$(echo "${md5checksums}" | grep "${file_name}$" | cut -f1 -d' ')
+		if [ -z "${ftp_md5}" ]; then
+			echo "MD5 [${file_name}] not available: ${url_dir}/md5checksums.txt" |& tee -a ${log_file}
+		else
+			file_md5=$(md5sum ${files}/${file_name} | cut -f1 -d' ')
+			if [ "${file_md5}" != "${ftp_md5}" ]; then
+				echo "MD5 [${file_name}] not matching: ${url_dir}/md5checksums.txt" |& tee -a ${log_file}
+				# Remove file only when MD5 doesn't match
+				rm ${files}/${file_name}
+			else
+				# Outputs checked md5 only on log
+				echo "MD5 checked ${file_md5} [${file_name}]: ${url_dir}/md5checksums.txt" >> ${log_file}
+			fi	
+		fi
+	fi
+	
 }
 export -f check_md5_ftp #export it to be accessible to the parallel call
 
 download_files() # parameter: ${1} file, ${2} field [url], ${3} extension
 {
 	lines=`wc -l ${1} | cut -f1 -d' '`
+	rm -f url_list.download
 	if [ -z "${3}" ] #direct download (full url)
 	then
-		cut --fields="${2}" ${1} | 
-		parallel -j ${threads} '
-			wget --no-verbose --continue {1} --tries='"${wget_tries}"' --read-timeout='"${wget_timeout}"' --append-output='"${log_file}"' -P '"${files}"'; 
-			if [ '"${check_md5}"' -eq 1 ]; then check_md5_ftp "{1}" '"${files}"' '"${log_file}"'; fi; 
-			print_progress "{#}" '"${lines}"'
-		'
+		cut --fields="${2}" ${1} > url_list.download 
 	else
 		for f in ${3//,/ }
 		do
-			cut --fields="${2}" ${1} | 
-			awk -F "\t" -v ext="${f}" '{url_count=split($1,url,"/"); print $1"/"url[url_count] "_" ext}' | 
-			parallel -j ${threads} '
-				wget --no-verbose --continue --tries='"${wget_tries}"' --read-timeout='"${wget_timeout}"' {1} --append-output='"${log_file}"' -P '"${files}"'; 
-				if [ '"${check_md5}"' -eq 1 ]; then check_md5_ftp "{1}" '"${files}"' '"${log_file}"'; fi; 
-				print_progress "{#}" '"${lines}"'
-			'
+			cut --fields="${2}" ${1} | awk -F "\t" -v ext="${f}" '{url_count=split($1,url,"/"); print $1"/"url[url_count] "_" ext}' >> url_list.download
 		done
 	fi
+	parallel -a url_list.download -j ${threads} '
+			wget --no-verbose --continue {1} --tries='"${wget_tries}"' --read-timeout='"${wget_timeout}"' --append-output='"${log_file}"' -P '"${files}"'; 
+			if [ '"${check_md5}"' -eq 1 ]; then check_md5_ftp "{1}"; fi; 
+			print_progress "{#}" '"${lines}"'
+		'
+	rm -f url_list.download
 }
 
 remove_files() # parameter: ${1} file, ${2} field [url], ${3} extension
@@ -212,6 +223,9 @@ files=${output_folder}/files/
 std_assembly_summary=${output_folder}/assembly_summary.txt
 n_formats=`echo ${file_formats} | tr -cd , | wc -c`
 log_file=${output_folder}/${DATE}.log
+
+# To be accessible in functions called by parallel
+export files log_file
 
 echo "genome_updater version: ${version}" |& tee -a ${log_file}
 echo "Database: $database" |& tee -a ${log_file}
