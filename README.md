@@ -8,29 +8,22 @@ Script to download and update files from NCBI genomes [1] keeping log and versio
 Usage:
 ------
 
-On the first run, genome_updater creates a folder (-o) for the database files and downloads the current version based on selected parameters (database, organism group, refseq category, assembly level and file type(s)).
-
-The same command executed again will identify previous files and update the database.
-
-MD5 check is available with the option -m.
-
-Check for updates with the -k option (first time or update).
-
-genome_updater also can re-download missing files and remove extra files from the database folder (-x).
-
-Only re-download missing files without looking for updates with -i.
-
-Is it possible to obtain the taxonomic database version on each run by activating the parameter -a.
-
-Extended reports for downloaded files for better integration are available (-u and -r).
+- On the first run, genome_updater creates a folder (-o) for the database files and downloads the current version based on selected parameters (database, organism group, refseq category, assembly level and file type(s))
+- The same command executed again will identify previous files and update the database
+- MD5 check is available with the option -m
+- Check for updates with the -k option (first time or update)
+- genome_updater can re-download missing files and remove extra files from the database folder (-x)
+- Only re-download missing files without looking for updates with -i
+- Is it possible to obtain the taxonomic database version on each run by activating the parameter -a
+- Extended reports for downloaded files for better integration are available (-u and -r)
 
 Running examples:
 -----------------
 	# Download bacterial complete genomes sequences on refseq (checking md5)
 	./genome_updater.sh -d "refseq" -g "bacteria" -c "all" -l "Complete Genome" -f "genomic.fna.gz" -o refseq_bacteria/ -t 12 -m
 
-	# Download bacterial and fungal reference genome sequences, annotations and assembly reports on refseq
-	./genome_updater.sh -d "refseq" -g "archaea,bacteria,fungi" -c "reference genome" -l "all" -f "genomic.fna.gz,genomic.gff.gz,assembly_report.txt" -u -r -o sequences/ -t 12
+	# Download bacterial and fungal reference genome sequences, annotations and assembly reports on refseq with extended reports
+	./genome_updater.sh -d "refseq" -g "archaea,bacteria,fungi" -c "reference genome" -l "all" -f "genomic.fna.gz,genomic.gff.gz,assembly_report.txt" -u -r -o sequences/ -t 12 -r -u
 	
 	# Just check for archaeal entries on refseq/genbank
 	./genome_updater.sh -d "all" -g "archaea" -c "all" -l "all" -f "genomic.fna.gz" -k
@@ -38,7 +31,7 @@ Running examples:
 Extended reports:
 -----------------
 
-Parameter -u activates the report of added and removed files from the current download/update (based on assemblies) with the following fields:
+Parameter -u activates the report of added and removed files from the current download/update (based on assemblies) with the following fields (tab separated):
 
 	Added [A] or removed [R], Assembly Accession, url
 
@@ -49,7 +42,7 @@ Example:
 	R	GCF_000091025.4	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/091/025/GCF_000091025.4_ASM9102v4
 
 	
-Parameter -r activates the report of added and removed files based on sequences (it is only available when assembly_report.txt is one of the file types) with the following fields:
+Parameter -r activates the report of added and removed files based on sequences (it is only available when assembly_report.txt is one of the file types) with the following fields (tab separated)s:
 
 	Added [A] or removed [R], RefSeq accession, Genbank accession, sequence length, taxonomic id
 
