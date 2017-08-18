@@ -8,14 +8,16 @@ Script to download and update files from NCBI genomes [1] keeping log and versio
 Usage:
 ------
 
-- On the first run, genome_updater creates a folder (-o) for the database files and downloads the current version based on selected parameters (database, organism group, refseq category, assembly level and file type(s))
-- The same command executed again will identify previous files and update the database
-- MD5 check is available with the option -m
-- Check for updates with the -k option (first time or update)
-- genome_updater can re-download missing files and remove extra files from the database folder (-x)
-- Only re-download missing files without looking for updates with -i
-- Is it possible to obtain the taxonomic database version on each run by activating the parameter -a
-- Extended reports for downloaded files for better integration are available (-u and -r)
+- On the first run, genome_updater creates a folder (-o) and downloads the current version (with timestamp) based on selected parameters (database, organism group, refseq category, assembly level and file type(s))
+- The same command executed again will identify previous files and update the folder with the current version, keeping track of changes and just downloading updated files
+
+genome_updater also:
+- checks for MD5 with the option -m
+- checks only for updates with the -k option (first time or update) without changing the current version
+- re-downloads missing files and removes extra files from the database folder (-x)
+- fixes current version without looking for updates with -i
+- downloads the taxonomic database version on each run by activating the parameter -a
+- provides extended reports for better integration in other tools (-u and -r)
 
 Running examples:
 -----------------
