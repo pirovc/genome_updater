@@ -8,16 +8,16 @@ Script to download and update files from NCBI genomes [1] keeping log and versio
 Usage:
 ------
 
-- On the first run, genome_updater creates a folder (-o) and downloads the current version (with timestamp) based on selected parameters (database, organism group, refseq category, assembly level and file type(s))
+- On the first run, genome_updater creates a folder (**-o**) and downloads the current version (with timestamp) based on selected parameters (database, organism group, refseq category, assembly level and file type(s))
 - The same command executed again will identify previous files and update the folder with the current version, keeping track of changes and just downloading updated files
 
 genome_updater also:
-- checks for MD5 with the option -m
-- checks only for updates with the -k option (first time or update) without changing the current version
-- re-downloads missing files and removes extra files from the database folder (-x)
-- fixes current version without looking for updates with -i
-- downloads the taxonomic database version on each run by activating the parameter -a
-- provides extended reports for better integration in other tools (-u and -r)
+- checks for MD5 with the option **-m**
+- checks only for updates with the **-k** option (first time or update) without changing the current version
+- re-downloads missing files from current version (**-i**) without looking for updates
+- removes extra files from the database folder (**-x**)
+- downloads the taxonomic database version on each run by activating the parameter **-a**
+- provides extended reports for better integration in other tools (**-u** and **-r**)
 
 Running examples:
 -----------------
@@ -35,7 +35,7 @@ Extended reports:
 
 Parameter -u activates the report of added and removed files from the current download/update (based on assemblies) with the following fields (tab separated):
 
-	Added [A] or removed [R], Assembly Accession, url
+	Added [A] or Removed [R], assembly accession, url
 
 Example:
 
@@ -46,7 +46,7 @@ Example:
 	
 Parameter -r activates the report of added and removed files based on sequences (it is only available when assembly_report.txt is one of the file types) with the following fields (tab separated)s:
 
-	Added [A] or removed [R], RefSeq accession, Genbank accession, sequence length, taxonomic id
+	Added [A] or Removed [R], refseq accession, genbank accession, sequence length, taxonomic id
 
 Example:
 
