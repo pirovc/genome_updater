@@ -150,7 +150,7 @@ output_sequence_accession() # parameters: ${1} file, ${2} field [assembly access
 }
 
 # Defaults
-version="0.06"
+version="0.07"
 database="refseq"
 organism_group="bacteria"
 refseq_category="all"
