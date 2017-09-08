@@ -60,26 +60,40 @@ print_progress() # parameter: ${1} file number, ${2} total number of files
 }
 export -f print_progress #export it to be accessible to the parallel call
 
+check_file() # parameter: ${1} url - returns 0 (ok) / 1 (error)
+{
+	file_name=$(basename ${1})
+	# Check if file exists and if it has a size greater than zero (-s)
+	if [ ! -s "${files}${file_name}" ]; then
+		echo "${file_name} download failed [${1}]" |& tee -a ${log_file}
+		return 1
+	else
+		echo "${file_name} downloaded successfully [${1} -> ${files}${file_name}]" >> ${log_file}
+		return 0
+	fi
+}
+export -f check_file
+
 check_md5_ftp() # parameter: ${1} url 
 {
 	md5checksums_url="$(dirname ${1})/md5checksums.txt" # ftp directory
 	file_name=$(basename ${1}) # downloaded file name
 	md5checksums_file=$(wget -qO- --tries="${wget_tries}" --read-timeout="${wget_timeout}" "${md5checksums_url}")
 	if [ -z "${md5checksums_file}" ]; then
-		echo "MD5 checksum file download failed [${md5checksums_url}] - FILE KEPT [${file_name}]" |& tee -a ${log_file}
+		echo "${file_name} MD5checksum file download failed [${md5checksums_url}] - FILE KEPT" >> ${log_file}
 	else
 		ftp_md5=$(echo "${md5checksums_file}" | grep "${file_name}$" | cut -f1 -d' ')
 		if [ -z "${ftp_md5}" ]; then
-			echo "MD5 not available [${md5checksums_url}] - FILE KEPT [${file_name}]" |& tee -a ${log_file}
+			echo "${file_name} MD5checksum file not available [${md5checksums_url}] - FILE KEPT" >> ${log_file}
 		else
-			file_md5=$(md5sum ${files}/${file_name} | cut -f1 -d' ')
+			file_md5=$(md5sum ${files}${file_name} | cut -f1 -d' ')
 			if [ "${file_md5}" != "${ftp_md5}" ]; then
-				echo "MD5 not matching [${md5checksums_url}] - FILE REMOVED [${file_name}]" |& tee -a ${log_file}
+				echo "${file_name} MD5 not matching [${md5checksums_url}] - FILE REMOVED" |& tee -a ${log_file}
 				# Remove file only when MD5 doesn't match
-				rm ${files}/${file_name}
+				rm ${files}${file_name}
 			else
 				# Outputs checked md5 only on log
-				echo "MD5 successfuly checked [${md5checksums_url}] - FILE KEPT [${file_name}] ${file_md5}" >> ${log_file}
+				echo "${file_name} MD5 successfuly checked ${file_md5} [${md5checksums_url}]" >> ${log_file}
 			fi	
 		fi
 	fi
@@ -90,23 +104,25 @@ export -f check_md5_ftp #export it to be accessible to the parallel call
 download_files() # parameter: ${1} file, ${2} field [url], ${3} extension
 {
 	lines=$(wc -l ${1} | cut -f1 -d' ')
-	rm -f url_list.download
+	rm -f ${output_folder}/url_list.download
 	if [ -z "${3}" ] #direct download (full url)
 	then
-		cut --fields="${2}" ${1} > url_list.download 
+		cut --fields="${2}" ${1} > ${output_folder}/url_list.download 
 	else
 		for f in ${3//,/ }
 		do
-			cut --fields="${2}" ${1} | awk -F "\t" -v ext="${f}" '{url_count=split($1,url,"/"); print $1"/"url[url_count] "_" ext}' >> url_list.download
+			cut --fields="${2}" ${1} | awk -F "\t" -v ext="${f}" '{url_count=split($1,url,"/"); print $1"/"url[url_count] "_" ext}' >> ${output_folder}/url_list.download
 		done
 	fi
 	# parallel -k parameter keeps job output order (better for showing progress) but makes it a bit slower 
-	parallel -a url_list.download -j ${threads} '
-			wget --no-verbose --continue {1} --tries='"${wget_tries}"' --read-timeout='"${wget_timeout}"' --append-output='"${log_file}"' -P '"${files}"'; 
-			if [ '"${check_md5}"' -eq 1 ]; then check_md5_ftp "{1}"; fi; 
+	parallel -a ${output_folder}/url_list.download -j ${threads} '
+			wget {1} --quiet --continue --tries='"${wget_tries}"' --read-timeout='"${wget_timeout}"' -P '"${files}"'; 
+			if check_file {1}; then 
+				if [ '"${check_md5}"' -eq 1 ]; then check_md5_ftp "{1}"; fi;
+			fi;
 			print_progress "{#}" '"$((lines*(n_formats+1)))"'
 		'
-	rm -f url_list.download
+	rm -f ${output_folder}/url_list.download
 }
 
 remove_files() # parameter: ${1} file, ${2} field [url], ${3} extension
@@ -127,7 +143,7 @@ check_missing_files() # parameter: ${1} file, ${2} field [url], ${3} extension -
 	# Just returns if file doens't exist or if it's zero size
 	for f in ${3//,/ }
 	do
-		cut --fields="${2}" ${1} | awk -F "\t" -v ext="${f}" '{url_count=split($1,url,"/"); print $1 " " url[url_count] "_" ext}' | xargs --no-run-if-empty -n2 sh -c 'if [ ! -f "'"${files}"'${1}" ] || [ ! -s "'"${files}"'${1}" ]; then echo "${0}/${1}"; fi'
+		cut --fields="${2}" ${1} | awk -F "\t" -v ext="${f}" '{url_count=split($1,url,"/"); print $1 " " url[url_count] "_" ext}' | xargs --no-run-if-empty -n2 sh -c 'if [ ! -s "'"${files}"'${1}" ]; then echo "${0}/${1}"; fi'
 	done
 }
 
@@ -231,7 +247,7 @@ n_formats=$(echo ${file_formats} | tr -cd , | wc -c)
 log_file=${output_folder}/${DATE}.log
 
 # To be accessible in functions called by parallel
-export files log_file
+export files log_file output_folder
 
 echo "genome_updater version: ${version}" |& tee -a ${log_file}
 echo "Database: ${database}" |& tee -a ${log_file}
