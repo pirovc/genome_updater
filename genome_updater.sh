@@ -66,6 +66,8 @@ check_file() # parameter: ${1} url - returns 0 (ok) / 1 (error)
 	# Check if file exists and if it has a size greater than zero (-s)
 	if [ ! -s "${files}${file_name}" ]; then
 		echo "${file_name} download failed [${1}]" |& tee -a ${log_file}
+		# Remove file if exists (only zero-sized files)
+		rm -vf ${files}${file_name} >> ${log_file} 2>&1
 		return 1
 	else
 		echo "${file_name} downloaded successfully [${1} -> ${files}${file_name}]" >> ${log_file}
@@ -90,7 +92,7 @@ check_md5_ftp() # parameter: ${1} url
 			if [ "${file_md5}" != "${ftp_md5}" ]; then
 				echo "${file_name} MD5 not matching [${md5checksums_url}] - FILE REMOVED" |& tee -a ${log_file}
 				# Remove file only when MD5 doesn't match
-				rm ${files}${file_name}
+				rm -v ${files}${file_name} >> ${log_file} 2>&1
 			else
 				# Outputs checked md5 only on log
 				echo "${file_name} MD5 successfuly checked ${file_md5} [${md5checksums_url}]" >> ${log_file}
@@ -104,6 +106,7 @@ export -f check_md5_ftp #export it to be accessible to the parallel call
 download_files() # parameter: ${1} file, ${2} field [url], ${3} extension
 {
 	lines=$(wc -l ${1} | cut -f1 -d' ')
+	total_files=$(( lines * (n_formats+1) ))
 	rm -f ${output_folder}/url_list.download
 	if [ -z "${3}" ] #direct download (full url)
 	then
@@ -115,13 +118,14 @@ download_files() # parameter: ${1} file, ${2} field [url], ${3} extension
 		done
 	fi
 	# parallel -k parameter keeps job output order (better for showing progress) but makes it a bit slower 
-	parallel -a ${output_folder}/url_list.download -j ${threads} '
+	parallel --gnu -a ${output_folder}/url_list.download -j ${threads} '
 			wget {1} --quiet --continue --tries='"${wget_tries}"' --read-timeout='"${wget_timeout}"' -P '"${files}"'; 
 			if check_file {1}; then 
 				if [ '"${check_md5}"' -eq 1 ]; then check_md5_ftp "{1}"; fi;
 			fi;
-			print_progress "{#}" '"$((lines*(n_formats+1)))"'
+			print_progress "{#}" '"${total_files}"'
 		'
+	print_progress "${total_files}" "${total_files}"
 	rm -f ${output_folder}/url_list.download
 }
 
