@@ -23,8 +23,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-wget_tries=5
-wget_timeout=20
+wget_tries=20
+wget_timeout=1000
 export wget_tries wget_timeout
 
 get_taxonomy()
@@ -68,6 +68,7 @@ check_file() # parameter: ${1} url - returns 0 (ok) / 1 (error)
 		echo "${file_name} download failed [${1}]" |& tee -a ${log_file}
 		# Remove file if exists (only zero-sized files)
 		rm -vf ${files}${file_name} >> ${log_file} 2>&1
+		echo ${1} >> ${output_folder}/url_list.failed #report failure
 		return 1
 	else
 		echo "${file_name} downloaded successfully [${1} -> ${files}${file_name}]" >> ${log_file}
@@ -93,6 +94,7 @@ check_md5_ftp() # parameter: ${1} url
 				echo "${file_name} MD5 not matching [${md5checksums_url}] - FILE REMOVED" |& tee -a ${log_file}
 				# Remove file only when MD5 doesn't match
 				rm -v ${files}${file_name} >> ${log_file} 2>&1
+				echo ${1} >> ${output_folder}/url_list.failed #report failure
 			else
 				# Outputs checked md5 only on log
 				echo "${file_name} MD5 successfuly checked ${file_md5} [${md5checksums_url}]" >> ${log_file}
@@ -103,20 +105,28 @@ check_md5_ftp() # parameter: ${1} url
 }
 export -f check_md5_ftp #export it to be accessible to the parallel call
 
-download_files() # parameter: ${1} file, ${2} field [url], ${3} extension
+download_files() # parameter: ${1} file, ${2} field [url], ${3} extension - return URL (failed)
 {
-	lines=$(wc -l ${1} | cut -f1 -d' ')
-	total_files=$(( lines * (n_formats+1) ))
 	rm -f ${output_folder}/url_list.download
+	rm -f ${output_folder}/url_list.failed
+
 	if [ -z "${3}" ] #direct download (full url)
 	then
+		total_files=$(wc -l ${1} | cut -f1 -d' ')
 		cut --fields="${2}" ${1} > ${output_folder}/url_list.download 
 	else
+		total_files=$(( $(wc -l ${1} | cut -f1 -d' ') * (n_formats+1) ))
 		for f in ${3//,/ }
 		do
 			cut --fields="${2}" ${1} | awk -F "\t" -v ext="${f}" '{url_count=split($1,url,"/"); print $1"/"url[url_count] "_" ext}' >> ${output_folder}/url_list.download
 		done
 	fi
+
+	## SIMULATE ERROR
+	#sed -i 's/ASM27586v1_genomic.fna.gz/xxx/g' ${output_folder}/url_list.download
+	sed -i 's/ASM27586v1_assembly_report.txt/xxx/g' ${output_folder}/url_list.download
+	## SIMULATE ERROR
+
 	# parallel -k parameter keeps job output order (better for showing progress) but makes it a bit slower 
 	parallel --gnu -a ${output_folder}/url_list.download -j ${threads} '
 			wget {1} --quiet --continue --tries='"${wget_tries}"' --read-timeout='"${wget_timeout}"' -P '"${files}"'; 
@@ -125,8 +135,11 @@ download_files() # parameter: ${1} file, ${2} field [url], ${3} extension
 			fi;
 			print_progress "{#}" '"${total_files}"'
 		'
-	print_progress "${total_files}" "${total_files}"
+	print_progress "${total_files}" "${total_files}" #print final 100%
+	
+	cat ${output_folder}/url_list.failed # returns
 	rm -f ${output_folder}/url_list.download
+	rm -f ${output_folder}/url_list.failed
 }
 
 remove_files() # parameter: ${1} file, ${2} field [url], ${3} extension
@@ -170,7 +183,7 @@ output_sequence_accession() # parameters: ${1} file, ${2} field [assembly access
 }
 
 # Defaults
-version="0.07"
+version="0.08"
 database="refseq"
 organism_group="bacteria"
 refseq_category="all"
@@ -444,8 +457,9 @@ if [ "${just_check}" -eq 0 ] && [ "${just_fix}" -eq 0 ]; then
 	final_files=$(ls ${files} | wc -l | cut -f1 -d' ')
 	echo ""
 	echo ""
-	echo "# Files available on the current version: $((final_lines*(n_formats+1)))"
-	echo "# Successfuly downloaded files [${files}]: ${final_files}"
+	echo "# Files available on the current version: $((final_lines*(n_formats+1)))" |& tee -a ${log_file}
+	echo "# Successfuly downloaded files [${files}]: ${final_files}" |& tee -a ${log_file}
 	echo ""
-	echo "Done. Current version: ${DATE}" |& tee -a ${log_file}
+	echo "Done. Current version:" |& tee -a ${log_file}
+	echo "$(readlink -en ${output_folder})/${DATE}"  |& tee -a ${log_file}
 fi
