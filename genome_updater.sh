@@ -36,9 +36,9 @@ get_assembly_summary() # parameter: ${1} assembly_summary file - return number o
 {
 	for d in ${database//,/ }
 	do
-		for g in ${organism_group//,/ }
+		for og in ${organism_group//,/ }
 		do
-			 wget --tries="${wget_tries}" --read-timeout="${wget_timeout}" -qO- ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/${g}/assembly_summary.txt | tail -n+3 >> ${1}
+			 wget --tries="${wget_tries}" --read-timeout="${wget_timeout}" -qO- ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/${og}/assembly_summary.txt | tail -n+3 >> ${1}
 		done
 	done
 	wc -l ${1} | cut -f1 -d' '
@@ -52,6 +52,15 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file - return numbe
 		mv "${1}_filtered" ${1}
 	fi
 	wc -l ${1} | cut -f1 -d' '
+}
+
+list_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url], ${3} extensions - returns assembly accession, url and filename (for all selected extensions)
+{
+	# Given an url returns the url and the filename for all extensions
+	for extension in ${3//,/ }
+	do
+		cut --fields="${2}" ${1} | awk -F "\t" -v ext="${extension}" '{url_count=split($2,url,"/"); print $1 "\t" $2 "\t" url[url_count] "_" ext}'
+	done
 }
 
 print_progress() # parameter: ${1} file number, ${2} total number of files
@@ -107,17 +116,17 @@ check_md5_ftp() # parameter: ${1} url - returns 0 (ok) / 1 (error)
 }
 export -f check_md5_ftp #export it to be accessible to the parallel call
 
-download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or field [url], ${3} extension
+download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or field [url,filename], ${3} extension
 {
 	url_list_download=${output_folder}/url_list_download #Temporary url list of files to download in this call
 
-	if [ -z "${3}" ] #direct download (full url)
+	if [ -z "${3}" ] #direct download (url+file)
 	then
 		total_files=$(wc -l ${1} | cut -f1 -d' ')
-		cut --fields="${2}" ${1} > ${url_list_download}
+		cut --fields="${2}" ${1} | tr '\t' '/' > ${url_list_download}
 	else
 		total_files=$(( $(wc -l ${1} | cut -f1 -d' ') * (n_formats+1) ))
-		list_url_file_acc ${1} ${2} ${3} | cut -f 1,2 | tr '\t' '/' > ${url_list_download}
+		list_files ${1} ${2} ${3} | cut -f 2,3 | tr '\t' '/' > ${url_list_download}
 	fi
 
 	## SIMULATE ERROR
@@ -139,10 +148,11 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
 				echo "{1}" >> '"${url_list_failed_file}"';
 			fi;
 			print_progress "{#}" '"${total_files}"'
-		'
+		' && ( #Just execute following if parallel finishes successfuly - avoid wrong infos with ctrl+c
 	failed_after=$(wc -l ${url_list_failed_file} | cut -f1 -d' ')
 	print_progress "${total_files}" "${total_files}" #print final 100%
 	echo " - Successfuly downloaded: $(( total_files-(failed_after-failed_before) )) - Failed: $(( failed_after-failed_before ))" |& tee -a ${log_file}
+	)
 	rm -f ${url_list_download}
 }
 
@@ -152,41 +162,27 @@ remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR fi
 	then
 		cut --fields="${2}" ${1} | xargs --no-run-if-empty -I{} rm ${files}{} -v >> ${log_file} 2>&1
 	else
-		for f in ${3//,/ }
-		do
-			list_url_file_acc ${1} ${2} ${3} | cut -f 2 | xargs --no-run-if-empty -I{} rm ${files}{} -v >> ${log_file} 2>&1
-		done
+		list_files ${1} ${2} ${3} | cut -f 3 | xargs --no-run-if-empty -I{} rm ${files}{} -v >> ${log_file} 2>&1
 	fi
 }
 
-check_missing_files() # ${1} file, ${2} fields [assembly_accesion,url], ${3} extension - returns assembly accession and URL+file
+check_missing_files() # ${1} file, ${2} fields [assembly_accesion,url], ${3} extension - returns assembly accession, url and filename
 {
 	# Just returns if file doens't exist or if it's zero size
-	list_url_file_acc ${1} ${2} ${3} | xargs --no-run-if-empty -n3 sh -c 'if [ ! -s "'"${files}"'${1}" ]; then echo "${2}\\t${0}/${1}"; fi'
-}
-
-list_url_file_acc() # parameter: ${1} file, ${2} fields [assembly_accesion,url], ${3} extension - returns url, filename and assemblt accession for all selected extensions
-{
-	# Given an assembly_summary file returns the url and the filename for all extensions
-	for f in ${3//,/ }
-	do
-		cut --fields="${2}" ${1} | awk -F "\t" -v ext="${f}" '{url_count=split($2,url,"/"); print $2 "\t" url[url_count] "_" ext "\t" $1}'
-	done
+	list_files ${1} ${2} ${3} | xargs --no-run-if-empty -n3 sh -c 'if [ ! -s "'"${files}"'${2}" ]; then echo "${0}\\t${1}\\t${2}"; fi'
 }
 
 output_assembly_accession() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} mode (A/R)
 {
 	cut --fields="${2}" ${1} | sed "s/^/${3}\t/"
 }
-output_sequence_accession() # parameters: ${1} file, ${2} field [assembly accession], ${3} mode (A/R), ${4} assembly_summary
+
+output_sequence_accession() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} mode (A/R), ${4} assembly_summary (for taxid)
 {
-	# Get sequence accession from assembly_report.txt file - skips if assembly_report.txt file download failed
-	cut --fields="${2}" ${1} | 
-	sort | uniq | # Uniq in case of multiple files of the same assembly accession
-	join - <(sort -k 1,1 ${4}) -t$'\t' -o "2.6,2.20" | # Get URL from assembly_summary
-	awk -F "\t" -v files="${files}" '{url_count=split($2,url,"/"); print $1 "\t" files url[url_count] "_assembly_report.txt"}' | 
-	parallel --colsep "\t" 'if [ -s "{2}" ]; then grep "^[^#]" {2} | tr -d "\r" | cut -f 5,7,9 | sed s/$/\\t{1}/; fi;' | 
-	sed "s/^/${3}\t/"
+	list_files ${1} ${2} "assembly_report.txt" | sort -k 1,1 | # Get sequence accession from assembly_report.txt file - skips if assembly_report.txt file download failed (file not in folder)
+	join - <(sort -k 1,1 ${4}) -t$'\t' -o "1.1,1.3,2.6" | # Return assembly accesion {1}, filename {2} and taxid {3}
+	parallel --colsep "\t" 'if [ -s "'"${files}"'{2}" ]; then grep "^[^#]" "'"${files}"'{2}" | tr -d "\r" | cut -f 5,7,9 | sed "s/^/{1}\\t/" | sed "s/$/\\t{3}/"; fi;' | # Retrieve info from assembly_report.txt (if exists) and add assemby accession in the beggining and taxid at the end
+	sed "s/^/${3}\t/" # Add mode A/R at the end
 }
 
 # Defaults
@@ -195,7 +191,7 @@ database="refseq"
 organism_group="bacteria"
 refseq_category="all"
 assembly_level="all"
-file_formats="genomic.fna.gz"
+file_formats="assembly_report.txt"
 download_taxonomy=0
 delete_extra_files=0
 check_md5=0
@@ -213,16 +209,16 @@ function showhelp {
 	echo $' -g Organism group [archaea, bacteria, fungi, invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]\n\tDefault: bacteria'
 	echo $' -c RefSeq Category [all, reference genome, representative genome, na]\n\tDefault: all'
 	echo $' -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: all'
-	echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]\n\tDefault: genomic.fna.gz'
+	echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]\n\tDefault: assembly_report.txt'
 	echo
 	echo $' -a Download current version of the Taxonomy database (taxdump.tar.gz)'
 	echo $' -k Just check for updates, keep current version'
 	echo $' -i Just fix files based on the current version, do not look for updates'
-	echo $' -x Delete any extra files inside the folder'
+	echo $' -x Delete any extra files inside the output folder'
 	echo $' -m Check md5 (after download only)'
 	echo
 	echo $' -u Output list of updated assembly accessions (Added/Removed, assembly accession, url)'
-	echo $' -r Output list of updated sequence accessions (Added/Removed, refseq accession, genbank accession, sequence length, taxid). Only available when file assembly_report.txt selected and successfuly downloaded'
+	echo $' -r Output list of updated sequence accessions (Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid). Only available when file assembly_report.txt selected and successfuly downloaded'
 	echo
 	echo $' -o Output folder\n\tDefault: db/'
 	echo $' -t Threads\n\tDefault: 1'
@@ -230,7 +226,7 @@ function showhelp {
 }
 
 # Check for required tools
-tools=( "getopts" "parallel" "awk" "wget" "join" "bc" "md5sum" )
+tools=( "getopts" "parallel" "awk" "wget" "join" "bc" "md5sum" "xargs" )
 for t in "${tools[@]}"
 do
 	command -v ${t} >/dev/null 2>/dev/null || { echo ${t} not found; exit 1; }
@@ -239,13 +235,13 @@ done
 OPTIND=1 # Reset getopts
 while getopts "d:g:c:l:o:t:f:akixmurh" opt; do
   case ${opt} in
-    d) database=${OPTARG} ;;
-    g) organism_group=${OPTARG} ;;
+    d) database=${OPTARG} ;; #remove spaces
+    g) organism_group=${OPTARG// } ;; #remove spaces
 	c) refseq_category=${OPTARG} ;;
 	l) assembly_level=${OPTARG} ;;
 	o) output_folder=${OPTARG} ;;
 	t) threads=${OPTARG} ;;
-	f) file_formats=${OPTARG} ;;
+	f) file_formats=${OPTARG// } ;; #remove spaces
 	a) download_taxonomy=1 ;;
 	k) just_check=1 ;;
 	i) just_fix=1 ;;
@@ -261,7 +257,31 @@ if [ ${OPTIND} -eq 1 ]; then showhelp; exit 1; fi
 shift $((OPTIND-1))
 [ "$1" = "--" ] && shift
 
+# Check parameters
 if [ ${database} == "all" ]; then database="genbank,refseq"; fi
+valid_databases=( "genbank" "refseq" "all" )
+for d in ${database//,/ }
+do
+	if [[ ! " ${valid_databases[@]} " =~ " ${d} " ]]; then
+		echo "Database ${d} not valid"; exit 1;
+	fi
+done
+valid_organism_groups=( "archaea" "bacteria" "fungi" "invertebrate" "metagenomes" "other" "plant" "protozoa" "vertebrate_mammalian" "vertebrate_other" "viral" )
+for og in ${organism_group//,/ }
+do
+	if [[ ! " ${valid_organism_groups[@]} " =~ " ${og} " ]]; then
+		echo "Organism group - ${og} - not valid"; exit 1;
+	fi
+done
+valid_refseq_categories=( "all" "reference genome" "representative genome" "na" )
+if [[ ! " ${valid_refseq_categories[@]} " =~ " ${refseq_category} " ]]; then
+	echo "RefSeq category - ${refseq_category} - not valid"; exit 1;
+fi
+valid_assembly_levels=( "all" "Complete Genome" "Chromosome" "Scaffold" "Contig" )
+if [[ ! " ${valid_assembly_levels[@]} " =~ " ${assembly_level} " ]]; then
+	echo "Assembly level - ${assembly_level} - not valid"; exit 1;
+fi
+
 DATE=$(date +%Y-%m-%d_%H-%M-%S)
 mkdir -p ${output_folder}
 mkdir -p ${output_folder}/files/
@@ -334,7 +354,7 @@ if [ ! -f "${std_assembly_summary}" ]; then
 		fi
 		# UPDATED INDICES sequence accession
 		if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
-			output_sequence_accession "${assembly_summary}" "1" "A" "${assembly_summary}" > ${updated_sequence_accession_file}
+			output_sequence_accession "${assembly_summary}" "1,20" "A" "${assembly_summary}" > ${updated_sequence_accession_file}
 		fi
 	fi
 	
@@ -346,17 +366,22 @@ else # update
 	# Check for missing files on current version
 	echo "Checking for missing files..." |& tee -a ${log_file}
 	missing=${output_folder}/missing.txt
-	check_missing_files ${assembly_summary} "1,20" "${file_formats}" > ${missing}
+	check_missing_files ${assembly_summary} "1,20" "${file_formats}" > ${missing} # assembly accession, url, filename
 	missing_lines=$(wc -l ${missing} | cut -f1 -d' ')
 	if [ "${missing_lines}" -gt 0 ]; then
 		echo " - ${missing_lines} missing files on current version [$(basename ${assembly_summary})]" |& tee -a ${log_file}
 		if [ "${just_check}" -eq 0 ]; then
 			echo " - Downloading ${missing_lines} files with ${threads} threads..."	|& tee -a ${log_file}
-			download_files "${missing}" "2"
+			download_files "${missing}" "2,3"
 
-			# UPDATED INDICES sequence accession
+			# UPDATED INDICES sequence accession for missing files
 			if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
-				output_sequence_accession "${missing}" "1" "A" "${assembly_summary}" > ${output_folder}/${DATE}_missing_sequence_accession.txt
+				missing_ar=${output_folder}/missing_ar.txt
+				grep "assembly_report.txt$" ${missing} > ${missing_ar} # Just select missing assembly reports
+				if [ "$(wc -l ${missing_ar} | cut -f1 -d' ')" -gt 0 ]; then
+					output_sequence_accession "${missing_ar}" "1,2" "A" "${assembly_summary}" > ${output_folder}/${DATE}_missing_sequence_accession.txt
+				fi
+				rm ${missing_ar}
 			fi
 		fi
 	else
@@ -367,7 +392,7 @@ else # update
 	
 	echo "Checking for extra files..." |& tee -a ${log_file}
 	extra=${output_folder}/extra.txt
-	join <(ls -1 ${files} | sort) <(list_url_file_acc ${assembly_summary} "1,20" "${file_formats}" | cut -f 2 | sed -e 's/.*\///' | sort) -v 1 > ${extra}
+	join <(ls -1 ${files} | sort) <(list_files ${assembly_summary} "1,20" "${file_formats}" | cut -f 3 | sed -e 's/.*\///' | sort) -v 1 > ${extra}
 	extra_lines=$(wc -l ${extra} | cut -f1 -d' ')
 	if [ "${extra_lines}" -gt 0 ]; then
 		echo " - ${extra_lines} extra files on current folder [${files}]" |& tee -a ${log_file}
@@ -375,6 +400,7 @@ else # update
 			if [ "${delete_extra_files}" -eq 1 ]; then
 				echo " - Deleting ${extra_lines} files..." |& tee -a ${log_file}
 				remove_files "${extra}" "1"
+				extra_lines=0
 			else
 				cat ${extra} >> ${log_file} #List file in the log when -x is not enabled
 			fi
@@ -424,8 +450,8 @@ else # update
 			fi
 			# UPDATED INDICES sequence accession (removed entries - do it before deleting them)
 			if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
-				output_sequence_accession "${update}" "3" "R" "${std_assembly_summary}" > ${updated_sequence_accession_file}
-				output_sequence_accession "${delete}" "1" "R" "${std_assembly_summary}" >> ${updated_sequence_accession_file}
+				output_sequence_accession "${update}" "3,4" "R" "${std_assembly_summary}" > ${updated_sequence_accession_file}
+				output_sequence_accession "${delete}" "1,2" "R" "${std_assembly_summary}" >> ${updated_sequence_accession_file}
 			fi
 			
 			# Execute updates
@@ -437,7 +463,7 @@ else # update
 				download_files "${update}" "1,2" "${file_formats}"
 			fi
 			if [ "${delete_lines}" -gt 0 ]; then
-				echo " - DELETE: Deleting ${delete_lines} files..." |& tee -a ${log_file}
+				echo " - DELETE: Deleting $((delete_lines*(n_formats+1))) files..." |& tee -a ${log_file}
 				remove_files "${delete}" "1,2" "${file_formats}"
 			fi
 			if [ "${new_lines}" -gt 0 ]; then
@@ -447,12 +473,13 @@ else # update
 
 			# UPDATED INDICES sequence accession (added entries - do it after downloading them)
 			if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
-				output_sequence_accession "${update}" "1" "A" "${new_assembly_summary}" >> ${updated_sequence_accession_file}
-				output_sequence_accession "${new}" "1" "A" "${new_assembly_summary}" >> ${updated_sequence_accession_file}
+				output_sequence_accession "${update}" "1,2" "A" "${new_assembly_summary}">> ${updated_sequence_accession_file}
+				output_sequence_accession "${new}" "1,2" "A" "${new_assembly_summary}" >> ${updated_sequence_accession_file}
 			fi
 			
 			# Replace STD assembly summary with the new version
-			rm ${update} ${delete} ${new} ${std_assembly_summary} 
+			rm ${update} ${delete} ${new}
+			rm ${std_assembly_summary} 
 			ln -s $(readlink -m ${new_assembly_summary}) "${std_assembly_summary}"
 
 		fi
@@ -469,16 +496,20 @@ if [ "${just_check}" -eq 0 ] && [ "${just_fix}" -eq 0 ]; then
 	
 	echo ""
 	echo ""
-	final_files=$(($(wc -l "${std_assembly_summary}" | cut -f1 -d' ')*(n_formats+1)))
-	# If some download failed, keep list. Otherwise delete the file
-	if [ -s "${url_list_failed_file}" ]; then
-		failed_files=$(wc -l "${url_list_failed_file}" | cut -f1 -d' ')
-		echo "# ${failed_files} out of ${final_files} files could not be downloaded" |& tee -a ${log_file}
+	if [ -z "${extra_lines}" ]; then extra_lines=0; fi
+	expected_files=$(( $(wc -l "${std_assembly_summary}" | cut -f1 -d' ')*(n_formats+1) )) # From assembly summary * file formats
+	current_files=$(( $(ls ${files} | wc -l | cut -f1 -d' ') - extra_lines )) # From current folder - extra files
+	# Check if the valid amount of files on folder amount of files on folder
+	if [ "$(( expected_files - current_files ))" -gt 0 ]; then
+		echo "# $(( expected_files-current_files )) out of ${expected_files} files could not be downloaded" |& tee -a ${log_file}
 		echo "# Check the log file for more details: ${log_file}" |& tee -a ${log_file}
-		echo "# URL list of failed files: ${url_list_failed_file}" |& tee -a ${log_file}
+		echo "# URL list of failed downloads: ${url_list_failed_file}" |& tee -a ${log_file}
 		echo "# You could try to re-run the same command with -i activated and increased \$wget_timeout" |& tee -a ${log_file}
 	else
-		echo "# All ${final_files} files were downloaded successfuly" |& tee -a ${log_file}
+		echo "# All ${expected_files} files were downloaded successfuly" |& tee -a ${log_file}
+	fi
+	if [ "${extra_lines}" -gt 0 ]; then
+		echo "# There are ${extra_lines} extra files on the output folder. Check the log file for more details: ${log_file}" |& tee -a ${log_file}
 	fi
 	echo ""
 	echo "Done. Current version:" |& tee -a ${log_file}
