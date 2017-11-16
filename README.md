@@ -25,24 +25,24 @@ Running examples:
 Downloading genomic sequences (.fna files) for the Complete Genome sequences from RefSeq for Bacteria and Archaea
 
 	# Download (checking md5, 12 threads, with extended assembly accession report)
-	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -c "all" -l "Complete Genome" -f "genomic.fna.gz" -o arc_bac_refseq_cg/ -t 12 -u -m
+	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -c "all" -l "Complete Genome" -f "genomic.fna.gz" -o "arc_bac_refseq_cg" -t 12 -u -m
 	
 	# Downloading .gbff files for the current setup (adding genomic.gbff.gz to -f)
-	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -c "all" -l "Complete Genome" -f "genomic.fna.gz,genomic.gbff.gz" -o arc_bac_refseq_cg/ -t 12 -u -m -i
+	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -c "all" -l "Complete Genome" -f "genomic.fna.gz,genomic.gbff.gz" -o "arc_bac_refseq_cg" -t 12 -u -m -i
 	
 	# Some days later, just check for updates but do not update
-	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -c "all" -l "Complete Genome" -f "genomic.fna.gz,genomic.gbff.gz" -o arc_bac_refseq_cg/ -k
+	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -c "all" -l "Complete Genome" -f "genomic.fna.gz,genomic.gbff.gz" -o "arc_bac_refseq_cg" -k
 
 	# Perform update
-	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -c "all" -l "Complete Genome" -f "genomic.fna.gz,genomic.gbff.gz" -o arc_bac_refseq_cg/ -t 12 -u -m
+	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -c "all" -l "Complete Genome" -f "genomic.fna.gz,genomic.gbff.gz" -o "arc_bac_refseq_cg" -t 12 -u -m
 
-Just check for a new setup of Viral entries on genbank
+Just check for the set of Viral entries on genbank
 
-	./genome_updater.sh -d "genbank" -g "viral" -c "all" -l "all" -o "check" -k
+	./genome_updater.sh -d "genbank" -g "viral" -c "all" -l "all" -o "check_viral" -k
 
 Download Fungi RefSeq sequence reports 
 
-	./genome_updater.sh -d "refseq" -g "fungi" -c "all" -l "all" -f "assembly_report.txt" -r -o fungi/ -t 12 -r
+	./genome_updater.sh -d "refseq" -g "fungi" -c "all" -l "all" -f "assembly_report.txt" -r -o "fungi" -t 12 -r
 
 Extended reports:
 -----------------
