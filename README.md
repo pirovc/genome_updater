@@ -8,8 +8,8 @@ Usage:
 ------
 
 - On the first run, genome_updater creates a folder (**-o**) and downloads the current version based on selected parameters (database, organism group, refseq category, assembly level and file type(s))
-- All file will be marked with a timestamp in the format `YYYY-MM-DD_HH-MM-SS` (e.g. 2017-11-30_16-09-15) and the files will be downloaded to the `output_folder/files/`
-- The same command executed again will identify previous files and update the folder with the current version, keeping track of changes and just downloading updated files
+- All log and report files will be marked with a timestamp in the format `YYYY-MM-DD_HH-MM-SS` (e.g. 2017-11-30_16-09-15) and the downloaded files will be saved at `{output_folder}/files/`
+- The same command executed again will identify previous files and update the folder with the current version, keeping track of changes and just downloading/removing updated files
 
 genome_updater also:
 - checks for MD5 with the option **-m**
@@ -17,7 +17,7 @@ genome_updater also:
 - re-downloads missing files from current version (**-i**) without looking for updates
 - removes extra files from the output folder (**-x**)
 - downloads the taxonomic database version on each run by activating the parameter **-a**
-- provides extended reports for better integration in other tools (**-u** and **-r**)
+- provides extended reports for better integration in other tools (**-u**, **-r** and **-p**)
 
 Running examples:
 -----------------
@@ -40,9 +40,9 @@ Just check for the set of Viral entries on genbank
 
 	./genome_updater.sh -d "genbank" -g "viral" -c "all" -l "all" -o "check_viral" -k
 
-Download Fungi RefSeq sequence reports 
+Download Fungi RefSeq assembly informationg and generate sequence reports and urls
 
-	./genome_updater.sh -d "refseq" -g "fungi" -c "all" -l "all" -f "assembly_report.txt" -r -o "fungi" -t 12 -r
+	./genome_updater.sh -d "refseq" -g "fungi" -c "all" -l "all" -f "assembly_report.txt" -r -o "fungi" -t 12 -r -p
 
 Extended reports:
 -----------------
@@ -92,6 +92,7 @@ Parameters:
 
 	 -u Output list of updated assembly accessions (Added/Removed, assembly accession, url)
 	 -r Output list of updated sequence accessions (Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid). Only available when file assembly_report.txt selected and successfuly downloaded
+	 -p Output list of URLs for downloaded and failed files
 
 	 -o Output folder
 	        Default: db/
@@ -103,4 +104,5 @@ References:
 -----------
 
 [1] ftp://ftp.ncbi.nlm.nih.gov/genomes/
+
 [2] Tange (2011): GNU Parallel - The Command-Line Power Tool, ;login: The USENIX Magazine, February 2011:42-47.

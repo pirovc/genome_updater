@@ -119,7 +119,6 @@ export -f check_md5_ftp #export it to be accessible to the parallel call
 download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or field [url,filename], ${3} extension
 {
 	url_list_download=${output_folder}/url_list_download #Temporary url list of files to download in this call
-
 	if [ -z "${3}" ] #direct download (url+file)
 	then
 		total_files=$(wc -l ${1} | cut -f1 -d' ')
@@ -129,31 +128,32 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
 		list_files ${1} ${2} ${3} | cut -f 2,3 | tr '\t' '/' > ${url_list_download}
 	fi
 
-	## SIMULATE ERROR
-	#sed -i 's/ASM27586v1_genomic.fna.gz/xxx/g' ${url_list_download}
-	#sed -i 's/ASM27586v1_assembly_report.txt/xxx/g' ${url_list_download}
-	## SIMULATE ERROR
-
-	failed_before=$(wc -l ${url_list_failed_file} | cut -f1 -d' ')
 	# parallel -k parameter keeps job output order (better for showing progress) but makes it a bit slower 
-	parallel --gnu -a ${url_list_download} -j ${threads} '
-			wget {1} --quiet --continue --tries='"${wget_tries}"' --read-timeout='"${wget_timeout}"' -P '"${files}"'; 
+	log_parallel="${output_folder}/download_files.log"
+	parallel --gnu --joblog ${log_parallel} -a ${url_list_download} -j ${threads} '
+			ex=0
+			wget {1} --quiet --continue --tries='"${wget_tries}"' --read-timeout='"${wget_timeout}"' -P '"${files}"'
 			if check_file "{1}"; then 
 				if [ '"${check_md5}"' -eq 1 ]; then 
-					if ! check_md5_ftp "{1}"; then
-						echo "{1}" >> '"${url_list_failed_file}"';
-					fi
+					if ! check_md5_ftp "{1}"; then ex=1; fi
 				fi
 			else
-				echo "{1}" >> '"${url_list_failed_file}"';
+				ex=1;
 			fi;
 			print_progress "{#}" '"${total_files}"'
-		' && ( #Just execute following if parallel finishes successfuly - avoid wrong infos with ctrl+c
-	failed_after=$(wc -l ${url_list_failed_file} | cut -f1 -d' ')
-	print_progress "${total_files}" "${total_files}" #print final 100%
-	echo " - Successfuly downloaded: $(( total_files-(failed_after-failed_before) )) - Failed: $(( failed_after-failed_before ))" |& tee -a ${log_file}
-	)
-	rm -f ${url_list_download}
+			if [ '"${url_list}"' -eq 1 ]; then
+				if [ "${ex}" -eq 1 ]; then
+					echo "{1}" >> '"${url_list_failed_file}"'
+				else
+					echo "{1}" >> '"${url_list_downloaded_file}"'
+				fi
+			fi
+			exit "${ex}";'
+			print_progress "${total_files}" "${total_files}" #print final 100
+			count_log="$(( $(wc -l ${log_parallel} | cut -f1 -d' ') - 1 ))"
+			failed_log="$(cut -f 7 ${log_parallel} | grep -c "^1")"
+			echo " - Successfuly downloaded: $(( total_files - (total_files-count_log) - failed_log )) - Failed: $(( failed_log + (total_files-count_log) ))" |& tee -a ${log_file}
+	rm -f ${log_parallel} ${url_list_download}
 }
 
 remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR field [filename], ${3} extension
@@ -197,6 +197,7 @@ delete_extra_files=0
 check_md5=0
 updated_assembly_accession=0
 updated_sequence_accession=0
+url_list=0
 just_check=0
 just_fix=0
 output_folder="db"
@@ -219,6 +220,7 @@ function showhelp {
 	echo
 	echo $' -u Output list of updated assembly accessions (Added/Removed, assembly accession, url)'
 	echo $' -r Output list of updated sequence accessions (Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid). Only available when file assembly_report.txt selected and successfuly downloaded'
+	echo $' -p Output list of URLs for downloaded and failed files'
 	echo
 	echo $' -o Output folder\n\tDefault: db/'
 	echo $' -t Threads\n\tDefault: 1'
@@ -233,7 +235,7 @@ do
 done
 
 OPTIND=1 # Reset getopts
-while getopts "d:g:c:l:o:t:f:akixmurh" opt; do
+while getopts "d:g:c:l:o:t:f:akixmurph" opt; do
   case ${opt} in
     d) database=${OPTARG} ;; #remove spaces
     g) organism_group=${OPTARG// } ;; #remove spaces
@@ -249,6 +251,7 @@ while getopts "d:g:c:l:o:t:f:akixmurh" opt; do
 	m) check_md5=1 ;;
 	u) updated_assembly_accession=1 ;;
 	r) updated_sequence_accession=1 ;;
+	p) url_list=1 ;;
     h|\?) showhelp; exit 1 ;;
     :) echo "Option -${OPTARG} requires an argument." >&2; exit 1 ;;
   esac
@@ -306,6 +309,7 @@ echo "Delete extra files: ${delete_extra_files}" |& tee -a ${log_file}
 echo "Check md5: ${check_md5}" |& tee -a ${log_file}
 echo "Output updated assembly accessions: ${updated_assembly_accession}" |& tee -a ${log_file}
 echo "Output updated sequence accessions: ${updated_sequence_accession}" |& tee -a ${log_file}
+echo "Output URLs: ${url_list}" |& tee -a ${log_file}
 echo "Threads: ${threads}" |& tee -a ${log_file}
 echo "Output folder: ${output_folder}" |& tee -a ${log_file}
 echo "Output files: ${files}" |& tee -a ${log_file}
@@ -328,8 +332,10 @@ fi
 
 if [ "${updated_assembly_accession}" -eq 1 ]; then updated_assembly_accession_file=${output_folder}/${DATE}_updated_assembly_accession.txt; fi
 if [ "${updated_sequence_accession}" -eq 1 ]; then updated_sequence_accession_file=${output_folder}/${DATE}_updated_sequence_accession.txt; fi
-url_list_failed_file=${output_folder}/${DATE}_url_list_failed.txt
-touch ${url_list_failed_file} # touch it for check file size in download_files
+if [ "${url_list}" -eq 1 ]; then
+	url_list_downloaded_file=${output_folder}/${DATE}_url_list_downloaded.txt
+	url_list_failed_file=${output_folder}/${DATE}_url_list_failed.txt
+fi
 
 # new download
 if [ ! -f "${std_assembly_summary}" ]; then
@@ -342,7 +348,9 @@ if [ ! -f "${std_assembly_summary}" ]; then
 	echo " - ${filtered_lines} entries available" |& tee -a ${log_file}
 	
 	if [ "${just_check}" -eq 1 ]; then
-		rm -r ${assembly_summary} ${log_file} ${files}
+		rm ${assembly_summary} ${log_file}
+		if [ ! "$(ls -A ${files})" ]; then rm -r ${files}; fi #Remove folder that was just created (if there's nothing in it)
+		if [ ! "$(ls -A ${output_folder})" ]; then rm -r ${output_folder}; fi #Remove folder that was just created (if there's nothing in it)
 	else
 		ln -s $(readlink -m ${assembly_summary}) "${std_assembly_summary}"
 		echo " - Downloading $((filtered_lines*(n_formats+1))) files with ${threads} threads..."	|& tee -a ${log_file}
@@ -359,7 +367,6 @@ if [ ! -f "${std_assembly_summary}" ]; then
 	fi
 	
 else # update
-	
 	# Current assembly summary
 	assembly_summary=$(readlink -m ${std_assembly_summary})
 	
@@ -456,9 +463,10 @@ else # update
 			
 			# Execute updates
 			if [ "${update_lines}" -gt 0 ]; then
-				echo " - UPDATE: Deleting $((update_lines*(n_formats+1))) files, Downloading $((update_lines*(n_formats+1))) files with ${threads} threads..."	|& tee -a ${log_file}
+				echo " - UPDATE: Deleting $((update_lines*(n_formats+1))) files ..." |& tee -a ${log_file}
 				# delete old version
 				remove_files "${update}" "3,4" "${file_formats}"
+				echo " - UPDATE: Downloading $((update_lines*(n_formats+1))) files with ${threads} threads..." |& tee -a ${log_file}
 				# download new version
 				download_files "${update}" "1,2" "${file_formats}"
 			fi
@@ -493,8 +501,6 @@ if [ "${just_check}" -eq 0 ] && [ "${just_fix}" -eq 0 ]; then
 		get_taxonomy "${output_folder}/${DATE}_taxdump.tar.gz"
 		echo " - OK"
 	fi
-	
-	echo ""
 	echo ""
 	if [ -z "${extra_lines}" ]; then extra_lines=0; fi
 	expected_files=$(( $(wc -l "${std_assembly_summary}" | cut -f1 -d' ')*(n_formats+1) )) # From assembly summary * file formats
@@ -503,19 +509,14 @@ if [ "${just_check}" -eq 0 ] && [ "${just_fix}" -eq 0 ]; then
 	if [ "$(( expected_files - current_files ))" -gt 0 ]; then
 		echo "# $(( expected_files-current_files )) out of ${expected_files} files could not be downloaded" |& tee -a ${log_file}
 		echo "# Check the log file for more details: ${log_file}" |& tee -a ${log_file}
-		echo "# URL list of failed downloads: ${url_list_failed_file}" |& tee -a ${log_file}
-		echo "# You could try to re-run the same command with -i activated and increased \$wget_timeout" |& tee -a ${log_file}
+		echo "# You could try to re-run the same command with -i activated and increased \$wget_timeout (in code)" |& tee -a ${log_file}
 	else
 		echo "# All ${expected_files} files were downloaded successfuly" |& tee -a ${log_file}
 	fi
 	if [ "${extra_lines}" -gt 0 ]; then
-		echo "# There are ${extra_lines} extra files on the output folder. Check the log file for more details: ${log_file}" |& tee -a ${log_file}
+		echo "# There are ${extra_lines} extra files in the output folder [${files}]. Check the log file for more details: ${log_file}" |& tee -a ${log_file}
 	fi
 	echo ""
 	echo "Done. Current version:" |& tee -a ${log_file}
 	echo "$(readlink -m ${std_assembly_summary})" |& tee -a ${log_file}
-fi
-
-if [ ! -s "${url_list_failed_file}" ]; then
-	rm ${url_list_failed_file}
 fi
