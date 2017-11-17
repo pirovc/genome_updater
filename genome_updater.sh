@@ -237,7 +237,7 @@ done
 OPTIND=1 # Reset getopts
 while getopts "d:g:c:l:o:t:f:akixmurph" opt; do
   case ${opt} in
-    d) database=${OPTARG} ;; #remove spaces
+    d) database=${OPTARG} ;;
     g) organism_group=${OPTARG// } ;; #remove spaces
 	c) refseq_category=${OPTARG} ;;
 	l) assembly_level=${OPTARG} ;;
