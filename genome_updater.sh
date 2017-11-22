@@ -132,23 +132,25 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
 	log_parallel="${output_folder}/download_files.log"
 	parallel --gnu --joblog ${log_parallel} -a ${url_list_download} -j ${threads} '
 			ex=0
-			wget {1} --quiet --continue --tries='"${wget_tries}"' --read-timeout='"${wget_timeout}"' -P '"${files}"'
+			wget {1} --quiet --continue --tries="'${wget_tries}'" --read-timeout="'${wget_timeout}'" -P "'${files}'"
 			if check_file "{1}"; then 
-				if [ '"${check_md5}"' -eq 1 ]; then 
-					if ! check_md5_ftp "{1}"; then ex=1; fi
+				if [ "'${check_md5}'" -eq 1 ]; then 
+					if ! check_md5_ftp "{1}"; then 
+						ex=1
+					fi
 				fi
 			else
-				ex=1;
-			fi;
-			print_progress "{#}" '"${total_files}"'
-			if [ '"${url_list}"' -eq 1 ]; then
+				ex=1
+			fi
+			print_progress "{#}" "'${total_files}'"
+			if [ "'${url_list}'" -eq 1 ]; then
 				if [ "${ex}" -eq 1 ]; then
-					echo "{1}" >> '"${url_list_failed_file}"'
+					echo "{1}" >> "'${url_list_failed_file}'"
 				else
-					echo "{1}" >> '"${url_list_downloaded_file}"'
+					echo "{1}" >> "'${url_list_downloaded_file}'"
 				fi
 			fi
-			exit "${ex}";'
+			exit "${ex}"'
 			print_progress "${total_files}" "${total_files}" #print final 100
 			count_log="$(( $(wc -l ${log_parallel} | cut -f1 -d' ') - 1 ))"
 			failed_log="$(cut -f 7 ${log_parallel} | grep -c "^1")"
@@ -335,6 +337,9 @@ if [ "${updated_sequence_accession}" -eq 1 ]; then updated_sequence_accession_fi
 if [ "${url_list}" -eq 1 ]; then
 	url_list_downloaded_file=${output_folder}/${DATE}_url_list_downloaded.txt
 	url_list_failed_file=${output_folder}/${DATE}_url_list_failed.txt
+else
+	url_list_downloaded_file="x"
+	url_list_failed_file="x"
 fi
 
 # new download
