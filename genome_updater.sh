@@ -337,9 +337,6 @@ if [ "${updated_sequence_accession}" -eq 1 ]; then updated_sequence_accession_fi
 if [ "${url_list}" -eq 1 ]; then
 	url_list_downloaded_file=${output_folder}/${DATE}_url_list_downloaded.txt
 	url_list_failed_file=${output_folder}/${DATE}_url_list_failed.txt
-else
-	url_list_downloaded_file="x"
-	url_list_failed_file="x"
 fi
 
 # new download
