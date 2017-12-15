@@ -189,17 +189,24 @@ check_missing_files() # ${1} file, ${2} fields [assembly_accesion,url], ${3} ext
 	list_files ${1} ${2} ${3} | xargs --no-run-if-empty -n3 sh -c 'if [ ! -s "'"${files}"'${2}" ]; then echo "${0}\\t${1}\\t${2}"; fi'
 }
 
-output_assembly_accession() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} mode (A/R)
+check_complete_record() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension - returns assembly accession, url
 {
-	cut --fields="${2}" ${1} | sed "s/^/${3}\t/"
+	expected_files=$(list_files ${1} ${2} ${3} | sort -k 3,3)
+	join -1 3 -2 1 <(echo "${expected_files}" | sort -k 3,3) <(ls -1 "${files}" | sort) -t$'\t' -o "1.1" -v 1 | sort | uniq | # Check for accessions with at least one missing file
+	join -1 1 -2 1 <(echo "${expected_files}" | cut -f 1,2 | sort | uniq) - -t$'\t' -v 1 # Extract just assembly accession and url for complete entries (no missing files)
 }
 
-output_sequence_accession() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} mode (A/R), ${4} assembly_summary (for taxid)
+output_assembly_accession() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension, ${4} mode (A/R) - returns assembly accession, url and mode
 {
-	list_files ${1} ${2} "assembly_report.txt" | sort -k 1,1 | # Get sequence accession from assembly_report.txt file - skips if assembly_report.txt file download failed (file not in folder)
-	join - <(sort -k 1,1 ${4}) -t$'\t' -o "1.1,1.3,2.6" | # Return assembly accesion {1}, filename {2} and taxid {3}
-	parallel --colsep "\t" 'if [ -s "'"${files}"'{2}" ]; then grep "^[^#]" "'"${files}"'{2}" | tr -d "\r" | cut -f 5,7,9 | sed "s/^/{1}\\t/" | sed "s/$/\\t{3}/"; fi;' | # Retrieve info from assembly_report.txt (if file exists) and add assemby accession in the beggining and taxid at the end
-	sed "s/^/${3}\t/" # Add mode A/R at the end
+	check_complete_record ${1} ${2} ${3} | sed "s/^/${4}\t/" # add mode
+}
+
+output_sequence_accession() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension, ${4} mode (A/R), ${5} assembly_summary (for taxid)
+{
+	join <(list_files ${1} ${2} "assembly_report.txt" | sort -k 1,1) <(check_complete_record ${1} ${2} ${3} | sort -k 1,1) -t$'\t' -o "1.1,1.3" | # List assembly accession and filename for all assembly_report.txt with complete record (no missing files) - returns assembly accesion, filename
+	join - <(sort -k 1,1 ${5}) -t$'\t' -o "1.1,1.2,2.6" | # Get taxid {1} assembly accesion, {2} filename {3} taxid
+	parallel --colsep "\t" -j ${threads} -k 'grep "^[^#]" "'"${files}"'{2}" | tr -d "\r" | cut -f 5,7,9 | sed "s/^/{1}\\t/" | sed "s/$/\\t{3}/"' | # Retrieve info from assembly_report.txt and add assemby accession in the beggining and taxid at the end
+	sed "s/^/${4}\t/" # Add mode A/R at the end	
 }
 
 exit_status() # parameters: ${1} # expected files, ${2} # current files
@@ -426,11 +433,11 @@ if [ ! -f "${std_assembly_summary}" ]; then
 
 			# UPDATED INDICES assembly accession
 			if [ "${updated_assembly_accession}" -eq 1 ]; then 
-				output_assembly_accession "${assembly_summary}" "1,20" "A" > ${updated_assembly_accession_file}
+				output_assembly_accession "${assembly_summary}" "1,20" "${file_formats}" "A" > ${updated_assembly_accession_file}
 			fi
 			# UPDATED INDICES sequence accession
 			if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
-				output_sequence_accession "${assembly_summary}" "1,20" "A" "${assembly_summary}" > ${updated_sequence_accession_file}
+				output_sequence_accession "${assembly_summary}" "1,20" "${file_formats}" "A" "${assembly_summary}" > ${updated_sequence_accession_file}
 			fi
 		fi
 
@@ -457,14 +464,13 @@ else # update
 			echolog " - Downloading ${missing_lines} files with ${threads} threads..."	"1"
 			download_files "${missing}" "2,3"
 
+			# UPDATED INDICES assembly accession
+			if [ "${updated_assembly_accession}" -eq 1 ]; then 
+				output_assembly_accession "${missing}" "1,2" "${file_formats}" "A" > ${output_folder}/${DATE}_missing_assembly_accession.txt
+			fi
 			# UPDATED INDICES sequence accession for missing files
 			if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
-				missing_ar=${output_folder}/missing_ar.txt
-				grep "assembly_report.txt$" ${missing} > ${missing_ar} # Just select missing assembly reports
-				if [ "$(wc -l ${missing_ar} | cut -f1 -d' ')" -gt 0 ]; then
-					output_sequence_accession "${missing_ar}" "1,2" "A" "${assembly_summary}" > ${output_folder}/${DATE}_missing_sequence_accession.txt
-				fi
-				rm ${missing_ar}
+				output_sequence_accession "${missing}" "1,2" "${file_formats}" "A" "${assembly_summary}" > ${output_folder}/${DATE}_missing_sequence_accession.txt
 			fi
 		fi
 	else
@@ -526,15 +532,13 @@ else # update
 		else
 			# UPDATED INDICES assembly accession
 			if [ "${updated_assembly_accession}" -eq 1 ]; then 
-				output_assembly_accession "${update}" "3,4" "R" > ${updated_assembly_accession_file} 
-				output_assembly_accession "${delete}" "1,2" "R" >> ${updated_assembly_accession_file}
-				output_assembly_accession "${update}" "1,2" "A" >> ${updated_assembly_accession_file}
-				output_assembly_accession "${new}" "1,2" "A" >> ${updated_assembly_accession_file}
+				output_assembly_accession "${update}" "3,4" "${file_formats}" "R" > ${updated_assembly_accession_file} 
+				output_assembly_accession "${delete}" "1,2" "${file_formats}" "R" >> ${updated_assembly_accession_file}
 			fi
 			# UPDATED INDICES sequence accession (removed entries - do it before deleting them)
 			if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
-				output_sequence_accession "${update}" "3,4" "R" "${std_assembly_summary}" > ${updated_sequence_accession_file}
-				output_sequence_accession "${delete}" "1,2" "R" "${std_assembly_summary}" >> ${updated_sequence_accession_file}
+				output_sequence_accession "${update}" "3,4" "${file_formats}" "R" "${std_assembly_summary}" > ${updated_sequence_accession_file}
+				output_sequence_accession "${delete}" "1,2" "${file_formats}" "R" "${std_assembly_summary}" >> ${updated_sequence_accession_file}
 			fi
 			
 			# Execute updates
@@ -555,10 +559,15 @@ else # update
 				download_files "${new}" "1,2" "${file_formats}"
 			fi 
 
+			# UPDATED INDICES assembly accession (added entries - do it after downloading them)
+			if [ "${updated_assembly_accession}" -eq 1 ]; then 
+				output_assembly_accession "${update}" "1,2" "${file_formats}" "A" >> ${updated_assembly_accession_file}
+				output_assembly_accession "${new}" "1,2" "${file_formats}" "A" >> ${updated_assembly_accession_file}
+			fi
 			# UPDATED INDICES sequence accession (added entries - do it after downloading them)
 			if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
-				output_sequence_accession "${update}" "1,2" "A" "${new_assembly_summary}">> ${updated_sequence_accession_file}
-				output_sequence_accession "${new}" "1,2" "A" "${new_assembly_summary}" >> ${updated_sequence_accession_file}
+				output_sequence_accession "${update}" "1,2" "${file_formats}" "A" "${new_assembly_summary}">> ${updated_sequence_accession_file}
+				output_sequence_accession "${new}" "1,2" "${file_formats}" "A" "${new_assembly_summary}" >> ${updated_sequence_accession_file}
 			fi
 			
 			if [ "${download_taxonomy}" -eq 1 ]; then
