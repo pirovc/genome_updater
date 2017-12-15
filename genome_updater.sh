@@ -167,8 +167,8 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
 			fi
 			exit "${ex}"'
 			print_progress "${total_files}" "${total_files}" #print final 100
-			count_log="$(( $(wc -l ${log_parallel} | cut -f1 -d' ') - 1 ))"
-			failed_log="$(cut -f 7 ${log_parallel} | grep -c "^1")"
+			count_log="$(grep -c "^[0-9]" ${log_parallel})"
+			failed_log="$(grep -c "^[0-9]" ${log_parallel} | cut -f 7 | grep -c "^1")"
 			echolog " - Successfuly downloaded: $(( total_files - (total_files-count_log) - failed_log )) - Failed: $(( failed_log + (total_files-count_log) ))" "1"
 	rm -f ${log_parallel} ${url_list_download}
 }

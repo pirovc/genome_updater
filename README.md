@@ -69,7 +69,7 @@ Example:
 	A	GCA_000243255.1	CM001436.1	NZ_CM001436.1	3200946	937775
 	R	GCA_000275865.1	CM001555.1	NZ_CM001555.1	2475100	28892
 
-* genome_updater fixes the current version of the database before updating (or just fix with **i**). In this step if some entry is fixed with all files (**-f**) successfuly downloaded, the following files will also be created: `{timestamp}_missing_assembly_accession.txt` and `{timestamp}_missing_sequence_accession.txt`. They allow the user to keep track on every change of the database.
+* genome_updater fixes the current version of the database before updating (or just fix with **-i**). In this step if some entry is fixed with all files (**-f**) successfuly downloaded, the following files will also be created: `{timestamp}_missing_assembly_accession.txt` and `{timestamp}_missing_sequence_accession.txt`, making it possible to keep track of every change on the downloaded files.
 
 Parameters:
 -----------
