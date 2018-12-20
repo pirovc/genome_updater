@@ -77,15 +77,15 @@ Parameters:
 	genome_updater v0.09 by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pirovc)
 
 	 -d Database [genbank, refseq]
-	        Default: refseq
-	 -g Organism group [archaea, bacteria, fungi, invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]
-	        Default: bacteria
+		Default: refseq
+	 -g Organism group [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]
+		Default: bacteria
 	 -c RefSeq Category [all, reference genome, representative genome, na]
-	        Default: all
+		Default: all
 	 -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]
-	        Default: all
+		Default: all
 	 -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
-	        Default: assembly_report.txt
+		Default: assembly_report.txt
 
 	 -a Download current version of the Taxonomy database (taxdump.tar.gz)
 	 -k Just check for updates, keep current version
@@ -98,14 +98,15 @@ Parameters:
 	 -p Output list of URLs for downloaded and failed files
 
 	 -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)
-	        Default: 0
+		Default: 0
 
 	 -s Silent output
 	 -w Silent output with download progress (%) and download version at the end
 	 -o Output folder
-	        Default: db/
+		Default: db/
 	 -t Threads
-	        Default: 1
+		Default: 1
+
 
 References:
 -----------
