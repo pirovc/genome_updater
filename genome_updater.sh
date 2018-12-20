@@ -40,6 +40,11 @@ get_assembly_summary() # parameter: ${1} assembly_summary file - return number o
 	do
 		for og in ${organism_group//,/ }
 		do
+			#special case: human
+			if [[ "${og}" == "human" ]]
+			then
+				og="vertebrate_mammalian/Homo_sapiens"
+			fi
 			 wget --tries="${wget_tries}" --read-timeout="${wget_timeout}" -qO- ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/${og}/assembly_summary.txt | tail -n+3 >> ${1}
 		done
 	done
@@ -264,7 +269,7 @@ function showhelp {
 	echo "genome_updater v${version} by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pirovc)"
 	echo
 	echo $' -d Database [genbank, refseq]\n\tDefault: refseq'
-	echo $' -g Organism group [archaea, bacteria, fungi, invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]\n\tDefault: bacteria'
+	echo $' -g Organism group [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]\n\tDefault: bacteria'
 	echo $' -c RefSeq Category [all, reference genome, representative genome, na]\n\tDefault: all'
 	echo $' -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: all'
 	echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]\n\tDefault: assembly_report.txt'
@@ -332,7 +337,7 @@ do
 		echo "Database ${d} not valid"; exit 1;
 	fi
 done
-valid_organism_groups=( "archaea" "bacteria" "fungi" "invertebrate" "metagenomes" "other" "plant" "protozoa" "vertebrate_mammalian" "vertebrate_other" "viral" )
+valid_organism_groups=( "archaea" "bacteria" "fungi" "human" "invertebrate" "metagenomes" "other" "plant" "protozoa" "vertebrate_mammalian" "vertebrate_other" "viral" )
 for og in ${organism_group//,/ }
 do
 	if [[ ! " ${valid_organism_groups[@]} " =~ " ${og} " ]]; then
