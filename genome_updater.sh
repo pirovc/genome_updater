@@ -23,7 +23,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.09"
+version="0.10"
 
 wget_tries=20
 wget_timeout=1000
@@ -38,16 +38,29 @@ get_assembly_summary() # parameter: ${1} assembly_summary file - return number o
 {
 	for d in ${database//,/ }
 	do
-		for og in ${organism_group//,/ }
-		do
-			#special case: human
-			if [[ "${og}" == "human" ]]
-			then
-				og="vertebrate_mammalian/Homo_sapiens"
-			fi
-			 wget --tries="${wget_tries}" --read-timeout="${wget_timeout}" -qO- ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/${og}/assembly_summary.txt | tail -n+3 >> ${1}
-		done
+		if [[ ! -z "${taxids}" ]]; then # Get complete assembly_summary for database
+			wget --tries="${wget_tries}" --read-timeout="${wget_timeout}" -qO- ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/assembly_summary_${d}.txt | tail -n+3 >> ${1}
+		else
+			for og in ${organism_group//,/ }
+			do
+				#special case: human
+				if [[ "${og}" == "human" ]]
+				then
+					og="vertebrate_mammalian/Homo_sapiens"
+				fi
+				wget --tries="${wget_tries}" --read-timeout="${wget_timeout}" -qO- ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/${og}/assembly_summary.txt | tail -n+3 >> ${1}
+			done
+		fi
 	done
+	# Keep only selected taxids
+	if [[ ! -z "${taxids}" ]]
+	then
+		for tx in ${taxids//,/ }
+		do
+			awk -F "\t" -v tx="${tx}" '$6 ~ tx {print $0}' ${1} >> "${1}_taxids"
+		done
+		mv "${1}_taxids" ${1}
+	fi
 	wc -l ${1} | cut -f1 -d' '
 }
 
@@ -269,7 +282,7 @@ function showhelp {
 	echo "genome_updater v${version} by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pirovc)"
 	echo
 	echo $' -d Database [genbank, refseq]\n\tDefault: refseq'
-	echo $' -g Organism group [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]\n\tDefault: bacteria'
+	echo $' -g Organism group [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)] or taxid:[species taxids]\n\tDefault: bacteria'
 	echo $' -c RefSeq Category [all, reference genome, representative genome, na]\n\tDefault: all'
 	echo $' -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: all'
 	echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]\n\tDefault: assembly_report.txt'
@@ -337,13 +350,23 @@ do
 		echo "Database ${d} not valid"; exit 1;
 	fi
 done
-valid_organism_groups=( "archaea" "bacteria" "fungi" "human" "invertebrate" "metagenomes" "other" "plant" "protozoa" "vertebrate_mammalian" "vertebrate_other" "viral" )
-for og in ${organism_group//,/ }
-do
-	if [[ ! " ${valid_organism_groups[@]} " =~ " ${og} " ]]; then
-		echo "Organism group - ${og} - not valid"; exit 1;
+
+taxids=""
+if [[ " ${organism_group} " =~ "taxid:" ]]; then
+	taxids=${organism_group/taxid:/}
+	if [[ -z "${taxids}" ]]; then
+		echo "Invalid taxid - ${taxids}"; exit 1; # TODO validate taxid?
 	fi
-done
+else
+	valid_organism_groups=( "archaea" "bacteria" "fungi" "human" "invertebrate" "metagenomes" "other" "plant" "protozoa" "vertebrate_mammalian" "vertebrate_other" "viral" )
+	for og in ${organism_group//,/ }
+	do
+		if [[ ! " ${valid_organism_groups[@]} " =~ " ${og} " ]]; then
+			echo "Organism group - ${og} - not valid"; exit 1;
+		fi
+	done
+fi
+
 valid_refseq_categories=( "all" "reference genome" "representative genome" "na" )
 if [[ ! " ${valid_refseq_categories[@]} " =~ " ${refseq_category} " ]]; then
 	echo "RefSeq category - ${refseq_category} - not valid"; exit 1;
@@ -422,7 +445,7 @@ if [ ! -f "${std_assembly_summary}" ]; then
     echolog "Downloading assembly summary [$(basename ${assembly_summary})]..." "1"
 	all_lines=$(get_assembly_summary "${assembly_summary}")
 	filtered_lines=$(filter_assembly_summary "${assembly_summary}")
-	echolog " - $((all_lines-filtered_lines)) out of ${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}]" "1"
+	echolog " - $((all_lines-filtered_lines)) out of ${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}, Version status: latest]" "1"
 	echolog " - ${filtered_lines} entries available" "1"
 	
 	if [ "${just_check}" -eq 1 ]; then
@@ -512,7 +535,7 @@ else # update
 		echolog "Downloading assembly summary [$(basename ${new_assembly_summary})]..." "1"
 		all_lines=$(get_assembly_summary "${new_assembly_summary}")
 		filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
-		echolog " - $((all_lines-filtered_lines)) out of ${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}]" "1"
+		echolog " - $((all_lines-filtered_lines)) out of ${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}, Version status: latest]]" "1"
 		echolog " - ${filtered_lines} entries available" "1"
 		echolog "" "1"
 		
