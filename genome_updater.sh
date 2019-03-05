@@ -57,7 +57,7 @@ get_assembly_summary() # parameter: ${1} assembly_summary file - return number o
 	then
 		for tx in ${taxids//,/ }
 		do
-			awk -F "\t" -v tx="${tx}" '$6 ~ tx {print $0}' ${1} >> "${1}_taxids"
+			awk -F "\t" -v tx="${tx}" '$7 == tx {print $0}' ${1} >> "${1}_taxids"
 		done
 		mv "${1}_taxids" ${1}
 	fi
