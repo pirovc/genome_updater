@@ -28,7 +28,6 @@ version="0.1.1"
 wget_tries=20
 wget_timeout=1000
 export wget_tries wget_timeout
-
 export LC_NUMERIC="en_US.UTF-8"
 
 get_taxonomy()
