@@ -4,8 +4,7 @@ Vitor C. Piro (vitorpiro@gmail.com)
 
 Portable bash script to download and update files from NCBI genomes [1] keeping log and version for each update, with file check (md5) and parallel [2] download support.
 
-Usage:
-------
+## Usage:
 
 - On the first run, genome_updater creates a folder (**-o**) and downloads the current version based on selected parameters (database, organism group, refseq category, assembly level and file type(s))
 - All log and report files will be marked with a timestamp in the format `YYYY-MM-DD_HH-MM-SS` (e.g. 2017-11-30_16-09-15) and the downloaded files will be saved at `{output_folder}/files/`
@@ -15,6 +14,7 @@ genome_updater also:
 - checks for MD5 with the option **-m**
 - checks only for available entries or updates with the **-k** option without downloading any file or changing the current version
 - re-downloads missing files from current version (**-i**) without looking for updates
+- re-downloads files from any "assembly_summary.txt" obtained from external sources (set **-i** and the location of the file with **-o**)
 - removes extra files from the output folder (**-x**)
 - downloads complete organism groups (**-g "archaea,bacteria"**) or specific species groups (**-g "taxid:562,623"**)
 - downloads the taxonomic database version on each run by activating the parameter **-a**
@@ -22,15 +22,14 @@ genome_updater also:
 - has configurable exit codes based on the number/percetage of files downloaded (**-n**)
 - has silent (**-s**) and silent with download progress (**-w**) mode for easy integration in pipelines 
 
-Running examples:
------------------
+## Examples:
 
-Downloading genomic sequences (.fna files) for the Complete Genome sequences from RefSeq for Bacteria and Archaea
+### Downloading genomic sequences (.fna files) for the Complete Genome sequences from RefSeq for Bacteria and Archaea and keep them updated
 
 	# Download (checking md5, 12 threads, with extended assembly accession report)
 	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -c "all" -l "Complete Genome" -f "genomic.fna.gz" -o "arc_bac_refseq_cg" -t 12 -u -m
 	
-	# Downloading .gbff files for the current setup (adding genomic.gbff.gz to -f)
+	# Downloading additional .gbff files for the current setup (adding genomic.gbff.gz to -f)
 	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -c "all" -l "Complete Genome" -f "genomic.fna.gz,genomic.gbff.gz" -o "arc_bac_refseq_cg" -t 12 -u -m -i
 	
 	# Some days later, just check for updates but do not update
@@ -39,16 +38,27 @@ Downloading genomic sequences (.fna files) for the Complete Genome sequences fro
 	# Perform update
 	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -c "all" -l "Complete Genome" -f "genomic.fna.gz,genomic.gbff.gz" -o "arc_bac_refseq_cg" -t 12 -u -m
 
-Just check for the set of Viral entries on genbank
+### Check amount of refence entries available for the set of Viral genomes on genbank
 
-	./genome_updater.sh -d "genbank" -g "viral" -c "all" -l "all" -o "check_viral" -k
+	./genome_updater.sh -d "genbank" -g "viral" -c "all" -l "all" -k
 
-Download Fungi RefSeq assembly information and generate sequence reports and urls
+### Download Fungi RefSeq assembly information and generate sequence reports and urls
 
-	./genome_updater.sh -d "refseq" -g "fungi" -c "all" -l "all" -f "assembly_report.txt" -r -o "fungi" -t 12 -r -p
+	./genome_updater.sh -d "refseq" -g "fungi" -c "all" -l "all" -f "assembly_report.txt" -o "fungi" -t 12 -r -p
 
-Extended reports:
------------------
+### Download all E. Coli assemblies available on GenBank and RefSeq
+
+	./genome_updater.sh -d "genbank,refseq" -g "taxid:562" -f "genomic.fna.gz" -o "all_ecoli" -t 12
+
+### Recovering fasta files from a previously obtained assembly_summary.txt
+
+	mkdir recover
+	cp /my/path/assembly_summary.txt recover/
+	./genome_updater.sh -i -o recover/
+
+## Extended reports:
+
+### assembly accessions
 
 The parameter **-u** activates the output of a list of updated assembly accessions for the entries with all files (**-f**) successfuly downloaded. The file `{timestamp}_updated_assembly_accession.txt` has the following fields (tab separated):
 
@@ -60,7 +70,8 @@ Example:
 	A	GCF_000002515.2	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/515/GCF_000002515.2_ASM251v1
 	R	GCF_000091025.4	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/091/025/GCF_000091025.4_ASM9102v4
 
-	
+### sequence accessions
+
 The parameter **-r** activates the output of a list of updated sequence accessions for the entries with all files (**-f**) successfuly downloaded. It is only available when `assembly_report.txt` is one of the file types. The file `{timestamp}_updated_sequence_accession.txt` has the following fields (tab separated):
 
 	Added [A] or Removed [R], assembly accession, genbank accession, refseq accession, sequence length, taxonomic id
@@ -72,8 +83,15 @@ Example:
 
 * genome_updater fixes the current version of the database before updating (or just fix with **-i**). In this step if some entry is fixed with all files (**-f**) successfuly downloaded, the following files will also be created: `{timestamp}_missing_assembly_accession.txt` and `{timestamp}_missing_sequence_accession.txt`, making it possible to keep track of every change on the downloaded files.
 
-Parameters:
------------
+### URLs (and files)
+
+The parameter **-r** activates the output of a list of failed and successfuly downloaded urls to the files `{timestamp}_url_list_downloaded.txt` and `{timestamp}_url_list_failed.txt` (failed list will only be complete if command runs until the end, without errors or user breaks).
+
+To obtain a list of successfuly downloaded files from this report (usefull to get only new files on updates):
+
+	sed 's#.*/##' {timestamp}_url_list_downloaded.txt
+
+## Parameters:
 
 	genome_updater v0.1.2 by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pirovc)
 
@@ -108,10 +126,7 @@ Parameters:
 	 -t Threads
 	        Default: 1
 
-
-
-References:
------------
+## References:
 
 [1] ftp://ftp.ncbi.nlm.nih.gov/genomes/
 

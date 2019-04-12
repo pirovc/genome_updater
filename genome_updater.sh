@@ -291,7 +291,7 @@ function showhelp {
 	echo
 	echo $' -a Download the current version of the Taxonomy database (taxdump.tar.gz)'
 	echo $' -k Just check for updates, keep current version'
-	echo $' -i Just fix files based on the current version, do not look for updates'
+	echo $' -i Fix or recover files based on the current version or external file (assembly_summary.txt), do not look for updates'
 	echo $' -x Delete any extra files inside the output folder'
 	echo $' -m Check md5 (after download only)'
 	echo
@@ -354,7 +354,7 @@ do
 done
 
 # mandatory organism group/taxids
-if [[ -z "${organism_group}" ]]; then
+if [[ -z "${organism_group}" && "${just_fix}" -eq 0 ]]; then
 	echo "Please inform the organism group[s] or taxids[s] (comma separated) with the -g parameter"; exit 1;
 fi
 
@@ -383,19 +383,32 @@ if [[ ! " ${valid_assembly_levels[@]} " =~ " ${assembly_level} " ]]; then
 	echo "Assembly level - ${assembly_level} - not valid"; exit 1;
 fi
 
-# not informed output folder, create temporary 
+# Create output folder
 if [[ -z "${output_folder}" ]]; then
-	output_folder=$(mktemp -d -p .)
+	output_folder=$(mktemp -d -p .) # default
 else
-	mkdir -p ${output_folder}
+	mkdir -p ${output_folder} #user input
 fi
-mkdir -p ${output_folder}/files/
-files=${output_folder}/files/
-std_assembly_summary=${output_folder}/assembly_summary.txt
-n_formats=$(echo ${file_formats} | tr -cd , | wc -c)
 
+std_assembly_summary=${output_folder}/assembly_summary.txt
+
+# If fixing/recovering, need to have assembly_summary.txt
+if [[ "${just_fix}" -eq 1 && ! -f "${std_assembly_summary}" ]]; then
+	echo "Fix/recover mode activated but no assembly_summary.txt found [$(readlink -m ${output_folder})]"; exit 1;
+fi
+
+# version date and log
 DATE=$(date +%Y-%m-%d_%H-%M-%S)
 log_file=${output_folder}/${DATE}.log
+
+# output files
+files=${output_folder}/files/
+mkdir -p ${files}
+
+# formats selected
+n_formats=$(echo ${file_formats} | tr -cd , | wc -c)
+
+# silent mode
 if [ "${silent}" -eq 1 ] ; then 
 	silent_progress=0
 elif [ "${silent_progress}" -eq 1 ] ; then 
@@ -415,7 +428,7 @@ echolog "Assembly level: ${assembly_level}" "0"
 echolog "File formats: ${file_formats}" "0"
 echolog "Download taxonomy: ${download_taxonomy}" "0"
 echolog "Just check for updates: ${just_check}" "0"
-echolog "Just fix current version: ${just_fix}" "0"
+echolog "Just fix/recover current version: ${just_fix}" "0"
 echolog "Delete extra files: ${delete_extra_files}" "0"
 echolog "Check md5: ${check_md5}" "0"
 echolog "Output updated assembly accessions: ${updated_assembly_accession}" "0"
@@ -432,14 +445,10 @@ echolog "----------------------------------------" "0"
 # PROGRAM MODE (check, fix, new or update)
 if [ "${just_check}" -eq 1 ]; then
 	echolog "-- CHECK --" "1"
-elif [ ! -f "${std_assembly_summary}" ]; then
-	if [ "${just_fix}" -eq 1 ]; then
-		echo "No current version found [$(readlink -m ${output_folder})]"
-		exit 1
-	fi
-	echolog "-- NEW --" "1"
 elif [ "${just_fix}" -eq 1 ]; then
-	echolog "-- FIX --" "1"
+	echolog "-- FIX/RECOVER --" "1"
+elif [ ! -f "${std_assembly_summary}" ]; then
+	echolog "-- NEW --" "1"
 else
 	echolog "-- UPDATE --" "1"
 fi
