@@ -23,7 +23,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.1.1"
+version="0.1.2"
 
 wget_tries=20
 wget_timeout=1000
@@ -261,7 +261,7 @@ export -f echolog #export it to be accessible to the parallel call
 
 # Defaults
 database="refseq"
-organism_group="bacteria"
+organism_group=""
 refseq_category="all"
 assembly_level="all"
 file_formats="assembly_report.txt"
@@ -276,19 +276,20 @@ just_fix=0
 conditional_exit=0
 silent=0
 silent_progress=0
-output_folder="db"
+output_folder=""
 threads=1
 
 function showhelp {
 	echo "genome_updater v${version} by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pirovc)"
 	echo
+	echo $' -g Organism group [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)] or taxid:[species taxids]'
+	echo
 	echo $' -d Database [genbank, refseq]\n\tDefault: refseq'
-	echo $' -g Organism group [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)] or taxid:[species taxids]\n\tDefault: bacteria'
 	echo $' -c RefSeq Category [all, reference genome, representative genome, na]\n\tDefault: all'
 	echo $' -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: all'
 	echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]\n\tDefault: assembly_report.txt'
 	echo
-	echo $' -a Download current version of the Taxonomy database (taxdump.tar.gz)'
+	echo $' -a Download the current version of the Taxonomy database (taxdump.tar.gz)'
 	echo $' -k Just check for updates, keep current version'
 	echo $' -i Just fix files based on the current version, do not look for updates'
 	echo $' -x Delete any extra files inside the output folder'
@@ -302,7 +303,7 @@ function showhelp {
 	echo
 	echo $' -s Silent output'
 	echo $' -w Silent output with download progress (%) and download version at the end'
-	echo $' -o Output folder\n\tDefault: db/'
+	echo $' -o Output folder\n\tDefault: ./tmp.XXXXXXXXXX'
 	echo $' -t Threads\n\tDefault: 1'
 	echo
 }
@@ -352,6 +353,11 @@ do
 	fi
 done
 
+# mandatory organism group/taxids
+if [[ -z "${organism_group}" ]]; then
+	echo "Please inform the organism group[s] or taxids[s] (comma separated) with the -g parameter"; exit 1;
+fi
+
 taxids=""
 if [[ " ${organism_group} " =~ "taxid:" ]]; then
 	taxids=${organism_group/taxid:/}
@@ -375,6 +381,11 @@ fi
 valid_assembly_levels=( "all" "Complete Genome" "Chromosome" "Scaffold" "Contig" )
 if [[ ! " ${valid_assembly_levels[@]} " =~ " ${assembly_level} " ]]; then
 	echo "Assembly level - ${assembly_level} - not valid"; exit 1;
+fi
+
+# not informed output folder, create temporary 
+if [[ -z "${output_folder}" ]]; then
+	output_folder=$(mktemp -d -p .)
 fi
 
 DATE=$(date +%Y-%m-%d_%H-%M-%S)
@@ -423,7 +434,7 @@ if [ "${just_check}" -eq 1 ]; then
 elif [ ! -f "${std_assembly_summary}" ]; then
 	if [ "${just_fix}" -eq 1 ]; then
 		echo "No current version found [$(readlink -m ${output_folder})]"
-		exit
+		exit 1
 	fi
 	echolog "-- NEW --" "1"
 elif [ "${just_fix}" -eq 1 ]; then
@@ -431,6 +442,9 @@ elif [ "${just_fix}" -eq 1 ]; then
 else
 	echolog "-- UPDATE --" "1"
 fi
+
+# if not checking
+echo "Working on the directory [$(readlink -m ${output_folder})]"
 
 if [ "${updated_assembly_accession}" -eq 1 ]; then updated_assembly_accession_file=${output_folder}/${DATE}_updated_assembly_accession.txt; fi
 if [ "${updated_sequence_accession}" -eq 1 ]; then updated_sequence_accession_file=${output_folder}/${DATE}_updated_sequence_accession.txt; fi

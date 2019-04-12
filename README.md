@@ -13,9 +13,10 @@ Usage:
 
 genome_updater also:
 - checks for MD5 with the option **-m**
-- checks only for updates with the **-k** option (first time or update) without changing the current version
+- checks only for available entries or updates with the **-k** option without downloading any file or changing the current version
 - re-downloads missing files from current version (**-i**) without looking for updates
 - removes extra files from the output folder (**-x**)
+- downloads complete organism groups (**-d "archaea,bacteria"**) or specific species groups (**-d "taxid:562,623"**)
 - downloads the taxonomic database version on each run by activating the parameter **-a**
 - provides extended reports for better integration in other tools (**-u**, **-r** and **-p**)
 - has configurable exit codes based on the number/percetage of files downloaded (**-n**)
@@ -74,20 +75,20 @@ Example:
 Parameters:
 -----------
 
-	genome_updater v0.09 by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pirovc)
+	genome_updater v0.1.2 by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pirovc)
+
+	 -g Organism group [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)] or taxid:[species taxids]
 
 	 -d Database [genbank, refseq]
-		Default: refseq
-	 -g Organism group [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]
-		Default: bacteria
+	        Default: refseq
 	 -c RefSeq Category [all, reference genome, representative genome, na]
-		Default: all
+	        Default: all
 	 -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]
-		Default: all
+	        Default: all
 	 -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
-		Default: assembly_report.txt
+	        Default: assembly_report.txt
 
-	 -a Download current version of the Taxonomy database (taxdump.tar.gz)
+	 -a Download the current version of the Taxonomy database (taxdump.tar.gz)
 	 -k Just check for updates, keep current version
 	 -i Just fix files based on the current version, do not look for updates
 	 -x Delete any extra files inside the output folder
@@ -98,14 +99,15 @@ Parameters:
 	 -p Output list of URLs for downloaded and failed files
 
 	 -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)
-		Default: 0
+	        Default: 0
 
 	 -s Silent output
 	 -w Silent output with download progress (%) and download version at the end
 	 -o Output folder
-		Default: db/
+	        Default: ./tmp.XXXXXXXXXX
 	 -t Threads
-		Default: 1
+	        Default: 1
+
 
 
 References:
