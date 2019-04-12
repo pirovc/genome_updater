@@ -425,8 +425,8 @@ echolog "Silent ${silent}" "0"
 echolog "Silent with progress and version: ${silent_progress}" "0"
 echolog "Output URLs: ${url_list}" "0"
 echolog "Threads: ${threads}" "0"
-echolog "Output folder: ${output_folder}" "0"
-echolog "Output files: ${files}" "0"
+echolog "Output folder: $(readlink -m ${output_folder})" "0"
+echolog "Output files: $(readlink -m ${files})" "0"
 echolog "----------------------------------------" "0"
 	
 # PROGRAM MODE (check, fix, new or update)
@@ -467,7 +467,7 @@ if [ ! -f "${std_assembly_summary}" ]; then
 		if [ ! "$(ls -A ${files})" ]; then rm -r ${files}; fi #Remove folder that was just created (if there's nothing in it)
 		if [ ! "$(ls -A ${output_folder})" ]; then rm -r ${output_folder}; fi #Remove folder that was just created (if there's nothing in it)
 	else
-		ln -s $(readlink -m ${assembly_summary}) "${std_assembly_summary}"
+		ln -s "./${assembly_summary##*/}" "${std_assembly_summary}"
 		
 		if [[ "${filtered_lines}" -gt 0 ]] ; then
 			echolog " - Downloading $((filtered_lines*(n_formats+1))) files with ${threads} threads..."	"1"
@@ -622,7 +622,7 @@ else # update
 			# Replace STD assembly summary with the new version
 			rm ${update} ${delete} ${new}
 			rm ${std_assembly_summary} 
-			ln -s $(readlink -m ${new_assembly_summary}) "${std_assembly_summary}"
+			ln -s "./${new_assembly_summary##*/}" "${std_assembly_summary}"
 		fi
 	fi
 fi
