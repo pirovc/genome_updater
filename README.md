@@ -54,7 +54,7 @@ genome_updater also:
 
 	mkdir recover
 	cp /my/path/assembly_summary.txt recover/
-	./genome_updater.sh -i -o recover/
+	./genome_updater.sh -i -o recover/ -f "genomic.fna.gz"
 
 ## Extended reports:
 
