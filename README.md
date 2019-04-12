@@ -85,7 +85,7 @@ Example:
 
 ### URLs (and files)
 
-The parameter **-r** activates the output of a list of failed and successfuly downloaded urls to the files `{timestamp}_url_list_downloaded.txt` and `{timestamp}_url_list_failed.txt` (failed list will only be complete if command runs until the end, without errors or user breaks).
+The parameter **-p** activates the output of a list of failed and successfuly downloaded urls to the files `{timestamp}_url_list_downloaded.txt` and `{timestamp}_url_list_failed.txt` (failed list will only be complete if command runs until the end, without errors or breaks).
 
 To obtain a list of successfuly downloaded files from this report (useful to get only new files after updating):
 
