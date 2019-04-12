@@ -16,7 +16,7 @@ genome_updater also:
 - checks only for available entries or updates with the **-k** option without downloading any file or changing the current version
 - re-downloads missing files from current version (**-i**) without looking for updates
 - removes extra files from the output folder (**-x**)
-- downloads complete organism groups (**-d "archaea,bacteria"**) or specific species groups (**-d "taxid:562,623"**)
+- downloads complete organism groups (**-g "archaea,bacteria"**) or specific species groups (**-g "taxid:562,623"**)
 - downloads the taxonomic database version on each run by activating the parameter **-a**
 - provides extended reports for better integration in other tools (**-u**, **-r** and **-p**)
 - has configurable exit codes based on the number/percetage of files downloaded (**-n**)
