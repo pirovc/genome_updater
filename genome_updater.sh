@@ -386,14 +386,15 @@ fi
 # not informed output folder, create temporary 
 if [[ -z "${output_folder}" ]]; then
 	output_folder=$(mktemp -d -p .)
+else
+	mkdir -p ${output_folder}
 fi
-
-DATE=$(date +%Y-%m-%d_%H-%M-%S)
-mkdir -p ${output_folder}
 mkdir -p ${output_folder}/files/
 files=${output_folder}/files/
 std_assembly_summary=${output_folder}/assembly_summary.txt
 n_formats=$(echo ${file_formats} | tr -cd , | wc -c)
+
+DATE=$(date +%Y-%m-%d_%H-%M-%S)
 log_file=${output_folder}/${DATE}.log
 if [ "${silent}" -eq 1 ] ; then 
 	silent_progress=0
