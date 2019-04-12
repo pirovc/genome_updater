@@ -443,8 +443,6 @@ elif [ "${just_fix}" -eq 1 ]; then
 else
 	echolog "-- UPDATE --" "1"
 fi
-
-# if not checking
 echo "Working on the directory [$(readlink -m ${output_folder})]"
 
 if [ "${updated_assembly_accession}" -eq 1 ]; then updated_assembly_accession_file=${output_folder}/${DATE}_updated_assembly_accession.txt; fi
