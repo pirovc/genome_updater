@@ -30,6 +30,7 @@ wget_timeout=1000
 export wget_tries wget_timeout
 export LC_NUMERIC="en_US.UTF-8"
 
+#activate aliases in the script
 shopt -s expand_aliases
 alias sort="sort --field-separator=$'\t'"
 
@@ -371,7 +372,7 @@ done
 
 # mandatory organism group/taxids
 if [[ -z "${organism_group}" && "${just_fix}" -eq 0 ]]; then
-	echo "Please inform the organism group[s], species or taxids[s] (comma separated) with the -g parameter"; exit 1;
+	echo "Please inform the organism group, species or taxids (comma separated) with the -g parameter"; exit 1;
 fi
 
 species=""
