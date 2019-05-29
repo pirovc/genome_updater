@@ -97,22 +97,24 @@ To obtain a list of successfuly downloaded files from this report (useful to get
 
 ## Parameters:
 
-	genome_updater v0.1.2 by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pirovc)
+	genome_updater v0.1.3 by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pirovc)
 
-	 -g Organism group [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)] or taxid:[species taxids]
+	 -g Organism group (one or more comma-separated entries) [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]. Example: archaea,bacteria
+	    or Species level taxids (one or more comma-separated entries). Example: species:622,562
+	    or Any level taxids - lineage will be generated (one or more comma-separated entries). Example: taxids:620,649776
 
 	 -d Database [genbank, refseq]
-	        Default: refseq
+		Default: refseq
 	 -c RefSeq Category [all, reference genome, representative genome, na]
-	        Default: all
+		Default: all
 	 -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]
-	        Default: all
+		Default: all
 	 -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
-	        Default: assembly_report.txt
+		Default: assembly_report.txt
 
 	 -a Download the current version of the Taxonomy database (taxdump.tar.gz)
 	 -k Just check for updates, keep current version
-	 -i Just fix files based on the current version, do not look for updates
+	 -i Fix or recover files based on the current version or external file (assembly_summary.txt), do not look for updates
 	 -x Delete any extra files inside the output folder
 	 -m Check md5 (after download only)
 
@@ -121,15 +123,14 @@ To obtain a list of successfuly downloaded files from this report (useful to get
 	 -p Output list of URLs for downloaded and failed files
 
 	 -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)
-	        Default: 0
+		Default: 0
 
 	 -s Silent output
 	 -w Silent output with download progress (%) and download version at the end
 	 -o Output folder
-	        Default: ./tmp.XXXXXXXXXX
+		Default: ./tmp.XXXXXXXXXX
 	 -t Threads
-	        Default: 1
-
+		Default: 1
 ## References:
 
 [1] ftp://ftp.ncbi.nlm.nih.gov/genomes/
