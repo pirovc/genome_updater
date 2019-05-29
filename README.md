@@ -6,18 +6,18 @@ Portable bash script to download and update files from NCBI genomes [1] keeping 
 
 ## Usage:
 
-- On the first run, genome_updater creates a folder (**-o**) and downloads the current version based on selected parameters (database, organism group, refseq category, assembly level and file type(s))
+- On the first run, genome_updater creates a folder (**-o**) and downloads the current version based on selected parameters (database, organism group or taxids, category, assembly level and file type(s))
 - All log and report files will be marked with a timestamp in the format `YYYY-MM-DD_HH-MM-SS` (e.g. 2017-11-30_16-09-15) and the downloaded files will be saved at `{output_folder}/files/`
 - The same command executed again will identify previous files and update the folder with the current version, keeping track of changes and just downloading/removing updated files
 
 genome_updater also:
 - checks for MD5 with the option **-m**
+- downloads complete organism groups (**-g "archaea,bacteria"**), specific species groups (**-g "species:562,623"**) or any taxonomic group and any sequence in their lineage (**-g "taxids:620,1643685"**)
+- re-downloads files from any "assembly_summary.txt" obtained from external sources (set **-i** and the location of the file with **-o**)
 - checks only for available entries or updates with the **-k** option without downloading any file or changing the current version
 - re-downloads missing files from current version (**-i**) without looking for updates
-- re-downloads files from any "assembly_summary.txt" obtained from external sources (set **-i** and the location of the file with **-o**)
 - removes extra files from the output folder (**-x**)
-- downloads complete organism groups (**-g "archaea,bacteria"**) or specific species groups (**-g "taxid:562,623"**)
-- downloads the taxonomic database version on each run by activating the parameter **-a**
+- downloads the current taxonomic database version on each run by activating the parameter **-a**
 - provides extended reports for better integration in other tools (**-u**, **-r** and **-p**)
 - has configurable exit codes based on the number/percetage of files downloaded (**-n**)
 - has silent (**-s**) and silent with download progress (**-w**) mode for easy integration in pipelines 
@@ -38,6 +38,14 @@ genome_updater also:
 	# Perform update
 	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -c "all" -l "Complete Genome" -f "genomic.fna.gz,genomic.gbff.gz" -o "arc_bac_refseq_cg" -t 12 -u -m
 
+### Download all RNA Viruses (under the taxon Riboviria) on RefSeq
+
+	./genome_updater.sh -d "refseq" -g "taxids:2559587" -f "genomic.fna.gz" -o "all_rna_virus" -t 12
+
+### Download all E. Coli assemblies available on GenBank and RefSeq
+
+	./genome_updater.sh -d "genbank,refseq" -g "species:562" -f "genomic.fna.gz" -o "all_ecoli" -t 12
+
 ### Check amount of refence entries available for the set of Viral genomes on genbank
 
 	./genome_updater.sh -d "genbank" -g "viral" -c "all" -l "all" -k
@@ -45,10 +53,6 @@ genome_updater also:
 ### Download Fungi RefSeq assembly information and generate sequence reports and urls
 
 	./genome_updater.sh -d "refseq" -g "fungi" -c "all" -l "all" -f "assembly_report.txt" -o "fungi" -t 12 -r -p
-
-### Download all E. Coli assemblies available on GenBank and RefSeq
-
-	./genome_updater.sh -d "genbank,refseq" -g "taxid:562" -f "genomic.fna.gz" -o "all_ecoli" -t 12
 
 ### Recovering fasta files from a previously obtained assembly_summary.txt
 

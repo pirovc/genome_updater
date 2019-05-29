@@ -23,24 +23,38 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.1.2"
+version="0.1.3"
 
 wget_tries=20
 wget_timeout=1000
 export wget_tries wget_timeout
 export LC_NUMERIC="en_US.UTF-8"
 
-get_taxonomy()
+#activate aliases in the script
+shopt -s expand_aliases
+alias sort="sort --field-separator=$'\t'"
+
+get_taxdump()
 {
 	wget -qO- --tries="${wget_tries}" --read-timeout="${wget_timeout}" ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz > ${1}
+}
+
+get_new_taxdump()
+{
+	wget -qO- --tries="${wget_tries}" --read-timeout="${wget_timeout}" ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz > ${1}
+}
+
+unpack() # parameter: ${1} file, ${2} output folder[, ${3} files to unpack]
+{
+	tar xf ${1} -C ${2} ${3}
 }
 
 get_assembly_summary() # parameter: ${1} assembly_summary file - return number of lines
 {
 	for d in ${database//,/ }
 	do
-		if [[ ! -z "${taxids}" ]]; then # Get complete assembly_summary for database
-			wget --tries="${wget_tries}" --read-timeout="${wget_timeout}" -qO- ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/assembly_summary_${d}.txt | tail -n+3 >> ${1}
+		if [[ ! -z "${taxids}" || ! -z "${species}" ]]; then # Get complete assembly_summary for database
+			wget --tries="${wget_tries}" --read-timeout="${wget_timeout}" -qO- ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/assembly_summary_${d}.txt | tail -n+3 >> "${1}"
 		else
 			for og in ${organism_group//,/ }
 			do
@@ -49,20 +63,21 @@ get_assembly_summary() # parameter: ${1} assembly_summary file - return number o
 				then
 					og="vertebrate_mammalian/Homo_sapiens"
 				fi
-				wget --tries="${wget_tries}" --read-timeout="${wget_timeout}" -qO- ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/${og}/assembly_summary.txt | tail -n+3 >> ${1}
+				wget --tries="${wget_tries}" --read-timeout="${wget_timeout}" -qO- ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/${og}/assembly_summary.txt | tail -n+3 >> "${1}"
 			done
 		fi
 	done
-	# Keep only selected taxids
-	if [[ ! -z "${taxids}" ]]
+	# Keep only selected species or taxid lineage
+	if [[ ! -z "${species}" ]]
 	then
-		for tx in ${taxids//,/ }
-		do
-			awk -F "\t" -v tx="${tx}" '$7 == tx {print $0}' ${1} >> "${1}_taxids"
-		done
-		mv "${1}_taxids" ${1}
+		join -1 7 -2 1 <(sort -k 7,7 "${1}") <(echo "${species//,/$'\n'}" | sort -k 1,1) -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" > "${1}_species"
+		mv "${1}_species" "${1}"
+	elif [[ ! -z "${taxids}" ]]	
+	then
+		join -1 6 -2 1 <(sort -k 6,6 "${1}") <(echo "${taxids//,/$'\n'}" | sort -k 1,1) -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" > "${1}_taxids"
+		mv "${1}_taxids" "${1}"
 	fi
-	wc -l ${1} | cut -f1 -d' '
+	wc -l "${1}" | cut -f1 -d' '
 }
 
 filter_assembly_summary() # parameter: ${1} assembly_summary file - return number of lines
@@ -282,7 +297,9 @@ threads=1
 function showhelp {
 	echo "genome_updater v${version} by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pirovc)"
 	echo
-	echo $' -g Organism group [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)] or taxid:[species taxids]'
+	echo $' -g Organism group (one or more comma-separated entries) [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (only genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]. Example: archaea,bacteria'
+	echo $'    or Species level taxids (one or more comma-separated entries). Example: species:622,562'
+	echo $'    or Any level taxids - lineage will be generated (one or more comma-separated entries). Example: taxids:620,649776'
 	echo
 	echo $' -d Database [genbank, refseq]\n\tDefault: refseq'
 	echo $' -c RefSeq Category [all, reference genome, representative genome, na]\n\tDefault: all'
@@ -309,7 +326,7 @@ function showhelp {
 }
 
 # Check for required tools
-tools=( "getopts" "parallel" "awk" "wget" "join" "bc" "md5sum" "xargs" )
+tools=( "getopts" "parallel" "awk" "wget" "join" "bc" "md5sum" "xargs" "tar" )
 for t in "${tools[@]}"
 do
 	command -v ${t} >/dev/null 2>/dev/null || { echo ${t} not found; exit 1; }
@@ -355,14 +372,20 @@ done
 
 # mandatory organism group/taxids
 if [[ -z "${organism_group}" && "${just_fix}" -eq 0 ]]; then
-	echo "Please inform the organism group[s] or taxids[s] (comma separated) with the -g parameter"; exit 1;
+	echo "Please inform the organism group, species or taxids (comma separated) with the -g parameter"; exit 1;
 fi
 
+species=""
 taxids=""
-if [[ " ${organism_group} " =~ "taxid:" ]]; then
-	taxids=${organism_group/taxid:/}
+if [[ " ${organism_group} " =~ "taxids:" ]]; then
+	taxids=${organism_group/taxids:/}
 	if [[ -z "${taxids}" ]]; then
 		echo "Invalid taxid - ${taxids}"; exit 1; # TODO validate taxid?
+	fi
+elif [[ " ${organism_group} " =~ "species:" ]]; then
+	species=${organism_group/species:/}
+	if [[ -z "${species}" ]]; then
+		echo "Invalid species taxids - ${species}"; exit 1; # TODO validate taxid?
 	fi
 else
 	valid_organism_groups=( "archaea" "bacteria" "fungi" "human" "invertebrate" "metagenomes" "other" "plant" "protozoa" "vertebrate_mammalian" "vertebrate_other" "viral" )
@@ -461,6 +484,23 @@ if [ "${url_list}" -eq 1 ]; then
 	url_list_failed_file=${output_folder}/${DATE}_url_list_failed.txt
 fi
 
+# download new_taxdump and get all the lineage from the input taxid
+if [[ ! -z "${taxids}" ]]; then
+	echolog "Downloading taxdump and generating lineage" "1"
+	tmp_new_taxdump="${output_folder}/${DATE}_new_taxdump.tar.gz"
+	tmp_taxidlineage="${output_folder}/taxidlineage.dmp"
+	get_new_taxdump "${tmp_new_taxdump}"
+	unpack "${tmp_new_taxdump}" "${output_folder}" "taxidlineage.dmp"
+	tmp_lineage=${output_folder}/lineage.txt
+	for tx in ${taxids//,/ }; do
+		grep "[^0-9]${tx}[^0-9]" "${tmp_taxidlineage}" | cut -f 1 >> ${tmp_lineage} #get only taxids in the lineage section
+	done
+	tx_lines=$(wc -l ${tmp_lineage} | cut -f1 -d' ')
+	echolog " - ${tx_lines} children taxids in the lineage of: ${taxids}" "1"
+	taxids=$(sort ${tmp_lineage} | uniq | tr '\n' ',')${taxids} # put lineage back into the taxids variable with the provided taxids
+	rm ${tmp_new_taxdump} ${tmp_taxidlineage} ${tmp_lineage}
+fi
+
 # new download
 if [ ! -f "${std_assembly_summary}" ]; then
 
@@ -495,7 +535,7 @@ if [ ! -f "${std_assembly_summary}" ]; then
 		if [ "${download_taxonomy}" -eq 1 ]; then
 			echolog "" "1"
 			echolog "Downloading current Taxonomy database [${DATE}_taxdump.tar.gz] ..." "1"
-			get_taxonomy "${output_folder}/${DATE}_taxdump.tar.gz"
+			get_taxdump "${output_folder}/${DATE}_taxdump.tar.gz"
 			echolog " - OK" "1"
 		fi
 	fi
@@ -624,7 +664,7 @@ else # update
 			if [ "${download_taxonomy}" -eq 1 ]; then
 				echolog "" "1"
 				echolog "Downloading current Taxonomy database [${DATE}_taxdump.tar.gz] ..." "1"
-				get_taxonomy "${output_folder}/${DATE}_taxdump.tar.gz"
+				get_taxdump "${output_folder}/${DATE}_taxdump.tar.gz"
 				echolog " - OK" "1"
 			fi
 
