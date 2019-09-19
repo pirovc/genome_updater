@@ -2,13 +2,12 @@
 
 Vitor C. Piro (vitorpiro@gmail.com)
 
-Portable bash script to download and update files from NCBI genomes [1] keeping log and version for each update, with file check (md5) and parallel [2] download support.
+Bash script to download and update files from NCBI genomes (refseq/genbank) [1] keeping log and version for each update, with file check (md5) and parallel [2] download support.
 
 ## Usage:
 
-- On the first run, genome_updater creates a folder (**-o**) and downloads the current version based on selected parameters (database, organism group or taxids, category, assembly level and file type(s))
-- All log and report files will be marked with a timestamp in the format `YYYY-MM-DD_HH-MM-SS` (e.g. 2017-11-30_16-09-15) and the downloaded files will be saved at `{output_folder}/files/`
-- The same command executed again will identify previous files and update the folder with the current version, keeping track of changes and just downloading/removing updated files
+- genome_updater runs on a working directory (**-o**) and creates snapshots (**-b**) of refseq/genbank repositories besed on selected parameters (database, organism group or taxids, category, assembly level and file type(s))
+- it can update the selected repository by executing the same command again. genome_updater will identify previous files and update the working directory with the most recente version, keeping track of changes and just downloading/removing updated files
 
 genome_updater also:
 - checks for MD5 with the option **-m**
