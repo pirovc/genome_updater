@@ -408,6 +408,8 @@ valid_assembly_levels=( "all" "Complete Genome" "Chromosome" "Scaffold" "Contig"
 if [[ ! " ${valid_assembly_levels[@]} " =~ " ${assembly_level} " ]]; then
     echo "Assembly level - ${assembly_level} - not valid"; exit 1;
 fi
+# timestamp of the run
+timestamp=$(date +%Y-%m-%d_%H-%M-%S)
 
 # Create working directory
 if [[ -z "${working_dir}" ]]; then
@@ -426,7 +428,7 @@ fi
 
 # label (deafult with timestamp)
 if [[ -z "${label}" ]]; then
-    new_label=$(date +%Y-%m-%d_%H-%M-%S)
+    new_label=${timestamp}
 else
     new_label=${label}
 fi
@@ -444,7 +446,7 @@ new_files_dir=${new_output_prefix}files/
 mkdir -p ${new_files_dir}
 
 # log file for this run
-log_file=${new_output_prefix}log.txt
+log_file=${new_output_prefix}${timestamp}.log
 
 # formats selected
 n_formats=$(echo ${file_formats} | tr -cd , | wc -c)
