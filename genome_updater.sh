@@ -25,8 +25,8 @@
 
 version="0.2.0"
 
-wget_tries=20
-wget_timeout=250
+wget_tries=10
+wget_timeout=500
 export wget_tries wget_timeout
 export LC_NUMERIC="en_US.UTF-8"
 
@@ -36,17 +36,17 @@ alias sort="sort --field-separator=$'\t'"
 
 get_taxdump()
 {
-    wget -qO- --tries="${wget_tries}" --read-timeout="${wget_timeout}" ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz > ${1}
+    wget -qO- --tries="${wget_tries}" --read-timeout="${wget_timeout}" "ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz" > "${1}"
 }
 
 get_new_taxdump()
 {
-    wget -qO- --tries="${wget_tries}" --read-timeout="${wget_timeout}" ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz > ${1}
+    wget -qO- --tries="${wget_tries}" --read-timeout="${wget_timeout}" "ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" > "${1}"
 }
 
 unpack() # parameter: ${1} file, ${2} output folder[, ${3} files to unpack]
 {
-    tar xf ${1} -C ${2} ${3}
+    tar xf "${1}" -C "${2}" "${3}"
 }
 
 parse_new_taxdump() # parameter: ${1} taxids - return all taxids on of provided taxids
@@ -54,17 +54,17 @@ parse_new_taxdump() # parameter: ${1} taxids - return all taxids on of provided 
 	taxids=${1}
 	echolog "Downloading taxdump and generating lineage" "1"
     tmp_new_taxdump="${target_output_prefix}new_taxdump.tar.gz"
-    tmp_taxidlineage="${working_dir}/taxidlineage.dmp"
+    tmp_taxidlineage="${working_dir}taxidlineage.dmp"
     get_new_taxdump "${tmp_new_taxdump}"
     unpack "${tmp_new_taxdump}" "${working_dir}" "taxidlineage.dmp"
-    tmp_lineage=${working_dir}/lineage.tmp
+    tmp_lineage=${working_dir}lineage.tmp
     for tx in ${taxids//,/ }; do
-        grep "[^0-9]${tx}[^0-9]" "${tmp_taxidlineage}" | cut -f 1 >> ${tmp_lineage} #get only taxids in the lineage section
+        grep "[^0-9]${tx}[^0-9]" "${tmp_taxidlineage}" | cut -f 1 >> "${tmp_lineage}" #get only taxids in the lineage section
     done
-    tx_lines=$(wc -l ${tmp_lineage} | cut -f1 -d' ')
+    tx_lines=$(wc -l "${tmp_lineage}" | cut -f1 -d' ')
     echolog " - ${tx_lines} children taxids in the lineage of: ${taxids}" "1"
     lineage_taxids=$(sort ${tmp_lineage} | uniq | tr '\n' ',')${taxids} # put lineage back into the taxids variable with the provided taxids
-    rm ${tmp_new_taxdump} ${tmp_taxidlineage} ${tmp_lineage}
+    rm "${tmp_new_taxdump}" "${tmp_taxidlineage}" "${tmp_lineage}"
     echo "${lineage_taxids}"
 }
 
@@ -141,7 +141,7 @@ check_file_folder() # parameter: ${1} url, ${2} log (0->before download/1->after
         if [ "${2}" -eq 0 ]; then 
             echolog "${file_name} file found on the output folder [${target_output_prefix}${files_dir}${file_name}]" "0"
         else
-            echolog "${file_name} downloaded successfully [${1} -> ${target_output_prefix}${files_dir}{file_name}]" "0"
+            echolog "${file_name} downloaded successfully [${1} -> ${target_output_prefix}${files_dir}${file_name}]" "0"
         fi
         return 0
     fi
@@ -185,7 +185,7 @@ export -f check_md5_ftp #export it to be accessible to the parallel call
 
 download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or field [url,filename], ${3} extension
 {
-    url_list_download=${working_dir}/url_list_download.tmp #Temporary url list of files to download in this call
+    url_list_download=${working_dir}url_list_download.tmp #Temporary url list of files to download in this call
     if [ -z "${3}" ] #direct download (url+file)
     then
         total_files=$(wc -l ${1} | cut -f1 -d' ')
@@ -196,7 +196,7 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
     fi
 
     # parallel -k parameter keeps job output order (better for showing progress) but makes it a bit slower 
-    log_parallel="${working_dir}/job_log_parallel.tmp"
+    log_parallel="${working_dir}job_log_parallel.tmp"
     parallel --gnu --joblog ${log_parallel} -a ${url_list_download} -j ${threads} '
             ex=0
             dl=0
@@ -449,11 +449,11 @@ if [[ -z "${working_dir}" ]]; then
 else
     mkdir -p ${working_dir} #user input
 fi
-working_dir=$(readlink -m ${working_dir})
+working_dir="$(readlink -m ${working_dir})/"
 files_dir="files/"
 export files_dir working_dir
 
-default_assembly_summary=${working_dir}/assembly_summary.txt
+default_assembly_summary=${working_dir}assembly_summary.txt
 
 # set MODE
 if [[ "${just_fix}" -eq 1 ]]; then
@@ -485,7 +485,7 @@ fi
 if [[ "${MODE}" == "NEW" ]] || [[ "${MODE}" == "UPDATE" ]]; then # with new info, new variables are necessary
     # output paths and variables for this run
     if [[ -z "${label}" ]]; then new_label=${timestamp}; else new_label=${label}; fi
-    new_output_prefix=${working_dir}/${new_label}/
+    new_output_prefix=${working_dir}${new_label}/
     new_assembly_summary=${new_output_prefix}assembly_summary.txt
     # If file already exists and it's a new repo
     if [[ -f "${new_assembly_summary}" ]]; then
@@ -559,7 +559,7 @@ if [[ "${MODE}" == "NEW" ]]; then
         if [ ! "$(ls -A ${new_output_prefix})" ]; then rm -r "${new_output_prefix}"; fi #Remove folder that was just created (if there's nothing in it)
         if [ ! "$(ls -A ${working_dir})" ]; then rm -r "${working_dir}"; fi #Remove folder that was just created (if there's nothing in it)
     else
-        # link new assembly as the default
+        # Set version - link new assembly as the default
         ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
         
         if [[ "${filtered_lines}" -gt 0 ]] ; then
@@ -595,7 +595,7 @@ else # update/fix
 
     # Check for missing files on current version
     echolog "Checking for missing files in the current version [${current_label}]" "1"
-    missing=${working_dir}/missing.tmp
+    missing=${working_dir}missing.tmp
     check_missing_files "${current_assembly_summary}" "1,20" "${file_formats}" > "${missing}" # assembly accession, url, filename
     missing_lines=$(wc -l ${missing} | cut -f1 -d' ')
     if [ "${missing_lines}" -gt 0 ]; then
@@ -621,7 +621,7 @@ else # update/fix
     rm "${missing}"
     
     echolog "Checking for extra files [${current_label}]" "1"
-    extra=${working_dir}/extra.tmp
+    extra=${working_dir}extra.tmp
     join <(ls -1 "${current_output_prefix}${files_dir}" | sort) <(list_files "${current_assembly_summary}" "1,20" "${file_formats}" | cut -f 3 | sed -e 's/.*\///' | sort) -v 1 > "${extra}"
     extra_lines=$(wc -l ${extra} | cut -f1 -d' ')
     if [ "${extra_lines}" -gt 0 ]; then
@@ -659,13 +659,16 @@ else # update/fix
             # Link versions (current and new)
             echolog "Linking versions [${current_label} --> ${new_label}]" "1"
             ln -s -r "${current_output_prefix}${files_dir}"* "${new_output_prefix}${files_dir}"
-        	echolog " - Done" "1"
+            # set version - update default assembly summary
+            rm "${default_assembly_summary}"
+            ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
+        	echolog " - Done. Current version changed [${new_label}]" "1"
         	echolog "" "1"
         fi
         
-        update=${working_dir}/update.tmp
-        delete=${working_dir}/delete.tmp
-        new=${working_dir}/new.tmp
+        update=${working_dir}update.tmp
+        delete=${working_dir}delete.tmp
+        new=${working_dir}new.tmp
         # UPDATED (verify if version or date changed)
         join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' ${new_assembly_summary} | sort -k 1,1) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' ${current_assembly_summary} | sort -k 1,1) -o "1.2,1.3,1.4,2.2,2.3,2.4" | awk '{if($2>$5 || $1!=$4){print $1"\t"$3"\t"$4"\t"$6}}' > ${update}
         update_lines=$(wc -l ${update} | cut -f1 -d' ')
@@ -727,21 +730,18 @@ else # update/fix
             rm "${update}" "${delete}" "${new}"
 			echolog "" "1"
 
-            if [ "${download_taxonomy}" -eq 1 ]; then
-                echolog "Downloading current Taxonomy database [${new_label}/taxdump.tar.gz] " "1"
-                get_taxdump "${new_output_prefix}taxdump.tar.gz"
-                echolog " - Done" "1"
-                echolog "" "1"
-            fi
-            
-            # update default assembly summary (not when checking)
-            rm "${default_assembly_summary}"
-            ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
         fi
     fi
 fi
 
 if [ "${just_check}" -eq 0 ]; then
+	if [ "${download_taxonomy}" -eq 1 ]; then
+        echolog "Downloading current Taxonomy database [${target_output_prefix}taxdump.tar.gz] " "1"
+        get_taxdump "${target_output_prefix}taxdump.tar.gz"
+        echolog " - Done" "1"
+        echolog "" "1"
+    fi
+
     if [ -z "${extra_lines}" ]; then extra_lines=0; fi # define extra_lines if non-existent
     expected_files=$(( $(wc -l "${default_assembly_summary}" | cut -f1 -d' ')*(n_formats+1) )) # From assembly summary * file formats
     current_files=$(( $(ls "${target_output_prefix}${files_dir}" | wc -l | cut -f1 -d' ') - extra_lines )) # From current folder - extra files
