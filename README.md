@@ -2,19 +2,19 @@
 
 Vitor C. Piro (vitorpiro@gmail.com)
 
-Bash script to download and update files from NCBI genomes (refseq/genbank) [1] keeping log and version for each update, with file check (md5) and parallel [2] download support.
+Bash script to download and update snapshots from NCBI genomes (refseq/genbank) [1] keeping log a detailed log for each update, with file integrity check (MD5) and parallel [2] download support.
 
 ## Usage:
 
-- genome_updater runs on a working directory (**-o**) and creates snapshots (**-b**) of refseq/genbank repositories besed on selected parameters (database, organism group or taxids, category, assembly level and file type(s))
+- genome_updater runs on a working directory (**-o**) and creates snapshots/versions (**-b**) of refseq/genbank repositories besed on selected parameters (database (**-d**), organism group  or species/taxids (**-g**), RefSeq category (**-c**), assembly level (**-l**) and file type(s) (**-f**))
 - it can update the selected repository by executing the same command again. genome_updater will identify previous files and update the working directory with the most recente version, keeping track of changes and just downloading/removing updated files
 
 genome_updater also:
 - checks for MD5 with the option **-m**
 - downloads complete organism groups (**-g "archaea,bacteria"**), specific species groups (**-g "species:562,623"**) or any taxonomic group and any sequence in their lineage (**-g "taxids:620,1643685"**)
-- re-downloads files from any "assembly_summary.txt" obtained from external sources (set **-i** and the location of the file with **-o**)
+- re-downloads files from any "assembly_summary.txt" obtained from external sources (**-e**)
 - checks only for available entries or updates with the **-k** option without downloading any file or changing the current version
-- re-downloads missing files from current version (**-i**) without looking for updates
+- fix and re-downloads missing files from current version (**-i**)
 - removes extra files from the output folder (**-x**)
 - downloads the current taxonomic database version on each run by activating the parameter **-a**
 - provides extended reports for better integration in other tools (**-u**, **-r** and **-p**)
@@ -55,9 +55,7 @@ genome_updater also:
 
 ### Recovering fasta files from a previously obtained assembly_summary.txt
 
-	mkdir recover
-	cp /my/path/assembly_summary.txt recover/
-	./genome_updater.sh -i -o recover/ -f "genomic.fna.gz"
+	./genome_updater.sh -e /my/path/assembly_summary.txt -f "genomic.fna.gz"
 
 ## Extended reports:
 

@@ -70,6 +70,7 @@ parse_new_taxdump() # parameter: ${1} taxids - return all taxids on of provided 
     rm "${tmp_new_taxdump}" "${tmp_taxidlineage}" "${tmp_lineage}"
     echo "${lineage_taxids}"
 }
+export -f parse_new_taxdump
 
 get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, ${3} organism_group - return number of lines
 {
@@ -128,8 +129,8 @@ list_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url], ${3} e
 
 print_progress() # parameter: ${1} file number, ${2} total number of files
 {
-    if [ "${silent_progress}" -eq 0 ] && [ "${silent}" -eq 0 ] ; then printf "%8d/%d - " "${1}" "${2}"; fi #Only prints when not silent and not only progress
-    if [ "${silent_progress}" -eq 1 ] || [ "${silent}" -eq 0 ] ; then printf "%6.2f%%\r" $(bc -l <<< "scale=4;(${1}/${2})*100"); fi #Always prints besides when it's silent
+    if [[ "${silent_progress}" -eq 0 && "${silent}" -eq 0 ]] ; then printf "%8d/%d - " ${1} ${2}; fi #Only prints when not silent and not only progress
+    if [[ "${silent_progress}" -eq 1 || "${silent}" -eq 0 ]] ; then printf "%6.2f%%\r" $(bc -l <<< "scale=4;(${1}/${2})*100"); fi #Always prints besides when it's silent
 }
 export -f print_progress #export it to be accessible to the parallel call
 
@@ -201,8 +202,7 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
     fi
 
     # parallel -k parameter keeps job output order (better for showing progress) but makes it a bit slower 
-    log_parallel="${working_dir}job_log_parallel.tmp"
-    parallel --gnu --joblog ${log_parallel} -a ${url_list_download} -j ${threads} '
+    parallel --gnu -a ${url_list_download} -j ${threads} '
             ex=0
             dl=0
             if ! check_file_folder "{1}" "0"; then # Check if the file is already on the output folder (avoid redundant download)
@@ -219,20 +219,20 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
                 fi
             fi
             print_progress "{#}" "'${total_files}'"
-            if [ "'${url_list}'" -eq 1 ]; then # Output URLs
-                if [ "${ex}" -eq 0 ]; then
-                    echo "{1}" >> "'${target_output_prefix}${timestamp}_url_downloaded.txt'"
-                fi
+            if [ "${ex}" -eq 0 ]; then
+                echo "{1}" >> "'${target_output_prefix}${timestamp}_url_downloaded.txt'"
             fi
             exit "${ex}"'
-    print_progress "${total_files}" "${total_files}" #print final 100
-    count_log="$(grep -c "^[0-9]" ${log_parallel})"
-    failed_log="$(grep -c "^[0-9]" ${log_parallel} | cut -f 7 | grep -c "^1")"
-    if [[ "${url_list}" -eq 1 ]]; then # Output URLs
+    print_progress ${total_files} ${total_files} #print final 100
+    downloaded_count=$(wc -l ${target_output_prefix}${timestamp}_url_downloaded.txt | cut -f1 -d' ')
+    failed_count=$(( total_files - downloaded_count ))
+    if [ "${url_list}" -eq 1 ]; then # Output URLs
         join <(sort "${url_list_download}") <(sort "${target_output_prefix}${timestamp}_url_downloaded.txt") -v 1 > "${target_output_prefix}${timestamp}_url_failed.txt"
+    else
+        rm "${target_output_prefix}${timestamp}_url_downloaded.txt"
     fi
-    echolog " - successfully downloaded: $(( total_files - (total_files-count_log) - failed_log )) - Failed: $(( failed_log + (total_files-count_log) ))" "1"
-    rm -f ${log_parallel} ${url_list_download}
+    echolog " - ${downloaded_count}/${total_files} files successfully downloaded" "1"
+    rm -f ${url_list_download}
 }
 
 remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR field [filename], ${3} extension
@@ -552,7 +552,7 @@ if [[ "${MODE}" == "NEW" ]]; then
         echolog "Using external assembly summary [$(readlink -m ${external_assembly_summary})]" "1"
         cp "${external_assembly_summary}" "${new_assembly_summary}";
         if [[ ! -z "${organism_group}" ]]; then
-            echolog " - Organism group (-g) and database (-d) ignored using an external assembly_summary.txt [${organism_group}]" "1";
+            echolog " - Organism group [${organism_group}] and database [${database}] values ignored when using an external assembly_summary.txt" "1";
         fi
         all_lines="$(wc -l "${new_assembly_summary}" | cut -f1 -d' ')"
     else
@@ -615,7 +615,7 @@ else # update/fix
             echolog " - Downloading ${missing_lines} files with ${threads} threads"    "1"
             download_files "${missing}" "2,3"
 
-            # if new files were downloaded, rewrite reports
+            # if new files were downloaded, rewrite reports (overwrite information on Removed accessions - all become Added)
             if [ "${updated_assembly_accession}" -eq 1 ]; then 
                 output_assembly_accession "${current_assembly_summary}" "1,20" "${file_formats}" "A" > "${current_output_prefix}updated_assembly_accession.txt"
                 echolog " - Assembly accession report rewritten [${current_output_prefix}updated_assembly_accession.txt]" "1"
@@ -632,7 +632,7 @@ else # update/fix
     rm "${missing}"
     
     echolog "Checking for extra files [${current_label}]" "1"
-    extra=${working_dir}extra.tmp
+    extra="${working_dir}extra.tmp"
     join <(ls -1 "${current_output_prefix}${files_dir}" | sort) <(list_files "${current_assembly_summary}" "1,20" "${file_formats}" | cut -f 3 | sed -e 's/.*\///' | sort) -v 1 > "${extra}"
     extra_lines="$(wc -l "${extra}" | cut -f1 -d' ')"
     if [ "${extra_lines}" -gt 0 ]; then
@@ -652,7 +652,7 @@ else # update/fix
     echolog "" "1"
     rm "${extra}"
     
-    if [ "${MODE}" == "UPDATE" ]; then
+    if [[ "${MODE}" == "UPDATE" ]]; then
 
         # change TARGET for update
         target_output_prefix=${new_output_prefix}
@@ -670,10 +670,7 @@ else # update/fix
             # Link versions (current and new)
             echolog "Linking versions [${current_label} --> ${new_label}]" "1"
             ln -s -r "${current_output_prefix}${files_dir}"* "${new_output_prefix}${files_dir}"
-            # set version - update default assembly summary
-            rm "${default_assembly_summary}"
-            ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
-        	echolog " - Done. Current version changed [${new_label}]" "1"
+        	echolog " - Done." "1"
         	echolog "" "1"
         fi
         
@@ -690,7 +687,7 @@ else # update/fix
         join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' ${new_assembly_summary} | sort -k 1,1) <(cut -f 1 ${current_assembly_summary} | sed 's/\.[0-9]*//g' | sort) -o "1.2,1.3" -v 1 | tr ' ' '\t' > ${new}
         new_lines="$(wc -l ${new} | cut -f1 -d' ')"
         
-        echolog "Changes [${current_label} --> ${new_label}]" "1"
+        echolog "Updating [${current_label} --> ${new_label}]" "1"
         echolog " - ${update_lines} updated, ${delete_lines} deleted, ${new_lines} new entries" "1"
 
         if [ "${just_check}" -eq 1 ]; then
@@ -741,6 +738,12 @@ else # update/fix
             rm "${update}" "${delete}" "${new}"
 			echolog "" "1"
 
+            # set version - update default assembly summary
+            echolog "Setting new version [${new_label}]" "1"
+            rm "${default_assembly_summary}"
+            ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
+            echolog " - Done." "1"
+            echolog "" "1"
         fi
     fi
 fi
