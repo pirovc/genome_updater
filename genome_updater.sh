@@ -29,7 +29,7 @@ IFS=$' '
 version="0.2.0"
 
 wget_tries=3
-wget_timeout=10
+wget_timeout=120
 export wget_tries wget_timeout
 export LC_NUMERIC="en_US.UTF-8"
 
