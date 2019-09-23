@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euxo pipefail
 rm -rf tests/tst_*
-threads=1
+threads=${1:-1}
 ####################### Basic tests
 
 # Download
