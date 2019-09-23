@@ -580,7 +580,7 @@ if [[ "${MODE}" == "NEW" ]]; then
     fi
 
     filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
-    echolog " - $((all_lines-filtered_lines)) out of ${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}, Version status: latest]" "1"
+    echolog " - $((all_lines-filtered_lines))/${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}, Version status: latest]" "1"
     echolog " - ${filtered_lines} entries available" "1"
     
     if [ "${just_check}" -eq 1 ]; then
@@ -681,7 +681,7 @@ else # update/fix
         echolog "Downloading assembly summary [${new_label}]" "1"
         all_lines=$(get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}")
         filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
-        echolog " - $((all_lines-filtered_lines)) out of ${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}, Version status: latest]" "1"
+        echolog " - $((all_lines-filtered_lines))/${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}, Version status: latest]" "1"
         echolog " - ${filtered_lines} entries available" "1"
         echolog "" "1"
         
