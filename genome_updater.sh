@@ -224,6 +224,7 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
 {
     url_list_download=${working_dir}url_list_download.tmp #Temporary url list of files to download in this call
     url_success_download=${working_dir}url_success_download.tmp #Temporary url list of downloaded files
+    touch ${url_success_download}
     # sort files to get all files for the same entry in sequence, in case of failure 
     if [ -z ${3:-} ] #direct download (url+file)
     then
@@ -779,10 +780,10 @@ if [ "${just_check}" -eq 0 ]; then
     # Check if the valid amount of files on folder amount of files on folder
     echolog "# ${current_files}/${expected_files} files successfully obtained" "1"
     if [ $(( expected_files-current_files )) -gt 0 ]; then
-        echolog " - $(( expected_files-current_files )) failed. To fix them, re-run your command with: -i" "1"
+        echolog " - $(( expected_files-current_files )) file(s) failed to download. Try to re-run your command with: -i" "1"
     fi
     if [ "${extra_lines}" -gt 0 ]; then
-        echolog " - ${extra_lines} extra files in the output files folder [${taget_output_prefix}${files_dir}]. To delete them, re-run your command with: -i -x)" "1"
+        echolog " - ${extra_lines} extra file(s) in the output files folder. To delete them, re-run your command with: -i -x" "1"
     fi
     echolog "# Log file: ${log_file}" "1"
     echolog "# Finished! Current version: $(dirname $(readlink -m ${default_assembly_summary}))" "1"
