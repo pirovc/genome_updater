@@ -25,8 +25,31 @@ diff <(sort "${out_direct}"/v1/updated_assembly_accession.txt) <(sort "${out_mod
 diff <(sort "${out_direct}"/v1/updated_sequence_accession.txt) <(sort "${out_mod}"/v2/updated_sequence_accession.txt)
 diff <(find "${out_direct}"/v1/files/ -xtype f -printf "%f\n" | sort) <(find "${out_mod}"/v2/files/ -xtype f -printf "%f\n" | sort )
 
-####################### Taxid tests
+####################### All fail
+out_fail="tests/tst_failed"
+./genome_updater.sh -o "${out_fail}" -e "tests/assembly_summary_fungi_refseq_cg_err.txt" -m -b v1 -t ${threads} -p
+# test if folder is empty
+test $(find "${out_fail}/v1/files/" -xtype f | wc -l) -eq 0
+# test if both are reported as failed
+test $(cat "${out_fail}/v1/"*_url_failed.txt | wc -l) -eq 2
+# and none as successful
+test $(cat "${out_fail}/v1/"*_url_downloaded.txt | wc -l) -eq 0
 
+
+####################### Species tests
+# Species tests (genbank)
+out_all="tests/tst_species"
+out_1="tests/tst_species1686310"
+out_2="tests/tst_species64571"
+./genome_updater.sh -o "${out_all}" -g "species:1686310,64571" -d "genbank" -f "assembly_report.txt" -m -b v1 -t ${threads}
+# download them separated
+./genome_updater.sh -o "${out_1}" -g "species:1686310" -d "genbank" -f "assembly_report.txt" -m -b v1 -t ${threads}
+./genome_updater.sh -o "${out_2}" -g "species:64571" -d "genbank" -f "assembly_report.txt" -m -b v1 -t ${threads}
+# check if both runs have the same files
+diff <(find "${out_all}"/v1/files/ -xtype f -printf "%f\n" | sort) <(find "${out_1}"/v1/files/ "${out_2}"/v1/files/ -xtype f  -printf "%f\n" | sort)
+
+
+####################### Taxid tests
 # Taxids tests (multi file)
 out_all="tests/tst_taxids"
 out_1="tests/tst_taxids1910924"
@@ -37,6 +60,7 @@ out_2="tests/tst_taxids2493627"
 ./genome_updater.sh -o "${out_2}" -g "taxids:2493627" -d "refseq" -f "genomic.fna.gz,assembly_report.txt" -m -b v1 -t ${threads}
 # check if both runs have the same files
 diff <(find "${out_all}"/v1/files/ -xtype f -printf "%f\n" | sort) <(find "${out_1}"/v1/files/ "${out_2}"/v1/files/ -xtype f  -printf "%f\n" | sort)
+
 
 echo ""
 echo "All tests finished successfully"
