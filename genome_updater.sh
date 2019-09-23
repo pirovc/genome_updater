@@ -28,8 +28,8 @@ IFS=$' '
 
 version="0.2.0"
 
-wget_tries=10
-wget_timeout=500
+wget_tries=3
+wget_timeout=10
 export wget_tries wget_timeout
 export LC_NUMERIC="en_US.UTF-8"
 
@@ -188,41 +188,49 @@ check_md5_ftp() # parameter: ${1} url - returns 0 (ok) / 1 (error)
 }
 export -f check_md5_ftp #export it to be accessible to the parallel call
 
+download() # parameter: ${1} url, ${2} job number, ${3} total files
+{
+    ex=0
+    dl=0
+    if ! check_file_folder ${1} "0"; then # Check if the file is already on the output folder (avoid redundant download)
+        dl=1
+    elif ! check_md5_ftp ${1}; then # Check if the file already on folder has matching md5
+        dl=1
+    fi
+    if [ "${dl}" -eq 1 ]; then # If file is not yet on folder, download it
+        wget ${1} --quiet --continue --tries="${wget_tries}" --read-timeout="${wget_timeout}" -P "${target_output_prefix}${files_dir}"
+        if ! check_file_folder ${1} "1"; then # Check if file was downloaded
+            ex=1
+        elif ! check_md5_ftp ${1}; then # Check file md5
+            ex=1
+        fi
+    fi
+    print_progress ${2} ${3}
+    if [ "${ex}" -eq 0 ]; then
+        echo ${1} >> "${target_output_prefix}${timestamp}_url_downloaded.txt"
+    fi
+}
+export -f download
+
 download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or field [url,filename], ${3} extension
 {
     url_list_download=${working_dir}url_list_download.tmp #Temporary url list of files to download in this call
+    # sort files to get all files for the same entry in sequence, in case of failure 
     if [ -z ${3:-} ] #direct download (url+file)
     then
         total_files=$(wc -l ${1} | cut -f1 -d' ')
-        cut --fields="${2}" ${1} | tr '\t' '/' > "${url_list_download}"
+        cut --fields="${2}" ${1} | tr '\t' '/' | sort > "${url_list_download}"
     else
         total_files=$(( $(wc -l ${1} | cut -f1 -d' ') * (n_formats+1) ))
-        list_files ${1} ${2} ${3} | cut -f 2,3 | tr '\t' '/' > "${url_list_download}"
+        list_files ${1} ${2} ${3} | cut -f 2,3 | tr '\t' '/' | sort > "${url_list_download}"
     fi
 
     # parallel -k parameter keeps job output order (better for showing progress) but makes it a bit slower 
-    parallel --gnu -a ${url_list_download} -j ${threads} '
-            ex=0
-            dl=0
-            if ! check_file_folder "{1}" "0"; then # Check if the file is already on the output folder (avoid redundant download)
-                dl=1
-            elif ! check_md5_ftp "{1}"; then # Check if the file already on folder has matching md5
-                dl=1
-            fi
-            if [ "${dl}" -eq 1 ]; then # If file is not yet on folder, download it
-                wget {1} --quiet --continue --tries="'${wget_tries}'" --read-timeout="'${wget_timeout}'" -P "'${target_output_prefix}${files_dir}'"
-                if ! check_file_folder "{1}" "1"; then # Check if file was downloaded
-                    ex=1
-                elif ! check_md5_ftp "{1}"; then # Check file md5
-                    ex=1
-                fi
-            fi
-            print_progress "{#}" "'${total_files}'"
-            if [ "${ex}" -eq 0 ]; then
-                echo "{1}" >> "'${target_output_prefix}${timestamp}_url_downloaded.txt'"
-            fi
-            exit "${ex}"'
-    print_progress ${total_files} ${total_files} #print final 100
+    # send url, job number and total files (to print progress)
+    parallel --gnu -a ${url_list_download} -j ${threads} download {} {#} ${total_files}
+
+    print_progress ${total_files} ${total_files} #print final 100%
+
     downloaded_count=$(wc -l ${target_output_prefix}${timestamp}_url_downloaded.txt | cut -f1 -d' ')
     failed_count=$(( total_files - downloaded_count ))
     if [ "${url_list}" -eq 1 ]; then # Output URLs
@@ -236,7 +244,7 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
 
 remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR field [filename], ${3} extension
 {
-    if [ -z "${3}" ] #direct remove (filename)
+    if [ -z ${3:-} ] #direct remove (filename)
     then
         cut --fields="${2}" ${1} | xargs --no-run-if-empty -I{} rm ${target_output_prefix}${files_dir}{} -v >> ${log_file} 2>&1
     else
