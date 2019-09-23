@@ -28,8 +28,8 @@ IFS=$' '
 
 version="0.2.0"
 
-wget_tries=10
-wget_timeout=500
+wget_tries=3
+wget_timeout=120
 export wget_tries wget_timeout
 export LC_NUMERIC="en_US.UTF-8"
 
@@ -52,6 +52,14 @@ unpack() # parameter: ${1} file, ${2} output folder[, ${3} files to unpack]
     tar xf "${1}" -C "${2}" "${3}"
 }
 
+count_lines(){ # parameter: ${1} file - return number of lines
+    echo ${1:-} | sed '/^\s*$/d' | wc -l | cut -f1 -d' '
+}
+
+count_lines_file(){ # parameter: ${1} file - return number of lines
+    sed '/^\s*$/d' ${1:-} | wc -l | cut -f1 -d' '
+}
+
 parse_new_taxdump() # parameter: ${1} taxids - return all taxids on of provided taxids
 {
 	taxids=${1}
@@ -63,7 +71,7 @@ parse_new_taxdump() # parameter: ${1} taxids - return all taxids on of provided 
     tmp_lineage=${working_dir}lineage.tmp
     for tx in ${taxids//,/ }; do
         txids_lin=$(grep "[^0-9]${tx}[^0-9]" "${tmp_taxidlineage}" | cut -f 1) #get only taxids in the lineage section
-        echolog " - $(echo "${txids_lin}" | wc -l  | cut -f1 -d' ') children taxids in the lineage of ${tx}" "0"
+        echolog " - $(count_lines "${txids_lin}") children taxids in the lineage of ${tx}" "0"
         echo "${txids_lin}" >> "${tmp_lineage}" 
     done
     lineage_taxids=$(sort ${tmp_lineage} | uniq | tr '\n' ',')${taxids} # put lineage back into the taxids variable with the provided taxids
@@ -104,7 +112,7 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
         join -1 6 -2 1 <(sort -k 6,6 "${1}") <(echo "${lineage_taxids//,/$'\n'}" | sort -k 1,1) -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" > "${1}_taxids"
         mv "${1}_taxids" "${1}"
     fi
-    wc -l "${1}" | cut -f1 -d' '
+    count_lines_file "${1}"
 }
 
 filter_assembly_summary() # parameter: ${1} assembly_summary file - return number of lines
@@ -112,9 +120,9 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file - return numbe
     if [[ "${refseq_category}" != "all" || "${assembly_level}" != "all" ]]
     then
         awk -F "\t" -v refseq_category="${refseq_category}" -v assembly_level="${assembly_level}" 'BEGIN{if(refseq_category=="all") refseq_category=".*"; if(assembly_level=="all") assembly_level=".*"} $5 ~ refseq_category && $12 ~ assembly_level && $11=="latest" {print $0}' "${1}" > "${1}_filtered"
-        mv "${1}_filtered" ${1}
+        mv "${1}_filtered" "${1}"
     fi
-    wc -l ${1} | cut -f1 -d' '
+    count_lines_file "${1}"
 }
 
 list_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url], ${3} extensions - returns assembly accession, url and filename (for all selected extensions)
@@ -188,55 +196,65 @@ check_md5_ftp() # parameter: ${1} url - returns 0 (ok) / 1 (error)
 }
 export -f check_md5_ftp #export it to be accessible to the parallel call
 
+download() # parameter: ${1} url, ${2} job number, ${3} total files, ${4} url_success_download
+{
+    ex=0
+    dl=0
+    if ! check_file_folder ${1} "0"; then # Check if the file is already on the output folder (avoid redundant download)
+        dl=1
+    elif ! check_md5_ftp ${1}; then # Check if the file already on folder has matching md5
+        dl=1
+    fi
+    if [ "${dl}" -eq 1 ]; then # If file is not yet on folder, download it
+        wget ${1} --quiet --continue --tries="${wget_tries}" --read-timeout="${wget_timeout}" -P "${target_output_prefix}${files_dir}"
+        if ! check_file_folder ${1} "1"; then # Check if file was downloaded
+            ex=1
+        elif ! check_md5_ftp ${1}; then # Check file md5
+            ex=1
+        fi
+    fi
+    print_progress ${2} ${3}
+    if [ "${ex}" -eq 0 ]; then
+        echo ${1} >> ${4}
+    fi
+}
+export -f download
+
 download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or field [url,filename], ${3} extension
 {
     url_list_download=${working_dir}url_list_download.tmp #Temporary url list of files to download in this call
+    url_success_download=${working_dir}url_success_download.tmp #Temporary url list of downloaded files
+    # sort files to get all files for the same entry in sequence, in case of failure 
     if [ -z ${3:-} ] #direct download (url+file)
     then
-        total_files=$(wc -l ${1} | cut -f1 -d' ')
-        cut --fields="${2}" ${1} | tr '\t' '/' > "${url_list_download}"
+        total_files=$(count_lines_file ${1})
+        cut --fields="${2}" ${1} | tr '\t' '/' | sort > "${url_list_download}"
     else
-        total_files=$(( $(wc -l ${1} | cut -f1 -d' ') * (n_formats+1) ))
-        list_files ${1} ${2} ${3} | cut -f 2,3 | tr '\t' '/' > "${url_list_download}"
+        total_files=$(( $(count_lines_file ${1}) * (n_formats+1) ))
+        list_files ${1} ${2} ${3} | cut -f 2,3 | tr '\t' '/' | sort > "${url_list_download}"
     fi
 
     # parallel -k parameter keeps job output order (better for showing progress) but makes it a bit slower 
-    parallel --gnu -a ${url_list_download} -j ${threads} '
-            ex=0
-            dl=0
-            if ! check_file_folder "{1}" "0"; then # Check if the file is already on the output folder (avoid redundant download)
-                dl=1
-            elif ! check_md5_ftp "{1}"; then # Check if the file already on folder has matching md5
-                dl=1
-            fi
-            if [ "${dl}" -eq 1 ]; then # If file is not yet on folder, download it
-                wget {1} --quiet --continue --tries="'${wget_tries}'" --read-timeout="'${wget_timeout}'" -P "'${target_output_prefix}${files_dir}'"
-                if ! check_file_folder "{1}" "1"; then # Check if file was downloaded
-                    ex=1
-                elif ! check_md5_ftp "{1}"; then # Check file md5
-                    ex=1
-                fi
-            fi
-            print_progress "{#}" "'${total_files}'"
-            if [ "${ex}" -eq 0 ]; then
-                echo "{1}" >> "'${target_output_prefix}${timestamp}_url_downloaded.txt'"
-            fi
-            exit "${ex}"'
-    print_progress ${total_files} ${total_files} #print final 100
-    downloaded_count=$(wc -l ${target_output_prefix}${timestamp}_url_downloaded.txt | cut -f1 -d' ')
+    # send url, job number and total files (to print progress)
+    parallel --gnu -a ${url_list_download} -j ${threads} download "{}" "{#}" "${total_files}" "${url_success_download}"
+
+    print_progress ${total_files} ${total_files} #print final 100%
+
+    downloaded_count=$(count_lines_file "${url_success_download}")
     failed_count=$(( total_files - downloaded_count ))
     if [ "${url_list}" -eq 1 ]; then # Output URLs
-        join <(sort "${url_list_download}") <(sort "${target_output_prefix}${timestamp}_url_downloaded.txt") -v 1 > "${target_output_prefix}${timestamp}_url_failed.txt"
-    else
-        rm "${target_output_prefix}${timestamp}_url_downloaded.txt"
+        # add failed urls to log
+        join <(sort "${url_list_download}") <(sort "${url_success_download}") -v 1 >> "${target_output_prefix}${timestamp}_url_failed.txt"
+        # add successful downloads from this run to the log
+        cat "${url_success_download}" >> "${target_output_prefix}${timestamp}_url_downloaded.txt"
     fi
     echolog " - ${downloaded_count}/${total_files} files successfully downloaded" "1"
-    rm -f ${url_list_download}
+    rm -f ${url_list_download} ${url_success_download}
 }
 
 remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR field [filename], ${3} extension
 {
-    if [ -z "${3}" ] #direct remove (filename)
+    if [ -z ${3:-} ] #direct remove (filename)
     then
         cut --fields="${2}" ${1} | xargs --no-run-if-empty -I{} rm ${target_output_prefix}${files_dir}{} -v >> ${log_file} 2>&1
     else
@@ -555,14 +573,14 @@ if [[ "${MODE}" == "NEW" ]]; then
         if [[ ! -z "${organism_group}" ]]; then
             echolog " - Organism group [${organism_group}] and database [${database}] values ignored when using an external assembly_summary.txt" "1";
         fi
-        all_lines=$(wc -l "${new_assembly_summary}" | cut -f1 -d' ')
+        all_lines=$(count_lines_file "${new_assembly_summary}")
     else
         echolog "Downloading assembly summary" "1"
         all_lines=$(get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}")
     fi
 
     filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
-    echolog " - $((all_lines-filtered_lines)) out of ${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}, Version status: latest]" "1"
+    echolog " - $((all_lines-filtered_lines))/${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}, Version status: latest]" "1"
     echolog " - ${filtered_lines} entries available" "1"
     
     if [ "${just_check}" -eq 1 ]; then
@@ -609,7 +627,7 @@ else # update/fix
     echolog "Checking for missing files in the current version [${current_label}]" "1"
     missing="${working_dir}missing.tmp"
     check_missing_files "${current_assembly_summary}" "1,20" "${file_formats}" > "${missing}" # assembly accession, url, filename
-    missing_lines=$(wc -l "${missing}" | cut -f1 -d' ')
+    missing_lines=$(count_lines_file "${missing}")
     if [ "${missing_lines}" -gt 0 ]; then
         echolog " - ${missing_lines} missing files" "1"
         if [ "${just_check}" -eq 0 ]; then
@@ -635,7 +653,7 @@ else # update/fix
     echolog "Checking for extra files [${current_label}]" "1"
     extra="${working_dir}extra.tmp"
     join <(ls -1 "${current_output_prefix}${files_dir}" | sort) <(list_files "${current_assembly_summary}" "1,20" "${file_formats}" | cut -f 3 | sed -e 's/.*\///' | sort) -v 1 > "${extra}"
-    extra_lines=$(wc -l "${extra}" | cut -f1 -d' ')
+    extra_lines=$(count_lines_file "${extra}")
     if [ "${extra_lines}" -gt 0 ]; then
         echolog " - ${extra_lines} extra files" "1"
         if [ "${just_check}" -eq 0 ]; then
@@ -663,7 +681,7 @@ else # update/fix
         echolog "Downloading assembly summary [${new_label}]" "1"
         all_lines=$(get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}")
         filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
-        echolog " - $((all_lines-filtered_lines)) out of ${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}, Version status: latest]" "1"
+        echolog " - $((all_lines-filtered_lines))/${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}, Version status: latest]" "1"
         echolog " - ${filtered_lines} entries available" "1"
         echolog "" "1"
         
@@ -680,13 +698,13 @@ else # update/fix
         new=${working_dir}new.tmp
         # UPDATED (verify if version or date changed)
         join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' ${new_assembly_summary} | sort -k 1,1) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' ${current_assembly_summary} | sort -k 1,1) -o "1.2,1.3,1.4,2.2,2.3,2.4" | awk '{if($2>$5 || $1!=$4){print $1"\t"$3"\t"$4"\t"$6}}' > ${update}
-        update_lines=$(wc -l ${update} | cut -f1 -d' ')
+        update_lines=$(count_lines_file "${update}")
         # DELETED
         join <(cut -f 1 ${new_assembly_summary} | sed 's/\.[0-9]*//g' | sort) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' ${current_assembly_summary} | sort -k 1,1) -v 2 -o "2.2,2.3" | tr ' ' '\t' > ${delete}
-        delete_lines=$(wc -l ${delete} | cut -f1 -d' ')
+        delete_lines=$(count_lines_file "${delete}")
         # NEW
         join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' ${new_assembly_summary} | sort -k 1,1) <(cut -f 1 ${current_assembly_summary} | sed 's/\.[0-9]*//g' | sort) -o "1.2,1.3" -v 1 | tr ' ' '\t' > ${new}
-        new_lines=$(wc -l ${new} | cut -f1 -d' ')
+        new_lines=$(count_lines_file "${new}")
         
         echolog "Updating [${current_label} --> ${new_label}]" "1"
         echolog " - ${update_lines} updated, ${delete_lines} deleted, ${new_lines} new entries" "1"
@@ -756,12 +774,15 @@ if [ "${just_check}" -eq 0 ]; then
         echolog " - Done" "1"
         echolog "" "1"
     fi
-    expected_files=$(( $(wc -l "${default_assembly_summary}" | cut -f1 -d' ')*(n_formats+1) )) # From assembly summary * file formats
+    expected_files=$(( $(count_lines_file "${default_assembly_summary}")*(n_formats+1) )) # From assembly summary * file formats
     current_files=$(( $(ls "${target_output_prefix}${files_dir}" | wc -l | cut -f1 -d' ') - extra_lines )) # From current folder - extra files
     # Check if the valid amount of files on folder amount of files on folder
-    echolog "# ${current_files}/${expected_files} files were successfully obtained ($(( expected_files-current_files )) failed - to fix them, re-run your command with: -i)" "1"
+    echolog "# ${current_files}/${expected_files} files successfully obtained" "1"
+    if [ $(( expected_files-current_files )) -gt 0 ]; then
+        echolog " - $(( expected_files-current_files )) failed. To fix them, re-run your command with: -i" "1"
+    fi
     if [ "${extra_lines}" -gt 0 ]; then
-        echolog "# ${extra_lines} extra files in the output files folder [${taget_output_prefix}${files_dir}] (to delete them, re-run your command with: -i -x)" "1"
+        echolog " - ${extra_lines} extra files in the output files folder [${taget_output_prefix}${files_dir}]. To delete them, re-run your command with: -i -x)" "1"
     fi
     echolog "# Log file: ${log_file}" "1"
     echolog "# Finished! Current version: $(dirname $(readlink -m ${default_assembly_summary}))" "1"
