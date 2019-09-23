@@ -15,6 +15,7 @@ find "${out_mod}"/v1/files/ -type f | shuf -n 2 | xargs rm
 touch "${out_mod}"/v1/files/random_file_1
 touch "${out_mod}"/v1/files/random_file_2
 ./genome_updater.sh -o "${out_mod}" -f "assembly_report.txt" -g "fungi" -d "refseq" -l "Complete Genome" -u -r -p -m -b v2 -x -t ${threads}
+
 # Fix (delete random files)
 find "${out_mod}"/v2/files/ -type f | shuf -n 2 | xargs rm
 ./genome_updater.sh -o "${out_mod}" -f "assembly_report.txt" -i -u -r -p -m -t ${threads}
@@ -22,7 +23,7 @@ find "${out_mod}"/v2/files/ -type f | shuf -n 2 | xargs rm
 # Comparisons
 diff <(sort "${out_direct}"/v1/updated_assembly_accession.txt) <(sort "${out_mod}"/v2/updated_assembly_accession.txt)
 diff <(sort "${out_direct}"/v1/updated_sequence_accession.txt) <(sort "${out_mod}"/v2/updated_sequence_accession.txt)
-diff <(find "${out_direct}"/v1/files -type "f,l" -printf "%f\n" | sort) <(find "${out_mod}"/v2/files -type "f,l" -printf "%f\n" | sort )
+diff <(find "${out_direct}"/v1/files/ -printf "%f\n" | sort) <(find "${out_mod}"/v2/files/ -printf "%f\n" | sort )
 
 ####################### Taxid tests
 
@@ -35,8 +36,7 @@ out_2="tests/tst_taxids2493627"
 ./genome_updater.sh -o "${out_1}" -g "taxids:1910924" -d "refseq" -f "genomic.fna.gz,assembly_report.txt" -m -b v1 -t ${threads}
 ./genome_updater.sh -o "${out_2}" -g "taxids:2493627" -d "refseq" -f "genomic.fna.gz,assembly_report.txt" -m -b v1 -t ${threads}
 # check if both runs have the same files
-diff <(find "${out_all}" -type "f,l" -printf "%f\n" | sort) <(find "${out_1}" "${out_2}" -type "f,l" -printf "%f\n" | sort)
+diff <(find "${out_all}" -printf "%f\n" | sort) <(find "${out_1}" "${out_2}" -printf "%f\n" | sort)
 
 echo ""
 echo "All tests finished successfully"
-echo ""
