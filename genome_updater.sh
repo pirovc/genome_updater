@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-IFS=$'\n\t'
+IFS=$' '
 
 # The MIT License (MIT)
  
@@ -55,22 +55,21 @@ unpack() # parameter: ${1} file, ${2} output folder[, ${3} files to unpack]
 parse_new_taxdump() # parameter: ${1} taxids - return all taxids on of provided taxids
 {
 	taxids=${1}
-	echolog "Downloading taxdump and generating lineage" "1"
+	echolog "Downloading taxdump and generating lineage" "0"
     tmp_new_taxdump="${target_output_prefix}new_taxdump.tar.gz"
     tmp_taxidlineage="${working_dir}taxidlineage.dmp"
     get_new_taxdump "${tmp_new_taxdump}"
     unpack "${tmp_new_taxdump}" "${working_dir}" "taxidlineage.dmp"
     tmp_lineage=${working_dir}lineage.tmp
     for tx in ${taxids//,/ }; do
-        grep "[^0-9]${tx}[^0-9]" "${tmp_taxidlineage}" | cut -f 1 >> "${tmp_lineage}" #get only taxids in the lineage section
+        txids_lin=$(grep "[^0-9]${tx}[^0-9]" "${tmp_taxidlineage}" | cut -f 1) #get only taxids in the lineage section
+        echolog " - $(echo "${txids_lin}" | wc -l  | cut -f1 -d' ') children taxids in the lineage of ${tx}" "0"
+        echo "${txids_lin}" >> "${tmp_lineage}" 
     done
-    tx_lines="$(wc -l "${tmp_lineage}" | cut -f1 -d' ')"
-    echolog " - ${tx_lines} children taxids in the lineage of: ${taxids}" "1"
-    lineage_taxids="$(sort ${tmp_lineage} | uniq | tr '\n' ',')${taxids}" # put lineage back into the taxids variable with the provided taxids
+    lineage_taxids=$(sort ${tmp_lineage} | uniq | tr '\n' ',')${taxids} # put lineage back into the taxids variable with the provided taxids
     rm "${tmp_new_taxdump}" "${tmp_taxidlineage}" "${tmp_lineage}"
     echo "${lineage_taxids}"
 }
-export -f parse_new_taxdump
 
 get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, ${3} organism_group - return number of lines
 {
@@ -84,7 +83,7 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
         if [[ ! -z "${taxids}" || ! -z "${species}" ]]; then # Get complete assembly_summary for database
             wget --tries="${wget_tries}" --read-timeout="${wget_timeout}" -qO- ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/assembly_summary_${d}.txt | tail -n+3 >> "${1}"
         else
-            for og in "${3//,/ }"
+            for og in ${3//,/ }
             do
                 #special case: human
                 if [[ "${og}" == "human" ]]
@@ -101,7 +100,7 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
         join -1 7 -2 1 <(sort -k 7,7 "${1}") <(echo "${species//,/$'\n'}" | sort -k 1,1) -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" > "${1}_species"
         mv "${1}_species" "${1}"
     elif [[ ! -z "${taxids}" ]]; then
-    	lineage_taxids="$(parse_new_taxdump "${taxids}")"
+    	lineage_taxids=$(parse_new_taxdump "${taxids}")
         join -1 6 -2 1 <(sort -k 6,6 "${1}") <(echo "${lineage_taxids//,/$'\n'}" | sort -k 1,1) -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" > "${1}_taxids"
         mv "${1}_taxids" "${1}"
     fi
@@ -113,30 +112,30 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file - return numbe
     if [[ "${refseq_category}" != "all" || "${assembly_level}" != "all" ]]
     then
         awk -F "\t" -v refseq_category="${refseq_category}" -v assembly_level="${assembly_level}" 'BEGIN{if(refseq_category=="all") refseq_category=".*"; if(assembly_level=="all") assembly_level=".*"} $5 ~ refseq_category && $12 ~ assembly_level && $11=="latest" {print $0}' "${1}" > "${1}_filtered"
-        mv "${1}_filtered" "${1}"
+        mv "${1}_filtered" ${1}
     fi
-    wc -l "${1}" | cut -f1 -d' '
+    wc -l ${1} | cut -f1 -d' '
 }
 
 list_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url], ${3} extensions - returns assembly accession, url and filename (for all selected extensions)
 {
     # Given an url returns the url and the filename for all extensions
-    for extension in "${3//,/ }"
+    for extension in ${3//,/ }
     do
-        cut --fields="${2}" "${1}" | awk -F "\t" -v ext="${extension}" '{url_count=split($2,url,"/"); print $1 "\t" $2 "\t" url[url_count] "_" ext}'
+        cut --fields="${2}" ${1} | awk -F "\t" -v ext="${extension}" '{url_count=split($2,url,"/"); print $1 "\t" $2 "\t" url[url_count] "_" ext}'
     done
 }
 
 print_progress() # parameter: ${1} file number, ${2} total number of files
 {
-    if [[ "${silent_progress}" -eq 0 && "${silent}" -eq 0 ]] ; then printf "%8d/%d - " ${1} ${2}; fi #Only prints when not silent and not only progress
-    if [[ "${silent_progress}" -eq 1 || "${silent}" -eq 0 ]] ; then printf "%6.2f%%\r" $(bc -l <<< "scale=4;(${1}/${2})*100"); fi #Always prints besides when it's silent
+    if [ "${silent_progress}" -eq 0 ] && [ "${silent}" -eq 0 ] ; then printf "%8d/%d - " ${1} ${2}; fi #Only prints when not silent and not only progress
+    if [ "${silent_progress}" -eq 1 ] || [ "${silent}" -eq 0 ] ; then printf "%6.2f%%\r" $(bc -l <<< "scale=4;(${1}/${2})*100"); fi #Always prints besides when it's silent
 }
 export -f print_progress #export it to be accessible to the parallel call
 
 check_file_folder() # parameter: ${1} url, ${2} log (0->before download/1->after download) - returns 0 (ok) / 1 (error)
 {
-    file_name="$(basename ${1})"
+    file_name=$(basename ${1})
     # Check if file exists and if it has a size greater than zero (-s)
     if [ ! -s "${target_output_prefix}${files_dir}${file_name}" ]; then
         if [ "${2}" -eq 1 ]; then echolog "${file_name} download failed [${1}]" "0"; fi
@@ -158,18 +157,18 @@ check_md5_ftp() # parameter: ${1} url - returns 0 (ok) / 1 (error)
 {
     if [ "${check_md5}" -eq 1 ]; then # Only if md5 checking is activated
         md5checksums_url="$(dirname ${1})/md5checksums.txt" # ftp directory
-        file_name="$(basename ${1})" # downloaded file name
-        md5checksums_file="$(wget -qO- --tries="${wget_tries}" --read-timeout="${wget_timeout}" "${md5checksums_url}")"
+        file_name=$(basename ${1}) # downloaded file name
+        md5checksums_file=$(wget -qO- --tries="${wget_tries}" --read-timeout="${wget_timeout}" "${md5checksums_url}")
         if [ -z "${md5checksums_file}" ]; then
             echolog "${file_name} MD5checksum file download failed [${md5checksums_url}] - FILE KEPT"  "0"
             return 0
         else
-            ftp_md5="$(echo "${md5checksums_file}" | grep "${file_name}" | cut -f1 -d' ')"
+            ftp_md5=$(echo "${md5checksums_file}" | grep "${file_name}" | cut -f1 -d' ')
             if [ -z "${ftp_md5}" ]; then
                 echolog "${file_name} MD5checksum file not available [${md5checksums_url}] - FILE KEPT"  "0"
                 return 0
             else
-                file_md5="$(md5sum ${target_output_prefix}${files_dir}${file_name} | cut -f1 -d' ')"
+                file_md5=$(md5sum ${target_output_prefix}${files_dir}${file_name} | cut -f1 -d' ')
                 if [ "${file_md5}" != "${ftp_md5}" ]; then
                     echolog "${file_name} MD5 not matching [${md5checksums_url}] - FILE REMOVED"  "0"
                     # Remove file only when MD5 doesn't match
@@ -194,11 +193,11 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
     url_list_download=${working_dir}url_list_download.tmp #Temporary url list of files to download in this call
     if [ -z ${3:-} ] #direct download (url+file)
     then
-        total_files="$(wc -l ${1} | cut -f1 -d' ')"
-        cut --fields="${2}" "${1}" | tr '\t' '/' > "${url_list_download}"
+        total_files=$(wc -l ${1} | cut -f1 -d' ')
+        cut --fields="${2}" ${1} | tr '\t' '/' > "${url_list_download}"
     else
-        total_files="$(( $(wc -l ${1} | cut -f1 -d' ') * (n_formats+1) ))"
-        list_files "${1}" "${2}" "${3}" | cut -f 2,3 | tr '\t' '/' > "${url_list_download}"
+        total_files=$(( $(wc -l ${1} | cut -f1 -d' ') * (n_formats+1) ))
+        list_files ${1} ${2} ${3} | cut -f 2,3 | tr '\t' '/' > "${url_list_download}"
     fi
 
     # parallel -k parameter keeps job output order (better for showing progress) but makes it a bit slower 
@@ -253,7 +252,7 @@ check_missing_files() # ${1} file, ${2} fields [assembly_accesion,url], ${3} ext
 
 check_complete_record() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension - returns assembly accession, url
 {
-    expected_files="$(list_files ${1} ${2} ${3} | sort -k 3,3)"
+    expected_files=$(list_files ${1} ${2} ${3} | sort -k 3,3)
     join -1 3 -2 1 <(echo "${expected_files}" | sort -k 3,3) <(ls -1 "${target_output_prefix}${files_dir}" | sort) -t$'\t' -o "1.1" -v 1 | sort | uniq | # Check for accessions with at least one missing file
     join -1 1 -2 1 <(echo "${expected_files}" | cut -f 1,2 | sort | uniq) - -t$'\t' -v 1 # Extract just assembly accession and url for complete entries (no missing files)
 }
@@ -287,6 +286,8 @@ exit_status() # parameters: ${1} # expected files, ${2} # current files
         else
             return 0
         fi
+    elif [ $1 -gt 0 ] && [ $2 -eq 0 ]; then # all failed
+        return 1
     else
         return 0
     fi
@@ -444,13 +445,13 @@ if [ "${silent}" -eq 1 ] ; then
 elif [ "${silent_progress}" -eq 1 ] ; then 
     silent=1
 fi
-n_formats="$(echo ${file_formats} | tr -cd , | wc -c)" # number of file formats
-timestamp="$(date +%Y-%m-%d_%H-%M-%S)" # timestamp of the run
+n_formats=$(echo ${file_formats} | tr -cd , | wc -c) # number of file formats
+timestamp=$(date +%Y-%m-%d_%H-%M-%S) # timestamp of the run
 export check_md5 silent silent_progress n_formats timestamp # To be accessible in functions called by parallel
 
 # Create working directory
 if [[ -z "${working_dir}" ]]; then
-    working_dir="$(mktemp -d -p .)" # default
+    working_dir=$(mktemp -d -p .) # default
 else
     mkdir -p "${working_dir}" #user input
 fi
@@ -554,13 +555,13 @@ if [[ "${MODE}" == "NEW" ]]; then
         if [[ ! -z "${organism_group}" ]]; then
             echolog " - Organism group [${organism_group}] and database [${database}] values ignored when using an external assembly_summary.txt" "1";
         fi
-        all_lines="$(wc -l "${new_assembly_summary}" | cut -f1 -d' ')"
+        all_lines=$(wc -l "${new_assembly_summary}" | cut -f1 -d' ')
     else
         echolog "Downloading assembly summary" "1"
-        all_lines="$(get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}")"
+        all_lines=$(get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}")
     fi
 
-    filtered_lines="$(filter_assembly_summary "${new_assembly_summary}")"
+    filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
     echolog " - $((all_lines-filtered_lines)) out of ${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}, Version status: latest]" "1"
     echolog " - ${filtered_lines} entries available" "1"
     
@@ -606,9 +607,9 @@ else # update/fix
 
     # Check for missing files on current version
     echolog "Checking for missing files in the current version [${current_label}]" "1"
-    missing=${working_dir}missing.tmp
+    missing="${working_dir}missing.tmp"
     check_missing_files "${current_assembly_summary}" "1,20" "${file_formats}" > "${missing}" # assembly accession, url, filename
-    missing_lines="$(wc -l "${missing}" | cut -f1 -d' ')"
+    missing_lines=$(wc -l "${missing}" | cut -f1 -d' ')
     if [ "${missing_lines}" -gt 0 ]; then
         echolog " - ${missing_lines} missing files" "1"
         if [ "${just_check}" -eq 0 ]; then
@@ -634,7 +635,7 @@ else # update/fix
     echolog "Checking for extra files [${current_label}]" "1"
     extra="${working_dir}extra.tmp"
     join <(ls -1 "${current_output_prefix}${files_dir}" | sort) <(list_files "${current_assembly_summary}" "1,20" "${file_formats}" | cut -f 3 | sed -e 's/.*\///' | sort) -v 1 > "${extra}"
-    extra_lines="$(wc -l "${extra}" | cut -f1 -d' ')"
+    extra_lines=$(wc -l "${extra}" | cut -f1 -d' ')
     if [ "${extra_lines}" -gt 0 ]; then
         echolog " - ${extra_lines} extra files" "1"
         if [ "${just_check}" -eq 0 ]; then
@@ -660,8 +661,8 @@ else # update/fix
 
         # Check for updates on NCBI
         echolog "Downloading assembly summary [${new_label}]" "1"
-        all_lines="$(get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}")"
-        filtered_lines="$(filter_assembly_summary "${new_assembly_summary}")"
+        all_lines=$(get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}")
+        filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
         echolog " - $((all_lines-filtered_lines)) out of ${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}, Version status: latest]" "1"
         echolog " - ${filtered_lines} entries available" "1"
         echolog "" "1"
@@ -679,13 +680,13 @@ else # update/fix
         new=${working_dir}new.tmp
         # UPDATED (verify if version or date changed)
         join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' ${new_assembly_summary} | sort -k 1,1) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' ${current_assembly_summary} | sort -k 1,1) -o "1.2,1.3,1.4,2.2,2.3,2.4" | awk '{if($2>$5 || $1!=$4){print $1"\t"$3"\t"$4"\t"$6}}' > ${update}
-        update_lines="$(wc -l ${update} | cut -f1 -d' ')"
+        update_lines=$(wc -l ${update} | cut -f1 -d' ')
         # DELETED
         join <(cut -f 1 ${new_assembly_summary} | sed 's/\.[0-9]*//g' | sort) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' ${current_assembly_summary} | sort -k 1,1) -v 2 -o "2.2,2.3" | tr ' ' '\t' > ${delete}
-        delete_lines="$(wc -l ${delete} | cut -f1 -d' ')"
+        delete_lines=$(wc -l ${delete} | cut -f1 -d' ')
         # NEW
         join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' ${new_assembly_summary} | sort -k 1,1) <(cut -f 1 ${current_assembly_summary} | sed 's/\.[0-9]*//g' | sort) -o "1.2,1.3" -v 1 | tr ' ' '\t' > ${new}
-        new_lines="$(wc -l ${new} | cut -f1 -d' ')"
+        new_lines=$(wc -l ${new} | cut -f1 -d' ')
         
         echolog "Updating [${current_label} --> ${new_label}]" "1"
         echolog " - ${update_lines} updated, ${delete_lines} deleted, ${new_lines} new entries" "1"
