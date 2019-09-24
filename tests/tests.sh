@@ -11,13 +11,13 @@ out_mod="tests/tst_fungi_refseq_cg_mod"
 # Donwload with external assembly summary (outdated entry, extra entries, deleted entries)
 ./genome_updater.sh -o "${out_mod}" -f "assembly_report.txt" -g "fungi" -d "refseq" -l "Complete Genome" -u -r -p -m -b v1 -e tests/assembly_summary_fungi_refseq_cg_mod.txt -t ${threads}
 # Fix + Update (modified to the "standard")
-find "${out_mod}"/v1/files/ -type f | shuf -n 2 | xargs rm 
+find "${out_mod}"/v1/files/ -xtype f | shuf -n 2 | xargs rm
 touch "${out_mod}"/v1/files/random_file_1
 touch "${out_mod}"/v1/files/random_file_2
 ./genome_updater.sh -o "${out_mod}" -f "assembly_report.txt" -g "fungi" -d "refseq" -l "Complete Genome" -u -r -p -m -b v2 -x -t ${threads}
 
 # Fix (delete random files)
-find "${out_mod}"/v2/files/ -type f | shuf -n 2 | xargs rm
+find "${out_mod}"/v2/files/ -xtype f | shuf -n 2 | xargs rm
 ./genome_updater.sh -o "${out_mod}" -f "assembly_report.txt" -i -u -r -p -m -t ${threads}
 
 # Comparisons
