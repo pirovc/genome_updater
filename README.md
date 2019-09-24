@@ -21,7 +21,7 @@ or
 
 	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
 
- - genome_updater uses mainly bash utility tools (wget, awk, join, sed, ...) and parallel [2].
+ - genome_updater depends mainly on the coreutils tools and some additional utility tools (parallel, wget, awk, sed, ...).
  - To test genome_updater basic functions, run the script `tests/tests.sh`. It should print "All tests finished successfully" at the end.
 
 ## Simple example:
