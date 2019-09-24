@@ -4,7 +4,7 @@ IFS=$' '
 
 # The MIT License (MIT)
  
-# Copyright (c) 2017 - Vitor C. Piro - PiroV@rki.de - vitorpiro@gmail.com
+# Copyright (c) 2019 - Vitor C. Piro - PiroV@rki.de - vitorpiro@gmail.com
 # Robert Koch-Institut, Germany
 # All rights reserved.
 
@@ -28,8 +28,8 @@ IFS=$' '
 
 version="0.2.0"
 
-wget_tries=3
-wget_timeout=120
+wget_tries=${wget_tries:-3}
+wget_timeout=${wget_timeout:-120}
 export wget_tries wget_timeout
 export LC_NUMERIC="en_US.UTF-8"
 
@@ -780,10 +780,10 @@ if [ "${just_check}" -eq 0 ]; then
     # Check if the valid amount of files on folder amount of files on folder
     echolog "# ${current_files}/${expected_files} files successfully obtained" "1"
     if [ $(( expected_files-current_files )) -gt 0 ]; then
-        echolog " - $(( expected_files-current_files )) file(s) failed to download. Try to re-run your command with: -i" "1"
+        echolog " - $(( expected_files-current_files )) file(s) failed to download. Please re-run your command with -i to fix it again" "1"
     fi
     if [ "${extra_lines}" -gt 0 ]; then
-        echolog " - ${extra_lines} extra file(s) in the output files folder. To delete them, re-run your command with: -i -x" "1"
+        echolog " - ${extra_lines} extra file(s) in the output files folder. To delete them, re-run your command with -i -x" "1"
     fi
     echolog "# Log file: ${log_file}" "1"
     echolog "# Finished! Current version: $(dirname $(readlink -m ${default_assembly_summary}))" "1"
