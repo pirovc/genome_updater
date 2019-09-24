@@ -4,7 +4,7 @@
 
 Bash script to download and update snapshots of the NCBI genomes (refseq/genbank) [1] keeping all files and detailed log for each update, with file integrity check (MD5) and parallel [2] download support.
 
-# Description:
+## Description:
 
 - genome_updater runs on a working directory (**-o**) and creates snapshots/versions (**-b**) of refseq/genbank repositories besed on selected parameters (database (**-d**), organism group or species/taxids (**-g**), RefSeq category (**-c**), assembly level (**-l**) and file type(s) (**-f**))
 - it can update the selected repository by executing the same command again. genome_updater will identify previous files and update the working directory with the most recente version, keeping track of changes and just downloading/removing updated files
@@ -32,7 +32,7 @@ Downloading Archaeal complete genome sequences from RefSeq:
 
 The same command executed again (some days later), will create a second snapshot of the requested dataset, checking for new, updated and removed sequences.
 
-# Main functionalities:
+## Main functionalities:
 
 Data selection:
 - **-g**: selection of sequences by organism groups (**-g "archaea,bacteria"**) or species (**-g "species:562,623"**) or taxonomic id including all children nodes (**-g "taxids:620,1643685"**)
