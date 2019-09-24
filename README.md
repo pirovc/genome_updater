@@ -1,5 +1,7 @@
 # genome_updater
 
+[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/genome_updater/README.html)
+
 Bash script to download and update snapshots of the NCBI genomes (refseq/genbank) [1] keeping all files and detailed log for each update, with file integrity check (MD5) and parallel [2] download support.
 
 # Description:
@@ -9,11 +11,15 @@ Bash script to download and update snapshots of the NCBI genomes (refseq/genbank
 
 ## Installation:
 
-`conda install -c bioconda genome_updater` [![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/genome_updater/README.html)
+	conda install -c bioconda genome_updater 
+
 or
-`git clone https://github.com/pirovc/genome_updater.git`
+
+	git clone https://github.com/pirovc/genome_updater.git
+
 or
-`wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh`
+
+	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
 
  - genome_updater uses mainly bash utility tools (wget, awk, join, sed, ...) and parallel [2].
  - To test genome_updater basic functions, run the script `tests/tests.sh`. It should print "All tests finished successfully" at the end.
@@ -67,9 +73,9 @@ Reports:
 
 	./genome_updater.sh -d "refseq" -g "taxids:2559587" -f "genomic.fna.gz" -o "all_rna_virus" -t 12
 
-### Download all E. Coli assemblies available on GenBank and RefSeq
+### Download all E. Coli assemblies available on GenBank and RefSeq with a named label (v1)
 
-	./genome_updater.sh -d "genbank,refseq" -g "species:562" -f "genomic.fna.gz" -o "all_ecoli" -t 12
+	./genome_updater.sh -d "genbank,refseq" -g "species:562" -f "genomic.fna.gz" -o "all_ecoli" -t 12 -b v1
 
 ### Check amount of refence entries available for the set of Viral genomes on genbank
 
