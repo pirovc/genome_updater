@@ -9,9 +9,14 @@ Bash script to download and update snapshots of the NCBI genomes (refseq/genbank
 
 ## Installation:
 
-Just clone this repo with `git clone https://github.com/pirovc/genome_updater.git` or copy the self-contained `genome_updater.sh` file.
+`conda install -c bioconda genome_updater` [![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/genome_updater/README.html)
+or
+`git clone https://github.com/pirovc/genome_updater.git`
+or
+`wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh`
 
-To test genome_updater basic functions, run the script `tests/tests.sh`. It should print "All tests finished successfully" at the end.
+ - genome_updater uses mainly bash utility tools (wget, awk, join, sed, ...) and parallel [2].
+ - To test genome_updater basic functions, run the script `tests/tests.sh`. It should print "All tests finished successfully" at the end.
 
 ## Simple example:
 
@@ -80,13 +85,13 @@ Reports:
 
 ### Changing timeout and tries of the downloads (wget)
 
-		wget_tries=10 wget_timeout=600 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt"
+	wget_tries=10 wget_timeout=600 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt"
 
 ## Extended reports:
 
 ### assembly accessions
 
-The parameter **-u** activates the output of a list of updated assembly accessions for the entries with all files (**-f**) successfuly downloaded. The file `updated_assembly_accession.txt` has the following fields (tab separated):
+The parameter **-u** activates the output of a list of updated assembly accessions for the entries with all files (**-f**) successfully downloaded. The file `updated_assembly_accession.txt` has the following fields (tab separated):
 
 	Added [A] or Removed [R], assembly accession, url
 
@@ -98,7 +103,7 @@ Example:
 
 ### sequence accessions
 
-The parameter **-r** activates the output of a list of updated sequence accessions for the entries with all files (**-f**) successfuly downloaded. It is only available when `assembly_report.txt` is one of the file types. The file `updated_sequence_accession.txt` has the following fields (tab separated):
+The parameter **-r** activates the output of a list of updated sequence accessions for the entries with all files (**-f**) successfully downloaded. It is only available when `assembly_report.txt` is one of the file types. The file `updated_sequence_accession.txt` has the following fields (tab separated):
 
 	Added [A] or Removed [R], assembly accession, genbank accession, refseq accession, sequence length, taxonomic id
 
@@ -111,9 +116,9 @@ Example:
 
 ### URLs (and files)
 
-The parameter **-p** activates the output of a list of failed and successfuly downloaded urls to the files `{timestamp}_url_downloaded.txt` and `{timestamp}_url_failed.txt` (failed list will only be complete if command runs until the end, without errors or breaks).
+The parameter **-p** activates the output of a list of failed and successfully downloaded urls to the files `{timestamp}_url_downloaded.txt` and `{timestamp}_url_failed.txt` (failed list will only be complete if command runs until the end, without errors or breaks).
 
-To obtain a list of successfuly downloaded files from this report (useful to get only new files after updating):
+To obtain a list of successfully downloaded files from this report (useful to get only new files after updating):
 
 	sed 's#.*/##' {timestamp}_url_list_downloaded.txt
 

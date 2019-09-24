@@ -355,7 +355,7 @@ function showhelp {
     echo $' -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: all'
     echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]\n\tDefault: assembly_report.txt'
     echo
-    echo $' -k Do not perform any new download or update - just checks for sequences and changes'
+    echo $' -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes'
     echo $' -i Fix failed downloads or any incomplete data from a previous run, keep current version'
     echo $' -x Allow the deletion of extra files if some are found in the repository folder'
     echo
@@ -377,7 +377,7 @@ function showhelp {
 }
 
 # Check for required tools
-tools=( "getopts" "parallel" "awk" "wget" "join" "bc" "md5sum" "xargs" "tar" )
+tools=( "getopts" "parallel" "awk" "wget" "join" "bc" "md5sum" "xargs" "tar" "sed" )
 for t in "${tools[@]}"
 do
     command -v ${t} >/dev/null 2>/dev/null || { echo ${t} not found; exit 1; }
