@@ -26,7 +26,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.2.0"
+version="0.2.1"
 
 wget_tries=${wget_tries:-3}
 wget_timeout=${wget_timeout:-120}
