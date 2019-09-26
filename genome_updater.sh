@@ -609,13 +609,6 @@ if [[ "${MODE}" == "NEW" ]]; then
             fi
         fi
         echolog "" "1"
-
-        if [ "${download_taxonomy}" -eq 1 ]; then    
-            echolog "Downloading current Taxonomy database [${new_output_prefix}/taxdump.tar.gz]" "1"
-            get_taxdump "${new_output_prefix}taxdump.tar.gz"
-            echolog " - Done" "1"
-            echolog "" "1"
-        fi
     fi
     
 else # update/fix
