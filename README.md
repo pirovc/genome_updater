@@ -6,8 +6,8 @@ Bash script to download and update snapshots of the NCBI genomes (refseq/genbank
 
 ## Description:
 
-- genome_updater runs on a working directory (**-o**) and creates snapshots/versions (**-b**) of refseq/genbank repositories based on selected parameters (database (**-d**), organism group or species/taxids (**-g**), RefSeq category (**-c**), assembly level (**-l**) and file type(s) (**-f**))
-- it can update the selected repository by executing the same command again. genome_updater will identify previous files and update the working directory with the most recente version, keeping track of changes and just downloading/removing updated files
+- genome_updater runs on a working directory (**-o**) and creates snapshots/versions (**-b**) of refseq/genbank genome repositories based on selected parameters: database (**-d**), organism group or species/taxids (**-g**), RefSeq category (**-c**), assembly level (**-l**) and file type(s) (**-f**)
+- genome_updater can update the selected repository by executing the same command again. It will identify previous files and update the working directory with the most recente version, keeping track of changes and just downloading/removing updated files
 
 ## Installation:
 
@@ -128,6 +128,10 @@ The parameter **-p** activates the output of a list of failed and successfully d
 To obtain a list of successfully downloaded files from this report (useful to get only new files after updating):
 
 	sed 's#.*/##' {timestamp}_url_list_downloaded.txt
+	
+or
+
+	find output_folder/version/files/ -type f
 
 ## Parameters:
 
