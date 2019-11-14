@@ -37,7 +37,7 @@ The same command executed again (some days later), will create a second snapshot
 
 Data selection:
 - **-g**: selection of sequences by organism groups (**-g "archaea,bacteria"**) or species (**-g "species:562,623"**) or taxonomic id including all children nodes (**-g "taxids:620,1643685"**)
-- **-d**: database selection (genbank and/or refeseq)
+- **-d**: database selection (genbank and/or refseq)
 - **-f**: suffix of files to be downloaded for each entry [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
 - **-l**: filter by Assembly level [Complete Genome, Chromosome, Scaffold, Contig]
 
