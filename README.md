@@ -39,13 +39,15 @@ Data selection:
 - **-g**: selection of sequences by organism groups (**-g "archaea,bacteria"**) or species (**-g "species:562,623"**) or taxonomic id including all children nodes (**-g "taxids:620,1643685"**)
 - **-d**: database selection (genbank and/or refseq)
 - **-f**: suffix of files to be downloaded for each entry [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
-- **-l**: filter by Assembly level [Complete Genome, Chromosome, Scaffold, Contig]
+- **-l**: filter by Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]
+- **-c**: filter by RefSeq Category [all, reference genome, representative genome, na]
+
 
 Utilities:
 - **-i**: fixes current snapshot in case of network or any other failure during download
 - **-k**: dry-run - do not perform any download or update, but shows number of files to be downloaded or updated
 - **-t**: run many parallel downloads
-- **-m**: checks for file integrity (MD5) with the option
+- **-m**: checks for file integrity (MD5)
 - **-e**: re-downloads entries from any "assembly_summary.txt" obtained from external sources. Easy way to share snapshots of exact database version used.
 - **-a**: downloads the current taxdump, matching downloaded files
 
