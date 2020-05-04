@@ -6,8 +6,8 @@ Bash script to download and update snapshots of the NCBI genomes (refseq/genbank
 
 ## Description:
 
-- genome_updater runs on a working directory (**-o**) and creates snapshots/versions (**-b**) of refseq/genbank repositories besed on selected parameters (database (**-d**), organism group or species/taxids (**-g**), RefSeq category (**-c**), assembly level (**-l**) and file type(s) (**-f**))
-- it can update the selected repository by executing the same command again. genome_updater will identify previous files and update the working directory with the most recente version, keeping track of changes and just downloading/removing updated files
+- genome_updater runs on a working directory (**-o**) and creates snapshots/versions (**-b**) of refseq/genbank genome repositories based on selected parameters: database (**-d**), organism group or species/taxids (**-g**), RefSeq category (**-c**), assembly level (**-l**) and file type(s) (**-f**)
+- genome_updater can update the selected repository by executing the same command again. It will identify previous files and update the working directory with the most recente version, keeping track of changes and just downloading/removing updated files
 
 ## Installation:
 
@@ -37,15 +37,17 @@ The same command executed again (some days later), will create a second snapshot
 
 Data selection:
 - **-g**: selection of sequences by organism groups (**-g "archaea,bacteria"**) or species (**-g "species:562,623"**) or taxonomic id including all children nodes (**-g "taxids:620,1643685"**)
-- **-d**: database selection (genbank and/or refeseq)
+- **-d**: database selection (genbank and/or refseq)
 - **-f**: suffix of files to be downloaded for each entry [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
-- **-l**: filter by Assembly level [Complete Genome, Chromosome, Scaffold, Contig]
+- **-l**: filter by Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]
+- **-c**: filter by RefSeq Category [all, reference genome, representative genome, na]
+
 
 Utilities:
 - **-i**: fixes current snapshot in case of network or any other failure during download
 - **-k**: dry-run - do not perform any download or update, but shows number of files to be downloaded or updated
 - **-t**: run many parallel downloads
-- **-m**: checks for file integrity (MD5) with the option
+- **-m**: checks for file integrity (MD5)
 - **-e**: re-downloads entries from any "assembly_summary.txt" obtained from external sources. Easy way to share snapshots of exact database version used.
 - **-a**: downloads the current taxdump, matching downloaded files
 
@@ -128,6 +130,10 @@ The parameter **-p** activates the output of a list of failed and successfully d
 To obtain a list of successfully downloaded files from this report (useful to get only new files after updating):
 
 	sed 's#.*/##' {timestamp}_url_list_downloaded.txt
+	
+or
+
+	find output_folder/version/files/ -type f
 
 ## Parameters:
 
