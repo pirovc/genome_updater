@@ -4,8 +4,7 @@ IFS=$' '
 
 # The MIT License (MIT)
  
-# Copyright (c) 2019 - Vitor C. Piro - PiroV@rki.de - vitorpiro@gmail.com
-# Robert Koch-Institut, Germany
+# Copyright (c) 2020 - Vitor C. Piro - vitorpiro@gmail.com
 # All rights reserved.
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.2.1"
+version="0.2.2"
 
 wget_tries=${wget_tries:-3}
 wget_timeout=${wget_timeout:-120}

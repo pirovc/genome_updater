@@ -7,7 +7,7 @@ Bash script to download and update snapshots of the NCBI genomes (refseq/genbank
 ## Description:
 
 - genome_updater runs on a working directory (**-o**) and creates snapshots/versions (**-b**) of refseq/genbank genome repositories based on selected parameters: database (**-d**), organism group or species/taxids (**-g**), RefSeq category (**-c**), assembly level (**-l**) and file type(s) (**-f**)
-- genome_updater can update the selected repository by executing the same command again. It will identify previous files and update the working directory with the most recente version, keeping track of changes and just downloading/removing updated files
+- genome_updater can update the selected repository by executing the same command again. It will identify previous files and update the working directory with the most recent version, keeping track of changes and just downloading/removing updated files
 
 ## Installation:
 
@@ -21,7 +21,7 @@ or
 
 	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
 
- - genome_updater depends mainly on the GNU Core Utilities and some additional tools (`parallel`, `wget`, `awk`, `sed`, ...) which are commonly available in most distributions
+ - genome_updater depends mainly on the GNU Core Utilities and some additional tools (`parallel`, `bc`, `wget`, `awk`, `sed`, ...) which are commonly available in most distributions
  - To test genome_updater basic functions, run the script `tests/tests.sh`. It should print "All tests finished successfully" at the end.
  - Make sure you have access to the NCBI ftp folders: `ftp://ftp.ncbi.nlm.nih.gov/genomes/` and `ftp://ftp.ncbi.nih.gov/pub/taxonomy/`
 
