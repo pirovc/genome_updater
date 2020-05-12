@@ -24,7 +24,7 @@ or
  - genome_updater depends only on the GNU Core Utilities and additional tools (`awk` `bc` `find` `join` `md5sum` `parallel` `sed` `tar` `xargs` `wget`) which are commonly available in most distributions. If you are not sure if you have them all, just run genome_updater.sh and it will tell you if something is missing (otherwise the it will show the help page).
  - To test genome_updater basic functions, run the script `tests/tests.sh`. It should print "All tests finished successfully" at the end.
  - Make sure you have access to the NCBI ftp folders: `ftp://ftp.ncbi.nlm.nih.gov/genomes/` and `ftp://ftp.ncbi.nih.gov/pub/taxonomy/`
- - If you still run into some issues it may be that some tools are running with imcompatible or old versions. Please open an issue (https://github.com/pirovc/genome_updater/issues) with the description and the output of the command `genome_updater.sh -D`.
+ - If you still run into some issues it may be that some tools are running with incompatible or old versions. Please open an issue (https://github.com/pirovc/genome_updater/issues) with the description and the output of the command `genome_updater.sh -D`.
 
 ## Simple example:
 
@@ -64,7 +64,7 @@ Reports:
 	# Download (checking md5, 12 threads, with extended assembly accession report)
 	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -c "all" -l "Complete Genome" -f "genomic.fna.gz" -o "arc_bac_refseq_cg" -t 12 -u -m
 	
-	# Downloading additional .gbff files for the current snaptshow (adding genomic.gbff.gz to -f and adding -i command)
+	# Downloading additional .gbff files for the current snapshot (adding genomic.gbff.gz to -f and adding -i command)
 	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -c "all" -l "Complete Genome" -f "genomic.fna.gz,genomic.gbff.gz" -o "arc_bac_refseq_cg" -t 12 -u -m -i
 	
 	# Some days later, just check for updates but do not update
@@ -81,11 +81,11 @@ Reports:
 
 	./genome_updater.sh -d "genbank,refseq" -g "species:562" -f "genomic.fna.gz" -o "all_ecoli" -t 12 -b v1
 
-### Check amount of refence entries available for the set of Viral genomes on genbank
+### Check amount of reference entries available for the set of Viral genomes on genbank
 
 	./genome_updater.sh -d "genbank" -g "viral" -c "all" -l "all" -k
 
-### Download Fungi RefSeq assembly information and generate sequence reports and urls
+### Download Fungi RefSeq assembly information and generate sequence reports and URLs
 
 	./genome_updater.sh -d "refseq" -g "fungi" -c "all" -l "all" -f "assembly_report.txt" -o "fungi" -t 12 -r -p
 
@@ -138,22 +138,22 @@ or
 
 ## Parameters:
 
-	genome_updater v0.2.0 by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pirovc)
+	genome_updater v0.2.2 by Vitor C. Piro http://github.com/pirovc
 
 	 -g Organism group (one or more comma-separated entries) [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]. Example: archaea,bacteria
 	    or Species level taxids (one or more comma-separated entries). Example: species:622,562
 	    or Any level taxids - lineage will be generated (one or more comma-separated entries). Example: taxids:620,649776
 
 	 -d Database [genbank, refseq]
-	        Default: refseq
+		Default: refseq
 	 -c RefSeq Category [all, reference genome, representative genome, na]
-	        Default: all
+		Default: all
 	 -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]
-	        Default: all
+		Default: all
 	 -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
-	        Default: assembly_report.txt
+		Default: assembly_report.txt
 
-	 -k Do not perform any new download or update - just checks for sequences and changes
+	 -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes
 	 -i Fix failed downloads or any incomplete data from a previous run, keep current version
 	 -x Allow the deletion of extra files if some are found in the repository folder
 
@@ -162,20 +162,22 @@ or
 	 -p Output list of URLs for downloaded and failed files
 	 -a Download the current version of the Taxonomy database (taxdump.tar.gz)
 
-	 -o Working output directory
-	        Default: ./tmp.XXXXXXXXXX
+	 -o Working output directory 
+		Default: ./tmp.XXXXXXXXXX
 	 -b Version label
-	        Default: current timestamp (YYYY-MM-DD_HH-MM-SS)
-	 -e External "assembly_summary.txt" file to recover data from
-	        Default: ""
+		Default: current timestamp (YYYY-MM-DD_HH-MM-SS)
+	 -e External "assembly_summary.txt" file to recover data from 
+		Default: ""
 	 -t Threads
-	        Default: 1
+		Default: 1
 
 	 -m Check MD5 for downloaded files
 	 -s Silent output
 	 -w Silent output with download progress (%) and download version at the end
 	 -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)
-	        Default: 0
+		Default: 0
+
+	 -D Print print debug information and exit
 
 ## References:
 

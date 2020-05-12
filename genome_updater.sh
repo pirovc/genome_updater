@@ -393,7 +393,7 @@ function showhelp {
     echo $' -w Silent output with download progress (%) and download version at the end'
     echo $' -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)\n\tDefault: 0'
     echo
-    echo $' -D Option to print debug information only'
+    echo $' -D Print print debug information and exit'
     echo
 }
 
