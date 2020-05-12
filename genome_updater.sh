@@ -712,8 +712,8 @@ else # update/fix
         if [[ "${just_check}" -eq 0 ]]; then
             # Link versions (current and new)
             echolog "Linking versions [${current_label} --> ${new_label}]" "1"
-            ln -s -r "${current_output_prefix}${files_dir}"* "${new_output_prefix}${files_dir}"
-        	echolog " - Done." "1"
+            find "${current_output_prefix}${files_dir}" -maxdepth 1 -xtype f -print0 | xargs -P "${threads}" -I{} -0 ln -s -r "{}" "${new_output_prefix}${files_dir}"
+            echolog " - Done." "1"
         	echolog "" "1"
         fi
         
