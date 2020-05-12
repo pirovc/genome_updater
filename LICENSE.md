@@ -1,7 +1,6 @@
 The MIT License (MIT)
  
-Copyright (c) 2019 - Vitor C. Piro - PiroV@rki.de - vitorpiro@gmail.com
-Robert Koch-Institut, Germany
+Copyright (c) 2020 - Vitor C. Piro - http://github.com/pirovc
 All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
