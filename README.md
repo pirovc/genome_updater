@@ -21,9 +21,10 @@ or
 
 	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
 
- - genome_updater depends mainly on the GNU Core Utilities and some additional tools (`parallel`, `bc`, `wget`, `awk`, `sed`, ...) which are commonly available in most distributions
+ - genome_updater depends mainly on the GNU Core Utilities and some additional tools (`parallel`, `bc`, `wget`) which are commonly available in most distributions. If you are not sure if you have them all, just run genome_updater.sh and it will tell if something is missing (otherwise the help page is show).
  - To test genome_updater basic functions, run the script `tests/tests.sh`. It should print "All tests finished successfully" at the end.
  - Make sure you have access to the NCBI ftp folders: `ftp://ftp.ncbi.nlm.nih.gov/genomes/` and `ftp://ftp.ncbi.nih.gov/pub/taxonomy/`
+  - If you still run into some running issues it may be version imcompability of one of the tools. Please open an issue with the output of the command `genome_updater.sh -D`
 
 ## Simple example:
 

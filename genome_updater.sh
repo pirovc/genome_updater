@@ -30,7 +30,7 @@ version="0.2.2"
 wget_tries=${wget_tries:-3}
 wget_timeout=${wget_timeout:-120}
 export wget_tries wget_timeout
-export LC_NUMERIC="en_US.UTF-8"
+#export LC_NUMERIC="en_US.UTF-8"
 
 #activate aliases in the script
 shopt -s expand_aliases
@@ -320,6 +320,25 @@ echolog() # parameters: ${1} text, ${2} STDOUT (0->no/1->yes)
 }
 export -f echolog #export it to be accessible to the parallel call
 
+print_debug() # parameters: ${1} tools
+{
+    echo "========================================================";
+    echo "genome_updater version ${version}"
+    echo "========================================================";
+    bash --version
+    echo "========================================================";
+    locale
+    for t in "${tools[@]}"
+    do
+        echo "========================================================";
+        tool=$(command -v "${t}");
+        echo "${t} => ${tool}";
+        echo "========================================================";
+        ${tool} --version;
+    done
+    echo "========================================================";
+}
+
 # Defaults
 database="refseq"
 organism_group=""
@@ -337,6 +356,7 @@ just_fix=0
 conditional_exit=0
 silent=0
 silent_progress=0
+debug_mode=0
 working_dir=""
 external_assembly_summary=""
 label=""
@@ -373,17 +393,24 @@ function showhelp {
     echo $' -w Silent output with download progress (%) and download version at the end'
     echo $' -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)\n\tDefault: 0'
     echo
+    echo $' -D Option to print debug information only'
+    echo
 }
 
 # Check for required tools
-tools=( "getopts" "parallel" "awk" "wget" "join" "bc" "md5sum" "xargs" "tar" "sed" )
+tool_not_found=0
+tools=( "parallel" "awk" "wget" "join" "bc" "md5sum" "xargs" "tar" "sed" )
 for t in "${tools[@]}"
 do
-    command -v ${t} >/dev/null 2>/dev/null || { echo ${t} not found; exit 1; }
+    if [ ! -x "$(command -v ${t})" ]; then
+        echo "${t} not found";
+        tool_not_found=1;
+    fi
 done
+if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 OPTIND=1 # Reset getopts
-while getopts "d:g:c:l:o:e:b:t:f:n:akixmurpswh" opt; do
+while getopts "d:g:c:l:o:e:b:t:f:n:akixmurpswhD" opt; do
   case ${opt} in
     d) database=${OPTARG} ;;
     g) organism_group=${OPTARG// } ;; #remove spaces
@@ -405,6 +432,7 @@ while getopts "d:g:c:l:o:e:b:t:f:n:akixmurpswh" opt; do
     n) conditional_exit=${OPTARG} ;;
     s) silent=1 ;;
     w) silent_progress=1 ;;
+    D) debug_mode=1 ;;
     h|\?) showhelp; exit 1 ;;
     :) echo "Option -${OPTARG} requires an argument." >&2; exit 1 ;;
   esac
@@ -413,7 +441,10 @@ if [ ${OPTIND} -eq 1 ]; then showhelp; exit 1; fi
 shift $((OPTIND-1))
 [ "${1:-}" = "--" ] && shift
 
-
+if [ "${debug_mode}" -eq 1 ] ; then 
+    print_debug tools;
+    exit 0;
+fi
 ######################### General parameter validation ######################### 
 valid_databases=( "genbank" "refseq" )
 for d in ${database//,/ }
