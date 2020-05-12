@@ -4,7 +4,7 @@ IFS=$' '
 
 # The MIT License (MIT)
  
-# Copyright (c) 2020 - Vitor C. Piro - vitorpiro@gmail.com
+# Copyright (c) 2020 - Vitor C. Piro - http://github.com/pirovc
 # All rights reserved.
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -363,7 +363,7 @@ label=""
 threads=1
 
 function showhelp {
-    echo "genome_updater v${version} by Vitor C. Piro (vitorpiro@gmail.com, http://github.com/pirovc)"
+    echo "genome_updater v${version} by Vitor C. Piro http://github.com/pirovc"
     echo
     echo $' -g Organism group (one or more comma-separated entries) [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]. Example: archaea,bacteria'
     echo $'    or Species level taxids (one or more comma-separated entries). Example: species:622,562'
@@ -399,7 +399,7 @@ function showhelp {
 
 # Check for required tools
 tool_not_found=0
-tools=( "parallel" "awk" "wget" "join" "bc" "md5sum" "xargs" "tar" "sed" )
+tools=( "awk" "bc" "find" "join" "md5sum" "parallel" "sed" "tar" "xargs" "wget" )
 for t in "${tools[@]}"
 do
     if [ ! -x "$(command -v ${t})" ]; then
