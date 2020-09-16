@@ -117,6 +117,9 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
 
 filter_assembly_summary() # parameter: ${1} assembly_summary file - return number of lines
 {
+    # Filter entries with "na" on url field
+    awk -F "\t" '$20!="na" {print $0}' "${1}" > "${1}_filtered"
+    mv "${1}_filtered" "${1}"
     if [[ "${refseq_category}" != "all" || "${assembly_level}" != "all" ]]
     then
         awk -F "\t" -v refseq_category="${refseq_category}" -v assembly_level="${assembly_level}" 'BEGIN{if(refseq_category=="all") refseq_category=".*"; if(assembly_level=="all") assembly_level=".*"} $5 ~ refseq_category && $12 ~ assembly_level && $11=="latest" {print $0}' "${1}" > "${1}_filtered"
@@ -612,7 +615,7 @@ if [[ "${MODE}" == "NEW" ]]; then
     fi
 
     filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
-    echolog " - $((all_lines-filtered_lines))/${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}, Version status: latest]" "1"
+    echolog " - $((all_lines-filtered_lines))/${all_lines} entries removed. Filters: RefSeq category =  ${refseq_category}, Assembly level = ${assembly_level}, Version status = latest, valid URL" "1"
     echolog " - ${filtered_lines} entries available" "1"
     
     if [ "${just_check}" -eq 1 ]; then
@@ -706,7 +709,7 @@ else # update/fix
         echolog "Downloading assembly summary [${new_label}]" "1"
         all_lines=$(get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}")
         filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
-        echolog " - $((all_lines-filtered_lines))/${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}, Version status: latest]" "1"
+        echolog " - $((all_lines-filtered_lines))/${all_lines} entries removed. Filters: RefSeq category =  ${refseq_category}, Assembly level = ${assembly_level}, Version status = latest, valid URL" "1"
         echolog " - ${filtered_lines} entries available" "1"
         echolog "" "1"
         
