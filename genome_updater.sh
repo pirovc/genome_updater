@@ -25,12 +25,13 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.2.2"
+version="0.2.3"
 
 wget_tries=${wget_tries:-3}
 wget_timeout=${wget_timeout:-120}
 export wget_tries wget_timeout
-#export LC_NUMERIC="en_US.UTF-8"
+# Export locale numeric to avoid errors on printf in different setups
+export LC_NUMERIC="en_US.UTF-8"
 
 #activate aliases in the script
 shopt -s expand_aliases
@@ -62,7 +63,7 @@ count_lines_file(){ # parameter: ${1} file - return number of lines
 parse_new_taxdump() # parameter: ${1} taxids - return all taxids on of provided taxids
 {
 	taxids=${1}
-	echolog "Downloading taxdump and generating lineage" "0"
+	echolog "Downloading taxdump and generating lineage" "1"
     tmp_new_taxdump="${target_output_prefix}new_taxdump.tar.gz"
     tmp_taxidlineage="${working_dir}taxidlineage.dmp"
     get_new_taxdump "${tmp_new_taxdump}"
