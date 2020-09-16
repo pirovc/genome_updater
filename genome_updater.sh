@@ -25,12 +25,13 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.2.2"
+version="0.2.3"
 
 wget_tries=${wget_tries:-3}
 wget_timeout=${wget_timeout:-120}
 export wget_tries wget_timeout
-#export LC_NUMERIC="en_US.UTF-8"
+# Export locale numeric to avoid errors on printf in different setups
+export LC_NUMERIC="en_US.UTF-8"
 
 #activate aliases in the script
 shopt -s expand_aliases
@@ -62,7 +63,7 @@ count_lines_file(){ # parameter: ${1} file - return number of lines
 parse_new_taxdump() # parameter: ${1} taxids - return all taxids on of provided taxids
 {
 	taxids=${1}
-	echolog "Downloading taxdump and generating lineage" "0"
+	echolog "Downloading taxdump and generating lineage" "1"
     tmp_new_taxdump="${target_output_prefix}new_taxdump.tar.gz"
     tmp_taxidlineage="${working_dir}taxidlineage.dmp"
     get_new_taxdump "${tmp_new_taxdump}"
@@ -102,13 +103,13 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
         fi
     done
 
-    # Keep only selected species or taxid lineage
+    # Keep only selected species or taxid lineage, removing at the end duplicated entries from duplicates on taxids
     if [[ ! -z "${species}" ]]; then
-        join -1 7 -2 1 <(sort -k 7,7 "${1}") <(echo "${species//,/$'\n'}" | sort -k 1,1) -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" > "${1}_species"
+        join -1 7 -2 1 <(sort -k 7,7 "${1}") <(echo "${species//,/$'\n'}" | sort -k 1,1) -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" | sort | uniq > "${1}_species"
         mv "${1}_species" "${1}"
     elif [[ ! -z "${taxids}" ]]; then
     	lineage_taxids=$(parse_new_taxdump "${taxids}")
-        join -1 6 -2 1 <(sort -k 6,6 "${1}") <(echo "${lineage_taxids//,/$'\n'}" | sort -k 1,1) -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" > "${1}_taxids"
+        join -1 6 -2 1 <(sort -k 6,6 "${1}") <(echo "${lineage_taxids//,/$'\n'}" | sort -k 1,1) -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" | sort | uniq > "${1}_taxids"
         mv "${1}_taxids" "${1}"
     fi
     count_lines_file "${1}"
@@ -116,6 +117,9 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
 
 filter_assembly_summary() # parameter: ${1} assembly_summary file - return number of lines
 {
+    # Filter entries with "na" on url field
+    awk -F "\t" '$20!="na" {print $0}' "${1}" > "${1}_filtered"
+    mv "${1}_filtered" "${1}"
     if [[ "${refseq_category}" != "all" || "${assembly_level}" != "all" ]]
     then
         awk -F "\t" -v refseq_category="${refseq_category}" -v assembly_level="${assembly_level}" 'BEGIN{if(refseq_category=="all") refseq_category=".*"; if(assembly_level=="all") assembly_level=".*"} $5 ~ refseq_category && $12 ~ assembly_level && $11=="latest" {print $0}' "${1}" > "${1}_filtered"
@@ -264,8 +268,8 @@ remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR fi
 
 check_missing_files() # ${1} file, ${2} fields [assembly_accesion,url], ${3} extension - returns assembly accession, url and filename
 {
-    # Just returns if file doens't exist or if it's zero size
-    list_files ${1} ${2} ${3} | xargs --no-run-if-empty -n3 sh -c 'if [ ! -s "'"${target_output_prefix}${files_dir}"'${2}" ]; then echo "${0}\\t${1}\\t${2}"; fi'
+    # Just returns if file doesn't exist or if it's zero size
+    list_files ${1} ${2} ${3} | xargs --no-run-if-empty -n3 sh -c 'if [ ! -s "'"${target_output_prefix}${files_dir}"'${2}" ]; then echo "${0}'$'\t''${1}'$'\t''${2}"; fi'
 }
 
 check_complete_record() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension - returns assembly accession, url
@@ -611,7 +615,7 @@ if [[ "${MODE}" == "NEW" ]]; then
     fi
 
     filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
-    echolog " - $((all_lines-filtered_lines))/${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}, Version status: latest]" "1"
+    echolog " - $((all_lines-filtered_lines))/${all_lines} entries removed. Filters: RefSeq category =  ${refseq_category}, Assembly level = ${assembly_level}, Version status = latest, valid URL" "1"
     echolog " - ${filtered_lines} entries available" "1"
     
     if [ "${just_check}" -eq 1 ]; then
@@ -705,7 +709,7 @@ else # update/fix
         echolog "Downloading assembly summary [${new_label}]" "1"
         all_lines=$(get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}")
         filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
-        echolog " - $((all_lines-filtered_lines))/${all_lines} entries removed [RefSeq category: ${refseq_category}, Assembly level: ${assembly_level}, Version status: latest]" "1"
+        echolog " - $((all_lines-filtered_lines))/${all_lines} entries removed. Filters: RefSeq category =  ${refseq_category}, Assembly level = ${assembly_level}, Version status = latest, valid URL" "1"
         echolog " - ${filtered_lines} entries available" "1"
         echolog "" "1"
         
