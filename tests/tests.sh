@@ -61,10 +61,5 @@ out_2="tests/tst_taxids2493627"
 # check if both runs have the same files
 diff <(find "${out_all}"/v1/files/ -xtype f -printf "%f\n" | sort) <(find "${out_1}"/v1/files/ "${out_2}"/v1/files/ -xtype f  -printf "%f\n" | sort)
 
-
-#####################
-#GCF_014522265.1	PRJNA224116	SAMN05607105		na	237610	237610	Pseudomonas psychrotolerans	strain=KNF2016		latest	Complete Genome	Major	Full2020/09/10	ASM1452226v1	Korea University	GCA_014522265.1	identical	na
-
-
 echo ""
 echo "All tests finished successfully"
