@@ -1,0 +1,2 @@
+GCF_000226095.1	PRJNA79339	SAMN00739435		representative genome	573729	78579	Thermothelomyces thermophilus ATCC 42464	strain=ATCC 42464		latest	Complete Genome	Major	Full	2011/09/16	ASM22609v1	DOE Joint Genome Institute	GCA_000226095.1	identical	na		
+GCF_013368755.1	PRJNA645155	SAMN15229550		representative genome	121627	121627	Talaromyces rugulosus	strain=W13939		latest	Complete Genome	Major	Full	2020/06/23	ASM1336875v1	Xi'an Jiaotong University	GCA_013368755.1	identical	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/013/368/755/GCF_013368755.1_ASM1336875v1		
