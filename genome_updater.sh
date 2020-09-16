@@ -266,7 +266,7 @@ remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR fi
 check_missing_files() # ${1} file, ${2} fields [assembly_accesion,url], ${3} extension - returns assembly accession, url and filename
 {
     # Just returns if file doesn't exist or if it's zero size
-    list_files ${1} ${2} ${3} | xargs --no-run-if-empty -n3 sh -c 'if [ ! -s "'"${target_output_prefix}${files_dir}"'${2}" ]; then echo "${0}'"\t"'${1}'"\t"'${2}"; fi'
+    list_files ${1} ${2} ${3} | xargs --no-run-if-empty -n3 sh -c 'if [ ! -s "'"${target_output_prefix}${files_dir}"'${2}" ]; then echo "${0}'$'\t''${1}'$'\t''${2}"; fi'
 }
 
 check_complete_record() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension - returns assembly accession, url
