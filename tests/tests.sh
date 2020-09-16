@@ -61,6 +61,5 @@ out_2="tests/tst_taxids2493627"
 # check if both runs have the same files
 diff <(find "${out_all}"/v1/files/ -xtype f -printf "%f\n" | sort) <(find "${out_1}"/v1/files/ "${out_2}"/v1/files/ -xtype f  -printf "%f\n" | sort)
 
-
 echo ""
 echo "All tests finished successfully"
