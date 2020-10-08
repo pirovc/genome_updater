@@ -42,7 +42,7 @@ Data selection:
 - **-f**: suffix of files to be downloaded for each entry [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
 - **-l**: filter by Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]
 - **-c**: filter by RefSeq Category [all, reference genome, representative genome, na]
-- **-j**: select top assemblies for species or taxids ["", species:INT, taxids:INT]
+- **-j**: select [top assemblies](#top-assemblies) for species or taxids: (**-j "species:3"**) to download the top 3 assemblies for each species selected or (**-j "taxids:1"**) to download only the top assembly for each taxid selected.
 
 Utilities:
 - **-i**: fixes current snapshot in case of network or any other failure during download
@@ -103,7 +103,7 @@ Reports:
 
 ## Top assemblies:
 
-The top assemblies (**-j**) will be selected based on the species/taxid entry for the assembly (and not for the taxids provided with -g "taxids:..."), sorted by categories in the following order of importance:
+The top assemblies (**-j**) will be selected based on the species/taxid entries in the assembly_summary.txt and not for the taxids provided with -g "taxids:...". They are selected sorted by categories in the following order of importance:
 	
 	A) RefSeq Category: 
 		1) reference genome
