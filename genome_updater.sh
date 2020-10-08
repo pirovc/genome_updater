@@ -496,13 +496,9 @@ do
         echo "Database ${d} not valid";
     fi
 done
-if [[ " ${organism_group} " =~ "taxids:" ]]; then
-    if [[ -z "${organism_group/taxids:/}" ]]; then
-        echo "Invalid taxid - ${organism_group/taxids:/}"; exit 1; # TODO validate taxid?
-    fi
-elif [[ " ${organism_group} " =~ "species:" ]]; then
-    if [[ -z "${organism_group/species:/}" ]]; then
-        echo "Invalid species taxids - ${organism_group/species:/}"; exit 1; # TODO validate taxid?
+if [[ "${organism_group}" == "taxids:"* || "${organism_group}" == "species:"* ]]; then
+    if [[ ! "${organism_group}" =~ ^(taxids|species)\:[0-9,]+$ ]]; then
+        echo "Invalid syntax for organism group"; exit 1;
     fi
 else
     valid_organism_groups=( "archaea" "bacteria" "fungi" "human" "invertebrate" "metagenomes" "other" "plant" "protozoa" "vertebrate_mammalian" "vertebrate_other" "viral" )
@@ -535,7 +531,6 @@ if [[ ! -z "${top_assemblies}" ]]; then
         echo "Invalid syntax for top assemblies selection"; exit 1;
     fi
 fi
-
 
 ######################### Variable assignment ######################### 
 if [ "${silent}" -eq 1 ] ; then 
