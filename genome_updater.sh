@@ -222,8 +222,8 @@ check_md5_ftp() # parameter: ${1} url - returns 0 (ok) / 1 (error)
                     rm -v "${target_output_prefix}${files_dir}${file_name}" >> ${log_file} 2>&1
                     return 1
                 else
-                    # Outputs checked md5 only on log
-                    echolog "${file_name} MD5 successfully checked ${file_md5} [${md5checksums_url}]" "0"
+                    # Disabled log in case of success, hard to detect failures
+                    #echolog "${file_name} MD5 successfully checked ${file_md5} [${md5checksums_url}]" "0"
                     return 0
                 fi    
             fi
@@ -403,8 +403,20 @@ external_assembly_summary=""
 label=""
 threads=1
 
+function print_logo {
+    echo "┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐";
+    echo "│ ┬├┤ ││││ ││││├┤     │ │├─┘ ││├─┤ │ ├┤ ├┬┘";
+    echo "└─┘└─┘┘└┘└─┘┴ ┴└─┘────└─┘┴  ─┴┘┴ ┴ ┴ └─┘┴└─";
+    echo "                                     v${version} ";
+}
+
+function print_line {
+    echo "-------------------------------------------"
+}
+
 function showhelp {
-    echo "genome_updater v${version}"
+    echo
+    print_logo
     echo
     echo $' -g Organism group (one or more comma-separated entries) [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]. Example: archaea,bacteria'
     echo $'    or Species level taxids (one or more comma-separated entries). Example: species:622,562'
@@ -413,7 +425,7 @@ function showhelp {
     echo $' -d Database [genbank, refseq]\n\tDefault: refseq'
     echo $' -c RefSeq Category [all, reference genome, representative genome, na]\n\tDefault: all'
     echo $' -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: all'
-    echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]\n\tDefault: assembly_report.txt'
+    echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ...]\n\tcheck ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats\n\tDefault: assembly_report.txt'
     echo $' -j Number of top references for each species/taxids to download ["", species:INT, taxids:INT]. Example: "species:3". Selection is based on 1) RefSeq Category, 2) Assembly level, 3) Relation to type material and 4) Date (most recent first)\n\tDefault: ""'
     echo
     echo $' -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes'
@@ -608,9 +620,13 @@ export log_file
 # count of extra files for report
 extra_lines=0
 
-echolog "----------------------------------------" "1"
-echolog "      genome_updater version: ${version}" "1"
-echolog "----------------------------------------" "1"
+if [ "${silent}" -eq 0 ]; then 
+    print_line
+    print_logo
+    print_line
+fi
+
+echolog "--- genome_updater version: ${version} ---" "0"
 echolog "Mode: ${MODE} - $(if [[ "${just_check}" -eq 1 ]]; then echo "CHECK"; else echo "DOWNLOAD"; fi)" "1"
 echolog "Timestamp: ${timestamp}" "0"
 echolog "Database: ${database}" "0"
@@ -618,6 +634,7 @@ echolog "Organims group: ${organism_group}" "0"
 echolog "RefSeq category: ${refseq_category}" "0"
 echolog "Assembly level: ${assembly_level}" "0"
 echolog "File formats: ${file_formats}" "0"
+echolog "Top assemblies: ${top_assemblies}" "0"
 echolog "Download taxonomy: ${download_taxonomy}" "0"
 echolog "Just check for updates: ${just_check}" "0"
 echolog "Just fix/recover current version: ${just_fix}" "0"
@@ -633,7 +650,7 @@ echolog "External assembly summary: ${external_assembly_summary}" "0"
 echolog "Threads: ${threads}" "0"
 echolog "Working directory: ${working_dir}" "1"
 echolog "Label: ${label}" "0"
-echolog "----------------------------------------" "1"
+echolog "-------------------------------------------" "1"
 
 # new
 if [[ "${MODE}" == "NEW" ]]; then
@@ -856,6 +873,7 @@ if [ "${just_check}" -eq 0 ]; then
     expected_files=$(( $(count_lines_file "${default_assembly_summary}")*(n_formats+1) )) # From assembly summary * file formats
     current_files=$(( $(ls "${target_output_prefix}${files_dir}" | wc -l | cut -f1 -d' ') - extra_lines )) # From current folder - extra files
     # Check if the valid amount of files on folder amount of files on folder
+    [ "${silent}" -eq 0 ] && print_line
     echolog "# ${current_files}/${expected_files} files successfully obtained" "1"
     if [ $(( expected_files-current_files )) -gt 0 ]; then
         echolog " - $(( expected_files-current_files )) file(s) failed to download. Please re-run your command with -i to fix it again" "1"
