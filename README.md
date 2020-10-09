@@ -6,7 +6,7 @@ Bash script to download and update snapshots of the NCBI genomes (refseq/genbank
 
 ## Description:
 
-- genome_updater runs on a working directory (**-o**) and creates snapshots/versions (**-b**) of refseq/genbank genome repositories based on selected parameters: database (**-d**), organism group or species/taxids (**-g**), RefSeq category (**-c**), assembly level (**-l**) and file type(s) (**-f**)
+- genome_updater runs on a working directory (**-o**) and creates snapshots/versions (**-b**) of refseq/genbank genome repositories based on selected parameters: database (**-d**), organism group or species/taxids (**-g**), RefSeq category (**-c**), assembly level (**-l**), top assemblies (**-j**) and file type(s) (**-f**)
 - genome_updater can update the selected repository by executing the same command again. It will identify previous files and update the working directory with the most recent version, keeping track of changes and just downloading/removing updated files
 
 ## Installation:
@@ -42,7 +42,7 @@ Data selection:
 - **-f**: suffix of files to be downloaded for each entry [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
 - **-l**: filter by Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]
 - **-c**: filter by RefSeq Category [all, reference genome, representative genome, na]
-
+- **-j**: select [top assemblies](#top-assemblies) for species or taxids: (**-j "species:3"**) to download the top 3 assemblies for each species selected or (**-j "taxids:1"**) to download only the top assembly for each taxid selected.
 
 Utilities:
 - **-i**: fixes current snapshot in case of network or any other failure during download
@@ -77,6 +77,10 @@ Reports:
 
 	./genome_updater.sh -d "refseq" -g "taxids:2559587" -f "genomic.fna.gz" -o "all_rna_virus" -t 12
 
+### Download one genome assembly for each bacterial species in genbank
+
+	./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_refseq" -t 12 -j "species:1"
+
 ### Download all E. Coli assemblies available on GenBank and RefSeq with a named label (v1)
 
 	./genome_updater.sh -d "genbank,refseq" -g "species:562" -f "genomic.fna.gz" -o "all_ecoli" -t 12 -b v1
@@ -96,6 +100,30 @@ Reports:
 ### Changing timeout and tries of the downloads (wget)
 
 	wget_tries=10 wget_timeout=600 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt"
+
+## Top assemblies:
+
+The top assemblies (**-j**) will be selected based on the species/taxid entries in the assembly_summary.txt and not for the taxids provided with -g "taxids:...". They are selected sorted by categories in the following order of importance:
+	
+	A) RefSeq Category: 
+		1) reference genome
+		2) representative genome
+		3) na
+	B) Assembly level:
+		1) Complete genome
+		2) Chromosome
+		3) Scaffold
+		4) Contig
+	C) Relation to type material:
+		1) assembly from type material
+		2) assembly from synonym type material
+		3) assembly from pathotype material
+		4) assembly designated as neotype
+		5) assembly designated as reftype
+		6) ICTV species exemplar
+		7) ICTV additional isolate
+	D) Date:
+		1) Most recent first
 
 ## Extended reports:
 
