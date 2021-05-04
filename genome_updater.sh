@@ -452,7 +452,7 @@ function showhelp {
     echo $' -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: all'
     echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ...]\n\tcheck ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats\n\tDefault: assembly_report.txt'
     echo $' -j Number of top references for each species/taxids to download ["", species:INT, taxids:INT]. Example: "species:3". Selection is based on 1) RefSeq Category, 2) Assembly level, 3) Relation to type material and 4) Date (most recent first)\n\tDefault: ""'
-    echo $' -z Keep only assemblies present on the GTDB (latest)'
+    echo $' -z Keep only assemblies present on the latest GTDB release'
     echo
     echo $' -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes'
     echo $' -i Fix failed downloads or any incomplete data from a previous run, keep current version'
