@@ -6,7 +6,7 @@ Bash script to download and update snapshots of the NCBI genomes (refseq/genbank
 
 ## Description:
 
-- genome_updater runs on a working directory (**-o**) and creates snapshots/versions (**-b**) of refseq/genbank genome repositories based on selected parameters: database (**-d**), organism group or species/taxids (**-g**), RefSeq category (**-c**), assembly level (**-l**), top assemblies (**-j**) and file type(s) (**-f**)
+- genome_updater runs on a working directory (**-o**) and creates snapshots/versions (**-b**) of refseq/genbank genome repositories based on selected parameters: database (**-d**), organism group or species/taxids (**-g**), RefSeq category (**-c**), assembly level (**-l**), top assemblies (**-j**), GTDB [3] compatible (**-z**) and file type(s) (**-f**)
 - genome_updater can update the selected repository by executing the same command again. It will identify previous files and update the working directory with the most recent version, keeping track of changes and just downloading/removing updated files
 
 ## Installation:
@@ -24,7 +24,7 @@ or
  - genome_updater depends only on the GNU Core Utilities and additional tools (`awk` `bc` `find` `join` `md5sum` `parallel` `sed` `tar` `xargs` `wget`) which are commonly available in most distributions. If you are not sure if you have them all, just run genome_updater.sh and it will tell you if something is missing (otherwise the it will show the help page).
  - To test genome_updater basic functions, run the script `tests/tests.sh`. It should print "All tests finished successfully" at the end.
  - Make sure you have access to the NCBI ftp folders: `ftp://ftp.ncbi.nlm.nih.gov/genomes/` and `ftp://ftp.ncbi.nih.gov/pub/taxonomy/`
- - If you still run into some issues it may be that some tools are running with incompatible or old versions. Please open an issue (https://github.com/pirovc/genome_updater/issues) with the description and the output of the command `genome_updater.sh -D`.
+ - If you still run into issues it may be that some utilities are incompatible or outdated. Please open an issue (https://github.com/pirovc/genome_updater/issues) describing the problem and the output of the command `genome_updater.sh -D`.
 
 ## Simple example:
 
@@ -43,6 +43,7 @@ Data selection:
 - **-l**: filter by Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]
 - **-c**: filter by RefSeq Category [all, reference genome, representative genome, na]
 - **-j**: select [top assemblies](#top-assemblies) for species or taxids: (**-j "species:3"**) to download the top 3 assemblies for each species selected or (**-j "taxids:1"**) to download only the top assembly for each taxid selected.
+- **-z**: select only assemblies included in the latest GTDB release
 
 Utilities:
 - **-i**: fixes current snapshot in case of network or any other failure during download
@@ -79,7 +80,7 @@ Reports:
 
 ### Download one genome assembly for each bacterial species in genbank
 
-	./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_refseq" -t 12 -j "species:1"
+	./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_genbank" -t 12 -j "species:1"
 
 ### Download all E. Coli assemblies available on GenBank and RefSeq with a named label (v1)
 
@@ -166,7 +167,10 @@ or
 
 ## Parameters:
 
-	genome_updater v0.2.2 by Vitor C. Piro http://github.com/pirovc
+	┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐
+	│ ┬├┤ ││││ ││││├┤     │ │├─┘ ││├─┤ │ ├┤ ├┬┘
+	└─┘└─┘┘└┘└─┘┴ ┴└─┘────└─┘┴  ─┴┘┴ ┴ ┴ └─┘┴└─
+	                                     v0.2.5 
 
 	 -g Organism group (one or more comma-separated entries) [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]. Example: archaea,bacteria
 	    or Species level taxids (one or more comma-separated entries). Example: species:622,562
@@ -178,8 +182,12 @@ or
 		Default: all
 	 -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]
 		Default: all
-	 -f File formats [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
+	 -f File formats [genomic.fna.gz,assembly_report.txt, ...]
+		check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats
 		Default: assembly_report.txt
+	 -j Number of top references for each species/taxids to download ["", species:INT, taxids:INT]. Example: "species:3". Selection is based on 1) RefSeq Category, 2) Assembly level, 3) Relation to type material and 4) Date (most recent first)
+		Default: ""
+	 -z Keep only assemblies present on the latest GTDB release
 
 	 -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes
 	 -i Fix failed downloads or any incomplete data from a previous run, keep current version
@@ -207,8 +215,11 @@ or
 
 	 -D Print print debug information and exit
 
+
 ## References:
 
 [1] ftp://ftp.ncbi.nlm.nih.gov/genomes/
 
 [2] Tange (2011): GNU Parallel - The Command-Line Power Tool, ;login: The USENIX Magazine, February 2011:42-47.
+
+[3] https://gtdb.ecogenomic.org/

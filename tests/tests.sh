@@ -90,8 +90,18 @@ out_2="tests/tst_taxids2493627"
 # check if both runs have the same files
 diff <(find "${out_all}"/v1/files/ -xtype f -printf "%f\n" | sort) <(find "${out_1}"/v1/files/ "${out_2}"/v1/files/ -xtype f  -printf "%f\n" | sort)
 
-echo ""
-echo ""
+
+####################### GTDB filter test
+out_gtdb="tests/tst_gtdb_filter"
+./genome_updater.sh -o "${out_gtdb}" -e "tests/assembly_summary_gtdb.txt" -m -b v1 -t ${threads} -p -z
+# should download only one file
+test $(find "${out_gtdb}/v1/files/" -xtype f | wc -l) -eq 1
+# test if nothing failed (it should not even be attempted to download, removed in filter step)
+test $(cat "${out_gtdb}/v1/"*_url_failed.txt | wc -l) -eq 0
+# and one successful
+test $(cat "${out_gtdb}/v1/"*_url_downloaded.txt | wc -l) -eq 1
+
+
 echo ""
 echo "*******************************"
 echo "All tests finished successfully"

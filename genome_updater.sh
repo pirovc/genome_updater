@@ -4,7 +4,7 @@ IFS=$' '
 
 # The MIT License (MIT)
  
-# Copyright (c) 2020 - Vitor C. Piro - http://github.com/pirovc
+# Copyright (c) 20201 - Vitor C. Piro - pirovc.github.io
 # All rights reserved.
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,11 +25,14 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.2.4"
+version="0.2.5"
 
 wget_tries=${wget_tries:-3}
 wget_timeout=${wget_timeout:-120}
-export wget_tries wget_timeout
+export wget_tries wget_timeout 
+gtdb_urls=( "https://data.gtdb.ecogenomic.org/releases/latest/ar122_taxonomy.tsv.gz" 
+            "https://data.gtdb.ecogenomic.org/releases/latest/bac120_taxonomy.tsv.gz" )
+
 # Export locale numeric to avoid errors on printf in different setups
 export LC_NUMERIC="en_US.UTF-8"
 
@@ -37,15 +40,21 @@ export LC_NUMERIC="en_US.UTF-8"
 shopt -s expand_aliases
 alias sort="sort --field-separator=$'\t'"
 
-get_taxdump()
+download_url() # parameter: ${1} url, ${2} output file/directory (omit/empty to STDOUT)
 {
-    wget -qO- --tries="${wget_tries}" --read-timeout="${wget_timeout}" "ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz" > ${1}
+    outfiledir="${2:-}"
+    if [[ ! -z "${outfiledir}" ]]; then
+        if [[ -d "${outfiledir}" ]]; then
+            out="--directory-prefix=${outfiledir}"
+        else
+            out="--output-document=${outfiledir}"
+        fi
+    else
+        out="--output-document=-" # STDOUT
+    fi
+    wget "${out}" --quiet --continue --tries="${wget_tries}" --read-timeout="${wget_timeout}" ${1}
 }
-
-get_new_taxdump()
-{
-    wget -qO- --tries="${wget_tries}" --read-timeout="${wget_timeout}" "ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" > ${1}
-}
+export -f download_url #export it to be accessible to the parallel call
 
 unpack() # parameter: ${1} file, ${2} output folder[, ${3} files to unpack]
 {
@@ -65,9 +74,9 @@ parse_new_taxdump() # parameter: ${1} taxids - return all taxids on of provided 
 	taxids=${1}
 	echolog "Downloading taxdump and generating lineage" "1"
     tmp_new_taxdump="${target_output_prefix}new_taxdump.tar.gz"
-    tmp_taxidlineage="${working_dir}taxidlineage.dmp"
-    get_new_taxdump "${tmp_new_taxdump}"
+    download_url "ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}"
     unpack "${tmp_new_taxdump}" "${working_dir}" "taxidlineage.dmp"
+    tmp_taxidlineage="${working_dir}taxidlineage.dmp"
     tmp_lineage=${working_dir}lineage.tmp
     for tx in ${taxids//,/ }; do
         txids_lin=$(grep "[^0-9]${tx}[^0-9]" "${tmp_taxidlineage}" | cut -f 1) #get only taxids in the lineage section
@@ -89,7 +98,7 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
     for d in ${2//,/ }
     do
         if [[ ! -z "${taxids}" || ! -z "${species}" ]]; then # Get complete assembly_summary for database
-            wget --tries="${wget_tries}" --read-timeout="${wget_timeout}" -qO- ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/assembly_summary_${d}.txt | tail -n+3 >> "${1}"
+            download_url "ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/assembly_summary_${d}.txt" | tail -n+3 >> "${1}"
         else
             for og in ${3//,/ }
             do
@@ -98,7 +107,7 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
                 then
                     og="vertebrate_mammalian/Homo_sapiens"
                 fi
-                wget --tries="${wget_tries}" --read-timeout="${wget_timeout}" -qO- ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/${og}/assembly_summary.txt | tail -n+3 >> "${1}"
+                download_url "ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/${og}/assembly_summary.txt" | tail -n+3 >> "${1}"
             done
         fi
     done
@@ -124,6 +133,20 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file - return numbe
         awk -F "\t" -v refseq_category="${refseq_category}" -v assembly_level="${assembly_level}" 'BEGIN{if(refseq_category=="all") refseq_category=".*"; if(assembly_level=="all") assembly_level=".*"} $5 ~ refseq_category && $12 ~ assembly_level && $11=="latest" {print $0}' "${1}" > "${1}_filtered"
         mv "${1}_filtered" "${1}"
     fi
+    count_lines_file "${1}"
+}
+
+filter_gtdb() # parameter: ${1} assembly_summary file - return number of lines
+{
+    gtdb_acc=${working_dir}"gtdb_acc"
+    for url in "${gtdb_urls[@]}"
+    do
+        # awk to remove prefix RS_ or GB_
+        download_url "${url}" | zcat | awk -F "\t" '{print substr($1, 4, length($1))}' >> "${gtdb_acc}"
+    done
+    join -1 1 -2 1 <(sort -k 1,1 "${1}") <(sort -k 1,1 "${gtdb_acc}") -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" | sort | uniq > "${1}_gtdb"
+    mv "${1}_gtdb" "${1}"
+    rm "${gtdb_acc}"
     count_lines_file "${1}"
 }
 
@@ -190,11 +213,12 @@ check_file_folder() # parameter: ${1} url, ${2} log (0->before download/1->after
         rm -vf "${target_output_prefix}${files_dir}${file_name}" >> "${log_file}" 2>&1
         return 1
     else
-        if [ "${2}" -eq 0 ]; then 
-            echolog "${file_name} file found on the output folder [${target_output_prefix}${files_dir}${file_name}]" "0"
-        else
-            echolog "${file_name} downloaded successfully [${1} -> ${target_output_prefix}${files_dir}${file_name}]" "0"
-        fi
+        # Disabled log in case of success, hard to detect failures
+        #if [ "${2}" -eq 0 ]; then 
+        #    echolog "${file_name} file found on the output folder [${target_output_prefix}${files_dir}${file_name}]" "0"
+        #else
+        #    echolog "${file_name} downloaded successfully [${1} -> ${target_output_prefix}${files_dir}${file_name}]" "0"
+        #fi
         return 0
     fi
 }
@@ -205,7 +229,7 @@ check_md5_ftp() # parameter: ${1} url - returns 0 (ok) / 1 (error)
     if [ "${check_md5}" -eq 1 ]; then # Only if md5 checking is activated
         md5checksums_url="$(dirname ${1})/md5checksums.txt" # ftp directory
         file_name=$(basename ${1}) # downloaded file name
-        md5checksums_file=$(wget -qO- --tries="${wget_tries}" --read-timeout="${wget_timeout}" "${md5checksums_url}")
+        md5checksums_file=$(download_url "${md5checksums_url}")
         if [ -z "${md5checksums_file}" ]; then
             echolog "${file_name} MD5checksum file download failed [${md5checksums_url}] - FILE KEPT"  "0"
             return 0
@@ -245,7 +269,7 @@ download() # parameter: ${1} url, ${2} job number, ${3} total files, ${4} url_su
         dl=1
     fi
     if [ "${dl}" -eq 1 ]; then # If file is not yet on folder, download it
-        wget ${1} --quiet --continue --tries="${wget_tries}" --read-timeout="${wget_timeout}" -P "${target_output_prefix}${files_dir}"
+        download_url "${1}" "${target_output_prefix}${files_dir}"
         if ! check_file_folder ${1} "1"; then # Check if file was downloaded
             ex=1
         elif ! check_md5_ftp ${1}; then # Check file md5
@@ -386,6 +410,7 @@ refseq_category="all"
 assembly_level="all"
 file_formats="assembly_report.txt"
 top_assemblies=""
+gtdb_only=0
 download_taxonomy=0
 delete_extra_files=0
 check_md5=0
@@ -427,6 +452,7 @@ function showhelp {
     echo $' -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: all'
     echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ...]\n\tcheck ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats\n\tDefault: assembly_report.txt'
     echo $' -j Number of top references for each species/taxids to download ["", species:INT, taxids:INT]. Example: "species:3". Selection is based on 1) RefSeq Category, 2) Assembly level, 3) Relation to type material and 4) Date (most recent first)\n\tDefault: ""'
+    echo $' -z Keep only assemblies present on the latest GTDB release'
     echo
     echo $' -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes'
     echo $' -i Fix failed downloads or any incomplete data from a previous run, keep current version'
@@ -464,7 +490,7 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 OPTIND=1 # Reset getopts
-while getopts "d:g:c:l:o:e:b:t:f:j:n:akixmurpswhD" opt; do
+while getopts "d:g:c:l:o:e:b:t:f:j:zn:akixmurpswhD" opt; do
   case ${opt} in
     d) database=${OPTARG} ;;
     g) organism_group=${OPTARG// } ;; #remove spaces
@@ -476,6 +502,7 @@ while getopts "d:g:c:l:o:e:b:t:f:j:n:akixmurpswhD" opt; do
     t) threads=${OPTARG} ;;
     f) file_formats=${OPTARG// } ;; #remove spaces
     j) top_assemblies=${OPTARG} ;;
+    z) gtdb_only=1 ;;
     a) download_taxonomy=1 ;;
     k) just_check=1 ;;
     i) just_fix=1 ;;
@@ -635,6 +662,7 @@ echolog "RefSeq category: ${refseq_category}" "0"
 echolog "Assembly level: ${assembly_level}" "0"
 echolog "File formats: ${file_formats}" "0"
 echolog "Top assemblies: ${top_assemblies}" "0"
+echolog "GTDB Only: ${gtdb_only}" "0"
 echolog "Download taxonomy: ${download_taxonomy}" "0"
 echolog "Just check for updates: ${just_check}" "0"
 echolog "Just fix/recover current version: ${just_fix}" "0"
@@ -673,6 +701,13 @@ if [[ "${MODE}" == "NEW" ]]; then
     echolog " - ${all_lines} entries available" "1"
     filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
     echolog " - $((all_lines-filtered_lines)) entries removed with filters: RefSeq category=${refseq_category}, Assembly level=${assembly_level}, Version status=latest, valid URLs" "1"
+    #GTDB
+    if [ "${gtdb_only}" -eq 1 ]; then
+        gtdb_lines=$(filter_gtdb "${new_assembly_summary}")
+        echolog " - $((filtered_lines-gtdb_lines)) entries removed not in GTDB" "1"
+        filtered_lines=${gtdb_lines}
+    fi
+    #TOP ASSEMBLIES
     if [[ ! -z "${top_assemblies}" ]]; then
         top_lines=$(top_assembly_summary "${new_assembly_summary}" "${top_assemblies}")
         echolog " - $((filtered_lines-top_lines)) entries removed with top filter ${top_assemblies}" "1"
@@ -773,6 +808,13 @@ else # update/fix
         echolog " - ${all_lines} entries available" "1"
         filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
         echolog " - $((all_lines-filtered_lines)) entries removed with filters: RefSeq category=${refseq_category}, Assembly level=${assembly_level}, Version status=latest, valid URLs" "1"
+        #GTDB
+        if [ "${gtdb_only}" -eq 1 ]; then
+            gtdb_lines=$(filter_gtdb "${new_assembly_summary}")
+            echolog " - $((filtered_lines-gtdb_lines)) entries removed not in GTDB" "1"
+            filtered_lines=${gtdb_lines}
+        fi
+        #TOP ASSEMBLIES
         if [[ ! -z "${top_assemblies}" ]]; then
             top_lines=$(top_assembly_summary "${new_assembly_summary}" "${top_assemblies}")
             echolog " - $((filtered_lines-top_lines)) entries removed with top filter ${top_assemblies}" "1"
@@ -866,7 +908,7 @@ fi
 if [ "${just_check}" -eq 0 ]; then
 	if [ "${download_taxonomy}" -eq 1 ]; then
         echolog "Downloading current Taxonomy database [${target_output_prefix}taxdump.tar.gz] " "1"
-        get_taxdump "${target_output_prefix}taxdump.tar.gz"
+        download_url "ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz" "${target_output_prefix}taxdump.tar.gz"
         echolog " - Done" "1"
         echolog "" "1"
     fi
