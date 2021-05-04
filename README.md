@@ -6,7 +6,7 @@ Bash script to download and update snapshots of the NCBI genomes (refseq/genbank
 
 ## Description:
 
-- genome_updater runs on a working directory (**-o**) and creates snapshots/versions (**-b**) of refseq/genbank genome repositories based on selected parameters: database (**-d**), organism group or species/taxids (**-g**), RefSeq category (**-c**), assembly level (**-l**), top assemblies (**-j**) and file type(s) (**-f**)
+- genome_updater runs on a working directory (**-o**) and creates snapshots/versions (**-b**) of refseq/genbank genome repositories based on selected parameters: database (**-d**), organism group or species/taxids (**-g**), RefSeq category (**-c**), assembly level (**-l**), top assemblies (**-j**), GTDB compatible (**-z**) and file type(s) (**-f**)
 - genome_updater can update the selected repository by executing the same command again. It will identify previous files and update the working directory with the most recent version, keeping track of changes and just downloading/removing updated files
 
 ## Installation:
@@ -43,6 +43,7 @@ Data selection:
 - **-l**: filter by Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]
 - **-c**: filter by RefSeq Category [all, reference genome, representative genome, na]
 - **-j**: select [top assemblies](#top-assemblies) for species or taxids: (**-j "species:3"**) to download the top 3 assemblies for each species selected or (**-j "taxids:1"**) to download only the top assembly for each taxid selected.
+- **-z**: select only assemblies included in the latest GTDB release
 
 Utilities:
 - **-i**: fixes current snapshot in case of network or any other failure during download
@@ -79,7 +80,7 @@ Reports:
 
 ### Download one genome assembly for each bacterial species in genbank
 
-	./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_refseq" -t 12 -j "species:1"
+	./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_genbank" -t 12 -j "species:1"
 
 ### Download all E. Coli assemblies available on GenBank and RefSeq with a named label (v1)
 
