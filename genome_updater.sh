@@ -90,14 +90,10 @@ parse_new_taxdump() # parameter: ${1} taxids - return all taxids on of provided 
 
 get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, ${3} organism_group - return number of lines
 {
-    species=""
-    taxids=""
-	# check if is there is species or taxids
-	if [[ " ${3} " =~ "species:" ]]; then species="${3/species:/}"; fi
-	if [[ " ${3} " =~ "taxids:" ]]; then taxids="${3/taxids:/}"; fi  
     for d in ${2//,/ }
     do
-        if [[ ! -z "${taxids}" || ! -z "${species}" ]]; then # Get complete assembly_summary for database
+        # If no organism group is chosen, get complete assembly_summary for the database
+        if [[ -z "${3}" ]]; then
             download_url "ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/assembly_summary_${d}.txt" | tail -n+3 >> "${1}"
         else
             for og in ${3//,/ }
@@ -112,27 +108,72 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
         fi
     done
 
-    # Keep only selected species or taxid lineage, removing at the end duplicated entries from duplicates on taxids
-    if [[ ! -z "${species}" ]]; then
-        join -1 7 -2 1 <(sort -k 7,7 "${1}") <(echo "${species//,/$'\n'}" | sort -k 1,1) -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" | sort | uniq > "${1}_species"
-        mv "${1}_species" "${1}"
-    elif [[ ! -z "${taxids}" ]]; then
-    	lineage_taxids=$(parse_new_taxdump "${taxids}")
-        join -1 6 -2 1 <(sort -k 6,6 "${1}") <(echo "${lineage_taxids//,/$'\n'}" | sort -k 1,1) -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" | sort | uniq > "${1}_taxids"
-        mv "${1}_taxids" "${1}"
-    fi
     count_lines_file "${1}"
 }
 
-filter_assembly_summary() # parameter: ${1} assembly_summary file - return number of lines
+filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number of lines
 {
-    # Filter entries with "na" on url field
-    awk -F "\t" '$20!="na" {print $0}' "${1}" > "${1}_filtered"
-    mv "${1}_filtered" "${1}"
-    if [[ "${refseq_category}" != "all" || "${assembly_level}" != "all" ]]; then
-        awk -F "\t" -v refseq_category="${refseq_category}" -v assembly_level="${assembly_level}" 'BEGIN{if(refseq_category=="all") refseq_category=".*"; if(assembly_level=="all") assembly_level=".*"} $5 ~ refseq_category && $12 ~ assembly_level && $11=="latest" {print $0}' "${1}" > "${1}_filtered"
-        mv "${1}_filtered" "${1}"
+
+    assembly_summary="${1}"
+    filtered_lines=${2}
+
+    # SPECIES taxids
+    if [[ ! -z "${species}" ]]; then
+        species_lines=$(filter_species "${assembly_summary}")
+        echolog " - $((filtered_lines-species_lines)) assemblies removed not in species [${species}]" "1"
+        filtered_lines=${species_lines}
     fi
+
+    # TAXIDS
+    if [[ ! -z "${taxids}" ]]; then
+        taxids_lines=$(filter_taxids "${assembly_summary}")
+        echolog " - $((filtered_lines-taxids_lines)) assemblies removed not in taxids [${taxids}]" "1"
+        filtered_lines=${taxids_lines}
+    fi
+
+    columns_lines=$(filter_columns "${assembly_summary}")
+    echolog " - $((filtered_lines-columns_lines)) assemblies removed with filters: RefSeq category=${refseq_category}, Assembly level=${assembly_level}, Version status=latest, valid URLs" "1"
+    filtered_lines=${columns_lines}
+
+    #GTDB
+    if [ "${gtdb_only}" -eq 1 ]; then
+        gtdb_lines=$(filter_gtdb "${assembly_summary}")
+        echolog " - $((filtered_lines-gtdb_lines)) assemblies removed not in GTDB" "1"
+        filtered_lines=${gtdb_lines}
+    fi
+
+    #TOP ASSEMBLIES
+    if [[ ! -z "${top_assemblies}" ]]; then
+        top_lines=$(filter_top_assemblies "${assembly_summary}")
+        echolog " - $((filtered_lines-top_lines)) entries removed with top filter ${top_assemblies}" "1"
+        filtered_lines=${top_lines}
+    fi
+    echolog " - ${filtered_lines} assembly entries to download" "1"
+    echolog "" "1"
+}
+
+filter_taxids() # parameter: ${1} assembly_summary file - return number of lines
+{
+    # Keep only selected taxid lineage, removing at the end duplicated entries from duplicates on taxids
+    lineage_taxids=$(parse_new_taxdump "${taxids}")
+    join -1 6 -2 1 <(sort -k 6,6 "${1}") <(echo "${lineage_taxids//,/$'\n'}" | sort -k 1,1) -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" | sort | uniq > "${1}_taxids"
+    mv "${1}_taxids" "${1}"
+    count_lines_file "${1}"
+}
+
+filter_species() # parameter: ${1} assembly_summary file - return number of lines
+{
+    join -1 7 -2 1 <(sort -k 7,7 "${1}") <(echo "${species//,/$'\n'}" | sort -k 1,1) -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" | sort | uniq > "${1}_species"
+    mv "${1}_species" "${1}"
+    count_lines_file "${1}"
+}
+
+filter_columns() # parameter: ${1} assembly_summary file - return number of lines
+{
+    #awk -F "\t" '$20!="na" {print $0}' "${1}" > "${1}_filtered"
+    #mv "${1}_filtered" "${1}"
+    awk -F "\t" -v refseq_category="${refseq_category}" -v assembly_level="${assembly_level}" 'BEGIN{if(refseq_category=="all") refseq_category=".*"; if(assembly_level=="all") assembly_level=".*"} $5 ~ refseq_category && $11=="latest" && $12 ~ assembly_level && $20!="na" {print $0}' "${1}" > "${1}_filtered"
+    mv "${1}_filtered" "${1}"
     count_lines_file "${1}"
 }
 
@@ -150,14 +191,14 @@ filter_gtdb() # parameter: ${1} assembly_summary file - return number of lines
     count_lines_file "${1}"
 }
 
-top_assembly_summary() # parameter: ${1} assembly_summary file, ${2} top_assemblies - return number of lines
+filter_top_assemblies() # parameter: ${1} assembly_summary file - return number of lines
 {
-    if [[ " ${2} " =~ "taxids:" ]]; then
+    if [[ " ${top_assemblies} " =~ "taxids:" ]]; then
         taxcol="6";
-        top="${2/taxids:/}";
-    elif [[ " ${2} " =~ "species:" ]]; then
+        top="${top_assemblies/taxids:/}";
+    elif [[ " ${top_assemblies} " =~ "species:" ]]; then
         taxcol="7";
-        top="${2/species:/}";
+        top="${top_assemblies/species:/}";
     fi  
 
     awk -v taxcol="${taxcol}" 'BEGIN{
@@ -185,7 +226,6 @@ top_assembly_summary() # parameter: ${1} assembly_summary file, ${2} top_assembl
     rm "${1}_top_acc"
     count_lines_file "${1}"
 }
-
 
 list_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url], ${3} extensions - returns assembly accession, url and filename (for all selected extensions)
 {
@@ -406,6 +446,8 @@ print_debug() # parameters: ${1} tools
 # Defaults
 database="refseq"
 organism_group=""
+species=""
+taxids=""
 refseq_category="all"
 assembly_level="all"
 file_formats="assembly_report.txt"
@@ -443,32 +485,38 @@ function showhelp {
     echo
     print_logo
     echo
-    echo $' -g Organism group (one or more comma-separated entries) [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]. Example: archaea,bacteria'
-    echo $'    or Species level taxids (one or more comma-separated entries). Example: species:622,562'
-    echo $'    or Any level taxids - lineage will be generated (one or more comma-separated entries). Example: taxids:620,649776'
-    echo
+    echo $'Database options:'
     echo $' -d Database [genbank, refseq]\n\tDefault: refseq'
+    echo
+    echo $'Organism options:'
+    echo $' -g Organism group (one or more comma-separated entries) [archaea, bacteria, fungi, human, invertebrate, metagenomes, other, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]. Example: archaea,bacteria.\n\tDefault: ""'
+    echo $' -S Species level taxids (one or more comma-separated entries). Example: 622,562\n\tDefault: ""'
+    echo $' -T Any level taxids - children lineage will be generated (one or more comma-separated entries). Example: 620,649776\n\tDefault: ""'
+    echo
+    echo $'Filter options:'
     echo $' -c RefSeq Category [all, reference genome, representative genome, na]\n\tDefault: all'
     echo $' -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: all'
-    echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ...]\n\tcheck ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats\n\tDefault: assembly_report.txt'
+    echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ...] check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats\n\tDefault: assembly_report.txt'
     echo $' -j Number of top references for each species/taxids to download ["", species:INT, taxids:INT]. Example: "species:3". Selection is based on 1) RefSeq Category, 2) Assembly level, 3) Relation to type material and 4) Date (most recent first)\n\tDefault: ""'
     echo $' -z Keep only assemblies present on the latest GTDB release'
     echo
-    echo $' -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes'
-    echo $' -i Fix failed downloads or any incomplete data from a previous run, keep current version'
-    echo $' -x Allow the deletion of extra files if some are found in the repository folder'
-    echo
+    echo $'Reports/Extra options:'
     echo $' -u Report of updated assembly accessions (Added/Removed, assembly accession, url)'
     echo $' -r Report of updated sequence accessions (Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid). Only available when file assembly_report.txt selected and successfully downloaded'
     echo $' -p Output list of URLs for downloaded and failed files'
-    echo $' -a Download the current version of the Taxonomy database (taxdump.tar.gz)'
     echo
+    echo $'Run options:'
     echo $' -o Working output directory \n\tDefault: ./tmp.XXXXXXXXXX'
     echo $' -b Version label\n\tDefault: current timestamp (YYYY-MM-DD_HH-MM-SS)'
-    echo $' -e External "assembly_summary.txt" file to recover data from \n\tDefault: ""'
+    echo $' -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes'
+    echo $' -i Fix failed downloads or any incomplete data from a previous run, keep current version'
+    echo $' -m Check MD5 for downloaded files'
     echo $' -t Threads\n\tDefault: 1'
     echo
-    echo $' -m Check MD5 for downloaded files'
+    echo $'Other options:'
+    echo $' -x Allow the deletion of extra files if some are found in the repository folder'
+    echo $' -a Download the current version of the Taxonomy database (taxdump.tar.gz)'
+    echo $' -e External "assembly_summary.txt" file to recover data from \n\tDefault: ""'
     echo $' -s Silent output'
     echo $' -w Silent output with download progress (%) and download version at the end'
     echo $' -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)\n\tDefault: 0'
@@ -490,10 +538,12 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 OPTIND=1 # Reset getopts
-while getopts "d:g:c:l:o:e:b:t:f:j:zn:akixmurpswhD" opt; do
+while getopts "d:g:S:T:c:l:o:e:b:t:f:j:zn:akixmurpswhD" opt; do
   case ${opt} in
     d) database=${OPTARG} ;;
     g) organism_group=${OPTARG// } ;; #remove spaces
+    S) species=${OPTARG// } ;; #remove spaces
+    T) taxids=${OPTARG// } ;; #remove spaces
     c) refseq_category=${OPTARG} ;;
     l) assembly_level=${OPTARG} ;;
     o) working_dir=${OPTARG} ;;
@@ -528,26 +578,38 @@ if [ "${debug_mode}" -eq 1 ] ; then
     exit 0;
 fi
 ######################### General parameter validation ######################### 
-valid_databases=( "genbank" "refseq" )
-for d in ${database//,/ }
-do
-    if [[ ! " ${valid_databases[@]} " =~ " ${d} " ]]; then
-        echo "Database ${d} not valid";
-    fi
-done
-if [[ "${organism_group}" == "taxids:"* || "${organism_group}" == "species:"* ]]; then
-    if [[ ! "${organism_group}" =~ ^(taxids|species)\:[0-9,]+$ ]]; then
-        echo "Invalid syntax for organism group"; exit 1;
-    fi
+if [[ -z "${database}" ]]; then
+    echo "Database is required (-d)"; exit 1;
 else
-    valid_organism_groups=( "archaea" "bacteria" "fungi" "human" "invertebrate" "metagenomes" "other" "plant" "protozoa" "vertebrate_mammalian" "vertebrate_other" "viral" )
-    for og in ${organism_group//,/ }
+    valid_databases=( "genbank" "refseq" )
+    for d in ${database//,/ }
     do
-        if [[ ! " ${valid_organism_groups[@]} " =~ " ${og} " ]]; then
-            echo "Organism group - ${og} - not valid"; exit 1;
+        if [[ ! " ${valid_databases[@]} " =~ " ${d} " ]]; then
+            echo "Database ${d} is not valid"; exit 1;
         fi
     done
 fi
+
+valid_organism_groups=( "archaea" "bacteria" "fungi" "human" "invertebrate" "metagenomes" "other" "plant" "protozoa" "vertebrate_mammalian" "vertebrate_other" "viral" )
+for og in ${organism_group//,/ }
+do
+    if [[ ! " ${valid_organism_groups[@]} " =~ " ${og} " ]]; then
+        echo "Organism group - ${og} - not valid"; exit 1;
+    fi
+done
+
+if [[ ! -z "${species}"  ]]; then
+    if [[ ! "${species}" =~ ^[0-9,]+$ ]]; then
+        echo "Invalid species taxids"; exit 1;
+    fi
+fi
+
+if [[ ! -z "${taxids}"  ]]; then
+    if [[ ! "${taxids}" =~ ^[0-9,]+$ ]]; then
+        echo "Invalid taxids"; exit 1;
+    fi
+fi
+
 valid_refseq_categories=( "all" "reference genome" "representative genome" "na" )
 if [[ ! " ${valid_refseq_categories[@]} " =~ " ${refseq_category} " ]]; then
     echo "RefSeq category - ${refseq_category} - not valid"; exit 1;
@@ -560,10 +622,7 @@ fi
 if [[ ! -z "${external_assembly_summary}" ]] && [[ ! -f "${external_assembly_summary}" ]]; then
     echo "External assembly_summary.txt not found [$(readlink -m ${external_assembly_summary})]"; exit 1;
 fi
-# mandatory organism group/taxids
-if [[ -z "${organism_group}" && -z "${external_assembly_summary}" && "${just_fix}" -eq 0 ]]; then
-    echo "Please inform the organism group, species or taxids (comma separated) with the -g parameter"; exit 1;
-fi
+
 # top taxids/species
 if [[ ! -z "${top_assemblies}" ]]; then
     if [[ ! "${top_assemblies}" =~ ^(taxids|species)\:[1-9]+$ ]]; then
@@ -658,6 +717,8 @@ echolog "Mode: ${MODE} - $(if [[ "${just_check}" -eq 1 ]]; then echo "CHECK"; el
 echolog "Timestamp: ${timestamp}" "0"
 echolog "Database: ${database}" "0"
 echolog "Organims group: ${organism_group}" "0"
+echolog "Species: ${species}" "0"
+echolog "Taxids: ${species}" "0"
 echolog "RefSeq category: ${refseq_category}" "0"
 echolog "Assembly level: ${assembly_level}" "0"
 echolog "File formats: ${file_formats}" "0"
@@ -690,30 +751,19 @@ if [[ "${MODE}" == "NEW" ]]; then
     if [[ ! -z "${external_assembly_summary}" ]]; then
         echolog "Using external assembly summary [$(readlink -m ${external_assembly_summary})]" "1"
         cp "${external_assembly_summary}" "${new_assembly_summary}";
-        if [[ ! -z "${organism_group}" ]]; then
-            echolog " - Organism group [${organism_group}] and database [${database}] values ignored when using an external assembly_summary.txt" "1";
-        fi
+        echolog " - Database [${database}] and Organism group [${organism_group}] selection are ignored when using an external assembly summary" "1";
         all_lines=$(count_lines_file "${new_assembly_summary}")
     else
         echolog "Downloading assembly summary [${new_label}]" "1"
+        echolog " - Database [${database}]" "1"
+        if [[ ! -z "${organism_group}" ]]; then
+            echolog " - Organism group [${organism_group}]" "1";
+        fi
         all_lines=$(get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}")
     fi
-    echolog " - ${all_lines} entries available" "1"
-    filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
-    echolog " - $((all_lines-filtered_lines)) entries removed with filters: RefSeq category=${refseq_category}, Assembly level=${assembly_level}, Version status=latest, valid URLs" "1"
-    #GTDB
-    if [ "${gtdb_only}" -eq 1 ]; then
-        gtdb_lines=$(filter_gtdb "${new_assembly_summary}")
-        echolog " - $((filtered_lines-gtdb_lines)) entries removed not in GTDB" "1"
-        filtered_lines=${gtdb_lines}
-    fi
-    #TOP ASSEMBLIES
-    if [[ ! -z "${top_assemblies}" ]]; then
-        top_lines=$(top_assembly_summary "${new_assembly_summary}" "${top_assemblies}")
-        echolog " - $((filtered_lines-top_lines)) entries removed with top filter ${top_assemblies}" "1"
-        filtered_lines=${top_lines}
-    fi
-    echolog " - ${filtered_lines} entries to be downloaded" "1"
+    echolog " - ${all_lines} assembly entries available" "1"
+
+    filter_assembly_summary "${new_assembly_summary}" ${all_lines}
 
     if [ "${just_check}" -eq 1 ]; then
         rm "${new_assembly_summary}" "${log_file}"
@@ -725,7 +775,7 @@ if [[ "${MODE}" == "NEW" ]]; then
         ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
         
         if [[ "${filtered_lines}" -gt 0 ]] ; then
-            echolog " - Downloading $((filtered_lines*(n_formats+1))) files with ${threads} threads"    "1"
+            echolog " - Downloading $((filtered_lines*(n_formats+1))) files with ${threads} threads" "1"
             download_files "${new_assembly_summary}" "1,20" "${file_formats}"
 
             # UPDATED INDICES assembly accession
@@ -802,26 +852,15 @@ else # update/fix
         target_output_prefix=${new_output_prefix}
         export target_output_prefix
 
-        # Check for updates on NCBI
         echolog "Downloading assembly summary [${new_label}]" "1"
+        echolog " - Database [${database}]" "1"
+        if [[ ! -z "${organism_group}" ]]; then
+            echolog " - Organism group [${organism_group}]" "1";
+        fi
         all_lines=$(get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}")
-        echolog " - ${all_lines} entries available" "1"
-        filtered_lines=$(filter_assembly_summary "${new_assembly_summary}")
-        echolog " - $((all_lines-filtered_lines)) entries removed with filters: RefSeq category=${refseq_category}, Assembly level=${assembly_level}, Version status=latest, valid URLs" "1"
-        #GTDB
-        if [ "${gtdb_only}" -eq 1 ]; then
-            gtdb_lines=$(filter_gtdb "${new_assembly_summary}")
-            echolog " - $((filtered_lines-gtdb_lines)) entries removed not in GTDB" "1"
-            filtered_lines=${gtdb_lines}
-        fi
-        #TOP ASSEMBLIES
-        if [[ ! -z "${top_assemblies}" ]]; then
-            top_lines=$(top_assembly_summary "${new_assembly_summary}" "${top_assemblies}")
-            echolog " - $((filtered_lines-top_lines)) entries removed with top filter ${top_assemblies}" "1"
-            filtered_lines=${top_lines}
-        fi
-        echolog " - ${filtered_lines} entries to be downloaded" "1"
-        echolog "" "1"
+        echolog " - ${all_lines} assembly entries available" "1"
+
+        filter_assembly_summary "${new_assembly_summary}" ${all_lines}
 
         if [[ "${just_check}" -eq 0 ]]; then
             # Link versions (current and new)

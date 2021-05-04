@@ -60,10 +60,10 @@ diff <(find "${out_direct}"/v1/files/ -xtype f -printf "%f\n" | sort) <(find "${
 out_all="tests/tst_species"
 out_1="tests/tst_species1686310"
 out_2="tests/tst_species64571"
-./genome_updater.sh -o "${out_all}" -g "species:1686310,64571" -d "genbank" -f "assembly_report.txt" -m -b v1 -t ${threads}
+./genome_updater.sh -o "${out_all}" -S "1686310,64571" -d "genbank" -f "assembly_report.txt" -m -b v1 -t ${threads}
 # download them separated
-./genome_updater.sh -o "${out_1}" -g "species:1686310" -d "genbank" -f "assembly_report.txt" -m -b v1 -t ${threads}
-./genome_updater.sh -o "${out_2}" -g "species:64571" -d "genbank" -f "assembly_report.txt" -m -b v1 -t ${threads}
+./genome_updater.sh -o "${out_1}" -S "1686310" -d "genbank" -f "assembly_report.txt" -m -b v1 -t ${threads}
+./genome_updater.sh -o "${out_2}" -S "64571" -d "genbank" -f "assembly_report.txt" -m -b v1 -t ${threads}
 # check if both runs have the same files
 diff <(find "${out_all}"/v1/files/ -xtype f -printf "%f\n" | sort) <(find "${out_1}"/v1/files/ "${out_2}"/v1/files/ -xtype f  -printf "%f\n" | sort)
 
@@ -71,8 +71,8 @@ diff <(find "${out_all}"/v1/files/ -xtype f -printf "%f\n" | sort) <(find "${out
 ####################### duplicated entries 
 out_dup1="tests/tst_duplicated1"
 out_dup2="tests/tst_duplicated2"
-./genome_updater.sh -o "${out_dup1}" -g "species:1686310" -m -b v1 -t ${threads} -p -u -r 
-./genome_updater.sh -o "${out_dup2}" -g "species:1686310,1686310,1686310" -m -b v1 -t ${threads} -p -u -r 
+./genome_updater.sh -o "${out_dup1}" -S "1686310" -m -b v1 -t ${threads} -p -u -r 
+./genome_updater.sh -o "${out_dup2}" -S "1686310,1686310,1686310" -m -b v1 -t ${threads} -p -u -r 
 # number of output files and reports should be the same
 test $(find "${out_dup1}/v1/files/" -xtype f | wc -l) -eq $(find "${out_dup2}/v1/files/" -xtype f | wc -l)
 diff <(sort "${out_dup1}"/v1/updated_assembly_accession.txt) <(sort "${out_dup2}"/v1/updated_assembly_accession.txt)
@@ -83,10 +83,10 @@ diff <(sort "${out_dup1}"/v1/updated_sequence_accession.txt) <(sort "${out_dup2}
 out_all="tests/tst_taxids"
 out_1="tests/tst_taxids1910924"
 out_2="tests/tst_taxids2493627"
-./genome_updater.sh -o "${out_all}" -g "taxids:1910924,2493627" -d "refseq" -f "genomic.fna.gz,assembly_report.txt" -m -b v1 -t ${threads}
+./genome_updater.sh -o "${out_all}" -T "1910924,2493627" -d "refseq" -f "genomic.fna.gz,assembly_report.txt" -m -b v1 -t ${threads}
 # download them separated
-./genome_updater.sh -o "${out_1}" -g "taxids:1910924" -d "refseq" -f "genomic.fna.gz,assembly_report.txt" -m -b v1 -t ${threads}
-./genome_updater.sh -o "${out_2}" -g "taxids:2493627" -d "refseq" -f "genomic.fna.gz,assembly_report.txt" -m -b v1 -t ${threads}
+./genome_updater.sh -o "${out_1}" -T "1910924" -d "refseq" -f "genomic.fna.gz,assembly_report.txt" -m -b v1 -t ${threads}
+./genome_updater.sh -o "${out_2}" -T "2493627" -d "refseq" -f "genomic.fna.gz,assembly_report.txt" -m -b v1 -t ${threads}
 # check if both runs have the same files
 diff <(find "${out_all}"/v1/files/ -xtype f -printf "%f\n" | sort) <(find "${out_1}"/v1/files/ "${out_2}"/v1/files/ -xtype f  -printf "%f\n" | sort)
 
