@@ -15,11 +15,11 @@ test $(cat "${out_fail}/v1/"*_url_downloaded.txt | wc -l) -eq 0
 
 ####################### top assemblies test
 out_species="tests/tst_top_assemblies_species"
-./genome_updater.sh -o "${out_species}" -j "species:2" -f "assembly_report.txt" -b "top2species" -e "tests/assembly_summary_pseudomonas.txt" -t ${threads}
+./genome_updater.sh -o "${out_species}" -P 2 -f "assembly_report.txt" -b "top2species" -e "tests/assembly_summary_pseudomonas.txt" -t ${threads}
 # should download only one file for the species
 test $(find "${out_species}/top2species/files/" -xtype f | wc -l) -eq 2
 out_taxids="tests/tst_top_assemblies_taxids"
-./genome_updater.sh -o "${out_taxids}" -j "taxids:1" -f "assembly_report.txt" -b "top1taxids" -e "tests/assembly_summary_pseudomonas.txt" -t ${threads}
+./genome_updater.sh -o "${out_taxids}" -A 1 -f "assembly_report.txt" -b "top1taxids" -e "tests/assembly_summary_pseudomonas.txt" -t ${threads}
 # should download only one file for the species
 test $(find "${out_taxids}/top1taxids/files/" -xtype f | wc -l) -eq 4
 

@@ -72,7 +72,7 @@ count_lines_file(){ # parameter: ${1} file - return number of lines
 parse_new_taxdump() # parameter: ${1} taxids - return all taxids on of provided taxids
 {
 	taxids=${1}
-	echolog "Downloading taxdump and generating lineage" "1"
+	
     tmp_new_taxdump="${target_output_prefix}new_taxdump.tar.gz"
     download_url "ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}"
     unpack "${tmp_new_taxdump}" "${working_dir}" "taxidlineage.dmp"
@@ -107,49 +107,60 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
             done
         fi
     done
-
     count_lines_file "${1}"
 }
 
 filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number of lines
 {
-
     assembly_summary="${1}"
     filtered_lines=${2}
-
+    if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
+    
     # SPECIES taxids
     if [[ ! -z "${species}" ]]; then
         species_lines=$(filter_species "${assembly_summary}")
         echolog " - $((filtered_lines-species_lines)) assemblies removed not in species [${species}]" "1"
         filtered_lines=${species_lines}
+        if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
     fi
 
     # TAXIDS
     if [[ ! -z "${taxids}" ]]; then
+        echolog " - Downloading new taxdump and parsing lineages" "1"
         taxids_lines=$(filter_taxids "${assembly_summary}")
         echolog " - $((filtered_lines-taxids_lines)) assemblies removed not in taxids [${taxids}]" "1"
         filtered_lines=${taxids_lines}
+        if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
     fi
 
+    # Filter columns by default (latest)
     columns_lines=$(filter_columns "${assembly_summary}")
-    echolog " - $((filtered_lines-columns_lines)) assemblies removed with filters: RefSeq category=${refseq_category}, Assembly level=${assembly_level}, Version status=latest, valid URLs" "1"
-    filtered_lines=${columns_lines}
+    if [ "$((filtered_lines-columns_lines))" -gt 0 ]; then
+        echolog " - $((filtered_lines-columns_lines)) assemblies removed with filters: RefSeq category=${refseq_category}, Assembly level=${assembly_level}, Version status=latest, valid URLs" "1"
+        filtered_lines=${columns_lines}
+        if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
+    fi
 
     #GTDB
     if [ "${gtdb_only}" -eq 1 ]; then
         gtdb_lines=$(filter_gtdb "${assembly_summary}")
         echolog " - $((filtered_lines-gtdb_lines)) assemblies removed not in GTDB" "1"
         filtered_lines=${gtdb_lines}
+        if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
     fi
 
     #TOP ASSEMBLIES
-    if [[ ! -z "${top_assemblies}" ]]; then
+    if [[ "${top_assemblies_species}" -gt 0 || "${top_assemblies_taxids}" -gt 0 ]]; then
         top_lines=$(filter_top_assemblies "${assembly_summary}")
-        echolog " - $((filtered_lines-top_lines)) entries removed with top filter ${top_assemblies}" "1"
+        if [[ "${top_assemblies_species}" -gt 0 ]]; then
+            echolog " - $((filtered_lines-top_lines)) entries removed with top ${top_assemblies_species} assembly/species " "1"
+        else
+            echolog " - $((filtered_lines-top_lines)) entries removed with top ${top_assemblies_taxids} assembly/taxid" "1"
+        fi
         filtered_lines=${top_lines}
+        if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
     fi
-    echolog " - ${filtered_lines} assembly entries to download" "1"
-    echolog "" "1"
+    return 0
 }
 
 filter_taxids() # parameter: ${1} assembly_summary file - return number of lines
@@ -193,13 +204,13 @@ filter_gtdb() # parameter: ${1} assembly_summary file - return number of lines
 
 filter_top_assemblies() # parameter: ${1} assembly_summary file - return number of lines
 {
-    if [[ " ${top_assemblies} " =~ "taxids:" ]]; then
-        taxcol="6";
-        top="${top_assemblies/taxids:/}";
-    elif [[ " ${top_assemblies} " =~ "species:" ]]; then
+    if [ "${top_assemblies_species}" -gt 0 ]; then
         taxcol="7";
-        top="${top_assemblies/species:/}";
-    fi  
+        top="${top_assemblies_species}";
+    else
+        taxcol="6";
+        top="${top_assemblies_taxids}";
+    fi
 
     awk -v taxcol="${taxcol}" 'BEGIN{
             FS="\t";OFS="\t";
@@ -220,7 +231,7 @@ filter_top_assemblies() # parameter: ${1} assembly_summary file - return number 
         }{
             gsub("/","",$15); 
             print $1,$taxcol,$5 in col5 ? col5[$5] : 9 ,$12 in col12 ? col12[$12] : 9,$22 in col22 ? col22[$22] : 9 ,$15;
-        }' "${1}" | sort -t$'\t' -k 2,2 -k 3,3 -k 4,4 -k 5,5 -k 6nr,6 -k 1,1 | awk -v top=${top} '{if(cnt[$2]<top){print $1;cnt[$2]+=1}}' > "${1}_top_acc"
+        }' "${1}" | sort -t$'\t' -k 2,2 -k 3,3 -k 4,4 -k 5,5 -k 6nr,6 -k 1,1 | awk -v top="${top}" '{if(cnt[$2]<top){print $1;cnt[$2]+=1}}' > "${1}_top_acc"
     join <(sort -k 1,1 "${1}_top_acc") <(sort -k 1,1 "${1}") -t$'\t' -o "2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,2.10,2.11,2.12,2.13,2.14,2.15,2.16,2.17,2.18,2.19,2.20,2.21,2.22" > "${1}_top"
     mv "${1}_top" "${1}"
     rm "${1}_top_acc"
@@ -417,7 +428,7 @@ exit_status() # parameters: ${1} # expected files, ${2} # current files
 
 echolog() # parameters: ${1} text, ${2} STDOUT (0->no/1->yes)
 {
-    if [[ "${2}" -eq "1" ]] && [ "${silent}" -eq 0 ]; then
+    if [[ "${2:-0}" -eq "1" ]] && [ "${silent}" -eq 0 ]; then
         echo "${1}" # STDOUT
     fi
     echo "${1}" >> "${log_file}" # LOG
@@ -451,7 +462,8 @@ taxids=""
 refseq_category="all"
 assembly_level="all"
 file_formats="assembly_report.txt"
-top_assemblies=""
+top_assemblies_species=0
+top_assemblies_taxids=0
 gtdb_only=0
 download_taxonomy=0
 delete_extra_files=0
@@ -497,8 +509,9 @@ function showhelp {
     echo $' -c RefSeq Category [all, reference genome, representative genome, na]\n\tDefault: all'
     echo $' -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: all'
     echo $' -f File formats [genomic.fna.gz,assembly_report.txt, ...] check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats\n\tDefault: assembly_report.txt'
-    echo $' -j Number of top references for each species/taxids to download ["", species:INT, taxids:INT]. Example: "species:3". Selection is based on 1) RefSeq Category, 2) Assembly level, 3) Relation to type material and 4) Date (most recent first)\n\tDefault: ""'
     echo $' -z Keep only assemblies present on the latest GTDB release'
+    echo $' -P Number of top references for each species nodes to download. 0 to not filter. Selection is based on 1) RefSeq Category, 2) Assembly level, 3) Relation to type material and 4) Date (most recent first)\n\tDefault: 0'
+    echo $' -A Number of top references for each taxids (leaf nodes) to download. 0 to not filter. Selection is based on 1) RefSeq Category, 2) Assembly level, 3) Relation to type material and 4) Date (most recent first)\n\tDefault: 0'
     echo
     echo $'Reports/Extra options:'
     echo $' -u Report of updated assembly accessions (Added/Removed, assembly accession, url)'
@@ -538,7 +551,7 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 OPTIND=1 # Reset getopts
-while getopts "d:g:S:T:c:l:o:e:b:t:f:j:zn:akixmurpswhD" opt; do
+while getopts "d:g:S:T:c:l:o:e:b:t:f:P:A:zn:akixmurpswhD" opt; do
   case ${opt} in
     d) database=${OPTARG} ;;
     g) organism_group=${OPTARG// } ;; #remove spaces
@@ -551,7 +564,8 @@ while getopts "d:g:S:T:c:l:o:e:b:t:f:j:zn:akixmurpswhD" opt; do
     b) label=${OPTARG} ;;
     t) threads=${OPTARG} ;;
     f) file_formats=${OPTARG// } ;; #remove spaces
-    j) top_assemblies=${OPTARG} ;;
+    P) top_assemblies_species=${OPTARG} ;;
+    A) top_assemblies_taxids=${OPTARG} ;;
     z) gtdb_only=1 ;;
     a) download_taxonomy=1 ;;
     k) just_check=1 ;;
@@ -624,11 +638,13 @@ if [[ ! -z "${external_assembly_summary}" ]] && [[ ! -f "${external_assembly_sum
 fi
 
 # top taxids/species
-if [[ ! -z "${top_assemblies}" ]]; then
-    if [[ ! "${top_assemblies}" =~ ^(taxids|species)\:[1-9]+$ ]]; then
-        echo "Invalid syntax for top assemblies selection"; exit 1;
-    fi
+if [[ ! "${top_assemblies_species}" =~ ^[0-9]+$ ]]; then
+    echo "Invalid numberof top assemblies by species"; exit 1;
 fi
+if [[ ! "${top_assemblies_taxids}" =~ ^[0-9]+$ ]]; then
+    echo "Invalid numberof top assemblies by taxids"; exit 1;
+fi
+
 
 ######################### Variable assignment ######################### 
 if [ "${silent}" -eq 1 ] ; then 
@@ -722,7 +738,8 @@ echolog "Taxids: ${species}" "0"
 echolog "RefSeq category: ${refseq_category}" "0"
 echolog "Assembly level: ${assembly_level}" "0"
 echolog "File formats: ${file_formats}" "0"
-echolog "Top assemblies: ${top_assemblies}" "0"
+echolog "Top assemblies species: ${top_assemblies_species}" "0"
+echolog "Top assemblies taxids: ${top_assemblies_taxids}" "0"
 echolog "GTDB Only: ${gtdb_only}" "0"
 echolog "Download taxonomy: ${download_taxonomy}" "0"
 echolog "Just check for updates: ${just_check}" "0"
@@ -764,8 +781,11 @@ if [[ "${MODE}" == "NEW" ]]; then
     echolog " - ${all_lines} assembly entries available" "1"
 
     filter_assembly_summary "${new_assembly_summary}" ${all_lines}
-
-    if [ "${just_check}" -eq 1 ]; then
+    filtered_lines=$(count_lines_file "${new_assembly_summary}")
+    echolog " - ${filtered_lines} assembly entries to download" "1"
+    echolog "" "1"
+    
+    if [[ "${just_check}" -eq 1 ]]; then
         rm "${new_assembly_summary}" "${log_file}"
         if [ ! "$(ls -A ${new_output_prefix}${files_dir})" ]; then rm -r "${new_output_prefix}${files_dir}"; fi #Remove folder that was just created (if there's nothing in it)
         if [ ! "$(ls -A ${new_output_prefix})" ]; then rm -r "${new_output_prefix}"; fi #Remove folder that was just created (if there's nothing in it)
@@ -777,7 +797,6 @@ if [[ "${MODE}" == "NEW" ]]; then
         if [[ "${filtered_lines}" -gt 0 ]] ; then
             echolog " - Downloading $((filtered_lines*(n_formats+1))) files with ${threads} threads" "1"
             download_files "${new_assembly_summary}" "1,20" "${file_formats}"
-
             # UPDATED INDICES assembly accession
             if [ "${updated_assembly_accession}" -eq 1 ]; then 
                 output_assembly_accession "${new_assembly_summary}" "1,20" "${file_formats}" "A" > "${new_output_prefix}updated_assembly_accession.txt"
@@ -788,8 +807,9 @@ if [[ "${MODE}" == "NEW" ]]; then
                 output_sequence_accession "${new_assembly_summary}" "1,20" "${file_formats}" "A" "${new_assembly_summary}" > "${new_output_prefix}updated_sequence_accession.txt"
 				echolog " - Sequence accession report written [${new_output_prefix}updated_sequence_accession.txt]" "1"
             fi
+            echolog "" "1"
         fi
-        echolog "" "1"
+        
     fi
     
 else # update/fix
@@ -861,6 +881,9 @@ else # update/fix
         echolog " - ${all_lines} assembly entries available" "1"
 
         filter_assembly_summary "${new_assembly_summary}" ${all_lines}
+        filtered_lines=$(count_lines_file "${new_assembly_summary}")
+        echolog " - ${filtered_lines} assembly entries to download" "1"
+        echolog "" "1"
 
         if [[ "${just_check}" -eq 0 ]]; then
             # Link versions (current and new)
@@ -955,7 +978,7 @@ if [ "${just_check}" -eq 0 ]; then
     current_files=$(( $(ls "${target_output_prefix}${files_dir}" | wc -l | cut -f1 -d' ') - extra_lines )) # From current folder - extra files
     # Check if the valid amount of files on folder amount of files on folder
     [ "${silent}" -eq 0 ] && print_line
-    echolog "# ${current_files}/${expected_files} files successfully obtained" "1"
+    echolog "# ${current_files}/${expected_files} files in current version" "1"
     if [ $(( expected_files-current_files )) -gt 0 ]; then
         echolog " - $(( expected_files-current_files )) file(s) failed to download. Please re-run your command with -i to fix it again" "1"
     fi
