@@ -3,12 +3,24 @@
 load 'libs/bats-support/load'
 load 'libs/bats-assert/load'
 
-# Export base_url to get local files
-base_url=$(pwd)/files/
-export base_url
+# Export local_dir to get local files when testing
+local_dir="tests/files/"
+export local_dir
 
-@test "Run tests with local assembly_summary.txt" {
-	./genome_updater.sh -d refseq -k
-    #assert_equal $? 0
+outprefix="tests/results/"
+mkdir -p $outprefix
+
+@test "Basic refseq" {
+    ./genome_updater.sh -d refseq -o ${outprefix}basic-refseq
+    assert_success
+}
+
+@test "Basic genbank" {
+    ./genome_updater.sh -d genbank -o ${outprefix}basic-genbank
+    assert_success
+}
+
+@test "Basic refseq,genbank" {
+    ./genome_updater.sh -d refseq,genbank -o ${outprefix}basic-refseq-genbank
     assert_success
 }

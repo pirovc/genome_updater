@@ -27,12 +27,17 @@ IFS=$' '
 
 version="0.3.0"
 
-base_url=${base_url:-ftp://ftp.ncbi.nlm.nih.gov/}
-retries=${wget_tries:-3}
-timeout=${wget_timeout:-120}
+# Define base_url or use local files
+local_dir=${local_dir:-}
+if [[ ! -z "${local_dir}" ]]; then
+    # set local dir with absulute path and "file://"
+    local_dir="file://$(cd "${local_dir}" && pwd)"
+fi
+base_url=${base_url:-ftp://ftp.ncbi.nlm.nih.gov/} #Alternative ftp://ftp.ncbi.nih.gov/
+retries=${retries:-3}
+timeout=${timeout:-120}
+export retries timeout base_url local_dir
 use_curl=${use_curl:-0}
-
-export wget_tries wget_timeout base_url
 
 # Export locale numeric to avoid errors on printf in different setups
 export LC_NUMERIC="en_US.UTF-8"
@@ -45,7 +50,7 @@ shopt -s expand_aliases
 alias sort="sort --field-separator=$'\t'"
 
 # Define downloader to use
-if [[ "${base_url}" = "file://"* || "${use_curl}" -eq 1 ]]; then
+if [[ ! -z "${local_dir}" || "${use_curl}" -eq 1 ]]; then
     alias downloader="curl --silent --retry ${retries} --connect-timeout ${timeout} --output "
 else
     alias downloader="wget --quiet --continue --tries ${retries} --read-timeout ${timeout} --output-document "
@@ -53,19 +58,27 @@ fi
 
 download_url() # parameter: ${1} url, ${2} output file/directory (omit/empty to STDOUT)
 {
+    url=${1}
     outfiledir="${2:-}"
     if [[ ! -z "${outfiledir}" ]]; then
         if [[ -d "${outfiledir}" ]]; then
-            out="${outfiledir}/${1##*/}" # based on given output dir and file to download
+            outfile="${outfiledir}/${1##*/}" # based on given output dir and file to download
         else
-            out="${outfiledir}"
+            outfile="${outfiledir}"
         fi
     else
-        out="-" # STDOUT
+        outfile="-" # STDOUT
     fi
-    downloader "${out}" ${1}
+    # Replace base url with local directory if provided
+    if [[ ! -z "${local_dir}" ]]; then url=${url/${url%/genomes/*}/${local_dir}}; fi
+    downloader "${outfile}" "${url}"
 }
-export -f download_url #export it to be accessible to the parallel call
+export -f download_url  #export it to be accessible to the parallel call
+
+download_static() # parameter: ${1} url, ${2} output file
+{
+    downloader ${2} ${1}
+}
 
 unpack() # parameter: ${1} file, ${2} output folder[, ${3} files to unpack]
 {
@@ -83,9 +96,8 @@ count_lines_file(){ # parameter: ${1} file - return number of lines
 parse_new_taxdump() # parameter: ${1} taxids - return all taxids on of provided taxids
 {
 	taxids=${1}
-	
     tmp_new_taxdump="${target_output_prefix}new_taxdump.tar.gz"
-    download_url "${base_url}/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}"
+    download_static "${base_url}/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}"
     unpack "${tmp_new_taxdump}" "${working_dir}" "taxidlineage.dmp"
     tmp_taxidlineage="${working_dir}taxidlineage.dmp"
     tmp_lineage=${working_dir}lineage.tmp
@@ -1011,7 +1023,7 @@ fi
 if [ "${just_check}" -eq 0 ]; then
 	if [ "${download_taxonomy}" -eq 1 ]; then
         echolog "Downloading current Taxonomy database [${target_output_prefix}taxdump.tar.gz] " "1"
-        download_url "ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz" "${target_output_prefix}taxdump.tar.gz"
+        download_static "${base_url}/pub/taxonomy/taxdump.tar.gz" "${target_output_prefix}taxdump.tar.gz"
         echolog " - Done" "1"
         echolog "" "1"
     fi

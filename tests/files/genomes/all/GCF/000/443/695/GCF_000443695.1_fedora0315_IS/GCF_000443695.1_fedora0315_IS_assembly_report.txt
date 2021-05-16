@@ -1,0 +1,32 @@
+# Assembly name:  fedora0315_IS
+# Organism name:  Mycobacterium tuberculosis PanR0315 (high GC Gram+)
+# Infraspecific name:  strain=PanR0315
+# Taxid:          1346778
+# BioSample:      SAMN02471046
+# BioProject:     PRJNA208583
+# Submitter:      Texas A&M University
+# Date:           2013-08-08
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# WGS project:    ATEJ01
+# Assembly method: in-house software v. 10/18/2012
+# Reference guided assembly: NC000962.2
+# Genome coverage: 42.0x
+# Sequencing technology: Illumina GAIIx
+# GenBank assembly accession: GCA_000443695.1
+# RefSeq assembly accession: GCF_000443695.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000443705.1	GCF_000443705.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+chromosome	assembled-molecule	na	Chromosome	CM002070.1	=	NZ_CM002070.1	Primary Assembly	4403042	na

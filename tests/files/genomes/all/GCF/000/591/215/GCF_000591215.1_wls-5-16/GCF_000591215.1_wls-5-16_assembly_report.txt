@@ -1,0 +1,155 @@
+# Assembly name:  wls-5-16
+# Organism name:  Helicobacter pylori wls-5-16 (e-proteobacteria)
+# Infraspecific name:  strain=wls-5-16
+# Taxid:          1460433
+# BioSample:      SAMN02639414
+# BioProject:     PRJNA237700
+# Submitter:      Academy of Military Medical Sciences
+# Date:           2014-03-17
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    JDVK01
+# Assembly method: Velvet v. 1.2.07
+# Expected final version: yes
+# Genome coverage: 69.8x
+# Sequencing technology: Illumina MiSeq
+# GenBank assembly accession: GCA_000591215.1
+# RefSeq assembly accession: GCF_000591215.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000591225.1	GCF_000591225.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+NODE_35_length_28854_cov_34.349693_28922_28922	unplaced-scaffold	na	na	JDVK01000001.1	=	NZ_JDVK01000001.1	Primary Assembly	28922	na
+16NODE_96_length_14354_cov_30.768497N11replace_14365_43287	unplaced-scaffold	na	na	JDVK01000002.1	=	NZ_JDVK01000002.1	Primary Assembly	14365	na
+NODE_38_length_17722_cov_31.220856_17790_61077	unplaced-scaffold	na	na	JDVK01000003.1	=	NZ_JDVK01000003.1	Primary Assembly	17790	na
+NODE_112_length_16630_cov_32.541492_16698_77775	unplaced-scaffold	na	na	JDVK01000004.1	=	NZ_JDVK01000004.1	Primary Assembly	16698	na
+NODE_7_length_30531_cov_36.383938_30599_108374	unplaced-scaffold	na	na	JDVK01000005.1	=	NZ_JDVK01000005.1	Primary Assembly	30599	na
+NODE_97_length_2326_cov_33.410576_2394_110768	unplaced-scaffold	na	na	JDVK01000006.1	=	NZ_JDVK01000006.1	Primary Assembly	2394	na
+NODE_18_length_8091_cov_35.674576_8159_118927	unplaced-scaffold	na	na	JDVK01000007.1	=	NZ_JDVK01000007.1	Primary Assembly	8159	na
+NODE_58_length_23441_cov_33.747066_23509_142436	unplaced-scaffold	na	na	JDVK01000008.1	=	NZ_JDVK01000008.1	Primary Assembly	23509	na
+16NODE_117_length_28084_cov_34.149124N17replace_28125_170561	unplaced-scaffold	na	na	JDVK01000009.1	=	NZ_JDVK01000009.1	Primary Assembly	28125	na
+NODE_60_length_9812_cov_32.041786_9880_180441	unplaced-scaffold	na	na	JDVK01000010.1	=	NZ_JDVK01000010.1	Primary Assembly	9880	na
+NODE_17_length_25287_cov_37.387470_25355_205796	unplaced-scaffold	na	na	JDVK01000011.1	=	NZ_JDVK01000011.1	Primary Assembly	25355	na
+NODE_37_length_13004_cov_26.484312_13072_218868	unplaced-scaffold	na	na	JDVK01000012.1	=	NZ_JDVK01000012.1	Primary Assembly	13072	na
+NODE_44_length_2293_cov_32.478413_2361_221229	unplaced-scaffold	na	na	JDVK01000013.1	=	NZ_JDVK01000013.1	Primary Assembly	2361	na
+NODE_81_length_8923_cov_34.023087_8991_230220	unplaced-scaffold	na	na	JDVK01000014.1	=	NZ_JDVK01000014.1	Primary Assembly	8991	na
+NODE_75_length_2880_cov_32.239929_2948_233168	unplaced-scaffold	na	na	JDVK01000015.1	=	NZ_JDVK01000015.1	Primary Assembly	2948	na
+NODE_34_length_12406_cov_31.249880_12474_245642	unplaced-scaffold	na	na	JDVK01000016.1	=	NZ_JDVK01000016.1	Primary Assembly	12474	na
+16NODE_119_length_16504_cov_34.151783N18replace_16563_262205	unplaced-scaffold	na	na	JDVK01000017.1	=	NZ_JDVK01000017.1	Primary Assembly	16563	na
+16NODE_15_length_64471_cov_32.189201N1replace_64518_326723	unplaced-scaffold	na	na	JDVK01000018.1	=	NZ_JDVK01000018.1	Primary Assembly	64518	na
+16NODE_71_length_18346_cov_28.082579N7_18424_345147	unplaced-scaffold	na	na	JDVK01000019.1	=	NZ_JDVK01000019.1	Primary Assembly	18424	na
+NODE_9_length_21642_cov_28.663200_21710_366857	unplaced-scaffold	na	na	JDVK01000020.1	=	NZ_JDVK01000020.1	Primary Assembly	21710	na
+16NODE_101_length_10784_cov_28.598944N13replace_10858_377715	unplaced-scaffold	na	na	JDVK01000021.1	=	NZ_JDVK01000021.1	Primary Assembly	10858	na
+16NODE_100_length_24929_cov_28.738537N12replace_25005_402720	unplaced-scaffold	na	na	JDVK01000022.1	=	NZ_JDVK01000022.1	Primary Assembly	25005	na
+16NODE_67_length_8126_cov_31.391706N6replace_8180_410900	unplaced-scaffold	na	na	JDVK01000023.1	=	NZ_JDVK01000023.1	Primary Assembly	8180	na
+NODE_70_length_7008_cov_30.302084_7076_417976	unplaced-scaffold	na	na	JDVK01000024.1	=	NZ_JDVK01000024.1	Primary Assembly	7076	na
+NODE_132_length_2342_cov_35.142612_2410_420386	unplaced-scaffold	na	na	JDVK01000025.1	=	NZ_JDVK01000025.1	Primary Assembly	2410	na
+NODE_39_length_7527_cov_30.432575_7595_427981	unplaced-scaffold	na	na	JDVK01000026.1	=	NZ_JDVK01000026.1	Primary Assembly	7595	na
+16NODE_59_length_21821_cov_25.937170N4replace_21872_449853	unplaced-scaffold	na	na	JDVK01000027.1	=	NZ_JDVK01000027.1	Primary Assembly	21872	na
+NODE_72_length_3438_cov_24.463932_3506_453359	unplaced-scaffold	na	na	JDVK01000028.1	=	NZ_JDVK01000028.1	Primary Assembly	3506	na
+NODE_54_length_9652_cov_22.758598_9720_463079	unplaced-scaffold	na	na	JDVK01000029.1	=	NZ_JDVK01000029.1	Primary Assembly	9720	na
+NODE_129_length_4718_cov_31.606613_4786_467865	unplaced-scaffold	na	na	JDVK01000030.1	=	NZ_JDVK01000030.1	Primary Assembly	4786	na
+NODE_95_length_1917_cov_17.565466_1985_469850	unplaced-scaffold	na	na	JDVK01000031.1	=	NZ_JDVK01000031.1	Primary Assembly	1985	na
+NODE_22_length_2774_cov_45.230713_2842_472692	unplaced-scaffold	na	na	JDVK01000032.1	=	NZ_JDVK01000032.1	Primary Assembly	2842	na
+NODE_111_length_3485_cov_32.477474_3553_476245	unplaced-scaffold	na	na	JDVK01000033.1	=	NZ_JDVK01000033.1	Primary Assembly	3553	na
+NODE_89_length_19782_cov_29.352442_19850_496095	unplaced-scaffold	na	na	JDVK01000034.1	=	NZ_JDVK01000034.1	Primary Assembly	19850	na
+NODE_76_length_11758_cov_34.464706_11826_507921	unplaced-scaffold	na	na	JDVK01000035.1	=	NZ_JDVK01000035.1	Primary Assembly	11826	na
+NODE_88_length_8768_cov_26.201185_8836_516757	unplaced-scaffold	na	na	JDVK01000036.1	=	NZ_JDVK01000036.1	Primary Assembly	8836	na
+NODE_11_length_13612_cov_29.842566_13680_530437	unplaced-scaffold	na	na	JDVK01000037.1	=	NZ_JDVK01000037.1	Primary Assembly	13680	na
+16NODE_110_length_10220_cov_25.274755N15replace_10257_540694	unplaced-scaffold	na	na	JDVK01000038.1	=	NZ_JDVK01000038.1	Primary Assembly	10257	na
+NODE_78_length_6309_cov_34.639404_6377_547071	unplaced-scaffold	na	na	JDVK01000039.1	=	NZ_JDVK01000039.1	Primary Assembly	6377	na
+NODE_50_length_8364_cov_29.546030_8432_555503	unplaced-scaffold	na	na	JDVK01000040.1	=	NZ_JDVK01000040.1	Primary Assembly	8432	na
+NODE_10_length_15782_cov_27.772018_15850_571353	unplaced-scaffold	na	na	JDVK01000041.1	=	NZ_JDVK01000041.1	Primary Assembly	15850	na
+NODE_43_length_31292_cov_30.103413_31360_602713	unplaced-scaffold	na	na	JDVK01000042.1	=	NZ_JDVK01000042.1	Primary Assembly	31360	na
+NODE_32_length_7248_cov_21.846855_7316_610029	unplaced-scaffold	na	na	JDVK01000043.1	=	NZ_JDVK01000043.1	Primary Assembly	7316	na
+NODE_68_length_4696_cov_35.863289_4764_614793	unplaced-scaffold	na	na	JDVK01000044.1	=	NZ_JDVK01000044.1	Primary Assembly	4764	na
+NODE_53_length_6295_cov_24.014774_6363_621156	unplaced-scaffold	na	na	JDVK01000045.1	=	NZ_JDVK01000045.1	Primary Assembly	6363	na
+NODE_24_length_13103_cov_74.309013_13171_634327	unplaced-scaffold	na	na	JDVK01000046.1	=	NZ_JDVK01000046.1	Primary Assembly	13171	na
+NODE_14_length_11258_cov_28.209274_11326_645653	unplaced-scaffold	na	na	JDVK01000047.1	=	NZ_JDVK01000047.1	Primary Assembly	11326	na
+NODE_92_length_5219_cov_41.514851_5287_650940	unplaced-scaffold	na	na	JDVK01000048.1	=	NZ_JDVK01000048.1	Primary Assembly	5287	na
+NODE_51_length_8252_cov_31.471764_8320_659260	unplaced-scaffold	na	na	JDVK01000049.1	=	NZ_JDVK01000049.1	Primary Assembly	8320	na
+NODE_63_length_4689_cov_23.649818_4757_664017	unplaced-scaffold	na	na	JDVK01000050.1	=	NZ_JDVK01000050.1	Primary Assembly	4757	na
+NODE_26_length_7524_cov_26.128523_7592_671609	unplaced-scaffold	na	na	JDVK01000051.1	=	NZ_JDVK01000051.1	Primary Assembly	7592	na
+NODE_55_length_21900_cov_31.518448_21968_693577	unplaced-scaffold	na	na	JDVK01000052.1	=	NZ_JDVK01000052.1	Primary Assembly	21968	na
+NODE_93_length_2832_cov_19.371469_2900_696477	unplaced-scaffold	na	na	JDVK01000053.1	=	NZ_JDVK01000053.1	Primary Assembly	2900	na
+NODE_45_length_11547_cov_30.078375_11615_708092	unplaced-scaffold	na	na	JDVK01000054.1	=	NZ_JDVK01000054.1	Primary Assembly	11615	na
+NODE_36_length_7607_cov_39.262390_7675_715767	unplaced-scaffold	na	na	JDVK01000055.1	=	NZ_JDVK01000055.1	Primary Assembly	7675	na
+NODE_66_length_2682_cov_34.954884_2750_718517	unplaced-scaffold	na	na	JDVK01000056.1	=	NZ_JDVK01000056.1	Primary Assembly	2750	na
+NODE_5_length_10104_cov_23.557404_10172_728689	unplaced-scaffold	na	na	JDVK01000057.1	=	NZ_JDVK01000057.1	Primary Assembly	10172	na
+NODE_73_length_5824_cov_28.508757_5892_734581	unplaced-scaffold	na	na	JDVK01000058.1	=	NZ_JDVK01000058.1	Primary Assembly	5892	na
+NODE_12_length_18468_cov_31.735598_18536_753117	unplaced-scaffold	na	na	JDVK01000059.1	=	NZ_JDVK01000059.1	Primary Assembly	18536	na
+NODE_91_length_5276_cov_29.187832_5344_758461	unplaced-scaffold	na	na	JDVK01000060.1	=	NZ_JDVK01000060.1	Primary Assembly	5344	na
+NODE_48_length_5478_cov_31.420408_5546_764007	unplaced-scaffold	na	na	JDVK01000061.1	=	NZ_JDVK01000061.1	Primary Assembly	5546	na
+NODE_25_length_3109_cov_38.918945_3177_767184	unplaced-scaffold	na	na	JDVK01000062.1	=	NZ_JDVK01000062.1	Primary Assembly	3177	na
+NODE_104_length_4718_cov_21.756889_4786_771970	unplaced-scaffold	na	na	JDVK01000063.1	=	NZ_JDVK01000063.1	Primary Assembly	4786	na
+NODE_82_length_14456_cov_28.195906N8replace_14508_786478	unplaced-scaffold	na	na	JDVK01000064.1	=	NZ_JDVK01000064.1	Primary Assembly	14508	na
+16NODE_41_length_11585_cov_25.636082N2replace_11614_798092	unplaced-scaffold	na	na	JDVK01000065.1	=	NZ_JDVK01000065.1	Primary Assembly	11614	na
+NODE_69_length_19975_cov_24.814318_20043_818135	unplaced-scaffold	na	na	JDVK01000066.1	=	NZ_JDVK01000066.1	Primary Assembly	20043	na
+NODE_126_length_8633_cov_21.150005_8701_826836	unplaced-scaffold	na	na	JDVK01000067.1	=	NZ_JDVK01000067.1	Primary Assembly	8701	na
+NODE_99_length_3643_cov_28.386496_3711_830547	unplaced-scaffold	na	na	JDVK01000068.1	=	NZ_JDVK01000068.1	Primary Assembly	3711	na
+NODE_3_length_13385_cov_28.321180_13453_844000	unplaced-scaffold	na	na	JDVK01000069.1	=	NZ_JDVK01000069.1	Primary Assembly	13453	na
+NODE_80_length_5442_cov_28.665012_5510_849510	unplaced-scaffold	na	na	JDVK01000070.1	=	NZ_JDVK01000070.1	Primary Assembly	5510	na
+16NODE_114_length_12794_cov_23.624121N16replace_0_8282_857792	unplaced-scaffold	na	na	JDVK01000071.1	=	NZ_JDVK01000071.1	Primary Assembly	8282	na
+16NODE_114_length_12794_cov_23.624121N16replace_1_4429_862221	unplaced-scaffold	na	na	JDVK01000072.1	=	NZ_JDVK01000072.1	Primary Assembly	4429	na
+NODE_128_length_2125_cov_23.946823_2193_864414	unplaced-scaffold	na	na	JDVK01000073.1	=	NZ_JDVK01000073.1	Primary Assembly	2193	na
+NODE_86_length_4660_cov_28.634764_4728_869142	unplaced-scaffold	na	na	JDVK01000074.1	=	NZ_JDVK01000074.1	Primary Assembly	4728	na
+NODE_62_length_9866_cov_35.347355_9934_879076	unplaced-scaffold	na	na	JDVK01000075.1	=	NZ_JDVK01000075.1	Primary Assembly	9934	na
+16NODE_42_length_12974_cov_34.826344N3replace_12995_892071	unplaced-scaffold	na	na	JDVK01000076.1	=	NZ_JDVK01000076.1	Primary Assembly	12995	na
+NODE_108_length_3693_cov_20.920931_3761_895832	unplaced-scaffold	na	na	JDVK01000077.1	=	NZ_JDVK01000077.1	Primary Assembly	3761	na
+NODE_98_length_5433_cov_39.896557_5501_901333	unplaced-scaffold	na	na	JDVK01000078.1	=	NZ_JDVK01000078.1	Primary Assembly	5501	na
+NODE_118_length_2491_cov_34.315536_2559_903892	unplaced-scaffold	na	na	JDVK01000079.1	=	NZ_JDVK01000079.1	Primary Assembly	2559	na
+NODE_74_length_27865_cov_27.932568_0_13605_917497	unplaced-scaffold	na	na	JDVK01000080.1	=	NZ_JDVK01000080.1	Primary Assembly	13605	na
+NODE_74_length_27865_cov_27.932568_1_10657_928154	unplaced-scaffold	na	na	JDVK01000081.1	=	NZ_JDVK01000081.1	Primary Assembly	10657	na
+NODE_74_length_27865_cov_27.932568_2_3651_931805	unplaced-scaffold	na	na	JDVK01000082.1	=	NZ_JDVK01000082.1	Primary Assembly	3651	na
+NODE_1_length_43141_cov_29.034445_43209_975014	unplaced-scaffold	na	na	JDVK01000083.1	=	NZ_JDVK01000083.1	Primary Assembly	43209	na
+NODE_33_length_30182_cov_24.102512_30250_1005264	unplaced-scaffold	na	na	JDVK01000084.1	=	NZ_JDVK01000084.1	Primary Assembly	30250	na
+NODE_29_length_19921_cov_33.536869_19989_1025253	unplaced-scaffold	na	na	JDVK01000085.1	=	NZ_JDVK01000085.1	Primary Assembly	19989	na
+NODE_8_length_16672_cov_28.755219_16740_1041993	unplaced-scaffold	na	na	JDVK01000086.1	=	NZ_JDVK01000086.1	Primary Assembly	16740	na
+NODE_28_length_25835_cov_34.567410_25903_1067896	unplaced-scaffold	na	na	JDVK01000087.1	=	NZ_JDVK01000087.1	Primary Assembly	25903	na
+NODE_52_length_3842_cov_31.345392_3910_1071806	unplaced-scaffold	na	na	JDVK01000088.1	=	NZ_JDVK01000088.1	Primary Assembly	3910	na
+NODE_133_length_5168_cov_28.642609_5236_1077042	unplaced-scaffold	na	na	JDVK01000089.1	=	NZ_JDVK01000089.1	Primary Assembly	5236	na
+NODE_40_length_10950_cov_33.411324_11018_1088060	unplaced-scaffold	na	na	JDVK01000090.1	=	NZ_JDVK01000090.1	Primary Assembly	11018	na
+NODE_79_length_13561_cov_32.081116_13629_1101689	unplaced-scaffold	na	na	JDVK01000091.1	=	NZ_JDVK01000091.1	Primary Assembly	13629	na
+NODE_57_length_40787_cov_30.300119_40855_1142544	unplaced-scaffold	na	na	JDVK01000092.1	=	NZ_JDVK01000092.1	Primary Assembly	40855	na
+NODE_56_length_33449_cov_31.179497_33517_1176061	unplaced-scaffold	na	na	JDVK01000093.1	=	NZ_JDVK01000093.1	Primary Assembly	33517	na
+NODE_31_length_5269_cov_42.496868_5337_1181398	unplaced-scaffold	na	na	JDVK01000094.1	=	NZ_JDVK01000094.1	Primary Assembly	5337	na
+NODE_6_length_7370_cov_27.401358_7438_1188836	unplaced-scaffold	na	na	JDVK01000095.1	=	NZ_JDVK01000095.1	Primary Assembly	7438	na
+NODE_30_length_4217_cov_25.184254_4285_1193121	unplaced-scaffold	na	na	JDVK01000096.1	=	NZ_JDVK01000096.1	Primary Assembly	4285	na
+16NODE_65_length_52742_cov_34.496967N5replace_52810_1245931	unplaced-scaffold	na	na	JDVK01000097.1	=	NZ_JDVK01000097.1	Primary Assembly	52810	na
+NODE_46_length_1177_cov_47.709431_1245_1247176	unplaced-scaffold	na	na	JDVK01000098.1	=	NZ_JDVK01000098.1	Primary Assembly	1245	na
+NODE_19_length_31783_cov_39.056759_31851_1279027	unplaced-scaffold	na	na	JDVK01000099.1	=	NZ_JDVK01000099.1	Primary Assembly	31851	na
+NODE_21_length_27381_cov_33.769184_27449_1306476	unplaced-scaffold	na	na	JDVK01000100.1	=	NZ_JDVK01000100.1	Primary Assembly	27449	na
+NODE_2_length_43270_cov_36.052902_43338_1349814	unplaced-scaffold	na	na	JDVK01000101.1	=	NZ_JDVK01000101.1	Primary Assembly	43338	na
+NODE_94_length_1590_cov_19.930189_1658_1351472	unplaced-scaffold	na	na	JDVK01000102.1	=	NZ_JDVK01000102.1	Primary Assembly	1658	na
+NODE_109_length_2059_cov_26.574551_2127_1353599	unplaced-scaffold	na	na	JDVK01000103.1	=	NZ_JDVK01000103.1	Primary Assembly	2127	na
+16NODE_90_length_26621_cov_32.214794N10replace_26624_1380223	unplaced-scaffold	na	na	JDVK01000104.1	=	NZ_JDVK01000104.1	Primary Assembly	26624	na
+NODE_64_length_32413_cov_38.374264_32481_1412704	unplaced-scaffold	na	na	JDVK01000105.1	=	NZ_JDVK01000105.1	Primary Assembly	32481	na
+16NODE_105_length_31256_cov_34.693085N14replace_31309_1444013	unplaced-scaffold	na	na	JDVK01000106.1	=	NZ_JDVK01000106.1	Primary Assembly	31309	na
+NODE_115_length_3153_cov_34.279099_3221_1447234	unplaced-scaffold	na	na	JDVK01000107.1	=	NZ_JDVK01000107.1	Primary Assembly	3221	na
+NODE_77_length_2541_cov_29.231405_2609_1449843	unplaced-scaffold	na	na	JDVK01000108.1	=	NZ_JDVK01000108.1	Primary Assembly	2609	na
+NODE_84_length_2475_cov_20.304646_2543_1452386	unplaced-scaffold	na	na	JDVK01000109.1	=	NZ_JDVK01000109.1	Primary Assembly	2543	na
+NODE_20_length_12742_cov_31.625177_12810_1465196	unplaced-scaffold	na	na	JDVK01000110.1	=	NZ_JDVK01000110.1	Primary Assembly	12810	na
+NODE_103_length_5806_cov_35.380470_5874_1471070	unplaced-scaffold	na	na	JDVK01000111.1	=	NZ_JDVK01000111.1	Primary Assembly	5874	na
+NODE_61_length_10907_cov_30.352343_10975_1482045	unplaced-scaffold	na	na	JDVK01000112.1	=	NZ_JDVK01000112.1	Primary Assembly	10975	na
+NODE_27_length_27137_cov_34.716106_27205_1509250	unplaced-scaffold	na	na	JDVK01000113.1	=	NZ_JDVK01000113.1	Primary Assembly	27205	na
+NODE_16_length_10596_cov_36.768970_10664_1519914	unplaced-scaffold	na	na	JDVK01000114.1	=	NZ_JDVK01000114.1	Primary Assembly	10664	na
+NODE_4_length_13862_cov_36.839993_13930_1533844	unplaced-scaffold	na	na	JDVK01000115.1	=	NZ_JDVK01000115.1	Primary Assembly	13930	na
+NODE_87_length_4670_cov_70.663597_0_3480_1537324	unplaced-scaffold	na	na	JDVK01000116.1	=	NZ_JDVK01000116.1	Primary Assembly	3480	na
+NODE_87_length_4670_cov_70.663597_1_1248_1538572	unplaced-scaffold	na	na	JDVK01000117.1	=	NZ_JDVK01000117.1	Primary Assembly	1248	na
+NODE_85_length_13328_cov_32.887680_0_1888_1540460	unplaced-scaffold	na	na	JDVK01000118.1	=	NZ_JDVK01000118.1	Primary Assembly	1888	na
+NODE_85_length_13328_cov_32.887680_1_11449_1551909	unplaced-scaffold	na	na	JDVK01000119.1	=	NZ_JDVK01000119.1	Primary Assembly	11449	na
+NODE_49_length_10161_cov_22.107370_10229_1562138	unplaced-scaffold	na	na	JDVK01000120.1	=	NZ_JDVK01000120.1	Primary Assembly	10229	na
+NODE_23_length_13858_cov_64.143959_13926_1576064	unplaced-scaffold	na	na	JDVK01000121.1	=	NZ_JDVK01000121.1	Primary Assembly	13926	na
+NODE_13_length_9348_cov_231.782944_9416_1585480	unplaced-scaffold	na	na	JDVK01000122.1	=	NZ_JDVK01000122.1	Primary Assembly	9416	na
+NODE_102_length_3688_cov_16.480476_3756_1589236	unplaced-scaffold	na	na	JDVK01000123.1	=	NZ_JDVK01000123.1	Primary Assembly	3756	na
+16NODE_85_length_13328_cov_32.887680N9_13396_1602632	unplaced-scaffold	na	na	JDVK01000124.1	=	NZ_JDVK01000124.1	Primary Assembly	13396	na

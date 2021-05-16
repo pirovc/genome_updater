@@ -1,0 +1,31 @@
+# Assembly name:  PRJEB22824
+# Organism name:  Lentibacillus sp. Marseille-P4043 (firmicutes)
+# Infraspecific name:  strain=Marseille-P4043
+# Taxid:          2040293
+# BioSample:      SAMEA104557166
+# BioProject:     PRJEB22824
+# Submitter:      URMITE
+# Date:           2018-02-17
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    OIXC01
+# Genome coverage: 20x
+# GenBank assembly accession: GCA_900258515.1
+# RefSeq assembly accession: GCF_900258515.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_900258514.1	GCF_900258514.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+scaffold00001	unplaced-scaffold	na	na	LT984884.1	=	NZ_LT984884.1	Primary Assembly	3924819	na
+scaffold00002	unplaced-scaffold	na	na	LT984885.1	=	NZ_LT984885.1	Primary Assembly	1045	na
+scaffold00003	unplaced-scaffold	na	na	LT984886.1	=	NZ_LT984886.1	Primary Assembly	869	na
