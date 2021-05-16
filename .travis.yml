@@ -1,4 +1,7 @@
 language: bash
 
+before_install:
+  - sudo apt-get install parallel
+
 script:
     - ./test.sh
