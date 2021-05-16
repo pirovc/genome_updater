@@ -565,7 +565,7 @@ function showhelp {
     echo $' -t Threads\n\tDefault: 1'
     echo
     echo $'Misc. options:'
-    echo $' -x Allow the deletion of extra files if some are found in the repository folder'
+    echo $' -x Allow the deletion of extra files if any found in the repository folder'
     echo $' -a Download the current version of the NCBI taxonomy database (taxdump.tar.gz)'
     echo $' -s Silent output'
     echo $' -w Silent output with download progress (%) and download version at the end'
