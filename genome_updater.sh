@@ -27,9 +27,13 @@ IFS=$' '
 
 version="0.3.0"
 
-wget_tries=${wget_tries:-3}
-wget_timeout=${wget_timeout:-120}
-export wget_tries wget_timeout
+base_url=${base_url:-ftp://ftp.ncbi.nlm.nih.gov/}
+retries=${wget_tries:-3}
+timeout=${wget_timeout:-120}
+use_curl=${use_curl:-0}
+
+export wget_tries wget_timeout base_url
+
 # Export locale numeric to avoid errors on printf in different setups
 export LC_NUMERIC="en_US.UTF-8"
 
@@ -40,19 +44,26 @@ gtdb_urls=( "https://data.gtdb.ecogenomic.org/releases/latest/ar122_taxonomy.tsv
 shopt -s expand_aliases
 alias sort="sort --field-separator=$'\t'"
 
+# Define downloader to use
+if [[ "${base_url}" = "file://"* || "${use_curl}" -eq 1 ]]; then
+    alias downloader="curl --silent --retry ${retries} --connect-timeout ${timeout} --output "
+else
+    alias downloader="wget --quiet --continue --tries ${retries} --read-timeout ${timeout} --output-document "
+fi
+
 download_url() # parameter: ${1} url, ${2} output file/directory (omit/empty to STDOUT)
 {
     outfiledir="${2:-}"
     if [[ ! -z "${outfiledir}" ]]; then
         if [[ -d "${outfiledir}" ]]; then
-            out="--directory-prefix=${outfiledir}"
+            out="${outfiledir}/${1##*/}" # based on given output dir and file to download
         else
-            out="--output-document=${outfiledir}"
+            out="${outfiledir}"
         fi
     else
-        out="--output-document=-" # STDOUT
+        out="-" # STDOUT
     fi
-    wget "${out}" --quiet --continue --tries="${wget_tries}" --read-timeout="${wget_timeout}" ${1}
+    downloader "${out}" ${1}
 }
 export -f download_url #export it to be accessible to the parallel call
 
@@ -74,7 +85,7 @@ parse_new_taxdump() # parameter: ${1} taxids - return all taxids on of provided 
 	taxids=${1}
 	
     tmp_new_taxdump="${target_output_prefix}new_taxdump.tar.gz"
-    download_url "ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}"
+    download_url "${base_url}/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}"
     unpack "${tmp_new_taxdump}" "${working_dir}" "taxidlineage.dmp"
     tmp_taxidlineage="${working_dir}taxidlineage.dmp"
     tmp_lineage=${working_dir}lineage.tmp
@@ -94,7 +105,7 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
     do
         # If no organism group is chosen, get complete assembly_summary for the database
         if [[ -z "${3}" ]]; then
-            download_url "ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/assembly_summary_${d}.txt" | tail -n+3 >> "${1}"
+            download_url "${base_url}/genomes/${d}/assembly_summary_${d}.txt" | tail -n+3 >> "${1}"
         else
             for og in ${3//,/ }
             do
@@ -103,7 +114,7 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
                 then
                     og="vertebrate_mammalian/Homo_sapiens"
                 fi
-                download_url "ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/${og}/assembly_summary.txt" | tail -n+3 >> "${1}"
+                download_url "${base_url}/genomes/${d}/${og}/assembly_summary.txt" | tail -n+3 >> "${1}"
             done
         fi
     done

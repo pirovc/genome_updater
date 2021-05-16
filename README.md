@@ -15,7 +15,7 @@ Bash script to download and update snapshots of the NCBI genomes (refseq/genbank
 
 or
 
-	git clone https://github.com/pirovc/genome_updater.git
+	git clone --recurse-submodules https://github.com/pirovc/genome_updater.git
 
 or
 
@@ -98,9 +98,9 @@ Reports:
 
 	./genome_updater.sh -e /my/path/assembly_summary.txt -f "genomic.fna.gz" -o "recovered_sequences" -b january_2018
 
-### Changing timeout and tries of the downloads (wget)
+### Changing timeout, retries and downloader (wget/curl)
 
-	wget_tries=10 wget_timeout=600 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt"
+	retries=10 timeout=600 use_curl=1 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt"
 
 ## Top assemblies:
 
