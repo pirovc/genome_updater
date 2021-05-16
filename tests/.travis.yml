@@ -1,7 +1,0 @@
-language: bash
-
-before_install:
-  - sudo apt-get install parallel
-
-script:
-    - tests/tests.sh 12
