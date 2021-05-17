@@ -2,30 +2,45 @@
 
 load 'libs/bats-support/load'
 load 'libs/bats-assert/load'
+load 'libs/bats-file/load'
 
-# Export local_dir to get local files when testing
-local_dir="tests/files/"
-export local_dir
+setup_file() {
+	# Get tests dir
+    DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )"
+   
+    # Export local_dir (expected in genome_updater) to get local files when testing
+	local_dir="$DIR/files/"
+	export local_dir
 
-outprefix="tests/results/"
-mkdir -p $outprefix
+	# Setup output folder for tests
+	outprefix="$DIR/results/"
+	rm -rf $outprefix
+	mkdir -p $outprefix
+	export outprefix
+}
 
 @test "Run genome_updater.sh and show" {
-    ./genome_updater.sh -h
+    run ./genome_updater.sh -h
     assert_success
 }
 
 @test "Basic refseq" {
-    ./genome_updater.sh -d refseq -o ${outprefix}basic-refseq
+	outdir=${outprefix}basic-refseq/
+    run ./genome_updater.sh -d refseq -o ${outdir}
     assert_success
+    assert_link_exist ${outdir}assembly_summary.txt
 }
 
 @test "Basic genbank" {
-    ./genome_updater.sh -d genbank -o ${outprefix}basic-genbank
+	outdir=${outprefix}basic-genbank/
+    run ./genome_updater.sh -d genbank -o ${outdir}
     assert_success
+    assert_link_exist ${outdir}assembly_summary.txt
 }
 
 @test "Basic refseq,genbank" {
-    ./genome_updater.sh -d refseq,genbank -o ${outprefix}basic-refseq-genbank
+	outdir=${outprefix}basic-refseq-genbank/
+    run ./genome_updater.sh -d refseq,genbank -o ${outdir}
     assert_success
+    assert_link_exist ${outdir}assembly_summary.txt
 }
