@@ -10,6 +10,11 @@ export local_dir
 outprefix="tests/results/"
 mkdir -p $outprefix
 
+@test "Run genome_updater.sh and show" {
+    ./genome_updater.sh -h
+    assert_success
+}
+
 @test "Basic refseq" {
     ./genome_updater.sh -d refseq -o ${outprefix}basic-refseq
     assert_success

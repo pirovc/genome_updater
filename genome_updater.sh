@@ -639,7 +639,7 @@ while getopts "d:g:S:T:c:l:F:o:e:b:t:f:P:A:zn:akixmurpswhD" opt; do
     s) silent=1 ;;
     w) silent_progress=1 ;;
     D) debug_mode=1 ;;
-    h|\?) showhelp; exit 1 ;;
+    h|\?) showhelp; exit 0 ;;
     :) echo "Option -${OPTARG} requires an argument." >&2; exit 1 ;;
   esac
 done
