@@ -1,0 +1,77 @@
+# Assembly name:  22036_6#306
+# Organism name:  Klebsiella pneumoniae (enterobacteria)
+# Infraspecific name:  strain=4300STDY6470430
+# Taxid:          573
+# BioSample:      SAMEA4364611
+# BioProject:     PRJEB19226
+# Submitter:      SC
+# Date:           2018-07-17
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    UFHN01
+# Genome coverage: 100x
+# GenBank assembly accession: GCA_900494725.1
+# RefSeq assembly accession: GCF_900494725.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_900494724.1	GCF_900494724.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+UFHN01000049.1	unplaced-scaffold	na	na	UFHN01000049.1	=	NZ_UFHN01000049.1	Primary Assembly	300	na
+UFHN01000048.1	unplaced-scaffold	na	na	UFHN01000048.1	=	NZ_UFHN01000048.1	Primary Assembly	312	na
+UFHN01000021.1	unplaced-scaffold	na	na	UFHN01000021.1	=	NZ_UFHN01000021.1	Primary Assembly	2425	na
+UFHN01000020.1	unplaced-scaffold	na	na	UFHN01000020.1	=	NZ_UFHN01000020.1	Primary Assembly	2906	na
+UFHN01000047.1	unplaced-scaffold	na	na	UFHN01000047.1	=	NZ_UFHN01000047.1	Primary Assembly	313	na
+UFHN01000019.1	unplaced-scaffold	na	na	UFHN01000019.1	=	NZ_UFHN01000019.1	Primary Assembly	4547	na
+UFHN01000041.1	unplaced-scaffold	na	na	UFHN01000041.1	=	NZ_UFHN01000041.1	Primary Assembly	418	na
+UFHN01000012.1	unplaced-scaffold	na	na	UFHN01000012.1	=	NZ_UFHN01000012.1	Primary Assembly	103934	na
+UFHN01000033.1	unplaced-scaffold	na	na	UFHN01000033.1	=	NZ_UFHN01000033.1	Primary Assembly	569	na
+UFHN01000017.1	unplaced-scaffold	na	na	UFHN01000017.1	=	NZ_UFHN01000017.1	Primary Assembly	26441	na
+UFHN01000010.1	unplaced-scaffold	na	na	UFHN01000010.1	=	NZ_UFHN01000010.1	Primary Assembly	114827	na
+UFHN01000011.1	unplaced-scaffold	na	na	UFHN01000011.1	=	NZ_UFHN01000011.1	Primary Assembly	114549	na
+UFHN01000004.1	unplaced-scaffold	na	na	UFHN01000004.1	=	NZ_UFHN01000004.1	Primary Assembly	373198	na
+UFHN01000035.1	unplaced-scaffold	na	na	UFHN01000035.1	=	NZ_UFHN01000035.1	Primary Assembly	506	na
+UFHN01000018.1	unplaced-scaffold	na	na	UFHN01000018.1	=	NZ_UFHN01000018.1	Primary Assembly	21139	na
+UFHN01000006.1	unplaced-scaffold	na	na	UFHN01000006.1	=	NZ_UFHN01000006.1	Primary Assembly	349342	na
+UFHN01000022.1	unplaced-scaffold	na	na	UFHN01000022.1	=	NZ_UFHN01000022.1	Primary Assembly	2295	na
+UFHN01000043.1	unplaced-scaffold	na	na	UFHN01000043.1	=	NZ_UFHN01000043.1	Primary Assembly	350	na
+UFHN01000030.1	unplaced-scaffold	na	na	UFHN01000030.1	=	NZ_UFHN01000030.1	Primary Assembly	652	na
+UFHN01000034.1	unplaced-scaffold	na	na	UFHN01000034.1	=	NZ_UFHN01000034.1	Primary Assembly	556	na
+UFHN01000005.1	unplaced-scaffold	na	na	UFHN01000005.1	=	NZ_UFHN01000005.1	Primary Assembly	367529	na
+UFHN01000014.1	unplaced-scaffold	na	na	UFHN01000014.1	=	NZ_UFHN01000014.1	Primary Assembly	86766	na
+UFHN01000001.1	unplaced-scaffold	na	na	UFHN01000001.1	=	NZ_UFHN01000001.1	Primary Assembly	1216173	na
+UFHN01000007.1	unplaced-scaffold	na	na	UFHN01000007.1	=	NZ_UFHN01000007.1	Primary Assembly	331811	na
+UFHN01000028.1	unplaced-scaffold	na	na	UFHN01000028.1	=	NZ_UFHN01000028.1	Primary Assembly	696	na
+UFHN01000003.1	unplaced-scaffold	na	na	UFHN01000003.1	=	NZ_UFHN01000003.1	Primary Assembly	376504	na
+UFHN01000023.1	unplaced-scaffold	na	na	UFHN01000023.1	=	NZ_UFHN01000023.1	Primary Assembly	1952	na
+UFHN01000038.1	unplaced-scaffold	na	na	UFHN01000038.1	=	NZ_UFHN01000038.1	Primary Assembly	459	na
+UFHN01000040.1	unplaced-scaffold	na	na	UFHN01000040.1	=	NZ_UFHN01000040.1	Primary Assembly	419	na
+UFHN01000009.1	unplaced-scaffold	na	na	UFHN01000009.1	=	NZ_UFHN01000009.1	Primary Assembly	135997	na
+UFHN01000026.1	unplaced-scaffold	na	na	UFHN01000026.1	=	NZ_UFHN01000026.1	Primary Assembly	968	na
+UFHN01000008.1	unplaced-scaffold	na	na	UFHN01000008.1	=	NZ_UFHN01000008.1	Primary Assembly	212130	na
+UFHN01000024.1	unplaced-scaffold	na	na	UFHN01000024.1	=	NZ_UFHN01000024.1	Primary Assembly	1270	na
+UFHN01000045.1	unplaced-scaffold	na	na	UFHN01000045.1	=	NZ_UFHN01000045.1	Primary Assembly	322	na
+UFHN01000036.1	unplaced-scaffold	na	na	UFHN01000036.1	=	NZ_UFHN01000036.1	Primary Assembly	504	na
+UFHN01000025.1	unplaced-scaffold	na	na	UFHN01000025.1	=	NZ_UFHN01000025.1	Primary Assembly	1077	na
+UFHN01000013.1	unplaced-scaffold	na	na	UFHN01000013.1	=	NZ_UFHN01000013.1	Primary Assembly	101793	na
+UFHN01000027.1	unplaced-scaffold	na	na	UFHN01000027.1	=	NZ_UFHN01000027.1	Primary Assembly	795	na
+UFHN01000029.1	unplaced-scaffold	na	na	UFHN01000029.1	=	NZ_UFHN01000029.1	Primary Assembly	667	na
+UFHN01000031.1	unplaced-scaffold	na	na	UFHN01000031.1	=	NZ_UFHN01000031.1	Primary Assembly	645	na
+UFHN01000046.1	unplaced-scaffold	na	na	UFHN01000046.1	=	NZ_UFHN01000046.1	Primary Assembly	322	na
+UFHN01000002.1	unplaced-scaffold	na	na	UFHN01000002.1	=	NZ_UFHN01000002.1	Primary Assembly	1205324	na
+UFHN01000032.1	unplaced-scaffold	na	na	UFHN01000032.1	=	NZ_UFHN01000032.1	Primary Assembly	582	na
+UFHN01000037.1	unplaced-scaffold	na	na	UFHN01000037.1	=	NZ_UFHN01000037.1	Primary Assembly	478	na
+UFHN01000016.1	unplaced-scaffold	na	na	UFHN01000016.1	=	NZ_UFHN01000016.1	Primary Assembly	35557	na
+UFHN01000039.1	unplaced-scaffold	na	na	UFHN01000039.1	=	NZ_UFHN01000039.1	Primary Assembly	419	na
+UFHN01000015.1	unplaced-scaffold	na	na	UFHN01000015.1	=	NZ_UFHN01000015.1	Primary Assembly	60860	na
+UFHN01000042.1	unplaced-scaffold	na	na	UFHN01000042.1	=	NZ_UFHN01000042.1	Primary Assembly	367	na
+UFHN01000044.1	unplaced-scaffold	na	na	UFHN01000044.1	=	NZ_UFHN01000044.1	Primary Assembly	326	na

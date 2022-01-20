@@ -1,0 +1,283 @@
+# Assembly name:  Genome assembly version 1
+# Organism name:  Fusarium mangiferae (ascomycetes)
+# Infraspecific name:  strain=MRC7560
+# Taxid:          192010
+# BioSample:      SAMEA3862491
+# BioProject:     PRJEB9887
+# Submitter:      Institute of Bioinformatics and Systems Biology
+# Date:           2016-12-06
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    FCQH01
+# Genome coverage: 104x
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_900044065.1
+# RefSeq assembly accession: GCF_900044065.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_900044064.1	GCF_900044064.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig253	unplaced-scaffold	na	na	FCQH01000253.1	=	NW_024574173.1	Primary Assembly	1013	na
+contig252	unplaced-scaffold	na	na	FCQH01000252.1	=	NW_024574172.1	Primary Assembly	1013	na
+contig251	unplaced-scaffold	na	na	FCQH01000251.1	=	NW_024574171.1	Primary Assembly	933	na
+contig250	unplaced-scaffold	na	na	FCQH01000250.1	=	NW_024574170.1	Primary Assembly	966	na
+contig249	unplaced-scaffold	na	na	FCQH01000249.1	=	NW_024574169.1	Primary Assembly	1028	na
+contig247	unplaced-scaffold	na	na	FCQH01000247.1	=	NW_024574167.1	Primary Assembly	1035	na
+contig245	unplaced-scaffold	na	na	FCQH01000245.1	=	NW_024574165.1	Primary Assembly	1036	na
+contig244	unplaced-scaffold	na	na	FCQH01000244.1	=	NW_024574164.1	Primary Assembly	1041	na
+contig241	unplaced-scaffold	na	na	FCQH01000241.1	=	NW_024574161.1	Primary Assembly	1022	na
+contig240	unplaced-scaffold	na	na	FCQH01000240.1	=	NW_024574160.1	Primary Assembly	1061	na
+contig238	unplaced-scaffold	na	na	FCQH01000238.1	=	NW_024574158.1	Primary Assembly	1074	na
+contig237	unplaced-scaffold	na	na	FCQH01000237.1	=	NW_024574157.1	Primary Assembly	1076	na
+contig234	unplaced-scaffold	na	na	FCQH01000234.1	=	NW_024574154.1	Primary Assembly	1080	na
+contig232	unplaced-scaffold	na	na	FCQH01000232.1	=	NW_024574152.1	Primary Assembly	1087	na
+contig230	unplaced-scaffold	na	na	FCQH01000230.1	=	NW_024574150.1	Primary Assembly	1092	na
+contig229	unplaced-scaffold	na	na	FCQH01000229.1	=	NW_024574149.1	Primary Assembly	1056	na
+contig228	unplaced-scaffold	na	na	FCQH01000228.1	=	NW_024574148.1	Primary Assembly	1107	na
+contig227	unplaced-scaffold	na	na	FCQH01000227.1	=	NW_024574147.1	Primary Assembly	1108	na
+contig223	unplaced-scaffold	na	na	FCQH01000223.1	=	NW_024574143.1	Primary Assembly	1113	na
+contig220	unplaced-scaffold	na	na	FCQH01000220.1	=	NW_024574140.1	Primary Assembly	1124	na
+contig218	unplaced-scaffold	na	na	FCQH01000218.1	=	NW_024574138.1	Primary Assembly	1100	na
+contig217	unplaced-scaffold	na	na	FCQH01000217.1	=	NW_024574137.1	Primary Assembly	1098	na
+contig214	unplaced-scaffold	na	na	FCQH01000214.1	=	NW_024574134.1	Primary Assembly	1155	na
+contig212	unplaced-scaffold	na	na	FCQH01000212.1	=	NW_024574132.1	Primary Assembly	1163	na
+contig242	unplaced-scaffold	na	na	FCQH01000242.1	=	NW_024574162.1	Primary Assembly	1059	na
+contig211	unplaced-scaffold	na	na	FCQH01000211.1	=	NW_024574131.1	Primary Assembly	1101	na
+contig210	unplaced-scaffold	na	na	FCQH01000210.1	=	NW_024574130.1	Primary Assembly	1144	na
+contig206	unplaced-scaffold	na	na	FCQH01000206.1	=	NW_024574126.1	Primary Assembly	1184	na
+contig204	unplaced-scaffold	na	na	FCQH01000204.1	=	NW_024574124.1	Primary Assembly	1197	na
+contig201	unplaced-scaffold	na	na	FCQH01000201.1	=	NW_024574121.1	Primary Assembly	1153	na
+contig200	unplaced-scaffold	na	na	FCQH01000200.1	=	NW_024574120.1	Primary Assembly	1144	na
+contig199	unplaced-scaffold	na	na	FCQH01000199.1	=	NW_024574119.1	Primary Assembly	1154	na
+contig95	unplaced-scaffold	na	na	FCQH01000095.1	=	NW_024574015.1	Primary Assembly	2791	na
+contig103	unplaced-scaffold	na	na	FCQH01000103.1	=	NW_024574023.1	Primary Assembly	2653	na
+contig93	unplaced-scaffold	na	na	FCQH01000093.1	=	NW_024574013.1	Primary Assembly	2733	na
+contig248	unplaced-scaffold	na	na	FCQH01000248.1	=	NW_024574168.1	Primary Assembly	1031	na
+contig91	unplaced-scaffold	na	na	FCQH01000091.1	=	NW_024574011.1	Primary Assembly	2727	na
+contig155	unplaced-scaffold	na	na	FCQH01000155.1	=	NW_024574075.1	Primary Assembly	1555	na
+contig87	unplaced-scaffold	na	na	FCQH01000087.1	=	NW_024574007.1	Primary Assembly	3124	na
+contig221	unplaced-scaffold	na	na	FCQH01000221.1	=	NW_024574141.1	Primary Assembly	1077	na
+contig86	unplaced-scaffold	na	na	FCQH01000086.1	=	NW_024574006.1	Primary Assembly	3148	na
+contig82	unplaced-scaffold	na	na	FCQH01000082.1	=	NW_024574002.1	Primary Assembly	3416	na
+contig81	unplaced-scaffold	na	na	FCQH01000081.1	=	NW_024574001.1	Primary Assembly	3443	na
+contig173	unplaced-scaffold	na	na	FCQH01000173.1	=	NW_024574093.1	Primary Assembly	1390	na
+contig79	unplaced-scaffold	na	na	FCQH01000079.1	=	NW_024573999.1	Primary Assembly	3571	na
+contig77	unplaced-scaffold	na	na	FCQH01000077.1	=	NW_024573997.1	Primary Assembly	3783	na
+contig92	unplaced-scaffold	na	na	FCQH01000092.1	=	NW_024574012.1	Primary Assembly	2773	na
+contig73	unplaced-scaffold	na	na	FCQH01000073.1	=	NW_024573993.1	Primary Assembly	4549	na
+contig72	unplaced-scaffold	na	na	FCQH01000072.1	=	NW_024573992.1	Primary Assembly	4614	na
+contig69	unplaced-scaffold	na	na	FCQH01000069.1	=	NW_024573989.1	Primary Assembly	6015	na
+contig111	unplaced-scaffold	na	na	FCQH01000111.1	=	NW_024574031.1	Primary Assembly	2324	na
+contig135	unplaced-scaffold	na	na	FCQH01000135.1	=	NW_024574055.1	Primary Assembly	1752	na
+contig19	unplaced-scaffold	na	na	FCQH01000019.1	=	NW_024573939.1	Primary Assembly	767837	na
+contig75	unplaced-scaffold	na	na	FCQH01000075.1	=	NW_024573995.1	Primary Assembly	3832	na
+contig65	unplaced-scaffold	na	na	FCQH01000065.1	=	NW_024573985.1	Primary Assembly	8886	na
+contig190	unplaced-scaffold	na	na	FCQH01000190.1	=	NW_024574110.1	Primary Assembly	1274	na
+contig105	unplaced-scaffold	na	na	FCQH01000105.1	=	NW_024574025.1	Primary Assembly	2484	na
+contig60	unplaced-scaffold	na	na	FCQH01000060.1	=	NW_024573980.1	Primary Assembly	8296	na
+contig23	unplaced-scaffold	na	na	FCQH01000023.1	=	NW_024573943.1	Primary Assembly	398333	na
+contig58	unplaced-scaffold	na	na	FCQH01000058.1	=	NW_024573978.1	Primary Assembly	10036	na
+contig132	unplaced-scaffold	na	na	FCQH01000132.1	=	NW_024574052.1	Primary Assembly	1816	na
+contig62	unplaced-scaffold	na	na	FCQH01000062.1	=	NW_024573982.1	Primary Assembly	9285	na
+contig127	unplaced-scaffold	na	na	FCQH01000127.1	=	NW_024574047.1	Primary Assembly	1920	na
+contig90	unplaced-scaffold	na	na	FCQH01000090.1	=	NW_024574010.1	Primary Assembly	2755	na
+contig14	unplaced-scaffold	na	na	FCQH01000014.1	=	NW_024573934.1	Primary Assembly	1523759	na
+contig205	unplaced-scaffold	na	na	FCQH01000205.1	=	NW_024574125.1	Primary Assembly	1116	na
+contig59	unplaced-scaffold	na	na	FCQH01000059.1	=	NW_024573979.1	Primary Assembly	13602	na
+contig67	unplaced-scaffold	na	na	FCQH01000067.1	=	NW_024573987.1	Primary Assembly	6798	na
+contig49	unplaced-scaffold	na	na	FCQH01000049.1	=	NW_024573969.1	Primary Assembly	14142	na
+contig48	unplaced-scaffold	na	na	FCQH01000048.1	=	NW_024573968.1	Primary Assembly	15580	na
+contig47	unplaced-scaffold	na	na	FCQH01000047.1	=	NW_024573967.1	Primary Assembly	19038	na
+contig215	unplaced-scaffold	na	na	FCQH01000215.1	=	NW_024574135.1	Primary Assembly	1152	na
+contig9	unplaced-scaffold	na	na	FCQH01000009.1	=	NW_024573929.1	Primary Assembly	2146838	na
+contig94	unplaced-scaffold	na	na	FCQH01000094.1	=	NW_024574014.1	Primary Assembly	2757	na
+contig197	unplaced-scaffold	na	na	FCQH01000197.1	=	NW_024574117.1	Primary Assembly	1230	na
+contig213	unplaced-scaffold	na	na	FCQH01000213.1	=	NW_024574133.1	Primary Assembly	1159	na
+contig22	unplaced-scaffold	na	na	FCQH01000022.1	=	NW_024573942.1	Primary Assembly	432807	na
+contig57	unplaced-scaffold	na	na	FCQH01000057.1	=	NW_024573977.1	Primary Assembly	10552	na
+contig160	unplaced-scaffold	na	na	FCQH01000160.1	=	NW_024574080.1	Primary Assembly	1530	na
+contig177	unplaced-scaffold	na	na	FCQH01000177.1	=	NW_024574097.1	Primary Assembly	1358	na
+contig17	unplaced-scaffold	na	na	FCQH01000017.1	=	NW_024573937.1	Primary Assembly	926907	na
+contig141	unplaced-scaffold	na	na	FCQH01000141.1	=	NW_024574061.1	Primary Assembly	1698	na
+contig55	unplaced-scaffold	na	na	FCQH01000055.1	=	NW_024573975.1	Primary Assembly	9713	na
+contig117	unplaced-scaffold	na	na	FCQH01000117.1	=	NW_024574037.1	Primary Assembly	2294	na
+contig1	unplaced-scaffold	na	na	FCQH01000001.1	=	NW_024573921.1	Primary Assembly	4752789	na
+contig104	unplaced-scaffold	na	na	FCQH01000104.1	=	NW_024574024.1	Primary Assembly	2526	na
+contig99	unplaced-scaffold	na	na	FCQH01000099.1	=	NW_024574019.1	Primary Assembly	2688	na
+contig52	unplaced-scaffold	na	na	FCQH01000052.1	=	NW_024573972.1	Primary Assembly	12125	na
+contig8	unplaced-scaffold	na	na	FCQH01000008.1	=	NW_024573928.1	Primary Assembly	2234088	na
+contig63	unplaced-scaffold	na	na	FCQH01000063.1	=	NW_024573983.1	Primary Assembly	9822	na
+contig239	unplaced-scaffold	na	na	FCQH01000239.1	=	NW_024574159.1	Primary Assembly	1071	na
+contig157	unplaced-scaffold	na	na	FCQH01000157.1	=	NW_024574077.1	Primary Assembly	1477	na
+contig25	unplaced-scaffold	na	na	FCQH01000025.1	=	NW_024573945.1	Primary Assembly	140683	na
+contig203	unplaced-scaffold	na	na	FCQH01000203.1	=	NW_024574123.1	Primary Assembly	1197	na
+contig89	unplaced-scaffold	na	na	FCQH01000089.1	=	NW_024574009.1	Primary Assembly	2950	na
+contig131	unplaced-scaffold	na	na	FCQH01000131.1	=	NW_024574051.1	Primary Assembly	1825	na
+contig74	unplaced-scaffold	na	na	FCQH01000074.1	=	NW_024573994.1	Primary Assembly	4152	na
+contig149	unplaced-scaffold	na	na	FCQH01000149.1	=	NW_024574069.1	Primary Assembly	1618	na
+contig170	unplaced-scaffold	na	na	FCQH01000170.1	=	NW_024574090.1	Primary Assembly	1406	na
+contig83	unplaced-scaffold	na	na	FCQH01000083.1	=	NW_024574003.1	Primary Assembly	3442	na
+contig2	unplaced-scaffold	na	na	FCQH01000002.1	=	NW_024573922.1	Primary Assembly	4191135	na
+contig20	unplaced-scaffold	na	na	FCQH01000020.1	=	NW_024573940.1	Primary Assembly	686906	na
+contig186	unplaced-scaffold	na	na	FCQH01000186.1	=	NW_024574106.1	Primary Assembly	1289	na
+contig208	unplaced-scaffold	na	na	FCQH01000208.1	=	NW_024574128.1	Primary Assembly	1124	na
+contig21	unplaced-scaffold	na	na	FCQH01000021.1	=	NW_024573941.1	Primary Assembly	434450	na
+contig162	unplaced-scaffold	na	na	FCQH01000162.1	=	NW_024574082.1	Primary Assembly	1510	na
+contig189	unplaced-scaffold	na	na	FCQH01000189.1	=	NW_024574109.1	Primary Assembly	1272	na
+contig224	unplaced-scaffold	na	na	FCQH01000224.1	=	NW_024574144.1	Primary Assembly	1113	na
+contig108	unplaced-scaffold	na	na	FCQH01000108.1	=	NW_024574028.1	Primary Assembly	2346	na
+contig27	unplaced-scaffold	na	na	FCQH01000027.1	=	NW_024573947.1	Primary Assembly	131930	na
+contig243	unplaced-scaffold	na	na	FCQH01000243.1	=	NW_024574163.1	Primary Assembly	1051	na
+contig196	unplaced-scaffold	na	na	FCQH01000196.1	=	NW_024574116.1	Primary Assembly	1232	na
+contig42	unplaced-scaffold	na	na	FCQH01000042.1	=	NW_024573962.1	Primary Assembly	27020	na
+contig56	unplaced-scaffold	na	na	FCQH01000056.1	=	NW_024573976.1	Primary Assembly	11151	na
+contig45	unplaced-scaffold	na	na	FCQH01000045.1	=	NW_024573965.1	Primary Assembly	21062	na
+contig183	unplaced-scaffold	na	na	FCQH01000183.1	=	NW_024574103.1	Primary Assembly	1307	na
+contig71	unplaced-scaffold	na	na	FCQH01000071.1	=	NW_024573991.1	Primary Assembly	4632	na
+contig11	unplaced-scaffold	na	na	FCQH01000011.1	=	NW_024573931.1	Primary Assembly	2030615	na
+contig80	unplaced-scaffold	na	na	FCQH01000080.1	=	NW_024574000.1	Primary Assembly	3588	na
+contig18	unplaced-scaffold	na	na	FCQH01000018.1	=	NW_024573938.1	Primary Assembly	805900	na
+contig191	unplaced-scaffold	na	na	FCQH01000191.1	=	NW_024574111.1	Primary Assembly	1227	na
+contig133	unplaced-scaffold	na	na	FCQH01000133.1	=	NW_024574053.1	Primary Assembly	1816	na
+contig43	unplaced-scaffold	na	na	FCQH01000043.1	=	NW_024573963.1	Primary Assembly	26030	na
+contig130	unplaced-scaffold	na	na	FCQH01000130.1	=	NW_024574050.1	Primary Assembly	1794	na
+contig3	unplaced-scaffold	na	na	FCQH01000003.1	=	NW_024573923.1	Primary Assembly	3560416	na
+contig5	unplaced-scaffold	na	na	FCQH01000005.1	=	NW_024573925.1	Primary Assembly	2852653	na
+contig40	unplaced-scaffold	na	na	FCQH01000040.1	=	NW_024573960.1	Primary Assembly	27871	na
+contig166	unplaced-scaffold	na	na	FCQH01000166.1	=	NW_024574086.1	Primary Assembly	1452	na
+contig15	unplaced-scaffold	na	na	FCQH01000015.1	=	NW_024573935.1	Primary Assembly	1350799	na
+contig110	unplaced-scaffold	na	na	FCQH01000110.1	=	NW_024574030.1	Primary Assembly	2304	na
+contig114	unplaced-scaffold	na	na	FCQH01000114.1	=	NW_024574034.1	Primary Assembly	2302	na
+contig202	unplaced-scaffold	na	na	FCQH01000202.1	=	NW_024574122.1	Primary Assembly	1203	na
+contig116	unplaced-scaffold	na	na	FCQH01000116.1	=	NW_024574036.1	Primary Assembly	2205	na
+contig222	unplaced-scaffold	na	na	FCQH01000222.1	=	NW_024574142.1	Primary Assembly	1116	na
+contig147	unplaced-scaffold	na	na	FCQH01000147.1	=	NW_024574067.1	Primary Assembly	1577	na
+contig78	unplaced-scaffold	na	na	FCQH01000078.1	=	NW_024573998.1	Primary Assembly	3584	na
+contig68	unplaced-scaffold	na	na	FCQH01000068.1	=	NW_024573988.1	Primary Assembly	6449	na
+contig64	unplaced-scaffold	na	na	FCQH01000064.1	=	NW_024573984.1	Primary Assembly	7786	na
+contig231	unplaced-scaffold	na	na	FCQH01000231.1	=	NW_024574151.1	Primary Assembly	1089	na
+contig50	unplaced-scaffold	na	na	FCQH01000050.1	=	NW_024573970.1	Primary Assembly	14992	na
+contig84	unplaced-scaffold	na	na	FCQH01000084.1	=	NW_024574004.1	Primary Assembly	3258	na
+contig31	unplaced-scaffold	na	na	FCQH01000031.1	=	NW_024573951.1	Primary Assembly	92677	na
+contig4	unplaced-scaffold	na	na	FCQH01000004.1	=	NW_024573924.1	Primary Assembly	3159380	na
+contig88	unplaced-scaffold	na	na	FCQH01000088.1	=	NW_024574008.1	Primary Assembly	3116	na
+contig6	unplaced-scaffold	na	na	FCQH01000006.1	=	NW_024573926.1	Primary Assembly	2630515	na
+contig115	unplaced-scaffold	na	na	FCQH01000115.1	=	NW_024574035.1	Primary Assembly	2301	na
+contig10	unplaced-scaffold	na	na	FCQH01000010.1	=	NW_024573930.1	Primary Assembly	2083461	na
+contig24	unplaced-scaffold	na	na	FCQH01000024.1	=	NW_024573944.1	Primary Assembly	156391	na
+contig39	unplaced-scaffold	na	na	FCQH01000039.1	=	NW_024573959.1	Primary Assembly	27220	na
+contig233	unplaced-scaffold	na	na	FCQH01000233.1	=	NW_024574153.1	Primary Assembly	1029	na
+contig26	unplaced-scaffold	na	na	FCQH01000026.1	=	NW_024573946.1	Primary Assembly	140227	na
+contig66	unplaced-scaffold	na	na	FCQH01000066.1	=	NW_024573986.1	Primary Assembly	6898	na
+contig33	unplaced-scaffold	na	na	FCQH01000033.1	=	NW_024573953.1	Primary Assembly	69122	na
+contig37	unplaced-scaffold	na	na	FCQH01000037.1	=	NW_024573957.1	Primary Assembly	31423	na
+contig216	unplaced-scaffold	na	na	FCQH01000216.1	=	NW_024574136.1	Primary Assembly	1151	na
+contig51	unplaced-scaffold	na	na	FCQH01000051.1	=	NW_024573971.1	Primary Assembly	11138	na
+contig225	unplaced-scaffold	na	na	FCQH01000225.1	=	NW_024574145.1	Primary Assembly	1085	na
+contig29	unplaced-scaffold	na	na	FCQH01000029.1	=	NW_024573949.1	Primary Assembly	103149	na
+contig46	unplaced-scaffold	na	na	FCQH01000046.1	=	NW_024573966.1	Primary Assembly	15836	na
+contig41	unplaced-scaffold	na	na	FCQH01000041.1	=	NW_024573961.1	Primary Assembly	27971	na
+contig30	unplaced-scaffold	na	na	FCQH01000030.1	=	NW_024573950.1	Primary Assembly	90599	na
+contig38	unplaced-scaffold	na	na	FCQH01000038.1	=	NW_024573958.1	Primary Assembly	30993	na
+contig32	unplaced-scaffold	na	na	FCQH01000032.1	=	NW_024573952.1	Primary Assembly	79890	na
+contig164	unplaced-scaffold	na	na	FCQH01000164.1	=	NW_024574084.1	Primary Assembly	1492	na
+contig34	unplaced-scaffold	na	na	FCQH01000034.1	=	NW_024573954.1	Primary Assembly	55665	na
+contig198	unplaced-scaffold	na	na	FCQH01000198.1	=	NW_024574118.1	Primary Assembly	1183	na
+contig168	unplaced-scaffold	na	na	FCQH01000168.1	=	NW_024574088.1	Primary Assembly	1376	na
+contig35	unplaced-scaffold	na	na	FCQH01000035.1	=	NW_024573955.1	Primary Assembly	52714	na
+contig28	unplaced-scaffold	na	na	FCQH01000028.1	=	NW_024573948.1	Primary Assembly	128050	na
+contig126	unplaced-scaffold	na	na	FCQH01000126.1	=	NW_024574046.1	Primary Assembly	1906	na
+contig161	unplaced-scaffold	na	na	FCQH01000161.1	=	NW_024574081.1	Primary Assembly	1516	na
+contig54	unplaced-scaffold	na	na	FCQH01000054.1	=	NW_024573974.1	Primary Assembly	10875	na
+contig176	unplaced-scaffold	na	na	FCQH01000176.1	=	NW_024574096.1	Primary Assembly	1361	na
+contig119	unplaced-scaffold	na	na	FCQH01000119.1	=	NW_024574039.1	Primary Assembly	2259	na
+contig219	unplaced-scaffold	na	na	FCQH01000219.1	=	NW_024574139.1	Primary Assembly	1143	na
+contig97	unplaced-scaffold	na	na	FCQH01000097.1	=	NW_024574017.1	Primary Assembly	2743	na
+contig143	unplaced-scaffold	na	na	FCQH01000143.1	=	NW_024574063.1	Primary Assembly	1696	na
+contig98	unplaced-scaffold	na	na	FCQH01000098.1	=	NW_024574018.1	Primary Assembly	2770	na
+contig209	unplaced-scaffold	na	na	FCQH01000209.1	=	NW_024574129.1	Primary Assembly	1102	na
+contig101	unplaced-scaffold	na	na	FCQH01000101.1	=	NW_024574021.1	Primary Assembly	2660	na
+contig109	unplaced-scaffold	na	na	FCQH01000109.1	=	NW_024574029.1	Primary Assembly	2302	na
+contig102	unplaced-scaffold	na	na	FCQH01000102.1	=	NW_024574022.1	Primary Assembly	2660	na
+contig106	unplaced-scaffold	na	na	FCQH01000106.1	=	NW_024574026.1	Primary Assembly	2444	na
+contig167	unplaced-scaffold	na	na	FCQH01000167.1	=	NW_024574087.1	Primary Assembly	1392	na
+contig123	unplaced-scaffold	na	na	FCQH01000123.1	=	NW_024574043.1	Primary Assembly	2128	na
+contig112	unplaced-scaffold	na	na	FCQH01000112.1	=	NW_024574032.1	Primary Assembly	2324	na
+contig156	unplaced-scaffold	na	na	FCQH01000156.1	=	NW_024574076.1	Primary Assembly	1480	na
+contig153	unplaced-scaffold	na	na	FCQH01000153.1	=	NW_024574073.1	Primary Assembly	1564	na
+contig113	unplaced-scaffold	na	na	FCQH01000113.1	=	NW_024574033.1	Primary Assembly	2306	na
+contig118	unplaced-scaffold	na	na	FCQH01000118.1	=	NW_024574038.1	Primary Assembly	2291	na
+contig120	unplaced-scaffold	na	na	FCQH01000120.1	=	NW_024574040.1	Primary Assembly	2166	na
+contig121	unplaced-scaffold	na	na	FCQH01000121.1	=	NW_024574041.1	Primary Assembly	2166	na
+contig76	unplaced-scaffold	na	na	FCQH01000076.1	=	NW_024573996.1	Primary Assembly	3809	na
+contig178	unplaced-scaffold	na	na	FCQH01000178.1	=	NW_024574098.1	Primary Assembly	1341	na
+contig207	unplaced-scaffold	na	na	FCQH01000207.1	=	NW_024574127.1	Primary Assembly	1182	na
+contig122	unplaced-scaffold	na	na	FCQH01000122.1	=	NW_024574042.1	Primary Assembly	2138	na
+contig236	unplaced-scaffold	na	na	FCQH01000236.1	=	NW_024574156.1	Primary Assembly	1077	na
+contig165	unplaced-scaffold	na	na	FCQH01000165.1	=	NW_024574085.1	Primary Assembly	1464	na
+contig136	unplaced-scaffold	na	na	FCQH01000136.1	=	NW_024574056.1	Primary Assembly	1780	na
+contig85	unplaced-scaffold	na	na	FCQH01000085.1	=	NW_024574005.1	Primary Assembly	3239	na
+contig124	unplaced-scaffold	na	na	FCQH01000124.1	=	NW_024574044.1	Primary Assembly	2080	na
+contig254	unplaced-scaffold	na	na	FCQH01000254.1	=	NW_024574174.1	Primary Assembly	1012	na
+contig7	unplaced-scaffold	na	na	FCQH01000007.1	=	NW_024573927.1	Primary Assembly	2536721	na
+contig100	unplaced-scaffold	na	na	FCQH01000100.1	=	NW_024574020.1	Primary Assembly	2679	na
+contig107	unplaced-scaffold	na	na	FCQH01000107.1	=	NW_024574027.1	Primary Assembly	2427	na
+contig125	unplaced-scaffold	na	na	FCQH01000125.1	=	NW_024574045.1	Primary Assembly	1958	na
+contig148	unplaced-scaffold	na	na	FCQH01000148.1	=	NW_024574068.1	Primary Assembly	1630	na
+contig12	unplaced-scaffold	na	na	FCQH01000012.1	=	NW_024573932.1	Primary Assembly	1702884	na
+contig128	unplaced-scaffold	na	na	FCQH01000128.1	=	NW_024574048.1	Primary Assembly	1915	na
+contig13	unplaced-scaffold	na	na	FCQH01000013.1	=	NW_024573933.1	Primary Assembly	1671353	na
+contig129	unplaced-scaffold	na	na	FCQH01000129.1	=	NW_024574049.1	Primary Assembly	1840	na
+contig159	unplaced-scaffold	na	na	FCQH01000159.1	=	NW_024574079.1	Primary Assembly	1530	na
+contig134	unplaced-scaffold	na	na	FCQH01000134.1	=	NW_024574054.1	Primary Assembly	1748	na
+contig61	unplaced-scaffold	na	na	FCQH01000061.1	=	NW_024573981.1	Primary Assembly	7994	na
+contig137	unplaced-scaffold	na	na	FCQH01000137.1	=	NW_024574057.1	Primary Assembly	1755	na
+contig154	unplaced-scaffold	na	na	FCQH01000154.1	=	NW_024574074.1	Primary Assembly	1515	na
+contig138	unplaced-scaffold	na	na	FCQH01000138.1	=	NW_024574058.1	Primary Assembly	1747	na
+contig70	unplaced-scaffold	na	na	FCQH01000070.1	=	NW_024573990.1	Primary Assembly	6005	na
+contig158	unplaced-scaffold	na	na	FCQH01000158.1	=	NW_024574078.1	Primary Assembly	1534	na
+contig139	unplaced-scaffold	na	na	FCQH01000139.1	=	NW_024574059.1	Primary Assembly	1684	na
+contig140	unplaced-scaffold	na	na	FCQH01000140.1	=	NW_024574060.1	Primary Assembly	1681	na
+contig174	unplaced-scaffold	na	na	FCQH01000174.1	=	NW_024574094.1	Primary Assembly	1333	na
+contig53	unplaced-scaffold	na	na	FCQH01000053.1	=	NW_024573973.1	Primary Assembly	10787	na
+contig142	unplaced-scaffold	na	na	FCQH01000142.1	=	NW_024574062.1	Primary Assembly	1698	na
+contig16	unplaced-scaffold	na	na	FCQH01000016.1	=	NW_024573936.1	Primary Assembly	1293757	na
+contig144	unplaced-scaffold	na	na	FCQH01000144.1	=	NW_024574064.1	Primary Assembly	1611	na
+contig36	unplaced-scaffold	na	na	FCQH01000036.1	=	NW_024573956.1	Primary Assembly	44939	na
+contig146	unplaced-scaffold	na	na	FCQH01000146.1	=	NW_024574066.1	Primary Assembly	1597	na
+contig246	unplaced-scaffold	na	na	FCQH01000246.1	=	NW_024574166.1	Primary Assembly	1036	na
+contig150	unplaced-scaffold	na	na	FCQH01000150.1	=	NW_024574070.1	Primary Assembly	1592	na
+contig151	unplaced-scaffold	na	na	FCQH01000151.1	=	NW_024574071.1	Primary Assembly	1588	na
+contig152	unplaced-scaffold	na	na	FCQH01000152.1	=	NW_024574072.1	Primary Assembly	1577	na
+contig163	unplaced-scaffold	na	na	FCQH01000163.1	=	NW_024574083.1	Primary Assembly	1501	na
+contig169	unplaced-scaffold	na	na	FCQH01000169.1	=	NW_024574089.1	Primary Assembly	1409	na
+contig96	unplaced-scaffold	na	na	FCQH01000096.1	=	NW_024574016.1	Primary Assembly	2732	na
+contig171	unplaced-scaffold	na	na	FCQH01000171.1	=	NW_024574091.1	Primary Assembly	1335	na
+contig172	unplaced-scaffold	na	na	FCQH01000172.1	=	NW_024574092.1	Primary Assembly	1318	na
+contig175	unplaced-scaffold	na	na	FCQH01000175.1	=	NW_024574095.1	Primary Assembly	1380	na
+contig179	unplaced-scaffold	na	na	FCQH01000179.1	=	NW_024574099.1	Primary Assembly	1265	na
+contig180	unplaced-scaffold	na	na	FCQH01000180.1	=	NW_024574100.1	Primary Assembly	1323	na
+contig181	unplaced-scaffold	na	na	FCQH01000181.1	=	NW_024574101.1	Primary Assembly	1318	na
+contig235	unplaced-scaffold	na	na	FCQH01000235.1	=	NW_024574155.1	Primary Assembly	1080	na
+contig182	unplaced-scaffold	na	na	FCQH01000182.1	=	NW_024574102.1	Primary Assembly	1258	na
+contig184	unplaced-scaffold	na	na	FCQH01000184.1	=	NW_024574104.1	Primary Assembly	1303	na
+contig185	unplaced-scaffold	na	na	FCQH01000185.1	=	NW_024574105.1	Primary Assembly	1302	na
+contig187	unplaced-scaffold	na	na	FCQH01000187.1	=	NW_024574107.1	Primary Assembly	1236	na
+contig188	unplaced-scaffold	na	na	FCQH01000188.1	=	NW_024574108.1	Primary Assembly	1169	na
+contig192	unplaced-scaffold	na	na	FCQH01000192.1	=	NW_024574112.1	Primary Assembly	1261	na
+contig226	unplaced-scaffold	na	na	FCQH01000226.1	=	NW_024574146.1	Primary Assembly	1111	na
+contig145	unplaced-scaffold	na	na	FCQH01000145.1	=	NW_024574065.1	Primary Assembly	1570	na
+contig44	unplaced-scaffold	na	na	FCQH01000044.1	=	NW_024573964.1	Primary Assembly	21228	na
+contig193	unplaced-scaffold	na	na	FCQH01000193.1	=	NW_024574113.1	Primary Assembly	1210	na
+contig194	unplaced-scaffold	na	na	FCQH01000194.1	=	NW_024574114.1	Primary Assembly	1243	na
+contig195	unplaced-scaffold	na	na	FCQH01000195.1	=	NW_024574115.1	Primary Assembly	1242	na

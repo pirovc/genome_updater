@@ -1,0 +1,68 @@
+# Assembly name:  ASM2080422v1
+# Organism name:  Methanosarcina sp. DH2 (euryarchaeotes)
+# Infraspecific name:  strain=DH2
+# Taxid:          2605639
+# BioSample:      SAMN12616828
+# BioProject:     PRJNA561362
+# Submitter:      University of Massachusetts Amherst
+# Date:           2021-11-08
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    WJBI01
+# Assembly method: Velvet v. 1.2.10
+# Expected final version: no
+# Genome coverage: 10.0x
+# Sequencing technology: Illumina HiSeq
+# GenBank assembly accession: GCA_020804225.1
+# RefSeq assembly accession: GCF_020804225.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_020804235.1	GCF_020804235.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+Contig_10	unplaced-scaffold	na	na	WJBI01000019.1	=	NZ_WJBI01000019.1	Primary Assembly	80943	na
+Contig_12	unplaced-scaffold	na	na	WJBI01000016.1	=	NZ_WJBI01000016.1	Primary Assembly	150619	na
+Contig_13	unplaced-scaffold	na	na	WJBI01000021.1	=	NZ_WJBI01000021.1	Primary Assembly	73913	na
+Contig_16	unplaced-scaffold	na	na	WJBI01000025.1	=	NZ_WJBI01000025.1	Primary Assembly	45044	na
+Contig_19	unplaced-scaffold	na	na	WJBI01000026.1	=	NZ_WJBI01000026.1	Primary Assembly	43089	na
+Contig_20	unplaced-scaffold	na	na	WJBI01000034.1	=	NZ_WJBI01000034.1	Primary Assembly	1641	na
+Contig_23	unplaced-scaffold	na	na	WJBI01000017.1	=	NZ_WJBI01000017.1	Primary Assembly	125344	na
+Contig_25	unplaced-scaffold	na	na	WJBI01000035.1	=	NZ_WJBI01000035.1	Primary Assembly	1078	na
+Contig_27	unplaced-scaffold	na	na	WJBI01000014.1	=	NZ_WJBI01000014.1	Primary Assembly	187908	na
+Contig_28	unplaced-scaffold	na	na	WJBI01000030.1	=	NZ_WJBI01000030.1	Primary Assembly	8321	na
+Contig_29	unplaced-scaffold	na	na	WJBI01000023.1	=	NZ_WJBI01000023.1	Primary Assembly	53492	na
+Contig_32	unplaced-scaffold	na	na	WJBI01000024.1	=	NZ_WJBI01000024.1	Primary Assembly	48012	na
+Contig_35	unplaced-scaffold	na	na	WJBI01000015.1	=	NZ_WJBI01000015.1	Primary Assembly	172065	na
+Contig_36	unplaced-scaffold	na	na	WJBI01000031.1	=	NZ_WJBI01000031.1	Primary Assembly	4931	na
+Contig_38	unplaced-scaffold	na	na	WJBI01000028.1	=	NZ_WJBI01000028.1	Primary Assembly	28670	na
+Contig_4	unplaced-scaffold	na	na	WJBI01000022.1	=	NZ_WJBI01000022.1	Primary Assembly	73786	na
+Contig_42	unplaced-scaffold	na	na	WJBI01000020.1	=	NZ_WJBI01000020.1	Primary Assembly	76224	na
+Contig_46	unplaced-scaffold	na	na	WJBI01000029.1	=	NZ_WJBI01000029.1	Primary Assembly	18023	na
+Contig_49	unplaced-scaffold	na	na	WJBI01000032.1	=	NZ_WJBI01000032.1	Primary Assembly	4084	na
+Contig_51	unplaced-scaffold	na	na	WJBI01000037.1	=	NZ_WJBI01000037.1	Primary Assembly	677	na
+Contig_54	unplaced-scaffold	na	na	WJBI01000033.1	=	NZ_WJBI01000033.1	Primary Assembly	1722	na
+Contig_57	unplaced-scaffold	na	na	WJBI01000036.1	=	NZ_WJBI01000036.1	Primary Assembly	904	na
+Contig_6	unplaced-scaffold	na	na	WJBI01000018.1	=	NZ_WJBI01000018.1	Primary Assembly	113628	na
+Contig_9	unplaced-scaffold	na	na	WJBI01000027.1	=	NZ_WJBI01000027.1	Primary Assembly	31398	na
+Scaffold_100	unplaced-scaffold	na	na	WJBI01000001.1	=	NZ_WJBI01000001.1	Primary Assembly	916655	na
+Scaffold_110	unplaced-scaffold	na	na	WJBI01000002.1	=	NZ_WJBI01000002.1	Primary Assembly	677788	na
+Scaffold_120	unplaced-scaffold	na	na	WJBI01000003.1	=	NZ_WJBI01000003.1	Primary Assembly	90040	na
+Scaffold_130	unplaced-scaffold	na	na	WJBI01000004.1	=	NZ_WJBI01000004.1	Primary Assembly	369882	na
+Scaffold_140	unplaced-scaffold	na	na	WJBI01000005.1	=	NZ_WJBI01000005.1	Primary Assembly	272212	na
+Scaffold_150	unplaced-scaffold	na	na	WJBI01000006.1	=	NZ_WJBI01000006.1	Primary Assembly	58587	na
+Scaffold_160	unplaced-scaffold	na	na	WJBI01000007.1	=	NZ_WJBI01000007.1	Primary Assembly	114232	na
+Scaffold_170	unplaced-scaffold	na	na	WJBI01000008.1	=	NZ_WJBI01000008.1	Primary Assembly	120202	na
+Scaffold_180	unplaced-scaffold	na	na	WJBI01000009.1	=	NZ_WJBI01000009.1	Primary Assembly	103677	na
+Scaffold_190	unplaced-scaffold	na	na	WJBI01000010.1	=	NZ_WJBI01000010.1	Primary Assembly	223628	na
+Scaffold_200	unplaced-scaffold	na	na	WJBI01000011.1	=	NZ_WJBI01000011.1	Primary Assembly	45193	na
+Scaffold_210	unplaced-scaffold	na	na	WJBI01000012.1	=	NZ_WJBI01000012.1	Primary Assembly	228511	na
+Scaffold_220	unplaced-scaffold	na	na	WJBI01000013.1	=	NZ_WJBI01000013.1	Primary Assembly	29959	na

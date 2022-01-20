@@ -1,0 +1,43 @@
+# Assembly name:  ASM254v2
+# Organism name:  [Candida] glabrata (budding yeasts)
+# Infraspecific name:  strain=CBS 138
+# Taxid:          5478
+# BioSample:      SAMEA3138172
+# BioProject:     PRJNA13831
+# Submitter:      Genolevures Consortium
+# Date:           2008-08-12
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000002545.2
+# RefSeq assembly accession: GCF_000002545.3
+# RefSeq assembly and GenBank assemblies identical: no
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000000725.2	GCF_000000725.3	Primary Assembly
+## 	GCF_000247245.1	non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+A	assembled-molecule	A	Chromosome	CR380947.2	=	NC_005967.2	Primary Assembly	491328	na
+B	assembled-molecule	B	Chromosome	CR380948.1	=	NC_005968.1	Primary Assembly	502101	na
+C	assembled-molecule	C	Chromosome	CR380949.1	=	NC_006026.1	Primary Assembly	558804	na
+D	assembled-molecule	D	Chromosome	CR380950.1	=	NC_006027.1	Primary Assembly	651701	na
+E	assembled-molecule	E	Chromosome	CR380951.2	=	NC_006028.2	Primary Assembly	687738	na
+F	assembled-molecule	F	Chromosome	CR380952.1	=	NC_006029.1	Primary Assembly	927101	na
+G	assembled-molecule	G	Chromosome	CR380953.1	=	NC_006030.1	Primary Assembly	992211	na
+H	assembled-molecule	H	Chromosome	CR380954.1	=	NC_006031.1	Primary Assembly	1050361	na
+I	assembled-molecule	I	Chromosome	CR380955.2	=	NC_006032.2	Primary Assembly	1100349	na
+J	assembled-molecule	J	Chromosome	CR380956.2	=	NC_006033.2	Primary Assembly	1195132	na
+K	assembled-molecule	K	Chromosome	CR380957.2	=	NC_006034.2	Primary Assembly	1302831	na
+L	assembled-molecule	L	Chromosome	CR380958.2	=	NC_006035.2	Primary Assembly	1455689	na
+M	assembled-molecule	M	Chromosome	CR380959.2	=	NC_006036.2	Primary Assembly	1402899	na
+MT	assembled-molecule	MT	Mitochondrion	na	<>	NC_004691.1	non-nuclear	20063	na

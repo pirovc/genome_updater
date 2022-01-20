@@ -1,0 +1,114 @@
+# Assembly name:  ASM1883795v1
+# Organism name:  Zooshikella ganghwensis (g-proteobacteria)
+# Infraspecific name:  strain=BCCM/LGM 28823
+# Taxid:          202772
+# BioSample:      SAMN18753899
+# BioProject:     PRJNA722390
+# Submitter:      HZI-Helmholtz Centre for Infection Research
+# Date:           2021-06-10
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    JAGSGA01
+# Assembly method: SPAdes v. 3.11.1
+# Expected final version: yes
+# Genome coverage: 100.0x
+# Sequencing technology: Illumina MiSeq
+# GenBank assembly accession: GCA_018837955.1
+# RefSeq assembly accession: GCF_018837955.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_018837965.1	GCF_018837965.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+1	unplaced-scaffold	na	na	JAGSGA010000001.1	=	NZ_JAGSGA010000001.1	Primary Assembly	709897	na
+10	unplaced-scaffold	na	na	JAGSGA010000010.1	=	NZ_JAGSGA010000010.1	Primary Assembly	207185	na
+11	unplaced-scaffold	na	na	JAGSGA010000011.1	=	NZ_JAGSGA010000011.1	Primary Assembly	195538	na
+12	unplaced-scaffold	na	na	JAGSGA010000012.1	=	NZ_JAGSGA010000012.1	Primary Assembly	188697	na
+13	unplaced-scaffold	na	na	JAGSGA010000013.1	=	NZ_JAGSGA010000013.1	Primary Assembly	172780	na
+14	unplaced-scaffold	na	na	JAGSGA010000014.1	=	NZ_JAGSGA010000014.1	Primary Assembly	169178	na
+15	unplaced-scaffold	na	na	JAGSGA010000015.1	=	NZ_JAGSGA010000015.1	Primary Assembly	135934	na
+16	unplaced-scaffold	na	na	JAGSGA010000016.1	=	NZ_JAGSGA010000016.1	Primary Assembly	129833	na
+17	unplaced-scaffold	na	na	JAGSGA010000017.1	=	NZ_JAGSGA010000017.1	Primary Assembly	128766	na
+18	unplaced-scaffold	na	na	JAGSGA010000018.1	=	NZ_JAGSGA010000018.1	Primary Assembly	117550	na
+19	unplaced-scaffold	na	na	JAGSGA010000019.1	=	NZ_JAGSGA010000019.1	Primary Assembly	98931	na
+2	unplaced-scaffold	na	na	JAGSGA010000002.1	=	NZ_JAGSGA010000002.1	Primary Assembly	528452	na
+20	unplaced-scaffold	na	na	JAGSGA010000020.1	=	NZ_JAGSGA010000020.1	Primary Assembly	98232	na
+21	unplaced-scaffold	na	na	JAGSGA010000021.1	=	NZ_JAGSGA010000021.1	Primary Assembly	89675	na
+22	unplaced-scaffold	na	na	JAGSGA010000022.1	=	NZ_JAGSGA010000022.1	Primary Assembly	89238	na
+23	unplaced-scaffold	na	na	JAGSGA010000023.1	=	NZ_JAGSGA010000023.1	Primary Assembly	82149	na
+24	unplaced-scaffold	na	na	JAGSGA010000024.1	=	NZ_JAGSGA010000024.1	Primary Assembly	79660	na
+25	unplaced-scaffold	na	na	JAGSGA010000025.1	=	NZ_JAGSGA010000025.1	Primary Assembly	61538	na
+26	unplaced-scaffold	na	na	JAGSGA010000026.1	=	NZ_JAGSGA010000026.1	Primary Assembly	56230	na
+27	unplaced-scaffold	na	na	JAGSGA010000027.1	=	NZ_JAGSGA010000027.1	Primary Assembly	55255	na
+28	unplaced-scaffold	na	na	JAGSGA010000028.1	=	NZ_JAGSGA010000028.1	Primary Assembly	54109	na
+29	unplaced-scaffold	na	na	JAGSGA010000029.1	=	NZ_JAGSGA010000029.1	Primary Assembly	49873	na
+3	unplaced-scaffold	na	na	JAGSGA010000003.1	=	NZ_JAGSGA010000003.1	Primary Assembly	517404	na
+30	unplaced-scaffold	na	na	JAGSGA010000030.1	=	NZ_JAGSGA010000030.1	Primary Assembly	41844	na
+31	unplaced-scaffold	na	na	JAGSGA010000031.1	=	NZ_JAGSGA010000031.1	Primary Assembly	38273	na
+32	unplaced-scaffold	na	na	JAGSGA010000032.1	=	NZ_JAGSGA010000032.1	Primary Assembly	33287	na
+33	unplaced-scaffold	na	na	JAGSGA010000033.1	=	NZ_JAGSGA010000033.1	Primary Assembly	30771	na
+34	unplaced-scaffold	na	na	JAGSGA010000034.1	=	NZ_JAGSGA010000034.1	Primary Assembly	24261	na
+35	unplaced-scaffold	na	na	JAGSGA010000035.1	=	NZ_JAGSGA010000035.1	Primary Assembly	23406	na
+36	unplaced-scaffold	na	na	JAGSGA010000036.1	=	NZ_JAGSGA010000036.1	Primary Assembly	23185	na
+37	unplaced-scaffold	na	na	JAGSGA010000037.1	=	NZ_JAGSGA010000037.1	Primary Assembly	21485	na
+38	unplaced-scaffold	na	na	JAGSGA010000038.1	=	NZ_JAGSGA010000038.1	Primary Assembly	21274	na
+39	unplaced-scaffold	na	na	JAGSGA010000039.1	=	NZ_JAGSGA010000039.1	Primary Assembly	19580	na
+4	unplaced-scaffold	na	na	JAGSGA010000004.1	=	NZ_JAGSGA010000004.1	Primary Assembly	316957	na
+40	unplaced-scaffold	na	na	JAGSGA010000040.1	=	NZ_JAGSGA010000040.1	Primary Assembly	15259	na
+41	unplaced-scaffold	na	na	JAGSGA010000041.1	=	NZ_JAGSGA010000041.1	Primary Assembly	11240	na
+42	unplaced-scaffold	na	na	JAGSGA010000042.1	=	NZ_JAGSGA010000042.1	Primary Assembly	11015	na
+43	unplaced-scaffold	na	na	JAGSGA010000043.1	=	NZ_JAGSGA010000043.1	Primary Assembly	10467	na
+44	unplaced-scaffold	na	na	JAGSGA010000044.1	=	NZ_JAGSGA010000044.1	Primary Assembly	9905	na
+45	unplaced-scaffold	na	na	JAGSGA010000045.1	=	NZ_JAGSGA010000045.1	Primary Assembly	8602	na
+46	unplaced-scaffold	na	na	JAGSGA010000046.1	=	NZ_JAGSGA010000046.1	Primary Assembly	7363	na
+47	unplaced-scaffold	na	na	JAGSGA010000047.1	=	NZ_JAGSGA010000047.1	Primary Assembly	5414	na
+48	unplaced-scaffold	na	na	JAGSGA010000048.1	=	NZ_JAGSGA010000048.1	Primary Assembly	5345	na
+49	unplaced-scaffold	na	na	JAGSGA010000049.1	=	NZ_JAGSGA010000049.1	Primary Assembly	5233	na
+5	unplaced-scaffold	na	na	JAGSGA010000005.1	=	NZ_JAGSGA010000005.1	Primary Assembly	283074	na
+50	unplaced-scaffold	na	na	JAGSGA010000050.1	=	NZ_JAGSGA010000050.1	Primary Assembly	5178	na
+51	unplaced-scaffold	na	na	JAGSGA010000051.1	=	NZ_JAGSGA010000051.1	Primary Assembly	4198	na
+52	unplaced-scaffold	na	na	JAGSGA010000052.1	=	NZ_JAGSGA010000052.1	Primary Assembly	4151	na
+53	unplaced-scaffold	na	na	JAGSGA010000053.1	=	NZ_JAGSGA010000053.1	Primary Assembly	3975	na
+54	unplaced-scaffold	na	na	JAGSGA010000054.1	=	NZ_JAGSGA010000054.1	Primary Assembly	3959	na
+55	unplaced-scaffold	na	na	JAGSGA010000055.1	=	NZ_JAGSGA010000055.1	Primary Assembly	3940	na
+56	unplaced-scaffold	na	na	JAGSGA010000056.1	=	NZ_JAGSGA010000056.1	Primary Assembly	2852	na
+57	unplaced-scaffold	na	na	JAGSGA010000057.1	=	NZ_JAGSGA010000057.1	Primary Assembly	2800	na
+58	unplaced-scaffold	na	na	JAGSGA010000058.1	=	NZ_JAGSGA010000058.1	Primary Assembly	2711	na
+59	unplaced-scaffold	na	na	JAGSGA010000059.1	=	NZ_JAGSGA010000059.1	Primary Assembly	2326	na
+6	unplaced-scaffold	na	na	JAGSGA010000006.1	=	NZ_JAGSGA010000006.1	Primary Assembly	281346	na
+60	unplaced-scaffold	na	na	JAGSGA010000060.1	=	NZ_JAGSGA010000060.1	Primary Assembly	2251	na
+61	unplaced-scaffold	na	na	JAGSGA010000061.1	=	NZ_JAGSGA010000061.1	Primary Assembly	1716	na
+62	unplaced-scaffold	na	na	JAGSGA010000062.1	=	NZ_JAGSGA010000062.1	Primary Assembly	1540	na
+63	unplaced-scaffold	na	na	JAGSGA010000063.1	=	NZ_JAGSGA010000063.1	Primary Assembly	1368	na
+64	unplaced-scaffold	na	na	JAGSGA010000064.1	=	NZ_JAGSGA010000064.1	Primary Assembly	1368	na
+65	unplaced-scaffold	na	na	JAGSGA010000065.1	=	NZ_JAGSGA010000065.1	Primary Assembly	1308	na
+66	unplaced-scaffold	na	na	JAGSGA010000066.1	=	NZ_JAGSGA010000066.1	Primary Assembly	1002	na
+67	unplaced-scaffold	na	na	JAGSGA010000067.1	=	NZ_JAGSGA010000067.1	Primary Assembly	963	na
+68	unplaced-scaffold	na	na	JAGSGA010000068.1	=	NZ_JAGSGA010000068.1	Primary Assembly	797	na
+69	unplaced-scaffold	na	na	JAGSGA010000069.1	=	NZ_JAGSGA010000069.1	Primary Assembly	793	na
+7	unplaced-scaffold	na	na	JAGSGA010000007.1	=	NZ_JAGSGA010000007.1	Primary Assembly	277378	na
+70	unplaced-scaffold	na	na	JAGSGA010000070.1	=	NZ_JAGSGA010000070.1	Primary Assembly	792	na
+71	unplaced-scaffold	na	na	JAGSGA010000071.1	=	NZ_JAGSGA010000071.1	Primary Assembly	753	na
+72	unplaced-scaffold	na	na	JAGSGA010000072.1	=	NZ_JAGSGA010000072.1	Primary Assembly	709	na
+73	unplaced-scaffold	na	na	JAGSGA010000073.1	=	NZ_JAGSGA010000073.1	Primary Assembly	653	na
+74	unplaced-scaffold	na	na	JAGSGA010000074.1	=	NZ_JAGSGA010000074.1	Primary Assembly	651	na
+75	unplaced-scaffold	na	na	JAGSGA010000075.1	=	NZ_JAGSGA010000075.1	Primary Assembly	651	na
+76	unplaced-scaffold	na	na	JAGSGA010000076.1	=	NZ_JAGSGA010000076.1	Primary Assembly	650	na
+77	unplaced-scaffold	na	na	JAGSGA010000077.1	=	NZ_JAGSGA010000077.1	Primary Assembly	649	na
+78	unplaced-scaffold	na	na	JAGSGA010000078.1	=	NZ_JAGSGA010000078.1	Primary Assembly	649	na
+79	unplaced-scaffold	na	na	JAGSGA010000079.1	=	NZ_JAGSGA010000079.1	Primary Assembly	637	na
+8	unplaced-scaffold	na	na	JAGSGA010000008.1	=	NZ_JAGSGA010000008.1	Primary Assembly	248681	na
+80	unplaced-scaffold	na	na	JAGSGA010000080.1	=	NZ_JAGSGA010000080.1	Primary Assembly	563	na
+81	unplaced-scaffold	na	na	JAGSGA010000081.1	=	NZ_JAGSGA010000081.1	Primary Assembly	534	na
+82	unplaced-scaffold	na	na	JAGSGA010000082.1	=	NZ_JAGSGA010000082.1	Primary Assembly	530	na
+83	unplaced-scaffold	na	na	JAGSGA010000083.1	=	NZ_JAGSGA010000083.1	Primary Assembly	513	na
+9	unplaced-scaffold	na	na	JAGSGA010000009.1	=	NZ_JAGSGA010000009.1	Primary Assembly	211386	na

@@ -1,0 +1,58 @@
+# Assembly name:  ASM1918657v1
+# Organism name:  Botrytis cinerea (ascomycetes)
+# Infraspecific name:  strain=D14_KF
+# Taxid:          40559
+# BioSample:      SAMN19241187
+# BioProject:     PRJNA730711
+# Submitter:      University of Munich (LMU)
+# Date:           2021-07-09
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    JAHHFN01
+# Assembly method: wtdbg2 v. 2.2
+# Expected final version: yes
+# Reference guided assembly: GCA_000143535
+# Genome coverage: 100.0x
+# Sequencing technology: Oxford Nanopore PromethION; Illumina HiSeq
+# GenBank assembly accession: GCA_019186575.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_019186595.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ctg10_pilon	unplaced-scaffold	na	na	JAHHFN010000010.1	<>	na	Primary Assembly	2486789	na
+ctg11_pilon	unplaced-scaffold	na	na	JAHHFN010000011.1	<>	na	Primary Assembly	2484156	na
+ctg12_pilon	unplaced-scaffold	na	na	JAHHFN010000012.1	<>	na	Primary Assembly	2335720	na
+ctg13_pilon	unplaced-scaffold	na	na	JAHHFN010000013.1	<>	na	Primary Assembly	2179532	na
+ctg14_pilon	unplaced-scaffold	na	na	JAHHFN010000014.1	<>	na	Primary Assembly	2062692	na
+ctg15_pilon	unplaced-scaffold	na	na	JAHHFN010000015.1	<>	na	Primary Assembly	1942295	na
+ctg16_pilon	unplaced-scaffold	na	na	JAHHFN010000016.1	<>	na	Primary Assembly	1948308	na
+ctg17_pilon	unplaced-scaffold	na	na	JAHHFN010000017.1	<>	na	Primary Assembly	434335	na
+ctg18_pilon	unplaced-scaffold	na	na	JAHHFN010000018.1	<>	na	Primary Assembly	230025	na
+ctg1_pilon	unplaced-scaffold	na	na	JAHHFN010000001.1	<>	na	Primary Assembly	3240336	na
+ctg20_pilon	unplaced-scaffold	na	na	JAHHFN010000019.1	<>	na	Primary Assembly	55657	na
+ctg21_pilon	unplaced-scaffold	na	na	JAHHFN010000020.1	<>	na	Primary Assembly	40404	na
+ctg22_pilon	unplaced-scaffold	na	na	JAHHFN010000021.1	<>	na	Primary Assembly	21826	na
+ctg24_pilon	unplaced-scaffold	na	na	JAHHFN010000022.1	<>	na	Primary Assembly	14001	na
+ctg25_pilon	unplaced-scaffold	na	na	JAHHFN010000023.1	<>	na	Primary Assembly	11265	na
+ctg26_pilon	unplaced-scaffold	na	na	JAHHFN010000024.1	<>	na	Primary Assembly	14168	na
+ctg27_pilon	unplaced-scaffold	na	na	JAHHFN010000025.1	<>	na	Primary Assembly	9592	na
+ctg2_pilon	unplaced-scaffold	na	na	JAHHFN010000002.1	<>	na	Primary Assembly	4372326	na
+ctg30_pilon	unplaced-scaffold	na	na	JAHHFN010000026.1	<>	na	Primary Assembly	7314	na
+ctg31_pilon	unplaced-scaffold	na	na	JAHHFN010000027.1	<>	na	Primary Assembly	3472	na
+ctg32_pilon	unplaced-scaffold	na	na	JAHHFN010000028.1	<>	na	Primary Assembly	6208	na
+ctg3_pilon	unplaced-scaffold	na	na	JAHHFN010000003.1	<>	na	Primary Assembly	2971799	na
+ctg4_pilon	unplaced-scaffold	na	na	JAHHFN010000004.1	<>	na	Primary Assembly	2971346	na
+ctg5_pilon	unplaced-scaffold	na	na	JAHHFN010000005.1	<>	na	Primary Assembly	2619834	na
+ctg6_pilon	unplaced-scaffold	na	na	JAHHFN010000006.1	<>	na	Primary Assembly	2612242	na
+ctg7_pilon	unplaced-scaffold	na	na	JAHHFN010000007.1	<>	na	Primary Assembly	2559458	na
+ctg8_pilon	unplaced-scaffold	na	na	JAHHFN010000008.1	<>	na	Primary Assembly	2550230	na
+ctg9_pilon	unplaced-scaffold	na	na	JAHHFN010000009.1	<>	na	Primary Assembly	2553984	na

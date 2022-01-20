@@ -1,0 +1,79 @@
+# Assembly name:  PSEUBRA1
+# Description:    Pseudozyma brasiliensis sp. nov. genome assembly v1.0
+# Organism name:  Kalmanozyma brasiliensis GHG001 (smut fungi)
+# Infraspecific name:  strain=GHG001
+# Taxid:          1365824
+# BioSample:      SAMN02334589
+# BioProject:     PRJNA217085
+# Submitter:      Laboratorio Nacional de Ciencia e Tecnologia do Bioetanol
+# Date:           2013-11-15
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    AWXO01
+# Assembly method: Velvet v. 1.2.08; SSPACE v. 2.0
+# Expected final version: no
+# Genome coverage: 585x
+# Sequencing technology: Illumina HiSeq
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000497045.1
+# RefSeq assembly accession: GCF_000497045.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000497055.1	GCF_000497055.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+PSEUBRA_SCAF1	unplaced-scaffold	na	na	KI545851.1	=	NW_015961948.1	Primary Assembly	1718534	na
+PSEUBRA_SCAF10	unplaced-scaffold	na	na	KI545852.1	=	NW_015961949.1	Primary Assembly	574490	na
+PSEUBRA_SCAF11	unplaced-scaffold	na	na	KI545853.1	=	NW_015961950.1	Primary Assembly	545293	na
+PSEUBRA_SCAF12	unplaced-scaffold	na	na	KI545854.1	=	NW_015961951.1	Primary Assembly	544900	na
+PSEUBRA_SCAF13	unplaced-scaffold	na	na	KI545855.1	=	NW_015961952.1	Primary Assembly	538778	na
+PSEUBRA_SCAF14	unplaced-scaffold	na	na	KI545856.1	=	NW_015961953.1	Primary Assembly	516438	na
+PSEUBRA_SCAF15	unplaced-scaffold	na	na	KI545857.1	=	NW_015961954.1	Primary Assembly	498955	na
+PSEUBRA_SCAF16	unplaced-scaffold	na	na	KI545858.1	=	NW_015961955.1	Primary Assembly	498365	na
+PSEUBRA_SCAF17	unplaced-scaffold	na	na	KI545859.1	=	NW_015961956.1	Primary Assembly	478706	na
+PSEUBRA_SCAF18	unplaced-scaffold	na	na	KI545860.1	=	NW_015961957.1	Primary Assembly	470660	na
+PSEUBRA_SCAF19	unplaced-scaffold	na	na	KI545861.1	=	NW_015961958.1	Primary Assembly	424542	na
+PSEUBRA_SCAF2	unplaced-scaffold	na	na	KI545862.1	=	NW_015961959.1	Primary Assembly	1427303	na
+PSEUBRA_SCAF20	unplaced-scaffold	na	na	KI545863.1	=	NW_015961960.1	Primary Assembly	423018	na
+PSEUBRA_SCAF21	unplaced-scaffold	na	na	KI545864.1	=	NW_015961961.1	Primary Assembly	563724	na
+PSEUBRA_SCAF22	unplaced-scaffold	na	na	KI545865.1	=	NW_015961962.1	Primary Assembly	270565	na
+PSEUBRA_SCAF23	unplaced-scaffold	na	na	KI545866.1	=	NW_015961963.1	Primary Assembly	257526	na
+PSEUBRA_SCAF24	unplaced-scaffold	na	na	KI545867.1	=	NW_015961964.1	Primary Assembly	201805	na
+PSEUBRA_SCAF25	unplaced-scaffold	na	na	KI545868.1	=	NW_015961965.1	Primary Assembly	383096	na
+PSEUBRA_SCAF26	unplaced-scaffold	na	na	KI545869.1	=	NW_015961966.1	Primary Assembly	36097	na
+PSEUBRA_SCAF27	unplaced-scaffold	na	na	KI545870.1	=	NW_015961967.1	Primary Assembly	9312	na
+PSEUBRA_SCAF28	unplaced-scaffold	na	na	KI545871.1	=	NW_015961968.1	Primary Assembly	6463	na
+PSEUBRA_SCAF29	unplaced-scaffold	na	na	KI545872.1	=	NW_015961969.1	Primary Assembly	6087	na
+PSEUBRA_SCAF3	unplaced-scaffold	na	na	KI545873.1	=	NW_015961970.1	Primary Assembly	2209810	na
+PSEUBRA_SCAF30	unplaced-scaffold	na	na	KI545874.1	=	NW_015961971.1	Primary Assembly	4693	na
+PSEUBRA_SCAF31	unplaced-scaffold	na	na	KI545875.1	=	NW_015961972.1	Primary Assembly	2640	na
+PSEUBRA_SCAF32	unplaced-scaffold	na	na	KI545876.1	=	NW_015961973.1	Primary Assembly	2339	na
+PSEUBRA_SCAF33	unplaced-scaffold	na	na	KI545877.1	=	NW_015961974.1	Primary Assembly	3884	na
+PSEUBRA_SCAF34	unplaced-scaffold	na	na	KI545878.1	=	NW_015961975.1	Primary Assembly	2675	na
+PSEUBRA_SCAF35	unplaced-scaffold	na	na	KI545879.1	=	NW_015961976.1	Primary Assembly	853	na
+PSEUBRA_SCAF36	unplaced-scaffold	na	na	KI545880.1	=	NW_015961977.1	Primary Assembly	2093	na
+PSEUBRA_SCAF37	unplaced-scaffold	na	na	KI545881.1	=	NW_015961978.1	Primary Assembly	674	na
+PSEUBRA_SCAF38	unplaced-scaffold	na	na	KI545882.1	=	NW_015961979.1	Primary Assembly	579	na
+PSEUBRA_SCAF39	unplaced-scaffold	na	na	KI545883.1	=	NW_015961980.1	Primary Assembly	549	na
+PSEUBRA_SCAF4	unplaced-scaffold	na	na	KI545884.1	=	NW_015961981.1	Primary Assembly	1035842	na
+PSEUBRA_SCAF40	unplaced-scaffold	na	na	KI545885.1	=	NW_015961982.1	Primary Assembly	544	na
+PSEUBRA_SCAF41	unplaced-scaffold	na	na	KI545886.1	=	NW_015961983.1	Primary Assembly	510	na
+PSEUBRA_SCAF42	unplaced-scaffold	na	na	KI545887.1	=	NW_015961984.1	Primary Assembly	496	na
+PSEUBRA_SCAF43	unplaced-scaffold	na	na	KI545888.1	=	NW_015961985.1	Primary Assembly	447	na
+PSEUBRA_SCAF44	unplaced-scaffold	na	na	KI545889.1	=	NW_015961986.1	Primary Assembly	445	na
+PSEUBRA_SCAF45	unplaced-scaffold	na	na	KI545890.1	=	NW_015961987.1	Primary Assembly	399	na
+PSEUBRA_SCAF5	unplaced-scaffold	na	na	KI545891.1	=	NW_015961988.1	Primary Assembly	904428	na
+PSEUBRA_SCAF6	unplaced-scaffold	na	na	KI545892.1	=	NW_015961989.1	Primary Assembly	810815	na
+PSEUBRA_SCAF7	unplaced-scaffold	na	na	KI545893.1	=	NW_015961990.1	Primary Assembly	720612	na
+PSEUBRA_SCAF8	unplaced-scaffold	na	na	KI545894.1	=	NW_015961991.1	Primary Assembly	647740	na
+PSEUBRA_SCAF9	unplaced-scaffold	na	na	KI545895.1	=	NW_015961992.1	Primary Assembly	577683	na

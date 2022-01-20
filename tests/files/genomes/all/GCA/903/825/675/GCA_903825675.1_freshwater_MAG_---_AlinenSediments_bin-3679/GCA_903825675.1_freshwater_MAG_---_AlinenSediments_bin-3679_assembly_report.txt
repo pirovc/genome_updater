@@ -1,0 +1,205 @@
+# Assembly name:  freshwater MAG --- AlinenSediments_bin-3679
+# Organism name:  uncultured archaeon (archaea)
+# Isolate:  AlinenSediments_bin-3679
+# Taxid:          115547
+# BioSample:      SAMEA6956616
+# BioProject:     PRJEB38681
+# Submitter:      BILS
+# Date:           2020-07-16
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    CAIKBN01
+# Genome coverage: 1x
+# Excluded from RefSeq: derived from environmental source; derived from metagenome
+# GenBank assembly accession: GCA_903825675.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_903825674.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig1	unplaced-scaffold	na	na	CAIKBN010000001.1	<>	na	Primary Assembly	2476	na
+contig2	unplaced-scaffold	na	na	CAIKBN010000002.1	<>	na	Primary Assembly	7273	na
+contig3	unplaced-scaffold	na	na	CAIKBN010000003.1	<>	na	Primary Assembly	11928	na
+contig4	unplaced-scaffold	na	na	CAIKBN010000004.1	<>	na	Primary Assembly	2439	na
+contig5	unplaced-scaffold	na	na	CAIKBN010000005.1	<>	na	Primary Assembly	2540	na
+contig6	unplaced-scaffold	na	na	CAIKBN010000006.1	<>	na	Primary Assembly	3437	na
+contig7	unplaced-scaffold	na	na	CAIKBN010000007.1	<>	na	Primary Assembly	2373	na
+contig8	unplaced-scaffold	na	na	CAIKBN010000008.1	<>	na	Primary Assembly	4379	na
+contig9	unplaced-scaffold	na	na	CAIKBN010000009.1	<>	na	Primary Assembly	14317	na
+contig10	unplaced-scaffold	na	na	CAIKBN010000010.1	<>	na	Primary Assembly	3286	na
+contig11	unplaced-scaffold	na	na	CAIKBN010000011.1	<>	na	Primary Assembly	2936	na
+contig12	unplaced-scaffold	na	na	CAIKBN010000012.1	<>	na	Primary Assembly	7403	na
+contig13	unplaced-scaffold	na	na	CAIKBN010000013.1	<>	na	Primary Assembly	3793	na
+contig14	unplaced-scaffold	na	na	CAIKBN010000014.1	<>	na	Primary Assembly	17980	na
+contig15	unplaced-scaffold	na	na	CAIKBN010000015.1	<>	na	Primary Assembly	1920	na
+contig16	unplaced-scaffold	na	na	CAIKBN010000016.1	<>	na	Primary Assembly	9211	na
+contig17	unplaced-scaffold	na	na	CAIKBN010000017.1	<>	na	Primary Assembly	1604	na
+contig18	unplaced-scaffold	na	na	CAIKBN010000018.1	<>	na	Primary Assembly	4338	na
+contig19	unplaced-scaffold	na	na	CAIKBN010000019.1	<>	na	Primary Assembly	5716	na
+contig20	unplaced-scaffold	na	na	CAIKBN010000020.1	<>	na	Primary Assembly	2472	na
+contig21	unplaced-scaffold	na	na	CAIKBN010000021.1	<>	na	Primary Assembly	12514	na
+contig22	unplaced-scaffold	na	na	CAIKBN010000022.1	<>	na	Primary Assembly	1654	na
+contig23	unplaced-scaffold	na	na	CAIKBN010000023.1	<>	na	Primary Assembly	5899	na
+contig24	unplaced-scaffold	na	na	CAIKBN010000024.1	<>	na	Primary Assembly	1901	na
+contig25	unplaced-scaffold	na	na	CAIKBN010000025.1	<>	na	Primary Assembly	2175	na
+contig26	unplaced-scaffold	na	na	CAIKBN010000026.1	<>	na	Primary Assembly	1728	na
+contig27	unplaced-scaffold	na	na	CAIKBN010000027.1	<>	na	Primary Assembly	4142	na
+contig28	unplaced-scaffold	na	na	CAIKBN010000028.1	<>	na	Primary Assembly	13262	na
+contig29	unplaced-scaffold	na	na	CAIKBN010000029.1	<>	na	Primary Assembly	1819	na
+contig30	unplaced-scaffold	na	na	CAIKBN010000030.1	<>	na	Primary Assembly	3183	na
+contig31	unplaced-scaffold	na	na	CAIKBN010000031.1	<>	na	Primary Assembly	7269	na
+contig32	unplaced-scaffold	na	na	CAIKBN010000032.1	<>	na	Primary Assembly	1862	na
+contig33	unplaced-scaffold	na	na	CAIKBN010000033.1	<>	na	Primary Assembly	4937	na
+contig34	unplaced-scaffold	na	na	CAIKBN010000034.1	<>	na	Primary Assembly	2006	na
+contig35	unplaced-scaffold	na	na	CAIKBN010000035.1	<>	na	Primary Assembly	6287	na
+contig36	unplaced-scaffold	na	na	CAIKBN010000036.1	<>	na	Primary Assembly	1513	na
+contig37	unplaced-scaffold	na	na	CAIKBN010000037.1	<>	na	Primary Assembly	1727	na
+contig38	unplaced-scaffold	na	na	CAIKBN010000038.1	<>	na	Primary Assembly	5075	na
+contig39	unplaced-scaffold	na	na	CAIKBN010000039.1	<>	na	Primary Assembly	3985	na
+contig40	unplaced-scaffold	na	na	CAIKBN010000040.1	<>	na	Primary Assembly	3465	na
+contig41	unplaced-scaffold	na	na	CAIKBN010000041.1	<>	na	Primary Assembly	9755	na
+contig42	unplaced-scaffold	na	na	CAIKBN010000042.1	<>	na	Primary Assembly	8530	na
+contig43	unplaced-scaffold	na	na	CAIKBN010000043.1	<>	na	Primary Assembly	2338	na
+contig44	unplaced-scaffold	na	na	CAIKBN010000044.1	<>	na	Primary Assembly	15558	na
+contig45	unplaced-scaffold	na	na	CAIKBN010000045.1	<>	na	Primary Assembly	1536	na
+contig46	unplaced-scaffold	na	na	CAIKBN010000046.1	<>	na	Primary Assembly	8382	na
+contig47	unplaced-scaffold	na	na	CAIKBN010000047.1	<>	na	Primary Assembly	1698	na
+contig48	unplaced-scaffold	na	na	CAIKBN010000048.1	<>	na	Primary Assembly	2284	na
+contig49	unplaced-scaffold	na	na	CAIKBN010000049.1	<>	na	Primary Assembly	2187	na
+contig50	unplaced-scaffold	na	na	CAIKBN010000050.1	<>	na	Primary Assembly	3886	na
+contig51	unplaced-scaffold	na	na	CAIKBN010000051.1	<>	na	Primary Assembly	3506	na
+contig52	unplaced-scaffold	na	na	CAIKBN010000052.1	<>	na	Primary Assembly	1692	na
+contig53	unplaced-scaffold	na	na	CAIKBN010000053.1	<>	na	Primary Assembly	2181	na
+contig54	unplaced-scaffold	na	na	CAIKBN010000054.1	<>	na	Primary Assembly	6030	na
+contig55	unplaced-scaffold	na	na	CAIKBN010000055.1	<>	na	Primary Assembly	6081	na
+contig56	unplaced-scaffold	na	na	CAIKBN010000056.1	<>	na	Primary Assembly	2171	na
+contig57	unplaced-scaffold	na	na	CAIKBN010000057.1	<>	na	Primary Assembly	5320	na
+contig58	unplaced-scaffold	na	na	CAIKBN010000058.1	<>	na	Primary Assembly	1767	na
+contig59	unplaced-scaffold	na	na	CAIKBN010000059.1	<>	na	Primary Assembly	1616	na
+contig60	unplaced-scaffold	na	na	CAIKBN010000060.1	<>	na	Primary Assembly	2929	na
+contig61	unplaced-scaffold	na	na	CAIKBN010000061.1	<>	na	Primary Assembly	4107	na
+contig62	unplaced-scaffold	na	na	CAIKBN010000062.1	<>	na	Primary Assembly	12774	na
+contig63	unplaced-scaffold	na	na	CAIKBN010000063.1	<>	na	Primary Assembly	2795	na
+contig64	unplaced-scaffold	na	na	CAIKBN010000064.1	<>	na	Primary Assembly	5637	na
+contig65	unplaced-scaffold	na	na	CAIKBN010000065.1	<>	na	Primary Assembly	4795	na
+contig66	unplaced-scaffold	na	na	CAIKBN010000066.1	<>	na	Primary Assembly	4741	na
+contig67	unplaced-scaffold	na	na	CAIKBN010000067.1	<>	na	Primary Assembly	11963	na
+contig68	unplaced-scaffold	na	na	CAIKBN010000068.1	<>	na	Primary Assembly	5939	na
+contig69	unplaced-scaffold	na	na	CAIKBN010000069.1	<>	na	Primary Assembly	5686	na
+contig70	unplaced-scaffold	na	na	CAIKBN010000070.1	<>	na	Primary Assembly	2788	na
+contig71	unplaced-scaffold	na	na	CAIKBN010000071.1	<>	na	Primary Assembly	3453	na
+contig72	unplaced-scaffold	na	na	CAIKBN010000072.1	<>	na	Primary Assembly	4192	na
+contig73	unplaced-scaffold	na	na	CAIKBN010000073.1	<>	na	Primary Assembly	10217	na
+contig74	unplaced-scaffold	na	na	CAIKBN010000074.1	<>	na	Primary Assembly	2400	na
+contig75	unplaced-scaffold	na	na	CAIKBN010000075.1	<>	na	Primary Assembly	2824	na
+contig76	unplaced-scaffold	na	na	CAIKBN010000076.1	<>	na	Primary Assembly	4385	na
+contig77	unplaced-scaffold	na	na	CAIKBN010000077.1	<>	na	Primary Assembly	2588	na
+contig78	unplaced-scaffold	na	na	CAIKBN010000078.1	<>	na	Primary Assembly	3347	na
+contig79	unplaced-scaffold	na	na	CAIKBN010000079.1	<>	na	Primary Assembly	7591	na
+contig80	unplaced-scaffold	na	na	CAIKBN010000080.1	<>	na	Primary Assembly	7050	na
+contig81	unplaced-scaffold	na	na	CAIKBN010000081.1	<>	na	Primary Assembly	2575	na
+contig82	unplaced-scaffold	na	na	CAIKBN010000082.1	<>	na	Primary Assembly	2008	na
+contig83	unplaced-scaffold	na	na	CAIKBN010000083.1	<>	na	Primary Assembly	6325	na
+contig84	unplaced-scaffold	na	na	CAIKBN010000084.1	<>	na	Primary Assembly	4584	na
+contig85	unplaced-scaffold	na	na	CAIKBN010000085.1	<>	na	Primary Assembly	7905	na
+contig86	unplaced-scaffold	na	na	CAIKBN010000086.1	<>	na	Primary Assembly	3895	na
+contig87	unplaced-scaffold	na	na	CAIKBN010000087.1	<>	na	Primary Assembly	3098	na
+contig88	unplaced-scaffold	na	na	CAIKBN010000088.1	<>	na	Primary Assembly	13981	na
+contig89	unplaced-scaffold	na	na	CAIKBN010000089.1	<>	na	Primary Assembly	3420	na
+contig90	unplaced-scaffold	na	na	CAIKBN010000090.1	<>	na	Primary Assembly	6423	na
+contig91	unplaced-scaffold	na	na	CAIKBN010000091.1	<>	na	Primary Assembly	2746	na
+contig92	unplaced-scaffold	na	na	CAIKBN010000092.1	<>	na	Primary Assembly	9998	na
+contig93	unplaced-scaffold	na	na	CAIKBN010000093.1	<>	na	Primary Assembly	23095	na
+contig94	unplaced-scaffold	na	na	CAIKBN010000094.1	<>	na	Primary Assembly	4198	na
+contig95	unplaced-scaffold	na	na	CAIKBN010000095.1	<>	na	Primary Assembly	10486	na
+contig96	unplaced-scaffold	na	na	CAIKBN010000096.1	<>	na	Primary Assembly	2422	na
+contig97	unplaced-scaffold	na	na	CAIKBN010000097.1	<>	na	Primary Assembly	4382	na
+contig98	unplaced-scaffold	na	na	CAIKBN010000098.1	<>	na	Primary Assembly	9389	na
+contig99	unplaced-scaffold	na	na	CAIKBN010000099.1	<>	na	Primary Assembly	8049	na
+contig100	unplaced-scaffold	na	na	CAIKBN010000100.1	<>	na	Primary Assembly	3415	na
+contig101	unplaced-scaffold	na	na	CAIKBN010000101.1	<>	na	Primary Assembly	1727	na
+contig102	unplaced-scaffold	na	na	CAIKBN010000102.1	<>	na	Primary Assembly	4457	na
+contig103	unplaced-scaffold	na	na	CAIKBN010000103.1	<>	na	Primary Assembly	7340	na
+contig104	unplaced-scaffold	na	na	CAIKBN010000104.1	<>	na	Primary Assembly	13725	na
+contig105	unplaced-scaffold	na	na	CAIKBN010000105.1	<>	na	Primary Assembly	1648	na
+contig106	unplaced-scaffold	na	na	CAIKBN010000106.1	<>	na	Primary Assembly	6818	na
+contig107	unplaced-scaffold	na	na	CAIKBN010000107.1	<>	na	Primary Assembly	5931	na
+contig108	unplaced-scaffold	na	na	CAIKBN010000108.1	<>	na	Primary Assembly	3513	na
+contig109	unplaced-scaffold	na	na	CAIKBN010000109.1	<>	na	Primary Assembly	6380	na
+contig110	unplaced-scaffold	na	na	CAIKBN010000110.1	<>	na	Primary Assembly	5886	na
+contig111	unplaced-scaffold	na	na	CAIKBN010000111.1	<>	na	Primary Assembly	7136	na
+contig112	unplaced-scaffold	na	na	CAIKBN010000112.1	<>	na	Primary Assembly	7605	na
+contig113	unplaced-scaffold	na	na	CAIKBN010000113.1	<>	na	Primary Assembly	2695	na
+contig114	unplaced-scaffold	na	na	CAIKBN010000114.1	<>	na	Primary Assembly	6705	na
+contig115	unplaced-scaffold	na	na	CAIKBN010000115.1	<>	na	Primary Assembly	2247	na
+contig116	unplaced-scaffold	na	na	CAIKBN010000116.1	<>	na	Primary Assembly	6177	na
+contig117	unplaced-scaffold	na	na	CAIKBN010000117.1	<>	na	Primary Assembly	3265	na
+contig118	unplaced-scaffold	na	na	CAIKBN010000118.1	<>	na	Primary Assembly	4368	na
+contig119	unplaced-scaffold	na	na	CAIKBN010000119.1	<>	na	Primary Assembly	6221	na
+contig120	unplaced-scaffold	na	na	CAIKBN010000120.1	<>	na	Primary Assembly	6366	na
+contig121	unplaced-scaffold	na	na	CAIKBN010000121.1	<>	na	Primary Assembly	5905	na
+contig122	unplaced-scaffold	na	na	CAIKBN010000122.1	<>	na	Primary Assembly	9211	na
+contig123	unplaced-scaffold	na	na	CAIKBN010000123.1	<>	na	Primary Assembly	3747	na
+contig124	unplaced-scaffold	na	na	CAIKBN010000124.1	<>	na	Primary Assembly	6035	na
+contig125	unplaced-scaffold	na	na	CAIKBN010000125.1	<>	na	Primary Assembly	11582	na
+contig126	unplaced-scaffold	na	na	CAIKBN010000126.1	<>	na	Primary Assembly	1595	na
+contig127	unplaced-scaffold	na	na	CAIKBN010000127.1	<>	na	Primary Assembly	1726	na
+contig128	unplaced-scaffold	na	na	CAIKBN010000128.1	<>	na	Primary Assembly	1572	na
+contig129	unplaced-scaffold	na	na	CAIKBN010000129.1	<>	na	Primary Assembly	4606	na
+contig130	unplaced-scaffold	na	na	CAIKBN010000130.1	<>	na	Primary Assembly	2482	na
+contig131	unplaced-scaffold	na	na	CAIKBN010000131.1	<>	na	Primary Assembly	4214	na
+contig132	unplaced-scaffold	na	na	CAIKBN010000132.1	<>	na	Primary Assembly	4198	na
+contig133	unplaced-scaffold	na	na	CAIKBN010000133.1	<>	na	Primary Assembly	4607	na
+contig134	unplaced-scaffold	na	na	CAIKBN010000134.1	<>	na	Primary Assembly	3253	na
+contig135	unplaced-scaffold	na	na	CAIKBN010000135.1	<>	na	Primary Assembly	1973	na
+contig136	unplaced-scaffold	na	na	CAIKBN010000136.1	<>	na	Primary Assembly	1857	na
+contig137	unplaced-scaffold	na	na	CAIKBN010000137.1	<>	na	Primary Assembly	7862	na
+contig138	unplaced-scaffold	na	na	CAIKBN010000138.1	<>	na	Primary Assembly	5774	na
+contig139	unplaced-scaffold	na	na	CAIKBN010000139.1	<>	na	Primary Assembly	6212	na
+contig140	unplaced-scaffold	na	na	CAIKBN010000140.1	<>	na	Primary Assembly	1676	na
+contig141	unplaced-scaffold	na	na	CAIKBN010000141.1	<>	na	Primary Assembly	4873	na
+contig142	unplaced-scaffold	na	na	CAIKBN010000142.1	<>	na	Primary Assembly	2024	na
+contig143	unplaced-scaffold	na	na	CAIKBN010000143.1	<>	na	Primary Assembly	4814	na
+contig144	unplaced-scaffold	na	na	CAIKBN010000144.1	<>	na	Primary Assembly	1839	na
+contig145	unplaced-scaffold	na	na	CAIKBN010000145.1	<>	na	Primary Assembly	5798	na
+contig146	unplaced-scaffold	na	na	CAIKBN010000146.1	<>	na	Primary Assembly	7331	na
+contig147	unplaced-scaffold	na	na	CAIKBN010000147.1	<>	na	Primary Assembly	6882	na
+contig148	unplaced-scaffold	na	na	CAIKBN010000148.1	<>	na	Primary Assembly	6066	na
+contig149	unplaced-scaffold	na	na	CAIKBN010000149.1	<>	na	Primary Assembly	4967	na
+contig150	unplaced-scaffold	na	na	CAIKBN010000150.1	<>	na	Primary Assembly	1736	na
+contig151	unplaced-scaffold	na	na	CAIKBN010000151.1	<>	na	Primary Assembly	3746	na
+contig152	unplaced-scaffold	na	na	CAIKBN010000152.1	<>	na	Primary Assembly	4741	na
+contig153	unplaced-scaffold	na	na	CAIKBN010000153.1	<>	na	Primary Assembly	4940	na
+contig154	unplaced-scaffold	na	na	CAIKBN010000154.1	<>	na	Primary Assembly	1668	na
+contig155	unplaced-scaffold	na	na	CAIKBN010000155.1	<>	na	Primary Assembly	7897	na
+contig156	unplaced-scaffold	na	na	CAIKBN010000156.1	<>	na	Primary Assembly	3402	na
+contig157	unplaced-scaffold	na	na	CAIKBN010000157.1	<>	na	Primary Assembly	5616	na
+contig158	unplaced-scaffold	na	na	CAIKBN010000158.1	<>	na	Primary Assembly	4544	na
+contig159	unplaced-scaffold	na	na	CAIKBN010000159.1	<>	na	Primary Assembly	2583	na
+contig160	unplaced-scaffold	na	na	CAIKBN010000160.1	<>	na	Primary Assembly	3630	na
+contig161	unplaced-scaffold	na	na	CAIKBN010000161.1	<>	na	Primary Assembly	3463	na
+contig162	unplaced-scaffold	na	na	CAIKBN010000162.1	<>	na	Primary Assembly	2852	na
+contig163	unplaced-scaffold	na	na	CAIKBN010000163.1	<>	na	Primary Assembly	5988	na
+contig164	unplaced-scaffold	na	na	CAIKBN010000164.1	<>	na	Primary Assembly	9206	na
+contig165	unplaced-scaffold	na	na	CAIKBN010000165.1	<>	na	Primary Assembly	6733	na
+contig166	unplaced-scaffold	na	na	CAIKBN010000166.1	<>	na	Primary Assembly	2188	na
+contig167	unplaced-scaffold	na	na	CAIKBN010000167.1	<>	na	Primary Assembly	2783	na
+contig168	unplaced-scaffold	na	na	CAIKBN010000168.1	<>	na	Primary Assembly	7131	na
+contig169	unplaced-scaffold	na	na	CAIKBN010000169.1	<>	na	Primary Assembly	2244	na
+contig170	unplaced-scaffold	na	na	CAIKBN010000170.1	<>	na	Primary Assembly	2690	na
+contig171	unplaced-scaffold	na	na	CAIKBN010000171.1	<>	na	Primary Assembly	1535	na
+contig172	unplaced-scaffold	na	na	CAIKBN010000172.1	<>	na	Primary Assembly	2141	na
+contig173	unplaced-scaffold	na	na	CAIKBN010000173.1	<>	na	Primary Assembly	2278	na
+contig174	unplaced-scaffold	na	na	CAIKBN010000174.1	<>	na	Primary Assembly	4310	na
+contig175	unplaced-scaffold	na	na	CAIKBN010000175.1	<>	na	Primary Assembly	2598	na
+contig176	unplaced-scaffold	na	na	CAIKBN010000176.1	<>	na	Primary Assembly	6623	na
+contig177	unplaced-scaffold	na	na	CAIKBN010000177.1	<>	na	Primary Assembly	3728	na
+contig178	unplaced-scaffold	na	na	CAIKBN010000178.1	<>	na	Primary Assembly	7929	na

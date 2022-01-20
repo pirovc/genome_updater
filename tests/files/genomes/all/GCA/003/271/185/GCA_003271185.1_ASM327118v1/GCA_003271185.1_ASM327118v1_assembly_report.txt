@@ -1,0 +1,125 @@
+# Assembly name:  ASM327118v1
+# Organism name:  Saccharomyces cerevisiae (baker's yeast)
+# Infraspecific name:  strain=MTZ13.12
+# Taxid:          4932
+# BioSample:      SAMN07437027
+# BioProject:     PRJNA396809
+# Submitter:      Institute Of Microbiology Chinese Academy of Sciences
+# Date:           2019-04-15
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# WGS project:    NPQO01
+# Assembly method: Velvet v. 1.2.10
+# Expected final version: yes
+# Reference guided assembly: GCA_000146045.2
+# Genome coverage: 191x
+# Sequencing technology: Illumina HiSeq
+# GenBank assembly accession: GCA_003271185.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_003271215.1		Primary Assembly
+## GCA_003271235.1		non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ChrI	assembled-molecule	I	Chromosome	CM015944.1	<>	na	Primary Assembly	197461	na
+ChrII	assembled-molecule	II	Chromosome	CM015945.1	<>	na	Primary Assembly	807697	na
+ChrIII	assembled-molecule	III	Chromosome	CM015946.1	<>	na	Primary Assembly	300409	na
+ChrIV	assembled-molecule	IV	Chromosome	CM015947.1	<>	na	Primary Assembly	1499782	na
+ChrV	assembled-molecule	V	Chromosome	CM015948.1	<>	na	Primary Assembly	573393	na
+ChrVI	assembled-molecule	VI	Chromosome	CM015949.1	<>	na	Primary Assembly	238885	na
+ChrVII	assembled-molecule	VII	Chromosome	CM015950.1	<>	na	Primary Assembly	1085282	na
+ChrVIII	assembled-molecule	VIII	Chromosome	CM015951.1	<>	na	Primary Assembly	531688	na
+ChrIX	assembled-molecule	IX	Chromosome	CM015952.1	<>	na	Primary Assembly	432894	na
+ChrX	assembled-molecule	X	Chromosome	CM015953.1	<>	na	Primary Assembly	733706	na
+ChrXI	assembled-molecule	XI	Chromosome	CM015954.1	<>	na	Primary Assembly	669692	na
+ChrXII	assembled-molecule	XII	Chromosome	CM015955.1	<>	na	Primary Assembly	1009713	na
+ChrXIII	assembled-molecule	XIII	Chromosome	CM015956.1	<>	na	Primary Assembly	923182	na
+ChrXIV	assembled-molecule	XIV	Chromosome	CM015957.1	<>	na	Primary Assembly	766411	na
+ChrXV	assembled-molecule	XV	Chromosome	CM015958.1	<>	na	Primary Assembly	1060667	na
+ChrXVI	assembled-molecule	XVI	Chromosome	CM015959.1	<>	na	Primary Assembly	923537	na
+Contig18	unplaced-scaffold	na	na	NPQO01000017.1	<>	na	Primary Assembly	7385	na
+Contig19	unplaced-scaffold	na	na	NPQO01000018.1	<>	na	Primary Assembly	7075	na
+Contig20	unplaced-scaffold	na	na	NPQO01000019.1	<>	na	Primary Assembly	4571	na
+Contig21	unplaced-scaffold	na	na	NPQO01000020.1	<>	na	Primary Assembly	4183	na
+Contig22	unplaced-scaffold	na	na	NPQO01000021.1	<>	na	Primary Assembly	3753	na
+Contig23	unplaced-scaffold	na	na	NPQO01000022.1	<>	na	Primary Assembly	3397	na
+Contig24	unplaced-scaffold	na	na	NPQO01000023.1	<>	na	Primary Assembly	3391	na
+Contig25	unplaced-scaffold	na	na	NPQO01000024.1	<>	na	Primary Assembly	3206	na
+Contig26	unplaced-scaffold	na	na	NPQO01000025.1	<>	na	Primary Assembly	3135	na
+Contig27	unplaced-scaffold	na	na	NPQO01000026.1	<>	na	Primary Assembly	2977	na
+Contig28	unplaced-scaffold	na	na	NPQO01000027.1	<>	na	Primary Assembly	2877	na
+Contig29	unplaced-scaffold	na	na	NPQO01000028.1	<>	na	Primary Assembly	2725	na
+Contig30	unplaced-scaffold	na	na	NPQO01000029.1	<>	na	Primary Assembly	2700	na
+Contig31	unplaced-scaffold	na	na	NPQO01000030.1	<>	na	Primary Assembly	2571	na
+Contig32	unplaced-scaffold	na	na	NPQO01000031.1	<>	na	Primary Assembly	2197	na
+Contig33	unplaced-scaffold	na	na	NPQO01000032.1	<>	na	Primary Assembly	2113	na
+Contig34	unplaced-scaffold	na	na	NPQO01000033.1	<>	na	Primary Assembly	2098	na
+Contig35	unplaced-scaffold	na	na	NPQO01000034.1	<>	na	Primary Assembly	2063	na
+Contig36	unplaced-scaffold	na	na	NPQO01000035.1	<>	na	Primary Assembly	2005	na
+Contig37	unplaced-scaffold	na	na	NPQO01000036.1	<>	na	Primary Assembly	1968	na
+Contig38	unplaced-scaffold	na	na	NPQO01000037.1	<>	na	Primary Assembly	1892	na
+Contig39	unplaced-scaffold	na	na	NPQO01000038.1	<>	na	Primary Assembly	1888	na
+Contig40	unplaced-scaffold	na	na	NPQO01000039.1	<>	na	Primary Assembly	1884	na
+Contig41	unplaced-scaffold	na	na	NPQO01000040.1	<>	na	Primary Assembly	1811	na
+Contig42	unplaced-scaffold	na	na	NPQO01000041.1	<>	na	Primary Assembly	1772	na
+Contig43	unplaced-scaffold	na	na	NPQO01000042.1	<>	na	Primary Assembly	1771	na
+Contig44	unplaced-scaffold	na	na	NPQO01000043.1	<>	na	Primary Assembly	1726	na
+Contig45	unplaced-scaffold	na	na	NPQO01000044.1	<>	na	Primary Assembly	1662	na
+Contig46	unplaced-scaffold	na	na	NPQO01000045.1	<>	na	Primary Assembly	1640	na
+Contig47	unplaced-scaffold	na	na	NPQO01000046.1	<>	na	Primary Assembly	1628	na
+Contig48	unplaced-scaffold	na	na	NPQO01000047.1	<>	na	Primary Assembly	1593	na
+Contig49	unplaced-scaffold	na	na	NPQO01000048.1	<>	na	Primary Assembly	1571	na
+Contig50	unplaced-scaffold	na	na	NPQO01000049.1	<>	na	Primary Assembly	1551	na
+Contig51	unplaced-scaffold	na	na	NPQO01000050.1	<>	na	Primary Assembly	1459	na
+Contig52	unplaced-scaffold	na	na	NPQO01000051.1	<>	na	Primary Assembly	1387	na
+Contig53	unplaced-scaffold	na	na	NPQO01000052.1	<>	na	Primary Assembly	1363	na
+Contig54	unplaced-scaffold	na	na	NPQO01000053.1	<>	na	Primary Assembly	1361	na
+Contig55	unplaced-scaffold	na	na	NPQO01000054.1	<>	na	Primary Assembly	1334	na
+Contig56	unplaced-scaffold	na	na	NPQO01000055.1	<>	na	Primary Assembly	1312	na
+Contig57	unplaced-scaffold	na	na	NPQO01000056.1	<>	na	Primary Assembly	1293	na
+Contig58	unplaced-scaffold	na	na	NPQO01000057.1	<>	na	Primary Assembly	1291	na
+Contig59	unplaced-scaffold	na	na	NPQO01000058.1	<>	na	Primary Assembly	1265	na
+Contig60	unplaced-scaffold	na	na	NPQO01000059.1	<>	na	Primary Assembly	1264	na
+Contig61	unplaced-scaffold	na	na	NPQO01000060.1	<>	na	Primary Assembly	1257	na
+Contig62	unplaced-scaffold	na	na	NPQO01000061.1	<>	na	Primary Assembly	1247	na
+Contig63	unplaced-scaffold	na	na	NPQO01000062.1	<>	na	Primary Assembly	1179	na
+Contig64	unplaced-scaffold	na	na	NPQO01000063.1	<>	na	Primary Assembly	1170	na
+Contig65	unplaced-scaffold	na	na	NPQO01000064.1	<>	na	Primary Assembly	1166	na
+Contig66	unplaced-scaffold	na	na	NPQO01000065.1	<>	na	Primary Assembly	1162	na
+Contig67	unplaced-scaffold	na	na	NPQO01000066.1	<>	na	Primary Assembly	1161	na
+Contig68	unplaced-scaffold	na	na	NPQO01000067.1	<>	na	Primary Assembly	1157	na
+Contig69	unplaced-scaffold	na	na	NPQO01000068.1	<>	na	Primary Assembly	1101	na
+Contig70	unplaced-scaffold	na	na	NPQO01000069.1	<>	na	Primary Assembly	1081	na
+Contig71	unplaced-scaffold	na	na	NPQO01000070.1	<>	na	Primary Assembly	1075	na
+Contig72	unplaced-scaffold	na	na	NPQO01000071.1	<>	na	Primary Assembly	1055	na
+Contig73	unplaced-scaffold	na	na	NPQO01000072.1	<>	na	Primary Assembly	1051	na
+Contig74	unplaced-scaffold	na	na	NPQO01000073.1	<>	na	Primary Assembly	1046	na
+Contig75	unplaced-scaffold	na	na	NPQO01000074.1	<>	na	Primary Assembly	982	na
+Contig76	unplaced-scaffold	na	na	NPQO01000075.1	<>	na	Primary Assembly	971	na
+Contig77	unplaced-scaffold	na	na	NPQO01000076.1	<>	na	Primary Assembly	964	na
+Contig78	unplaced-scaffold	na	na	NPQO01000077.1	<>	na	Primary Assembly	964	na
+Contig79	unplaced-scaffold	na	na	NPQO01000078.1	<>	na	Primary Assembly	935	na
+Contig80	unplaced-scaffold	na	na	NPQO01000079.1	<>	na	Primary Assembly	930	na
+Contig81	unplaced-scaffold	na	na	NPQO01000080.1	<>	na	Primary Assembly	857	na
+Contig82	unplaced-scaffold	na	na	NPQO01000081.1	<>	na	Primary Assembly	827	na
+Contig83	unplaced-scaffold	na	na	NPQO01000082.1	<>	na	Primary Assembly	821	na
+Contig84	unplaced-scaffold	na	na	NPQO01000083.1	<>	na	Primary Assembly	806	na
+Contig85	unplaced-scaffold	na	na	NPQO01000084.1	<>	na	Primary Assembly	803	na
+Contig86	unplaced-scaffold	na	na	NPQO01000085.1	<>	na	Primary Assembly	774	na
+Contig87	unplaced-scaffold	na	na	NPQO01000086.1	<>	na	Primary Assembly	708	na
+Contig88	unplaced-scaffold	na	na	NPQO01000087.1	<>	na	Primary Assembly	650	na
+Contig89	unplaced-scaffold	na	na	NPQO01000088.1	<>	na	Primary Assembly	649	na
+Contig90	unplaced-scaffold	na	na	NPQO01000089.1	<>	na	Primary Assembly	644	na
+Contig91	unplaced-scaffold	na	na	NPQO01000090.1	<>	na	Primary Assembly	571	na
+Contig92	unplaced-scaffold	na	na	NPQO01000091.1	<>	na	Primary Assembly	545	na
+Contig93	unplaced-scaffold	na	na	NPQO01000092.1	<>	na	Primary Assembly	539	na
+Contig94	unplaced-scaffold	na	na	NPQO01000093.1	<>	na	Primary Assembly	521	na
+Mitochondrion	unlocalized-scaffold	MT	Mitochondrion	NPQO01000094.1	<>	na	non-nuclear	48567	na

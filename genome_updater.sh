@@ -4,7 +4,7 @@ IFS=$' '
 
 # The MIT License (MIT)
  
-# Copyright (c) 2021 - Vitor C. Piro - pirovc.github.io
+# Copyright (c) 2022 - Vitor C. Piro - pirovc.github.io
 # All rights reserved.
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,7 +27,7 @@ IFS=$' '
 
 version="0.3.0"
 
-# Define base_url or use local files
+# Define base_url or use local files (for testing)
 local_dir=${local_dir:-}
 if [[ ! -z "${local_dir}" ]]; then
     # set local dir with absulute path and "file://"
@@ -320,7 +320,7 @@ check_file_folder() # parameter: ${1} url, ${2} log (0->before download/1->after
         rm -vf "${target_output_prefix}${files_dir}${file_name}" >> "${log_file}" 2>&1
         return 1
     else
-        # Disabled log in case of success, hard to detect failures
+        # Disabled log in case of success, hard to detect failures, file too big
         #if [ "${2}" -eq 0 ]; then 
         #    echolog "${file_name} file found on the output folder [${target_output_prefix}${files_dir}${file_name}]" "0"
         #else
@@ -353,7 +353,7 @@ check_md5_ftp() # parameter: ${1} url - returns 0 (ok) / 1 (error)
                     rm -v "${target_output_prefix}${files_dir}${file_name}" >> ${log_file} 2>&1
                     return 1
                 else
-                    # Disabled log in case of success, hard to detect failures
+                    # Disabled log in case of success, hard to detect failures, file too big
                     #echolog "${file_name} MD5 successfully checked ${file_md5} [${md5checksums_url}]" "0"
                     return 0
                 fi    
@@ -599,7 +599,13 @@ function showhelp {
 
 # Check for required tools
 tool_not_found=0
-tools=( "awk" "bc" "find" "join" "md5sum" "parallel" "sed" "tar" "xargs" "wget" )
+tools=( "awk" "bc" "find" "join" "md5sum" "parallel" "sed" "tar" "xargs" )
+if [[ "${use_curl}" -eq 1 ]]; then
+    tools+=("curl")
+else
+    tools+=("wget")
+fi
+
 for t in "${tools[@]}"
 do
     if [ ! -x "$(command -v ${t})" ]; then
@@ -786,7 +792,7 @@ echolog "Timestamp: ${timestamp}" "0"
 echolog "Database: ${database}" "0"
 echolog "Organims group: ${organism_group}" "0"
 echolog "Species: ${species}" "0"
-echolog "Taxids: ${species}" "0"
+echolog "Taxids: ${taxids}" "0"
 echolog "Refseq category: ${refseq_category}" "0"
 echolog "Assembly level: ${assembly_level}" "0"
 echolog "Custom filter: ${custom_filter}" "0"
@@ -820,7 +826,8 @@ if [[ "${MODE}" == "NEW" ]]; then
 
     if [[ ! -z "${external_assembly_summary}" ]]; then
         echolog "Using external assembly summary [$(readlink -m ${external_assembly_summary})]" "1"
-        cp "${external_assembly_summary}" "${new_assembly_summary}";
+        # Skip possible header lines
+        grep -v "^#" "${external_assembly_summary}" > "${new_assembly_summary}";
         echolog " - Database [${database}] and Organism group [${organism_group}] selection are ignored when using an external assembly summary" "1";
         all_lines=$(count_lines_file "${new_assembly_summary}")
     else
@@ -1031,7 +1038,7 @@ if [ "${just_check}" -eq 0 ]; then
     current_files=$(( $(ls "${target_output_prefix}${files_dir}" | wc -l | cut -f1 -d' ') - extra_lines )) # From current folder - extra files
     # Check if the valid amount of files on folder amount of files on folder
     [ "${silent}" -eq 0 ] && print_line
-    echolog "# ${current_files}/${expected_files} files in current version" "1"
+    echolog "# ${current_files}/${expected_files} files in the current version" "1"
     if [ $(( expected_files-current_files )) -gt 0 ]; then
         echolog " - $(( expected_files-current_files )) file(s) failed to download. Please re-run your command with -i to fix it again" "1"
     fi

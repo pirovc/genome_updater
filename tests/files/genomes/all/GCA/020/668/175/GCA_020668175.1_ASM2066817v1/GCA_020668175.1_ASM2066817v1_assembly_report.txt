@@ -1,0 +1,94 @@
+# Assembly name:  ASM2066817v1
+# Organism name:  Escherichia coli (E. coli)
+# Infraspecific name:  strain=R959
+# Taxid:          562
+# BioSample:      SAMN20150342
+# BioProject:     PRJNA745182
+# Submitter:      University of Guelph
+# Date:           2021-10-28
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    JAIHLN01
+# Assembly method: Shovill v. 1.0.1
+# Expected final version: yes
+# Genome coverage: 99x
+# Sequencing technology: Illumina MiSeq
+# GenBank assembly accession: GCA_020668175.1
+# RefSeq assembly accession: GCF_020668175.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_020668195.1	GCF_020668195.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig00001	unplaced-scaffold	na	na	JAIHLN010000001.1	=	NZ_JAIHLN010000001.1	Primary Assembly	484013	na
+contig00002	unplaced-scaffold	na	na	JAIHLN010000002.1	=	NZ_JAIHLN010000002.1	Primary Assembly	472920	na
+contig00003	unplaced-scaffold	na	na	JAIHLN010000003.1	=	NZ_JAIHLN010000003.1	Primary Assembly	427433	na
+contig00004	unplaced-scaffold	na	na	JAIHLN010000004.1	=	NZ_JAIHLN010000004.1	Primary Assembly	405876	na
+contig00005	unplaced-scaffold	na	na	JAIHLN010000005.1	=	NZ_JAIHLN010000005.1	Primary Assembly	374804	na
+contig00006	unplaced-scaffold	na	na	JAIHLN010000006.1	=	NZ_JAIHLN010000006.1	Primary Assembly	248358	na
+contig00007	unplaced-scaffold	na	na	JAIHLN010000007.1	=	NZ_JAIHLN010000007.1	Primary Assembly	247227	na
+contig00008	unplaced-scaffold	na	na	JAIHLN010000008.1	=	NZ_JAIHLN010000008.1	Primary Assembly	201710	na
+contig00009	unplaced-scaffold	na	na	JAIHLN010000009.1	=	NZ_JAIHLN010000009.1	Primary Assembly	192360	na
+contig00010	unplaced-scaffold	na	na	JAIHLN010000010.1	=	NZ_JAIHLN010000010.1	Primary Assembly	185700	na
+contig00011	unplaced-scaffold	na	na	JAIHLN010000011.1	=	NZ_JAIHLN010000011.1	Primary Assembly	161833	na
+contig00012	unplaced-scaffold	na	na	JAIHLN010000012.1	=	NZ_JAIHLN010000012.1	Primary Assembly	134180	na
+contig00013	unplaced-scaffold	na	na	JAIHLN010000013.1	=	NZ_JAIHLN010000013.1	Primary Assembly	133497	na
+contig00014	unplaced-scaffold	na	na	JAIHLN010000014.1	=	NZ_JAIHLN010000014.1	Primary Assembly	120171	na
+contig00015	unplaced-scaffold	na	na	JAIHLN010000015.1	=	NZ_JAIHLN010000015.1	Primary Assembly	116649	na
+contig00016	unplaced-scaffold	na	na	JAIHLN010000016.1	=	NZ_JAIHLN010000016.1	Primary Assembly	108836	na
+contig00017	unplaced-scaffold	na	na	JAIHLN010000017.1	=	NZ_JAIHLN010000017.1	Primary Assembly	93056	na
+contig00018	unplaced-scaffold	na	na	JAIHLN010000018.1	=	NZ_JAIHLN010000018.1	Primary Assembly	88833	na
+contig00019	unplaced-scaffold	na	na	JAIHLN010000019.1	=	NZ_JAIHLN010000019.1	Primary Assembly	88356	na
+contig00020	unplaced-scaffold	na	na	JAIHLN010000020.1	=	NZ_JAIHLN010000020.1	Primary Assembly	84276	na
+contig00021	unplaced-scaffold	na	na	JAIHLN010000021.1	=	NZ_JAIHLN010000021.1	Primary Assembly	75353	na
+contig00022	unplaced-scaffold	na	na	JAIHLN010000022.1	=	NZ_JAIHLN010000022.1	Primary Assembly	65533	na
+contig00023	unplaced-scaffold	na	na	JAIHLN010000023.1	=	NZ_JAIHLN010000023.1	Primary Assembly	60657	na
+contig00024	unplaced-scaffold	na	na	JAIHLN010000024.1	=	NZ_JAIHLN010000024.1	Primary Assembly	53397	na
+contig00025	unplaced-scaffold	na	na	JAIHLN010000025.1	=	NZ_JAIHLN010000025.1	Primary Assembly	39054	na
+contig00026	unplaced-scaffold	na	na	JAIHLN010000026.1	=	NZ_JAIHLN010000026.1	Primary Assembly	33081	na
+contig00027	unplaced-scaffold	na	na	JAIHLN010000027.1	=	NZ_JAIHLN010000027.1	Primary Assembly	30012	na
+contig00028	unplaced-scaffold	na	na	JAIHLN010000028.1	=	NZ_JAIHLN010000028.1	Primary Assembly	26361	na
+contig00029	unplaced-scaffold	na	na	JAIHLN010000029.1	=	NZ_JAIHLN010000029.1	Primary Assembly	21933	na
+contig00030	unplaced-scaffold	na	na	JAIHLN010000030.1	=	NZ_JAIHLN010000030.1	Primary Assembly	12883	na
+contig00031	unplaced-scaffold	na	na	JAIHLN010000031.1	=	NZ_JAIHLN010000031.1	Primary Assembly	11967	na
+contig00032	unplaced-scaffold	na	na	JAIHLN010000032.1	=	NZ_JAIHLN010000032.1	Primary Assembly	9490	na
+contig00033	unplaced-scaffold	na	na	JAIHLN010000033.1	=	NZ_JAIHLN010000033.1	Primary Assembly	4614	na
+contig00034	unplaced-scaffold	na	na	JAIHLN010000034.1	=	NZ_JAIHLN010000034.1	Primary Assembly	4559	na
+contig00035	unplaced-scaffold	na	na	JAIHLN010000035.1	=	NZ_JAIHLN010000035.1	Primary Assembly	4177	na
+contig00036	unplaced-scaffold	na	na	JAIHLN010000036.1	=	NZ_JAIHLN010000036.1	Primary Assembly	3002	na
+contig00037	unplaced-scaffold	na	na	JAIHLN010000037.1	=	NZ_JAIHLN010000037.1	Primary Assembly	2223	na
+contig00038	unplaced-scaffold	na	na	JAIHLN010000038.1	=	NZ_JAIHLN010000038.1	Primary Assembly	1466	na
+contig00039	unplaced-scaffold	na	na	JAIHLN010000039.1	=	NZ_JAIHLN010000039.1	Primary Assembly	1286	na
+contig00040	unplaced-scaffold	na	na	JAIHLN010000040.1	=	NZ_JAIHLN010000040.1	Primary Assembly	1275	na
+contig00041	unplaced-scaffold	na	na	JAIHLN010000041.1	=	NZ_JAIHLN010000041.1	Primary Assembly	1151	na
+contig00042	unplaced-scaffold	na	na	JAIHLN010000042.1	=	NZ_JAIHLN010000042.1	Primary Assembly	956	na
+contig00043	unplaced-scaffold	na	na	JAIHLN010000043.1	=	NZ_JAIHLN010000043.1	Primary Assembly	796	na
+contig00044	unplaced-scaffold	na	na	JAIHLN010000044.1	=	NZ_JAIHLN010000044.1	Primary Assembly	645	na
+contig00045	unplaced-scaffold	na	na	JAIHLN010000045.1	=	NZ_JAIHLN010000045.1	Primary Assembly	632	na
+contig00046	unplaced-scaffold	na	na	JAIHLN010000046.1	=	NZ_JAIHLN010000046.1	Primary Assembly	559	na
+contig00047	unplaced-scaffold	na	na	JAIHLN010000047.1	=	NZ_JAIHLN010000047.1	Primary Assembly	559	na
+contig00048	unplaced-scaffold	na	na	JAIHLN010000048.1	=	NZ_JAIHLN010000048.1	Primary Assembly	487	na
+contig00049	unplaced-scaffold	na	na	JAIHLN010000049.1	=	NZ_JAIHLN010000049.1	Primary Assembly	457	na
+contig00050	unplaced-scaffold	na	na	JAIHLN010000050.1	=	NZ_JAIHLN010000050.1	Primary Assembly	408	na
+contig00051	unplaced-scaffold	na	na	JAIHLN010000051.1	=	NZ_JAIHLN010000051.1	Primary Assembly	344	na
+contig00052	unplaced-scaffold	na	na	JAIHLN010000052.1	=	NZ_JAIHLN010000052.1	Primary Assembly	231	na
+contig00053	unplaced-scaffold	na	na	JAIHLN010000053.1	=	NZ_JAIHLN010000053.1	Primary Assembly	223	na
+contig00054	unplaced-scaffold	na	na	JAIHLN010000054.1	=	NZ_JAIHLN010000054.1	Primary Assembly	223	na
+contig00055	unplaced-scaffold	na	na	JAIHLN010000055.1	=	NZ_JAIHLN010000055.1	Primary Assembly	223	na
+contig00056	unplaced-scaffold	na	na	JAIHLN010000056.1	=	NZ_JAIHLN010000056.1	Primary Assembly	223	na
+contig00057	unplaced-scaffold	na	na	JAIHLN010000057.1	=	NZ_JAIHLN010000057.1	Primary Assembly	223	na
+contig00058	unplaced-scaffold	na	na	JAIHLN010000058.1	=	NZ_JAIHLN010000058.1	Primary Assembly	216	na
+contig00059	unplaced-scaffold	na	na	JAIHLN010000059.1	=	NZ_JAIHLN010000059.1	Primary Assembly	215	na
+contig00060	unplaced-scaffold	na	na	JAIHLN010000060.1	=	NZ_JAIHLN010000060.1	Primary Assembly	212	na
+contig00061	unplaced-scaffold	na	na	JAIHLN010000061.1	=	NZ_JAIHLN010000061.1	Primary Assembly	202	na
+contig00062	unplaced-scaffold	na	na	JAIHLN010000062.1	=	NZ_JAIHLN010000062.1	Primary Assembly	202	na
+contig00063	unplaced-scaffold	na	na	JAIHLN010000063.1	=	NZ_JAIHLN010000063.1	Primary Assembly	202	na
