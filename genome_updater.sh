@@ -561,7 +561,7 @@ function showhelp {
     echo $' -d Database [genbank, refseq] to use both: genbank,refeseq\n\tDefault: refseq'
     echo
     echo $'Organism options:'
-    echo $' -g Organism group (one or several comma-separated entries) [archaea, bacteria, fungi, human, invertebrate, metagenomes, other, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]. Example: archaea,bacteria.\n\tDefault: ""'
+    echo $' -g Organism group (one or more comma-separated entries) [archaea, bacteria, fungi, human, invertebrate, metagenomes, other, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]. Example: archaea,bacteria.\n\tDefault: ""'
     echo $' -S Species level taxids (one or more comma-separated entries). Example: 622,562\n\tDefault: ""'
     echo $' -T Any level taxids - children lineage will be generated (one or more comma-separated entries). Example: 620,649776\n\tDefault: ""'
     echo

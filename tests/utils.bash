@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 get_values_as() { # $1 assembly_summary file, $2 col
     grep -v "^#" ${1} | cut -f $2
 }

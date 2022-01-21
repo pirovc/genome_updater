@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 entries=20
 outfld="files/"
 mkdir -p ${outfld}

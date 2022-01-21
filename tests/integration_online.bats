@@ -1,4 +1,4 @@
-#!./test/libs/bats/bin/bats
+#!/usr/bin/env bash
 
 load 'libs/bats-support/load'
 load 'libs/bats-assert/load'
