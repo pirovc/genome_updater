@@ -1,0 +1,29 @@
+# Assembly name:  UHGG_MGYG-HGUT-02160
+# Organism name:  Candidatus Methanomassiliicoccus intestinalis (archaea)
+# Isolate:  MGYG-HGUT-02160
+# Taxid:          1406512
+# BioSample:      SAMEA5851664
+# BioProject:     PRJEB33885
+# Submitter:      EMG
+# Date:           2019-08-10
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Complete Genome
+# Genome representation: full
+# Genome coverage: 10x
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_902383905.1
+# RefSeq assembly accession: GCF_902383905.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_902383904.1	GCF_902383904.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+GUT_GENOME132202_1	assembled-molecule	1	Chromosome	LR698974.1	=	NZ_LR698974.1	Primary Assembly	1931651	na

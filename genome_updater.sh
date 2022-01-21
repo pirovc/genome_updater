@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 IFS=$' '
 
@@ -320,12 +320,13 @@ check_file_folder() # parameter: ${1} url, ${2} log (0->before download/1->after
         rm -vf "${target_output_prefix}${files_dir}${file_name}" >> "${log_file}" 2>&1
         return 1
     else
-        # Disabled log in case of success, hard to detect failures, file too big
-        #if [ "${2}" -eq 0 ]; then 
-        #    echolog "${file_name} file found on the output folder [${target_output_prefix}${files_dir}${file_name}]" "0"
-        #else
-        #    echolog "${file_name} downloaded successfully [${1} -> ${target_output_prefix}${files_dir}${file_name}]" "0"
-        #fi
+        if [ "${verbose_log}" -eq 1 ]; then
+            if [ "${2}" -eq 0 ]; then 
+                echolog "${file_name} file found on the output folder [${target_output_prefix}${files_dir}${file_name}]" "0"
+            else
+                echolog "${file_name} downloaded successfully [${1} -> ${target_output_prefix}${files_dir}${file_name}]" "0"
+            fi
+        fi
         return 0
     fi
 }
@@ -353,8 +354,9 @@ check_md5_ftp() # parameter: ${1} url - returns 0 (ok) / 1 (error)
                     rm -v "${target_output_prefix}${files_dir}${file_name}" >> ${log_file} 2>&1
                     return 1
                 else
-                    # Disabled log in case of success, hard to detect failures, file too big
-                    #echolog "${file_name} MD5 successfully checked ${file_md5} [${md5checksums_url}]" "0"
+                    if [ "${verbose_log}" -eq 1 ]; then
+                        echolog "${file_name} MD5 successfully checked ${file_md5} [${md5checksums_url}]" "0"
+                    fi
                     return 0
                 fi    
             fi
@@ -538,6 +540,7 @@ working_dir=""
 external_assembly_summary=""
 label=""
 threads=1
+verbose_log=0
 
 function print_logo {
     echo "┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐";
@@ -593,6 +596,7 @@ function showhelp {
     echo $' -s Silent output'
     echo $' -w Silent output with download progress (%) and download version at the end'
     echo $' -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)\n\tDefault: 0'
+    echo $' -V verbose log reporting successful file downloads'
     echo $' -D Print print debug information and exit'
     echo
 }
@@ -616,7 +620,7 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 OPTIND=1 # Reset getopts
-while getopts "d:g:S:T:c:l:F:o:e:b:t:f:P:A:zn:akixmurpswhD" opt; do
+while getopts "d:g:S:T:c:l:F:o:e:b:t:f:P:A:zn:akixmurpswhDV" opt; do
   case ${opt} in
     d) database=${OPTARG} ;;
     g) organism_group=${OPTARG// } ;; #remove spaces
@@ -645,6 +649,7 @@ while getopts "d:g:S:T:c:l:F:o:e:b:t:f:P:A:zn:akixmurpswhD" opt; do
     s) silent=1 ;;
     w) silent_progress=1 ;;
     D) debug_mode=1 ;;
+    V) verbose_log=1 ;;
     h|\?) showhelp; exit 0 ;;
     :) echo "Option -${OPTARG} requires an argument." >&2; exit 1 ;;
   esac
@@ -712,7 +717,7 @@ elif [ "${silent_progress}" -eq 1 ] ; then
 fi
 n_formats=$(echo ${file_formats} | tr -cd , | wc -c) # number of file formats
 timestamp=$(date +%Y-%m-%d_%H-%M-%S) # timestamp of the run
-export check_md5 silent silent_progress n_formats timestamp # To be accessible in functions called by parallel
+export check_md5 silent silent_progress n_formats timestamp verbose_log # To be accessible in functions called by parallel
 
 # Create working directory
 if [[ -z "${working_dir}" ]]; then
@@ -813,6 +818,7 @@ echolog "Silent with progress and version: ${silent_progress}" "0"
 echolog "Output URLs: ${url_list}" "0"
 echolog "External assembly summary: ${external_assembly_summary}" "0"
 echolog "Threads: ${threads}" "0"
+echolog "Verbose log: ${verbose_log}" "0"
 echolog "Working directory: ${working_dir}" "1"
 echolog "Label: ${label}" "0"
 echolog "-------------------------------------------" "1"

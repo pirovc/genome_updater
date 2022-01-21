@@ -1,0 +1,60 @@
+# Assembly name:  PDT000787515.1
+# Description:    NCBI Pathogen Detection Assembly PDT000787515.1
+# Organism name:  Salmonella enterica (enterobacteria)
+# Infraspecific name:  strain=PNUSAS152956
+# Taxid:          28901
+# BioSample:      SAMN15522001
+# BioProject:     PRJNA230403
+# Submitter:      CDC
+# Date:           2020-07-23
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    AATZYI01
+# Assembly method: SKESA v. 2.2
+# Expected final version: no
+# Genome coverage: 61x
+# Sequencing technology: ILLUMINA
+# Excluded from RefSeq: from large multi-isolate project
+# GenBank assembly accession: GCA_013549135.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_013549145.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+SAMN15522001-rid10145143.denovo.01	unplaced-scaffold	na	na	AATZYI010000001.1	<>	na	Primary Assembly	850409	na
+SAMN15522001-rid10145143.denovo.02	unplaced-scaffold	na	na	AATZYI010000002.1	<>	na	Primary Assembly	520623	na
+SAMN15522001-rid10145143.denovo.03	unplaced-scaffold	na	na	AATZYI010000003.1	<>	na	Primary Assembly	517631	na
+SAMN15522001-rid10145143.denovo.04	unplaced-scaffold	na	na	AATZYI010000004.1	<>	na	Primary Assembly	465642	na
+SAMN15522001-rid10145143.denovo.05	unplaced-scaffold	na	na	AATZYI010000005.1	<>	na	Primary Assembly	430303	na
+SAMN15522001-rid10145143.denovo.06	unplaced-scaffold	na	na	AATZYI010000006.1	<>	na	Primary Assembly	391807	na
+SAMN15522001-rid10145143.denovo.07	unplaced-scaffold	na	na	AATZYI010000007.1	<>	na	Primary Assembly	363782	na
+SAMN15522001-rid10145143.denovo.08	unplaced-scaffold	na	na	AATZYI010000008.1	<>	na	Primary Assembly	231239	na
+SAMN15522001-rid10145143.denovo.09	unplaced-scaffold	na	na	AATZYI010000009.1	<>	na	Primary Assembly	223779	na
+SAMN15522001-rid10145143.denovo.10	unplaced-scaffold	na	na	AATZYI010000010.1	<>	na	Primary Assembly	195096	na
+SAMN15522001-rid10145143.denovo.11	unplaced-scaffold	na	na	AATZYI010000011.1	<>	na	Primary Assembly	150865	na
+SAMN15522001-rid10145143.denovo.12	unplaced-scaffold	na	na	AATZYI010000012.1	<>	na	Primary Assembly	90257	na
+SAMN15522001-rid10145143.denovo.13	unplaced-scaffold	na	na	AATZYI010000013.1	<>	na	Primary Assembly	81332	na
+SAMN15522001-rid10145143.denovo.14	unplaced-scaffold	na	na	AATZYI010000014.1	<>	na	Primary Assembly	47190	na
+SAMN15522001-rid10145143.denovo.15	unplaced-scaffold	na	na	AATZYI010000015.1	<>	na	Primary Assembly	36669	na
+SAMN15522001-rid10145143.denovo.16	unplaced-scaffold	na	na	AATZYI010000016.1	<>	na	Primary Assembly	21506	na
+SAMN15522001-rid10145143.denovo.17	unplaced-scaffold	na	na	AATZYI010000017.1	<>	na	Primary Assembly	13396	na
+SAMN15522001-rid10145143.denovo.18	unplaced-scaffold	na	na	AATZYI010000018.1	<>	na	Primary Assembly	9154	na
+SAMN15522001-rid10145143.denovo.20	unplaced-scaffold	na	na	AATZYI010000019.1	<>	na	Primary Assembly	6158	na
+SAMN15522001-rid10145143.denovo.22	unplaced-scaffold	na	na	AATZYI010000020.1	<>	na	Primary Assembly	2111	na
+SAMN15522001-rid10145143.denovo.24	unplaced-scaffold	na	na	AATZYI010000021.1	<>	na	Primary Assembly	1236	na
+SAMN15522001-rid10145143.denovo.25	unplaced-scaffold	na	na	AATZYI010000022.1	<>	na	Primary Assembly	1043	na
+SAMN15522001-rid10145143.denovo.26	unplaced-scaffold	na	na	AATZYI010000023.1	<>	na	Primary Assembly	717	na
+SAMN15522001-rid10145143.denovo.27	unplaced-scaffold	na	na	AATZYI010000024.1	<>	na	Primary Assembly	572	na
+SAMN15522001-rid10145143.denovo.28	unplaced-scaffold	na	na	AATZYI010000025.1	<>	na	Primary Assembly	461	na
+SAMN15522001-rid10145143.denovo.29	unplaced-scaffold	na	na	AATZYI010000026.1	<>	na	Primary Assembly	456	na
+SAMN15522001-rid10145143.guided.19	unplaced-scaffold	na	na	AATZYI010000027.1	<>	na	Primary Assembly	6295	na
+SAMN15522001-rid10145143.guided.21	unplaced-scaffold	na	na	AATZYI010000028.1	<>	na	Primary Assembly	2985	na
+SAMN15522001-rid10145143.guided.23	unplaced-scaffold	na	na	AATZYI010000029.1	<>	na	Primary Assembly	1247	na

@@ -1,0 +1,243 @@
+# Assembly name:  UFOp-RE-23may17-586
+# Organism name:  freshwater metagenome (metagenomes)
+# Taxid:          449393
+# BioSample:      SAMEA6813852
+# BioProject:     PRJEB35770
+# Submitter:      BIOLOGY CENTRE ASCR, V.V.I., INSTITUTE OF HYDROBIO
+# Date:           2020-06-05
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    CAEZVL01
+# Genome coverage: 10x
+# Excluded from RefSeq: derived from environmental source; metagenome
+# GenBank assembly accession: GCA_903218915.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_903218914.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig1	unplaced-scaffold	na	na	CAEZVL010000001.1	<>	na	Primary Assembly	24237	na
+contig2	unplaced-scaffold	na	na	CAEZVL010000002.1	<>	na	Primary Assembly	20160	na
+contig3	unplaced-scaffold	na	na	CAEZVL010000003.1	<>	na	Primary Assembly	18245	na
+contig4	unplaced-scaffold	na	na	CAEZVL010000004.1	<>	na	Primary Assembly	13836	na
+contig5	unplaced-scaffold	na	na	CAEZVL010000005.1	<>	na	Primary Assembly	13278	na
+contig6	unplaced-scaffold	na	na	CAEZVL010000006.1	<>	na	Primary Assembly	13267	na
+contig7	unplaced-scaffold	na	na	CAEZVL010000007.1	<>	na	Primary Assembly	13264	na
+contig8	unplaced-scaffold	na	na	CAEZVL010000008.1	<>	na	Primary Assembly	13093	na
+contig9	unplaced-scaffold	na	na	CAEZVL010000009.1	<>	na	Primary Assembly	12580	na
+contig10	unplaced-scaffold	na	na	CAEZVL010000010.1	<>	na	Primary Assembly	12459	na
+contig11	unplaced-scaffold	na	na	CAEZVL010000011.1	<>	na	Primary Assembly	11731	na
+contig12	unplaced-scaffold	na	na	CAEZVL010000012.1	<>	na	Primary Assembly	11382	na
+contig13	unplaced-scaffold	na	na	CAEZVL010000013.1	<>	na	Primary Assembly	10656	na
+contig14	unplaced-scaffold	na	na	CAEZVL010000014.1	<>	na	Primary Assembly	10624	na
+contig15	unplaced-scaffold	na	na	CAEZVL010000015.1	<>	na	Primary Assembly	10615	na
+contig16	unplaced-scaffold	na	na	CAEZVL010000016.1	<>	na	Primary Assembly	10220	na
+contig17	unplaced-scaffold	na	na	CAEZVL010000017.1	<>	na	Primary Assembly	10201	na
+contig18	unplaced-scaffold	na	na	CAEZVL010000018.1	<>	na	Primary Assembly	9765	na
+contig19	unplaced-scaffold	na	na	CAEZVL010000019.1	<>	na	Primary Assembly	9682	na
+contig20	unplaced-scaffold	na	na	CAEZVL010000020.1	<>	na	Primary Assembly	9572	na
+contig21	unplaced-scaffold	na	na	CAEZVL010000021.1	<>	na	Primary Assembly	9555	na
+contig22	unplaced-scaffold	na	na	CAEZVL010000022.1	<>	na	Primary Assembly	8730	na
+contig23	unplaced-scaffold	na	na	CAEZVL010000023.1	<>	na	Primary Assembly	8691	na
+contig24	unplaced-scaffold	na	na	CAEZVL010000024.1	<>	na	Primary Assembly	8672	na
+contig25	unplaced-scaffold	na	na	CAEZVL010000025.1	<>	na	Primary Assembly	8672	na
+contig26	unplaced-scaffold	na	na	CAEZVL010000026.1	<>	na	Primary Assembly	8339	na
+contig27	unplaced-scaffold	na	na	CAEZVL010000027.1	<>	na	Primary Assembly	8290	na
+contig28	unplaced-scaffold	na	na	CAEZVL010000028.1	<>	na	Primary Assembly	8225	na
+contig29	unplaced-scaffold	na	na	CAEZVL010000029.1	<>	na	Primary Assembly	8041	na
+contig30	unplaced-scaffold	na	na	CAEZVL010000030.1	<>	na	Primary Assembly	7692	na
+contig31	unplaced-scaffold	na	na	CAEZVL010000031.1	<>	na	Primary Assembly	7640	na
+contig32	unplaced-scaffold	na	na	CAEZVL010000032.1	<>	na	Primary Assembly	7629	na
+contig33	unplaced-scaffold	na	na	CAEZVL010000033.1	<>	na	Primary Assembly	7501	na
+contig34	unplaced-scaffold	na	na	CAEZVL010000034.1	<>	na	Primary Assembly	7480	na
+contig35	unplaced-scaffold	na	na	CAEZVL010000035.1	<>	na	Primary Assembly	7457	na
+contig36	unplaced-scaffold	na	na	CAEZVL010000036.1	<>	na	Primary Assembly	7320	na
+contig37	unplaced-scaffold	na	na	CAEZVL010000037.1	<>	na	Primary Assembly	7264	na
+contig38	unplaced-scaffold	na	na	CAEZVL010000038.1	<>	na	Primary Assembly	7257	na
+contig39	unplaced-scaffold	na	na	CAEZVL010000039.1	<>	na	Primary Assembly	7135	na
+contig40	unplaced-scaffold	na	na	CAEZVL010000040.1	<>	na	Primary Assembly	7118	na
+contig41	unplaced-scaffold	na	na	CAEZVL010000041.1	<>	na	Primary Assembly	6975	na
+contig42	unplaced-scaffold	na	na	CAEZVL010000042.1	<>	na	Primary Assembly	6952	na
+contig43	unplaced-scaffold	na	na	CAEZVL010000043.1	<>	na	Primary Assembly	6951	na
+contig44	unplaced-scaffold	na	na	CAEZVL010000044.1	<>	na	Primary Assembly	6821	na
+contig45	unplaced-scaffold	na	na	CAEZVL010000045.1	<>	na	Primary Assembly	6783	na
+contig46	unplaced-scaffold	na	na	CAEZVL010000046.1	<>	na	Primary Assembly	6721	na
+contig47	unplaced-scaffold	na	na	CAEZVL010000047.1	<>	na	Primary Assembly	6711	na
+contig48	unplaced-scaffold	na	na	CAEZVL010000048.1	<>	na	Primary Assembly	6455	na
+contig49	unplaced-scaffold	na	na	CAEZVL010000049.1	<>	na	Primary Assembly	6414	na
+contig50	unplaced-scaffold	na	na	CAEZVL010000050.1	<>	na	Primary Assembly	6378	na
+contig51	unplaced-scaffold	na	na	CAEZVL010000051.1	<>	na	Primary Assembly	6337	na
+contig52	unplaced-scaffold	na	na	CAEZVL010000052.1	<>	na	Primary Assembly	6318	na
+contig53	unplaced-scaffold	na	na	CAEZVL010000053.1	<>	na	Primary Assembly	6302	na
+contig54	unplaced-scaffold	na	na	CAEZVL010000054.1	<>	na	Primary Assembly	6182	na
+contig55	unplaced-scaffold	na	na	CAEZVL010000055.1	<>	na	Primary Assembly	6084	na
+contig56	unplaced-scaffold	na	na	CAEZVL010000056.1	<>	na	Primary Assembly	6053	na
+contig57	unplaced-scaffold	na	na	CAEZVL010000057.1	<>	na	Primary Assembly	6004	na
+contig58	unplaced-scaffold	na	na	CAEZVL010000058.1	<>	na	Primary Assembly	5987	na
+contig59	unplaced-scaffold	na	na	CAEZVL010000059.1	<>	na	Primary Assembly	5904	na
+contig60	unplaced-scaffold	na	na	CAEZVL010000060.1	<>	na	Primary Assembly	5868	na
+contig61	unplaced-scaffold	na	na	CAEZVL010000061.1	<>	na	Primary Assembly	5834	na
+contig62	unplaced-scaffold	na	na	CAEZVL010000062.1	<>	na	Primary Assembly	5809	na
+contig63	unplaced-scaffold	na	na	CAEZVL010000063.1	<>	na	Primary Assembly	5798	na
+contig64	unplaced-scaffold	na	na	CAEZVL010000064.1	<>	na	Primary Assembly	5795	na
+contig65	unplaced-scaffold	na	na	CAEZVL010000065.1	<>	na	Primary Assembly	5773	na
+contig66	unplaced-scaffold	na	na	CAEZVL010000066.1	<>	na	Primary Assembly	5754	na
+contig67	unplaced-scaffold	na	na	CAEZVL010000067.1	<>	na	Primary Assembly	5753	na
+contig68	unplaced-scaffold	na	na	CAEZVL010000068.1	<>	na	Primary Assembly	5707	na
+contig69	unplaced-scaffold	na	na	CAEZVL010000069.1	<>	na	Primary Assembly	5567	na
+contig70	unplaced-scaffold	na	na	CAEZVL010000070.1	<>	na	Primary Assembly	5503	na
+contig71	unplaced-scaffold	na	na	CAEZVL010000071.1	<>	na	Primary Assembly	5444	na
+contig72	unplaced-scaffold	na	na	CAEZVL010000072.1	<>	na	Primary Assembly	5443	na
+contig73	unplaced-scaffold	na	na	CAEZVL010000073.1	<>	na	Primary Assembly	5398	na
+contig74	unplaced-scaffold	na	na	CAEZVL010000074.1	<>	na	Primary Assembly	5384	na
+contig75	unplaced-scaffold	na	na	CAEZVL010000075.1	<>	na	Primary Assembly	5348	na
+contig76	unplaced-scaffold	na	na	CAEZVL010000076.1	<>	na	Primary Assembly	5346	na
+contig77	unplaced-scaffold	na	na	CAEZVL010000077.1	<>	na	Primary Assembly	5280	na
+contig78	unplaced-scaffold	na	na	CAEZVL010000078.1	<>	na	Primary Assembly	5273	na
+contig79	unplaced-scaffold	na	na	CAEZVL010000079.1	<>	na	Primary Assembly	5217	na
+contig80	unplaced-scaffold	na	na	CAEZVL010000080.1	<>	na	Primary Assembly	5136	na
+contig81	unplaced-scaffold	na	na	CAEZVL010000081.1	<>	na	Primary Assembly	5133	na
+contig82	unplaced-scaffold	na	na	CAEZVL010000082.1	<>	na	Primary Assembly	5082	na
+contig83	unplaced-scaffold	na	na	CAEZVL010000083.1	<>	na	Primary Assembly	5073	na
+contig84	unplaced-scaffold	na	na	CAEZVL010000084.1	<>	na	Primary Assembly	5046	na
+contig85	unplaced-scaffold	na	na	CAEZVL010000085.1	<>	na	Primary Assembly	5029	na
+contig86	unplaced-scaffold	na	na	CAEZVL010000086.1	<>	na	Primary Assembly	5025	na
+contig87	unplaced-scaffold	na	na	CAEZVL010000087.1	<>	na	Primary Assembly	4995	na
+contig88	unplaced-scaffold	na	na	CAEZVL010000088.1	<>	na	Primary Assembly	4916	na
+contig89	unplaced-scaffold	na	na	CAEZVL010000089.1	<>	na	Primary Assembly	4899	na
+contig90	unplaced-scaffold	na	na	CAEZVL010000090.1	<>	na	Primary Assembly	4889	na
+contig91	unplaced-scaffold	na	na	CAEZVL010000091.1	<>	na	Primary Assembly	4867	na
+contig92	unplaced-scaffold	na	na	CAEZVL010000092.1	<>	na	Primary Assembly	4841	na
+contig93	unplaced-scaffold	na	na	CAEZVL010000093.1	<>	na	Primary Assembly	4829	na
+contig94	unplaced-scaffold	na	na	CAEZVL010000094.1	<>	na	Primary Assembly	4814	na
+contig95	unplaced-scaffold	na	na	CAEZVL010000095.1	<>	na	Primary Assembly	4792	na
+contig96	unplaced-scaffold	na	na	CAEZVL010000096.1	<>	na	Primary Assembly	4762	na
+contig97	unplaced-scaffold	na	na	CAEZVL010000097.1	<>	na	Primary Assembly	4729	na
+contig98	unplaced-scaffold	na	na	CAEZVL010000098.1	<>	na	Primary Assembly	4727	na
+contig99	unplaced-scaffold	na	na	CAEZVL010000099.1	<>	na	Primary Assembly	4706	na
+contig100	unplaced-scaffold	na	na	CAEZVL010000100.1	<>	na	Primary Assembly	4677	na
+contig101	unplaced-scaffold	na	na	CAEZVL010000101.1	<>	na	Primary Assembly	4622	na
+contig102	unplaced-scaffold	na	na	CAEZVL010000102.1	<>	na	Primary Assembly	4612	na
+contig103	unplaced-scaffold	na	na	CAEZVL010000103.1	<>	na	Primary Assembly	4597	na
+contig104	unplaced-scaffold	na	na	CAEZVL010000104.1	<>	na	Primary Assembly	4594	na
+contig105	unplaced-scaffold	na	na	CAEZVL010000105.1	<>	na	Primary Assembly	4552	na
+contig106	unplaced-scaffold	na	na	CAEZVL010000106.1	<>	na	Primary Assembly	4533	na
+contig107	unplaced-scaffold	na	na	CAEZVL010000107.1	<>	na	Primary Assembly	4511	na
+contig108	unplaced-scaffold	na	na	CAEZVL010000108.1	<>	na	Primary Assembly	4506	na
+contig109	unplaced-scaffold	na	na	CAEZVL010000109.1	<>	na	Primary Assembly	4500	na
+contig110	unplaced-scaffold	na	na	CAEZVL010000110.1	<>	na	Primary Assembly	4455	na
+contig111	unplaced-scaffold	na	na	CAEZVL010000111.1	<>	na	Primary Assembly	4432	na
+contig112	unplaced-scaffold	na	na	CAEZVL010000112.1	<>	na	Primary Assembly	4427	na
+contig113	unplaced-scaffold	na	na	CAEZVL010000113.1	<>	na	Primary Assembly	4397	na
+contig114	unplaced-scaffold	na	na	CAEZVL010000114.1	<>	na	Primary Assembly	4394	na
+contig115	unplaced-scaffold	na	na	CAEZVL010000115.1	<>	na	Primary Assembly	4375	na
+contig116	unplaced-scaffold	na	na	CAEZVL010000116.1	<>	na	Primary Assembly	4350	na
+contig117	unplaced-scaffold	na	na	CAEZVL010000117.1	<>	na	Primary Assembly	4331	na
+contig118	unplaced-scaffold	na	na	CAEZVL010000118.1	<>	na	Primary Assembly	4320	na
+contig119	unplaced-scaffold	na	na	CAEZVL010000119.1	<>	na	Primary Assembly	4302	na
+contig120	unplaced-scaffold	na	na	CAEZVL010000120.1	<>	na	Primary Assembly	4290	na
+contig121	unplaced-scaffold	na	na	CAEZVL010000121.1	<>	na	Primary Assembly	4280	na
+contig122	unplaced-scaffold	na	na	CAEZVL010000122.1	<>	na	Primary Assembly	4264	na
+contig123	unplaced-scaffold	na	na	CAEZVL010000123.1	<>	na	Primary Assembly	4247	na
+contig124	unplaced-scaffold	na	na	CAEZVL010000124.1	<>	na	Primary Assembly	4220	na
+contig125	unplaced-scaffold	na	na	CAEZVL010000125.1	<>	na	Primary Assembly	4215	na
+contig126	unplaced-scaffold	na	na	CAEZVL010000126.1	<>	na	Primary Assembly	4212	na
+contig127	unplaced-scaffold	na	na	CAEZVL010000127.1	<>	na	Primary Assembly	4147	na
+contig128	unplaced-scaffold	na	na	CAEZVL010000128.1	<>	na	Primary Assembly	4130	na
+contig129	unplaced-scaffold	na	na	CAEZVL010000129.1	<>	na	Primary Assembly	4119	na
+contig130	unplaced-scaffold	na	na	CAEZVL010000130.1	<>	na	Primary Assembly	4108	na
+contig131	unplaced-scaffold	na	na	CAEZVL010000131.1	<>	na	Primary Assembly	4087	na
+contig132	unplaced-scaffold	na	na	CAEZVL010000132.1	<>	na	Primary Assembly	4072	na
+contig133	unplaced-scaffold	na	na	CAEZVL010000133.1	<>	na	Primary Assembly	4039	na
+contig134	unplaced-scaffold	na	na	CAEZVL010000134.1	<>	na	Primary Assembly	4028	na
+contig135	unplaced-scaffold	na	na	CAEZVL010000135.1	<>	na	Primary Assembly	3981	na
+contig136	unplaced-scaffold	na	na	CAEZVL010000136.1	<>	na	Primary Assembly	3914	na
+contig137	unplaced-scaffold	na	na	CAEZVL010000137.1	<>	na	Primary Assembly	3913	na
+contig138	unplaced-scaffold	na	na	CAEZVL010000138.1	<>	na	Primary Assembly	3893	na
+contig139	unplaced-scaffold	na	na	CAEZVL010000139.1	<>	na	Primary Assembly	3881	na
+contig140	unplaced-scaffold	na	na	CAEZVL010000140.1	<>	na	Primary Assembly	3879	na
+contig141	unplaced-scaffold	na	na	CAEZVL010000141.1	<>	na	Primary Assembly	3874	na
+contig142	unplaced-scaffold	na	na	CAEZVL010000142.1	<>	na	Primary Assembly	3846	na
+contig143	unplaced-scaffold	na	na	CAEZVL010000143.1	<>	na	Primary Assembly	3812	na
+contig144	unplaced-scaffold	na	na	CAEZVL010000144.1	<>	na	Primary Assembly	3789	na
+contig145	unplaced-scaffold	na	na	CAEZVL010000145.1	<>	na	Primary Assembly	3751	na
+contig146	unplaced-scaffold	na	na	CAEZVL010000146.1	<>	na	Primary Assembly	3720	na
+contig147	unplaced-scaffold	na	na	CAEZVL010000147.1	<>	na	Primary Assembly	3707	na
+contig148	unplaced-scaffold	na	na	CAEZVL010000148.1	<>	na	Primary Assembly	3699	na
+contig149	unplaced-scaffold	na	na	CAEZVL010000149.1	<>	na	Primary Assembly	3693	na
+contig150	unplaced-scaffold	na	na	CAEZVL010000150.1	<>	na	Primary Assembly	3686	na
+contig151	unplaced-scaffold	na	na	CAEZVL010000151.1	<>	na	Primary Assembly	3669	na
+contig152	unplaced-scaffold	na	na	CAEZVL010000152.1	<>	na	Primary Assembly	3660	na
+contig153	unplaced-scaffold	na	na	CAEZVL010000153.1	<>	na	Primary Assembly	3648	na
+contig154	unplaced-scaffold	na	na	CAEZVL010000154.1	<>	na	Primary Assembly	3625	na
+contig155	unplaced-scaffold	na	na	CAEZVL010000155.1	<>	na	Primary Assembly	3621	na
+contig156	unplaced-scaffold	na	na	CAEZVL010000156.1	<>	na	Primary Assembly	3602	na
+contig157	unplaced-scaffold	na	na	CAEZVL010000157.1	<>	na	Primary Assembly	3579	na
+contig158	unplaced-scaffold	na	na	CAEZVL010000158.1	<>	na	Primary Assembly	3561	na
+contig159	unplaced-scaffold	na	na	CAEZVL010000159.1	<>	na	Primary Assembly	3546	na
+contig160	unplaced-scaffold	na	na	CAEZVL010000160.1	<>	na	Primary Assembly	3544	na
+contig161	unplaced-scaffold	na	na	CAEZVL010000161.1	<>	na	Primary Assembly	3541	na
+contig162	unplaced-scaffold	na	na	CAEZVL010000162.1	<>	na	Primary Assembly	3537	na
+contig163	unplaced-scaffold	na	na	CAEZVL010000163.1	<>	na	Primary Assembly	3515	na
+contig164	unplaced-scaffold	na	na	CAEZVL010000164.1	<>	na	Primary Assembly	3494	na
+contig165	unplaced-scaffold	na	na	CAEZVL010000165.1	<>	na	Primary Assembly	3490	na
+contig166	unplaced-scaffold	na	na	CAEZVL010000166.1	<>	na	Primary Assembly	3489	na
+contig167	unplaced-scaffold	na	na	CAEZVL010000167.1	<>	na	Primary Assembly	3451	na
+contig168	unplaced-scaffold	na	na	CAEZVL010000168.1	<>	na	Primary Assembly	3447	na
+contig169	unplaced-scaffold	na	na	CAEZVL010000169.1	<>	na	Primary Assembly	3435	na
+contig170	unplaced-scaffold	na	na	CAEZVL010000170.1	<>	na	Primary Assembly	3431	na
+contig171	unplaced-scaffold	na	na	CAEZVL010000171.1	<>	na	Primary Assembly	3423	na
+contig172	unplaced-scaffold	na	na	CAEZVL010000172.1	<>	na	Primary Assembly	3410	na
+contig173	unplaced-scaffold	na	na	CAEZVL010000173.1	<>	na	Primary Assembly	3375	na
+contig174	unplaced-scaffold	na	na	CAEZVL010000174.1	<>	na	Primary Assembly	3374	na
+contig175	unplaced-scaffold	na	na	CAEZVL010000175.1	<>	na	Primary Assembly	3367	na
+contig176	unplaced-scaffold	na	na	CAEZVL010000176.1	<>	na	Primary Assembly	3364	na
+contig177	unplaced-scaffold	na	na	CAEZVL010000177.1	<>	na	Primary Assembly	3347	na
+contig178	unplaced-scaffold	na	na	CAEZVL010000178.1	<>	na	Primary Assembly	3345	na
+contig179	unplaced-scaffold	na	na	CAEZVL010000179.1	<>	na	Primary Assembly	3339	na
+contig180	unplaced-scaffold	na	na	CAEZVL010000180.1	<>	na	Primary Assembly	3338	na
+contig181	unplaced-scaffold	na	na	CAEZVL010000181.1	<>	na	Primary Assembly	3331	na
+contig182	unplaced-scaffold	na	na	CAEZVL010000182.1	<>	na	Primary Assembly	3330	na
+contig183	unplaced-scaffold	na	na	CAEZVL010000183.1	<>	na	Primary Assembly	3322	na
+contig184	unplaced-scaffold	na	na	CAEZVL010000184.1	<>	na	Primary Assembly	3315	na
+contig185	unplaced-scaffold	na	na	CAEZVL010000185.1	<>	na	Primary Assembly	3311	na
+contig186	unplaced-scaffold	na	na	CAEZVL010000186.1	<>	na	Primary Assembly	3298	na
+contig187	unplaced-scaffold	na	na	CAEZVL010000187.1	<>	na	Primary Assembly	3296	na
+contig188	unplaced-scaffold	na	na	CAEZVL010000188.1	<>	na	Primary Assembly	3273	na
+contig189	unplaced-scaffold	na	na	CAEZVL010000189.1	<>	na	Primary Assembly	3253	na
+contig190	unplaced-scaffold	na	na	CAEZVL010000190.1	<>	na	Primary Assembly	3253	na
+contig191	unplaced-scaffold	na	na	CAEZVL010000191.1	<>	na	Primary Assembly	3236	na
+contig192	unplaced-scaffold	na	na	CAEZVL010000192.1	<>	na	Primary Assembly	3215	na
+contig193	unplaced-scaffold	na	na	CAEZVL010000193.1	<>	na	Primary Assembly	3211	na
+contig194	unplaced-scaffold	na	na	CAEZVL010000194.1	<>	na	Primary Assembly	3209	na
+contig195	unplaced-scaffold	na	na	CAEZVL010000195.1	<>	na	Primary Assembly	3164	na
+contig196	unplaced-scaffold	na	na	CAEZVL010000196.1	<>	na	Primary Assembly	3161	na
+contig197	unplaced-scaffold	na	na	CAEZVL010000197.1	<>	na	Primary Assembly	3151	na
+contig198	unplaced-scaffold	na	na	CAEZVL010000198.1	<>	na	Primary Assembly	3149	na
+contig199	unplaced-scaffold	na	na	CAEZVL010000199.1	<>	na	Primary Assembly	3148	na
+contig200	unplaced-scaffold	na	na	CAEZVL010000200.1	<>	na	Primary Assembly	3137	na
+contig201	unplaced-scaffold	na	na	CAEZVL010000201.1	<>	na	Primary Assembly	3127	na
+contig202	unplaced-scaffold	na	na	CAEZVL010000202.1	<>	na	Primary Assembly	3125	na
+contig203	unplaced-scaffold	na	na	CAEZVL010000203.1	<>	na	Primary Assembly	3117	na
+contig204	unplaced-scaffold	na	na	CAEZVL010000204.1	<>	na	Primary Assembly	3103	na
+contig205	unplaced-scaffold	na	na	CAEZVL010000205.1	<>	na	Primary Assembly	3100	na
+contig206	unplaced-scaffold	na	na	CAEZVL010000206.1	<>	na	Primary Assembly	3096	na
+contig207	unplaced-scaffold	na	na	CAEZVL010000207.1	<>	na	Primary Assembly	3089	na
+contig208	unplaced-scaffold	na	na	CAEZVL010000208.1	<>	na	Primary Assembly	3081	na
+contig209	unplaced-scaffold	na	na	CAEZVL010000209.1	<>	na	Primary Assembly	3080	na
+contig210	unplaced-scaffold	na	na	CAEZVL010000210.1	<>	na	Primary Assembly	3061	na
+contig211	unplaced-scaffold	na	na	CAEZVL010000211.1	<>	na	Primary Assembly	3061	na
+contig212	unplaced-scaffold	na	na	CAEZVL010000212.1	<>	na	Primary Assembly	3057	na
+contig213	unplaced-scaffold	na	na	CAEZVL010000213.1	<>	na	Primary Assembly	3054	na
+contig214	unplaced-scaffold	na	na	CAEZVL010000214.1	<>	na	Primary Assembly	3051	na
+contig215	unplaced-scaffold	na	na	CAEZVL010000215.1	<>	na	Primary Assembly	3035	na
+contig216	unplaced-scaffold	na	na	CAEZVL010000216.1	<>	na	Primary Assembly	3023	na
+contig217	unplaced-scaffold	na	na	CAEZVL010000217.1	<>	na	Primary Assembly	3011	na

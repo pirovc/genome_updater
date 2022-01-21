@@ -1,0 +1,122 @@
+# Assembly name:  Assembly of the genome MB3
+# Organism name:  Mycobacterium tuberculosis variant bovis (high GC Gram+)
+# Infraspecific name:  strain=MB3
+# Taxid:          1765
+# BioSample:      SAMEA2794682
+# BioProject:     PRJEB7272
+# Submitter:      ERA7
+# Date:           2015-03-03
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    CDHH01
+# Genome coverage: 457x
+# GenBank assembly accession: GCA_000947895.1
+# RefSeq assembly accession: GCF_000947895.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000947905.1	GCF_000947905.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+CDHH01000001	unplaced-scaffold	na	na	CDHH01000001.1	=	NZ_CDHH01000001.1	Primary Assembly	372	na
+CDHH01000002	unplaced-scaffold	na	na	CDHH01000002.1	=	NZ_CDHH01000002.1	Primary Assembly	44154	na
+CDHH01000003	unplaced-scaffold	na	na	CDHH01000003.1	=	NZ_CDHH01000003.1	Primary Assembly	58213	na
+CDHH01000004	unplaced-scaffold	na	na	CDHH01000004.1	=	NZ_CDHH01000004.1	Primary Assembly	52108	na
+CDHH01000005	unplaced-scaffold	na	na	CDHH01000005.1	=	NZ_CDHH01000005.1	Primary Assembly	5779	na
+CDHH01000006	unplaced-scaffold	na	na	CDHH01000006.1	=	NZ_CDHH01000006.1	Primary Assembly	6246	na
+CDHH01000007	unplaced-scaffold	na	na	CDHH01000007.1	=	NZ_CDHH01000007.1	Primary Assembly	407	na
+CDHH01000008	unplaced-scaffold	na	na	CDHH01000008.1	=	NZ_CDHH01000008.1	Primary Assembly	522	na
+CDHH01000009	unplaced-scaffold	na	na	CDHH01000009.1	=	NZ_CDHH01000009.1	Primary Assembly	1994	na
+CDHH01000010	unplaced-scaffold	na	na	CDHH01000010.1	=	NZ_CDHH01000010.1	Primary Assembly	84283	na
+CDHH01000011	unplaced-scaffold	na	na	CDHH01000011.1	=	NZ_CDHH01000011.1	Primary Assembly	19841	na
+CDHH01000012	unplaced-scaffold	na	na	CDHH01000012.1	=	NZ_CDHH01000012.1	Primary Assembly	34195	na
+CDHH01000013	unplaced-scaffold	na	na	CDHH01000013.1	=	NZ_CDHH01000013.1	Primary Assembly	130611	na
+CDHH01000014	unplaced-scaffold	na	na	CDHH01000014.1	=	NZ_CDHH01000014.1	Primary Assembly	88409	na
+CDHH01000015	unplaced-scaffold	na	na	CDHH01000015.1	=	NZ_CDHH01000015.1	Primary Assembly	10517	na
+CDHH01000016	unplaced-scaffold	na	na	CDHH01000016.1	=	NZ_CDHH01000016.1	Primary Assembly	1581	na
+CDHH01000017	unplaced-scaffold	na	na	CDHH01000017.1	=	NZ_CDHH01000017.1	Primary Assembly	194036	na
+CDHH01000018	unplaced-scaffold	na	na	CDHH01000018.1	=	NZ_CDHH01000018.1	Primary Assembly	189349	na
+CDHH01000019	unplaced-scaffold	na	na	CDHH01000019.1	=	NZ_CDHH01000019.1	Primary Assembly	52345	na
+CDHH01000020	unplaced-scaffold	na	na	CDHH01000020.1	=	NZ_CDHH01000020.1	Primary Assembly	1168	na
+CDHH01000021	unplaced-scaffold	na	na	CDHH01000021.1	=	NZ_CDHH01000021.1	Primary Assembly	69085	na
+CDHH01000022	unplaced-scaffold	na	na	CDHH01000022.1	=	NZ_CDHH01000022.1	Primary Assembly	23175	na
+CDHH01000023	unplaced-scaffold	na	na	CDHH01000023.1	=	NZ_CDHH01000023.1	Primary Assembly	181066	na
+CDHH01000024	unplaced-scaffold	na	na	CDHH01000024.1	=	NZ_CDHH01000024.1	Primary Assembly	98821	na
+CDHH01000025	unplaced-scaffold	na	na	CDHH01000025.1	=	NZ_CDHH01000025.1	Primary Assembly	1320	na
+CDHH01000026	unplaced-scaffold	na	na	CDHH01000026.1	=	NZ_CDHH01000026.1	Primary Assembly	42199	na
+CDHH01000027	unplaced-scaffold	na	na	CDHH01000027.1	=	NZ_CDHH01000027.1	Primary Assembly	1386	na
+CDHH01000028	unplaced-scaffold	na	na	CDHH01000028.1	=	NZ_CDHH01000028.1	Primary Assembly	23235	na
+CDHH01000029	unplaced-scaffold	na	na	CDHH01000029.1	=	NZ_CDHH01000029.1	Primary Assembly	158987	na
+CDHH01000030	unplaced-scaffold	na	na	CDHH01000030.1	=	NZ_CDHH01000030.1	Primary Assembly	46046	na
+CDHH01000031	unplaced-scaffold	na	na	CDHH01000031.1	=	NZ_CDHH01000031.1	Primary Assembly	43215	na
+CDHH01000032	unplaced-scaffold	na	na	CDHH01000032.1	=	NZ_CDHH01000032.1	Primary Assembly	21431	na
+CDHH01000033	unplaced-scaffold	na	na	CDHH01000033.1	=	NZ_CDHH01000033.1	Primary Assembly	26895	na
+CDHH01000034	unplaced-scaffold	na	na	CDHH01000034.1	=	NZ_CDHH01000034.1	Primary Assembly	1801	na
+CDHH01000035	unplaced-scaffold	na	na	CDHH01000035.1	=	NZ_CDHH01000035.1	Primary Assembly	58881	na
+CDHH01000036	unplaced-scaffold	na	na	CDHH01000036.1	=	NZ_CDHH01000036.1	Primary Assembly	3968	na
+CDHH01000037	unplaced-scaffold	na	na	CDHH01000037.1	=	NZ_CDHH01000037.1	Primary Assembly	65577	na
+CDHH01000038	unplaced-scaffold	na	na	CDHH01000038.1	=	NZ_CDHH01000038.1	Primary Assembly	1139	na
+CDHH01000039	unplaced-scaffold	na	na	CDHH01000039.1	=	NZ_CDHH01000039.1	Primary Assembly	40427	na
+CDHH01000040	unplaced-scaffold	na	na	CDHH01000040.1	=	NZ_CDHH01000040.1	Primary Assembly	69084	na
+CDHH01000041	unplaced-scaffold	na	na	CDHH01000041.1	=	NZ_CDHH01000041.1	Primary Assembly	29759	na
+CDHH01000042	unplaced-scaffold	na	na	CDHH01000042.1	=	NZ_CDHH01000042.1	Primary Assembly	26902	na
+CDHH01000043	unplaced-scaffold	na	na	CDHH01000043.1	=	NZ_CDHH01000043.1	Primary Assembly	4173	na
+CDHH01000044	unplaced-scaffold	na	na	CDHH01000044.1	=	NZ_CDHH01000044.1	Primary Assembly	1999	na
+CDHH01000045	unplaced-scaffold	na	na	CDHH01000045.1	=	NZ_CDHH01000045.1	Primary Assembly	1072	na
+CDHH01000046	unplaced-scaffold	na	na	CDHH01000046.1	=	NZ_CDHH01000046.1	Primary Assembly	185836	na
+CDHH01000047	unplaced-scaffold	na	na	CDHH01000047.1	=	NZ_CDHH01000047.1	Primary Assembly	1529	na
+CDHH01000048	unplaced-scaffold	na	na	CDHH01000048.1	=	NZ_CDHH01000048.1	Primary Assembly	9243	na
+CDHH01000049	unplaced-scaffold	na	na	CDHH01000049.1	=	NZ_CDHH01000049.1	Primary Assembly	1428	na
+CDHH01000050	unplaced-scaffold	na	na	CDHH01000050.1	=	NZ_CDHH01000050.1	Primary Assembly	9766	na
+CDHH01000051	unplaced-scaffold	na	na	CDHH01000051.1	=	NZ_CDHH01000051.1	Primary Assembly	351	na
+CDHH01000052	unplaced-scaffold	na	na	CDHH01000052.1	=	NZ_CDHH01000052.1	Primary Assembly	62350	na
+CDHH01000053	unplaced-scaffold	na	na	CDHH01000053.1	=	NZ_CDHH01000053.1	Primary Assembly	70659	na
+CDHH01000054	unplaced-scaffold	na	na	CDHH01000054.1	=	NZ_CDHH01000054.1	Primary Assembly	110118	na
+CDHH01000055	unplaced-scaffold	na	na	CDHH01000055.1	=	NZ_CDHH01000055.1	Primary Assembly	230159	na
+CDHH01000056	unplaced-scaffold	na	na	CDHH01000056.1	=	NZ_CDHH01000056.1	Primary Assembly	60543	na
+CDHH01000057	unplaced-scaffold	na	na	CDHH01000057.1	=	NZ_CDHH01000057.1	Primary Assembly	115460	na
+CDHH01000058	unplaced-scaffold	na	na	CDHH01000058.1	=	NZ_CDHH01000058.1	Primary Assembly	27107	na
+CDHH01000059	unplaced-scaffold	na	na	CDHH01000059.1	=	NZ_CDHH01000059.1	Primary Assembly	174133	na
+CDHH01000060	unplaced-scaffold	na	na	CDHH01000060.1	=	NZ_CDHH01000060.1	Primary Assembly	90124	na
+CDHH01000061	unplaced-scaffold	na	na	CDHH01000061.1	=	NZ_CDHH01000061.1	Primary Assembly	37602	na
+CDHH01000062	unplaced-scaffold	na	na	CDHH01000062.1	=	NZ_CDHH01000062.1	Primary Assembly	39666	na
+CDHH01000063	unplaced-scaffold	na	na	CDHH01000063.1	=	NZ_CDHH01000063.1	Primary Assembly	9799	na
+CDHH01000064	unplaced-scaffold	na	na	CDHH01000064.1	=	NZ_CDHH01000064.1	Primary Assembly	17753	na
+CDHH01000065	unplaced-scaffold	na	na	CDHH01000065.1	=	NZ_CDHH01000065.1	Primary Assembly	17282	na
+CDHH01000066	unplaced-scaffold	na	na	CDHH01000066.1	=	NZ_CDHH01000066.1	Primary Assembly	64171	na
+CDHH01000067	unplaced-scaffold	na	na	CDHH01000067.1	=	NZ_CDHH01000067.1	Primary Assembly	111721	na
+CDHH01000068	unplaced-scaffold	na	na	CDHH01000068.1	=	NZ_CDHH01000068.1	Primary Assembly	38656	na
+CDHH01000069	unplaced-scaffold	na	na	CDHH01000069.1	=	NZ_CDHH01000069.1	Primary Assembly	117163	na
+CDHH01000070	unplaced-scaffold	na	na	CDHH01000070.1	=	NZ_CDHH01000070.1	Primary Assembly	314	na
+CDHH01000071	unplaced-scaffold	na	na	CDHH01000071.1	=	NZ_CDHH01000071.1	Primary Assembly	93843	na
+CDHH01000072	unplaced-scaffold	na	na	CDHH01000072.1	=	NZ_CDHH01000072.1	Primary Assembly	1212	na
+CDHH01000073	unplaced-scaffold	na	na	CDHH01000073.1	=	NZ_CDHH01000073.1	Primary Assembly	96630	na
+CDHH01000074	unplaced-scaffold	na	na	CDHH01000074.1	=	NZ_CDHH01000074.1	Primary Assembly	1191	na
+CDHH01000075	unplaced-scaffold	na	na	CDHH01000075.1	=	NZ_CDHH01000075.1	Primary Assembly	2776	na
+CDHH01000076	unplaced-scaffold	na	na	CDHH01000076.1	=	NZ_CDHH01000076.1	Primary Assembly	47492	na
+CDHH01000077	unplaced-scaffold	na	na	CDHH01000077.1	=	NZ_CDHH01000077.1	Primary Assembly	1684	na
+CDHH01000078	unplaced-scaffold	na	na	CDHH01000078.1	=	NZ_CDHH01000078.1	Primary Assembly	26824	na
+CDHH01000079	unplaced-scaffold	na	na	CDHH01000079.1	=	NZ_CDHH01000079.1	Primary Assembly	31350	na
+CDHH01000080	unplaced-scaffold	na	na	CDHH01000080.1	=	NZ_CDHH01000080.1	Primary Assembly	52415	na
+CDHH01000081	unplaced-scaffold	na	na	CDHH01000081.1	=	NZ_CDHH01000081.1	Primary Assembly	80176	na
+CDHH01000082	unplaced-scaffold	na	na	CDHH01000082.1	=	NZ_CDHH01000082.1	Primary Assembly	2702	na
+CDHH01000083	unplaced-scaffold	na	na	CDHH01000083.1	=	NZ_CDHH01000083.1	Primary Assembly	41245	na
+CDHH01000084	unplaced-scaffold	na	na	CDHH01000084.1	=	NZ_CDHH01000084.1	Primary Assembly	53954	na
+CDHH01000085	unplaced-scaffold	na	na	CDHH01000085.1	=	NZ_CDHH01000085.1	Primary Assembly	3217	na
+CDHH01000086	unplaced-scaffold	na	na	CDHH01000086.1	=	NZ_CDHH01000086.1	Primary Assembly	26898	na
+CDHH01000087	unplaced-scaffold	na	na	CDHH01000087.1	=	NZ_CDHH01000087.1	Primary Assembly	332	na
+CDHH01000088	unplaced-scaffold	na	na	CDHH01000088.1	=	NZ_CDHH01000088.1	Primary Assembly	20495	na
+CDHH01000089	unplaced-scaffold	na	na	CDHH01000089.1	=	NZ_CDHH01000089.1	Primary Assembly	1186	na
+CDHH01000090	unplaced-scaffold	na	na	CDHH01000090.1	=	NZ_CDHH01000090.1	Primary Assembly	23342	na
+CDHH01000091	unplaced-scaffold	na	na	CDHH01000091.1	=	NZ_CDHH01000091.1	Primary Assembly	25656	na
+CDHH01000092	unplaced-scaffold	na	na	CDHH01000092.1	=	NZ_CDHH01000092.1	Primary Assembly	332	na
+CDHH01000093	unplaced-scaffold	na	na	CDHH01000093.1	=	NZ_CDHH01000093.1	Primary Assembly	1933	na
+CDHH01000094	unplaced-scaffold	na	na	CDHH01000094.1	=	NZ_CDHH01000094.1	Primary Assembly	2197	na

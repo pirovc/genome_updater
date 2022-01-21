@@ -1,0 +1,51 @@
+# Assembly name:  Stap_aure_T66282_V1
+# Organism name:  Staphylococcus aureus T66282 (firmicutes)
+# Infraspecific name:  strain=T66282
+# Taxid:          1410740
+# BioSample:      SAMN02383660
+# BioProject:     PRJNA224370
+# Submitter:      Broad Institute
+# Date:           2014-02-06
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    JDIQ01
+# Assembly method: allpaths v. R48140
+# Genome coverage: 87.0x
+# Sequencing technology: Illumina
+# GenBank assembly accession: GCA_000560105.1
+# RefSeq assembly accession: GCF_000560105.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000560115.1	GCF_000560115.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+adwsj-supercont1.1	unplaced-scaffold	na	na	KK022800.1	=	NZ_KK022800.1	Primary Assembly	753114	na
+adwsj-supercont1.10	unplaced-scaffold	na	na	KK022801.1	=	NZ_KK022801.1	Primary Assembly	57998	na
+adwsj-supercont1.11	unplaced-scaffold	na	na	KK022802.1	=	NZ_KK022802.1	Primary Assembly	57921	na
+adwsj-supercont1.12	unplaced-scaffold	na	na	KK022803.1	=	NZ_KK022803.1	Primary Assembly	57551	na
+adwsj-supercont1.13	unplaced-scaffold	na	na	KK022804.1	=	NZ_KK022804.1	Primary Assembly	55467	na
+adwsj-supercont1.14	unplaced-scaffold	na	na	KK022805.1	=	NZ_KK022805.1	Primary Assembly	49043	na
+adwsj-supercont1.15	unplaced-scaffold	na	na	KK022806.1	=	NZ_KK022806.1	Primary Assembly	41416	na
+adwsj-supercont1.16	unplaced-scaffold	na	na	KK022807.1	=	NZ_KK022807.1	Primary Assembly	37199	na
+adwsj-supercont1.17	unplaced-scaffold	na	na	KK022808.1	=	NZ_KK022808.1	Primary Assembly	36477	na
+adwsj-supercont1.18	unplaced-scaffold	na	na	KK022809.1	=	NZ_KK022809.1	Primary Assembly	27377	na
+adwsj-supercont1.19	unplaced-scaffold	na	na	KK022810.1	=	NZ_KK022810.1	Primary Assembly	5544	na
+adwsj-supercont1.2	unplaced-scaffold	na	na	KK022811.1	=	NZ_KK022811.1	Primary Assembly	576466	na
+adwsj-supercont1.20	unplaced-scaffold	na	na	KK022812.1	=	NZ_KK022812.1	Primary Assembly	3593	na
+adwsj-supercont1.21	unplaced-scaffold	na	na	KK022813.1	=	NZ_KK022813.1	Primary Assembly	1982	na
+adwsj-supercont1.3	unplaced-scaffold	na	na	KK022814.1	=	NZ_KK022814.1	Primary Assembly	309739	na
+adwsj-supercont1.4	unplaced-scaffold	na	na	KK022815.1	=	NZ_KK022815.1	Primary Assembly	235577	na
+adwsj-supercont1.5	unplaced-scaffold	na	na	KK022816.1	=	NZ_KK022816.1	Primary Assembly	229791	na
+adwsj-supercont1.6	unplaced-scaffold	na	na	KK022817.1	=	NZ_KK022817.1	Primary Assembly	119333	na
+adwsj-supercont1.7	unplaced-scaffold	na	na	KK022818.1	=	NZ_KK022818.1	Primary Assembly	75556	na
+adwsj-supercont1.8	unplaced-scaffold	na	na	KK022819.1	=	NZ_KK022819.1	Primary Assembly	74971	na
+adwsj-supercont1.9	unplaced-scaffold	na	na	KK022820.1	=	NZ_KK022820.1	Primary Assembly	64120	na

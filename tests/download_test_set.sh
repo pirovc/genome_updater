@@ -1,5 +1,5 @@
-#!/bin/bash
-entries=5
+#!/usr/bin/env bash
+entries=20
 outfld="files/"
 mkdir -p ${outfld}
 ext="assembly_report.txt" #,protein.faa.gz"
@@ -13,16 +13,16 @@ do
     do      
         if [[ ${o} == "default" ]]; then
             mkdir -p "${outfld}genomes/${d}/"
-            wget -O "full_assembly_summary.txt" "ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/assembly_summary_${d}.txt"
+            wget --quiet --show-progress -O "full_assembly_summary.txt" "ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/assembly_summary_${d}.txt"
             out_as="${outfld}genomes/${d}/assembly_summary_$d.txt"
         else
             mkdir -p "${outfld}genomes/${d}/${o}/"
-            wget -O "full_assembly_summary.txt" "ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/${o}/assembly_summary.txt"
+            wget --quiet --show-progress -O "full_assembly_summary.txt" "ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/${o}/assembly_summary.txt"
             out_as="${outfld}genomes/${d}/${o}/assembly_summary.txt"
         fi
         head -n 2 "full_assembly_summary.txt" > "${out_as}"
         tail -n+3 "full_assembly_summary.txt" | shuf | head -n ${entries} >> "${out_as}"
-        tail -n+3 "${out_as}" | cut -f 20 | sed 's/https:/ftp:/g' | xargs -P ${entries} wget --directory-prefix="${outfld}" -r -A "${ext}"
+        tail -n+3 "${out_as}" | cut -f 20 | sed 's/https:/ftp:/g' | xargs -P ${entries} wget --quiet --show-progress --directory-prefix="${outfld}" --recursive --level 2 --accept "${ext}"
         cp -r "${outfld}ftp.ncbi.nlm.nih.gov/genomes/" "${outfld}"
         rm -rf "full_assembly_summary.txt" "${outfld}ftp.ncbi.nlm.nih.gov/" 
     done

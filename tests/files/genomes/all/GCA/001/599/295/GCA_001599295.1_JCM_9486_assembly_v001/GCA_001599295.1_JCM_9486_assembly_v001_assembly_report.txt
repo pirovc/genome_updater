@@ -1,0 +1,44 @@
+# Assembly name:  JCM_9486_assembly_v001
+# Organism name:  Sporopachydermia quercuum (budding yeasts)
+# Infraspecific name:  strain=JCM 9486
+# Taxid:          54094
+# BioSample:      SAMD00028341
+# BioProject:     PRJDB3621
+# Submitter:      RIKEN Center for Life Science Technologies, Division of Genomic Technologies
+# Date:           2016-03-01
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    BCGN01
+# Assembly method: ALLPATHS-LG v. 52488
+# Genome coverage: 182x
+# Sequencing technology: HiSeq 2500
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_001599295.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_001599305.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+BCGN01000001.1	unplaced-scaffold	na	na	BCGN01000001.1	<>	na	Primary Assembly	2480924	na
+BCGN01000002.1	unplaced-scaffold	na	na	BCGN01000002.1	<>	na	Primary Assembly	2234776	na
+BCGN01000003.1	unplaced-scaffold	na	na	BCGN01000003.1	<>	na	Primary Assembly	2048561	na
+BCGN01000004.1	unplaced-scaffold	na	na	BCGN01000004.1	<>	na	Primary Assembly	1903616	na
+BCGN01000005.1	unplaced-scaffold	na	na	BCGN01000005.1	<>	na	Primary Assembly	1485630	na
+BCGN01000006.1	unplaced-scaffold	na	na	BCGN01000006.1	<>	na	Primary Assembly	1435243	na
+BCGN01000007.1	unplaced-scaffold	na	na	BCGN01000007.1	<>	na	Primary Assembly	1328185	na
+BCGN01000008.1	unplaced-scaffold	na	na	BCGN01000008.1	<>	na	Primary Assembly	1300220	na
+BCGN01000009.1	unplaced-scaffold	na	na	BCGN01000009.1	<>	na	Primary Assembly	942090	na
+BCGN01000010.1	unplaced-scaffold	na	na	BCGN01000010.1	<>	na	Primary Assembly	505680	na
+BCGN01000011.1	unplaced-scaffold	na	na	BCGN01000011.1	<>	na	Primary Assembly	408711	na
+BCGN01000012.1	unplaced-scaffold	na	na	BCGN01000012.1	<>	na	Primary Assembly	324864	na
+BCGN01000013.1	unplaced-scaffold	na	na	BCGN01000013.1	<>	na	Primary Assembly	9010	na
+BCGN01000014.1	unplaced-scaffold	na	na	BCGN01000014.1	<>	na	Primary Assembly	2418	na
+BCGN01000015.1	unplaced-scaffold	na	na	BCGN01000015.1	<>	na	Primary Assembly	1535	na

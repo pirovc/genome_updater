@@ -1,0 +1,79 @@
+# Assembly name:  JCM_22607_assembly_v001
+# Organism name:  Penicillium citrinum (ascomycetes)
+# Infraspecific name:  strain=JCM 22607
+# Taxid:          5077
+# BioSample:      SAMD00028438
+# BioProject:     PRJDB3737
+# Submitter:      RIKEN Center for Life Science Technologies, Division of Genomic Technologies
+# Date:           2016-12-09
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    BCKA01
+# Assembly method: ALLPATHS-LG v. 52155
+# Genome coverage: 159x
+# Sequencing technology: HiSeq 2500
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_001950535.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_001950545.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig1	unplaced-scaffold	na	na	BCKA01000001.1	<>	na	Primary Assembly	6574720	na
+contig2	unplaced-scaffold	na	na	BCKA01000002.1	<>	na	Primary Assembly	3417088	na
+contig3	unplaced-scaffold	na	na	BCKA01000003.1	<>	na	Primary Assembly	2521181	na
+contig4	unplaced-scaffold	na	na	BCKA01000004.1	<>	na	Primary Assembly	2535940	na
+contig5	unplaced-scaffold	na	na	BCKA01000005.1	<>	na	Primary Assembly	2355544	na
+contig6	unplaced-scaffold	na	na	BCKA01000006.1	<>	na	Primary Assembly	2103670	na
+contig7	unplaced-scaffold	na	na	BCKA01000007.1	<>	na	Primary Assembly	2000612	na
+contig8	unplaced-scaffold	na	na	BCKA01000008.1	<>	na	Primary Assembly	1820348	na
+contig9	unplaced-scaffold	na	na	BCKA01000009.1	<>	na	Primary Assembly	1522418	na
+contig10	unplaced-scaffold	na	na	BCKA01000010.1	<>	na	Primary Assembly	1512534	na
+contig11	unplaced-scaffold	na	na	BCKA01000011.1	<>	na	Primary Assembly	1394339	na
+contig12	unplaced-scaffold	na	na	BCKA01000012.1	<>	na	Primary Assembly	1322412	na
+contig13	unplaced-scaffold	na	na	BCKA01000013.1	<>	na	Primary Assembly	1310585	na
+contig14	unplaced-scaffold	na	na	BCKA01000014.1	<>	na	Primary Assembly	1117107	na
+contig15	unplaced-scaffold	na	na	BCKA01000015.1	<>	na	Primary Assembly	621388	na
+contig16	unplaced-scaffold	na	na	BCKA01000016.1	<>	na	Primary Assembly	291747	na
+contig17	unplaced-scaffold	na	na	BCKA01000017.1	<>	na	Primary Assembly	221929	na
+contig18	unplaced-scaffold	na	na	BCKA01000018.1	<>	na	Primary Assembly	207352	na
+contig19	unplaced-scaffold	na	na	BCKA01000019.1	<>	na	Primary Assembly	215715	na
+contig20	unplaced-scaffold	na	na	BCKA01000020.1	<>	na	Primary Assembly	116409	na
+contig21	unplaced-scaffold	na	na	BCKA01000021.1	<>	na	Primary Assembly	120176	na
+contig22	unplaced-scaffold	na	na	BCKA01000022.1	<>	na	Primary Assembly	100336	na
+contig23	unplaced-scaffold	na	na	BCKA01000023.1	<>	na	Primary Assembly	88752	na
+contig24	unplaced-scaffold	na	na	BCKA01000024.1	<>	na	Primary Assembly	69570	na
+contig25	unplaced-scaffold	na	na	BCKA01000025.1	<>	na	Primary Assembly	88295	na
+contig26	unplaced-scaffold	na	na	BCKA01000026.1	<>	na	Primary Assembly	61877	na
+contig27	unplaced-scaffold	na	na	BCKA01000027.1	<>	na	Primary Assembly	40750	na
+contig28	unplaced-scaffold	na	na	BCKA01000028.1	<>	na	Primary Assembly	36226	na
+contig29	unplaced-scaffold	na	na	BCKA01000029.1	<>	na	Primary Assembly	27829	na
+contig30	unplaced-scaffold	na	na	BCKA01000030.1	<>	na	Primary Assembly	31035	na
+contig31	unplaced-scaffold	na	na	BCKA01000031.1	<>	na	Primary Assembly	20731	na
+contig32	unplaced-scaffold	na	na	BCKA01000032.1	<>	na	Primary Assembly	11774	na
+contig33	unplaced-scaffold	na	na	BCKA01000033.1	<>	na	Primary Assembly	10842	na
+contig34	unplaced-scaffold	na	na	BCKA01000034.1	<>	na	Primary Assembly	10652	na
+contig35	unplaced-scaffold	na	na	BCKA01000035.1	<>	na	Primary Assembly	10593	na
+contig36	unplaced-scaffold	na	na	BCKA01000036.1	<>	na	Primary Assembly	8810	na
+contig37	unplaced-scaffold	na	na	BCKA01000037.1	<>	na	Primary Assembly	28452	na
+contig38	unplaced-scaffold	na	na	BCKA01000038.1	<>	na	Primary Assembly	7777	na
+contig39	unplaced-scaffold	na	na	BCKA01000039.1	<>	na	Primary Assembly	7642	na
+contig40	unplaced-scaffold	na	na	BCKA01000040.1	<>	na	Primary Assembly	4795	na
+contig41	unplaced-scaffold	na	na	BCKA01000041.1	<>	na	Primary Assembly	4510	na
+contig42	unplaced-scaffold	na	na	BCKA01000042.1	<>	na	Primary Assembly	4487	na
+contig43	unplaced-scaffold	na	na	BCKA01000043.1	<>	na	Primary Assembly	2997	na
+contig44	unplaced-scaffold	na	na	BCKA01000044.1	<>	na	Primary Assembly	2985	na
+contig45	unplaced-scaffold	na	na	BCKA01000045.1	<>	na	Primary Assembly	2708	na
+contig46	unplaced-scaffold	na	na	BCKA01000046.1	<>	na	Primary Assembly	2491	na
+contig47	unplaced-scaffold	na	na	BCKA01000047.1	<>	na	Primary Assembly	2407	na
+contig48	unplaced-scaffold	na	na	BCKA01000048.1	<>	na	Primary Assembly	1976	na
+contig49	unplaced-scaffold	na	na	BCKA01000049.1	<>	na	Primary Assembly	1913	na
+contig50	unplaced-scaffold	na	na	BCKA01000050.1	<>	na	Primary Assembly	1772	na

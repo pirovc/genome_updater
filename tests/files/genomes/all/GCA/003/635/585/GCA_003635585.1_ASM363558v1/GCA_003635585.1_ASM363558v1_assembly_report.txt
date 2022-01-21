@@ -1,0 +1,67 @@
+# Assembly name:  ASM363558v1
+# Organism name:  Helicobacter pylori (e-proteobacteria)
+# Infraspecific name:  strain=HPAS14
+# Taxid:          210
+# BioSample:      SAMN06329599
+# BioProject:     PRJNA374603
+# Submitter:      University of Western Australia
+# Date:           2018-10-12
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    MVSU01
+# Assembly method: SPAdes v. 3.8.2
+# Expected final version: yes
+# Genome coverage: 54x
+# Sequencing technology: Illumina MiSeq
+# GenBank assembly accession: GCA_003635585.1
+# RefSeq assembly accession: GCF_003635585.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_003635605.1	GCF_003635605.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+Contig_1	unplaced-scaffold	na	na	MVSU01000001.1	=	NZ_MVSU01000001.1	Primary Assembly	228026	na
+Contig_10	unplaced-scaffold	na	na	MVSU01000010.1	=	NZ_MVSU01000010.1	Primary Assembly	70663	na
+Contig_11	unplaced-scaffold	na	na	MVSU01000011.1	=	NZ_MVSU01000011.1	Primary Assembly	62827	na
+Contig_12	unplaced-scaffold	na	na	MVSU01000012.1	=	NZ_MVSU01000012.1	Primary Assembly	60044	na
+Contig_13	unplaced-scaffold	na	na	MVSU01000013.1	=	NZ_MVSU01000013.1	Primary Assembly	37108	na
+Contig_14	unplaced-scaffold	na	na	MVSU01000014.1	=	NZ_MVSU01000014.1	Primary Assembly	32524	na
+Contig_15	unplaced-scaffold	na	na	MVSU01000015.1	=	NZ_MVSU01000015.1	Primary Assembly	32513	na
+Contig_16	unplaced-scaffold	na	na	MVSU01000016.1	=	NZ_MVSU01000016.1	Primary Assembly	29329	na
+Contig_17	unplaced-scaffold	na	na	MVSU01000017.1	=	NZ_MVSU01000017.1	Primary Assembly	28262	na
+Contig_18	unplaced-scaffold	na	na	MVSU01000018.1	=	NZ_MVSU01000018.1	Primary Assembly	27732	na
+Contig_19	unplaced-scaffold	na	na	MVSU01000019.1	=	NZ_MVSU01000019.1	Primary Assembly	21320	na
+Contig_2	unplaced-scaffold	na	na	MVSU01000002.1	=	NZ_MVSU01000002.1	Primary Assembly	162051	na
+Contig_20	unplaced-scaffold	na	na	MVSU01000020.1	=	NZ_MVSU01000020.1	Primary Assembly	14575	na
+Contig_21	unplaced-scaffold	na	na	MVSU01000021.1	=	NZ_MVSU01000021.1	Primary Assembly	13895	na
+Contig_22	unplaced-scaffold	na	na	MVSU01000022.1	=	NZ_MVSU01000022.1	Primary Assembly	12957	na
+Contig_23	unplaced-scaffold	na	na	MVSU01000023.1	=	NZ_MVSU01000023.1	Primary Assembly	10522	na
+Contig_24	unplaced-scaffold	na	na	MVSU01000024.1	=	NZ_MVSU01000024.1	Primary Assembly	10316	na
+Contig_25	unplaced-scaffold	na	na	MVSU01000025.1	=	NZ_MVSU01000025.1	Primary Assembly	3982	na
+Contig_26	unplaced-scaffold	na	na	MVSU01000026.1	=	NZ_MVSU01000026.1	Primary Assembly	3081	na
+Contig_27	unplaced-scaffold	na	na	MVSU01000027.1	=	NZ_MVSU01000027.1	Primary Assembly	2796	na
+Contig_28	unplaced-scaffold	na	na	MVSU01000028.1	=	NZ_MVSU01000028.1	Primary Assembly	2357	na
+Contig_29	unplaced-scaffold	na	na	MVSU01000029.1	=	NZ_MVSU01000029.1	Primary Assembly	2230	na
+Contig_3	unplaced-scaffold	na	na	MVSU01000003.1	=	NZ_MVSU01000003.1	Primary Assembly	151977	na
+Contig_30	unplaced-scaffold	na	na	MVSU01000030.1	=	NZ_MVSU01000030.1	Primary Assembly	2205	na
+Contig_31	unplaced-scaffold	na	na	MVSU01000031.1	=	NZ_MVSU01000031.1	Primary Assembly	1447	na
+Contig_32	unplaced-scaffold	na	na	MVSU01000032.1	=	NZ_MVSU01000032.1	Primary Assembly	1069	na
+Contig_33	unplaced-scaffold	na	na	MVSU01000033.1	=	NZ_MVSU01000033.1	Primary Assembly	851	na
+Contig_34	unplaced-scaffold	na	na	MVSU01000034.1	=	NZ_MVSU01000034.1	Primary Assembly	845	na
+Contig_35	unplaced-scaffold	na	na	MVSU01000035.1	=	NZ_MVSU01000035.1	Primary Assembly	789	na
+Contig_36	unplaced-scaffold	na	na	MVSU01000036.1	=	NZ_MVSU01000036.1	Primary Assembly	540	na
+Contig_4	unplaced-scaffold	na	na	MVSU01000004.1	=	NZ_MVSU01000004.1	Primary Assembly	121979	na
+Contig_5	unplaced-scaffold	na	na	MVSU01000005.1	=	NZ_MVSU01000005.1	Primary Assembly	98983	na
+Contig_6	unplaced-scaffold	na	na	MVSU01000006.1	=	NZ_MVSU01000006.1	Primary Assembly	95932	na
+Contig_7	unplaced-scaffold	na	na	MVSU01000007.1	=	NZ_MVSU01000007.1	Primary Assembly	80167	na
+Contig_8	unplaced-scaffold	na	na	MVSU01000008.1	=	NZ_MVSU01000008.1	Primary Assembly	77936	na
+Contig_9	unplaced-scaffold	na	na	MVSU01000009.1	=	NZ_MVSU01000009.1	Primary Assembly	74089	na

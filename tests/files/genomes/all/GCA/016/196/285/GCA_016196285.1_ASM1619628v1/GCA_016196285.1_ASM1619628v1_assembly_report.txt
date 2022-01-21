@@ -1,0 +1,102 @@
+# Assembly name:  ASM1619628v1
+# Organism name:  Candidatus Pacearchaeota archaeon (archaea)
+# Isolate:  NC_groundwater_849_Pr1_B-0.1um_42_10
+# Taxid:          2026773
+# BioSample:      SAMN15435488
+# BioProject:     PRJNA640378
+# Submitter:      Innovative Genomics Institute
+# Date:           2020-12-21
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    JACPXY01
+# Assembly method: MEGAHIT v. 1.2.9
+# Expected final version: yes
+# Genome coverage: 42.28x
+# Sequencing technology: Illumina NovaSeq
+# Excluded from RefSeq: derived from metagenome; genus undefined
+# GenBank assembly accession: GCA_016196285.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_016196305.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+Montesol18_Bp1_scaffold_1026459	unplaced-scaffold	na	na	JACPXY010000047.1	<>	na	Primary Assembly	7212	na
+Montesol18_Bp1_scaffold_1078349	unplaced-scaffold	na	na	JACPXY010000048.1	<>	na	Primary Assembly	2668	na
+Montesol18_Bp1_scaffold_1100259	unplaced-scaffold	na	na	JACPXY010000049.1	<>	na	Primary Assembly	6054	na
+Montesol18_Bp1_scaffold_1101426	unplaced-scaffold	na	na	JACPXY010000050.1	<>	na	Primary Assembly	4102	na
+Montesol18_Bp1_scaffold_1110502	unplaced-scaffold	na	na	JACPXY010000054.1	<>	na	Primary Assembly	36916	na
+Montesol18_Bp1_scaffold_1113769	unplaced-scaffold	na	na	JACPXY010000051.1	<>	na	Primary Assembly	18282	na
+Montesol18_Bp1_scaffold_1143353	unplaced-scaffold	na	na	JACPXY010000066.1	<>	na	Primary Assembly	3011	na
+Montesol18_Bp1_scaffold_1145199	unplaced-scaffold	na	na	JACPXY010000052.1	<>	na	Primary Assembly	10795	na
+Montesol18_Bp1_scaffold_11564	unplaced-scaffold	na	na	JACPXY010000001.1	<>	na	Primary Assembly	7676	na
+Montesol18_Bp1_scaffold_1244425	unplaced-scaffold	na	na	JACPXY010000062.1	<>	na	Primary Assembly	21243	na
+Montesol18_Bp1_scaffold_1320307	unplaced-scaffold	na	na	JACPXY010000053.1	<>	na	Primary Assembly	2076	na
+Montesol18_Bp1_scaffold_1324134	unplaced-scaffold	na	na	JACPXY010000063.1	<>	na	Primary Assembly	3830	na
+Montesol18_Bp1_scaffold_1327670	unplaced-scaffold	na	na	JACPXY010000064.1	<>	na	Primary Assembly	7063	na
+Montesol18_Bp1_scaffold_1349258	unplaced-scaffold	na	na	JACPXY010000055.1	<>	na	Primary Assembly	3959	na
+Montesol18_Bp1_scaffold_136406	unplaced-scaffold	na	na	JACPXY010000004.1	<>	na	Primary Assembly	38551	na
+Montesol18_Bp1_scaffold_1397321	unplaced-scaffold	na	na	JACPXY010000056.1	<>	na	Primary Assembly	40323	na
+Montesol18_Bp1_scaffold_1400274	unplaced-scaffold	na	na	JACPXY010000057.1	<>	na	Primary Assembly	6422	na
+Montesol18_Bp1_scaffold_1402685	unplaced-scaffold	na	na	JACPXY010000058.1	<>	na	Primary Assembly	20235	na
+Montesol18_Bp1_scaffold_1410063	unplaced-scaffold	na	na	JACPXY010000060.1	<>	na	Primary Assembly	2012	na
+Montesol18_Bp1_scaffold_1414255	unplaced-scaffold	na	na	JACPXY010000061.1	<>	na	Primary Assembly	6856	na
+Montesol18_Bp1_scaffold_1416302	unplaced-scaffold	na	na	JACPXY010000059.1	<>	na	Primary Assembly	2478	na
+Montesol18_Bp1_scaffold_14261	unplaced-scaffold	na	na	JACPXY010000002.1	<>	na	Primary Assembly	6817	na
+Montesol18_Bp1_scaffold_1471521	unplaced-scaffold	na	na	JACPXY010000065.1	<>	na	Primary Assembly	4670	na
+Montesol18_Bp1_scaffold_1500666	unplaced-scaffold	na	na	JACPXY010000067.1	<>	na	Primary Assembly	4715	na
+Montesol18_Bp1_scaffold_1608583	unplaced-scaffold	na	na	JACPXY010000068.1	<>	na	Primary Assembly	3006	na
+Montesol18_Bp1_scaffold_1620457	unplaced-scaffold	na	na	JACPXY010000069.1	<>	na	Primary Assembly	34171	na
+Montesol18_Bp1_scaffold_1706260	unplaced-scaffold	na	na	JACPXY010000070.1	<>	na	Primary Assembly	11539	na
+Montesol18_Bp1_scaffold_174102	unplaced-scaffold	na	na	JACPXY010000010.1	<>	na	Primary Assembly	6336	na
+Montesol18_Bp1_scaffold_1775912	unplaced-scaffold	na	na	JACPXY010000071.1	<>	na	Primary Assembly	4651	na
+Montesol18_Bp1_scaffold_179942	unplaced-scaffold	na	na	JACPXY010000011.1	<>	na	Primary Assembly	7529	na
+Montesol18_Bp1_scaffold_1943227	unplaced-scaffold	na	na	JACPXY010000072.1	<>	na	Primary Assembly	11667	na
+Montesol18_Bp1_scaffold_196472	unplaced-scaffold	na	na	JACPXY010000013.1	<>	na	Primary Assembly	5126	na
+Montesol18_Bp1_scaffold_206415	unplaced-scaffold	na	na	JACPXY010000009.1	<>	na	Primary Assembly	2113	na
+Montesol18_Bp1_scaffold_229347	unplaced-scaffold	na	na	JACPXY010000003.1	<>	na	Primary Assembly	12410	na
+Montesol18_Bp1_scaffold_233118	unplaced-scaffold	na	na	JACPXY010000005.1	<>	na	Primary Assembly	18591	na
+Montesol18_Bp1_scaffold_321666	unplaced-scaffold	na	na	JACPXY010000014.1	<>	na	Primary Assembly	10614	na
+Montesol18_Bp1_scaffold_355290	unplaced-scaffold	na	na	JACPXY010000023.1	<>	na	Primary Assembly	7617	na
+Montesol18_Bp1_scaffold_361983	unplaced-scaffold	na	na	JACPXY010000019.1	<>	na	Primary Assembly	33008	na
+Montesol18_Bp1_scaffold_367243	unplaced-scaffold	na	na	JACPXY010000017.1	<>	na	Primary Assembly	4941	na
+Montesol18_Bp1_scaffold_368162	unplaced-scaffold	na	na	JACPXY010000018.1	<>	na	Primary Assembly	9561	na
+Montesol18_Bp1_scaffold_372810	unplaced-scaffold	na	na	JACPXY010000021.1	<>	na	Primary Assembly	13474	na
+Montesol18_Bp1_scaffold_377415	unplaced-scaffold	na	na	JACPXY010000022.1	<>	na	Primary Assembly	6499	na
+Montesol18_Bp1_scaffold_381614	unplaced-scaffold	na	na	JACPXY010000015.1	<>	na	Primary Assembly	31944	na
+Montesol18_Bp1_scaffold_43010	unplaced-scaffold	na	na	JACPXY010000006.1	<>	na	Primary Assembly	36126	na
+Montesol18_Bp1_scaffold_44282	unplaced-scaffold	na	na	JACPXY010000007.1	<>	na	Primary Assembly	7272	na
+Montesol18_Bp1_scaffold_447743	unplaced-scaffold	na	na	JACPXY010000016.1	<>	na	Primary Assembly	25445	na
+Montesol18_Bp1_scaffold_455515	unplaced-scaffold	na	na	JACPXY010000020.1	<>	na	Primary Assembly	19221	na
+Montesol18_Bp1_scaffold_464082	unplaced-scaffold	na	na	JACPXY010000025.1	<>	na	Primary Assembly	15340	na
+Montesol18_Bp1_scaffold_49451	unplaced-scaffold	na	na	JACPXY010000008.1	<>	na	Primary Assembly	2301	na
+Montesol18_Bp1_scaffold_513790	unplaced-scaffold	na	na	JACPXY010000024.1	<>	na	Primary Assembly	29774	na
+Montesol18_Bp1_scaffold_564814	unplaced-scaffold	na	na	JACPXY010000026.1	<>	na	Primary Assembly	11655	na
+Montesol18_Bp1_scaffold_570842	unplaced-scaffold	na	na	JACPXY010000029.1	<>	na	Primary Assembly	6380	na
+Montesol18_Bp1_scaffold_571926	unplaced-scaffold	na	na	JACPXY010000030.1	<>	na	Primary Assembly	9386	na
+Montesol18_Bp1_scaffold_654304	unplaced-scaffold	na	na	JACPXY010000039.1	<>	na	Primary Assembly	16301	na
+Montesol18_Bp1_scaffold_690598	unplaced-scaffold	na	na	JACPXY010000028.1	<>	na	Primary Assembly	2066	na
+Montesol18_Bp1_scaffold_697803	unplaced-scaffold	na	na	JACPXY010000027.1	<>	na	Primary Assembly	2904	na
+Montesol18_Bp1_scaffold_722492	unplaced-scaffold	na	na	JACPXY010000031.1	<>	na	Primary Assembly	17580	na
+Montesol18_Bp1_scaffold_75730	unplaced-scaffold	na	na	JACPXY010000012.1	<>	na	Primary Assembly	5654	na
+Montesol18_Bp1_scaffold_758317	unplaced-scaffold	na	na	JACPXY010000034.1	<>	na	Primary Assembly	11193	na
+Montesol18_Bp1_scaffold_774009	unplaced-scaffold	na	na	JACPXY010000040.1	<>	na	Primary Assembly	10403	na
+Montesol18_Bp1_scaffold_781137	unplaced-scaffold	na	na	JACPXY010000035.1	<>	na	Primary Assembly	5850	na
+Montesol18_Bp1_scaffold_793958	unplaced-scaffold	na	na	JACPXY010000032.1	<>	na	Primary Assembly	6765	na
+Montesol18_Bp1_scaffold_797377	unplaced-scaffold	na	na	JACPXY010000038.1	<>	na	Primary Assembly	5623	na
+Montesol18_Bp1_scaffold_823075	unplaced-scaffold	na	na	JACPXY010000033.1	<>	na	Primary Assembly	2933	na
+Montesol18_Bp1_scaffold_830295	unplaced-scaffold	na	na	JACPXY010000036.1	<>	na	Primary Assembly	2754	na
+Montesol18_Bp1_scaffold_834548	unplaced-scaffold	na	na	JACPXY010000037.1	<>	na	Primary Assembly	4328	na
+Montesol18_Bp1_scaffold_843543	unplaced-scaffold	na	na	JACPXY010000042.1	<>	na	Primary Assembly	5280	na
+Montesol18_Bp1_scaffold_861864	unplaced-scaffold	na	na	JACPXY010000041.1	<>	na	Primary Assembly	7351	na
+Montesol18_Bp1_scaffold_862621	unplaced-scaffold	na	na	JACPXY010000046.1	<>	na	Primary Assembly	24316	na
+Montesol18_Bp1_scaffold_886158	unplaced-scaffold	na	na	JACPXY010000044.1	<>	na	Primary Assembly	51733	na
+Montesol18_Bp1_scaffold_912162	unplaced-scaffold	na	na	JACPXY010000045.1	<>	na	Primary Assembly	2417	na
+Montesol18_Bp1_scaffold_938838	unplaced-scaffold	na	na	JACPXY010000043.1	<>	na	Primary Assembly	12830	na

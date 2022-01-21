@@ -2,7 +2,7 @@
 
 [![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/genome_updater/README.html)
 
-Bash script to download and update snapshots of the NCBI genomes (refseq/genbank) [1] keeping all files and detailed log for each update, with file integrity check (MD5) and parallel [2] download support.
+Bash script to download and update snapshots of the NCBI genomes repository (refseq/genbank) [1] keeping all files and detailed log for each download and update, with file integrity check (MD5) and parallel [2] download support.
 
 ## Description:
 

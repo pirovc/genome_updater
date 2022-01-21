@@ -1,0 +1,31 @@
+# Assembly name:  ASM24517v2
+# Organism name:  Sulfolobus islandicus M.16.23 (crenarchaeotes)
+# Infraspecific name:  strain=M.16.23
+# Taxid:          1132501
+# BioSample:      SAMN02471819
+# BioProject:     PRJNA80897
+# Submitter:      University of Illinois
+# Date:           2012-01-25
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# WGS project:    AHJO01
+# Assembly method: GS De Novo Assembler v. 2.0.00; Consed v. 19
+# Genome coverage: 38.7x
+# Sequencing technology: 454 Life Sciences GS-FLX
+# GenBank assembly accession: GCA_000245175.2
+# RefSeq assembly accession: GCF_000245175.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000245185.2	GCF_000245185.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ANONYMOUS	assembled-molecule	na	Chromosome	AHJO01000001.1	=	NZ_AHJO01000001.1	Primary Assembly	2601131	na

@@ -1,0 +1,61 @@
+# Assembly name:  ASM1869257v1
+# Organism name:  Candidatus Woesearchaeota archaeon (archaea)
+# Isolate:  SI037S2_bin24
+# Taxid:          2026803
+# BioSample:      SAMN14914238
+# BioProject:     PRJNA630981
+# Submitter:      The University of Melbourne
+# Date:           2021-06-02
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    JABHKQ01
+# Assembly method: MEGAHIT v. 1.2.8
+# Expected final version: yes
+# Genome coverage: Not Applicable
+# Sequencing technology: Illumina HiSeq 2000
+# GenBank assembly accession: GCA_018692575.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_018692595.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+k141_1011189	unplaced-scaffold	na	na	JABHKQ010000006.1	<>	na	Primary Assembly	5280	na
+k141_103149	unplaced-scaffold	na	na	JABHKQ010000021.1	<>	na	Primary Assembly	4546	na
+k141_1031851	unplaced-scaffold	na	na	JABHKQ010000025.1	<>	na	Primary Assembly	30179	na
+k141_1062470	unplaced-scaffold	na	na	JABHKQ010000005.1	<>	na	Primary Assembly	9578	na
+k141_1168213	unplaced-scaffold	na	na	JABHKQ010000009.1	<>	na	Primary Assembly	15562	na
+k141_1201849	unplaced-scaffold	na	na	JABHKQ010000003.1	<>	na	Primary Assembly	30156	na
+k141_1225761	unplaced-scaffold	na	na	JABHKQ010000004.1	<>	na	Primary Assembly	2576	na
+k141_1242200	unplaced-scaffold	na	na	JABHKQ010000002.1	<>	na	Primary Assembly	27902	na
+k141_1256053	unplaced-scaffold	na	na	JABHKQ010000001.1	<>	na	Primary Assembly	10445	na
+k141_1282847	unplaced-scaffold	na	na	JABHKQ010000027.1	<>	na	Primary Assembly	4361	na
+k141_1290560	unplaced-scaffold	na	na	JABHKQ010000029.1	<>	na	Primary Assembly	62540	na
+k141_1323604	unplaced-scaffold	na	na	JABHKQ010000012.1	<>	na	Primary Assembly	30346	na
+k141_135010	unplaced-scaffold	na	na	JABHKQ010000015.1	<>	na	Primary Assembly	6576	na
+k141_171280	unplaced-scaffold	na	na	JABHKQ010000023.1	<>	na	Primary Assembly	15066	na
+k141_178246	unplaced-scaffold	na	na	JABHKQ010000014.1	<>	na	Primary Assembly	13738	na
+k141_185380	unplaced-scaffold	na	na	JABHKQ010000018.1	<>	na	Primary Assembly	24565	na
+k141_29292	unplaced-scaffold	na	na	JABHKQ010000013.1	<>	na	Primary Assembly	15850	na
+k141_412251	unplaced-scaffold	na	na	JABHKQ010000020.1	<>	na	Primary Assembly	11289	na
+k141_497490	unplaced-scaffold	na	na	JABHKQ010000010.1	<>	na	Primary Assembly	68788	na
+k141_522079	unplaced-scaffold	na	na	JABHKQ010000019.1	<>	na	Primary Assembly	17661	na
+k141_577376	unplaced-scaffold	na	na	JABHKQ010000026.1	<>	na	Primary Assembly	6765	na
+k141_610297	unplaced-scaffold	na	na	JABHKQ010000024.1	<>	na	Primary Assembly	3453	na
+k141_635106	unplaced-scaffold	na	na	JABHKQ010000028.1	<>	na	Primary Assembly	25940	na
+k141_692602	unplaced-scaffold	na	na	JABHKQ010000022.1	<>	na	Primary Assembly	13488	na
+k141_702159	unplaced-scaffold	na	na	JABHKQ010000031.1	<>	na	Primary Assembly	22797	na
+k141_719438	unplaced-scaffold	na	na	JABHKQ010000032.1	<>	na	Primary Assembly	4086	na
+k141_730162	unplaced-scaffold	na	na	JABHKQ010000016.1	<>	na	Primary Assembly	57220	na
+k141_742342	unplaced-scaffold	na	na	JABHKQ010000017.1	<>	na	Primary Assembly	17323	na
+k141_82426	unplaced-scaffold	na	na	JABHKQ010000011.1	<>	na	Primary Assembly	6181	na
+k141_831329	unplaced-scaffold	na	na	JABHKQ010000030.1	<>	na	Primary Assembly	3036	na
+k141_941092	unplaced-scaffold	na	na	JABHKQ010000008.1	<>	na	Primary Assembly	9131	na
+k141_972907	unplaced-scaffold	na	na	JABHKQ010000007.1	<>	na	Primary Assembly	5395	na

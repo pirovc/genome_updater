@@ -1,0 +1,198 @@
+# Assembly name:  PDT000058697.2
+# Description:    NCBI Pathogen Detection Assembly PDT000058697.2
+# Organism name:  Salmonella enterica subsp. enterica serovar Typhimurium (enterobacteria)
+# Infraspecific name:  strain=7397
+# Taxid:          90371
+# BioSample:      SAMN03479222
+# BioProject:     PRJNA248792
+# Submitter:      Public Health England
+# Date:           2019-09-02
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    AAJWIJ01
+# Assembly method: SKESA v. 2.2
+# Expected final version: no
+# Genome coverage: 44x
+# Sequencing technology: ILLUMINA
+# Excluded from RefSeq: from large multi-isolate project
+# GenBank assembly accession: GCA_008201245.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_008201255.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+SAMN03479222-rid5090993.denovo.001	unplaced-scaffold	na	na	AAJWIJ010000001.1	<>	na	Primary Assembly	217039	na
+SAMN03479222-rid5090993.denovo.002	unplaced-scaffold	na	na	AAJWIJ010000002.1	<>	na	Primary Assembly	212884	na
+SAMN03479222-rid5090993.denovo.003	unplaced-scaffold	na	na	AAJWIJ010000003.1	<>	na	Primary Assembly	170794	na
+SAMN03479222-rid5090993.denovo.004	unplaced-scaffold	na	na	AAJWIJ010000004.1	<>	na	Primary Assembly	166041	na
+SAMN03479222-rid5090993.denovo.005	unplaced-scaffold	na	na	AAJWIJ010000005.1	<>	na	Primary Assembly	143329	na
+SAMN03479222-rid5090993.denovo.006	unplaced-scaffold	na	na	AAJWIJ010000006.1	<>	na	Primary Assembly	137394	na
+SAMN03479222-rid5090993.denovo.007	unplaced-scaffold	na	na	AAJWIJ010000007.1	<>	na	Primary Assembly	119658	na
+SAMN03479222-rid5090993.denovo.008	unplaced-scaffold	na	na	AAJWIJ010000008.1	<>	na	Primary Assembly	117833	na
+SAMN03479222-rid5090993.denovo.009	unplaced-scaffold	na	na	AAJWIJ010000009.1	<>	na	Primary Assembly	111299	na
+SAMN03479222-rid5090993.denovo.010	unplaced-scaffold	na	na	AAJWIJ010000010.1	<>	na	Primary Assembly	107969	na
+SAMN03479222-rid5090993.denovo.011	unplaced-scaffold	na	na	AAJWIJ010000011.1	<>	na	Primary Assembly	104824	na
+SAMN03479222-rid5090993.denovo.012	unplaced-scaffold	na	na	AAJWIJ010000012.1	<>	na	Primary Assembly	104488	na
+SAMN03479222-rid5090993.denovo.013	unplaced-scaffold	na	na	AAJWIJ010000013.1	<>	na	Primary Assembly	102193	na
+SAMN03479222-rid5090993.denovo.014	unplaced-scaffold	na	na	AAJWIJ010000014.1	<>	na	Primary Assembly	99627	na
+SAMN03479222-rid5090993.denovo.015	unplaced-scaffold	na	na	AAJWIJ010000015.1	<>	na	Primary Assembly	94545	na
+SAMN03479222-rid5090993.denovo.016	unplaced-scaffold	na	na	AAJWIJ010000016.1	<>	na	Primary Assembly	91296	na
+SAMN03479222-rid5090993.denovo.017	unplaced-scaffold	na	na	AAJWIJ010000017.1	<>	na	Primary Assembly	89672	na
+SAMN03479222-rid5090993.denovo.018	unplaced-scaffold	na	na	AAJWIJ010000018.1	<>	na	Primary Assembly	87648	na
+SAMN03479222-rid5090993.denovo.019	unplaced-scaffold	na	na	AAJWIJ010000019.1	<>	na	Primary Assembly	83974	na
+SAMN03479222-rid5090993.denovo.020	unplaced-scaffold	na	na	AAJWIJ010000020.1	<>	na	Primary Assembly	83229	na
+SAMN03479222-rid5090993.denovo.021	unplaced-scaffold	na	na	AAJWIJ010000021.1	<>	na	Primary Assembly	82292	na
+SAMN03479222-rid5090993.denovo.022	unplaced-scaffold	na	na	AAJWIJ010000022.1	<>	na	Primary Assembly	81460	na
+SAMN03479222-rid5090993.denovo.023	unplaced-scaffold	na	na	AAJWIJ010000023.1	<>	na	Primary Assembly	79074	na
+SAMN03479222-rid5090993.denovo.024	unplaced-scaffold	na	na	AAJWIJ010000024.1	<>	na	Primary Assembly	75424	na
+SAMN03479222-rid5090993.denovo.025	unplaced-scaffold	na	na	AAJWIJ010000025.1	<>	na	Primary Assembly	75327	na
+SAMN03479222-rid5090993.denovo.026	unplaced-scaffold	na	na	AAJWIJ010000026.1	<>	na	Primary Assembly	66684	na
+SAMN03479222-rid5090993.denovo.027	unplaced-scaffold	na	na	AAJWIJ010000027.1	<>	na	Primary Assembly	66128	na
+SAMN03479222-rid5090993.denovo.028	unplaced-scaffold	na	na	AAJWIJ010000028.1	<>	na	Primary Assembly	64468	na
+SAMN03479222-rid5090993.denovo.029	unplaced-scaffold	na	na	AAJWIJ010000029.1	<>	na	Primary Assembly	63380	na
+SAMN03479222-rid5090993.denovo.030	unplaced-scaffold	na	na	AAJWIJ010000030.1	<>	na	Primary Assembly	60963	na
+SAMN03479222-rid5090993.denovo.031	unplaced-scaffold	na	na	AAJWIJ010000031.1	<>	na	Primary Assembly	58786	na
+SAMN03479222-rid5090993.denovo.032	unplaced-scaffold	na	na	AAJWIJ010000032.1	<>	na	Primary Assembly	58654	na
+SAMN03479222-rid5090993.denovo.033	unplaced-scaffold	na	na	AAJWIJ010000033.1	<>	na	Primary Assembly	57539	na
+SAMN03479222-rid5090993.denovo.034	unplaced-scaffold	na	na	AAJWIJ010000034.1	<>	na	Primary Assembly	57149	na
+SAMN03479222-rid5090993.denovo.035	unplaced-scaffold	na	na	AAJWIJ010000035.1	<>	na	Primary Assembly	56248	na
+SAMN03479222-rid5090993.denovo.036	unplaced-scaffold	na	na	AAJWIJ010000036.1	<>	na	Primary Assembly	54186	na
+SAMN03479222-rid5090993.denovo.037	unplaced-scaffold	na	na	AAJWIJ010000037.1	<>	na	Primary Assembly	53773	na
+SAMN03479222-rid5090993.denovo.038	unplaced-scaffold	na	na	AAJWIJ010000038.1	<>	na	Primary Assembly	51446	na
+SAMN03479222-rid5090993.denovo.039	unplaced-scaffold	na	na	AAJWIJ010000039.1	<>	na	Primary Assembly	51040	na
+SAMN03479222-rid5090993.denovo.040	unplaced-scaffold	na	na	AAJWIJ010000040.1	<>	na	Primary Assembly	47148	na
+SAMN03479222-rid5090993.denovo.041	unplaced-scaffold	na	na	AAJWIJ010000041.1	<>	na	Primary Assembly	45198	na
+SAMN03479222-rid5090993.denovo.042	unplaced-scaffold	na	na	AAJWIJ010000042.1	<>	na	Primary Assembly	43267	na
+SAMN03479222-rid5090993.denovo.043	unplaced-scaffold	na	na	AAJWIJ010000043.1	<>	na	Primary Assembly	41954	na
+SAMN03479222-rid5090993.denovo.044	unplaced-scaffold	na	na	AAJWIJ010000044.1	<>	na	Primary Assembly	40560	na
+SAMN03479222-rid5090993.denovo.045	unplaced-scaffold	na	na	AAJWIJ010000045.1	<>	na	Primary Assembly	40313	na
+SAMN03479222-rid5090993.denovo.046	unplaced-scaffold	na	na	AAJWIJ010000046.1	<>	na	Primary Assembly	39846	na
+SAMN03479222-rid5090993.denovo.047	unplaced-scaffold	na	na	AAJWIJ010000047.1	<>	na	Primary Assembly	36126	na
+SAMN03479222-rid5090993.denovo.048	unplaced-scaffold	na	na	AAJWIJ010000048.1	<>	na	Primary Assembly	34270	na
+SAMN03479222-rid5090993.denovo.049	unplaced-scaffold	na	na	AAJWIJ010000049.1	<>	na	Primary Assembly	32748	na
+SAMN03479222-rid5090993.denovo.050	unplaced-scaffold	na	na	AAJWIJ010000050.1	<>	na	Primary Assembly	30004	na
+SAMN03479222-rid5090993.denovo.051	unplaced-scaffold	na	na	AAJWIJ010000051.1	<>	na	Primary Assembly	29888	na
+SAMN03479222-rid5090993.denovo.052	unplaced-scaffold	na	na	AAJWIJ010000052.1	<>	na	Primary Assembly	29663	na
+SAMN03479222-rid5090993.denovo.053	unplaced-scaffold	na	na	AAJWIJ010000053.1	<>	na	Primary Assembly	29595	na
+SAMN03479222-rid5090993.denovo.054	unplaced-scaffold	na	na	AAJWIJ010000054.1	<>	na	Primary Assembly	28786	na
+SAMN03479222-rid5090993.denovo.055	unplaced-scaffold	na	na	AAJWIJ010000055.1	<>	na	Primary Assembly	27941	na
+SAMN03479222-rid5090993.denovo.056	unplaced-scaffold	na	na	AAJWIJ010000056.1	<>	na	Primary Assembly	27131	na
+SAMN03479222-rid5090993.denovo.057	unplaced-scaffold	na	na	AAJWIJ010000057.1	<>	na	Primary Assembly	26939	na
+SAMN03479222-rid5090993.denovo.058	unplaced-scaffold	na	na	AAJWIJ010000058.1	<>	na	Primary Assembly	26418	na
+SAMN03479222-rid5090993.denovo.059	unplaced-scaffold	na	na	AAJWIJ010000059.1	<>	na	Primary Assembly	26313	na
+SAMN03479222-rid5090993.denovo.060	unplaced-scaffold	na	na	AAJWIJ010000060.1	<>	na	Primary Assembly	25154	na
+SAMN03479222-rid5090993.denovo.061	unplaced-scaffold	na	na	AAJWIJ010000061.1	<>	na	Primary Assembly	21686	na
+SAMN03479222-rid5090993.denovo.062	unplaced-scaffold	na	na	AAJWIJ010000062.1	<>	na	Primary Assembly	21159	na
+SAMN03479222-rid5090993.denovo.063	unplaced-scaffold	na	na	AAJWIJ010000063.1	<>	na	Primary Assembly	20946	na
+SAMN03479222-rid5090993.denovo.064	unplaced-scaffold	na	na	AAJWIJ010000064.1	<>	na	Primary Assembly	19523	na
+SAMN03479222-rid5090993.denovo.065	unplaced-scaffold	na	na	AAJWIJ010000065.1	<>	na	Primary Assembly	19141	na
+SAMN03479222-rid5090993.denovo.066	unplaced-scaffold	na	na	AAJWIJ010000066.1	<>	na	Primary Assembly	19076	na
+SAMN03479222-rid5090993.denovo.067	unplaced-scaffold	na	na	AAJWIJ010000067.1	<>	na	Primary Assembly	19035	na
+SAMN03479222-rid5090993.denovo.068	unplaced-scaffold	na	na	AAJWIJ010000068.1	<>	na	Primary Assembly	18933	na
+SAMN03479222-rid5090993.denovo.069	unplaced-scaffold	na	na	AAJWIJ010000069.1	<>	na	Primary Assembly	17583	na
+SAMN03479222-rid5090993.denovo.070	unplaced-scaffold	na	na	AAJWIJ010000070.1	<>	na	Primary Assembly	17309	na
+SAMN03479222-rid5090993.denovo.071	unplaced-scaffold	na	na	AAJWIJ010000071.1	<>	na	Primary Assembly	17020	na
+SAMN03479222-rid5090993.denovo.072	unplaced-scaffold	na	na	AAJWIJ010000072.1	<>	na	Primary Assembly	15718	na
+SAMN03479222-rid5090993.denovo.073	unplaced-scaffold	na	na	AAJWIJ010000073.1	<>	na	Primary Assembly	15595	na
+SAMN03479222-rid5090993.denovo.074	unplaced-scaffold	na	na	AAJWIJ010000074.1	<>	na	Primary Assembly	15337	na
+SAMN03479222-rid5090993.denovo.075	unplaced-scaffold	na	na	AAJWIJ010000075.1	<>	na	Primary Assembly	13926	na
+SAMN03479222-rid5090993.denovo.076	unplaced-scaffold	na	na	AAJWIJ010000076.1	<>	na	Primary Assembly	13882	na
+SAMN03479222-rid5090993.denovo.077	unplaced-scaffold	na	na	AAJWIJ010000077.1	<>	na	Primary Assembly	13445	na
+SAMN03479222-rid5090993.denovo.078	unplaced-scaffold	na	na	AAJWIJ010000078.1	<>	na	Primary Assembly	12552	na
+SAMN03479222-rid5090993.denovo.079	unplaced-scaffold	na	na	AAJWIJ010000079.1	<>	na	Primary Assembly	12302	na
+SAMN03479222-rid5090993.denovo.080	unplaced-scaffold	na	na	AAJWIJ010000080.1	<>	na	Primary Assembly	12082	na
+SAMN03479222-rid5090993.denovo.082	unplaced-scaffold	na	na	AAJWIJ010000081.1	<>	na	Primary Assembly	11117	na
+SAMN03479222-rid5090993.denovo.083	unplaced-scaffold	na	na	AAJWIJ010000082.1	<>	na	Primary Assembly	10721	na
+SAMN03479222-rid5090993.denovo.084	unplaced-scaffold	na	na	AAJWIJ010000083.1	<>	na	Primary Assembly	10574	na
+SAMN03479222-rid5090993.denovo.085	unplaced-scaffold	na	na	AAJWIJ010000084.1	<>	na	Primary Assembly	10103	na
+SAMN03479222-rid5090993.denovo.086	unplaced-scaffold	na	na	AAJWIJ010000085.1	<>	na	Primary Assembly	9776	na
+SAMN03479222-rid5090993.denovo.087	unplaced-scaffold	na	na	AAJWIJ010000086.1	<>	na	Primary Assembly	8386	na
+SAMN03479222-rid5090993.denovo.088	unplaced-scaffold	na	na	AAJWIJ010000087.1	<>	na	Primary Assembly	7902	na
+SAMN03479222-rid5090993.denovo.089	unplaced-scaffold	na	na	AAJWIJ010000088.1	<>	na	Primary Assembly	7594	na
+SAMN03479222-rid5090993.denovo.090	unplaced-scaffold	na	na	AAJWIJ010000089.1	<>	na	Primary Assembly	7364	na
+SAMN03479222-rid5090993.denovo.091	unplaced-scaffold	na	na	AAJWIJ010000090.1	<>	na	Primary Assembly	7296	na
+SAMN03479222-rid5090993.denovo.092	unplaced-scaffold	na	na	AAJWIJ010000091.1	<>	na	Primary Assembly	6179	na
+SAMN03479222-rid5090993.denovo.093	unplaced-scaffold	na	na	AAJWIJ010000092.1	<>	na	Primary Assembly	6085	na
+SAMN03479222-rid5090993.denovo.094	unplaced-scaffold	na	na	AAJWIJ010000093.1	<>	na	Primary Assembly	6003	na
+SAMN03479222-rid5090993.denovo.095	unplaced-scaffold	na	na	AAJWIJ010000094.1	<>	na	Primary Assembly	5788	na
+SAMN03479222-rid5090993.denovo.096	unplaced-scaffold	na	na	AAJWIJ010000095.1	<>	na	Primary Assembly	5717	na
+SAMN03479222-rid5090993.denovo.097	unplaced-scaffold	na	na	AAJWIJ010000096.1	<>	na	Primary Assembly	5707	na
+SAMN03479222-rid5090993.denovo.098	unplaced-scaffold	na	na	AAJWIJ010000097.1	<>	na	Primary Assembly	5398	na
+SAMN03479222-rid5090993.denovo.099	unplaced-scaffold	na	na	AAJWIJ010000098.1	<>	na	Primary Assembly	5235	na
+SAMN03479222-rid5090993.denovo.100	unplaced-scaffold	na	na	AAJWIJ010000099.1	<>	na	Primary Assembly	5179	na
+SAMN03479222-rid5090993.denovo.101	unplaced-scaffold	na	na	AAJWIJ010000100.1	<>	na	Primary Assembly	5107	na
+SAMN03479222-rid5090993.denovo.102	unplaced-scaffold	na	na	AAJWIJ010000101.1	<>	na	Primary Assembly	5054	na
+SAMN03479222-rid5090993.denovo.103	unplaced-scaffold	na	na	AAJWIJ010000102.1	<>	na	Primary Assembly	4565	na
+SAMN03479222-rid5090993.denovo.104	unplaced-scaffold	na	na	AAJWIJ010000103.1	<>	na	Primary Assembly	4383	na
+SAMN03479222-rid5090993.denovo.105	unplaced-scaffold	na	na	AAJWIJ010000104.1	<>	na	Primary Assembly	4159	na
+SAMN03479222-rid5090993.denovo.106	unplaced-scaffold	na	na	AAJWIJ010000105.1	<>	na	Primary Assembly	4106	na
+SAMN03479222-rid5090993.denovo.107	unplaced-scaffold	na	na	AAJWIJ010000106.1	<>	na	Primary Assembly	4103	na
+SAMN03479222-rid5090993.denovo.108	unplaced-scaffold	na	na	AAJWIJ010000107.1	<>	na	Primary Assembly	4072	na
+SAMN03479222-rid5090993.denovo.109	unplaced-scaffold	na	na	AAJWIJ010000108.1	<>	na	Primary Assembly	3914	na
+SAMN03479222-rid5090993.denovo.110	unplaced-scaffold	na	na	AAJWIJ010000109.1	<>	na	Primary Assembly	3794	na
+SAMN03479222-rid5090993.denovo.112	unplaced-scaffold	na	na	AAJWIJ010000110.1	<>	na	Primary Assembly	3603	na
+SAMN03479222-rid5090993.denovo.113	unplaced-scaffold	na	na	AAJWIJ010000111.1	<>	na	Primary Assembly	3587	na
+SAMN03479222-rid5090993.denovo.114	unplaced-scaffold	na	na	AAJWIJ010000112.1	<>	na	Primary Assembly	3504	na
+SAMN03479222-rid5090993.denovo.115	unplaced-scaffold	na	na	AAJWIJ010000113.1	<>	na	Primary Assembly	2837	na
+SAMN03479222-rid5090993.denovo.116	unplaced-scaffold	na	na	AAJWIJ010000114.1	<>	na	Primary Assembly	2797	na
+SAMN03479222-rid5090993.denovo.117	unplaced-scaffold	na	na	AAJWIJ010000115.1	<>	na	Primary Assembly	2735	na
+SAMN03479222-rid5090993.denovo.118	unplaced-scaffold	na	na	AAJWIJ010000116.1	<>	na	Primary Assembly	2679	na
+SAMN03479222-rid5090993.denovo.119	unplaced-scaffold	na	na	AAJWIJ010000117.1	<>	na	Primary Assembly	2663	na
+SAMN03479222-rid5090993.denovo.120	unplaced-scaffold	na	na	AAJWIJ010000118.1	<>	na	Primary Assembly	2460	na
+SAMN03479222-rid5090993.denovo.121	unplaced-scaffold	na	na	AAJWIJ010000119.1	<>	na	Primary Assembly	2420	na
+SAMN03479222-rid5090993.denovo.122	unplaced-scaffold	na	na	AAJWIJ010000120.1	<>	na	Primary Assembly	2299	na
+SAMN03479222-rid5090993.denovo.123	unplaced-scaffold	na	na	AAJWIJ010000121.1	<>	na	Primary Assembly	2286	na
+SAMN03479222-rid5090993.denovo.124	unplaced-scaffold	na	na	AAJWIJ010000122.1	<>	na	Primary Assembly	2267	na
+SAMN03479222-rid5090993.denovo.125	unplaced-scaffold	na	na	AAJWIJ010000123.1	<>	na	Primary Assembly	2164	na
+SAMN03479222-rid5090993.denovo.126	unplaced-scaffold	na	na	AAJWIJ010000124.1	<>	na	Primary Assembly	2102	na
+SAMN03479222-rid5090993.denovo.128	unplaced-scaffold	na	na	AAJWIJ010000125.1	<>	na	Primary Assembly	2008	na
+SAMN03479222-rid5090993.denovo.130	unplaced-scaffold	na	na	AAJWIJ010000126.1	<>	na	Primary Assembly	1912	na
+SAMN03479222-rid5090993.denovo.131	unplaced-scaffold	na	na	AAJWIJ010000127.1	<>	na	Primary Assembly	1912	na
+SAMN03479222-rid5090993.denovo.132	unplaced-scaffold	na	na	AAJWIJ010000128.1	<>	na	Primary Assembly	1683	na
+SAMN03479222-rid5090993.denovo.133	unplaced-scaffold	na	na	AAJWIJ010000129.1	<>	na	Primary Assembly	1673	na
+SAMN03479222-rid5090993.denovo.134	unplaced-scaffold	na	na	AAJWIJ010000130.1	<>	na	Primary Assembly	1423	na
+SAMN03479222-rid5090993.denovo.135	unplaced-scaffold	na	na	AAJWIJ010000131.1	<>	na	Primary Assembly	1269	na
+SAMN03479222-rid5090993.denovo.136	unplaced-scaffold	na	na	AAJWIJ010000132.1	<>	na	Primary Assembly	1257	na
+SAMN03479222-rid5090993.denovo.137	unplaced-scaffold	na	na	AAJWIJ010000133.1	<>	na	Primary Assembly	1209	na
+SAMN03479222-rid5090993.denovo.138	unplaced-scaffold	na	na	AAJWIJ010000134.1	<>	na	Primary Assembly	1160	na
+SAMN03479222-rid5090993.denovo.139	unplaced-scaffold	na	na	AAJWIJ010000135.1	<>	na	Primary Assembly	1110	na
+SAMN03479222-rid5090993.denovo.140	unplaced-scaffold	na	na	AAJWIJ010000136.1	<>	na	Primary Assembly	1078	na
+SAMN03479222-rid5090993.denovo.141	unplaced-scaffold	na	na	AAJWIJ010000137.1	<>	na	Primary Assembly	1050	na
+SAMN03479222-rid5090993.denovo.142	unplaced-scaffold	na	na	AAJWIJ010000138.1	<>	na	Primary Assembly	1050	na
+SAMN03479222-rid5090993.denovo.143	unplaced-scaffold	na	na	AAJWIJ010000139.1	<>	na	Primary Assembly	1025	na
+SAMN03479222-rid5090993.denovo.144	unplaced-scaffold	na	na	AAJWIJ010000140.1	<>	na	Primary Assembly	1025	na
+SAMN03479222-rid5090993.denovo.145	unplaced-scaffold	na	na	AAJWIJ010000141.1	<>	na	Primary Assembly	1018	na
+SAMN03479222-rid5090993.denovo.146	unplaced-scaffold	na	na	AAJWIJ010000142.1	<>	na	Primary Assembly	1016	na
+SAMN03479222-rid5090993.denovo.147	unplaced-scaffold	na	na	AAJWIJ010000143.1	<>	na	Primary Assembly	922	na
+SAMN03479222-rid5090993.denovo.148	unplaced-scaffold	na	na	AAJWIJ010000144.1	<>	na	Primary Assembly	922	na
+SAMN03479222-rid5090993.denovo.149	unplaced-scaffold	na	na	AAJWIJ010000145.1	<>	na	Primary Assembly	890	na
+SAMN03479222-rid5090993.denovo.150	unplaced-scaffold	na	na	AAJWIJ010000146.1	<>	na	Primary Assembly	889	na
+SAMN03479222-rid5090993.denovo.151	unplaced-scaffold	na	na	AAJWIJ010000147.1	<>	na	Primary Assembly	857	na
+SAMN03479222-rid5090993.denovo.152	unplaced-scaffold	na	na	AAJWIJ010000148.1	<>	na	Primary Assembly	791	na
+SAMN03479222-rid5090993.denovo.153	unplaced-scaffold	na	na	AAJWIJ010000149.1	<>	na	Primary Assembly	778	na
+SAMN03479222-rid5090993.denovo.154	unplaced-scaffold	na	na	AAJWIJ010000150.1	<>	na	Primary Assembly	726	na
+SAMN03479222-rid5090993.denovo.155	unplaced-scaffold	na	na	AAJWIJ010000151.1	<>	na	Primary Assembly	711	na
+SAMN03479222-rid5090993.denovo.156	unplaced-scaffold	na	na	AAJWIJ010000152.1	<>	na	Primary Assembly	670	na
+SAMN03479222-rid5090993.denovo.157	unplaced-scaffold	na	na	AAJWIJ010000153.1	<>	na	Primary Assembly	613	na
+SAMN03479222-rid5090993.denovo.158	unplaced-scaffold	na	na	AAJWIJ010000154.1	<>	na	Primary Assembly	481	na
+SAMN03479222-rid5090993.denovo.159	unplaced-scaffold	na	na	AAJWIJ010000155.1	<>	na	Primary Assembly	474	na
+SAMN03479222-rid5090993.denovo.160	unplaced-scaffold	na	na	AAJWIJ010000156.1	<>	na	Primary Assembly	437	na
+SAMN03479222-rid5090993.denovo.161	unplaced-scaffold	na	na	AAJWIJ010000157.1	<>	na	Primary Assembly	382	na
+SAMN03479222-rid5090993.denovo.162	unplaced-scaffold	na	na	AAJWIJ010000158.1	<>	na	Primary Assembly	372	na
+SAMN03479222-rid5090993.denovo.163	unplaced-scaffold	na	na	AAJWIJ010000159.1	<>	na	Primary Assembly	366	na
+SAMN03479222-rid5090993.denovo.164	unplaced-scaffold	na	na	AAJWIJ010000160.1	<>	na	Primary Assembly	363	na
+SAMN03479222-rid5090993.denovo.165	unplaced-scaffold	na	na	AAJWIJ010000161.1	<>	na	Primary Assembly	356	na
+SAMN03479222-rid5090993.denovo.166	unplaced-scaffold	na	na	AAJWIJ010000162.1	<>	na	Primary Assembly	356	na
+SAMN03479222-rid5090993.denovo.167	unplaced-scaffold	na	na	AAJWIJ010000163.1	<>	na	Primary Assembly	338	na
+SAMN03479222-rid5090993.guided.081	unplaced-scaffold	na	na	AAJWIJ010000164.1	<>	na	Primary Assembly	11809	na
+SAMN03479222-rid5090993.guided.111	unplaced-scaffold	na	na	AAJWIJ010000165.1	<>	na	Primary Assembly	3654	na
+SAMN03479222-rid5090993.guided.127	unplaced-scaffold	na	na	AAJWIJ010000166.1	<>	na	Primary Assembly	2016	na
+SAMN03479222-rid5090993.guided.129	unplaced-scaffold	na	na	AAJWIJ010000167.1	<>	na	Primary Assembly	1914	na

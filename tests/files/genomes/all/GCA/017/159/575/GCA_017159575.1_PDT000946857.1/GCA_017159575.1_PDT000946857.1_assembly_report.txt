@@ -1,0 +1,55 @@
+# Assembly name:  PDT000946857.1
+# Description:    NCBI Pathogen Detection Assembly PDT000946857.1
+# Organism name:  Campylobacter jejuni (e-proteobacteria)
+# Infraspecific name:  strain=FSIS12137393
+# Taxid:          197
+# BioSample:      SAMN17764286
+# BioProject:     PRJNA287430
+# Submitter:      USDA FSIS
+# Date:           2021-03-03
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    AAZEKK01
+# Assembly method: SKESA v. 2.2
+# Expected final version: no
+# Genome coverage: 112x
+# Sequencing technology: ILLUMINA
+# Excluded from RefSeq: from large multi-isolate project
+# GenBank assembly accession: GCA_017159575.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_017159585.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+SAMN17764286-rid11450183.denovo.01	unplaced-scaffold	na	na	AAZEKK010000001.1	<>	na	Primary Assembly	344981	na
+SAMN17764286-rid11450183.denovo.02	unplaced-scaffold	na	na	AAZEKK010000002.1	<>	na	Primary Assembly	212414	na
+SAMN17764286-rid11450183.denovo.03	unplaced-scaffold	na	na	AAZEKK010000003.1	<>	na	Primary Assembly	189530	na
+SAMN17764286-rid11450183.denovo.04	unplaced-scaffold	na	na	AAZEKK010000004.1	<>	na	Primary Assembly	151191	na
+SAMN17764286-rid11450183.denovo.05	unplaced-scaffold	na	na	AAZEKK010000005.1	<>	na	Primary Assembly	123426	na
+SAMN17764286-rid11450183.denovo.06	unplaced-scaffold	na	na	AAZEKK010000006.1	<>	na	Primary Assembly	115520	na
+SAMN17764286-rid11450183.denovo.07	unplaced-scaffold	na	na	AAZEKK010000007.1	<>	na	Primary Assembly	96490	na
+SAMN17764286-rid11450183.denovo.08	unplaced-scaffold	na	na	AAZEKK010000008.1	<>	na	Primary Assembly	92966	na
+SAMN17764286-rid11450183.denovo.09	unplaced-scaffold	na	na	AAZEKK010000009.1	<>	na	Primary Assembly	92531	na
+SAMN17764286-rid11450183.denovo.10	unplaced-scaffold	na	na	AAZEKK010000010.1	<>	na	Primary Assembly	79120	na
+SAMN17764286-rid11450183.denovo.11	unplaced-scaffold	na	na	AAZEKK010000011.1	<>	na	Primary Assembly	62085	na
+SAMN17764286-rid11450183.denovo.13	unplaced-scaffold	na	na	AAZEKK010000012.1	<>	na	Primary Assembly	23369	na
+SAMN17764286-rid11450183.denovo.14	unplaced-scaffold	na	na	AAZEKK010000013.1	<>	na	Primary Assembly	20180	na
+SAMN17764286-rid11450183.denovo.15	unplaced-scaffold	na	na	AAZEKK010000014.1	<>	na	Primary Assembly	18437	na
+SAMN17764286-rid11450183.denovo.16	unplaced-scaffold	na	na	AAZEKK010000015.1	<>	na	Primary Assembly	16843	na
+SAMN17764286-rid11450183.denovo.17	unplaced-scaffold	na	na	AAZEKK010000016.1	<>	na	Primary Assembly	13798	na
+SAMN17764286-rid11450183.denovo.18	unplaced-scaffold	na	na	AAZEKK010000017.1	<>	na	Primary Assembly	6941	na
+SAMN17764286-rid11450183.denovo.19	unplaced-scaffold	na	na	AAZEKK010000018.1	<>	na	Primary Assembly	1961	na
+SAMN17764286-rid11450183.denovo.20	unplaced-scaffold	na	na	AAZEKK010000019.1	<>	na	Primary Assembly	1190	na
+SAMN17764286-rid11450183.denovo.21	unplaced-scaffold	na	na	AAZEKK010000020.1	<>	na	Primary Assembly	1097	na
+SAMN17764286-rid11450183.denovo.22	unplaced-scaffold	na	na	AAZEKK010000021.1	<>	na	Primary Assembly	999	na
+SAMN17764286-rid11450183.denovo.23	unplaced-scaffold	na	na	AAZEKK010000022.1	<>	na	Primary Assembly	802	na
+SAMN17764286-rid11450183.denovo.24	unplaced-scaffold	na	na	AAZEKK010000023.1	<>	na	Primary Assembly	632	na
+SAMN17764286-rid11450183.guided.12	unplaced-scaffold	na	na	AAZEKK010000024.1	<>	na	Primary Assembly	45077	na

@@ -1,0 +1,48 @@
+# Assembly name:  S_schenckii_v1
+# Organism name:  Sporothrix schenckii 1099-18 (ascomycetes)
+# Infraspecific name:  strain=1099-18
+# Taxid:          1397361
+# BioSample:      SAMN03199974
+# BioProject:     PRJNA218070
+# Submitter:      LNCC
+# Date:           2015-03-24
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    AXCR01
+# Assembly method: Newbler v. 2.6
+# Expected final version: yes
+# Genome coverage: 17.0x
+# Sequencing technology: 454
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000961545.1
+# RefSeq assembly accession: GCF_000961545.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000961555.1	GCF_000961555.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+Cont38	unplaced-scaffold	na	na	AXCR01000001.1	=	NW_015971139.1	Primary Assembly	3172225	na
+Cont39	unplaced-scaffold	na	na	AXCR01000002.1	=	NW_015971140.1	Primary Assembly	8433	na
+Cont40	unplaced-scaffold	na	na	AXCR01000003.1	=	NW_015971141.1	Primary Assembly	13825	na
+Cont41	unplaced-scaffold	na	na	AXCR01000004.1	=	NW_015971142.1	Primary Assembly	4335207	na
+Cont42	unplaced-scaffold	na	na	AXCR01000005.1	=	NW_015971143.1	Primary Assembly	2350503	na
+Cont43	unplaced-scaffold	na	na	AXCR01000006.1	=	NW_015971144.1	Primary Assembly	2465305	na
+Cont44	unplaced-scaffold	na	na	AXCR01000007.1	=	NW_015971145.1	Primary Assembly	6370247	na
+Cont45	unplaced-scaffold	na	na	AXCR01000008.1	=	NW_015971146.1	Primary Assembly	548948	na
+Cont46	unplaced-scaffold	na	na	AXCR01000009.1	=	NW_015971147.1	Primary Assembly	798659	na
+Cont47	unplaced-scaffold	na	na	AXCR01000010.1	=	NW_015971148.1	Primary Assembly	5645995	na
+Cont48	unplaced-scaffold	na	na	AXCR01000011.1	=	NW_015971149.1	Primary Assembly	2233677	na
+Cont49	unplaced-scaffold	na	na	AXCR01000012.1	=	NW_015971150.1	Primary Assembly	4151991	na
+Cont50	unplaced-scaffold	na	na	AXCR01000013.1	=	NW_015971151.1	Primary Assembly	26572	na
+Cont51	unplaced-scaffold	na	na	AXCR01000014.1	=	NW_015971152.1	Primary Assembly	242417	na
+Cont52	unplaced-scaffold	na	na	AXCR01000015.1	=	NW_015971153.1	Primary Assembly	7030	na
+Cont53	unplaced-scaffold	na	na	AXCR01000016.1	=	NW_015971154.1	Primary Assembly	4069	na

@@ -1,0 +1,64 @@
+# Assembly name:  ASM325296v1
+# Organism name:  Aggregatibacter aphrophilus (g-proteobacteria)
+# Infraspecific name:  strain=C2008001229
+# Taxid:          732
+# BioSample:      SAMN09011133
+# BioProject:     PRJNA454666
+# Submitter:      Centers for Disease Control and Prevention
+# Date:           2018-06-19
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    QEPV01
+# Assembly method: SPAdes v. 3.7.0
+# Expected final version: yes
+# Genome coverage: 51x
+# Sequencing technology: Illumina MiSeq
+# GenBank assembly accession: GCA_003252965.1
+# RefSeq assembly accession: GCF_003252965.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_003252975.1	GCF_003252975.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+C2008001229_S17_ctg_1215	unplaced-scaffold	na	na	QEPV01000001.1	=	NZ_QEPV01000001.1	Primary Assembly	830706	na
+C2008001229_S17_ctg_1217	unplaced-scaffold	na	na	QEPV01000002.1	=	NZ_QEPV01000002.1	Primary Assembly	456646	na
+C2008001229_S17_ctg_1219	unplaced-scaffold	na	na	QEPV01000003.1	=	NZ_QEPV01000003.1	Primary Assembly	199174	na
+C2008001229_S17_ctg_1221	unplaced-scaffold	na	na	QEPV01000004.1	=	NZ_QEPV01000004.1	Primary Assembly	144511	na
+C2008001229_S17_ctg_1223	unplaced-scaffold	na	na	QEPV01000005.1	=	NZ_QEPV01000005.1	Primary Assembly	104388	na
+C2008001229_S17_ctg_1225	unplaced-scaffold	na	na	QEPV01000006.1	=	NZ_QEPV01000006.1	Primary Assembly	101278	na
+C2008001229_S17_ctg_1227	unplaced-scaffold	na	na	QEPV01000007.1	=	NZ_QEPV01000007.1	Primary Assembly	66250	na
+C2008001229_S17_ctg_1229	unplaced-scaffold	na	na	QEPV01000008.1	=	NZ_QEPV01000008.1	Primary Assembly	59184	na
+C2008001229_S17_ctg_1231	unplaced-scaffold	na	na	QEPV01000009.1	=	NZ_QEPV01000009.1	Primary Assembly	53024	na
+C2008001229_S17_ctg_1233	unplaced-scaffold	na	na	QEPV01000010.1	=	NZ_QEPV01000010.1	Primary Assembly	52937	na
+C2008001229_S17_ctg_1235	unplaced-scaffold	na	na	QEPV01000011.1	=	NZ_QEPV01000011.1	Primary Assembly	50965	na
+C2008001229_S17_ctg_1237	unplaced-scaffold	na	na	QEPV01000012.1	=	NZ_QEPV01000012.1	Primary Assembly	47734	na
+C2008001229_S17_ctg_1239	unplaced-scaffold	na	na	QEPV01000013.1	=	NZ_QEPV01000013.1	Primary Assembly	38377	na
+C2008001229_S17_ctg_1241	unplaced-scaffold	na	na	QEPV01000014.1	=	NZ_QEPV01000014.1	Primary Assembly	22864	na
+C2008001229_S17_ctg_1243	unplaced-scaffold	na	na	QEPV01000015.1	=	NZ_QEPV01000015.1	Primary Assembly	16237	na
+C2008001229_S17_ctg_1245	unplaced-scaffold	na	na	QEPV01000016.1	=	NZ_QEPV01000016.1	Primary Assembly	10245	na
+C2008001229_S17_ctg_1247	unplaced-scaffold	na	na	QEPV01000017.1	=	NZ_QEPV01000017.1	Primary Assembly	6198	na
+C2008001229_S17_ctg_1249	unplaced-scaffold	na	na	QEPV01000018.1	=	NZ_QEPV01000018.1	Primary Assembly	4564	na
+C2008001229_S17_ctg_1251	unplaced-scaffold	na	na	QEPV01000019.1	=	NZ_QEPV01000019.1	Primary Assembly	3465	na
+C2008001229_S17_ctg_1253	unplaced-scaffold	na	na	QEPV01000020.1	=	NZ_QEPV01000020.1	Primary Assembly	3035	na
+C2008001229_S17_ctg_1255	unplaced-scaffold	na	na	QEPV01000021.1	=	NZ_QEPV01000021.1	Primary Assembly	2901	na
+C2008001229_S17_ctg_1257	unplaced-scaffold	na	na	QEPV01000022.1	=	NZ_QEPV01000022.1	Primary Assembly	1866	na
+C2008001229_S17_ctg_1259	unplaced-scaffold	na	na	QEPV01000023.1	=	NZ_QEPV01000023.1	Primary Assembly	1761	na
+C2008001229_S17_ctg_1261	unplaced-scaffold	na	na	QEPV01000024.1	=	NZ_QEPV01000024.1	Primary Assembly	1739	na
+C2008001229_S17_ctg_1263	unplaced-scaffold	na	na	QEPV01000025.1	=	NZ_QEPV01000025.1	Primary Assembly	1654	na
+C2008001229_S17_ctg_1265	unplaced-scaffold	na	na	QEPV01000026.1	=	NZ_QEPV01000026.1	Primary Assembly	1420	na
+C2008001229_S17_ctg_1267	unplaced-scaffold	na	na	QEPV01000027.1	=	NZ_QEPV01000027.1	Primary Assembly	1244	na
+C2008001229_S17_ctg_1269	unplaced-scaffold	na	na	QEPV01000028.1	=	NZ_QEPV01000028.1	Primary Assembly	1231	na
+C2008001229_S17_ctg_1273	unplaced-scaffold	na	na	QEPV01000029.1	=	NZ_QEPV01000029.1	Primary Assembly	687	na
+C2008001229_S17_ctg_1277	unplaced-scaffold	na	na	QEPV01000030.1	=	NZ_QEPV01000030.1	Primary Assembly	666	na
+C2008001229_S17_ctg_1281	unplaced-scaffold	na	na	QEPV01000031.1	=	NZ_QEPV01000031.1	Primary Assembly	567	na
+C2008001229_S17_ctg_1289	unplaced-scaffold	na	na	QEPV01000032.1	=	NZ_QEPV01000032.1	Primary Assembly	486	na
+C2008001229_S17_ctg_1335	unplaced-scaffold	na	na	QEPV01000033.1	=	NZ_QEPV01000033.1	Primary Assembly	394	na

@@ -1,0 +1,180 @@
+# Assembly name:  ASM76592v2
+# Organism name:  Helicobacter bilis (e-proteobacteria)
+# Infraspecific name:  strain=ATCC 49320
+# Taxid:          37372
+# BioSample:      SAMN03075569
+# BioProject:     PRJNA261711
+# Submitter:      Massachusetts Institute of Technology
+# Date:           2019-05-22
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    JRPJ02
+# Assembly method: SPAdes v. PATRIC March 2017
+# Expected final version: no
+# Genome coverage: 117.6504065x
+# Sequencing technology: Illumina MiSeq
+# GenBank assembly accession: GCA_000765925.2
+# RefSeq assembly accession: GCF_000765925.2
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000765935.2	GCF_000765935.2	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+NODE_100_length_1011_cov_104.716	unplaced-scaffold	na	na	JRPJ02000099.1	=	NZ_JRPJ02000099.1	Primary Assembly	1011	na
+NODE_101_length_1005_cov_145.534	unplaced-scaffold	na	na	JRPJ02000100.1	=	NZ_JRPJ02000100.1	Primary Assembly	1005	na
+NODE_102_length_954_cov_271.379	unplaced-scaffold	na	na	JRPJ02000101.1	=	NZ_JRPJ02000101.1	Primary Assembly	954	na
+NODE_103_length_944_cov_224.751	unplaced-scaffold	na	na	JRPJ02000102.1	=	NZ_JRPJ02000102.1	Primary Assembly	944	na
+NODE_105_length_889_cov_167.615	unplaced-scaffold	na	na	JRPJ02000103.1	=	NZ_JRPJ02000103.1	Primary Assembly	889	na
+NODE_106_length_885_cov_213.632	unplaced-scaffold	na	na	JRPJ02000104.1	=	NZ_JRPJ02000104.1	Primary Assembly	885	na
+NODE_107_length_882_cov_101.088	unplaced-scaffold	na	na	JRPJ02000105.1	=	NZ_JRPJ02000105.1	Primary Assembly	882	na
+NODE_109_length_841_cov_50.9272	unplaced-scaffold	na	na	JRPJ02000106.1	=	NZ_JRPJ02000106.1	Primary Assembly	841	na
+NODE_10_length_59558_cov_74.1169	unplaced-scaffold	na	na	JRPJ02000010.1	=	NZ_JRPJ02000010.1	Primary Assembly	59558	na
+NODE_110_length_833_cov_50.4796	unplaced-scaffold	na	na	JRPJ02000107.1	=	NZ_JRPJ02000107.1	Primary Assembly	833	na
+NODE_111_length_823_cov_116.467	unplaced-scaffold	na	na	JRPJ02000108.1	=	NZ_JRPJ02000108.1	Primary Assembly	823	na
+NODE_112_length_802_cov_123.917	unplaced-scaffold	na	na	JRPJ02000109.1	=	NZ_JRPJ02000109.1	Primary Assembly	802	na
+NODE_114_length_788_cov_306.343	unplaced-scaffold	na	na	JRPJ02000110.1	=	NZ_JRPJ02000110.1	Primary Assembly	788	na
+NODE_116_length_758_cov_60.0197	unplaced-scaffold	na	na	JRPJ02000111.1	=	NZ_JRPJ02000111.1	Primary Assembly	758	na
+NODE_117_length_753_cov_108.437	unplaced-scaffold	na	na	JRPJ02000112.1	=	NZ_JRPJ02000112.1	Primary Assembly	753	na
+NODE_118_length_744_cov_147.327	unplaced-scaffold	na	na	JRPJ02000113.1	=	NZ_JRPJ02000113.1	Primary Assembly	744	na
+NODE_119_length_736_cov_104.708	unplaced-scaffold	na	na	JRPJ02000114.1	=	NZ_JRPJ02000114.1	Primary Assembly	736	na
+NODE_11_length_59239_cov_60.2156	unplaced-scaffold	na	na	JRPJ02000011.1	=	NZ_JRPJ02000011.1	Primary Assembly	59239	na
+NODE_120_length_727_cov_69.2627	unplaced-scaffold	na	na	JRPJ02000115.1	=	NZ_JRPJ02000115.1	Primary Assembly	727	na
+NODE_121_length_705_cov_93.3086	unplaced-scaffold	na	na	JRPJ02000116.1	=	NZ_JRPJ02000116.1	Primary Assembly	705	na
+NODE_122_length_701_cov_79.9585	unplaced-scaffold	na	na	JRPJ02000117.1	=	NZ_JRPJ02000117.1	Primary Assembly	701	na
+NODE_125_length_672_cov_159.351	unplaced-scaffold	na	na	JRPJ02000118.1	=	NZ_JRPJ02000118.1	Primary Assembly	672	na
+NODE_127_length_658_cov_209.426	unplaced-scaffold	na	na	JRPJ02000119.1	=	NZ_JRPJ02000119.1	Primary Assembly	658	na
+NODE_128_length_647_cov_346.412	unplaced-scaffold	na	na	JRPJ02000120.1	=	NZ_JRPJ02000120.1	Primary Assembly	647	na
+NODE_12_length_58928_cov_62.7567	unplaced-scaffold	na	na	JRPJ02000012.1	=	NZ_JRPJ02000012.1	Primary Assembly	58928	na
+NODE_130_length_630_cov_62.4143	unplaced-scaffold	na	na	JRPJ02000121.1	=	NZ_JRPJ02000121.1	Primary Assembly	630	na
+NODE_132_length_623_cov_75.6355	unplaced-scaffold	na	na	JRPJ02000122.1	=	NZ_JRPJ02000122.1	Primary Assembly	623	na
+NODE_133_length_617_cov_125.515	unplaced-scaffold	na	na	JRPJ02000123.1	=	NZ_JRPJ02000123.1	Primary Assembly	617	na
+NODE_134_length_616_cov_241.079	unplaced-scaffold	na	na	JRPJ02000124.1	=	NZ_JRPJ02000124.1	Primary Assembly	616	na
+NODE_136_length_613_cov_71.9319	unplaced-scaffold	na	na	JRPJ02000125.1	=	NZ_JRPJ02000125.1	Primary Assembly	613	na
+NODE_138_length_589_cov_49.5694	unplaced-scaffold	na	na	JRPJ02000126.1	=	NZ_JRPJ02000126.1	Primary Assembly	589	na
+NODE_139_length_586_cov_214.91	unplaced-scaffold	na	na	JRPJ02000127.1	=	NZ_JRPJ02000127.1	Primary Assembly	586	na
+NODE_13_length_52831_cov_57.5785	unplaced-scaffold	na	na	JRPJ02000013.1	=	NZ_JRPJ02000013.1	Primary Assembly	52831	na
+NODE_144_length_550_cov_65.3282	unplaced-scaffold	na	na	JRPJ02000128.1	=	NZ_JRPJ02000128.1	Primary Assembly	550	na
+NODE_146_length_538_cov_125.747	unplaced-scaffold	na	na	JRPJ02000129.1	=	NZ_JRPJ02000129.1	Primary Assembly	538	na
+NODE_148_length_530_cov_192.886	unplaced-scaffold	na	na	JRPJ02000130.1	=	NZ_JRPJ02000130.1	Primary Assembly	530	na
+NODE_14_length_52082_cov_76.1817	unplaced-scaffold	na	na	JRPJ02000014.1	=	NZ_JRPJ02000014.1	Primary Assembly	52082	na
+NODE_151_length_521_cov_62.8318	unplaced-scaffold	na	na	JRPJ02000131.1	=	NZ_JRPJ02000131.1	Primary Assembly	521	na
+NODE_154_length_509_cov_136.171	unplaced-scaffold	na	na	JRPJ02000132.1	=	NZ_JRPJ02000132.1	Primary Assembly	509	na
+NODE_155_length_508_cov_85.0905	unplaced-scaffold	na	na	JRPJ02000133.1	=	NZ_JRPJ02000133.1	Primary Assembly	508	na
+NODE_157_length_506_cov_47.1007	unplaced-scaffold	na	na	JRPJ02000134.1	=	NZ_JRPJ02000134.1	Primary Assembly	506	na
+NODE_158_length_498_cov_178.409	unplaced-scaffold	na	na	JRPJ02000135.1	=	NZ_JRPJ02000135.1	Primary Assembly	498	na
+NODE_15_length_49694_cov_75.1734	unplaced-scaffold	na	na	JRPJ02000015.1	=	NZ_JRPJ02000015.1	Primary Assembly	49694	na
+NODE_167_length_470_cov_212.466	unplaced-scaffold	na	na	JRPJ02000136.1	=	NZ_JRPJ02000136.1	Primary Assembly	470	na
+NODE_16_length_48327_cov_67.631	unplaced-scaffold	na	na	JRPJ02000016.1	=	NZ_JRPJ02000016.1	Primary Assembly	48327	na
+NODE_174_length_457_cov_75.8939	unplaced-scaffold	na	na	JRPJ02000137.1	=	NZ_JRPJ02000137.1	Primary Assembly	457	na
+NODE_179_length_449_cov_130.191	unplaced-scaffold	na	na	JRPJ02000138.1	=	NZ_JRPJ02000138.1	Primary Assembly	449	na
+NODE_17_length_46968_cov_72.0498	unplaced-scaffold	na	na	JRPJ02000017.1	=	NZ_JRPJ02000017.1	Primary Assembly	46968	na
+NODE_181_length_446_cov_223.824	unplaced-scaffold	na	na	JRPJ02000139.1	=	NZ_JRPJ02000139.1	Primary Assembly	446	na
+NODE_187_length_442_cov_121.77	unplaced-scaffold	na	na	JRPJ02000140.1	=	NZ_JRPJ02000140.1	Primary Assembly	442	na
+NODE_18_length_43370_cov_56.568	unplaced-scaffold	na	na	JRPJ02000018.1	=	NZ_JRPJ02000018.1	Primary Assembly	43370	na
+NODE_19_length_43109_cov_49.7903	unplaced-scaffold	na	na	JRPJ02000019.1	=	NZ_JRPJ02000019.1	Primary Assembly	43109	na
+NODE_1_length_166848_cov_52.3215	unplaced-scaffold	na	na	JRPJ02000001.1	=	NZ_JRPJ02000001.1	Primary Assembly	166848	na
+NODE_209_length_423_cov_174.59	unplaced-scaffold	na	na	JRPJ02000141.1	=	NZ_JRPJ02000141.1	Primary Assembly	423	na
+NODE_20_length_38065_cov_62.2916	unplaced-scaffold	na	na	JRPJ02000020.1	=	NZ_JRPJ02000020.1	Primary Assembly	38065	na
+NODE_213_length_419_cov_44.9781	unplaced-scaffold	na	na	JRPJ02000142.1	=	NZ_JRPJ02000142.1	Primary Assembly	419	na
+NODE_21_length_36706_cov_75.4526	unplaced-scaffold	na	na	JRPJ02000021.1	=	NZ_JRPJ02000021.1	Primary Assembly	36706	na
+NODE_22_length_36151_cov_65.3748	unplaced-scaffold	na	na	JRPJ02000022.1	=	NZ_JRPJ02000022.1	Primary Assembly	36151	na
+NODE_239_length_403_cov_112.444	unplaced-scaffold	na	na	JRPJ02000143.1	=	NZ_JRPJ02000143.1	Primary Assembly	403	na
+NODE_23_length_33739_cov_68.9983	unplaced-scaffold	na	na	JRPJ02000023.1	=	NZ_JRPJ02000023.1	Primary Assembly	33739	na
+NODE_240_length_403_cov_49.8816	unplaced-scaffold	na	na	JRPJ02000144.1	=	NZ_JRPJ02000144.1	Primary Assembly	403	na
+NODE_24_length_33088_cov_55.1063	unplaced-scaffold	na	na	JRPJ02000024.1	=	NZ_JRPJ02000024.1	Primary Assembly	33088	na
+NODE_253_length_396_cov_53.0707	unplaced-scaffold	na	na	JRPJ02000145.1	=	NZ_JRPJ02000145.1	Primary Assembly	396	na
+NODE_25_length_30998_cov_51.994	unplaced-scaffold	na	na	JRPJ02000025.1	=	NZ_JRPJ02000025.1	Primary Assembly	30998	na
+NODE_26_length_30507_cov_72.6097	unplaced-scaffold	na	na	JRPJ02000026.1	=	NZ_JRPJ02000026.1	Primary Assembly	30507	na
+NODE_27_length_30443_cov_64.0132	unplaced-scaffold	na	na	JRPJ02000027.1	=	NZ_JRPJ02000027.1	Primary Assembly	30443	na
+NODE_28_length_30006_cov_49.4598	unplaced-scaffold	na	na	JRPJ02000028.1	=	NZ_JRPJ02000028.1	Primary Assembly	30006	na
+NODE_293_length_369_cov_65.5259	unplaced-scaffold	na	na	JRPJ02000146.1	=	NZ_JRPJ02000146.1	Primary Assembly	369	na
+NODE_29_length_28458_cov_65.5481	unplaced-scaffold	na	na	JRPJ02000029.1	=	NZ_JRPJ02000029.1	Primary Assembly	28458	na
+NODE_2_length_143173_cov_59.8581	unplaced-scaffold	na	na	JRPJ02000002.1	=	NZ_JRPJ02000002.1	Primary Assembly	143173	na
+NODE_30_length_27531_cov_55.004	unplaced-scaffold	na	na	JRPJ02000030.1	=	NZ_JRPJ02000030.1	Primary Assembly	27531	na
+NODE_31_length_26517_cov_63.5128	unplaced-scaffold	na	na	JRPJ02000031.1	=	NZ_JRPJ02000031.1	Primary Assembly	26517	na
+NODE_32_length_26048_cov_58.6574	unplaced-scaffold	na	na	JRPJ02000032.1	=	NZ_JRPJ02000032.1	Primary Assembly	26048	na
+NODE_336_length_351_cov_145.536	unplaced-scaffold	na	na	JRPJ02000147.1	=	NZ_JRPJ02000147.1	Primary Assembly	351	na
+NODE_33_length_25013_cov_48.231	unplaced-scaffold	na	na	JRPJ02000033.1	=	NZ_JRPJ02000033.1	Primary Assembly	25013	na
+NODE_340_length_348_cov_297.369	unplaced-scaffold	na	na	JRPJ02000148.1	=	NZ_JRPJ02000148.1	Primary Assembly	348	na
+NODE_341_length_317_cov_178.752	unplaced-scaffold	na	na	JRPJ02000149.1	=	NZ_JRPJ02000149.1	Primary Assembly	317	na
+NODE_34_length_24253_cov_57.775	unplaced-scaffold	na	na	JRPJ02000034.1	=	NZ_JRPJ02000034.1	Primary Assembly	24253	na
+NODE_35_length_22877_cov_58.4899	unplaced-scaffold	na	na	JRPJ02000035.1	=	NZ_JRPJ02000035.1	Primary Assembly	22877	na
+NODE_36_length_22853_cov_47.156	unplaced-scaffold	na	na	JRPJ02000036.1	=	NZ_JRPJ02000036.1	Primary Assembly	22853	na
+NODE_37_length_22286_cov_76.2079	unplaced-scaffold	na	na	JRPJ02000037.1	=	NZ_JRPJ02000037.1	Primary Assembly	22286	na
+NODE_38_length_21898_cov_50.0716	unplaced-scaffold	na	na	JRPJ02000038.1	=	NZ_JRPJ02000038.1	Primary Assembly	21898	na
+NODE_39_length_21818_cov_72.875	unplaced-scaffold	na	na	JRPJ02000039.1	=	NZ_JRPJ02000039.1	Primary Assembly	21818	na
+NODE_3_length_130792_cov_52.3669	unplaced-scaffold	na	na	JRPJ02000003.1	=	NZ_JRPJ02000003.1	Primary Assembly	130792	na
+NODE_40_length_21768_cov_74.0589	unplaced-scaffold	na	na	JRPJ02000040.1	=	NZ_JRPJ02000040.1	Primary Assembly	21768	na
+NODE_41_length_21596_cov_49.4221	unplaced-scaffold	na	na	JRPJ02000041.1	=	NZ_JRPJ02000041.1	Primary Assembly	21596	na
+NODE_42_length_20264_cov_68.3544	unplaced-scaffold	na	na	JRPJ02000042.1	=	NZ_JRPJ02000042.1	Primary Assembly	20264	na
+NODE_43_length_20023_cov_78.5724	unplaced-scaffold	na	na	JRPJ02000043.1	=	NZ_JRPJ02000043.1	Primary Assembly	20023	na
+NODE_44_length_19674_cov_74.1378	unplaced-scaffold	na	na	JRPJ02000044.1	=	NZ_JRPJ02000044.1	Primary Assembly	19674	na
+NODE_45_length_19339_cov_75.6805	unplaced-scaffold	na	na	JRPJ02000045.1	=	NZ_JRPJ02000045.1	Primary Assembly	19339	na
+NODE_46_length_19208_cov_125.96	unplaced-scaffold	na	na	JRPJ02000046.1	=	NZ_JRPJ02000046.1	Primary Assembly	19208	na
+NODE_47_length_16617_cov_63.1136	unplaced-scaffold	na	na	JRPJ02000047.1	=	NZ_JRPJ02000047.1	Primary Assembly	16617	na
+NODE_48_length_16234_cov_63.8111	unplaced-scaffold	na	na	JRPJ02000048.1	=	NZ_JRPJ02000048.1	Primary Assembly	16234	na
+NODE_49_length_14758_cov_63.0688	unplaced-scaffold	na	na	JRPJ02000049.1	=	NZ_JRPJ02000049.1	Primary Assembly	14758	na
+NODE_4_length_92102_cov_75.1472	unplaced-scaffold	na	na	JRPJ02000004.1	=	NZ_JRPJ02000004.1	Primary Assembly	92102	na
+NODE_50_length_14716_cov_48.0772	unplaced-scaffold	na	na	JRPJ02000050.1	=	NZ_JRPJ02000050.1	Primary Assembly	14716	na
+NODE_51_length_14101_cov_52.6176	unplaced-scaffold	na	na	JRPJ02000051.1	=	NZ_JRPJ02000051.1	Primary Assembly	14101	na
+NODE_52_length_13357_cov_57.0959	unplaced-scaffold	na	na	JRPJ02000052.1	=	NZ_JRPJ02000052.1	Primary Assembly	13357	na
+NODE_53_length_12795_cov_68.8878	unplaced-scaffold	na	na	JRPJ02000053.1	=	NZ_JRPJ02000053.1	Primary Assembly	12795	na
+NODE_54_length_11834_cov_66.1374	unplaced-scaffold	na	na	JRPJ02000054.1	=	NZ_JRPJ02000054.1	Primary Assembly	11834	na
+NODE_55_length_11060_cov_55.9132	unplaced-scaffold	na	na	JRPJ02000055.1	=	NZ_JRPJ02000055.1	Primary Assembly	11060	na
+NODE_56_length_11023_cov_64.5059	unplaced-scaffold	na	na	JRPJ02000056.1	=	NZ_JRPJ02000056.1	Primary Assembly	11023	na
+NODE_57_length_10992_cov_57.2062	unplaced-scaffold	na	na	JRPJ02000057.1	=	NZ_JRPJ02000057.1	Primary Assembly	10992	na
+NODE_58_length_10411_cov_65.6129	unplaced-scaffold	na	na	JRPJ02000058.1	=	NZ_JRPJ02000058.1	Primary Assembly	10411	na
+NODE_59_length_10121_cov_67.3768	unplaced-scaffold	na	na	JRPJ02000059.1	=	NZ_JRPJ02000059.1	Primary Assembly	10121	na
+NODE_5_length_78240_cov_71.2207	unplaced-scaffold	na	na	JRPJ02000005.1	=	NZ_JRPJ02000005.1	Primary Assembly	78240	na
+NODE_60_length_8941_cov_60.5723	unplaced-scaffold	na	na	JRPJ02000060.1	=	NZ_JRPJ02000060.1	Primary Assembly	8941	na
+NODE_61_length_8524_cov_62.5691	unplaced-scaffold	na	na	JRPJ02000061.1	=	NZ_JRPJ02000061.1	Primary Assembly	8524	na
+NODE_62_length_8448_cov_49.5045	unplaced-scaffold	na	na	JRPJ02000062.1	=	NZ_JRPJ02000062.1	Primary Assembly	8448	na
+NODE_63_length_8309_cov_61.9866	unplaced-scaffold	na	na	JRPJ02000063.1	=	NZ_JRPJ02000063.1	Primary Assembly	8309	na
+NODE_64_length_8262_cov_49.2455	unplaced-scaffold	na	na	JRPJ02000064.1	=	NZ_JRPJ02000064.1	Primary Assembly	8262	na
+NODE_65_length_7916_cov_52.2445	unplaced-scaffold	na	na	JRPJ02000065.1	=	NZ_JRPJ02000065.1	Primary Assembly	7916	na
+NODE_66_length_7697_cov_129.173	unplaced-scaffold	na	na	JRPJ02000066.1	=	NZ_JRPJ02000066.1	Primary Assembly	7697	na
+NODE_67_length_7322_cov_204.918	unplaced-scaffold	na	na	JRPJ02000067.1	=	NZ_JRPJ02000067.1	Primary Assembly	7322	na
+NODE_68_length_5318_cov_66.4731	unplaced-scaffold	na	na	JRPJ02000068.1	=	NZ_JRPJ02000068.1	Primary Assembly	5318	na
+NODE_69_length_4699_cov_192.4	unplaced-scaffold	na	na	JRPJ02000069.1	=	NZ_JRPJ02000069.1	Primary Assembly	4699	na
+NODE_6_length_75073_cov_72.645	unplaced-scaffold	na	na	JRPJ02000006.1	=	NZ_JRPJ02000006.1	Primary Assembly	75073	na
+NODE_70_length_4315_cov_138.026	unplaced-scaffold	na	na	JRPJ02000070.1	=	NZ_JRPJ02000070.1	Primary Assembly	4315	na
+NODE_71_length_4179_cov_132.962	unplaced-scaffold	na	na	JRPJ02000071.1	=	NZ_JRPJ02000071.1	Primary Assembly	4179	na
+NODE_72_length_4027_cov_163.981	unplaced-scaffold	na	na	JRPJ02000072.1	=	NZ_JRPJ02000072.1	Primary Assembly	4027	na
+NODE_73_length_3736_cov_51.5323	unplaced-scaffold	na	na	JRPJ02000073.1	=	NZ_JRPJ02000073.1	Primary Assembly	3736	na
+NODE_74_length_3621_cov_164.862	unplaced-scaffold	na	na	JRPJ02000074.1	=	NZ_JRPJ02000074.1	Primary Assembly	3621	na
+NODE_75_length_3489_cov_92.5136	unplaced-scaffold	na	na	JRPJ02000075.1	=	NZ_JRPJ02000075.1	Primary Assembly	3489	na
+NODE_76_length_3184_cov_117.908	unplaced-scaffold	na	na	JRPJ02000076.1	=	NZ_JRPJ02000076.1	Primary Assembly	3184	na
+NODE_77_length_3034_cov_78.1479	unplaced-scaffold	na	na	JRPJ02000077.1	=	NZ_JRPJ02000077.1	Primary Assembly	3034	na
+NODE_78_length_3031_cov_98.4045	unplaced-scaffold	na	na	JRPJ02000078.1	=	NZ_JRPJ02000078.1	Primary Assembly	3031	na
+NODE_79_length_2833_cov_74.1068	unplaced-scaffold	na	na	JRPJ02000079.1	=	NZ_JRPJ02000079.1	Primary Assembly	2833	na
+NODE_7_length_72213_cov_63.45	unplaced-scaffold	na	na	JRPJ02000007.1	=	NZ_JRPJ02000007.1	Primary Assembly	72213	na
+NODE_80_length_2563_cov_122.992	unplaced-scaffold	na	na	JRPJ02000080.1	=	NZ_JRPJ02000080.1	Primary Assembly	2563	na
+NODE_81_length_2517_cov_73.0542	unplaced-scaffold	na	na	JRPJ02000081.1	=	NZ_JRPJ02000081.1	Primary Assembly	2517	na
+NODE_82_length_2509_cov_64.634	unplaced-scaffold	na	na	JRPJ02000082.1	=	NZ_JRPJ02000082.1	Primary Assembly	2509	na
+NODE_83_length_2474_cov_116.844	unplaced-scaffold	na	na	JRPJ02000083.1	=	NZ_JRPJ02000083.1	Primary Assembly	2474	na
+NODE_84_length_2464_cov_64.4922	unplaced-scaffold	na	na	JRPJ02000084.1	=	NZ_JRPJ02000084.1	Primary Assembly	2464	na
+NODE_85_length_2399_cov_123.047	unplaced-scaffold	na	na	JRPJ02000085.1	=	NZ_JRPJ02000085.1	Primary Assembly	2399	na
+NODE_86_length_2158_cov_67.5148	unplaced-scaffold	na	na	JRPJ02000086.1	=	NZ_JRPJ02000086.1	Primary Assembly	2158	na
+NODE_87_length_2013_cov_227.857	unplaced-scaffold	na	na	JRPJ02000087.1	=	NZ_JRPJ02000087.1	Primary Assembly	2013	na
+NODE_88_length_1842_cov_129.392	unplaced-scaffold	na	na	JRPJ02000088.1	=	NZ_JRPJ02000088.1	Primary Assembly	1842	na
+NODE_89_length_1842_cov_81.0224	unplaced-scaffold	na	na	JRPJ02000089.1	=	NZ_JRPJ02000089.1	Primary Assembly	1842	na
+NODE_8_length_62943_cov_55.3799	unplaced-scaffold	na	na	JRPJ02000008.1	=	NZ_JRPJ02000008.1	Primary Assembly	62943	na
+NODE_90_length_1842_cov_54.1813	unplaced-scaffold	na	na	JRPJ02000090.1	=	NZ_JRPJ02000090.1	Primary Assembly	1842	na
+NODE_91_length_1681_cov_75.5917	unplaced-scaffold	na	na	JRPJ02000091.1	=	NZ_JRPJ02000091.1	Primary Assembly	1681	na
+NODE_92_length_1662_cov_113.869	unplaced-scaffold	na	na	JRPJ02000092.1	=	NZ_JRPJ02000092.1	Primary Assembly	1662	na
+NODE_93_length_1555_cov_212.877	unplaced-scaffold	na	na	JRPJ02000093.1	=	NZ_JRPJ02000093.1	Primary Assembly	1555	na
+NODE_94_length_1537_cov_155.724	unplaced-scaffold	na	na	JRPJ02000094.1	=	NZ_JRPJ02000094.1	Primary Assembly	1537	na
+NODE_95_length_1488_cov_194.915	unplaced-scaffold	na	na	JRPJ02000095.1	=	NZ_JRPJ02000095.1	Primary Assembly	1488	na
+NODE_96_length_1130_cov_164.784	unplaced-scaffold	na	na	JRPJ02000096.1	=	NZ_JRPJ02000096.1	Primary Assembly	1130	na
+NODE_97_length_1091_cov_82.2127	unplaced-scaffold	na	na	JRPJ02000097.1	=	NZ_JRPJ02000097.1	Primary Assembly	1091	na
+NODE_98_length_1070_cov_71.8301	unplaced-scaffold	na	na	JRPJ02000098.1	=	NZ_JRPJ02000098.1	Primary Assembly	1070	na
+NODE_9_length_61099_cov_65.5334	unplaced-scaffold	na	na	JRPJ02000009.1	=	NZ_JRPJ02000009.1	Primary Assembly	61099	na

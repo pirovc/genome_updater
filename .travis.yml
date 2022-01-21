@@ -4,7 +4,7 @@ before_install:
   - sudo apt-get install parallel
 
 script:
-    - ./test.sh
+    - tests/libs/bats/bin/bats tests/integration_offline.bats
 
 notifications:
   email: false

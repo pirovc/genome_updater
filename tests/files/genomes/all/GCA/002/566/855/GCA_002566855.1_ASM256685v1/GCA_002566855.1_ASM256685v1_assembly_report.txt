@@ -1,0 +1,131 @@
+# Assembly name:  ASM256685v1
+# Organism name:  Bacillus cereus (firmicutes)
+# Infraspecific name:  strain=AFS074515
+# Taxid:          1396
+# BioSample:      SAMN07598389
+# BioProject:     PRJNA400804
+# Submitter:      UNC Chapel Hill
+# Date:           2017-10-17
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    NUZM01
+# Assembly method: CLC Assembly Cell v. 4.2.127
+# Expected final version: yes
+# Genome coverage: 51.71x
+# Sequencing technology: Illumina HiSeq
+# GenBank assembly accession: GCA_002566855.1
+# RefSeq assembly accession: GCF_002566855.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_002566865.1	GCF_002566865.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+AFS074515_95_C10_Contig100_140514	unplaced-scaffold	na	na	NUZM01000100.1	=	NZ_NUZM01000100.1	Primary Assembly	200	na
+AFS074515_95_C10_Contig10_140514	unplaced-scaffold	na	na	NUZM01000010.1	=	NZ_NUZM01000010.1	Primary Assembly	92469	na
+AFS074515_95_C10_Contig11_140514	unplaced-scaffold	na	na	NUZM01000011.1	=	NZ_NUZM01000011.1	Primary Assembly	48204	na
+AFS074515_95_C10_Contig12_140514	unplaced-scaffold	na	na	NUZM01000012.1	=	NZ_NUZM01000012.1	Primary Assembly	202489	na
+AFS074515_95_C10_Contig13_140514	unplaced-scaffold	na	na	NUZM01000013.1	=	NZ_NUZM01000013.1	Primary Assembly	73768	na
+AFS074515_95_C10_Contig14_140514	unplaced-scaffold	na	na	NUZM01000014.1	=	NZ_NUZM01000014.1	Primary Assembly	167272	na
+AFS074515_95_C10_Contig15_140514	unplaced-scaffold	na	na	NUZM01000015.1	=	NZ_NUZM01000015.1	Primary Assembly	44586	na
+AFS074515_95_C10_Contig16_140514	unplaced-scaffold	na	na	NUZM01000016.1	=	NZ_NUZM01000016.1	Primary Assembly	144776	na
+AFS074515_95_C10_Contig17_140514	unplaced-scaffold	na	na	NUZM01000017.1	=	NZ_NUZM01000017.1	Primary Assembly	171585	na
+AFS074515_95_C10_Contig18_140514	unplaced-scaffold	na	na	NUZM01000018.1	=	NZ_NUZM01000018.1	Primary Assembly	58352	na
+AFS074515_95_C10_Contig19_140514	unplaced-scaffold	na	na	NUZM01000019.1	=	NZ_NUZM01000019.1	Primary Assembly	75964	na
+AFS074515_95_C10_Contig1_140514	unplaced-scaffold	na	na	NUZM01000001.1	=	NZ_NUZM01000001.1	Primary Assembly	152177	na
+AFS074515_95_C10_Contig20_140514	unplaced-scaffold	na	na	NUZM01000020.1	=	NZ_NUZM01000020.1	Primary Assembly	141468	na
+AFS074515_95_C10_Contig21_140514	unplaced-scaffold	na	na	NUZM01000021.1	=	NZ_NUZM01000021.1	Primary Assembly	42658	na
+AFS074515_95_C10_Contig22_140514	unplaced-scaffold	na	na	NUZM01000022.1	=	NZ_NUZM01000022.1	Primary Assembly	40567	na
+AFS074515_95_C10_Contig23_140514	unplaced-scaffold	na	na	NUZM01000023.1	=	NZ_NUZM01000023.1	Primary Assembly	184589	na
+AFS074515_95_C10_Contig24_140514	unplaced-scaffold	na	na	NUZM01000024.1	=	NZ_NUZM01000024.1	Primary Assembly	16271	na
+AFS074515_95_C10_Contig25_140514	unplaced-scaffold	na	na	NUZM01000025.1	=	NZ_NUZM01000025.1	Primary Assembly	124050	na
+AFS074515_95_C10_Contig26_140514	unplaced-scaffold	na	na	NUZM01000026.1	=	NZ_NUZM01000026.1	Primary Assembly	18419	na
+AFS074515_95_C10_Contig27_140514	unplaced-scaffold	na	na	NUZM01000027.1	=	NZ_NUZM01000027.1	Primary Assembly	358272	na
+AFS074515_95_C10_Contig28_140514	unplaced-scaffold	na	na	NUZM01000028.1	=	NZ_NUZM01000028.1	Primary Assembly	43663	na
+AFS074515_95_C10_Contig29_140514	unplaced-scaffold	na	na	NUZM01000029.1	=	NZ_NUZM01000029.1	Primary Assembly	14643	na
+AFS074515_95_C10_Contig2_140514	unplaced-scaffold	na	na	NUZM01000002.1	=	NZ_NUZM01000002.1	Primary Assembly	215643	na
+AFS074515_95_C10_Contig30_140514	unplaced-scaffold	na	na	NUZM01000030.1	=	NZ_NUZM01000030.1	Primary Assembly	27867	na
+AFS074515_95_C10_Contig31_140514	unplaced-scaffold	na	na	NUZM01000031.1	=	NZ_NUZM01000031.1	Primary Assembly	31998	na
+AFS074515_95_C10_Contig32_140514	unplaced-scaffold	na	na	NUZM01000032.1	=	NZ_NUZM01000032.1	Primary Assembly	46225	na
+AFS074515_95_C10_Contig33_140514	unplaced-scaffold	na	na	NUZM01000033.1	=	NZ_NUZM01000033.1	Primary Assembly	17424	na
+AFS074515_95_C10_Contig34_140514	unplaced-scaffold	na	na	NUZM01000034.1	=	NZ_NUZM01000034.1	Primary Assembly	3862	na
+AFS074515_95_C10_Contig35_140514	unplaced-scaffold	na	na	NUZM01000035.1	=	NZ_NUZM01000035.1	Primary Assembly	4673	na
+AFS074515_95_C10_Contig36_140514	unplaced-scaffold	na	na	NUZM01000036.1	=	NZ_NUZM01000036.1	Primary Assembly	95691	na
+AFS074515_95_C10_Contig37_140514	unplaced-scaffold	na	na	NUZM01000037.1	=	NZ_NUZM01000037.1	Primary Assembly	75685	na
+AFS074515_95_C10_Contig38_140514	unplaced-scaffold	na	na	NUZM01000038.1	=	NZ_NUZM01000038.1	Primary Assembly	52214	na
+AFS074515_95_C10_Contig39_140514	unplaced-scaffold	na	na	NUZM01000039.1	=	NZ_NUZM01000039.1	Primary Assembly	29450	na
+AFS074515_95_C10_Contig3_140514	unplaced-scaffold	na	na	NUZM01000003.1	=	NZ_NUZM01000003.1	Primary Assembly	524417	na
+AFS074515_95_C10_Contig40_140514	unplaced-scaffold	na	na	NUZM01000040.1	=	NZ_NUZM01000040.1	Primary Assembly	15441	na
+AFS074515_95_C10_Contig41_140514	unplaced-scaffold	na	na	NUZM01000041.1	=	NZ_NUZM01000041.1	Primary Assembly	94658	na
+AFS074515_95_C10_Contig42_140514	unplaced-scaffold	na	na	NUZM01000042.1	=	NZ_NUZM01000042.1	Primary Assembly	29635	na
+AFS074515_95_C10_Contig43_140514	unplaced-scaffold	na	na	NUZM01000043.1	=	NZ_NUZM01000043.1	Primary Assembly	1254	na
+AFS074515_95_C10_Contig44_140514	unplaced-scaffold	na	na	NUZM01000044.1	=	NZ_NUZM01000044.1	Primary Assembly	16994	na
+AFS074515_95_C10_Contig45_140514	unplaced-scaffold	na	na	NUZM01000045.1	=	NZ_NUZM01000045.1	Primary Assembly	15712	na
+AFS074515_95_C10_Contig46_140514	unplaced-scaffold	na	na	NUZM01000046.1	=	NZ_NUZM01000046.1	Primary Assembly	1667	na
+AFS074515_95_C10_Contig47_140514	unplaced-scaffold	na	na	NUZM01000047.1	=	NZ_NUZM01000047.1	Primary Assembly	33974	na
+AFS074515_95_C10_Contig48_140514	unplaced-scaffold	na	na	NUZM01000048.1	=	NZ_NUZM01000048.1	Primary Assembly	1448	na
+AFS074515_95_C10_Contig49_140514	unplaced-scaffold	na	na	NUZM01000049.1	=	NZ_NUZM01000049.1	Primary Assembly	39117	na
+AFS074515_95_C10_Contig4_140514	unplaced-scaffold	na	na	NUZM01000004.1	=	NZ_NUZM01000004.1	Primary Assembly	218607	na
+AFS074515_95_C10_Contig50_140514	unplaced-scaffold	na	na	NUZM01000050.1	=	NZ_NUZM01000050.1	Primary Assembly	1198	na
+AFS074515_95_C10_Contig51_140514	unplaced-scaffold	na	na	NUZM01000051.1	=	NZ_NUZM01000051.1	Primary Assembly	12384	na
+AFS074515_95_C10_Contig52_140514	unplaced-scaffold	na	na	NUZM01000052.1	=	NZ_NUZM01000052.1	Primary Assembly	13306	na
+AFS074515_95_C10_Contig53_140514	unplaced-scaffold	na	na	NUZM01000053.1	=	NZ_NUZM01000053.1	Primary Assembly	37783	na
+AFS074515_95_C10_Contig54_140514	unplaced-scaffold	na	na	NUZM01000054.1	=	NZ_NUZM01000054.1	Primary Assembly	24607	na
+AFS074515_95_C10_Contig55_140514	unplaced-scaffold	na	na	NUZM01000055.1	=	NZ_NUZM01000055.1	Primary Assembly	12291	na
+AFS074515_95_C10_Contig56_140514	unplaced-scaffold	na	na	NUZM01000056.1	=	NZ_NUZM01000056.1	Primary Assembly	5543	na
+AFS074515_95_C10_Contig57_140514	unplaced-scaffold	na	na	NUZM01000057.1	=	NZ_NUZM01000057.1	Primary Assembly	1758	na
+AFS074515_95_C10_Contig58_140514	unplaced-scaffold	na	na	NUZM01000058.1	=	NZ_NUZM01000058.1	Primary Assembly	4833	na
+AFS074515_95_C10_Contig59_140514	unplaced-scaffold	na	na	NUZM01000059.1	=	NZ_NUZM01000059.1	Primary Assembly	59289	na
+AFS074515_95_C10_Contig5_140514	unplaced-scaffold	na	na	NUZM01000005.1	=	NZ_NUZM01000005.1	Primary Assembly	52656	na
+AFS074515_95_C10_Contig60_140514	unplaced-scaffold	na	na	NUZM01000060.1	=	NZ_NUZM01000060.1	Primary Assembly	10289	na
+AFS074515_95_C10_Contig61_140514	unplaced-scaffold	na	na	NUZM01000061.1	=	NZ_NUZM01000061.1	Primary Assembly	5486	na
+AFS074515_95_C10_Contig62_140514	unplaced-scaffold	na	na	NUZM01000062.1	=	NZ_NUZM01000062.1	Primary Assembly	14661	na
+AFS074515_95_C10_Contig63_140514	unplaced-scaffold	na	na	NUZM01000063.1	=	NZ_NUZM01000063.1	Primary Assembly	1541	na
+AFS074515_95_C10_Contig64_140514	unplaced-scaffold	na	na	NUZM01000064.1	=	NZ_NUZM01000064.1	Primary Assembly	2292	na
+AFS074515_95_C10_Contig65_140514	unplaced-scaffold	na	na	NUZM01000065.1	=	NZ_NUZM01000065.1	Primary Assembly	8312	na
+AFS074515_95_C10_Contig66_140514	unplaced-scaffold	na	na	NUZM01000066.1	=	NZ_NUZM01000066.1	Primary Assembly	2201	na
+AFS074515_95_C10_Contig67_140514	unplaced-scaffold	na	na	NUZM01000067.1	=	NZ_NUZM01000067.1	Primary Assembly	1455	na
+AFS074515_95_C10_Contig68_140514	unplaced-scaffold	na	na	NUZM01000068.1	=	NZ_NUZM01000068.1	Primary Assembly	452	na
+AFS074515_95_C10_Contig69_140514	unplaced-scaffold	na	na	NUZM01000069.1	=	NZ_NUZM01000069.1	Primary Assembly	601	na
+AFS074515_95_C10_Contig6_140514	unplaced-scaffold	na	na	NUZM01000006.1	=	NZ_NUZM01000006.1	Primary Assembly	679790	na
+AFS074515_95_C10_Contig70_140514	unplaced-scaffold	na	na	NUZM01000070.1	=	NZ_NUZM01000070.1	Primary Assembly	340	na
+AFS074515_95_C10_Contig71_140514	unplaced-scaffold	na	na	NUZM01000071.1	=	NZ_NUZM01000071.1	Primary Assembly	2321	na
+AFS074515_95_C10_Contig72_140514	unplaced-scaffold	na	na	NUZM01000072.1	=	NZ_NUZM01000072.1	Primary Assembly	1052	na
+AFS074515_95_C10_Contig73_140514	unplaced-scaffold	na	na	NUZM01000073.1	=	NZ_NUZM01000073.1	Primary Assembly	12343	na
+AFS074515_95_C10_Contig74_140514	unplaced-scaffold	na	na	NUZM01000074.1	=	NZ_NUZM01000074.1	Primary Assembly	580	na
+AFS074515_95_C10_Contig75_140514	unplaced-scaffold	na	na	NUZM01000075.1	=	NZ_NUZM01000075.1	Primary Assembly	410	na
+AFS074515_95_C10_Contig76_140514	unplaced-scaffold	na	na	NUZM01000076.1	=	NZ_NUZM01000076.1	Primary Assembly	740	na
+AFS074515_95_C10_Contig77_140514	unplaced-scaffold	na	na	NUZM01000077.1	=	NZ_NUZM01000077.1	Primary Assembly	823	na
+AFS074515_95_C10_Contig78_140514	unplaced-scaffold	na	na	NUZM01000078.1	=	NZ_NUZM01000078.1	Primary Assembly	3682	na
+AFS074515_95_C10_Contig79_140514	unplaced-scaffold	na	na	NUZM01000079.1	=	NZ_NUZM01000079.1	Primary Assembly	436	na
+AFS074515_95_C10_Contig7_140514	unplaced-scaffold	na	na	NUZM01000007.1	=	NZ_NUZM01000007.1	Primary Assembly	663566	na
+AFS074515_95_C10_Contig80_140514	unplaced-scaffold	na	na	NUZM01000080.1	=	NZ_NUZM01000080.1	Primary Assembly	3534	na
+AFS074515_95_C10_Contig81_140514	unplaced-scaffold	na	na	NUZM01000081.1	=	NZ_NUZM01000081.1	Primary Assembly	1771	na
+AFS074515_95_C10_Contig82_140514	unplaced-scaffold	na	na	NUZM01000082.1	=	NZ_NUZM01000082.1	Primary Assembly	967	na
+AFS074515_95_C10_Contig83_140514	unplaced-scaffold	na	na	NUZM01000083.1	=	NZ_NUZM01000083.1	Primary Assembly	465	na
+AFS074515_95_C10_Contig84_140514	unplaced-scaffold	na	na	NUZM01000084.1	=	NZ_NUZM01000084.1	Primary Assembly	1324	na
+AFS074515_95_C10_Contig85_140514	unplaced-scaffold	na	na	NUZM01000085.1	=	NZ_NUZM01000085.1	Primary Assembly	642	na
+AFS074515_95_C10_Contig86_140514	unplaced-scaffold	na	na	NUZM01000086.1	=	NZ_NUZM01000086.1	Primary Assembly	455	na
+AFS074515_95_C10_Contig87_140514	unplaced-scaffold	na	na	NUZM01000087.1	=	NZ_NUZM01000087.1	Primary Assembly	266	na
+AFS074515_95_C10_Contig88_140514	unplaced-scaffold	na	na	NUZM01000088.1	=	NZ_NUZM01000088.1	Primary Assembly	2341	na
+AFS074515_95_C10_Contig89_140514	unplaced-scaffold	na	na	NUZM01000089.1	=	NZ_NUZM01000089.1	Primary Assembly	285	na
+AFS074515_95_C10_Contig8_140514	unplaced-scaffold	na	na	NUZM01000008.1	=	NZ_NUZM01000008.1	Primary Assembly	248219	na
+AFS074515_95_C10_Contig90_140514	unplaced-scaffold	na	na	NUZM01000090.1	=	NZ_NUZM01000090.1	Primary Assembly	569	na
+AFS074515_95_C10_Contig91_140514	unplaced-scaffold	na	na	NUZM01000091.1	=	NZ_NUZM01000091.1	Primary Assembly	356	na
+AFS074515_95_C10_Contig92_140514	unplaced-scaffold	na	na	NUZM01000092.1	=	NZ_NUZM01000092.1	Primary Assembly	236	na
+AFS074515_95_C10_Contig93_140514	unplaced-scaffold	na	na	NUZM01000093.1	=	NZ_NUZM01000093.1	Primary Assembly	444	na
+AFS074515_95_C10_Contig94_140514	unplaced-scaffold	na	na	NUZM01000094.1	=	NZ_NUZM01000094.1	Primary Assembly	429	na
+AFS074515_95_C10_Contig95_140514	unplaced-scaffold	na	na	NUZM01000095.1	=	NZ_NUZM01000095.1	Primary Assembly	395	na
+AFS074515_95_C10_Contig96_140514	unplaced-scaffold	na	na	NUZM01000096.1	=	NZ_NUZM01000096.1	Primary Assembly	382	na
+AFS074515_95_C10_Contig97_140514	unplaced-scaffold	na	na	NUZM01000097.1	=	NZ_NUZM01000097.1	Primary Assembly	227	na
+AFS074515_95_C10_Contig98_140514	unplaced-scaffold	na	na	NUZM01000098.1	=	NZ_NUZM01000098.1	Primary Assembly	282	na
+AFS074515_95_C10_Contig99_140514	unplaced-scaffold	na	na	NUZM01000099.1	=	NZ_NUZM01000099.1	Primary Assembly	222	na
+AFS074515_95_C10_Contig9_140514	unplaced-scaffold	na	na	NUZM01000009.1	=	NZ_NUZM01000009.1	Primary Assembly	245893	na
