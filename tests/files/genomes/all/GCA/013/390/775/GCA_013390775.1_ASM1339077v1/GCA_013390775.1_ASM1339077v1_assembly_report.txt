@@ -1,0 +1,247 @@
+# Assembly name:  ASM1339077v1
+# Organism name:  Marine Group I thaumarchaeote (archaea)
+# Infraspecific name:  strain=D11
+# Taxid:          2511932
+# BioSample:      SAMN15312031
+# BioProject:     PRJNA640238
+# Submitter:      National Science Foundation of China
+# Date:           2020-07-06
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    JACATB01
+# Assembly method: MEGAHIT v. 1.2.4
+# Expected final version: yes
+# Genome coverage: 80.5x
+# Sequencing technology: Illumina HiSeq
+# Excluded from RefSeq: genus undefined
+# GenBank assembly accession: GCA_013390775.1
+# RefSeq assembly accession: GCF_013390775.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_013390825.1	GCF_013390825.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+10171	unplaced-scaffold	na	na	JACATB010000086.1	=	NZ_JACATB010000086.1	Primary Assembly	4318	na
+10347	unplaced-scaffold	na	na	JACATB010000087.1	=	NZ_JACATB010000087.1	Primary Assembly	4274	na
+10373	unplaced-scaffold	na	na	JACATB010000088.1	=	NZ_JACATB010000088.1	Primary Assembly	4268	na
+10611	unplaced-scaffold	na	na	JACATB010000089.1	=	NZ_JACATB010000089.1	Primary Assembly	4217	na
+10877	unplaced-scaffold	na	na	JACATB010000090.1	=	NZ_JACATB010000090.1	Primary Assembly	4163	na
+1110	unplaced-scaffold	na	na	JACATB010000016.1	=	NZ_JACATB010000016.1	Primary Assembly	15336	na
+11143	unplaced-scaffold	na	na	JACATB010000091.1	=	NZ_JACATB010000091.1	Primary Assembly	4110	na
+11917	unplaced-scaffold	na	na	JACATB010000092.1	=	NZ_JACATB010000092.1	Primary Assembly	3954	na
+12188	unplaced-scaffold	na	na	JACATB010000093.1	=	NZ_JACATB010000093.1	Primary Assembly	3904	na
+1219	unplaced-scaffold	na	na	JACATB010000017.1	=	NZ_JACATB010000017.1	Primary Assembly	14639	na
+12299	unplaced-scaffold	na	na	JACATB010000094.1	=	NZ_JACATB010000094.1	Primary Assembly	3885	na
+12342	unplaced-scaffold	na	na	JACATB010000095.1	=	NZ_JACATB010000095.1	Primary Assembly	3878	na
+12396	unplaced-scaffold	na	na	JACATB010000096.1	=	NZ_JACATB010000096.1	Primary Assembly	3870	na
+12637	unplaced-scaffold	na	na	JACATB010000097.1	=	NZ_JACATB010000097.1	Primary Assembly	3834	na
+12807	unplaced-scaffold	na	na	JACATB010000098.1	=	NZ_JACATB010000098.1	Primary Assembly	3806	na
+12814	unplaced-scaffold	na	na	JACATB010000099.1	=	NZ_JACATB010000099.1	Primary Assembly	3804	na
+12839	unplaced-scaffold	na	na	JACATB010000100.1	=	NZ_JACATB010000100.1	Primary Assembly	3799	na
+1298	unplaced-scaffold	na	na	JACATB010000018.1	=	NZ_JACATB010000018.1	Primary Assembly	14184	na
+13444	unplaced-scaffold	na	na	JACATB010000101.1	=	NZ_JACATB010000101.1	Primary Assembly	3696	na
+13468	unplaced-scaffold	na	na	JACATB010000102.1	=	NZ_JACATB010000102.1	Primary Assembly	3692	na
+13639	unplaced-scaffold	na	na	JACATB010000103.1	=	NZ_JACATB010000103.1	Primary Assembly	3668	na
+1370	unplaced-scaffold	na	na	JACATB010000019.1	=	NZ_JACATB010000019.1	Primary Assembly	13805	na
+14021	unplaced-scaffold	na	na	JACATB010000104.1	=	NZ_JACATB010000104.1	Primary Assembly	3615	na
+14034	unplaced-scaffold	na	na	JACATB010000105.1	=	NZ_JACATB010000105.1	Primary Assembly	3613	na
+14201	unplaced-scaffold	na	na	JACATB010000106.1	=	NZ_JACATB010000106.1	Primary Assembly	3586	na
+14216	unplaced-scaffold	na	na	JACATB010000107.1	=	NZ_JACATB010000107.1	Primary Assembly	3582	na
+14357	unplaced-scaffold	na	na	JACATB010000108.1	=	NZ_JACATB010000108.1	Primary Assembly	3564	na
+14402	unplaced-scaffold	na	na	JACATB010000109.1	=	NZ_JACATB010000109.1	Primary Assembly	3557	na
+14499	unplaced-scaffold	na	na	JACATB010000110.1	=	NZ_JACATB010000110.1	Primary Assembly	3545	na
+1451	unplaced-scaffold	na	na	JACATB010000020.1	=	NZ_JACATB010000020.1	Primary Assembly	13380	na
+14763	unplaced-scaffold	na	na	JACATB010000111.1	=	NZ_JACATB010000111.1	Primary Assembly	3508	na
+14782	unplaced-scaffold	na	na	JACATB010000112.1	=	NZ_JACATB010000112.1	Primary Assembly	3505	na
+1501	unplaced-scaffold	na	na	JACATB010000021.1	=	NZ_JACATB010000021.1	Primary Assembly	13146	na
+15159	unplaced-scaffold	na	na	JACATB010000113.1	=	NZ_JACATB010000113.1	Primary Assembly	3459	na
+15446	unplaced-scaffold	na	na	JACATB010000114.1	=	NZ_JACATB010000114.1	Primary Assembly	3424	na
+15482	unplaced-scaffold	na	na	JACATB010000115.1	=	NZ_JACATB010000115.1	Primary Assembly	3420	na
+1552	unplaced-scaffold	na	na	JACATB010000022.1	=	NZ_JACATB010000022.1	Primary Assembly	12965	na
+15633	unplaced-scaffold	na	na	JACATB010000116.1	=	NZ_JACATB010000116.1	Primary Assembly	3401	na
+15645	unplaced-scaffold	na	na	JACATB010000117.1	=	NZ_JACATB010000117.1	Primary Assembly	3399	na
+1576	unplaced-scaffold	na	na	JACATB010000023.1	=	NZ_JACATB010000023.1	Primary Assembly	12829	na
+1582	unplaced-scaffold	na	na	JACATB010000024.1	=	NZ_JACATB010000024.1	Primary Assembly	12784	na
+1628	unplaced-scaffold	na	na	JACATB010000025.1	=	NZ_JACATB010000025.1	Primary Assembly	12598	na
+17042	unplaced-scaffold	na	na	JACATB010000118.1	=	NZ_JACATB010000118.1	Primary Assembly	3244	na
+17214	unplaced-scaffold	na	na	JACATB010000119.1	=	NZ_JACATB010000119.1	Primary Assembly	3226	na
+17233	unplaced-scaffold	na	na	JACATB010000120.1	=	NZ_JACATB010000120.1	Primary Assembly	3223	na
+1730	unplaced-scaffold	na	na	JACATB010000026.1	=	NZ_JACATB010000026.1	Primary Assembly	12169	na
+17524	unplaced-scaffold	na	na	JACATB010000121.1	=	NZ_JACATB010000121.1	Primary Assembly	3194	na
+17644	unplaced-scaffold	na	na	JACATB010000122.1	=	NZ_JACATB010000122.1	Primary Assembly	3181	na
+17675	unplaced-scaffold	na	na	JACATB010000123.1	=	NZ_JACATB010000123.1	Primary Assembly	3179	na
+1772	unplaced-scaffold	na	na	JACATB010000027.1	=	NZ_JACATB010000027.1	Primary Assembly	12006	na
+18060	unplaced-scaffold	na	na	JACATB010000124.1	=	NZ_JACATB010000124.1	Primary Assembly	3141	na
+18235	unplaced-scaffold	na	na	JACATB010000125.1	=	NZ_JACATB010000125.1	Primary Assembly	3125	na
+1835	unplaced-scaffold	na	na	JACATB010000028.1	=	NZ_JACATB010000028.1	Primary Assembly	11802	na
+18354	unplaced-scaffold	na	na	JACATB010000126.1	=	NZ_JACATB010000126.1	Primary Assembly	3114	na
+18687	unplaced-scaffold	na	na	JACATB010000127.1	=	NZ_JACATB010000127.1	Primary Assembly	3080	na
+18960	unplaced-scaffold	na	na	JACATB010000128.1	=	NZ_JACATB010000128.1	Primary Assembly	3057	na
+18975	unplaced-scaffold	na	na	JACATB010000129.1	=	NZ_JACATB010000129.1	Primary Assembly	3055	na
+19086	unplaced-scaffold	na	na	JACATB010000130.1	=	NZ_JACATB010000130.1	Primary Assembly	3047	na
+19417	unplaced-scaffold	na	na	JACATB010000131.1	=	NZ_JACATB010000131.1	Primary Assembly	3017	na
+19442	unplaced-scaffold	na	na	JACATB010000132.1	=	NZ_JACATB010000132.1	Primary Assembly	3015	na
+19468	unplaced-scaffold	na	na	JACATB010000133.1	=	NZ_JACATB010000133.1	Primary Assembly	3013	na
+1947	unplaced-scaffold	na	na	JACATB010000029.1	=	NZ_JACATB010000029.1	Primary Assembly	11403	na
+19490	unplaced-scaffold	na	na	JACATB010000134.1	=	NZ_JACATB010000134.1	Primary Assembly	3011	na
+19768	unplaced-scaffold	na	na	JACATB010000135.1	=	NZ_JACATB010000135.1	Primary Assembly	2988	na
+20130	unplaced-scaffold	na	na	JACATB010000136.1	=	NZ_JACATB010000136.1	Primary Assembly	2958	na
+2052	unplaced-scaffold	na	na	JACATB010000030.1	=	NZ_JACATB010000030.1	Primary Assembly	11097	na
+2060	unplaced-scaffold	na	na	JACATB010000031.1	=	NZ_JACATB010000031.1	Primary Assembly	11086	na
+20740	unplaced-scaffold	na	na	JACATB010000137.1	=	NZ_JACATB010000137.1	Primary Assembly	2909	na
+2117	unplaced-scaffold	na	na	JACATB010000032.1	=	NZ_JACATB010000032.1	Primary Assembly	10929	na
+21228	unplaced-scaffold	na	na	JACATB010000138.1	=	NZ_JACATB010000138.1	Primary Assembly	2869	na
+21367	unplaced-scaffold	na	na	JACATB010000139.1	=	NZ_JACATB010000139.1	Primary Assembly	2858	na
+21551	unplaced-scaffold	na	na	JACATB010000140.1	=	NZ_JACATB010000140.1	Primary Assembly	2845	na
+21625	unplaced-scaffold	na	na	JACATB010000141.1	=	NZ_JACATB010000141.1	Primary Assembly	2840	na
+2230	unplaced-scaffold	na	na	JACATB010000033.1	=	NZ_JACATB010000033.1	Primary Assembly	10629	na
+2244	unplaced-scaffold	na	na	JACATB010000034.1	=	NZ_JACATB010000034.1	Primary Assembly	10598	na
+22706	unplaced-scaffold	na	na	JACATB010000142.1	=	NZ_JACATB010000142.1	Primary Assembly	2766	na
+22804	unplaced-scaffold	na	na	JACATB010000143.1	=	NZ_JACATB010000143.1	Primary Assembly	2760	na
+22807	unplaced-scaffold	na	na	JACATB010000144.1	=	NZ_JACATB010000144.1	Primary Assembly	2759	na
+22818	unplaced-scaffold	na	na	JACATB010000145.1	=	NZ_JACATB010000145.1	Primary Assembly	2759	na
+22819	unplaced-scaffold	na	na	JACATB010000146.1	=	NZ_JACATB010000146.1	Primary Assembly	2759	na
+22946	unplaced-scaffold	na	na	JACATB010000147.1	=	NZ_JACATB010000147.1	Primary Assembly	2751	na
+23041	unplaced-scaffold	na	na	JACATB010000148.1	=	NZ_JACATB010000148.1	Primary Assembly	2745	na
+23499	unplaced-scaffold	na	na	JACATB010000149.1	=	NZ_JACATB010000149.1	Primary Assembly	2717	na
+23512	unplaced-scaffold	na	na	JACATB010000150.1	=	NZ_JACATB010000150.1	Primary Assembly	2716	na
+23516	unplaced-scaffold	na	na	JACATB010000151.1	=	NZ_JACATB010000151.1	Primary Assembly	2716	na
+2354	unplaced-scaffold	na	na	JACATB010000035.1	=	NZ_JACATB010000035.1	Primary Assembly	10377	na
+2395	unplaced-scaffold	na	na	JACATB010000036.1	=	NZ_JACATB010000036.1	Primary Assembly	10265	na
+24049	unplaced-scaffold	na	na	JACATB010000152.1	=	NZ_JACATB010000152.1	Primary Assembly	2682	na
+24147	unplaced-scaffold	na	na	JACATB010000153.1	=	NZ_JACATB010000153.1	Primary Assembly	2676	na
+2452	unplaced-scaffold	na	na	JACATB010000037.1	=	NZ_JACATB010000037.1	Primary Assembly	10128	na
+24633	unplaced-scaffold	na	na	JACATB010000154.1	=	NZ_JACATB010000154.1	Primary Assembly	2649	na
+24673	unplaced-scaffold	na	na	JACATB010000155.1	=	NZ_JACATB010000155.1	Primary Assembly	2647	na
+24791	unplaced-scaffold	na	na	JACATB010000156.1	=	NZ_JACATB010000156.1	Primary Assembly	2640	na
+24816	unplaced-scaffold	na	na	JACATB010000157.1	=	NZ_JACATB010000157.1	Primary Assembly	2639	na
+24956	unplaced-scaffold	na	na	JACATB010000158.1	=	NZ_JACATB010000158.1	Primary Assembly	2630	na
+251	unplaced-scaffold	na	na	JACATB010000001.1	=	NZ_JACATB010000001.1	Primary Assembly	31503	na
+25316	unplaced-scaffold	na	na	JACATB010000159.1	=	NZ_JACATB010000159.1	Primary Assembly	2610	na
+2533	unplaced-scaffold	na	na	JACATB010000038.1	=	NZ_JACATB010000038.1	Primary Assembly	9934	na
+2536	unplaced-scaffold	na	na	JACATB010000039.1	=	NZ_JACATB010000039.1	Primary Assembly	9932	na
+25584	unplaced-scaffold	na	na	JACATB010000160.1	=	NZ_JACATB010000160.1	Primary Assembly	2595	na
+2569	unplaced-scaffold	na	na	JACATB010000040.1	=	NZ_JACATB010000040.1	Primary Assembly	9859	na
+25840	unplaced-scaffold	na	na	JACATB010000161.1	=	NZ_JACATB010000161.1	Primary Assembly	2581	na
+25896	unplaced-scaffold	na	na	JACATB010000162.1	=	NZ_JACATB010000162.1	Primary Assembly	2578	na
+2647	unplaced-scaffold	na	na	JACATB010000041.1	=	NZ_JACATB010000041.1	Primary Assembly	9686	na
+26494	unplaced-scaffold	na	na	JACATB010000163.1	=	NZ_JACATB010000163.1	Primary Assembly	2547	na
+2656	unplaced-scaffold	na	na	JACATB010000042.1	=	NZ_JACATB010000042.1	Primary Assembly	9669	na
+26906	unplaced-scaffold	na	na	JACATB010000164.1	=	NZ_JACATB010000164.1	Primary Assembly	2526	na
+26951	unplaced-scaffold	na	na	JACATB010000165.1	=	NZ_JACATB010000165.1	Primary Assembly	2524	na
+27146	unplaced-scaffold	na	na	JACATB010000166.1	=	NZ_JACATB010000166.1	Primary Assembly	2514	na
+2741	unplaced-scaffold	na	na	JACATB010000043.1	=	NZ_JACATB010000043.1	Primary Assembly	9517	na
+27533	unplaced-scaffold	na	na	JACATB010000167.1	=	NZ_JACATB010000167.1	Primary Assembly	2494	na
+27941	unplaced-scaffold	na	na	JACATB010000168.1	=	NZ_JACATB010000168.1	Primary Assembly	2474	na
+28048	unplaced-scaffold	na	na	JACATB010000169.1	=	NZ_JACATB010000169.1	Primary Assembly	2469	na
+28116	unplaced-scaffold	na	na	JACATB010000170.1	=	NZ_JACATB010000170.1	Primary Assembly	2466	na
+28140	unplaced-scaffold	na	na	JACATB010000171.1	=	NZ_JACATB010000171.1	Primary Assembly	2465	na
+2873	unplaced-scaffold	na	na	JACATB010000044.1	=	NZ_JACATB010000044.1	Primary Assembly	9243	na
+28737	unplaced-scaffold	na	na	JACATB010000172.1	=	NZ_JACATB010000172.1	Primary Assembly	2438	na
+2880	unplaced-scaffold	na	na	JACATB010000045.1	=	NZ_JACATB010000045.1	Primary Assembly	9229	na
+29188	unplaced-scaffold	na	na	JACATB010000173.1	=	NZ_JACATB010000173.1	Primary Assembly	2418	na
+29206	unplaced-scaffold	na	na	JACATB010000174.1	=	NZ_JACATB010000174.1	Primary Assembly	2417	na
+29391	unplaced-scaffold	na	na	JACATB010000175.1	=	NZ_JACATB010000175.1	Primary Assembly	2410	na
+301	unplaced-scaffold	na	na	JACATB010000002.1	=	NZ_JACATB010000002.1	Primary Assembly	28994	na
+30281	unplaced-scaffold	na	na	JACATB010000176.1	=	NZ_JACATB010000176.1	Primary Assembly	2371	na
+3067	unplaced-scaffold	na	na	JACATB010000046.1	=	NZ_JACATB010000046.1	Primary Assembly	8829	na
+31036	unplaced-scaffold	na	na	JACATB010000177.1	=	NZ_JACATB010000177.1	Primary Assembly	2342	na
+31272	unplaced-scaffold	na	na	JACATB010000178.1	=	NZ_JACATB010000178.1	Primary Assembly	2332	na
+3156	unplaced-scaffold	na	na	JACATB010000047.1	=	NZ_JACATB010000047.1	Primary Assembly	8700	na
+31625	unplaced-scaffold	na	na	JACATB010000179.1	=	NZ_JACATB010000179.1	Primary Assembly	2317	na
+31674	unplaced-scaffold	na	na	JACATB010000180.1	=	NZ_JACATB010000180.1	Primary Assembly	2316	na
+31725	unplaced-scaffold	na	na	JACATB010000181.1	=	NZ_JACATB010000181.1	Primary Assembly	2314	na
+32030	unplaced-scaffold	na	na	JACATB010000182.1	=	NZ_JACATB010000182.1	Primary Assembly	2301	na
+321	unplaced-scaffold	na	na	JACATB010000003.1	=	NZ_JACATB010000003.1	Primary Assembly	27956	na
+32339	unplaced-scaffold	na	na	JACATB010000183.1	=	NZ_JACATB010000183.1	Primary Assembly	2291	na
+32397	unplaced-scaffold	na	na	JACATB010000184.1	=	NZ_JACATB010000184.1	Primary Assembly	2289	na
+32540	unplaced-scaffold	na	na	JACATB010000185.1	=	NZ_JACATB010000185.1	Primary Assembly	2283	na
+32593	unplaced-scaffold	na	na	JACATB010000186.1	=	NZ_JACATB010000186.1	Primary Assembly	2281	na
+32633	unplaced-scaffold	na	na	JACATB010000187.1	=	NZ_JACATB010000187.1	Primary Assembly	2280	na
+32658	unplaced-scaffold	na	na	JACATB010000188.1	=	NZ_JACATB010000188.1	Primary Assembly	2279	na
+33090	unplaced-scaffold	na	na	JACATB010000189.1	=	NZ_JACATB010000189.1	Primary Assembly	2264	na
+33117	unplaced-scaffold	na	na	JACATB010000190.1	=	NZ_JACATB010000190.1	Primary Assembly	2263	na
+33331	unplaced-scaffold	na	na	JACATB010000191.1	=	NZ_JACATB010000191.1	Primary Assembly	2256	na
+33763	unplaced-scaffold	na	na	JACATB010000192.1	=	NZ_JACATB010000192.1	Primary Assembly	2241	na
+33911	unplaced-scaffold	na	na	JACATB010000193.1	=	NZ_JACATB010000193.1	Primary Assembly	2236	na
+34693	unplaced-scaffold	na	na	JACATB010000194.1	=	NZ_JACATB010000194.1	Primary Assembly	2210	na
+3484	unplaced-scaffold	na	na	JACATB010000048.1	=	NZ_JACATB010000048.1	Primary Assembly	8200	na
+34916	unplaced-scaffold	na	na	JACATB010000195.1	=	NZ_JACATB010000195.1	Primary Assembly	2203	na
+3499	unplaced-scaffold	na	na	JACATB010000049.1	=	NZ_JACATB010000049.1	Primary Assembly	8170	na
+352	unplaced-scaffold	na	na	JACATB010000004.1	=	NZ_JACATB010000004.1	Primary Assembly	26911	na
+35308	unplaced-scaffold	na	na	JACATB010000196.1	=	NZ_JACATB010000196.1	Primary Assembly	2190	na
+35364	unplaced-scaffold	na	na	JACATB010000197.1	=	NZ_JACATB010000197.1	Primary Assembly	2189	na
+35583	unplaced-scaffold	na	na	JACATB010000198.1	=	NZ_JACATB010000198.1	Primary Assembly	2182	na
+35632	unplaced-scaffold	na	na	JACATB010000199.1	=	NZ_JACATB010000199.1	Primary Assembly	2181	na
+3628	unplaced-scaffold	na	na	JACATB010000050.1	=	NZ_JACATB010000050.1	Primary Assembly	8000	na
+36350	unplaced-scaffold	na	na	JACATB010000200.1	=	NZ_JACATB010000200.1	Primary Assembly	2159	na
+3651	unplaced-scaffold	na	na	JACATB010000051.1	=	NZ_JACATB010000051.1	Primary Assembly	7976	na
+36770	unplaced-scaffold	na	na	JACATB010000201.1	=	NZ_JACATB010000201.1	Primary Assembly	2147	na
+36883	unplaced-scaffold	na	na	JACATB010000202.1	=	NZ_JACATB010000202.1	Primary Assembly	2144	na
+3808	unplaced-scaffold	na	na	JACATB010000052.1	=	NZ_JACATB010000052.1	Primary Assembly	7794	na
+38280	unplaced-scaffold	na	na	JACATB010000203.1	=	NZ_JACATB010000203.1	Primary Assembly	2104	na
+384	unplaced-scaffold	na	na	JACATB010000005.1	=	NZ_JACATB010000005.1	Primary Assembly	25690	na
+3843	unplaced-scaffold	na	na	JACATB010000053.1	=	NZ_JACATB010000053.1	Primary Assembly	7732	na
+38817	unplaced-scaffold	na	na	JACATB010000204.1	=	NZ_JACATB010000204.1	Primary Assembly	2090	na
+39049	unplaced-scaffold	na	na	JACATB010000205.1	=	NZ_JACATB010000205.1	Primary Assembly	2084	na
+39193	unplaced-scaffold	na	na	JACATB010000206.1	=	NZ_JACATB010000206.1	Primary Assembly	2080	na
+39269	unplaced-scaffold	na	na	JACATB010000207.1	=	NZ_JACATB010000207.1	Primary Assembly	2078	na
+39834	unplaced-scaffold	na	na	JACATB010000208.1	=	NZ_JACATB010000208.1	Primary Assembly	2064	na
+40370	unplaced-scaffold	na	na	JACATB010000209.1	=	NZ_JACATB010000209.1	Primary Assembly	2050	na
+40401	unplaced-scaffold	na	na	JACATB010000210.1	=	NZ_JACATB010000210.1	Primary Assembly	2049	na
+40739	unplaced-scaffold	na	na	JACATB010000211.1	=	NZ_JACATB010000211.1	Primary Assembly	2040	na
+40820	unplaced-scaffold	na	na	JACATB010000212.1	=	NZ_JACATB010000212.1	Primary Assembly	2038	na
+41043	unplaced-scaffold	na	na	JACATB010000213.1	=	NZ_JACATB010000213.1	Primary Assembly	2032	na
+41535	unplaced-scaffold	na	na	JACATB010000214.1	=	NZ_JACATB010000214.1	Primary Assembly	2020	na
+42084	unplaced-scaffold	na	na	JACATB010000215.1	=	NZ_JACATB010000215.1	Primary Assembly	2006	na
+4495	unplaced-scaffold	na	na	JACATB010000054.1	=	NZ_JACATB010000054.1	Primary Assembly	7058	na
+4757	unplaced-scaffold	na	na	JACATB010000055.1	=	NZ_JACATB010000055.1	Primary Assembly	6813	na
+505	unplaced-scaffold	na	na	JACATB010000006.1	=	NZ_JACATB010000006.1	Primary Assembly	22608	na
+5091	unplaced-scaffold	na	na	JACATB010000056.1	=	NZ_JACATB010000056.1	Primary Assembly	6523	na
+5209	unplaced-scaffold	na	na	JACATB010000057.1	=	NZ_JACATB010000057.1	Primary Assembly	6443	na
+5212	unplaced-scaffold	na	na	JACATB010000058.1	=	NZ_JACATB010000058.1	Primary Assembly	6441	na
+5271	unplaced-scaffold	na	na	JACATB010000059.1	=	NZ_JACATB010000059.1	Primary Assembly	6406	na
+5388	unplaced-scaffold	na	na	JACATB010000060.1	=	NZ_JACATB010000060.1	Primary Assembly	6318	na
+544	unplaced-scaffold	na	na	JACATB010000007.1	=	NZ_JACATB010000007.1	Primary Assembly	21775	na
+5483	unplaced-scaffold	na	na	JACATB010000061.1	=	NZ_JACATB010000061.1	Primary Assembly	6256	na
+6243	unplaced-scaffold	na	na	JACATB010000062.1	=	NZ_JACATB010000062.1	Primary Assembly	5762	na
+6346	unplaced-scaffold	na	na	JACATB010000063.1	=	NZ_JACATB010000063.1	Primary Assembly	5715	na
+6497	unplaced-scaffold	na	na	JACATB010000064.1	=	NZ_JACATB010000064.1	Primary Assembly	5643	na
+6500	unplaced-scaffold	na	na	JACATB010000065.1	=	NZ_JACATB010000065.1	Primary Assembly	5641	na
+658	unplaced-scaffold	na	na	JACATB010000008.1	=	NZ_JACATB010000008.1	Primary Assembly	19839	na
+6581	unplaced-scaffold	na	na	JACATB010000066.1	=	NZ_JACATB010000066.1	Primary Assembly	5598	na
+6599	unplaced-scaffold	na	na	JACATB010000067.1	=	NZ_JACATB010000067.1	Primary Assembly	5587	na
+7169	unplaced-scaffold	na	na	JACATB010000068.1	=	NZ_JACATB010000068.1	Primary Assembly	5312	na
+7203	unplaced-scaffold	na	na	JACATB010000069.1	=	NZ_JACATB010000069.1	Primary Assembly	5292	na
+726	unplaced-scaffold	na	na	JACATB010000009.1	=	NZ_JACATB010000009.1	Primary Assembly	18985	na
+7288	unplaced-scaffold	na	na	JACATB010000070.1	=	NZ_JACATB010000070.1	Primary Assembly	5255	na
+7368	unplaced-scaffold	na	na	JACATB010000071.1	=	NZ_JACATB010000071.1	Primary Assembly	5215	na
+7849	unplaced-scaffold	na	na	JACATB010000072.1	=	NZ_JACATB010000072.1	Primary Assembly	5028	na
+7920	unplaced-scaffold	na	na	JACATB010000073.1	=	NZ_JACATB010000073.1	Primary Assembly	5000	na
+8227	unplaced-scaffold	na	na	JACATB010000074.1	=	NZ_JACATB010000074.1	Primary Assembly	4888	na
+8300	unplaced-scaffold	na	na	JACATB010000075.1	=	NZ_JACATB010000075.1	Primary Assembly	4864	na
+8334	unplaced-scaffold	na	na	JACATB010000076.1	=	NZ_JACATB010000076.1	Primary Assembly	4854	na
+844	unplaced-scaffold	na	na	JACATB010000010.1	=	NZ_JACATB010000010.1	Primary Assembly	17599	na
+877	unplaced-scaffold	na	na	JACATB010000011.1	=	NZ_JACATB010000011.1	Primary Assembly	17298	na
+8832	unplaced-scaffold	na	na	JACATB010000077.1	=	NZ_JACATB010000077.1	Primary Assembly	4683	na
+891	unplaced-scaffold	na	na	JACATB010000012.1	=	NZ_JACATB010000012.1	Primary Assembly	17141	na
+8987	unplaced-scaffold	na	na	JACATB010000078.1	=	NZ_JACATB010000078.1	Primary Assembly	4642	na
+9154	unplaced-scaffold	na	na	JACATB010000079.1	=	NZ_JACATB010000079.1	Primary Assembly	4593	na
+9257	unplaced-scaffold	na	na	JACATB010000080.1	=	NZ_JACATB010000080.1	Primary Assembly	4569	na
+931	unplaced-scaffold	na	na	JACATB010000013.1	=	NZ_JACATB010000013.1	Primary Assembly	16769	na
+9415	unplaced-scaffold	na	na	JACATB010000081.1	=	NZ_JACATB010000081.1	Primary Assembly	4526	na
+9470	unplaced-scaffold	na	na	JACATB010000082.1	=	NZ_JACATB010000082.1	Primary Assembly	4509	na
+953	unplaced-scaffold	na	na	JACATB010000014.1	=	NZ_JACATB010000014.1	Primary Assembly	16615	na
+9576	unplaced-scaffold	na	na	JACATB010000083.1	=	NZ_JACATB010000083.1	Primary Assembly	4480	na
+9694	unplaced-scaffold	na	na	JACATB010000084.1	=	NZ_JACATB010000084.1	Primary Assembly	4449	na
+978	unplaced-scaffold	na	na	JACATB010000015.1	=	NZ_JACATB010000015.1	Primary Assembly	16434	na
+9993	unplaced-scaffold	na	na	JACATB010000085.1	=	NZ_JACATB010000085.1	Primary Assembly	4368	na

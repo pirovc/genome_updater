@@ -1,0 +1,33 @@
+# Assembly name:  ASM522252v1
+# Organism name:  Metallosphaera prunae (crenarchaeotes)
+# Infraspecific name:  strain=Ron 12/II
+# Taxid:          47304
+# BioSample:      SAMN09071532
+# BioProject:     PRJNA463410
+# Submitter:      North Carolina State University
+# Date:           2019-05-07
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Complete Genome
+# Genome representation: full
+# Assembly method: April-2018 v. April-2018
+# Expected final version: yes
+# Genome coverage: 734X
+# Sequencing technology: PacBio
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_005222525.1
+# RefSeq assembly accession: GCF_005222525.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_005222535.1	GCF_005222535.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ANONYMOUS	assembled-molecule	na	Chromosome	CP031156.1	=	NZ_CP031156.1	Primary Assembly	2202576	na

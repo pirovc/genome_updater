@@ -1,0 +1,233 @@
+# Assembly name:  Linin1
+# Organism name:  Lindgomyces ingoldianus (ascomycetes)
+# Infraspecific name:  strain=ATCC 200398
+# Taxid:          673940
+# BioSample:      SAMN05446602
+# BioProject:     PRJNA333498
+# Submitter:      DOE Joint Genome Institute
+# Date:           2020-01-31
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    JAAEJD01
+# Assembly method: AllPathsLG v. R49403
+# Expected final version: no
+# Genome coverage: 70.4x
+# Sequencing technology: Illumina
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_010093535.1
+# RefSeq assembly accession: GCF_010093535.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_010093575.1	GCF_010093575.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+BDR25scaffold_1	unplaced-scaffold	na	na	MU003492.1	=	NW_022985162.1	Primary Assembly	3533513	na
+BDR25scaffold_2	unplaced-scaffold	na	na	MU003493.1	=	NW_022985163.1	Primary Assembly	2763343	na
+BDR25scaffold_3	unplaced-scaffold	na	na	MU003494.1	=	NW_022985164.1	Primary Assembly	2518872	na
+BDR25scaffold_4	unplaced-scaffold	na	na	MU003495.1	=	NW_022985165.1	Primary Assembly	2398365	na
+BDR25scaffold_5	unplaced-scaffold	na	na	MU003496.1	=	NW_022985166.1	Primary Assembly	2122435	na
+BDR25scaffold_6	unplaced-scaffold	na	na	MU003497.1	=	NW_022985167.1	Primary Assembly	2121508	na
+BDR25scaffold_7	unplaced-scaffold	na	na	MU003498.1	=	NW_022985168.1	Primary Assembly	2050861	na
+BDR25scaffold_8	unplaced-scaffold	na	na	MU003499.1	=	NW_022985169.1	Primary Assembly	1744002	na
+BDR25scaffold_9	unplaced-scaffold	na	na	MU003500.1	=	NW_022985170.1	Primary Assembly	1664003	na
+BDR25scaffold_10	unplaced-scaffold	na	na	MU003501.1	=	NW_022985171.1	Primary Assembly	1648768	na
+BDR25scaffold_11	unplaced-scaffold	na	na	MU003502.1	=	NW_022985172.1	Primary Assembly	1491888	na
+BDR25scaffold_12	unplaced-scaffold	na	na	MU003503.1	=	NW_022985173.1	Primary Assembly	1473141	na
+BDR25scaffold_13	unplaced-scaffold	na	na	MU003504.1	=	NW_022985174.1	Primary Assembly	1439240	na
+BDR25scaffold_14	unplaced-scaffold	na	na	MU003505.1	=	NW_022985175.1	Primary Assembly	1346674	na
+BDR25scaffold_15	unplaced-scaffold	na	na	MU003506.1	=	NW_022985176.1	Primary Assembly	1325492	na
+BDR25scaffold_16	unplaced-scaffold	na	na	MU003507.1	=	NW_022985177.1	Primary Assembly	1311069	na
+BDR25scaffold_17	unplaced-scaffold	na	na	MU003508.1	=	NW_022985178.1	Primary Assembly	1303334	na
+BDR25scaffold_18	unplaced-scaffold	na	na	MU003509.1	=	NW_022985179.1	Primary Assembly	1293556	na
+BDR25scaffold_19	unplaced-scaffold	na	na	MU003510.1	=	NW_022985180.1	Primary Assembly	1217903	na
+BDR25scaffold_20	unplaced-scaffold	na	na	MU003511.1	=	NW_022985181.1	Primary Assembly	1210239	na
+BDR25scaffold_21	unplaced-scaffold	na	na	MU003512.1	=	NW_022985182.1	Primary Assembly	1199545	na
+BDR25scaffold_22	unplaced-scaffold	na	na	MU003513.1	=	NW_022985183.1	Primary Assembly	1144501	na
+BDR25scaffold_23	unplaced-scaffold	na	na	MU003514.1	=	NW_022985184.1	Primary Assembly	1110312	na
+BDR25scaffold_24	unplaced-scaffold	na	na	MU003515.1	=	NW_022985185.1	Primary Assembly	1096765	na
+BDR25scaffold_25	unplaced-scaffold	na	na	MU003516.1	=	NW_022985186.1	Primary Assembly	1094647	na
+BDR25scaffold_26	unplaced-scaffold	na	na	MU003517.1	=	NW_022985187.1	Primary Assembly	1028036	na
+BDR25scaffold_27	unplaced-scaffold	na	na	MU003518.1	=	NW_022985188.1	Primary Assembly	955470	na
+BDR25scaffold_28	unplaced-scaffold	na	na	MU003519.1	=	NW_022985189.1	Primary Assembly	925311	na
+BDR25scaffold_29	unplaced-scaffold	na	na	MU003520.1	=	NW_022985190.1	Primary Assembly	921246	na
+BDR25scaffold_30	unplaced-scaffold	na	na	MU003521.1	=	NW_022985191.1	Primary Assembly	905103	na
+BDR25scaffold_31	unplaced-scaffold	na	na	MU003522.1	=	NW_022985192.1	Primary Assembly	897240	na
+BDR25scaffold_32	unplaced-scaffold	na	na	MU003523.1	=	NW_022985193.1	Primary Assembly	897057	na
+BDR25scaffold_33	unplaced-scaffold	na	na	MU003524.1	=	NW_022985194.1	Primary Assembly	849911	na
+BDR25scaffold_34	unplaced-scaffold	na	na	MU003525.1	=	NW_022985195.1	Primary Assembly	821745	na
+BDR25scaffold_35	unplaced-scaffold	na	na	MU003526.1	=	NW_022985196.1	Primary Assembly	807515	na
+BDR25scaffold_36	unplaced-scaffold	na	na	MU003527.1	=	NW_022985197.1	Primary Assembly	784471	na
+BDR25scaffold_37	unplaced-scaffold	na	na	MU003528.1	=	NW_022985198.1	Primary Assembly	783642	na
+BDR25scaffold_38	unplaced-scaffold	na	na	MU003529.1	=	NW_022985199.1	Primary Assembly	782664	na
+BDR25scaffold_39	unplaced-scaffold	na	na	MU003530.1	=	NW_022985200.1	Primary Assembly	719055	na
+BDR25scaffold_40	unplaced-scaffold	na	na	MU003531.1	=	NW_022985201.1	Primary Assembly	708550	na
+BDR25scaffold_41	unplaced-scaffold	na	na	MU003532.1	=	NW_022985202.1	Primary Assembly	703150	na
+BDR25scaffold_42	unplaced-scaffold	na	na	MU003533.1	=	NW_022985203.1	Primary Assembly	625144	na
+BDR25scaffold_43	unplaced-scaffold	na	na	MU003534.1	=	NW_022985204.1	Primary Assembly	581428	na
+BDR25scaffold_44	unplaced-scaffold	na	na	MU003535.1	=	NW_022985205.1	Primary Assembly	539180	na
+BDR25scaffold_45	unplaced-scaffold	na	na	MU003536.1	=	NW_022985206.1	Primary Assembly	504190	na
+BDR25scaffold_46	unplaced-scaffold	na	na	MU003537.1	=	NW_022985207.1	Primary Assembly	490098	na
+BDR25scaffold_47	unplaced-scaffold	na	na	MU003538.1	=	NW_022985208.1	Primary Assembly	481215	na
+BDR25scaffold_48	unplaced-scaffold	na	na	MU003539.1	=	NW_022985209.1	Primary Assembly	479498	na
+BDR25scaffold_49	unplaced-scaffold	na	na	MU003540.1	=	NW_022985210.1	Primary Assembly	434183	na
+BDR25scaffold_50	unplaced-scaffold	na	na	MU003541.1	=	NW_022985211.1	Primary Assembly	427138	na
+BDR25scaffold_51	unplaced-scaffold	na	na	MU003542.1	=	NW_022985212.1	Primary Assembly	417384	na
+BDR25scaffold_52	unplaced-scaffold	na	na	MU003543.1	=	NW_022985213.1	Primary Assembly	412657	na
+BDR25scaffold_53	unplaced-scaffold	na	na	MU003544.1	=	NW_022985214.1	Primary Assembly	396026	na
+BDR25scaffold_54	unplaced-scaffold	na	na	MU003545.1	=	NW_022985215.1	Primary Assembly	387795	na
+BDR25scaffold_55	unplaced-scaffold	na	na	MU003546.1	=	NW_022985216.1	Primary Assembly	374899	na
+BDR25scaffold_56	unplaced-scaffold	na	na	MU003547.1	=	NW_022985217.1	Primary Assembly	374366	na
+BDR25scaffold_57	unplaced-scaffold	na	na	MU003548.1	=	NW_022985218.1	Primary Assembly	363587	na
+BDR25scaffold_58	unplaced-scaffold	na	na	MU003549.1	=	NW_022985219.1	Primary Assembly	360577	na
+BDR25scaffold_59	unplaced-scaffold	na	na	MU003550.1	=	NW_022985220.1	Primary Assembly	349655	na
+BDR25scaffold_60	unplaced-scaffold	na	na	MU003551.1	=	NW_022985221.1	Primary Assembly	348243	na
+BDR25scaffold_61	unplaced-scaffold	na	na	MU003552.1	=	NW_022985222.1	Primary Assembly	335948	na
+BDR25scaffold_62	unplaced-scaffold	na	na	MU003553.1	=	NW_022985223.1	Primary Assembly	326978	na
+BDR25scaffold_63	unplaced-scaffold	na	na	MU003554.1	=	NW_022985224.1	Primary Assembly	316960	na
+BDR25scaffold_64	unplaced-scaffold	na	na	MU003555.1	=	NW_022985225.1	Primary Assembly	302977	na
+BDR25scaffold_65	unplaced-scaffold	na	na	MU003556.1	=	NW_022985226.1	Primary Assembly	296428	na
+BDR25scaffold_66	unplaced-scaffold	na	na	MU003557.1	=	NW_022985227.1	Primary Assembly	254839	na
+BDR25scaffold_67	unplaced-scaffold	na	na	MU003558.1	=	NW_022985228.1	Primary Assembly	247283	na
+BDR25scaffold_68	unplaced-scaffold	na	na	MU003559.1	=	NW_022985229.1	Primary Assembly	228670	na
+BDR25scaffold_69	unplaced-scaffold	na	na	MU003560.1	=	NW_022985230.1	Primary Assembly	217928	na
+BDR25scaffold_70	unplaced-scaffold	na	na	MU003561.1	=	NW_022985231.1	Primary Assembly	200432	na
+BDR25scaffold_71	unplaced-scaffold	na	na	MU003562.1	=	NW_022985232.1	Primary Assembly	178035	na
+BDR25scaffold_72	unplaced-scaffold	na	na	MU003563.1	=	NW_022985233.1	Primary Assembly	177394	na
+BDR25scaffold_73	unplaced-scaffold	na	na	MU003564.1	=	NW_022985234.1	Primary Assembly	169828	na
+BDR25scaffold_74	unplaced-scaffold	na	na	MU003565.1	=	NW_022985235.1	Primary Assembly	140967	na
+BDR25scaffold_75	unplaced-scaffold	na	na	MU003566.1	=	NW_022985236.1	Primary Assembly	135604	na
+BDR25scaffold_76	unplaced-scaffold	na	na	MU003567.1	=	NW_022985237.1	Primary Assembly	130312	na
+BDR25scaffold_77	unplaced-scaffold	na	na	MU003568.1	=	NW_022985238.1	Primary Assembly	118140	na
+BDR25scaffold_78	unplaced-scaffold	na	na	MU003569.1	=	NW_022985239.1	Primary Assembly	109567	na
+BDR25scaffold_79	unplaced-scaffold	na	na	MU003570.1	=	NW_022985240.1	Primary Assembly	109035	na
+BDR25scaffold_80	unplaced-scaffold	na	na	MU003571.1	=	NW_022985241.1	Primary Assembly	106903	na
+BDR25scaffold_81	unplaced-scaffold	na	na	MU003572.1	=	NW_022985242.1	Primary Assembly	103594	na
+BDR25scaffold_82	unplaced-scaffold	na	na	MU003573.1	=	NW_022985243.1	Primary Assembly	98553	na
+BDR25scaffold_83	unplaced-scaffold	na	na	MU003574.1	=	NW_022985244.1	Primary Assembly	97327	na
+BDR25scaffold_84	unplaced-scaffold	na	na	MU003575.1	=	NW_022985245.1	Primary Assembly	86895	na
+BDR25scaffold_85	unplaced-scaffold	na	na	MU003576.1	=	NW_022985246.1	Primary Assembly	85974	na
+BDR25scaffold_86	unplaced-scaffold	na	na	MU003577.1	=	NW_022985247.1	Primary Assembly	85179	na
+BDR25scaffold_87	unplaced-scaffold	na	na	MU003578.1	=	NW_022985248.1	Primary Assembly	80189	na
+BDR25scaffold_88	unplaced-scaffold	na	na	MU003579.1	=	NW_022985249.1	Primary Assembly	65544	na
+BDR25scaffold_89	unplaced-scaffold	na	na	MU003580.1	=	NW_022985250.1	Primary Assembly	64987	na
+BDR25scaffold_90	unplaced-scaffold	na	na	MU003581.1	=	NW_022985251.1	Primary Assembly	63475	na
+BDR25scaffold_91	unplaced-scaffold	na	na	MU003582.1	=	NW_022985252.1	Primary Assembly	61760	na
+BDR25scaffold_92	unplaced-scaffold	na	na	MU003583.1	=	NW_022985253.1	Primary Assembly	49091	na
+BDR25scaffold_93	unplaced-scaffold	na	na	MU003584.1	=	NW_022985254.1	Primary Assembly	30873	na
+BDR25scaffold_94	unplaced-scaffold	na	na	MU003585.1	=	NW_022985255.1	Primary Assembly	27526	na
+BDR25scaffold_95	unplaced-scaffold	na	na	MU003586.1	=	NW_022985256.1	Primary Assembly	26833	na
+BDR25scaffold_96	unplaced-scaffold	na	na	MU003587.1	=	NW_022985257.1	Primary Assembly	24598	na
+BDR25scaffold_97	unplaced-scaffold	na	na	MU003588.1	=	NW_022985258.1	Primary Assembly	20267	na
+BDR25scaffold_98	unplaced-scaffold	na	na	MU003589.1	=	NW_022985259.1	Primary Assembly	19566	na
+BDR25scaffold_99	unplaced-scaffold	na	na	MU003590.1	=	NW_022985260.1	Primary Assembly	18194	na
+BDR25scaffold_100	unplaced-scaffold	na	na	MU003591.1	=	NW_022985261.1	Primary Assembly	13589	na
+BDR25scaffold_101	unplaced-scaffold	na	na	MU003592.1	=	NW_022985262.1	Primary Assembly	12335	na
+BDR25scaffold_102	unplaced-scaffold	na	na	MU003593.1	=	NW_022985263.1	Primary Assembly	11920	na
+BDR25scaffold_103	unplaced-scaffold	na	na	MU003594.1	=	NW_022985264.1	Primary Assembly	11446	na
+BDR25scaffold_104	unplaced-scaffold	na	na	MU003595.1	=	NW_022985265.1	Primary Assembly	10548	na
+BDR25scaffold_105	unplaced-scaffold	na	na	MU003596.1	=	NW_022985266.1	Primary Assembly	9201	na
+BDR25scaffold_106	unplaced-scaffold	na	na	MU003597.1	=	NW_022985267.1	Primary Assembly	8993	na
+BDR25scaffold_107	unplaced-scaffold	na	na	MU003598.1	=	NW_022985268.1	Primary Assembly	8391	na
+BDR25scaffold_108	unplaced-scaffold	na	na	MU003599.1	=	NW_022985269.1	Primary Assembly	8205	na
+BDR25scaffold_109	unplaced-scaffold	na	na	MU003600.1	=	NW_022985270.1	Primary Assembly	7842	na
+BDR25scaffold_110	unplaced-scaffold	na	na	MU003601.1	=	NW_022985271.1	Primary Assembly	7817	na
+BDR25scaffold_111	unplaced-scaffold	na	na	MU003602.1	=	NW_022985272.1	Primary Assembly	7296	na
+BDR25scaffold_112	unplaced-scaffold	na	na	MU003603.1	=	NW_022985273.1	Primary Assembly	7163	na
+BDR25scaffold_113	unplaced-scaffold	na	na	MU003604.1	=	NW_022985274.1	Primary Assembly	7118	na
+BDR25scaffold_114	unplaced-scaffold	na	na	MU003605.1	=	NW_022985275.1	Primary Assembly	7115	na
+BDR25scaffold_115	unplaced-scaffold	na	na	MU003606.1	=	NW_022985276.1	Primary Assembly	7095	na
+BDR25scaffold_116	unplaced-scaffold	na	na	MU003607.1	=	NW_022985277.1	Primary Assembly	6963	na
+BDR25scaffold_117	unplaced-scaffold	na	na	MU003608.1	=	NW_022985278.1	Primary Assembly	5853	na
+BDR25scaffold_118	unplaced-scaffold	na	na	MU003609.1	=	NW_022985279.1	Primary Assembly	5805	na
+BDR25scaffold_119	unplaced-scaffold	na	na	MU003610.1	=	NW_022985280.1	Primary Assembly	5584	na
+BDR25scaffold_120	unplaced-scaffold	na	na	MU003611.1	=	NW_022985281.1	Primary Assembly	5227	na
+BDR25scaffold_121	unplaced-scaffold	na	na	MU003612.1	=	NW_022985282.1	Primary Assembly	4831	na
+BDR25scaffold_122	unplaced-scaffold	na	na	MU003613.1	=	NW_022985283.1	Primary Assembly	4772	na
+BDR25scaffold_123	unplaced-scaffold	na	na	MU003614.1	=	NW_022985284.1	Primary Assembly	4621	na
+BDR25scaffold_124	unplaced-scaffold	na	na	MU003615.1	=	NW_022985285.1	Primary Assembly	4535	na
+BDR25scaffold_125	unplaced-scaffold	na	na	MU003616.1	=	NW_022985286.1	Primary Assembly	4339	na
+BDR25scaffold_126	unplaced-scaffold	na	na	MU003617.1	=	NW_022985287.1	Primary Assembly	4168	na
+BDR25scaffold_127	unplaced-scaffold	na	na	MU003618.1	=	NW_022985288.1	Primary Assembly	3970	na
+BDR25scaffold_128	unplaced-scaffold	na	na	MU003619.1	=	NW_022985289.1	Primary Assembly	3779	na
+BDR25scaffold_129	unplaced-scaffold	na	na	MU003620.1	=	NW_022985290.1	Primary Assembly	3558	na
+BDR25scaffold_130	unplaced-scaffold	na	na	MU003621.1	=	NW_022985291.1	Primary Assembly	3283	na
+BDR25scaffold_131	unplaced-scaffold	na	na	MU003622.1	=	NW_022985292.1	Primary Assembly	3262	na
+BDR25scaffold_132	unplaced-scaffold	na	na	MU003623.1	=	NW_022985293.1	Primary Assembly	3261	na
+BDR25scaffold_133	unplaced-scaffold	na	na	MU003624.1	=	NW_022985294.1	Primary Assembly	3234	na
+BDR25scaffold_134	unplaced-scaffold	na	na	MU003625.1	=	NW_022985295.1	Primary Assembly	3164	na
+BDR25scaffold_135	unplaced-scaffold	na	na	MU003626.1	=	NW_022985296.1	Primary Assembly	2824	na
+BDR25scaffold_136	unplaced-scaffold	na	na	MU003627.1	=	NW_022985297.1	Primary Assembly	2816	na
+BDR25scaffold_137	unplaced-scaffold	na	na	MU003628.1	=	NW_022985298.1	Primary Assembly	2814	na
+BDR25scaffold_138	unplaced-scaffold	na	na	MU003629.1	=	NW_022985299.1	Primary Assembly	2806	na
+BDR25scaffold_139	unplaced-scaffold	na	na	MU003630.1	=	NW_022985300.1	Primary Assembly	2752	na
+BDR25scaffold_140	unplaced-scaffold	na	na	MU003631.1	=	NW_022985301.1	Primary Assembly	2653	na
+BDR25scaffold_141	unplaced-scaffold	na	na	MU003632.1	=	NW_022985302.1	Primary Assembly	2647	na
+BDR25scaffold_142	unplaced-scaffold	na	na	MU003633.1	=	NW_022985303.1	Primary Assembly	2599	na
+BDR25scaffold_143	unplaced-scaffold	na	na	MU003634.1	=	NW_022985304.1	Primary Assembly	2573	na
+BDR25scaffold_144	unplaced-scaffold	na	na	MU003635.1	=	NW_022985305.1	Primary Assembly	2513	na
+BDR25scaffold_145	unplaced-scaffold	na	na	MU003636.1	=	NW_022985306.1	Primary Assembly	2473	na
+BDR25scaffold_146	unplaced-scaffold	na	na	MU003637.1	=	NW_022985307.1	Primary Assembly	2456	na
+BDR25scaffold_147	unplaced-scaffold	na	na	MU003638.1	=	NW_022985308.1	Primary Assembly	2438	na
+BDR25scaffold_148	unplaced-scaffold	na	na	MU003639.1	=	NW_022985309.1	Primary Assembly	2420	na
+BDR25scaffold_149	unplaced-scaffold	na	na	MU003640.1	=	NW_022985310.1	Primary Assembly	2326	na
+BDR25scaffold_150	unplaced-scaffold	na	na	MU003641.1	=	NW_022985311.1	Primary Assembly	2286	na
+BDR25scaffold_151	unplaced-scaffold	na	na	MU003642.1	=	NW_022985312.1	Primary Assembly	2284	na
+BDR25scaffold_152	unplaced-scaffold	na	na	MU003643.1	=	NW_022985313.1	Primary Assembly	2260	na
+BDR25scaffold_153	unplaced-scaffold	na	na	MU003644.1	=	NW_022985314.1	Primary Assembly	2248	na
+BDR25scaffold_154	unplaced-scaffold	na	na	MU003645.1	=	NW_022985315.1	Primary Assembly	2244	na
+BDR25scaffold_155	unplaced-scaffold	na	na	MU003646.1	=	NW_022985316.1	Primary Assembly	2144	na
+BDR25scaffold_156	unplaced-scaffold	na	na	MU003647.1	=	NW_022985317.1	Primary Assembly	2140	na
+BDR25scaffold_157	unplaced-scaffold	na	na	MU003648.1	=	NW_022985318.1	Primary Assembly	2110	na
+BDR25scaffold_158	unplaced-scaffold	na	na	MU003649.1	=	NW_022985319.1	Primary Assembly	2109	na
+BDR25scaffold_159	unplaced-scaffold	na	na	MU003650.1	=	NW_022985320.1	Primary Assembly	2079	na
+BDR25scaffold_160	unplaced-scaffold	na	na	MU003651.1	=	NW_022985321.1	Primary Assembly	2034	na
+BDR25scaffold_161	unplaced-scaffold	na	na	MU003652.1	=	NW_022985322.1	Primary Assembly	2014	na
+BDR25scaffold_162	unplaced-scaffold	na	na	MU003653.1	=	NW_022985323.1	Primary Assembly	1984	na
+BDR25scaffold_163	unplaced-scaffold	na	na	MU003654.1	=	NW_022985324.1	Primary Assembly	1971	na
+BDR25scaffold_164	unplaced-scaffold	na	na	MU003655.1	=	NW_022985325.1	Primary Assembly	1919	na
+BDR25scaffold_165	unplaced-scaffold	na	na	MU003656.1	=	NW_022985326.1	Primary Assembly	1912	na
+BDR25scaffold_166	unplaced-scaffold	na	na	MU003657.1	=	NW_022985327.1	Primary Assembly	1893	na
+BDR25scaffold_167	unplaced-scaffold	na	na	MU003658.1	=	NW_022985328.1	Primary Assembly	1860	na
+BDR25scaffold_168	unplaced-scaffold	na	na	MU003659.1	=	NW_022985329.1	Primary Assembly	1826	na
+BDR25scaffold_169	unplaced-scaffold	na	na	MU003660.1	=	NW_022985330.1	Primary Assembly	1776	na
+BDR25scaffold_170	unplaced-scaffold	na	na	MU003661.1	=	NW_022985331.1	Primary Assembly	1753	na
+BDR25scaffold_171	unplaced-scaffold	na	na	MU003662.1	=	NW_022985332.1	Primary Assembly	1725	na
+BDR25scaffold_172	unplaced-scaffold	na	na	MU003663.1	=	NW_022985333.1	Primary Assembly	1720	na
+BDR25scaffold_173	unplaced-scaffold	na	na	MU003664.1	=	NW_022985334.1	Primary Assembly	1692	na
+BDR25scaffold_174	unplaced-scaffold	na	na	MU003665.1	=	NW_022985335.1	Primary Assembly	1657	na
+BDR25scaffold_175	unplaced-scaffold	na	na	MU003666.1	=	NW_022985336.1	Primary Assembly	1648	na
+BDR25scaffold_176	unplaced-scaffold	na	na	MU003667.1	=	NW_022985337.1	Primary Assembly	1605	na
+BDR25scaffold_177	unplaced-scaffold	na	na	MU003668.1	=	NW_022985338.1	Primary Assembly	1536	na
+BDR25scaffold_178	unplaced-scaffold	na	na	MU003669.1	=	NW_022985339.1	Primary Assembly	1531	na
+BDR25scaffold_179	unplaced-scaffold	na	na	MU003670.1	=	NW_022985340.1	Primary Assembly	1529	na
+BDR25scaffold_180	unplaced-scaffold	na	na	MU003671.1	=	NW_022985341.1	Primary Assembly	1520	na
+BDR25scaffold_181	unplaced-scaffold	na	na	MU003672.1	=	NW_022985342.1	Primary Assembly	1479	na
+BDR25scaffold_182	unplaced-scaffold	na	na	MU003673.1	=	NW_022985343.1	Primary Assembly	1478	na
+BDR25scaffold_183	unplaced-scaffold	na	na	MU003674.1	=	NW_022985344.1	Primary Assembly	1463	na
+BDR25scaffold_184	unplaced-scaffold	na	na	MU003675.1	=	NW_022985345.1	Primary Assembly	1425	na
+BDR25scaffold_185	unplaced-scaffold	na	na	MU003676.1	=	NW_022985346.1	Primary Assembly	1419	na
+BDR25scaffold_186	unplaced-scaffold	na	na	MU003677.1	=	NW_022985347.1	Primary Assembly	1404	na
+BDR25scaffold_187	unplaced-scaffold	na	na	MU003678.1	=	NW_022985348.1	Primary Assembly	1397	na
+BDR25scaffold_188	unplaced-scaffold	na	na	MU003679.1	=	NW_022985349.1	Primary Assembly	1378	na
+BDR25scaffold_189	unplaced-scaffold	na	na	MU003680.1	=	NW_022985350.1	Primary Assembly	1377	na
+BDR25scaffold_190	unplaced-scaffold	na	na	MU003681.1	=	NW_022985351.1	Primary Assembly	1355	na
+BDR25scaffold_191	unplaced-scaffold	na	na	MU003682.1	=	NW_022985352.1	Primary Assembly	1320	na
+BDR25scaffold_192	unplaced-scaffold	na	na	MU003683.1	=	NW_022985353.1	Primary Assembly	1286	na
+BDR25scaffold_193	unplaced-scaffold	na	na	MU003684.1	=	NW_022985354.1	Primary Assembly	1263	na
+BDR25scaffold_194	unplaced-scaffold	na	na	MU003685.1	=	NW_022985355.1	Primary Assembly	1241	na
+BDR25scaffold_195	unplaced-scaffold	na	na	MU003686.1	=	NW_022985356.1	Primary Assembly	1238	na
+BDR25scaffold_196	unplaced-scaffold	na	na	MU003687.1	=	NW_022985357.1	Primary Assembly	1229	na
+BDR25scaffold_197	unplaced-scaffold	na	na	MU003688.1	=	NW_022985358.1	Primary Assembly	1195	na
+BDR25scaffold_198	unplaced-scaffold	na	na	MU003689.1	=	NW_022985359.1	Primary Assembly	1170	na
+BDR25scaffold_199	unplaced-scaffold	na	na	MU003690.1	=	NW_022985360.1	Primary Assembly	1057	na
+BDR25scaffold_200	unplaced-scaffold	na	na	MU003691.1	=	NW_022985361.1	Primary Assembly	1012	na

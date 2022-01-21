@@ -1,0 +1,69 @@
+# Assembly name:  ASM1830448v1
+# Organism name:  Candidatus Diapherotrites archaeon (archaea)
+# Isolate:  RIFCSPLOWO2_01_FULL_43_13
+# Taxid:          2026736
+# BioSample:      SAMN18341270
+# BioProject:     PRJNA288027
+# Submitter:      Banfield Lab, University of California, Berkeley
+# Date:           2021-05-07
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    JAGVWB01
+# Assembly method: IDBA_UD v. 06.01.2014s
+# Expected final version: yes
+# Genome coverage: 10x
+# Sequencing technology: Illumina HiSeq2000
+# GenBank assembly accession: GCA_018304485.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_018304525.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+rifcsplowo2_01_scaffold_10332	unplaced-scaffold	na	na	JAGVWB010000014.1	<>	na	Primary Assembly	13862	na
+rifcsplowo2_01_scaffold_10371	unplaced-scaffold	na	na	JAGVWB010000015.1	<>	na	Primary Assembly	14411	na
+rifcsplowo2_01_scaffold_11288	unplaced-scaffold	na	na	JAGVWB010000002.1	<>	na	Primary Assembly	21146	na
+rifcsplowo2_01_scaffold_1351	unplaced-scaffold	na	na	JAGVWB010000005.1	<>	na	Primary Assembly	74954	na
+rifcsplowo2_01_scaffold_1367	unplaced-scaffold	na	na	JAGVWB010000006.1	<>	na	Primary Assembly	37135	na
+rifcsplowo2_01_scaffold_15631	unplaced-scaffold	na	na	JAGVWB010000003.1	<>	na	Primary Assembly	11228	na
+rifcsplowo2_01_scaffold_16386	unplaced-scaffold	na	na	JAGVWB010000025.1	<>	na	Primary Assembly	18791	na
+rifcsplowo2_01_scaffold_1796	unplaced-scaffold	na	na	JAGVWB010000007.1	<>	na	Primary Assembly	47637	na
+rifcsplowo2_01_scaffold_19342	unplaced-scaffold	na	na	JAGVWB010000024.1	<>	na	Primary Assembly	9411	na
+rifcsplowo2_01_scaffold_24134	unplaced-scaffold	na	na	JAGVWB010000013.1	<>	na	Primary Assembly	11609	na
+rifcsplowo2_01_scaffold_27206	unplaced-scaffold	na	na	JAGVWB010000008.1	<>	na	Primary Assembly	7583	na
+rifcsplowo2_01_scaffold_27451	unplaced-scaffold	na	na	JAGVWB010000009.1	<>	na	Primary Assembly	30305	na
+rifcsplowo2_01_scaffold_2898	unplaced-scaffold	na	na	JAGVWB010000004.1	<>	na	Primary Assembly	41483	na
+rifcsplowo2_01_scaffold_33191	unplaced-scaffold	na	na	JAGVWB010000016.1	<>	na	Primary Assembly	6931	na
+rifcsplowo2_01_scaffold_33338	unplaced-scaffold	na	na	JAGVWB010000017.1	<>	na	Primary Assembly	12185	na
+rifcsplowo2_01_scaffold_33499	unplaced-scaffold	na	na	JAGVWB010000018.1	<>	na	Primary Assembly	10133	na
+rifcsplowo2_01_scaffold_3588	unplaced-scaffold	na	na	JAGVWB010000023.1	<>	na	Primary Assembly	59853	na
+rifcsplowo2_01_scaffold_43640	unplaced-scaffold	na	na	JAGVWB010000026.1	<>	na	Primary Assembly	10361	na
+rifcsplowo2_01_scaffold_45409	unplaced-scaffold	na	na	JAGVWB010000034.1	<>	na	Primary Assembly	8572	na
+rifcsplowo2_01_scaffold_4674	unplaced-scaffold	na	na	JAGVWB010000010.1	<>	na	Primary Assembly	20785	na
+rifcsplowo2_01_scaffold_4700	unplaced-scaffold	na	na	JAGVWB010000011.1	<>	na	Primary Assembly	20742	na
+rifcsplowo2_01_scaffold_48943	unplaced-scaffold	na	na	JAGVWB010000035.1	<>	na	Primary Assembly	6421	na
+rifcsplowo2_01_scaffold_4947	unplaced-scaffold	na	na	JAGVWB010000012.1	<>	na	Primary Assembly	39451	na
+rifcsplowo2_01_scaffold_5090	unplaced-scaffold	na	na	JAGVWB010000028.1	<>	na	Primary Assembly	21350	na
+rifcsplowo2_01_scaffold_5352	unplaced-scaffold	na	na	JAGVWB010000029.1	<>	na	Primary Assembly	36464	na
+rifcsplowo2_01_scaffold_5397	unplaced-scaffold	na	na	JAGVWB010000030.1	<>	na	Primary Assembly	19659	na
+rifcsplowo2_01_scaffold_5482	unplaced-scaffold	na	na	JAGVWB010000031.1	<>	na	Primary Assembly	19080	na
+rifcsplowo2_01_scaffold_55834	unplaced-scaffold	na	na	JAGVWB010000036.1	<>	na	Primary Assembly	9932	na
+rifcsplowo2_01_scaffold_5708	unplaced-scaffold	na	na	JAGVWB010000032.1	<>	na	Primary Assembly	33754	na
+rifcsplowo2_01_scaffold_5774	unplaced-scaffold	na	na	JAGVWB010000033.1	<>	na	Primary Assembly	18568	na
+rifcsplowo2_01_scaffold_6971	unplaced-scaffold	na	na	JAGVWB010000001.1	<>	na	Primary Assembly	21679	na
+rifcsplowo2_01_scaffold_69883	unplaced-scaffold	na	na	JAGVWB010000037.1	<>	na	Primary Assembly	7115	na
+rifcsplowo2_01_scaffold_7395	unplaced-scaffold	na	na	JAGVWB010000022.1	<>	na	Primary Assembly	16289	na
+rifcsplowo2_01_scaffold_75947	unplaced-scaffold	na	na	JAGVWB010000039.1	<>	na	Primary Assembly	7320	na
+rifcsplowo2_01_scaffold_8453	unplaced-scaffold	na	na	JAGVWB010000020.1	<>	na	Primary Assembly	17823	na
+rifcsplowo2_01_scaffold_860	unplaced-scaffold	na	na	JAGVWB010000019.1	<>	na	Primary Assembly	59565	na
+rifcsplowo2_01_scaffold_8855	unplaced-scaffold	na	na	JAGVWB010000021.1	<>	na	Primary Assembly	15435	na
+rifcsplowo2_01_scaffold_95788	unplaced-scaffold	na	na	JAGVWB010000038.1	<>	na	Primary Assembly	5255	na
+rifcsplowo2_01_scaffold_97379	unplaced-scaffold	na	na	JAGVWB010000040.1	<>	na	Primary Assembly	5648	na
+rifcsplowo2_01_scaffold_9894	unplaced-scaffold	na	na	JAGVWB010000027.1	<>	na	Primary Assembly	20520	na

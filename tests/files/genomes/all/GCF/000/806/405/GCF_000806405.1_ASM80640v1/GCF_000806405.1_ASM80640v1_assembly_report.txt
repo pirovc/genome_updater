@@ -1,0 +1,46 @@
+# Assembly name:  ASM80640v1
+# Organism name:  Listeria monocytogenes (firmicutes)
+# Infraspecific name:  strain=BHU3
+# Taxid:          1639
+# BioSample:      SAMN03222688
+# BioProject:     PRJNA268442
+# Submitter:      Banaras Hindu University
+# Date:           2014-12-22
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    JUKG01
+# Assembly method: Newbler v. 2.6
+# Expected final version: yes
+# Genome coverage: 83.0x
+# Sequencing technology: IonTorrent
+# GenBank assembly accession: GCA_000806405.1
+# RefSeq assembly accession: GCF_000806405.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000806435.1	GCF_000806435.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+sctg_0001_0001	unplaced-scaffold	na	na	JUKG01000001.1	=	NZ_JUKG01000001.1	Primary Assembly	989597	na
+sctg_0002_0001	unplaced-scaffold	na	na	JUKG01000002.1	=	NZ_JUKG01000002.1	Primary Assembly	540218	na
+sctg_0003_0001	unplaced-scaffold	na	na	JUKG01000003.1	=	NZ_JUKG01000003.1	Primary Assembly	476340	na
+sctg_0004_0001	unplaced-scaffold	na	na	JUKG01000004.1	=	NZ_JUKG01000004.1	Primary Assembly	367479	na
+sctg_0005_0001	unplaced-scaffold	na	na	JUKG01000005.1	=	NZ_JUKG01000005.1	Primary Assembly	224610	na
+sctg_0006_0001	unplaced-scaffold	na	na	JUKG01000006.1	=	NZ_JUKG01000006.1	Primary Assembly	144084	na
+sctg_0007_0001	unplaced-scaffold	na	na	JUKG01000007.1	=	NZ_JUKG01000007.1	Primary Assembly	99528	na
+sctg_0008_0001	unplaced-scaffold	na	na	JUKG01000008.1	=	NZ_JUKG01000008.1	Primary Assembly	31922	na
+sctg_0009_0001	unplaced-scaffold	na	na	JUKG01000009.1	=	NZ_JUKG01000009.1	Primary Assembly	28215	na
+sctg_0010_0001	unplaced-scaffold	na	na	JUKG01000010.1	=	NZ_JUKG01000010.1	Primary Assembly	16426	na
+sctg_0011_0001	unplaced-scaffold	na	na	JUKG01000011.1	=	NZ_JUKG01000011.1	Primary Assembly	11111	na
+sctg_0012_0001	unplaced-scaffold	na	na	JUKG01000012.1	=	NZ_JUKG01000012.1	Primary Assembly	6371	na
+sctg_0013_0001	unplaced-scaffold	na	na	JUKG01000013.1	=	NZ_JUKG01000013.1	Primary Assembly	4731	na
+sctg_0014_0001	unplaced-scaffold	na	na	JUKG01000014.1	=	NZ_JUKG01000014.1	Primary Assembly	3297	na
+sctg_0015_0001	unplaced-scaffold	na	na	JUKG01000015.1	=	NZ_JUKG01000015.1	Primary Assembly	2880	na

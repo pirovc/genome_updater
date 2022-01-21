@@ -1,0 +1,36 @@
+# Assembly name:  ASM540632v1
+# Organism name:  Haloferax mediterranei ATCC 33500 (euryarchaeotes)
+# Infraspecific name:  strain=ATCC 33500
+# Taxid:          523841
+# BioSample:      SAMN11356524
+# BioProject:     PRJNA412908
+# Submitter:      University of Maryland
+# Date:           2019-05-16
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Complete Genome
+# Genome representation: full
+# Assembly method: HGAP v. April-2019
+# Expected final version: yes
+# Genome coverage: 475.0x
+# Sequencing technology: PacBio RSII
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_005406325.1
+# RefSeq assembly accession: GCF_005406325.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_005406335.1	GCF_005406335.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ANONYMOUS	assembled-molecule	na	Chromosome	CP039139.1	=	NZ_CP039139.1	Primary Assembly	2948887	na
+pHME132	assembled-molecule	pHME132	Plasmid	CP039142.1	=	NZ_CP039142.1	Primary Assembly	131975	na
+pHME322	assembled-molecule	pHME322	Plasmid	CP039141.1	=	NZ_CP039141.1	Primary Assembly	321907	na
+pHME505	assembled-molecule	pHME505	Plasmid	CP039140.1	=	NZ_CP039140.1	Primary Assembly	504704	na

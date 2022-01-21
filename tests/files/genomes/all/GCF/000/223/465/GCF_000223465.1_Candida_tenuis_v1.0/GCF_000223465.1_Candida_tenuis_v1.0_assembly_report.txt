@@ -1,0 +1,57 @@
+# Assembly name:  Candida tenuis v1.0
+# Organism name:  Yamadazyma tenuis ATCC 10573 (budding yeasts)
+# Infraspecific name:  strain=ATCC 10573
+# Taxid:          590646
+# BioSample:      SAMN00715317
+# BioProject:     PRJNA33673
+# Submitter:      DOE Joint Genome Institute
+# Date:           2011-08-25
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    AEIM01
+# Assembly method: Newbler v. 2.3 (pre-release)
+# Genome coverage: 26.9x
+# Sequencing technology: 454; Sanger
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000223465.1
+# RefSeq assembly accession: GCF_000223465.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000223475.1	GCF_000223475.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+CANTEscaffold_00001	unplaced-scaffold	na	na	GL996507.1	=	NW_006281226.1	Primary Assembly	2876	na
+CANTEscaffold_00002	unplaced-scaffold	na	na	GL996508.1	=	NW_006281227.1	Primary Assembly	2922	na
+CANTEscaffold_00003	unplaced-scaffold	na	na	GL996509.1	=	NW_006281228.1	Primary Assembly	5317	na
+CANTEscaffold_00004	unplaced-scaffold	na	na	GL996510.1	=	NW_006281229.1	Primary Assembly	858000	na
+CANTEscaffold_00005	unplaced-scaffold	na	na	GL996511.1	=	NW_006281230.1	Primary Assembly	3716	na
+CANTEscaffold_00006	unplaced-scaffold	na	na	GL996512.1	=	NW_006281231.1	Primary Assembly	1222892	na
+CANTEscaffold_00007	unplaced-scaffold	na	na	GL996513.1	=	NW_006281232.1	Primary Assembly	7959	na
+CANTEscaffold_00008	unplaced-scaffold	na	na	GL996514.1	=	NW_006281233.1	Primary Assembly	537387	na
+CANTEscaffold_00009	unplaced-scaffold	na	na	GL996515.1	=	NW_006281234.1	Primary Assembly	1099311	na
+CANTEscaffold_00010	unplaced-scaffold	na	na	GL996516.1	=	NW_006281235.1	Primary Assembly	12113	na
+CANTEscaffold_00011	unplaced-scaffold	na	na	GL996517.1	=	NW_006281236.1	Primary Assembly	5803	na
+CANTEscaffold_00012	unplaced-scaffold	na	na	GL996518.1	=	NW_006281237.1	Primary Assembly	2621	na
+CANTEscaffold_00013	unplaced-scaffold	na	na	GL996519.1	=	NW_006281238.1	Primary Assembly	3050	na
+CANTEscaffold_00014	unplaced-scaffold	na	na	GL996520.1	=	NW_006281239.1	Primary Assembly	2695	na
+CANTEscaffold_00015	unplaced-scaffold	na	na	GL996521.1	=	NW_006281240.1	Primary Assembly	1123423	na
+CANTEscaffold_00016	unplaced-scaffold	na	na	GL996522.1	=	NW_006281241.1	Primary Assembly	2461	na
+CANTEscaffold_00017	unplaced-scaffold	na	na	GL996523.1	=	NW_006281242.1	Primary Assembly	2441	na
+CANTEscaffold_00018	unplaced-scaffold	na	na	GL996524.1	=	NW_006281243.1	Primary Assembly	1128273	na
+CANTEscaffold_00019	unplaced-scaffold	na	na	GL996525.1	=	NW_006281244.1	Primary Assembly	2454	na
+CANTEscaffold_00020	unplaced-scaffold	na	na	GL996526.1	=	NW_006281245.1	Primary Assembly	3706	na
+CANTEscaffold_00021	unplaced-scaffold	na	na	GL996527.1	=	NW_006281246.1	Primary Assembly	2534490	na
+CANTEscaffold_00022	unplaced-scaffold	na	na	GL996528.1	=	NW_006281247.1	Primary Assembly	2165475	na
+CANTEscaffold_00023	unplaced-scaffold	na	na	GL996529.1	=	NW_006281248.1	Primary Assembly	11614	na
+CANTEscaffold_00024	unplaced-scaffold	na	na	GL996530.1	=	NW_006281249.1	Primary Assembly	3629	na
+CANTEscaffold_00025	unplaced-scaffold	na	na	GL996531.1	=	NW_006281250.1	Primary Assembly	2422	na

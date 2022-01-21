@@ -1,0 +1,202 @@
+# Assembly name:  ASM870459v1
+# Organism name:  Diutina rugosa (budding yeasts)
+# Infraspecific name:  strain=CBS 613
+# Taxid:          5481
+# BioSample:      SAMN11490865
+# BioProject:     PRJNA531406
+# Submitter:      Centre for Genomic Regulation
+# Date:           2019-09-26
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    SWFT01
+# Assembly method: SOAPdenovo v. 2.04; Redundans v. 0.13c
+# Expected final version: yes
+# Genome coverage: 200.0x
+# Sequencing technology: Illumina HiSeq
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_008704595.1
+# RefSeq assembly accession: GCF_008704595.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_008704615.1	GCF_008704615.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+scaffold100_size9914	unplaced-scaffold	na	na	SWFT01000014.1	=	NW_022995064.1	Primary Assembly	9915	na
+scaffold101_size9177	unplaced-scaffold	na	na	SWFT01000095.1	=	NW_022995145.1	Primary Assembly	9164	na
+scaffold102_size7680	unplaced-scaffold	na	na	SWFT01000011.1	=	NW_022995061.1	Primary Assembly	7680	na
+scaffold103_size7667	unplaced-scaffold	na	na	SWFT01000128.1	=	NW_022995178.1	Primary Assembly	7668	na
+scaffold104_size7572	unplaced-scaffold	na	na	SWFT01000136.1	=	NW_022995186.1	Primary Assembly	7644	na
+scaffold105_size6741	unplaced-scaffold	na	na	SWFT01000015.1	=	NW_022995065.1	Primary Assembly	6296	na
+scaffold106_size5521	unplaced-scaffold	na	na	SWFT01000037.1	=	NW_022995087.1	Primary Assembly	5521	na
+scaffold107_size5520	unplaced-scaffold	na	na	SWFT01000043.1	=	NW_022995093.1	Primary Assembly	4457	na
+scaffold108_size4967	unplaced-scaffold	na	na	SWFT01000152.1	=	NW_022995202.1	Primary Assembly	4968	na
+scaffold109_size4896	unplaced-scaffold	na	na	SWFT01000061.1	=	NW_022995111.1	Primary Assembly	4708	na
+scaffold10_size284702	unplaced-scaffold	na	na	SWFT01000067.1	=	NW_022995117.1	Primary Assembly	284806	na
+scaffold110_size4790	unplaced-scaffold	na	na	SWFT01000169.1	=	NW_022995219.1	Primary Assembly	4531	na
+scaffold111_size4750	unplaced-scaffold	na	na	SWFT01000083.1	=	NW_022995133.1	Primary Assembly	4710	na
+scaffold112_size4736	unplaced-scaffold	na	na	SWFT01000023.1	=	NW_022995073.1	Primary Assembly	4738	na
+scaffold113_size4361	unplaced-scaffold	na	na	SWFT01000166.1	=	NW_022995216.1	Primary Assembly	3693	na
+scaffold114_size7307	unplaced-scaffold	na	na	SWFT01000028.1	=	NW_022995078.1	Primary Assembly	6884	na
+scaffold115_size3612	unplaced-scaffold	na	na	SWFT01000081.1	=	NW_022995131.1	Primary Assembly	3612	na
+scaffold116_size3346	unplaced-scaffold	na	na	SWFT01000003.1	=	NW_022995053.1	Primary Assembly	3036	na
+scaffold117_size3119	unplaced-scaffold	na	na	SWFT01000148.1	=	NW_022995198.1	Primary Assembly	3120	na
+scaffold118_size1979	unplaced-scaffold	na	na	SWFT01000150.1	=	NW_022995200.1	Primary Assembly	1981	na
+scaffold119_size1802	unplaced-scaffold	na	na	SWFT01000016.1	=	NW_022995066.1	Primary Assembly	1802	na
+scaffold11_size279379	unplaced-scaffold	na	na	SWFT01000158.1	=	NW_022995208.1	Primary Assembly	279567	na
+scaffold120_size1783	unplaced-scaffold	na	na	SWFT01000063.1	=	NW_022995113.1	Primary Assembly	1783	na
+scaffold121_size1633	unplaced-scaffold	na	na	SWFT01000144.1	=	NW_022995194.1	Primary Assembly	1634	na
+scaffold123_size1604	unplaced-scaffold	na	na	SWFT01000079.1	=	NW_022995129.1	Primary Assembly	1604	na
+scaffold125_size1466	unplaced-scaffold	na	na	SWFT01000029.1	=	NW_022995079.1	Primary Assembly	1467	na
+scaffold126_size1399	unplaced-scaffold	na	na	SWFT01000126.1	=	NW_022995176.1	Primary Assembly	1197	na
+scaffold127_size1354	unplaced-scaffold	na	na	SWFT01000084.1	=	NW_022995134.1	Primary Assembly	1354	na
+scaffold128_size1332	unplaced-scaffold	na	na	SWFT01000078.1	=	NW_022995128.1	Primary Assembly	1375	na
+scaffold129_size1163	unplaced-scaffold	na	na	SWFT01000060.1	=	NW_022995110.1	Primary Assembly	1163	na
+scaffold12_size278768	unplaced-scaffold	na	na	SWFT01000082.1	=	NW_022995132.1	Primary Assembly	277689	na
+scaffold130_size1151	unplaced-scaffold	na	na	SWFT01000118.1	=	NW_022995168.1	Primary Assembly	1152	na
+scaffold131_size1093	unplaced-scaffold	na	na	SWFT01000151.1	=	NW_022995201.1	Primary Assembly	1151	na
+scaffold132_size1005	unplaced-scaffold	na	na	SWFT01000049.1	=	NW_022995099.1	Primary Assembly	1005	na
+scaffold134_size869	unplaced-scaffold	na	na	SWFT01000047.1	=	NW_022995097.1	Primary Assembly	870	na
+scaffold135_size850	unplaced-scaffold	na	na	SWFT01000129.1	=	NW_022995179.1	Primary Assembly	850	na
+scaffold136_size839	unplaced-scaffold	na	na	SWFT01000142.1	=	NW_022995192.1	Primary Assembly	839	na
+scaffold137_size796	unplaced-scaffold	na	na	SWFT01000006.1	=	NW_022995056.1	Primary Assembly	796	na
+scaffold138_size749	unplaced-scaffold	na	na	SWFT01000154.1	=	NW_022995204.1	Primary Assembly	749	na
+scaffold13_size251220	unplaced-scaffold	na	na	SWFT01000120.1	=	NW_022995170.1	Primary Assembly	250877	na
+scaffold140_size669	unplaced-scaffold	na	na	SWFT01000032.1	=	NW_022995082.1	Primary Assembly	670	na
+scaffold141_size662	unplaced-scaffold	na	na	SWFT01000167.1	=	NW_022995217.1	Primary Assembly	663	na
+scaffold146_size499	unplaced-scaffold	na	na	SWFT01000077.1	=	NW_022995127.1	Primary Assembly	499	na
+scaffold147_size493	unplaced-scaffold	na	na	SWFT01000091.1	=	NW_022995141.1	Primary Assembly	493	na
+scaffold148_size436	unplaced-scaffold	na	na	SWFT01000080.1	=	NW_022995130.1	Primary Assembly	436	na
+scaffold149_size419	unplaced-scaffold	na	na	SWFT01000062.1	=	NW_022995112.1	Primary Assembly	419	na
+scaffold14_size250082	unplaced-scaffold	na	na	SWFT01000124.1	=	NW_022995174.1	Primary Assembly	250033	na
+scaffold151_size370	unplaced-scaffold	na	na	SWFT01000097.1	=	NW_022995147.1	Primary Assembly	370	na
+scaffold152_size370	unplaced-scaffold	na	na	SWFT01000075.1	=	NW_022995125.1	Primary Assembly	370	na
+scaffold153_size324	unplaced-scaffold	na	na	SWFT01000017.1	=	NW_022995067.1	Primary Assembly	324	na
+scaffold154_size308	unplaced-scaffold	na	na	SWFT01000045.1	=	NW_022995095.1	Primary Assembly	308	na
+scaffold155_size297	unplaced-scaffold	na	na	SWFT01000001.1	=	NW_022995051.1	Primary Assembly	297	na
+scaffold156_size297	unplaced-scaffold	na	na	SWFT01000127.1	=	NW_022995177.1	Primary Assembly	297	na
+scaffold157_size293	unplaced-scaffold	na	na	SWFT01000094.1	=	NW_022995144.1	Primary Assembly	293	na
+scaffold159_size279	unplaced-scaffold	na	na	SWFT01000141.1	=	NW_022995191.1	Primary Assembly	279	na
+scaffold15_size221551	unplaced-scaffold	na	na	SWFT01000005.1	=	NW_022995055.1	Primary Assembly	221295	na
+scaffold160_size272	unplaced-scaffold	na	na	SWFT01000145.1	=	NW_022995195.1	Primary Assembly	272	na
+scaffold161_size264	unplaced-scaffold	na	na	SWFT01000168.1	=	NW_022995218.1	Primary Assembly	264	na
+scaffold162_size257	unplaced-scaffold	na	na	SWFT01000138.1	=	NW_022995188.1	Primary Assembly	257	na
+scaffold165_size243	unplaced-scaffold	na	na	SWFT01000135.1	=	NW_022995185.1	Primary Assembly	243	na
+scaffold168_size232	unplaced-scaffold	na	na	SWFT01000115.1	=	NW_022995165.1	Primary Assembly	232	na
+scaffold169_size231	unplaced-scaffold	na	na	SWFT01000040.1	=	NW_022995090.1	Primary Assembly	231	na
+scaffold16_size293850	unplaced-scaffold	na	na	SWFT01000019.1	=	NW_022995069.1	Primary Assembly	292968	na
+scaffold170_size229	unplaced-scaffold	na	na	SWFT01000093.1	=	NW_022995143.1	Primary Assembly	229	na
+scaffold171_size226	unplaced-scaffold	na	na	SWFT01000132.1	=	NW_022995182.1	Primary Assembly	226	na
+scaffold172_size222	unplaced-scaffold	na	na	SWFT01000071.1	=	NW_022995121.1	Primary Assembly	222	na
+scaffold173_size221	unplaced-scaffold	na	na	SWFT01000087.1	=	NW_022995137.1	Primary Assembly	221	na
+scaffold175_size216	unplaced-scaffold	na	na	SWFT01000054.1	=	NW_022995104.1	Primary Assembly	216	na
+scaffold176_size215	unplaced-scaffold	na	na	SWFT01000089.1	=	NW_022995139.1	Primary Assembly	215	na
+scaffold177_size212	unplaced-scaffold	na	na	SWFT01000099.1	=	NW_022995149.1	Primary Assembly	212	na
+scaffold178_size211	unplaced-scaffold	na	na	SWFT01000024.1	=	NW_022995074.1	Primary Assembly	211	na
+scaffold179_size208	unplaced-scaffold	na	na	SWFT01000068.1	=	NW_022995118.1	Primary Assembly	208	na
+scaffold17_size212612	unplaced-scaffold	na	na	SWFT01000122.1	=	NW_022995172.1	Primary Assembly	212772	na
+scaffold180_size208	unplaced-scaffold	na	na	SWFT01000143.1	=	NW_022995193.1	Primary Assembly	208	na
+scaffold181_size207	unplaced-scaffold	na	na	SWFT01000074.1	=	NW_022995124.1	Primary Assembly	207	na
+scaffold183_size205	unplaced-scaffold	na	na	SWFT01000055.1	=	NW_022995105.1	Primary Assembly	205	na
+scaffold184_size205	unplaced-scaffold	na	na	SWFT01000160.1	=	NW_022995210.1	Primary Assembly	205	na
+scaffold185_size201	unplaced-scaffold	na	na	SWFT01000088.1	=	NW_022995138.1	Primary Assembly	201	na
+scaffold18_size221135	unplaced-scaffold	na	na	SWFT01000092.1	=	NW_022995142.1	Primary Assembly	221583	na
+scaffold19_size194765	unplaced-scaffold	na	na	SWFT01000102.1	=	NW_022995152.1	Primary Assembly	194762	na
+scaffold1_size794362	unplaced-scaffold	na	na	SWFT01000105.1	=	NW_022995155.1	Primary Assembly	794343	na
+scaffold20_size193122	unplaced-scaffold	na	na	SWFT01000112.1	=	NW_022995162.1	Primary Assembly	193138	na
+scaffold21_size185207	unplaced-scaffold	na	na	SWFT01000159.1	=	NW_022995209.1	Primary Assembly	185387	na
+scaffold22_size185052	unplaced-scaffold	na	na	SWFT01000065.1	=	NW_022995115.1	Primary Assembly	185192	na
+scaffold23_size180195	unplaced-scaffold	na	na	SWFT01000018.1	=	NW_022995068.1	Primary Assembly	180304	na
+scaffold24_size174625	unplaced-scaffold	na	na	SWFT01000036.1	=	NW_022995086.1	Primary Assembly	174775	na
+scaffold25_size169986	unplaced-scaffold	na	na	SWFT01000044.1	=	NW_022995094.1	Primary Assembly	170138	na
+scaffold26_size169552	unplaced-scaffold	na	na	SWFT01000026.1	=	NW_022995076.1	Primary Assembly	169631	na
+scaffold27_size161568	unplaced-scaffold	na	na	SWFT01000116.1	=	NW_022995166.1	Primary Assembly	161512	na
+scaffold28_size161324	unplaced-scaffold	na	na	SWFT01000004.1	=	NW_022995054.1	Primary Assembly	161479	na
+scaffold29_size158811	unplaced-scaffold	na	na	SWFT01000137.1	=	NW_022995187.1	Primary Assembly	158929	na
+scaffold2_size729309	unplaced-scaffold	na	na	SWFT01000149.1	=	NW_022995199.1	Primary Assembly	729845	na
+scaffold30_size158152	unplaced-scaffold	na	na	SWFT01000035.1	=	NW_022995085.1	Primary Assembly	158259	na
+scaffold31_size150537	unplaced-scaffold	na	na	SWFT01000033.1	=	NW_022995083.1	Primary Assembly	150468	na
+scaffold32_size146972	unplaced-scaffold	na	na	SWFT01000053.1	=	NW_022995103.1	Primary Assembly	147356	na
+scaffold33_size146325	unplaced-scaffold	na	na	SWFT01000130.1	=	NW_022995180.1	Primary Assembly	147345	na
+scaffold34_size146191	unplaced-scaffold	na	na	SWFT01000038.1	=	NW_022995088.1	Primary Assembly	146163	na
+scaffold35_size143915	unplaced-scaffold	na	na	SWFT01000101.1	=	NW_022995151.1	Primary Assembly	143921	na
+scaffold36_size135536	unplaced-scaffold	na	na	SWFT01000155.1	=	NW_022995205.1	Primary Assembly	135118	na
+scaffold37_size135356	unplaced-scaffold	na	na	SWFT01000059.1	=	NW_022995109.1	Primary Assembly	135401	na
+scaffold38_size132560	unplaced-scaffold	na	na	SWFT01000153.1	=	NW_022995203.1	Primary Assembly	132614	na
+scaffold39_size132508	unplaced-scaffold	na	na	SWFT01000008.1	=	NW_022995058.1	Primary Assembly	132734	na
+scaffold3_size541584	unplaced-scaffold	na	na	SWFT01000027.1	=	NW_022995077.1	Primary Assembly	541954	na
+scaffold40_size130624	unplaced-scaffold	na	na	SWFT01000051.1	=	NW_022995101.1	Primary Assembly	131249	na
+scaffold41_size130375	unplaced-scaffold	na	na	SWFT01000146.1	=	NW_022995196.1	Primary Assembly	130386	na
+scaffold42_size129173	unplaced-scaffold	na	na	SWFT01000070.1	=	NW_022995120.1	Primary Assembly	129107	na
+scaffold43_size124718	unplaced-scaffold	na	na	SWFT01000096.1	=	NW_022995146.1	Primary Assembly	124462	na
+scaffold44_size119871	unplaced-scaffold	na	na	SWFT01000162.1	=	NW_022995212.1	Primary Assembly	119947	na
+scaffold45_size117891	unplaced-scaffold	na	na	SWFT01000009.1	=	NW_022995059.1	Primary Assembly	118175	na
+scaffold46_size112117	unplaced-scaffold	na	na	SWFT01000076.1	=	NW_022995126.1	Primary Assembly	112247	na
+scaffold47_size107767	unplaced-scaffold	na	na	SWFT01000107.1	=	NW_022995157.1	Primary Assembly	107879	na
+scaffold48_size103108	unplaced-scaffold	na	na	SWFT01000031.1	=	NW_022995081.1	Primary Assembly	103242	na
+scaffold49_size106456	unplaced-scaffold	na	na	SWFT01000165.1	=	NW_022995215.1	Primary Assembly	106572	na
+scaffold4_size502443	unplaced-scaffold	na	na	SWFT01000050.1	=	NW_022995100.1	Primary Assembly	502295	na
+scaffold50_size97106	unplaced-scaffold	na	na	SWFT01000048.1	=	NW_022995098.1	Primary Assembly	96607	na
+scaffold51_size91455	unplaced-scaffold	na	na	SWFT01000121.1	=	NW_022995171.1	Primary Assembly	91506	na
+scaffold52_size87997	unplaced-scaffold	na	na	SWFT01000041.1	=	NW_022995091.1	Primary Assembly	88078	na
+scaffold53_size124246	unplaced-scaffold	na	na	SWFT01000139.1	=	NW_022995189.1	Primary Assembly	123124	na
+scaffold54_size82597	unplaced-scaffold	na	na	SWFT01000113.1	=	NW_022995163.1	Primary Assembly	80441	na
+scaffold55_size80579	unplaced-scaffold	na	na	SWFT01000025.1	=	NW_022995075.1	Primary Assembly	80603	na
+scaffold56_size80469	unplaced-scaffold	na	na	SWFT01000108.1	=	NW_022995158.1	Primary Assembly	80551	na
+scaffold57_size75075	unplaced-scaffold	na	na	SWFT01000119.1	=	NW_022995169.1	Primary Assembly	75105	na
+scaffold58_size72158	unplaced-scaffold	na	na	SWFT01000104.1	=	NW_022995154.1	Primary Assembly	72268	na
+scaffold59_size67827	unplaced-scaffold	na	na	SWFT01000098.1	=	NW_022995148.1	Primary Assembly	67751	na
+scaffold5_size317247	unplaced-scaffold	na	na	SWFT01000163.1	=	NW_022995213.1	Primary Assembly	317463	na
+scaffold60_size67320	unplaced-scaffold	na	na	SWFT01000034.1	=	NW_022995084.1	Primary Assembly	67314	na
+scaffold61_size66335	unplaced-scaffold	na	na	SWFT01000123.1	=	NW_022995173.1	Primary Assembly	66187	na
+scaffold62_size109212	unplaced-scaffold	na	na	SWFT01000039.1	=	NW_022995089.1	Primary Assembly	109185	na
+scaffold63_size61603	unplaced-scaffold	na	na	SWFT01000069.1	=	NW_022995119.1	Primary Assembly	61280	na
+scaffold64_size61128	unplaced-scaffold	na	na	SWFT01000164.1	=	NW_022995214.1	Primary Assembly	61141	na
+scaffold65_size61115	unplaced-scaffold	na	na	SWFT01000072.1	=	NW_022995122.1	Primary Assembly	61093	na
+scaffold66_size57219	unplaced-scaffold	na	na	SWFT01000156.1	=	NW_022995206.1	Primary Assembly	57260	na
+scaffold67_size52325	unplaced-scaffold	na	na	SWFT01000100.1	=	NW_022995150.1	Primary Assembly	52336	na
+scaffold68_size48173	unplaced-scaffold	na	na	SWFT01000042.1	=	NW_022995092.1	Primary Assembly	48042	na
+scaffold69_size47630	unplaced-scaffold	na	na	SWFT01000103.1	=	NW_022995153.1	Primary Assembly	46744	na
+scaffold6_size315584	unplaced-scaffold	na	na	SWFT01000066.1	=	NW_022995116.1	Primary Assembly	315885	na
+scaffold70_size45218	unplaced-scaffold	na	na	SWFT01000085.1	=	NW_022995135.1	Primary Assembly	45161	na
+scaffold71_size45150	unplaced-scaffold	na	na	SWFT01000056.1	=	NW_022995106.1	Primary Assembly	45137	na
+scaffold72_size44838	unplaced-scaffold	na	na	SWFT01000052.1	=	NW_022995102.1	Primary Assembly	44931	na
+scaffold73_size41433	unplaced-scaffold	na	na	SWFT01000110.1	=	NW_022995160.1	Primary Assembly	41418	na
+scaffold74_size40654	unplaced-scaffold	na	na	SWFT01000133.1	=	NW_022995183.1	Primary Assembly	40685	na
+scaffold75_size39877	unplaced-scaffold	na	na	SWFT01000058.1	=	NW_022995108.1	Primary Assembly	40072	na
+scaffold76_size39521	unplaced-scaffold	na	na	SWFT01000125.1	=	NW_022995175.1	Primary Assembly	39626	na
+scaffold77_size38895	unplaced-scaffold	na	na	SWFT01000109.1	=	NW_022995159.1	Primary Assembly	39058	na
+scaffold78_size38515	unplaced-scaffold	na	na	SWFT01000013.1	=	NW_022995063.1	Primary Assembly	38361	na
+scaffold79_size38464	unplaced-scaffold	na	na	SWFT01000020.1	=	NW_022995070.1	Primary Assembly	38492	na
+scaffold7_size311281	unplaced-scaffold	na	na	SWFT01000090.1	=	NW_022995140.1	Primary Assembly	311324	na
+scaffold80_size38252	unplaced-scaffold	na	na	SWFT01000140.1	=	NW_022995190.1	Primary Assembly	38140	na
+scaffold81_size37126	unplaced-scaffold	na	na	SWFT01000147.1	=	NW_022995197.1	Primary Assembly	37188	na
+scaffold82_size33690	unplaced-scaffold	na	na	SWFT01000157.1	=	NW_022995207.1	Primary Assembly	33727	na
+scaffold83_size33346	unplaced-scaffold	na	na	SWFT01000022.1	=	NW_022995072.1	Primary Assembly	33430	na
+scaffold84_size32090	unplaced-scaffold	na	na	SWFT01000131.1	=	NW_022995181.1	Primary Assembly	32135	na
+scaffold85_size30788	unplaced-scaffold	na	na	SWFT01000007.1	=	NW_022995057.1	Primary Assembly	29565	na
+scaffold86_size30761	unplaced-scaffold	na	na	SWFT01000010.1	=	NW_022995060.1	Primary Assembly	30374	na
+scaffold87_size30256	unplaced-scaffold	na	na	SWFT01000117.1	=	NW_022995167.1	Primary Assembly	30325	na
+scaffold88_size28847	unplaced-scaffold	na	na	SWFT01000106.1	=	NW_022995156.1	Primary Assembly	29397	na
+scaffold89_size22501	unplaced-scaffold	na	na	SWFT01000111.1	=	NW_022995161.1	Primary Assembly	22597	na
+scaffold8_size298685	unplaced-scaffold	na	na	SWFT01000064.1	=	NW_022995114.1	Primary Assembly	298619	na
+scaffold90_size21109	unplaced-scaffold	na	na	SWFT01000046.1	=	NW_022995096.1	Primary Assembly	21056	na
+scaffold91_size20439	unplaced-scaffold	na	na	SWFT01000114.1	=	NW_022995164.1	Primary Assembly	20592	na
+scaffold92_size19856	unplaced-scaffold	na	na	SWFT01000030.1	=	NW_022995080.1	Primary Assembly	19798	na
+scaffold93_size19651	unplaced-scaffold	na	na	SWFT01000086.1	=	NW_022995136.1	Primary Assembly	19651	na
+scaffold94_size15517	unplaced-scaffold	na	na	SWFT01000021.1	=	NW_022995071.1	Primary Assembly	15433	na
+scaffold95_size13976	unplaced-scaffold	na	na	SWFT01000057.1	=	NW_022995107.1	Primary Assembly	14000	na
+scaffold96_size12714	unplaced-scaffold	na	na	SWFT01000134.1	=	NW_022995184.1	Primary Assembly	12734	na
+scaffold97_size11006	unplaced-scaffold	na	na	SWFT01000073.1	=	NW_022995123.1	Primary Assembly	11007	na
+scaffold98_size10490	unplaced-scaffold	na	na	SWFT01000002.1	=	NW_022995052.1	Primary Assembly	10376	na
+scaffold99_size9976	unplaced-scaffold	na	na	SWFT01000012.1	=	NW_022995062.1	Primary Assembly	9918	na
+scaffold9_size288278	unplaced-scaffold	na	na	SWFT01000161.1	=	NW_022995211.1	Primary Assembly	288429	na

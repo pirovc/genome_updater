@@ -1,0 +1,62 @@
+# Assembly name:  ASM1102231v1
+# Organism name:  Saccharomyces pastorianus (lager yeast)
+# Infraspecific name:  strain=CBS 1483
+# Taxid:          27292
+# BioSample:      SAMN10948597
+# BioProject:     PRJNA522669
+# Submitter:      Delft University of Technology
+# Date:           2020-02-26
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# Assembly method: Canu v. 1.4
+# Expected final version: yes
+# Genome coverage: 72.0x
+# Sequencing technology: Oxford Nanopore MiniION
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_011022315.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_011022325.1		Primary Assembly
+## GCA_011022335.1		non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ScI	assembled-molecule	ScI	Chromosome	CP048983.1	<>	na	Primary Assembly	208138	na
+ScII	assembled-molecule	ScII	Chromosome	CP048984.1	<>	na	Primary Assembly	812113	na
+ScIV	assembled-molecule	ScIV	Chromosome	CP048985.1	<>	na	Primary Assembly	1479912	na
+ScIX	assembled-molecule	ScIX	Chromosome	CP048990.1	<>	na	Primary Assembly	429526	na
+ScV	assembled-molecule	ScV	Chromosome	CP048986.1	<>	na	Primary Assembly	590107	na
+ScVI	assembled-molecule	ScVI	Chromosome	CP048987.1	<>	na	Primary Assembly	263846	na
+ScVII	assembled-molecule	ScVII	Chromosome	CP048988.1	<>	na	Primary Assembly	862309	na
+ScVIII	assembled-molecule	ScVIII	Chromosome	CP048989.1	<>	na	Primary Assembly	547692	na
+ScX-SeX	assembled-molecule	ScX-SeX	Chromosome	CP048991.1	<>	na	Primary Assembly	770125	na
+ScXI	assembled-molecule	ScXI	Chromosome	CP048992.1	<>	na	Primary Assembly	662736	na
+ScXII	assembled-molecule	ScXII	Chromosome	CP048993.1	<>	na	Primary Assembly	1135585	na
+ScXIII	assembled-molecule	ScXIII	Chromosome	CP048994.1	<>	na	Primary Assembly	874333	na
+ScXIV	assembled-molecule	ScXIV	Chromosome	CP048995.1	<>	na	Primary Assembly	780283	na
+ScXV-ScXI	assembled-molecule	ScXV-ScXI	Chromosome	CP048996.1	<>	na	Primary Assembly	1060127	na
+ScXVI	assembled-molecule	ScXVI	Chromosome	CP048997.1	<>	na	Primary Assembly	925820	na
+SeI	assembled-molecule	SeI	Chromosome	CP048998.1	<>	na	Primary Assembly	183269	na
+SeII-SeIV	assembled-molecule	SeII-SeIV	Chromosome	CP048999.1	<>	na	Primary Assembly	1284672	na
+SeIII-ScIII	assembled-molecule	SeIII-ScIII	Chromosome	CP049000.1	<>	na	Primary Assembly	311605	na
+SeIV-SeII	assembled-molecule	SeIV-SeII	Chromosome	CP049001.1	<>	na	Primary Assembly	995698	na
+SeIX	assembled-molecule	SeIX	Chromosome	CP049006.1	<>	na	Primary Assembly	413870	na
+SeV	assembled-molecule	SeV	Chromosome	CP049002.1	<>	na	Primary Assembly	580648	na
+SeVI	assembled-molecule	SeVI	Chromosome	CP049003.1	<>	na	Primary Assembly	268137	na
+SeVII-ScVII	assembled-molecule	SeVII-ScVII	Chromosome	CP049004.1	<>	na	Primary Assembly	1046767	na
+SeVIII-SeXV	assembled-molecule	SeVIII-SeXV	Chromosome	CP049005.1	<>	na	Primary Assembly	813334	na
+SeX-ScX	assembled-molecule	SeX-ScX	Chromosome	CP049007.1	<>	na	Primary Assembly	698549	na
+SeXI	assembled-molecule	SeXI	Chromosome	CP049008.1	<>	na	Primary Assembly	656099	na
+SeXII	assembled-molecule	SeXII	Chromosome	CP049009.1	<>	na	Primary Assembly	1038742	na
+SeXIII-ScXIII	assembled-molecule	SeXIII-ScXIII	Chromosome	CP049010.1	<>	na	Primary Assembly	966527	na
+SeXIV	assembled-molecule	SeXIV	Chromosome	CP049011.1	<>	na	Primary Assembly	765111	na
+SeXV-SeVIII	assembled-molecule	SeXV-SeVIII	Chromosome	CP049012.1	<>	na	Primary Assembly	753193	na
+SeXVI	assembled-molecule	SeXVI	Chromosome	CP049013.1	<>	na	Primary Assembly	787129	na
+MT	assembled-molecule	MT	Mitochondrion	CP049014.1	<>	na	non-nuclear	68568	na

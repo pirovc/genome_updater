@@ -1,0 +1,159 @@
+# Assembly name:  ASM1194739v2
+# Organism name:  Colletotrichum karsti (ascomycetes)
+# Infraspecific name:  strain=CkLH20
+# Taxid:          1095194
+# BioSample:      SAMN14421089
+# BioProject:     PRJNA613862
+# Submitter:      Central South University of Forestry and Technology
+# Date:           2020-12-08
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    JAATWM02
+# Assembly method: SPAdes v. 3.5.0
+# Expected final version: yes
+# Genome coverage: 85.0x
+# Sequencing technology: Illumina HiSeq
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_011947395.2
+# RefSeq assembly accession: GCF_011947395.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_011947435.2	GCF_011947435.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+Scaffold1	unplaced-scaffold	na	na	JAATWM020000001.1	=	NW_024065901.1	Primary Assembly	2334801	na
+Scaffold10	unplaced-scaffold	na	na	JAATWM020000010.1	=	NW_024065910.1	Primary Assembly	1090709	na
+Scaffold100	unplaced-scaffold	na	na	JAATWM020000100.1	=	NW_024066000.1	Primary Assembly	17527	na
+Scaffold101	unplaced-scaffold	na	na	JAATWM020000101.1	=	NW_024066001.1	Primary Assembly	16379	na
+Scaffold102	unplaced-scaffold	na	na	JAATWM020000102.1	=	NW_024066002.1	Primary Assembly	14388	na
+Scaffold103	unplaced-scaffold	na	na	JAATWM020000103.1	=	NW_024066003.1	Primary Assembly	14020	na
+Scaffold104	unplaced-scaffold	na	na	JAATWM020000104.1	=	NW_024066004.1	Primary Assembly	13653	na
+Scaffold105	unplaced-scaffold	na	na	JAATWM020000105.1	=	NW_024066005.1	Primary Assembly	12940	na
+Scaffold106	unplaced-scaffold	na	na	JAATWM020000106.1	=	NW_024066006.1	Primary Assembly	12641	na
+Scaffold107	unplaced-scaffold	na	na	JAATWM020000107.1	=	NW_024066007.1	Primary Assembly	10553	na
+Scaffold108	unplaced-scaffold	na	na	JAATWM020000108.1	=	NW_024066008.1	Primary Assembly	10015	na
+Scaffold109	unplaced-scaffold	na	na	JAATWM020000109.1	=	NW_024066009.1	Primary Assembly	9972	na
+Scaffold11	unplaced-scaffold	na	na	JAATWM020000011.1	=	NW_024065911.1	Primary Assembly	1047438	na
+Scaffold110	unplaced-scaffold	na	na	JAATWM020000110.1	=	NW_024066010.1	Primary Assembly	9403	na
+Scaffold111	unplaced-scaffold	na	na	JAATWM020000111.1	=	NW_024066011.1	Primary Assembly	8491	na
+Scaffold112	unplaced-scaffold	na	na	JAATWM020000112.1	=	NW_024066012.1	Primary Assembly	7613	na
+Scaffold113	unplaced-scaffold	na	na	JAATWM020000113.1	=	NW_024066013.1	Primary Assembly	6456	na
+Scaffold114	unplaced-scaffold	na	na	JAATWM020000114.1	=	NW_024066014.1	Primary Assembly	5832	na
+Scaffold115	unplaced-scaffold	na	na	JAATWM020000115.1	=	NW_024066015.1	Primary Assembly	5761	na
+Scaffold116	unplaced-scaffold	na	na	JAATWM020000116.1	=	NW_024066016.1	Primary Assembly	5044	na
+Scaffold117	unplaced-scaffold	na	na	JAATWM020000117.1	=	NW_024066017.1	Primary Assembly	4761	na
+Scaffold118	unplaced-scaffold	na	na	JAATWM020000118.1	=	NW_024066018.1	Primary Assembly	4540	na
+Scaffold119	unplaced-scaffold	na	na	JAATWM020000119.1	=	NW_024066019.1	Primary Assembly	4434	na
+Scaffold12	unplaced-scaffold	na	na	JAATWM020000012.1	=	NW_024065912.1	Primary Assembly	1036659	na
+Scaffold120	unplaced-scaffold	na	na	JAATWM020000120.1	=	NW_024066020.1	Primary Assembly	3493	na
+Scaffold121	unplaced-scaffold	na	na	JAATWM020000121.1	=	NW_024066021.1	Primary Assembly	3058	na
+Scaffold122	unplaced-scaffold	na	na	JAATWM020000122.1	=	NW_024066022.1	Primary Assembly	3034	na
+Scaffold123	unplaced-scaffold	na	na	JAATWM020000123.1	=	NW_024066023.1	Primary Assembly	2786	na
+Scaffold124	unplaced-scaffold	na	na	JAATWM020000124.1	=	NW_024066024.1	Primary Assembly	2393	na
+Scaffold125	unplaced-scaffold	na	na	JAATWM020000125.1	=	NW_024066025.1	Primary Assembly	2197	na
+Scaffold126	unplaced-scaffold	na	na	JAATWM020000126.1	=	NW_024066026.1	Primary Assembly	1106	na
+Scaffold127	unplaced-scaffold	na	na	JAATWM020000127.1	=	NW_024066027.1	Primary Assembly	670	na
+Scaffold13	unplaced-scaffold	na	na	JAATWM020000013.1	=	NW_024065913.1	Primary Assembly	1033731	na
+Scaffold14	unplaced-scaffold	na	na	JAATWM020000014.1	=	NW_024065914.1	Primary Assembly	1030361	na
+Scaffold15	unplaced-scaffold	na	na	JAATWM020000015.1	=	NW_024065915.1	Primary Assembly	1018943	na
+Scaffold16	unplaced-scaffold	na	na	JAATWM020000016.1	=	NW_024065916.1	Primary Assembly	1008990	na
+Scaffold17	unplaced-scaffold	na	na	JAATWM020000017.1	=	NW_024065917.1	Primary Assembly	995815	na
+Scaffold18	unplaced-scaffold	na	na	JAATWM020000018.1	=	NW_024065918.1	Primary Assembly	990946	na
+Scaffold19	unplaced-scaffold	na	na	JAATWM020000019.1	=	NW_024065919.1	Primary Assembly	972876	na
+Scaffold2	unplaced-scaffold	na	na	JAATWM020000002.1	=	NW_024065902.1	Primary Assembly	2057830	na
+Scaffold20	unplaced-scaffold	na	na	JAATWM020000020.1	=	NW_024065920.1	Primary Assembly	899650	na
+Scaffold21	unplaced-scaffold	na	na	JAATWM020000021.1	=	NW_024065921.1	Primary Assembly	857663	na
+Scaffold22	unplaced-scaffold	na	na	JAATWM020000022.1	=	NW_024065922.1	Primary Assembly	824114	na
+Scaffold23	unplaced-scaffold	na	na	JAATWM020000023.1	=	NW_024065923.1	Primary Assembly	809694	na
+Scaffold24	unplaced-scaffold	na	na	JAATWM020000024.1	=	NW_024065924.1	Primary Assembly	766030	na
+Scaffold25	unplaced-scaffold	na	na	JAATWM020000025.1	=	NW_024065925.1	Primary Assembly	763484	na
+Scaffold26	unplaced-scaffold	na	na	JAATWM020000026.1	=	NW_024065926.1	Primary Assembly	755540	na
+Scaffold27	unplaced-scaffold	na	na	JAATWM020000027.1	=	NW_024065927.1	Primary Assembly	740078	na
+Scaffold28	unplaced-scaffold	na	na	JAATWM020000028.1	=	NW_024065928.1	Primary Assembly	735911	na
+Scaffold29	unplaced-scaffold	na	na	JAATWM020000029.1	=	NW_024065929.1	Primary Assembly	722723	na
+Scaffold3	unplaced-scaffold	na	na	JAATWM020000003.1	=	NW_024065903.1	Primary Assembly	1714829	na
+Scaffold30	unplaced-scaffold	na	na	JAATWM020000030.1	=	NW_024065930.1	Primary Assembly	683799	na
+Scaffold31	unplaced-scaffold	na	na	JAATWM020000031.1	=	NW_024065931.1	Primary Assembly	681637	na
+Scaffold32	unplaced-scaffold	na	na	JAATWM020000032.1	=	NW_024065932.1	Primary Assembly	637914	na
+Scaffold33	unplaced-scaffold	na	na	JAATWM020000033.1	=	NW_024065933.1	Primary Assembly	634536	na
+Scaffold34	unplaced-scaffold	na	na	JAATWM020000034.1	=	NW_024065934.1	Primary Assembly	608929	na
+Scaffold35	unplaced-scaffold	na	na	JAATWM020000035.1	=	NW_024065935.1	Primary Assembly	592556	na
+Scaffold36	unplaced-scaffold	na	na	JAATWM020000036.1	=	NW_024065936.1	Primary Assembly	575129	na
+Scaffold37	unplaced-scaffold	na	na	JAATWM020000037.1	=	NW_024065937.1	Primary Assembly	555460	na
+Scaffold38	unplaced-scaffold	na	na	JAATWM020000038.1	=	NW_024065938.1	Primary Assembly	535412	na
+Scaffold39	unplaced-scaffold	na	na	JAATWM020000039.1	=	NW_024065939.1	Primary Assembly	527644	na
+Scaffold4	unplaced-scaffold	na	na	JAATWM020000004.1	=	NW_024065904.1	Primary Assembly	1673847	na
+Scaffold40	unplaced-scaffold	na	na	JAATWM020000040.1	=	NW_024065940.1	Primary Assembly	525215	na
+Scaffold41	unplaced-scaffold	na	na	JAATWM020000041.1	=	NW_024065941.1	Primary Assembly	518425	na
+Scaffold42	unplaced-scaffold	na	na	JAATWM020000042.1	=	NW_024065942.1	Primary Assembly	512088	na
+Scaffold43	unplaced-scaffold	na	na	JAATWM020000043.1	=	NW_024065943.1	Primary Assembly	487099	na
+Scaffold44	unplaced-scaffold	na	na	JAATWM020000044.1	=	NW_024065944.1	Primary Assembly	470351	na
+Scaffold45	unplaced-scaffold	na	na	JAATWM020000045.1	=	NW_024065945.1	Primary Assembly	467894	na
+Scaffold46	unplaced-scaffold	na	na	JAATWM020000046.1	=	NW_024065946.1	Primary Assembly	461568	na
+Scaffold47	unplaced-scaffold	na	na	JAATWM020000047.1	=	NW_024065947.1	Primary Assembly	456828	na
+Scaffold48	unplaced-scaffold	na	na	JAATWM020000048.1	=	NW_024065948.1	Primary Assembly	444854	na
+Scaffold49	unplaced-scaffold	na	na	JAATWM020000049.1	=	NW_024065949.1	Primary Assembly	444258	na
+Scaffold5	unplaced-scaffold	na	na	JAATWM020000005.1	=	NW_024065905.1	Primary Assembly	1524888	na
+Scaffold50	unplaced-scaffold	na	na	JAATWM020000050.1	=	NW_024065950.1	Primary Assembly	438347	na
+Scaffold51	unplaced-scaffold	na	na	JAATWM020000051.1	=	NW_024065951.1	Primary Assembly	430694	na
+Scaffold52	unplaced-scaffold	na	na	JAATWM020000052.1	=	NW_024065952.1	Primary Assembly	408672	na
+Scaffold53	unplaced-scaffold	na	na	JAATWM020000053.1	=	NW_024065953.1	Primary Assembly	406767	na
+Scaffold54	unplaced-scaffold	na	na	JAATWM020000054.1	=	NW_024065954.1	Primary Assembly	393136	na
+Scaffold55	unplaced-scaffold	na	na	JAATWM020000055.1	=	NW_024065955.1	Primary Assembly	362107	na
+Scaffold56	unplaced-scaffold	na	na	JAATWM020000056.1	=	NW_024065956.1	Primary Assembly	334304	na
+Scaffold57	unplaced-scaffold	na	na	JAATWM020000057.1	=	NW_024065957.1	Primary Assembly	318715	na
+Scaffold58	unplaced-scaffold	na	na	JAATWM020000058.1	=	NW_024065958.1	Primary Assembly	312453	na
+Scaffold59	unplaced-scaffold	na	na	JAATWM020000059.1	=	NW_024065959.1	Primary Assembly	307314	na
+Scaffold6	unplaced-scaffold	na	na	JAATWM020000006.1	=	NW_024065906.1	Primary Assembly	1449157	na
+Scaffold60	unplaced-scaffold	na	na	JAATWM020000060.1	=	NW_024065960.1	Primary Assembly	304170	na
+Scaffold61	unplaced-scaffold	na	na	JAATWM020000061.1	=	NW_024065961.1	Primary Assembly	268303	na
+Scaffold62	unplaced-scaffold	na	na	JAATWM020000062.1	=	NW_024065962.1	Primary Assembly	267907	na
+Scaffold63	unplaced-scaffold	na	na	JAATWM020000063.1	=	NW_024065963.1	Primary Assembly	263393	na
+Scaffold64	unplaced-scaffold	na	na	JAATWM020000064.1	=	NW_024065964.1	Primary Assembly	258775	na
+Scaffold65	unplaced-scaffold	na	na	JAATWM020000065.1	=	NW_024065965.1	Primary Assembly	255732	na
+Scaffold66	unplaced-scaffold	na	na	JAATWM020000066.1	=	NW_024065966.1	Primary Assembly	250756	na
+Scaffold67	unplaced-scaffold	na	na	JAATWM020000067.1	=	NW_024065967.1	Primary Assembly	235810	na
+Scaffold68	unplaced-scaffold	na	na	JAATWM020000068.1	=	NW_024065968.1	Primary Assembly	174956	na
+Scaffold69	unplaced-scaffold	na	na	JAATWM020000069.1	=	NW_024065969.1	Primary Assembly	170461	na
+Scaffold7	unplaced-scaffold	na	na	JAATWM020000007.1	=	NW_024065907.1	Primary Assembly	1433755	na
+Scaffold70	unplaced-scaffold	na	na	JAATWM020000070.1	=	NW_024065970.1	Primary Assembly	161946	na
+Scaffold71	unplaced-scaffold	na	na	JAATWM020000071.1	=	NW_024065971.1	Primary Assembly	158336	na
+Scaffold72	unplaced-scaffold	na	na	JAATWM020000072.1	=	NW_024065972.1	Primary Assembly	135493	na
+Scaffold73	unplaced-scaffold	na	na	JAATWM020000073.1	=	NW_024065973.1	Primary Assembly	102608	na
+Scaffold74	unplaced-scaffold	na	na	JAATWM020000074.1	=	NW_024065974.1	Primary Assembly	92946	na
+Scaffold75	unplaced-scaffold	na	na	JAATWM020000075.1	=	NW_024065975.1	Primary Assembly	92382	na
+Scaffold76	unplaced-scaffold	na	na	JAATWM020000076.1	=	NW_024065976.1	Primary Assembly	91568	na
+Scaffold77	unplaced-scaffold	na	na	JAATWM020000077.1	=	NW_024065977.1	Primary Assembly	88990	na
+Scaffold78	unplaced-scaffold	na	na	JAATWM020000078.1	=	NW_024065978.1	Primary Assembly	83470	na
+Scaffold79	unplaced-scaffold	na	na	JAATWM020000079.1	=	NW_024065979.1	Primary Assembly	67751	na
+Scaffold8	unplaced-scaffold	na	na	JAATWM020000008.1	=	NW_024065908.1	Primary Assembly	1432724	na
+Scaffold80	unplaced-scaffold	na	na	JAATWM020000080.1	=	NW_024065980.1	Primary Assembly	56974	na
+Scaffold81	unplaced-scaffold	na	na	JAATWM020000081.1	=	NW_024065981.1	Primary Assembly	54542	na
+Scaffold82	unplaced-scaffold	na	na	JAATWM020000082.1	=	NW_024065982.1	Primary Assembly	49462	na
+Scaffold83	unplaced-scaffold	na	na	JAATWM020000083.1	=	NW_024065983.1	Primary Assembly	47368	na
+Scaffold84	unplaced-scaffold	na	na	JAATWM020000084.1	=	NW_024065984.1	Primary Assembly	43075	na
+Scaffold85	unplaced-scaffold	na	na	JAATWM020000085.1	=	NW_024065985.1	Primary Assembly	41771	na
+Scaffold86	unplaced-scaffold	na	na	JAATWM020000086.1	=	NW_024065986.1	Primary Assembly	39937	na
+Scaffold87	unplaced-scaffold	na	na	JAATWM020000087.1	=	NW_024065987.1	Primary Assembly	39145	na
+Scaffold88	unplaced-scaffold	na	na	JAATWM020000088.1	=	NW_024065988.1	Primary Assembly	35252	na
+Scaffold89	unplaced-scaffold	na	na	JAATWM020000089.1	=	NW_024065989.1	Primary Assembly	34995	na
+Scaffold9	unplaced-scaffold	na	na	JAATWM020000009.1	=	NW_024065909.1	Primary Assembly	1135518	na
+Scaffold90	unplaced-scaffold	na	na	JAATWM020000090.1	=	NW_024065990.1	Primary Assembly	33748	na
+Scaffold91	unplaced-scaffold	na	na	JAATWM020000091.1	=	NW_024065991.1	Primary Assembly	33702	na
+Scaffold92	unplaced-scaffold	na	na	JAATWM020000092.1	=	NW_024065992.1	Primary Assembly	31791	na
+Scaffold93	unplaced-scaffold	na	na	JAATWM020000093.1	=	NW_024065993.1	Primary Assembly	31340	na
+Scaffold94	unplaced-scaffold	na	na	JAATWM020000094.1	=	NW_024065994.1	Primary Assembly	30485	na
+Scaffold95	unplaced-scaffold	na	na	JAATWM020000095.1	=	NW_024065995.1	Primary Assembly	28874	na
+Scaffold96	unplaced-scaffold	na	na	JAATWM020000096.1	=	NW_024065996.1	Primary Assembly	27932	na
+Scaffold97	unplaced-scaffold	na	na	JAATWM020000097.1	=	NW_024065997.1	Primary Assembly	20350	na
+Scaffold98	unplaced-scaffold	na	na	JAATWM020000098.1	=	NW_024065998.1	Primary Assembly	19692	na
+Scaffold99	unplaced-scaffold	na	na	JAATWM020000099.1	=	NW_024065999.1	Primary Assembly	17884	na

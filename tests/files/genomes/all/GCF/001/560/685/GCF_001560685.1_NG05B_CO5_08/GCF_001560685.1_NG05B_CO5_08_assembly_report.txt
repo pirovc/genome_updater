@@ -1,0 +1,38 @@
+# Assembly name:  NG05B_CO5_08
+# Organism name:  Sulfolobus acidocaldarius (crenarchaeotes)
+# Infraspecific name:  strain=NG05B_CO5_08
+# Taxid:          2285
+# BioSample:      SAMN04305175
+# BioProject:     PRJNA304349
+# Submitter:      University of Illinois at Urbana-Champaign
+# Date:           2016-02-11
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    LPSN01
+# Assembly method: a5 v. 2014-04
+# Genome coverage: 86.98156364x
+# Sequencing technology: Illumina HiSeq
+# GenBank assembly accession: GCA_001560685.1
+# RefSeq assembly accession: GCF_001560685.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_001560705.1	GCF_001560705.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+NG05B_CO5_08_scaffold1	unplaced-scaffold	na	na	LPSN01000005.1	=	NZ_LPSN01000005.1	Primary Assembly	522830	na
+NG05B_CO5_08_scaffold2	unplaced-scaffold	na	na	LPSN01000002.1	=	NZ_LPSN01000002.1	Primary Assembly	852345	na
+NG05B_CO5_08_scaffold3	unplaced-scaffold	na	na	LPSN01000007.1	=	NZ_LPSN01000007.1	Primary Assembly	222965	na
+NG05B_CO5_08_scaffold4	unplaced-scaffold	na	na	LPSN01000008.1	=	NZ_LPSN01000008.1	Primary Assembly	217325	na
+NG05B_CO5_08_scaffold5	unplaced-scaffold	na	na	LPSN01000003.1	=	NZ_LPSN01000003.1	Primary Assembly	88015	na
+NG05B_CO5_08_scaffold6	unplaced-scaffold	na	na	LPSN01000006.1	=	NZ_LPSN01000006.1	Primary Assembly	148526	na
+NG05B_CO5_08_scaffold7	unplaced-scaffold	na	na	LPSN01000004.1	=	NZ_LPSN01000004.1	Primary Assembly	95358	na
+NG05B_CO5_08_scaffold8	unplaced-scaffold	na	na	LPSN01000001.1	=	NZ_LPSN01000001.1	Primary Assembly	31508	na

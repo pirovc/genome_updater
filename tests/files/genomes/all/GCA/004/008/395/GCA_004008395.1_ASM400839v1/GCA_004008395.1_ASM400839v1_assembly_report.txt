@@ -1,0 +1,24 @@
+# Assembly name:  ASM400839v1
+# Organism name:  Mycobacterium phage Cici (viruses)
+# Taxid:          2499034
+# Submitter:      na
+# Date:           2019-01-08
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# Assembly method: Newbler and Consed v. Feb-2011
+# Sequencing technology: Illumina
+# GenBank assembly accession: GCA_004008395.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_004008405.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+MK279898.1	assembled-molecule	na	Segment	MK279898.1	<>	na	Primary Assembly	51287	na

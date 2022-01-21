@@ -1,0 +1,59 @@
+# Assembly name:  ASM22654v1
+# Organism name:  Podospora anserina S mat+ (ascomycetes)
+# Infraspecific name:  strain=S mat+
+# Taxid:          515849
+# BioProject:     PRJNA12954
+# Submitter:      Genoscope - Centre National de Séquençage
+# Date:           2008-05-14
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000226545.1
+# RefSeq assembly accession: GCF_000226545.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000226555.1	GCF_000226555.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+CU633438.1	unlocalized-scaffold	1	Chromosome	CU633438.1	=	NW_001914859.1	Primary Assembly	3103080	na
+CU633445.1	unlocalized-scaffold	1	Chromosome	CU633445.1	=	NW_001914829.1	Primary Assembly	387894	na
+CU633867.1	unlocalized-scaffold	1	Chromosome	CU633867.1	=	NW_001914845.1	Primary Assembly	544635	na
+CU633897.1	unlocalized-scaffold	1	Chromosome	CU633897.1	=	NW_001914851.1	Primary Assembly	1167431	na
+CU633899.1	unlocalized-scaffold	1	Chromosome	CU633899.1	=	NW_001914853.1	Primary Assembly	2201405	na
+CU633901.1	unlocalized-scaffold	1	Chromosome	CU633901.1	=	NW_001914855.1	Primary Assembly	1337546	na
+CU633446.1	unlocalized-scaffold	2	Chromosome	CU633446.1	=	NW_001914830.1	Primary Assembly	222942	na
+CU633447.1	unlocalized-scaffold	2	Chromosome	CU633447.1	=	NW_001914831.1	Primary Assembly	249905	na
+CU640366.1	unlocalized-scaffold	2	Chromosome	CU640366.1	=	NW_001914858.1	Primary Assembly	4657536	na
+CU633448.1	unlocalized-scaffold	3	Chromosome	CU633448.1	=	NW_001914832.1	Primary Assembly	657777	na
+CU633453.1	unlocalized-scaffold	3	Chromosome	CU633453.1	=	NW_001914833.1	Primary Assembly	413974	na
+CU638743.1	unlocalized-scaffold	3	Chromosome	CU638743.1	=	NW_001914856.1	Primary Assembly	3035657	na
+CU633454.1	unlocalized-scaffold	4	Chromosome	CU633454.1	=	NW_001914834.1	Primary Assembly	827805	na
+CU633455.1	unlocalized-scaffold	4	Chromosome	CU633455.1	=	NW_001914835.1	Primary Assembly	391592	na
+CU633456.1	unlocalized-scaffold	4	Chromosome	CU633456.1	=	NW_001914836.1	Primary Assembly	119910	na
+CU633895.1	unlocalized-scaffold	4	Chromosome	CU633895.1	=	NW_001914850.1	Primary Assembly	2427336	na
+CU607053.1	unlocalized-scaffold	5	Chromosome	CU607053.1	=	NW_001939194.1	Primary Assembly	328466	na
+CU633457.1	unlocalized-scaffold	5	Chromosome	CU633457.1	=	NW_001914837.1	Primary Assembly	1108180	na
+CU633458.1	unlocalized-scaffold	5	Chromosome	CU633458.1	=	NW_001914838.1	Primary Assembly	75123	na
+CU633459.1	unlocalized-scaffold	5	Chromosome	CU633459.1	=	NW_001914839.1	Primary Assembly	146874	na
+CU633461.1	unlocalized-scaffold	5	Chromosome	CU633461.1	=	NW_001914840.1	Primary Assembly	353681	na
+CU633865.1	unlocalized-scaffold	5	Chromosome	CU633865.1	=	NW_001914843.1	Primary Assembly	1013699	na
+CU633866.1	unlocalized-scaffold	5	Chromosome	CU633866.1	=	NW_001914844.1	Primary Assembly	445091	na
+CU633870.1	unlocalized-scaffold	5	Chromosome	CU633870.1	=	NW_001914846.1	Primary Assembly	425016	na
+CU633871.1	unlocalized-scaffold	5	Chromosome	CU633871.1	=	NW_001914847.1	Primary Assembly	269573	na
+CU633876.1	unlocalized-scaffold	5	Chromosome	CU633876.1	=	NW_001914849.1	Primary Assembly	538130	na
+CU633463.1	unlocalized-scaffold	6	Chromosome	CU633463.1	=	NW_001914841.1	Primary Assembly	101946	na
+CU633872.1	unlocalized-scaffold	6	Chromosome	CU633872.1	=	NW_003613579.1	Primary Assembly	945930	na
+CU633898.1	unlocalized-scaffold	6	Chromosome	CU633898.1	=	NW_001914852.1	Primary Assembly	231034	na
+CU638744.1	unlocalized-scaffold	6	Chromosome	CU638744.1	=	NW_001914857.1	Primary Assembly	2996286	na
+CU633464.1	unlocalized-scaffold	7	Chromosome	CU633464.1	=	NW_001914842.1	Primary Assembly	43301	na
+CU633873.1	unlocalized-scaffold	7	Chromosome	CU633873.1	=	NW_001914848.1	Primary Assembly	511053	na
+CU633900.1	unlocalized-scaffold	7	Chromosome	CU633900.1	=	NW_001914854.1	Primary Assembly	3439086	na

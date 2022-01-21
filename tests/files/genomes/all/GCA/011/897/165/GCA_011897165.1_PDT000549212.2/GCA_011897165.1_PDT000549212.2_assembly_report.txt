@@ -1,0 +1,192 @@
+# Assembly name:  PDT000549212.2
+# Description:    NCBI Pathogen Detection Assembly PDT000549212.2
+# Organism name:  Escherichia coli (E. coli)
+# Infraspecific name:  strain=PNUSAE027109
+# Taxid:          562
+# BioSample:      SAMN12361411
+# BioProject:     PRJNA218110
+# Submitter:      CDC
+# Date:           2020-04-02
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    AARDFA01
+# Assembly method: SKESA v. 2.2
+# Expected final version: no
+# Genome coverage: 97x
+# Sequencing technology: ILLUMINA
+# Excluded from RefSeq: from large multi-isolate project
+# GenBank assembly accession: GCA_011897165.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_011897175.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+SAMN12361411-rid9375703.denovo.001	unplaced-scaffold	na	na	AARDFA010000001.1	<>	na	Primary Assembly	613687	na
+SAMN12361411-rid9375703.denovo.002	unplaced-scaffold	na	na	AARDFA010000002.1	<>	na	Primary Assembly	313880	na
+SAMN12361411-rid9375703.denovo.003	unplaced-scaffold	na	na	AARDFA010000003.1	<>	na	Primary Assembly	283317	na
+SAMN12361411-rid9375703.denovo.004	unplaced-scaffold	na	na	AARDFA010000004.1	<>	na	Primary Assembly	271324	na
+SAMN12361411-rid9375703.denovo.005	unplaced-scaffold	na	na	AARDFA010000005.1	<>	na	Primary Assembly	267428	na
+SAMN12361411-rid9375703.denovo.006	unplaced-scaffold	na	na	AARDFA010000006.1	<>	na	Primary Assembly	239115	na
+SAMN12361411-rid9375703.denovo.007	unplaced-scaffold	na	na	AARDFA010000007.1	<>	na	Primary Assembly	209854	na
+SAMN12361411-rid9375703.denovo.008	unplaced-scaffold	na	na	AARDFA010000008.1	<>	na	Primary Assembly	188295	na
+SAMN12361411-rid9375703.denovo.009	unplaced-scaffold	na	na	AARDFA010000009.1	<>	na	Primary Assembly	185816	na
+SAMN12361411-rid9375703.denovo.010	unplaced-scaffold	na	na	AARDFA010000010.1	<>	na	Primary Assembly	183993	na
+SAMN12361411-rid9375703.denovo.011	unplaced-scaffold	na	na	AARDFA010000011.1	<>	na	Primary Assembly	177999	na
+SAMN12361411-rid9375703.denovo.012	unplaced-scaffold	na	na	AARDFA010000012.1	<>	na	Primary Assembly	149456	na
+SAMN12361411-rid9375703.denovo.013	unplaced-scaffold	na	na	AARDFA010000013.1	<>	na	Primary Assembly	148117	na
+SAMN12361411-rid9375703.denovo.014	unplaced-scaffold	na	na	AARDFA010000014.1	<>	na	Primary Assembly	126386	na
+SAMN12361411-rid9375703.denovo.015	unplaced-scaffold	na	na	AARDFA010000015.1	<>	na	Primary Assembly	111083	na
+SAMN12361411-rid9375703.denovo.016	unplaced-scaffold	na	na	AARDFA010000016.1	<>	na	Primary Assembly	105486	na
+SAMN12361411-rid9375703.denovo.017	unplaced-scaffold	na	na	AARDFA010000017.1	<>	na	Primary Assembly	104053	na
+SAMN12361411-rid9375703.denovo.018	unplaced-scaffold	na	na	AARDFA010000018.1	<>	na	Primary Assembly	96653	na
+SAMN12361411-rid9375703.denovo.019	unplaced-scaffold	na	na	AARDFA010000019.1	<>	na	Primary Assembly	95084	na
+SAMN12361411-rid9375703.denovo.020	unplaced-scaffold	na	na	AARDFA010000020.1	<>	na	Primary Assembly	92108	na
+SAMN12361411-rid9375703.denovo.021	unplaced-scaffold	na	na	AARDFA010000021.1	<>	na	Primary Assembly	81705	na
+SAMN12361411-rid9375703.denovo.022	unplaced-scaffold	na	na	AARDFA010000022.1	<>	na	Primary Assembly	81297	na
+SAMN12361411-rid9375703.denovo.023	unplaced-scaffold	na	na	AARDFA010000023.1	<>	na	Primary Assembly	77566	na
+SAMN12361411-rid9375703.denovo.024	unplaced-scaffold	na	na	AARDFA010000024.1	<>	na	Primary Assembly	77457	na
+SAMN12361411-rid9375703.denovo.025	unplaced-scaffold	na	na	AARDFA010000025.1	<>	na	Primary Assembly	65260	na
+SAMN12361411-rid9375703.denovo.026	unplaced-scaffold	na	na	AARDFA010000026.1	<>	na	Primary Assembly	59792	na
+SAMN12361411-rid9375703.denovo.027	unplaced-scaffold	na	na	AARDFA010000027.1	<>	na	Primary Assembly	55328	na
+SAMN12361411-rid9375703.denovo.028	unplaced-scaffold	na	na	AARDFA010000028.1	<>	na	Primary Assembly	47262	na
+SAMN12361411-rid9375703.denovo.029	unplaced-scaffold	na	na	AARDFA010000029.1	<>	na	Primary Assembly	43179	na
+SAMN12361411-rid9375703.denovo.030	unplaced-scaffold	na	na	AARDFA010000030.1	<>	na	Primary Assembly	40988	na
+SAMN12361411-rid9375703.denovo.031	unplaced-scaffold	na	na	AARDFA010000031.1	<>	na	Primary Assembly	40386	na
+SAMN12361411-rid9375703.denovo.032	unplaced-scaffold	na	na	AARDFA010000032.1	<>	na	Primary Assembly	37629	na
+SAMN12361411-rid9375703.denovo.033	unplaced-scaffold	na	na	AARDFA010000033.1	<>	na	Primary Assembly	37402	na
+SAMN12361411-rid9375703.denovo.034	unplaced-scaffold	na	na	AARDFA010000034.1	<>	na	Primary Assembly	35601	na
+SAMN12361411-rid9375703.denovo.035	unplaced-scaffold	na	na	AARDFA010000035.1	<>	na	Primary Assembly	33185	na
+SAMN12361411-rid9375703.denovo.036	unplaced-scaffold	na	na	AARDFA010000036.1	<>	na	Primary Assembly	32095	na
+SAMN12361411-rid9375703.denovo.037	unplaced-scaffold	na	na	AARDFA010000037.1	<>	na	Primary Assembly	30596	na
+SAMN12361411-rid9375703.denovo.038	unplaced-scaffold	na	na	AARDFA010000038.1	<>	na	Primary Assembly	29434	na
+SAMN12361411-rid9375703.denovo.039	unplaced-scaffold	na	na	AARDFA010000039.1	<>	na	Primary Assembly	29262	na
+SAMN12361411-rid9375703.denovo.040	unplaced-scaffold	na	na	AARDFA010000040.1	<>	na	Primary Assembly	27858	na
+SAMN12361411-rid9375703.denovo.041	unplaced-scaffold	na	na	AARDFA010000041.1	<>	na	Primary Assembly	26068	na
+SAMN12361411-rid9375703.denovo.042	unplaced-scaffold	na	na	AARDFA010000042.1	<>	na	Primary Assembly	24880	na
+SAMN12361411-rid9375703.denovo.043	unplaced-scaffold	na	na	AARDFA010000043.1	<>	na	Primary Assembly	21750	na
+SAMN12361411-rid9375703.denovo.045	unplaced-scaffold	na	na	AARDFA010000044.1	<>	na	Primary Assembly	16418	na
+SAMN12361411-rid9375703.denovo.046	unplaced-scaffold	na	na	AARDFA010000045.1	<>	na	Primary Assembly	16186	na
+SAMN12361411-rid9375703.denovo.047	unplaced-scaffold	na	na	AARDFA010000046.1	<>	na	Primary Assembly	15589	na
+SAMN12361411-rid9375703.denovo.048	unplaced-scaffold	na	na	AARDFA010000047.1	<>	na	Primary Assembly	15093	na
+SAMN12361411-rid9375703.denovo.049	unplaced-scaffold	na	na	AARDFA010000048.1	<>	na	Primary Assembly	12040	na
+SAMN12361411-rid9375703.denovo.050	unplaced-scaffold	na	na	AARDFA010000049.1	<>	na	Primary Assembly	11471	na
+SAMN12361411-rid9375703.denovo.051	unplaced-scaffold	na	na	AARDFA010000050.1	<>	na	Primary Assembly	11300	na
+SAMN12361411-rid9375703.denovo.052	unplaced-scaffold	na	na	AARDFA010000051.1	<>	na	Primary Assembly	11281	na
+SAMN12361411-rid9375703.denovo.053	unplaced-scaffold	na	na	AARDFA010000052.1	<>	na	Primary Assembly	9796	na
+SAMN12361411-rid9375703.denovo.054	unplaced-scaffold	na	na	AARDFA010000053.1	<>	na	Primary Assembly	9753	na
+SAMN12361411-rid9375703.denovo.055	unplaced-scaffold	na	na	AARDFA010000054.1	<>	na	Primary Assembly	9433	na
+SAMN12361411-rid9375703.denovo.056	unplaced-scaffold	na	na	AARDFA010000055.1	<>	na	Primary Assembly	9233	na
+SAMN12361411-rid9375703.denovo.057	unplaced-scaffold	na	na	AARDFA010000056.1	<>	na	Primary Assembly	8649	na
+SAMN12361411-rid9375703.denovo.059	unplaced-scaffold	na	na	AARDFA010000057.1	<>	na	Primary Assembly	8630	na
+SAMN12361411-rid9375703.denovo.061	unplaced-scaffold	na	na	AARDFA010000058.1	<>	na	Primary Assembly	7751	na
+SAMN12361411-rid9375703.denovo.062	unplaced-scaffold	na	na	AARDFA010000059.1	<>	na	Primary Assembly	7716	na
+SAMN12361411-rid9375703.denovo.063	unplaced-scaffold	na	na	AARDFA010000060.1	<>	na	Primary Assembly	7309	na
+SAMN12361411-rid9375703.denovo.064	unplaced-scaffold	na	na	AARDFA010000061.1	<>	na	Primary Assembly	6939	na
+SAMN12361411-rid9375703.denovo.065	unplaced-scaffold	na	na	AARDFA010000062.1	<>	na	Primary Assembly	6072	na
+SAMN12361411-rid9375703.denovo.066	unplaced-scaffold	na	na	AARDFA010000063.1	<>	na	Primary Assembly	5723	na
+SAMN12361411-rid9375703.denovo.067	unplaced-scaffold	na	na	AARDFA010000064.1	<>	na	Primary Assembly	5430	na
+SAMN12361411-rid9375703.denovo.068	unplaced-scaffold	na	na	AARDFA010000065.1	<>	na	Primary Assembly	5062	na
+SAMN12361411-rid9375703.denovo.069	unplaced-scaffold	na	na	AARDFA010000066.1	<>	na	Primary Assembly	4217	na
+SAMN12361411-rid9375703.denovo.070	unplaced-scaffold	na	na	AARDFA010000067.1	<>	na	Primary Assembly	4085	na
+SAMN12361411-rid9375703.denovo.072	unplaced-scaffold	na	na	AARDFA010000068.1	<>	na	Primary Assembly	3989	na
+SAMN12361411-rid9375703.denovo.073	unplaced-scaffold	na	na	AARDFA010000069.1	<>	na	Primary Assembly	3879	na
+SAMN12361411-rid9375703.denovo.074	unplaced-scaffold	na	na	AARDFA010000070.1	<>	na	Primary Assembly	3798	na
+SAMN12361411-rid9375703.denovo.075	unplaced-scaffold	na	na	AARDFA010000071.1	<>	na	Primary Assembly	3765	na
+SAMN12361411-rid9375703.denovo.076	unplaced-scaffold	na	na	AARDFA010000072.1	<>	na	Primary Assembly	3721	na
+SAMN12361411-rid9375703.denovo.077	unplaced-scaffold	na	na	AARDFA010000073.1	<>	na	Primary Assembly	3700	na
+SAMN12361411-rid9375703.denovo.078	unplaced-scaffold	na	na	AARDFA010000074.1	<>	na	Primary Assembly	3547	na
+SAMN12361411-rid9375703.denovo.079	unplaced-scaffold	na	na	AARDFA010000075.1	<>	na	Primary Assembly	3480	na
+SAMN12361411-rid9375703.denovo.080	unplaced-scaffold	na	na	AARDFA010000076.1	<>	na	Primary Assembly	3417	na
+SAMN12361411-rid9375703.denovo.081	unplaced-scaffold	na	na	AARDFA010000077.1	<>	na	Primary Assembly	3105	na
+SAMN12361411-rid9375703.denovo.082	unplaced-scaffold	na	na	AARDFA010000078.1	<>	na	Primary Assembly	2970	na
+SAMN12361411-rid9375703.denovo.083	unplaced-scaffold	na	na	AARDFA010000079.1	<>	na	Primary Assembly	2929	na
+SAMN12361411-rid9375703.denovo.085	unplaced-scaffold	na	na	AARDFA010000080.1	<>	na	Primary Assembly	2757	na
+SAMN12361411-rid9375703.denovo.086	unplaced-scaffold	na	na	AARDFA010000081.1	<>	na	Primary Assembly	2748	na
+SAMN12361411-rid9375703.denovo.087	unplaced-scaffold	na	na	AARDFA010000082.1	<>	na	Primary Assembly	2733	na
+SAMN12361411-rid9375703.denovo.088	unplaced-scaffold	na	na	AARDFA010000083.1	<>	na	Primary Assembly	2576	na
+SAMN12361411-rid9375703.denovo.089	unplaced-scaffold	na	na	AARDFA010000084.1	<>	na	Primary Assembly	2547	na
+SAMN12361411-rid9375703.denovo.090	unplaced-scaffold	na	na	AARDFA010000085.1	<>	na	Primary Assembly	2421	na
+SAMN12361411-rid9375703.denovo.091	unplaced-scaffold	na	na	AARDFA010000086.1	<>	na	Primary Assembly	2388	na
+SAMN12361411-rid9375703.denovo.092	unplaced-scaffold	na	na	AARDFA010000087.1	<>	na	Primary Assembly	2325	na
+SAMN12361411-rid9375703.denovo.093	unplaced-scaffold	na	na	AARDFA010000088.1	<>	na	Primary Assembly	2279	na
+SAMN12361411-rid9375703.denovo.095	unplaced-scaffold	na	na	AARDFA010000089.1	<>	na	Primary Assembly	2142	na
+SAMN12361411-rid9375703.denovo.096	unplaced-scaffold	na	na	AARDFA010000090.1	<>	na	Primary Assembly	2131	na
+SAMN12361411-rid9375703.denovo.097	unplaced-scaffold	na	na	AARDFA010000091.1	<>	na	Primary Assembly	2012	na
+SAMN12361411-rid9375703.denovo.098	unplaced-scaffold	na	na	AARDFA010000092.1	<>	na	Primary Assembly	1964	na
+SAMN12361411-rid9375703.denovo.100	unplaced-scaffold	na	na	AARDFA010000093.1	<>	na	Primary Assembly	1870	na
+SAMN12361411-rid9375703.denovo.101	unplaced-scaffold	na	na	AARDFA010000094.1	<>	na	Primary Assembly	1867	na
+SAMN12361411-rid9375703.denovo.102	unplaced-scaffold	na	na	AARDFA010000095.1	<>	na	Primary Assembly	1784	na
+SAMN12361411-rid9375703.denovo.103	unplaced-scaffold	na	na	AARDFA010000096.1	<>	na	Primary Assembly	1727	na
+SAMN12361411-rid9375703.denovo.104	unplaced-scaffold	na	na	AARDFA010000097.1	<>	na	Primary Assembly	1714	na
+SAMN12361411-rid9375703.denovo.105	unplaced-scaffold	na	na	AARDFA010000098.1	<>	na	Primary Assembly	1693	na
+SAMN12361411-rid9375703.denovo.106	unplaced-scaffold	na	na	AARDFA010000099.1	<>	na	Primary Assembly	1690	na
+SAMN12361411-rid9375703.denovo.107	unplaced-scaffold	na	na	AARDFA010000100.1	<>	na	Primary Assembly	1662	na
+SAMN12361411-rid9375703.denovo.108	unplaced-scaffold	na	na	AARDFA010000101.1	<>	na	Primary Assembly	1633	na
+SAMN12361411-rid9375703.denovo.109	unplaced-scaffold	na	na	AARDFA010000102.1	<>	na	Primary Assembly	1595	na
+SAMN12361411-rid9375703.denovo.110	unplaced-scaffold	na	na	AARDFA010000103.1	<>	na	Primary Assembly	1555	na
+SAMN12361411-rid9375703.denovo.111	unplaced-scaffold	na	na	AARDFA010000104.1	<>	na	Primary Assembly	1539	na
+SAMN12361411-rid9375703.denovo.112	unplaced-scaffold	na	na	AARDFA010000105.1	<>	na	Primary Assembly	1377	na
+SAMN12361411-rid9375703.denovo.113	unplaced-scaffold	na	na	AARDFA010000106.1	<>	na	Primary Assembly	1362	na
+SAMN12361411-rid9375703.denovo.114	unplaced-scaffold	na	na	AARDFA010000107.1	<>	na	Primary Assembly	1316	na
+SAMN12361411-rid9375703.denovo.115	unplaced-scaffold	na	na	AARDFA010000108.1	<>	na	Primary Assembly	1277	na
+SAMN12361411-rid9375703.denovo.116	unplaced-scaffold	na	na	AARDFA010000109.1	<>	na	Primary Assembly	1240	na
+SAMN12361411-rid9375703.denovo.117	unplaced-scaffold	na	na	AARDFA010000110.1	<>	na	Primary Assembly	1233	na
+SAMN12361411-rid9375703.denovo.118	unplaced-scaffold	na	na	AARDFA010000111.1	<>	na	Primary Assembly	1231	na
+SAMN12361411-rid9375703.denovo.119	unplaced-scaffold	na	na	AARDFA010000112.1	<>	na	Primary Assembly	1219	na
+SAMN12361411-rid9375703.denovo.120	unplaced-scaffold	na	na	AARDFA010000113.1	<>	na	Primary Assembly	1180	na
+SAMN12361411-rid9375703.denovo.121	unplaced-scaffold	na	na	AARDFA010000114.1	<>	na	Primary Assembly	1159	na
+SAMN12361411-rid9375703.denovo.122	unplaced-scaffold	na	na	AARDFA010000115.1	<>	na	Primary Assembly	1144	na
+SAMN12361411-rid9375703.denovo.123	unplaced-scaffold	na	na	AARDFA010000116.1	<>	na	Primary Assembly	1125	na
+SAMN12361411-rid9375703.denovo.124	unplaced-scaffold	na	na	AARDFA010000117.1	<>	na	Primary Assembly	1080	na
+SAMN12361411-rid9375703.denovo.125	unplaced-scaffold	na	na	AARDFA010000118.1	<>	na	Primary Assembly	1073	na
+SAMN12361411-rid9375703.denovo.126	unplaced-scaffold	na	na	AARDFA010000119.1	<>	na	Primary Assembly	1049	na
+SAMN12361411-rid9375703.denovo.127	unplaced-scaffold	na	na	AARDFA010000120.1	<>	na	Primary Assembly	1028	na
+SAMN12361411-rid9375703.denovo.128	unplaced-scaffold	na	na	AARDFA010000121.1	<>	na	Primary Assembly	1017	na
+SAMN12361411-rid9375703.denovo.129	unplaced-scaffold	na	na	AARDFA010000122.1	<>	na	Primary Assembly	998	na
+SAMN12361411-rid9375703.denovo.130	unplaced-scaffold	na	na	AARDFA010000123.1	<>	na	Primary Assembly	994	na
+SAMN12361411-rid9375703.denovo.131	unplaced-scaffold	na	na	AARDFA010000124.1	<>	na	Primary Assembly	985	na
+SAMN12361411-rid9375703.denovo.132	unplaced-scaffold	na	na	AARDFA010000125.1	<>	na	Primary Assembly	913	na
+SAMN12361411-rid9375703.denovo.133	unplaced-scaffold	na	na	AARDFA010000126.1	<>	na	Primary Assembly	853	na
+SAMN12361411-rid9375703.denovo.134	unplaced-scaffold	na	na	AARDFA010000127.1	<>	na	Primary Assembly	849	na
+SAMN12361411-rid9375703.denovo.135	unplaced-scaffold	na	na	AARDFA010000128.1	<>	na	Primary Assembly	842	na
+SAMN12361411-rid9375703.denovo.136	unplaced-scaffold	na	na	AARDFA010000129.1	<>	na	Primary Assembly	825	na
+SAMN12361411-rid9375703.denovo.137	unplaced-scaffold	na	na	AARDFA010000130.1	<>	na	Primary Assembly	744	na
+SAMN12361411-rid9375703.denovo.138	unplaced-scaffold	na	na	AARDFA010000131.1	<>	na	Primary Assembly	742	na
+SAMN12361411-rid9375703.denovo.139	unplaced-scaffold	na	na	AARDFA010000132.1	<>	na	Primary Assembly	730	na
+SAMN12361411-rid9375703.denovo.140	unplaced-scaffold	na	na	AARDFA010000133.1	<>	na	Primary Assembly	730	na
+SAMN12361411-rid9375703.denovo.141	unplaced-scaffold	na	na	AARDFA010000134.1	<>	na	Primary Assembly	703	na
+SAMN12361411-rid9375703.denovo.142	unplaced-scaffold	na	na	AARDFA010000135.1	<>	na	Primary Assembly	686	na
+SAMN12361411-rid9375703.denovo.143	unplaced-scaffold	na	na	AARDFA010000136.1	<>	na	Primary Assembly	664	na
+SAMN12361411-rid9375703.denovo.144	unplaced-scaffold	na	na	AARDFA010000137.1	<>	na	Primary Assembly	637	na
+SAMN12361411-rid9375703.denovo.145	unplaced-scaffold	na	na	AARDFA010000138.1	<>	na	Primary Assembly	622	na
+SAMN12361411-rid9375703.denovo.146	unplaced-scaffold	na	na	AARDFA010000139.1	<>	na	Primary Assembly	615	na
+SAMN12361411-rid9375703.denovo.147	unplaced-scaffold	na	na	AARDFA010000140.1	<>	na	Primary Assembly	597	na
+SAMN12361411-rid9375703.denovo.148	unplaced-scaffold	na	na	AARDFA010000141.1	<>	na	Primary Assembly	572	na
+SAMN12361411-rid9375703.denovo.149	unplaced-scaffold	na	na	AARDFA010000142.1	<>	na	Primary Assembly	548	na
+SAMN12361411-rid9375703.denovo.150	unplaced-scaffold	na	na	AARDFA010000143.1	<>	na	Primary Assembly	547	na
+SAMN12361411-rid9375703.denovo.151	unplaced-scaffold	na	na	AARDFA010000144.1	<>	na	Primary Assembly	509	na
+SAMN12361411-rid9375703.denovo.152	unplaced-scaffold	na	na	AARDFA010000145.1	<>	na	Primary Assembly	471	na
+SAMN12361411-rid9375703.denovo.153	unplaced-scaffold	na	na	AARDFA010000146.1	<>	na	Primary Assembly	463	na
+SAMN12361411-rid9375703.denovo.154	unplaced-scaffold	na	na	AARDFA010000147.1	<>	na	Primary Assembly	457	na
+SAMN12361411-rid9375703.denovo.155	unplaced-scaffold	na	na	AARDFA010000148.1	<>	na	Primary Assembly	457	na
+SAMN12361411-rid9375703.denovo.156	unplaced-scaffold	na	na	AARDFA010000149.1	<>	na	Primary Assembly	442	na
+SAMN12361411-rid9375703.denovo.157	unplaced-scaffold	na	na	AARDFA010000150.1	<>	na	Primary Assembly	406	na
+SAMN12361411-rid9375703.denovo.158	unplaced-scaffold	na	na	AARDFA010000151.1	<>	na	Primary Assembly	401	na
+SAMN12361411-rid9375703.denovo.159	unplaced-scaffold	na	na	AARDFA010000152.1	<>	na	Primary Assembly	398	na
+SAMN12361411-rid9375703.denovo.160	unplaced-scaffold	na	na	AARDFA010000153.1	<>	na	Primary Assembly	384	na
+SAMN12361411-rid9375703.denovo.161	unplaced-scaffold	na	na	AARDFA010000154.1	<>	na	Primary Assembly	374	na
+SAMN12361411-rid9375703.guided.044	unplaced-scaffold	na	na	AARDFA010000155.1	<>	na	Primary Assembly	18993	na
+SAMN12361411-rid9375703.guided.058	unplaced-scaffold	na	na	AARDFA010000156.1	<>	na	Primary Assembly	8639	na
+SAMN12361411-rid9375703.guided.060	unplaced-scaffold	na	na	AARDFA010000157.1	<>	na	Primary Assembly	8270	na
+SAMN12361411-rid9375703.guided.071	unplaced-scaffold	na	na	AARDFA010000158.1	<>	na	Primary Assembly	4057	na
+SAMN12361411-rid9375703.guided.084	unplaced-scaffold	na	na	AARDFA010000159.1	<>	na	Primary Assembly	2858	na
+SAMN12361411-rid9375703.guided.094	unplaced-scaffold	na	na	AARDFA010000160.1	<>	na	Primary Assembly	2259	na
+SAMN12361411-rid9375703.guided.099	unplaced-scaffold	na	na	AARDFA010000161.1	<>	na	Primary Assembly	1960	na

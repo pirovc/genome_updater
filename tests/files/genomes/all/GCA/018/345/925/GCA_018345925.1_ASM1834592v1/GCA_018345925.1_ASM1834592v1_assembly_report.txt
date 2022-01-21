@@ -1,0 +1,58 @@
+# Assembly name:  ASM1834592v1
+# Organism name:  Fusarium graminearum (ascomycetes)
+# Infraspecific name:  strain=042826
+# Taxid:          5518
+# BioSample:      SAMN16774514
+# BioProject:     PRJNA677929
+# Submitter:      University of Warmia and Mazury in Olsztyn
+# Date:           2021-05-12
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    JADPOE01
+# Assembly method: SPAdes v. October-2020
+# Expected final version: yes
+# Reference guided assembly: GCA_900044135.1
+# Genome coverage: 80x
+# Sequencing technology: Illumina HiSeq
+# GenBank assembly accession: GCA_018345925.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_018345955.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+NODE_10_length_1715122_cov_3.144782	unplaced-scaffold	na	na	JADPOE010000010.1	<>	na	Primary Assembly	1715122	na
+NODE_11_length_1249057_cov_3.139961	unplaced-scaffold	na	na	JADPOE010000011.1	<>	na	Primary Assembly	1249057	na
+NODE_12_length_1194506_cov_3.132165	unplaced-scaffold	na	na	JADPOE010000012.1	<>	na	Primary Assembly	1194506	na
+NODE_13_length_1064586_cov_3.138916	unplaced-scaffold	na	na	JADPOE010000013.1	<>	na	Primary Assembly	1064586	na
+NODE_14_length_616586_cov_3.057756	unplaced-scaffold	na	na	JADPOE010000014.1	<>	na	Primary Assembly	616586	na
+NODE_15_length_608352_cov_3.167326	unplaced-scaffold	na	na	JADPOE010000015.1	<>	na	Primary Assembly	608352	na
+NODE_16_length_595341_cov_3.142095	unplaced-scaffold	na	na	JADPOE010000016.1	<>	na	Primary Assembly	595341	na
+NODE_17_length_484086_cov_3.086177	unplaced-scaffold	na	na	JADPOE010000017.1	<>	na	Primary Assembly	484086	na
+NODE_18_length_438049_cov_3.138767	unplaced-scaffold	na	na	JADPOE010000018.1	<>	na	Primary Assembly	438049	na
+NODE_19_length_423392_cov_3.125883	unplaced-scaffold	na	na	JADPOE010000019.1	<>	na	Primary Assembly	423392	na
+NODE_1_length_4867977_cov_3.166932	unplaced-scaffold	na	na	JADPOE010000001.1	<>	na	Primary Assembly	4867977	na
+NODE_20_length_416351_cov_3.111108	unplaced-scaffold	na	na	JADPOE010000020.1	<>	na	Primary Assembly	416351	na
+NODE_21_length_373281_cov_3.160966	unplaced-scaffold	na	na	JADPOE010000021.1	<>	na	Primary Assembly	373281	na
+NODE_22_length_317990_cov_3.124488	unplaced-scaffold	na	na	JADPOE010000022.1	<>	na	Primary Assembly	317990	na
+NODE_23_length_237017_cov_3.119997	unplaced-scaffold	na	na	JADPOE010000023.1	<>	na	Primary Assembly	237017	na
+NODE_24_length_206499_cov_3.051620	unplaced-scaffold	na	na	JADPOE010000024.1	<>	na	Primary Assembly	206499	na
+NODE_25_length_156583_cov_3.025637	unplaced-scaffold	na	na	JADPOE010000025.1	<>	na	Primary Assembly	156583	na
+NODE_26_length_144923_cov_3.179439	unplaced-scaffold	na	na	JADPOE010000026.1	<>	na	Primary Assembly	144923	na
+NODE_27_length_142711_cov_3.004797	unplaced-scaffold	na	na	JADPOE010000027.1	<>	na	Primary Assembly	142711	na
+NODE_28_length_127945_cov_3.177956	unplaced-scaffold	na	na	JADPOE010000028.1	<>	na	Primary Assembly	127945	na
+NODE_2_length_3291517_cov_3.161648	unplaced-scaffold	na	na	JADPOE010000002.1	<>	na	Primary Assembly	3291517	na
+NODE_3_length_3074509_cov_3.134584	unplaced-scaffold	na	na	JADPOE010000003.1	<>	na	Primary Assembly	3074509	na
+NODE_4_length_2870995_cov_3.157774	unplaced-scaffold	na	na	JADPOE010000004.1	<>	na	Primary Assembly	2870995	na
+NODE_5_length_2713290_cov_3.145236	unplaced-scaffold	na	na	JADPOE010000005.1	<>	na	Primary Assembly	2713290	na
+NODE_6_length_2592343_cov_3.129267	unplaced-scaffold	na	na	JADPOE010000006.1	<>	na	Primary Assembly	2592343	na
+NODE_7_length_2326677_cov_3.142277	unplaced-scaffold	na	na	JADPOE010000007.1	<>	na	Primary Assembly	2326677	na
+NODE_8_length_2013778_cov_3.146082	unplaced-scaffold	na	na	JADPOE010000008.1	<>	na	Primary Assembly	2013778	na
+NODE_9_length_1796676_cov_3.155135	unplaced-scaffold	na	na	JADPOE010000009.1	<>	na	Primary Assembly	1796676	na

@@ -1,0 +1,59 @@
+# Assembly name:  ASM435447v1
+# Organism name:  Latilactobacillus sakei subsp. sakei (firmicutes)
+# Infraspecific name:  strain=ATCC 15521
+# Taxid:          214326
+# BioSample:      SAMN08555025
+# BioProject:     PRJNA434375
+# Submitter:      Carlsberg Research Laboratory
+# Date:           2019-03-18
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    PUFE01
+# Assembly method: ABySS v. 2.0
+# Expected final version: yes
+# Genome coverage: 60.0x
+# Sequencing technology: Illumina
+# Relation to type material: assembly from type material
+# GenBank assembly accession: GCA_004354475.1
+# RefSeq assembly accession: GCF_004354475.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_004354535.1	GCF_004354535.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+142	unplaced-scaffold	na	na	PUFE01000004.1	=	NZ_PUFE01000004.1	Primary Assembly	83748	na
+143	unplaced-scaffold	na	na	PUFE01000007.1	=	NZ_PUFE01000007.1	Primary Assembly	5373	na
+144	unplaced-scaffold	na	na	PUFE01000008.1	=	NZ_PUFE01000008.1	Primary Assembly	3044	na
+145	unplaced-scaffold	na	na	PUFE01000021.1	=	NZ_PUFE01000021.1	Primary Assembly	176061	na
+147	unplaced-scaffold	na	na	PUFE01000019.1	=	NZ_PUFE01000019.1	Primary Assembly	7042	na
+148	unplaced-scaffold	na	na	PUFE01000025.1	=	NZ_PUFE01000025.1	Primary Assembly	2639	na
+155	unplaced-scaffold	na	na	PUFE01000016.1	=	NZ_PUFE01000016.1	Primary Assembly	28311	na
+156	unplaced-scaffold	na	na	PUFE01000024.1	=	NZ_PUFE01000024.1	Primary Assembly	30807	na
+157	unplaced-scaffold	na	na	PUFE01000012.1	=	NZ_PUFE01000012.1	Primary Assembly	1009	na
+158	unplaced-scaffold	na	na	PUFE01000010.1	=	NZ_PUFE01000010.1	Primary Assembly	307833	na
+159	unplaced-scaffold	na	na	PUFE01000013.1	=	NZ_PUFE01000013.1	Primary Assembly	4549	na
+160	unplaced-scaffold	na	na	PUFE01000015.1	=	NZ_PUFE01000015.1	Primary Assembly	4039	na
+161	unplaced-scaffold	na	na	PUFE01000018.1	=	NZ_PUFE01000018.1	Primary Assembly	105699	na
+162	unplaced-scaffold	na	na	PUFE01000003.1	=	NZ_PUFE01000003.1	Primary Assembly	5065	na
+163	unplaced-scaffold	na	na	PUFE01000017.1	=	NZ_PUFE01000017.1	Primary Assembly	6348	na
+164	unplaced-scaffold	na	na	PUFE01000011.1	=	NZ_PUFE01000011.1	Primary Assembly	11107	na
+165	unplaced-scaffold	na	na	PUFE01000014.1	=	NZ_PUFE01000014.1	Primary Assembly	4559	na
+168	unplaced-scaffold	na	na	PUFE01000027.1	=	NZ_PUFE01000027.1	Primary Assembly	534742	na
+169	unplaced-scaffold	na	na	PUFE01000002.1	=	NZ_PUFE01000002.1	Primary Assembly	48866	na
+171	unplaced-scaffold	na	na	PUFE01000023.1	=	NZ_PUFE01000023.1	Primary Assembly	240687	na
+172	unplaced-scaffold	na	na	PUFE01000026.1	=	NZ_PUFE01000026.1	Primary Assembly	14888	na
+173	unplaced-scaffold	na	na	PUFE01000006.1	=	NZ_PUFE01000006.1	Primary Assembly	5119	na
+174	unplaced-scaffold	na	na	PUFE01000020.1	=	NZ_PUFE01000020.1	Primary Assembly	1577	na
+175	unplaced-scaffold	na	na	PUFE01000022.1	=	NZ_PUFE01000022.1	Primary Assembly	78020	na
+176	unplaced-scaffold	na	na	PUFE01000001.1	=	NZ_PUFE01000001.1	Primary Assembly	54984	na
+177	unplaced-scaffold	na	na	PUFE01000005.1	=	NZ_PUFE01000005.1	Primary Assembly	82976	na
+178	unplaced-scaffold	na	na	PUFE01000009.1	=	NZ_PUFE01000009.1	Primary Assembly	87095	na

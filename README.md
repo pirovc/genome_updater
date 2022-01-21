@@ -2,11 +2,11 @@
 
 [![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/genome_updater/README.html)
 
-Bash script to download and update snapshots of the NCBI genomes (refseq/genbank) [1] keeping all files and detailed log for each update, with file integrity check (MD5) and parallel [2] download support.
+Bash script to download and update snapshots of the NCBI genomes repository (refseq/genbank) [1] keeping all files and detailed log for each download and update, with file integrity check (MD5) and parallel [2] download support.
 
 ## Description:
 
-- genome_updater runs on a working directory (**-o**) and creates snapshots/versions (**-b**) of refseq/genbank genome repositories based on selected parameters: database (**-d**), organism group or species/taxids (**-g**), RefSeq category (**-c**), assembly level (**-l**), top assemblies (**-j**), GTDB [3] compatible (**-z**) and file type(s) (**-f**)
+- genome_updater runs on a working directory (**-o**) and creates snapshots/versions (**-b**) of refseq/genbank genome repositories based on selected parameters: database (**-d**), organism group or species/taxids (**-g**), RefSeq category (**-c**), assembly level (**-l**), top assemblies (**-P**/**-A**), GTDB [3] compatible (**-z**) and file type(s) (**-f**)
 - genome_updater can update the selected repository by executing the same command again. It will identify previous files and update the working directory with the most recent version, keeping track of changes and just downloading/removing updated files
 
 ## Installation:
@@ -15,7 +15,7 @@ Bash script to download and update snapshots of the NCBI genomes (refseq/genbank
 
 or
 
-	git clone https://github.com/pirovc/genome_updater.git
+	git clone --recurse-submodules https://github.com/pirovc/genome_updater.git
 
 or
 
@@ -37,12 +37,15 @@ The same command executed again (some days later), will create a second snapshot
 ## Main functionalities:
 
 Data selection:
-- **-g**: selection of sequences by organism groups (**-g "archaea,bacteria"**) or species (**-g "species:562,623"**) or taxonomic id including all children nodes (**-g "taxids:620,1643685"**)
+- **-g**: selection of assemblies by organism groups (**-g "archaea,bacteria"**)
+- **-S**: selection of assemblies by species taxids (**-S "562,623"**)
+- **-T**: selection of assemblies by any taxids including all children nodes (**-T "620,1643685"**)
 - **-d**: database selection (genbank and/or refseq)
 - **-f**: suffix of files to be downloaded for each entry [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
 - **-l**: filter by Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]
 - **-c**: filter by RefSeq Category [all, reference genome, representative genome, na]
-- **-j**: select [top assemblies](#top-assemblies) for species or taxids: (**-j "species:3"**) to download the top 3 assemblies for each species selected or (**-j "taxids:1"**) to download only the top assembly for each taxid selected.
+- **-P**: select [top assemblies](#top-assemblies) for species entries (**-P 3**) to download the top 3 assemblies for each species
+- **-A**: select [top assemblies](#top-assemblies) for taxids entries (**-A 3**) to download the top 3 assemblies for each taxid selected
 - **-z**: select only assemblies included in the latest GTDB release
 
 Utilities:
@@ -98,9 +101,9 @@ Reports:
 
 	./genome_updater.sh -e /my/path/assembly_summary.txt -f "genomic.fna.gz" -o "recovered_sequences" -b january_2018
 
-### Changing timeout and tries of the downloads (wget)
+### Changing timeout, retries and downloader (wget/curl)
 
-	wget_tries=10 wget_timeout=600 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt"
+	retries=10 timeout=600 use_curl=1 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt"
 
 ## Top assemblies:
 

@@ -1,0 +1,62 @@
+# Assembly name:  ASM1133501v1
+# Organism name:  Candidatus Micrarchaeota archaeon (archaea)
+# Isolate:  SpSt-758
+# Taxid:          2250274
+# BioSample:      SAMN09639889
+# BioProject:     PRJNA480137
+# Submitter:      The University of Hong Kong
+# Date:           2020-03-16
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    DTGH01
+# Assembly method: MEGAHIT v. 1.1.2
+# Expected final version: yes
+# Genome coverage: 24.22x
+# Sequencing technology: Illumina HiSeq 2500
+# Excluded from RefSeq: derived from metagenome; genus undefined
+# GenBank assembly accession: GCA_011335015.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_011335045.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+Ga0123519_10000178	unplaced-scaffold	na	na	DTGH01000019.1	<>	na	Primary Assembly	107832	na
+Ga0123519_10000247	unplaced-scaffold	na	na	DTGH01000027.1	<>	na	Primary Assembly	92891	na
+Ga0123519_10000342	unplaced-scaffold	na	na	DTGH01000031.1	<>	na	Primary Assembly	81255	na
+Ga0123519_10000572	unplaced-scaffold	na	na	DTGH01000005.1	<>	na	Primary Assembly	64558	na
+Ga0123519_10000618	unplaced-scaffold	na	na	DTGH01000021.1	<>	na	Primary Assembly	62283	na
+Ga0123519_10000642	unplaced-scaffold	na	na	DTGH01000009.1	<>	na	Primary Assembly	61346	na
+Ga0123519_10000735	unplaced-scaffold	na	na	DTGH01000023.1	<>	na	Primary Assembly	57341	na
+Ga0123519_10000943	unplaced-scaffold	na	na	DTGH01000004.1	<>	na	Primary Assembly	50659	na
+Ga0123519_10001668	unplaced-scaffold	na	na	DTGH01000022.1	<>	na	Primary Assembly	37831	na
+Ga0123519_10001985	unplaced-scaffold	na	na	DTGH01000029.1	<>	na	Primary Assembly	34936	na
+Ga0123519_10002248	unplaced-scaffold	na	na	DTGH01000008.1	<>	na	Primary Assembly	32803	na
+Ga0123519_10002299	unplaced-scaffold	na	na	DTGH01000017.1	<>	na	Primary Assembly	32440	na
+Ga0123519_10002351	unplaced-scaffold	na	na	DTGH01000016.1	<>	na	Primary Assembly	32058	na
+Ga0123519_10002504	unplaced-scaffold	na	na	DTGH01000002.1	<>	na	Primary Assembly	30965	na
+Ga0123519_10002654	unplaced-scaffold	na	na	DTGH01000014.1	<>	na	Primary Assembly	30051	na
+Ga0123519_10004564	unplaced-scaffold	na	na	DTGH01000003.1	<>	na	Primary Assembly	22370	na
+Ga0123519_10004857	unplaced-scaffold	na	na	DTGH01000028.1	<>	na	Primary Assembly	21576	na
+Ga0123519_10005609	unplaced-scaffold	na	na	DTGH01000001.1	<>	na	Primary Assembly	19962	na
+Ga0123519_10005698	unplaced-scaffold	na	na	DTGH01000030.1	<>	na	Primary Assembly	19781	na
+Ga0123519_10006653	unplaced-scaffold	na	na	DTGH01000015.1	<>	na	Primary Assembly	18072	na
+Ga0123519_10012406	unplaced-scaffold	na	na	DTGH01000025.1	<>	na	Primary Assembly	12407	na
+Ga0123519_10012544	unplaced-scaffold	na	na	DTGH01000026.1	<>	na	Primary Assembly	12309	na
+Ga0123519_10018119	unplaced-scaffold	na	na	DTGH01000013.1	<>	na	Primary Assembly	9605	na
+Ga0123519_10020943	unplaced-scaffold	na	na	DTGH01000007.1	<>	na	Primary Assembly	8647	na
+Ga0123519_10028681	unplaced-scaffold	na	na	DTGH01000010.1	<>	na	Primary Assembly	6849	na
+Ga0123519_10035291	unplaced-scaffold	na	na	DTGH01000024.1	<>	na	Primary Assembly	5856	na
+Ga0123519_10038049	unplaced-scaffold	na	na	DTGH01000012.1	<>	na	Primary Assembly	5525	na
+Ga0123519_10045817	unplaced-scaffold	na	na	DTGH01000020.1	<>	na	Primary Assembly	4762	na
+Ga0123519_10047513	unplaced-scaffold	na	na	DTGH01000032.1	<>	na	Primary Assembly	4624	na
+Ga0123519_10049221	unplaced-scaffold	na	na	DTGH01000018.1	<>	na	Primary Assembly	4492	na
+Ga0123519_10052610	unplaced-scaffold	na	na	DTGH01000006.1	<>	na	Primary Assembly	4253	na
+Ga0123519_10071733	unplaced-scaffold	na	na	DTGH01000011.1	<>	na	Primary Assembly	3292	na

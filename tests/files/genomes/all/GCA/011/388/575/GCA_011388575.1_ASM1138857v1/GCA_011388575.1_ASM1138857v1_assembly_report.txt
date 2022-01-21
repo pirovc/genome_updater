@@ -1,0 +1,257 @@
+# Assembly name:  ASM1138857v1
+# Organism name:  Ignisphaera aggregans (crenarchaeotes)
+# Isolate:  SpSt-1
+# Taxid:          334771
+# BioSample:      SAMN09638894
+# BioProject:     PRJNA480137
+# Submitter:      The University of Hong Kong
+# Date:           2020-03-17
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    DRUB01
+# Assembly method: MEGAHIT v. 1.1.2
+# Expected final version: yes
+# Genome coverage: 83.81x
+# Sequencing technology: Illumina Genome Analyzer II
+# Excluded from RefSeq: derived from metagenome
+# GenBank assembly accession: GCA_011388575.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_011388595.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+Ga0065719_100086	unplaced-scaffold	na	na	DRUB01000192.1	<>	na	Primary Assembly	23656	na
+Ga0065719_100212	unplaced-scaffold	na	na	DRUB01000029.1	<>	na	Primary Assembly	69011	na
+Ga0065719_100270	unplaced-scaffold	na	na	DRUB01000089.1	<>	na	Primary Assembly	18315	na
+Ga0065719_100319	unplaced-scaffold	na	na	DRUB01000144.1	<>	na	Primary Assembly	8771	na
+Ga0065719_100331	unplaced-scaffold	na	na	DRUB01000176.1	<>	na	Primary Assembly	33969	na
+Ga0065719_100341	unplaced-scaffold	na	na	DRUB01000049.1	<>	na	Primary Assembly	14416	na
+Ga0065719_100342	unplaced-scaffold	na	na	DRUB01000048.1	<>	na	Primary Assembly	30702	na
+Ga0065719_100346	unplaced-scaffold	na	na	DRUB01000051.1	<>	na	Primary Assembly	33247	na
+Ga0065719_100361	unplaced-scaffold	na	na	DRUB01000211.1	<>	na	Primary Assembly	11694	na
+Ga0065719_100388	unplaced-scaffold	na	na	DRUB01000160.1	<>	na	Primary Assembly	7527	na
+Ga0065719_100392	unplaced-scaffold	na	na	DRUB01000129.1	<>	na	Primary Assembly	20458	na
+Ga0065719_100395	unplaced-scaffold	na	na	DRUB01000127.1	<>	na	Primary Assembly	7423	na
+Ga0065719_100409	unplaced-scaffold	na	na	DRUB01000191.1	<>	na	Primary Assembly	15901	na
+Ga0065719_100414	unplaced-scaffold	na	na	DRUB01000218.1	<>	na	Primary Assembly	19425	na
+Ga0065719_100441	unplaced-scaffold	na	na	DRUB01000082.1	<>	na	Primary Assembly	6434	na
+Ga0065719_100467	unplaced-scaffold	na	na	DRUB01000139.1	<>	na	Primary Assembly	38136	na
+Ga0065719_100475	unplaced-scaffold	na	na	DRUB01000167.1	<>	na	Primary Assembly	11677	na
+Ga0065719_100476	unplaced-scaffold	na	na	DRUB01000169.1	<>	na	Primary Assembly	6598	na
+Ga0065719_100477	unplaced-scaffold	na	na	DRUB01000168.1	<>	na	Primary Assembly	25021	na
+Ga0065719_100488	unplaced-scaffold	na	na	DRUB01000195.1	<>	na	Primary Assembly	14152	na
+Ga0065719_100490	unplaced-scaffold	na	na	DRUB01000225.1	<>	na	Primary Assembly	7729	na
+Ga0065719_100505	unplaced-scaffold	na	na	DRUB01000134.1	<>	na	Primary Assembly	9241	na
+Ga0065719_100518	unplaced-scaffold	na	na	DRUB01000110.1	<>	na	Primary Assembly	11816	na
+Ga0065719_100523	unplaced-scaffold	na	na	DRUB01000075.1	<>	na	Primary Assembly	12226	na
+Ga0065719_100525	unplaced-scaffold	na	na	DRUB01000079.1	<>	na	Primary Assembly	7938	na
+Ga0065719_100543	unplaced-scaffold	na	na	DRUB01000028.1	<>	na	Primary Assembly	13113	na
+Ga0065719_100554	unplaced-scaffold	na	na	DRUB01000222.1	<>	na	Primary Assembly	5386	na
+Ga0065719_100561	unplaced-scaffold	na	na	DRUB01000194.1	<>	na	Primary Assembly	6485	na
+Ga0065719_100580	unplaced-scaffold	na	na	DRUB01000119.1	<>	na	Primary Assembly	11775	na
+Ga0065719_100581	unplaced-scaffold	na	na	DRUB01000118.1	<>	na	Primary Assembly	9215	na
+Ga0065719_100589	unplaced-scaffold	na	na	DRUB01000122.1	<>	na	Primary Assembly	12541	na
+Ga0065719_100592	unplaced-scaffold	na	na	DRUB01000116.1	<>	na	Primary Assembly	6008	na
+Ga0065719_100596	unplaced-scaffold	na	na	DRUB01000113.1	<>	na	Primary Assembly	7970	na
+Ga0065719_100597	unplaced-scaffold	na	na	DRUB01000114.1	<>	na	Primary Assembly	12351	na
+Ga0065719_100624	unplaced-scaffold	na	na	DRUB01000018.1	<>	na	Primary Assembly	17942	na
+Ga0065719_100632	unplaced-scaffold	na	na	DRUB01000045.1	<>	na	Primary Assembly	4839	na
+Ga0065719_100633	unplaced-scaffold	na	na	DRUB01000044.1	<>	na	Primary Assembly	7106	na
+Ga0065719_100639	unplaced-scaffold	na	na	DRUB01000042.1	<>	na	Primary Assembly	6975	na
+Ga0065719_100643	unplaced-scaffold	na	na	DRUB01000190.1	<>	na	Primary Assembly	9970	na
+Ga0065719_100648	unplaced-scaffold	na	na	DRUB01000010.1	<>	na	Primary Assembly	26587	na
+Ga0065719_100650	unplaced-scaffold	na	na	DRUB01000219.1	<>	na	Primary Assembly	4747	na
+Ga0065719_100684	unplaced-scaffold	na	na	DRUB01000069.1	<>	na	Primary Assembly	10833	na
+Ga0065719_100687	unplaced-scaffold	na	na	DRUB01000068.1	<>	na	Primary Assembly	4551	na
+Ga0065719_100699	unplaced-scaffold	na	na	DRUB01000092.1	<>	na	Primary Assembly	11038	na
+Ga0065719_100704	unplaced-scaffold	na	na	DRUB01000031.1	<>	na	Primary Assembly	26970	na
+Ga0065719_100721	unplaced-scaffold	na	na	DRUB01000059.1	<>	na	Primary Assembly	11346	na
+Ga0065719_100724	unplaced-scaffold	na	na	DRUB01000061.1	<>	na	Primary Assembly	47577	na
+Ga0065719_100733	unplaced-scaffold	na	na	DRUB01000056.1	<>	na	Primary Assembly	7283	na
+Ga0065719_100742	unplaced-scaffold	na	na	DRUB01000121.1	<>	na	Primary Assembly	12988	na
+Ga0065719_100749	unplaced-scaffold	na	na	DRUB01000126.1	<>	na	Primary Assembly	21344	na
+Ga0065719_100754	unplaced-scaffold	na	na	DRUB01000090.1	<>	na	Primary Assembly	21383	na
+Ga0065719_100760	unplaced-scaffold	na	na	DRUB01000181.1	<>	na	Primary Assembly	11253	na
+Ga0065719_100772	unplaced-scaffold	na	na	DRUB01000149.1	<>	na	Primary Assembly	4390	na
+Ga0065719_100780	unplaced-scaffold	na	na	DRUB01000015.1	<>	na	Primary Assembly	7191	na
+Ga0065719_100790	unplaced-scaffold	na	na	DRUB01000215.1	<>	na	Primary Assembly	4144	na
+Ga0065719_100796	unplaced-scaffold	na	na	DRUB01000217.1	<>	na	Primary Assembly	23941	na
+Ga0065719_100803	unplaced-scaffold	na	na	DRUB01000070.1	<>	na	Primary Assembly	3998	na
+Ga0065719_100804	unplaced-scaffold	na	na	DRUB01000064.1	<>	na	Primary Assembly	27413	na
+Ga0065719_100818	unplaced-scaffold	na	na	DRUB01000095.1	<>	na	Primary Assembly	9661	na
+Ga0065719_100829	unplaced-scaffold	na	na	DRUB01000131.1	<>	na	Primary Assembly	20101	na
+Ga0065719_100832	unplaced-scaffold	na	na	DRUB01000157.1	<>	na	Primary Assembly	3978	na
+Ga0065719_100845	unplaced-scaffold	na	na	DRUB01000178.1	<>	na	Primary Assembly	3869	na
+Ga0065719_100851	unplaced-scaffold	na	na	DRUB01000204.1	<>	na	Primary Assembly	4652	na
+Ga0065719_100855	unplaced-scaffold	na	na	DRUB01000206.1	<>	na	Primary Assembly	6353	na
+Ga0065719_100870	unplaced-scaffold	na	na	DRUB01000036.1	<>	na	Primary Assembly	9034	na
+Ga0065719_100875	unplaced-scaffold	na	na	DRUB01000037.1	<>	na	Primary Assembly	3704	na
+Ga0065719_100878	unplaced-scaffold	na	na	DRUB01000032.1	<>	na	Primary Assembly	6580	na
+Ga0065719_100889	unplaced-scaffold	na	na	DRUB01000109.1	<>	na	Primary Assembly	16483	na
+Ga0065719_100898	unplaced-scaffold	na	na	DRUB01000135.1	<>	na	Primary Assembly	10865	na
+Ga0065719_100912	unplaced-scaffold	na	na	DRUB01000210.1	<>	na	Primary Assembly	3559	na
+Ga0065719_100915	unplaced-scaffold	na	na	DRUB01000212.1	<>	na	Primary Assembly	11012	na
+Ga0065719_100931	unplaced-scaffold	na	na	DRUB01000152.1	<>	na	Primary Assembly	7280	na
+Ga0065719_100935	unplaced-scaffold	na	na	DRUB01000150.1	<>	na	Primary Assembly	6125	na
+Ga0065719_100942	unplaced-scaffold	na	na	DRUB01000124.1	<>	na	Primary Assembly	3504	na
+Ga0065719_100953	unplaced-scaffold	na	na	DRUB01000093.1	<>	na	Primary Assembly	18646	na
+Ga0065719_100955	unplaced-scaffold	na	na	DRUB01000091.1	<>	na	Primary Assembly	6365	na
+Ga0065719_100968	unplaced-scaffold	na	na	DRUB01000067.1	<>	na	Primary Assembly	3388	na
+Ga0065719_100976	unplaced-scaffold	na	na	DRUB01000035.1	<>	na	Primary Assembly	11148	na
+Ga0065719_100997	unplaced-scaffold	na	na	DRUB01000020.1	<>	na	Primary Assembly	5450	na
+Ga0065719_100999	unplaced-scaffold	na	na	DRUB01000100.1	<>	na	Primary Assembly	4397	na
+Ga0065719_101007	unplaced-scaffold	na	na	DRUB01000199.1	<>	na	Primary Assembly	3241	na
+Ga0065719_101016	unplaced-scaffold	na	na	DRUB01000173.1	<>	na	Primary Assembly	3202	na
+Ga0065719_101017	unplaced-scaffold	na	na	DRUB01000174.1	<>	na	Primary Assembly	18893	na
+Ga0065719_101020	unplaced-scaffold	na	na	DRUB01000003.1	<>	na	Primary Assembly	3188	na
+Ga0065719_101027	unplaced-scaffold	na	na	DRUB01000001.1	<>	na	Primary Assembly	37144	na
+Ga0065719_101037	unplaced-scaffold	na	na	DRUB01000205.1	<>	na	Primary Assembly	3135	na
+Ga0065719_101040	unplaced-scaffold	na	na	DRUB01000085.1	<>	na	Primary Assembly	3140	na
+Ga0065719_101041	unplaced-scaffold	na	na	DRUB01000084.1	<>	na	Primary Assembly	7791	na
+Ga0065719_101049	unplaced-scaffold	na	na	DRUB01000087.1	<>	na	Primary Assembly	4566	na
+Ga0065719_101051	unplaced-scaffold	na	na	DRUB01000080.1	<>	na	Primary Assembly	7046	na
+Ga0065719_101058	unplaced-scaffold	na	na	DRUB01000052.1	<>	na	Primary Assembly	3477	na
+Ga0065719_101063	unplaced-scaffold	na	na	DRUB01000141.1	<>	na	Primary Assembly	3157	na
+Ga0065719_101092	unplaced-scaffold	na	na	DRUB01000156.1	<>	na	Primary Assembly	4333	na
+Ga0065719_101102	unplaced-scaffold	na	na	DRUB01000026.1	<>	na	Primary Assembly	4818	na
+Ga0065719_101106	unplaced-scaffold	na	na	DRUB01000023.1	<>	na	Primary Assembly	26977	na
+Ga0065719_101108	unplaced-scaffold	na	na	DRUB01000030.1	<>	na	Primary Assembly	10876	na
+Ga0065719_101113	unplaced-scaffold	na	na	DRUB01000054.1	<>	na	Primary Assembly	4574	na
+Ga0065719_101115	unplaced-scaffold	na	na	DRUB01000055.1	<>	na	Primary Assembly	15983	na
+Ga0065719_101120	unplaced-scaffold	na	na	DRUB01000014.1	<>	na	Primary Assembly	5996	na
+Ga0065719_101129	unplaced-scaffold	na	na	DRUB01000200.1	<>	na	Primary Assembly	9345	na
+Ga0065719_101158	unplaced-scaffold	na	na	DRUB01000209.1	<>	na	Primary Assembly	3967	na
+Ga0065719_101184	unplaced-scaffold	na	na	DRUB01000004.1	<>	na	Primary Assembly	2870	na
+Ga0065719_101196	unplaced-scaffold	na	na	DRUB01000040.1	<>	na	Primary Assembly	4762	na
+Ga0065719_101216	unplaced-scaffold	na	na	DRUB01000125.1	<>	na	Primary Assembly	3340	na
+Ga0065719_101232	unplaced-scaffold	na	na	DRUB01000062.1	<>	na	Primary Assembly	2651	na
+Ga0065719_101240	unplaced-scaffold	na	na	DRUB01000179.1	<>	na	Primary Assembly	5340	na
+Ga0065719_101261	unplaced-scaffold	na	na	DRUB01000224.1	<>	na	Primary Assembly	6698	na
+Ga0065719_101266	unplaced-scaffold	na	na	DRUB01000226.1	<>	na	Primary Assembly	2583	na
+Ga0065719_101275	unplaced-scaffold	na	na	DRUB01000201.1	<>	na	Primary Assembly	4279	na
+Ga0065719_101279	unplaced-scaffold	na	na	DRUB01000196.1	<>	na	Primary Assembly	2560	na
+Ga0065719_101301	unplaced-scaffold	na	na	DRUB01000074.1	<>	na	Primary Assembly	2518	na
+Ga0065719_101305	unplaced-scaffold	na	na	DRUB01000203.1	<>	na	Primary Assembly	4599	na
+Ga0065719_101324	unplaced-scaffold	na	na	DRUB01000038.1	<>	na	Primary Assembly	5158	na
+Ga0065719_101357	unplaced-scaffold	na	na	DRUB01000143.1	<>	na	Primary Assembly	3736	na
+Ga0065719_101368	unplaced-scaffold	na	na	DRUB01000171.1	<>	na	Primary Assembly	5503	na
+Ga0065719_101395	unplaced-scaffold	na	na	DRUB01000019.1	<>	na	Primary Assembly	3782	na
+Ga0065719_101405	unplaced-scaffold	na	na	DRUB01000057.1	<>	na	Primary Assembly	2947	na
+Ga0065719_101470	unplaced-scaffold	na	na	DRUB01000180.1	<>	na	Primary Assembly	4949	na
+Ga0065719_101475	unplaced-scaffold	na	na	DRUB01000183.1	<>	na	Primary Assembly	4413	na
+Ga0065719_101511	unplaced-scaffold	na	na	DRUB01000138.1	<>	na	Primary Assembly	16204	na
+Ga0065719_101534	unplaced-scaffold	na	na	DRUB01000081.1	<>	na	Primary Assembly	28795	na
+Ga0065719_101542	unplaced-scaffold	na	na	DRUB01000216.1	<>	na	Primary Assembly	3480	na
+Ga0065719_101570	unplaced-scaffold	na	na	DRUB01000189.1	<>	na	Primary Assembly	3724	na
+Ga0065719_101573	unplaced-scaffold	na	na	DRUB01000187.1	<>	na	Primary Assembly	4691	na
+Ga0065719_101584	unplaced-scaffold	na	na	DRUB01000099.1	<>	na	Primary Assembly	5071	na
+Ga0065719_101609	unplaced-scaffold	na	na	DRUB01000161.1	<>	na	Primary Assembly	2689	na
+Ga0065719_101614	unplaced-scaffold	na	na	DRUB01000133.1	<>	na	Primary Assembly	4712	na
+Ga0065719_101625	unplaced-scaffold	na	na	DRUB01000107.1	<>	na	Primary Assembly	5070	na
+Ga0065719_101646	unplaced-scaffold	na	na	DRUB01000050.1	<>	na	Primary Assembly	6703	na
+Ga0065719_101691	unplaced-scaffold	na	na	DRUB01000073.1	<>	na	Primary Assembly	2619	na
+Ga0065719_101704	unplaced-scaffold	na	na	DRUB01000159.1	<>	na	Primary Assembly	17839	na
+Ga0065719_101709	unplaced-scaffold	na	na	DRUB01000172.1	<>	na	Primary Assembly	3221	na
+Ga0065719_101717	unplaced-scaffold	na	na	DRUB01000016.1	<>	na	Primary Assembly	3883	na
+Ga0065719_101765	unplaced-scaffold	na	na	DRUB01000097.1	<>	na	Primary Assembly	9438	na
+Ga0065719_101767	unplaced-scaffold	na	na	DRUB01000170.1	<>	na	Primary Assembly	9237	na
+Ga0065719_101774	unplaced-scaffold	na	na	DRUB01000017.1	<>	na	Primary Assembly	2842	na
+Ga0065719_101835	unplaced-scaffold	na	na	DRUB01000221.1	<>	na	Primary Assembly	7689	na
+Ga0065719_101836	unplaced-scaffold	na	na	DRUB01000220.1	<>	na	Primary Assembly	7472	na
+Ga0065719_101857	unplaced-scaffold	na	na	DRUB01000012.1	<>	na	Primary Assembly	2818	na
+Ga0065719_101920	unplaced-scaffold	na	na	DRUB01000158.1	<>	na	Primary Assembly	2632	na
+Ga0065719_101935	unplaced-scaffold	na	na	DRUB01000186.1	<>	na	Primary Assembly	41951	na
+Ga0065719_101948	unplaced-scaffold	na	na	DRUB01000098.1	<>	na	Primary Assembly	4720	na
+Ga0065719_101995	unplaced-scaffold	na	na	DRUB01000006.1	<>	na	Primary Assembly	5076	na
+Ga0065719_102066	unplaced-scaffold	na	na	DRUB01000101.1	<>	na	Primary Assembly	3333	na
+Ga0065719_102116	unplaced-scaffold	na	na	DRUB01000148.1	<>	na	Primary Assembly	2585	na
+Ga0065719_102145	unplaced-scaffold	na	na	DRUB01000066.1	<>	na	Primary Assembly	3030	na
+Ga0065719_102283	unplaced-scaffold	na	na	DRUB01000185.1	<>	na	Primary Assembly	3265	na
+Ga0065719_102322	unplaced-scaffold	na	na	DRUB01000198.1	<>	na	Primary Assembly	5224	na
+Ga0065719_102342	unplaced-scaffold	na	na	DRUB01000214.1	<>	na	Primary Assembly	9297	na
+Ga0065719_102412	unplaced-scaffold	na	na	DRUB01000077.1	<>	na	Primary Assembly	35987	na
+Ga0065719_102525	unplaced-scaffold	na	na	DRUB01000043.1	<>	na	Primary Assembly	12667	na
+Ga0065719_102534	unplaced-scaffold	na	na	DRUB01000021.1	<>	na	Primary Assembly	2843	na
+Ga0065719_102651	unplaced-scaffold	na	na	DRUB01000033.1	<>	na	Primary Assembly	3340	na
+Ga0065719_102700	unplaced-scaffold	na	na	DRUB01000072.1	<>	na	Primary Assembly	9586	na
+Ga0065719_102733	unplaced-scaffold	na	na	DRUB01000103.1	<>	na	Primary Assembly	16898	na
+Ga0065719_102749	unplaced-scaffold	na	na	DRUB01000175.1	<>	na	Primary Assembly	18581	na
+Ga0065719_102835	unplaced-scaffold	na	na	DRUB01000108.1	<>	na	Primary Assembly	2566	na
+Ga0065719_102845	unplaced-scaffold	na	na	DRUB01000024.1	<>	na	Primary Assembly	4025	na
+Ga0065719_102882	unplaced-scaffold	na	na	DRUB01000213.1	<>	na	Primary Assembly	3488	na
+Ga0065719_102911	unplaced-scaffold	na	na	DRUB01000053.1	<>	na	Primary Assembly	3156	na
+Ga0065719_103575	unplaced-scaffold	na	na	DRUB01000009.1	<>	na	Primary Assembly	3774	na
+Ga0065719_103907	unplaced-scaffold	na	na	DRUB01000034.1	<>	na	Primary Assembly	40543	na
+Ga0065719_104164	unplaced-scaffold	na	na	DRUB01000146.1	<>	na	Primary Assembly	10343	na
+Ga0065719_104184	unplaced-scaffold	na	na	DRUB01000120.1	<>	na	Primary Assembly	5405	na
+Ga0065719_105026	unplaced-scaffold	na	na	DRUB01000227.1	<>	na	Primary Assembly	3238	na
+Ga0065719_105084	unplaced-scaffold	na	na	DRUB01000153.1	<>	na	Primary Assembly	2729	na
+Ga0065719_105536	unplaced-scaffold	na	na	DRUB01000117.1	<>	na	Primary Assembly	14949	na
+Ga0065719_106291	unplaced-scaffold	na	na	DRUB01000155.1	<>	na	Primary Assembly	3625	na
+Ga0065719_106599	unplaced-scaffold	na	na	DRUB01000145.1	<>	na	Primary Assembly	40306	na
+Ga0065719_106642	unplaced-scaffold	na	na	DRUB01000094.1	<>	na	Primary Assembly	22342	na
+Ga0065719_106767	unplaced-scaffold	na	na	DRUB01000202.1	<>	na	Primary Assembly	11887	na
+Ga0065719_106802	unplaced-scaffold	na	na	DRUB01000106.1	<>	na	Primary Assembly	11493	na
+Ga0065719_106831	unplaced-scaffold	na	na	DRUB01000076.1	<>	na	Primary Assembly	10018	na
+Ga0065719_107016	unplaced-scaffold	na	na	DRUB01000142.1	<>	na	Primary Assembly	6718	na
+Ga0065719_107030	unplaced-scaffold	na	na	DRUB01000013.1	<>	na	Primary Assembly	6532	na
+Ga0065719_107070	unplaced-scaffold	na	na	DRUB01000123.1	<>	na	Primary Assembly	6372	na
+Ga0065719_107105	unplaced-scaffold	na	na	DRUB01000163.1	<>	na	Primary Assembly	5603	na
+Ga0065719_107112	unplaced-scaffold	na	na	DRUB01000188.1	<>	na	Primary Assembly	5466	na
+Ga0065719_107118	unplaced-scaffold	na	na	DRUB01000193.1	<>	na	Primary Assembly	6100	na
+Ga0065719_107138	unplaced-scaffold	na	na	DRUB01000197.1	<>	na	Primary Assembly	5258	na
+Ga0065719_107172	unplaced-scaffold	na	na	DRUB01000140.1	<>	na	Primary Assembly	5003	na
+Ga0065719_107215	unplaced-scaffold	na	na	DRUB01000046.1	<>	na	Primary Assembly	4877	na
+Ga0065719_107219	unplaced-scaffold	na	na	DRUB01000165.1	<>	na	Primary Assembly	4638	na
+Ga0065719_107253	unplaced-scaffold	na	na	DRUB01000063.1	<>	na	Primary Assembly	4441	na
+Ga0065719_107257	unplaced-scaffold	na	na	DRUB01000060.1	<>	na	Primary Assembly	5025	na
+Ga0065719_107291	unplaced-scaffold	na	na	DRUB01000207.1	<>	na	Primary Assembly	4225	na
+Ga0065719_107316	unplaced-scaffold	na	na	DRUB01000025.1	<>	na	Primary Assembly	4244	na
+Ga0065719_107340	unplaced-scaffold	na	na	DRUB01000164.1	<>	na	Primary Assembly	3989	na
+Ga0065719_107395	unplaced-scaffold	na	na	DRUB01000136.1	<>	na	Primary Assembly	3679	na
+Ga0065719_107407	unplaced-scaffold	na	na	DRUB01000096.1	<>	na	Primary Assembly	3643	na
+Ga0065719_107413	unplaced-scaffold	na	na	DRUB01000065.1	<>	na	Primary Assembly	3634	na
+Ga0065719_107443	unplaced-scaffold	na	na	DRUB01000083.1	<>	na	Primary Assembly	3756	na
+Ga0065719_107477	unplaced-scaffold	na	na	DRUB01000132.1	<>	na	Primary Assembly	3504	na
+Ga0065719_107513	unplaced-scaffold	na	na	DRUB01000177.1	<>	na	Primary Assembly	4164	na
+Ga0065719_107519	unplaced-scaffold	na	na	DRUB01000182.1	<>	na	Primary Assembly	3242	na
+Ga0065719_107526	unplaced-scaffold	na	na	DRUB01000208.1	<>	na	Primary Assembly	3221	na
+Ga0065719_107564	unplaced-scaffold	na	na	DRUB01000115.1	<>	na	Primary Assembly	3239	na
+Ga0065719_107676	unplaced-scaffold	na	na	DRUB01000047.1	<>	na	Primary Assembly	3793	na
+Ga0065719_107679	unplaced-scaffold	na	na	DRUB01000058.1	<>	na	Primary Assembly	2936	na
+Ga0065719_108326	unplaced-scaffold	na	na	DRUB01000005.1	<>	na	Primary Assembly	2810	na
+Ga0065719_108378	unplaced-scaffold	na	na	DRUB01000112.1	<>	na	Primary Assembly	2524	na
+Ga0065719_108437	unplaced-scaffold	na	na	DRUB01000147.1	<>	na	Primary Assembly	3260	na
+Ga0065719_114697	unplaced-scaffold	na	na	DRUB01000184.1	<>	na	Primary Assembly	14163	na
+Ga0065719_114708	unplaced-scaffold	na	na	DRUB01000111.1	<>	na	Primary Assembly	5176	na
+Ga0065719_114728	unplaced-scaffold	na	na	DRUB01000223.1	<>	na	Primary Assembly	3032	na
+Ga0065719_114730	unplaced-scaffold	na	na	DRUB01000137.1	<>	na	Primary Assembly	2735	na
+Ga0065719_114736	unplaced-scaffold	na	na	DRUB01000027.1	<>	na	Primary Assembly	2604	na
+Ga0065719_116376	unplaced-scaffold	na	na	DRUB01000071.1	<>	na	Primary Assembly	9215	na
+Ga0065719_116407	unplaced-scaffold	na	na	DRUB01000008.1	<>	na	Primary Assembly	8067	na
+Ga0065719_116474	unplaced-scaffold	na	na	DRUB01000151.1	<>	na	Primary Assembly	6630	na
+Ga0065719_116577	unplaced-scaffold	na	na	DRUB01000154.1	<>	na	Primary Assembly	5519	na
+Ga0065719_116582	unplaced-scaffold	na	na	DRUB01000086.1	<>	na	Primary Assembly	5470	na
+Ga0065719_116585	unplaced-scaffold	na	na	DRUB01000078.1	<>	na	Primary Assembly	5454	na
+Ga0065719_116649	unplaced-scaffold	na	na	DRUB01000011.1	<>	na	Primary Assembly	4864	na
+Ga0065719_116828	unplaced-scaffold	na	na	DRUB01000162.1	<>	na	Primary Assembly	4089	na
+Ga0065719_116859	unplaced-scaffold	na	na	DRUB01000166.1	<>	na	Primary Assembly	3964	na
+Ga0065719_116866	unplaced-scaffold	na	na	DRUB01000088.1	<>	na	Primary Assembly	3937	na
+Ga0065719_116884	unplaced-scaffold	na	na	DRUB01000102.1	<>	na	Primary Assembly	3874	na
+Ga0065719_116922	unplaced-scaffold	na	na	DRUB01000105.1	<>	na	Primary Assembly	3758	na
+Ga0065719_116938	unplaced-scaffold	na	na	DRUB01000130.1	<>	na	Primary Assembly	3684	na
+Ga0065719_116943	unplaced-scaffold	na	na	DRUB01000039.1	<>	na	Primary Assembly	3702	na
+Ga0065719_116949	unplaced-scaffold	na	na	DRUB01000041.1	<>	na	Primary Assembly	3676	na
+Ga0065719_117114	unplaced-scaffold	na	na	DRUB01000104.1	<>	na	Primary Assembly	3301	na
+Ga0065719_117163	unplaced-scaffold	na	na	DRUB01000002.1	<>	na	Primary Assembly	3204	na
+Ga0065719_117168	unplaced-scaffold	na	na	DRUB01000007.1	<>	na	Primary Assembly	3198	na
+Ga0065719_117445	unplaced-scaffold	na	na	DRUB01000022.1	<>	na	Primary Assembly	2817	na
+Ga0065719_117675	unplaced-scaffold	na	na	DRUB01000128.1	<>	na	Primary Assembly	2569	na

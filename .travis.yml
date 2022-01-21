@@ -1,0 +1,10 @@
+language: bash
+
+before_install:
+  - sudo apt-get install parallel
+
+script:
+    - tests/libs/bats/bin/bats tests/integration_offline.bats
+
+notifications:
+  email: false

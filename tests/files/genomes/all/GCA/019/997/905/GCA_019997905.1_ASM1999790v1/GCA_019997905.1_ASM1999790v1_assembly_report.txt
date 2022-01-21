@@ -1,0 +1,30 @@
+# Assembly name:  ASM1999790v1
+# Organism name:  Staphylococcus pseudintermedius (firmicutes)
+# Infraspecific name:  strain=HSP149
+# Taxid:          283734
+# BioSample:      SAMN21249929
+# BioProject:     PRJNA685966
+# Submitter:      Universitat Autonoma de Barcelona
+# Date:           2021-09-15
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Complete Genome
+# Genome representation: full
+# Assembly method: Flye v. 2.8.3
+# Expected final version: yes
+# Genome coverage: 90x
+# Sequencing technology: Oxford Nanopore MinION
+# Excluded from RefSeq: from large multi-isolate project
+# GenBank assembly accession: GCA_019997905.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_019997915.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ANONYMOUS	assembled-molecule	na	Chromosome	CP083229.1	<>	na	Primary Assembly	2592238	na

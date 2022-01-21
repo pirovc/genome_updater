@@ -1,0 +1,63 @@
+# Assembly name:  ASM18722v1
+# Organism name:  Haladaptatus paucihalophilus DX253 (euryarchaeotes)
+# Infraspecific name:  strain=DX253
+# Taxid:          797209
+# BioSample:      SAMN02470763
+# BioProject:     PRJNA50445
+# Submitter:      Oklahoma State University
+# Date:           2011-01-31
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    AEMG01
+# Assembly method: Newbler v. May 2009
+# Genome coverage: 50x
+# Sequencing technology: 454
+# Relation to type material: assembly from type material
+# GenBank assembly accession: GCA_000187225.2
+# RefSeq assembly accession: GCF_000187225.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000187235.2	GCF_000187235.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig00034	unplaced-scaffold	na	na	AEMG01000032.1	=	NZ_AEMG01000032.1	Primary Assembly	272	na
+contig00033	unplaced-scaffold	na	na	AEMG01000031.1	=	NZ_AEMG01000031.1	Primary Assembly	252	na
+contig00032	unplaced-scaffold	na	na	AEMG01000030.1	=	NZ_AEMG01000030.1	Primary Assembly	154908	na
+contig00031	unplaced-scaffold	na	na	AEMG01000029.1	=	NZ_AEMG01000029.1	Primary Assembly	278545	na
+contig00030	unplaced-scaffold	na	na	AEMG01000028.1	=	NZ_AEMG01000028.1	Primary Assembly	191952	na
+contig00029	unplaced-scaffold	na	na	AEMG01000027.1	=	NZ_AEMG01000027.1	Primary Assembly	27741	na
+contig00027	unplaced-scaffold	na	na	AEMG01000026.1	=	NZ_AEMG01000026.1	Primary Assembly	3227	na
+contig00026	unplaced-scaffold	na	na	AEMG01000025.1	=	NZ_AEMG01000025.1	Primary Assembly	100479	na
+contig00025	unplaced-scaffold	na	na	AEMG01000024.1	=	NZ_AEMG01000024.1	Primary Assembly	10275	na
+contig00024	unplaced-scaffold	na	na	AEMG01000023.1	=	NZ_AEMG01000023.1	Primary Assembly	401	na
+contig00023	unplaced-scaffold	na	na	AEMG01000022.1	=	NZ_AEMG01000022.1	Primary Assembly	119282	na
+contig00022	unplaced-scaffold	na	na	AEMG01000021.1	=	NZ_AEMG01000021.1	Primary Assembly	19915	na
+contig00021	unplaced-scaffold	na	na	AEMG01000020.1	=	NZ_AEMG01000020.1	Primary Assembly	11108	na
+contig00020	unplaced-scaffold	na	na	AEMG01000019.1	=	NZ_AEMG01000019.1	Primary Assembly	267250	na
+contig00019	unplaced-scaffold	na	na	AEMG01000018.1	=	NZ_AEMG01000018.1	Primary Assembly	163658	na
+contig00018	unplaced-scaffold	na	na	AEMG01000017.1	=	NZ_AEMG01000017.1	Primary Assembly	660	na
+contig00017	unplaced-scaffold	na	na	AEMG01000016.1	=	NZ_AEMG01000016.1	Primary Assembly	79133	na
+contig00016	unplaced-scaffold	na	na	AEMG01000015.1	=	NZ_AEMG01000015.1	Primary Assembly	213348	na
+contig00015	unplaced-scaffold	na	na	AEMG01000014.1	=	NZ_AEMG01000014.1	Primary Assembly	61149	na
+contig00014	unplaced-scaffold	na	na	AEMG01000013.1	=	NZ_AEMG01000013.1	Primary Assembly	142982	na
+contig00013	unplaced-scaffold	na	na	AEMG01000012.1	=	NZ_AEMG01000012.1	Primary Assembly	139051	na
+contig00012	unplaced-scaffold	na	na	AEMG01000011.1	=	NZ_AEMG01000011.1	Primary Assembly	508	na
+contig00011	unplaced-scaffold	na	na	AEMG01000010.1	=	NZ_AEMG01000010.1	Primary Assembly	400	na
+contig00009	unplaced-scaffold	na	na	AEMG01000009.1	=	NZ_AEMG01000009.1	Primary Assembly	447840	na
+contig00008	unplaced-scaffold	na	na	AEMG01000008.1	=	NZ_AEMG01000008.1	Primary Assembly	115430	na
+contig00007	unplaced-scaffold	na	na	AEMG01000007.1	=	NZ_AEMG01000007.1	Primary Assembly	132042	na
+contig00006	unplaced-scaffold	na	na	AEMG01000006.1	=	NZ_AEMG01000006.1	Primary Assembly	371674	na
+contig00005	unplaced-scaffold	na	na	AEMG01000005.1	=	NZ_AEMG01000005.1	Primary Assembly	75262	na
+contig00004	unplaced-scaffold	na	na	AEMG01000004.1	=	NZ_AEMG01000004.1	Primary Assembly	405747	na
+contig00003	unplaced-scaffold	na	na	AEMG01000003.1	=	NZ_AEMG01000003.1	Primary Assembly	110297	na
+contig00002	unplaced-scaffold	na	na	AEMG01000002.1	=	NZ_AEMG01000002.1	Primary Assembly	559563	na
+contig00001	unplaced-scaffold	na	na	AEMG01000001.1	=	NZ_AEMG01000001.1	Primary Assembly	80454	na
