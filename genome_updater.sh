@@ -95,7 +95,7 @@ count_lines_file(){ # parameter: ${1} file - return number of lines
 
 parse_new_taxdump() # parameter: ${1} taxids - return all taxids on of provided taxids
 {
-	taxids=${1}
+    taxids=${1}
     tmp_new_taxdump="${target_output_prefix}new_taxdump.tar.gz"
     download_static "${base_url}/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}"
     unpack "${tmp_new_taxdump}" "${working_dir}" "taxidlineage.dmp"
@@ -774,11 +774,11 @@ if [[ "${MODE}" == "NEW" ]] || [[ "${MODE}" == "UPDATE" ]]; then # with new info
 fi
 
 if [[ "${MODE}" == "NEW" ]]; then
-	log_file=${new_output_prefix}${timestamp}.log
+    log_file=${new_output_prefix}${timestamp}.log
 elif [[ "${MODE}" == "UPDATE" ]]; then
-	log_file=${new_output_prefix}${timestamp}.log
+    log_file=${new_output_prefix}${timestamp}.log
 elif [[ "${MODE}" == "FIX" ]]; then
-	log_file=${current_output_prefix}${timestamp}.log
+    log_file=${current_output_prefix}${timestamp}.log
 fi
 export log_file
 
@@ -831,7 +831,7 @@ echolog "-------------------------------------------" "1"
 # new
 if [[ "${MODE}" == "NEW" ]]; then
 
-	# SET TARGET
+    # SET TARGET
     target_output_prefix=${new_output_prefix}
     export target_output_prefix
 
@@ -871,12 +871,12 @@ if [[ "${MODE}" == "NEW" ]]; then
             # UPDATED INDICES assembly accession
             if [ "${updated_assembly_accession}" -eq 1 ]; then 
                 output_assembly_accession "${new_assembly_summary}" "1,20" "${file_formats}" "A" > "${new_output_prefix}updated_assembly_accession.txt"
-            	echolog " - Assembly accession report written [${new_output_prefix}updated_assembly_accession.txt]" "1"
+                echolog " - Assembly accession report written [${new_output_prefix}updated_assembly_accession.txt]" "1"
             fi
             # UPDATED INDICES sequence accession
             if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
                 output_sequence_accession "${new_assembly_summary}" "1,20" "${file_formats}" "A" "${new_assembly_summary}" > "${new_output_prefix}updated_sequence_accession.txt"
-				echolog " - Sequence accession report written [${new_output_prefix}updated_sequence_accession.txt]" "1"
+                echolog " - Sequence accession report written [${new_output_prefix}updated_sequence_accession.txt]" "1"
             fi
             echolog "" "1"
         fi
@@ -885,7 +885,7 @@ if [[ "${MODE}" == "NEW" ]]; then
     
 else # update/fix
 
-	# SET TARGET for fix
+    # SET TARGET for fix
     target_output_prefix=${current_output_prefix}
     export target_output_prefix
 
@@ -961,7 +961,7 @@ else # update/fix
             echolog "Linking versions [${current_label} --> ${new_label}]" "1"
             find "${current_output_prefix}${files_dir}" -maxdepth 1 -xtype f -print0 | xargs -P "${threads}" -I{} -0 ln -s -r "{}" "${new_output_prefix}${files_dir}"
             echolog " - Done." "1"
-        	echolog "" "1"
+            echolog "" "1"
         fi
         
         update=${working_dir}update.tmp
@@ -1017,16 +1017,16 @@ else # update/fix
             if [ "${updated_assembly_accession}" -eq 1 ]; then 
                 output_assembly_accession "${update}" "1,2" "${file_formats}" "A" >> "${new_output_prefix}updated_assembly_accession.txt"
                 output_assembly_accession "${new}" "1,2" "${file_formats}" "A" >> "${new_output_prefix}updated_assembly_accession.txt"
-            	echolog " - Assembly accession report written [${new_output_prefix}updated_assembly_accession.txt]" "1"
+                echolog " - Assembly accession report written [${new_output_prefix}updated_assembly_accession.txt]" "1"
             fi
             # UPDATED INDICES sequence accession (added entries - do it after downloading them)
             if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
                 output_sequence_accession "${update}" "1,2" "${file_formats}" "A" "${new_assembly_summary}">> "${new_output_prefix}updated_sequence_accession.txt"
                 output_sequence_accession "${new}" "1,2" "${file_formats}" "A" "${new_assembly_summary}" >> "${new_output_prefix}updated_sequence_accession.txt"
-            	echolog " - Sequence accession report written [${new_output_prefix}updated_sequence_accession.txt]" "1"
+                echolog " - Sequence accession report written [${new_output_prefix}updated_sequence_accession.txt]" "1"
             fi
             rm "${update}" "${delete}" "${new}"
-			echolog "" "1"
+            echolog "" "1"
 
             # set version - update default assembly summary
             echolog "Setting new version [${new_label}]" "1"
@@ -1039,7 +1039,7 @@ else # update/fix
 fi
 
 if [ "${dry_run}" -eq 0 ]; then
-	if [ "${download_taxonomy}" -eq 1 ]; then
+    if [ "${download_taxonomy}" -eq 1 ]; then
         echolog "Downloading current Taxonomy database [${target_output_prefix}taxdump.tar.gz] " "1"
         download_static "${base_url}/pub/taxonomy/taxdump.tar.gz" "${target_output_prefix}taxdump.tar.gz"
         echolog " - Done" "1"
