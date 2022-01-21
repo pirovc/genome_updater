@@ -40,7 +40,7 @@ Downloading all complete genome sequences from Archaea in the RefSeq repository 
  - Add `-k` to perform a dry-run before the actual run. genome_updater will show how many files will be downloaded or updated and exit without changes
  - The *same command* executed again (e.g. some days later), will update the snapshot of the requested dataset to its latest state, accounting for new, updated and removed sequences.
 
-## Main functionalities:
+## Main functionalities
 
 Data selection:
 - **-d**: database selection (genbank and/or refseq)
@@ -60,14 +60,14 @@ Utilities:
 - **-t**: run many parallel downloads
 - **-m**: checks for file integrity (MD5)
 - **-e**: re-downloads entries from any "assembly_summary.txt" obtained from external sources. Easy way to share snapshots of exact database version used.
-- **-a**: downloads the current taxdump, matching downloaded files
+- **-a**: downloads the current version of the NCBI taxonomy database (taxdump.tar.gz)
 
 Reports:
 - **-u**: Added/Removed assembly accessions
 - **-r**: Added/Removed sequence accessions 
 - **-p**: Output list of URLs for downloaded and failed files
 
-## Examples:
+## Examples
 
 ### Downloading genomic sequences (.fna files) for the Complete Genome sequences from RefSeq for Bacteria and Archaea and keep them updated
 
@@ -111,7 +111,7 @@ Reports:
 
 	retries=10 timeout=600 use_curl=1 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt"
 
-## Top assemblies:
+## Top assemblies
 
 The top assemblies (**-P**/**-A**) will be selected based on the species/taxid entries in the assembly_summary.txt and not for the taxids provided with -g "taxids:...". They are selected sorted by categories in the following order of importance:
 	
@@ -135,7 +135,7 @@ The top assemblies (**-P**/**-A**) will be selected based on the species/taxid e
 	D) Date:
 		1) Most recent first
 
-## Extended reports:
+## Extended reports
 
 ### assembly accessions
 
@@ -174,7 +174,7 @@ or
 
 	find output_folder/version/files/ -type f
 
-## Parameters:
+## Parameters
 
 	┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐
 	│ ┬├┤ ││││ ││││├┤     │ │├─┘ ││├─┤ │ ├┤ ├┬┘
