@@ -1,0 +1,224 @@
+# Assembly name:  ASM221530v1
+# Organism name:  Halorubrum lacusprofundi (euryarchaeotes)
+# Infraspecific name:  strain=DL18
+# Taxid:          2247
+# BioSample:      SAMN05822533
+# BioProject:     PRJNA343348
+# Submitter:      University of NSW
+# Date:           2017-07-06
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    MKFG01
+# Assembly method: SPAdes v. August-2016
+# Expected final version: no
+# Genome coverage: 650.0x
+# Sequencing technology: Illumina MiSeq
+# GenBank assembly accession: GCA_002215305.1
+# RefSeq assembly accession: GCF_002215305.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_002215325.1	GCF_002215325.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig001	unplaced-scaffold	na	na	MKFG01000001.1	=	NZ_MKFG01000001.1	Primary Assembly	677821	na
+contig002	unplaced-scaffold	na	na	MKFG01000002.1	=	NZ_MKFG01000002.1	Primary Assembly	449618	na
+contig003	unplaced-scaffold	na	na	MKFG01000003.1	=	NZ_MKFG01000003.1	Primary Assembly	307050	na
+contig004	unplaced-scaffold	na	na	MKFG01000004.1	=	NZ_MKFG01000004.1	Primary Assembly	237494	na
+contig005	unplaced-scaffold	na	na	MKFG01000005.1	=	NZ_MKFG01000005.1	Primary Assembly	237458	na
+contig006	unplaced-scaffold	na	na	MKFG01000006.1	=	NZ_MKFG01000006.1	Primary Assembly	232046	na
+contig007	unplaced-scaffold	na	na	MKFG01000007.1	=	NZ_MKFG01000007.1	Primary Assembly	156776	na
+contig008	unplaced-scaffold	na	na	MKFG01000008.1	=	NZ_MKFG01000008.1	Primary Assembly	122821	na
+contig009	unplaced-scaffold	na	na	MKFG01000009.1	=	NZ_MKFG01000009.1	Primary Assembly	100055	na
+contig010	unplaced-scaffold	na	na	MKFG01000010.1	=	NZ_MKFG01000010.1	Primary Assembly	84403	na
+contig011	unplaced-scaffold	na	na	MKFG01000011.1	=	NZ_MKFG01000011.1	Primary Assembly	48296	na
+contig012	unplaced-scaffold	na	na	MKFG01000012.1	=	NZ_MKFG01000012.1	Primary Assembly	46055	na
+contig013	unplaced-scaffold	na	na	MKFG01000013.1	=	NZ_MKFG01000013.1	Primary Assembly	41717	na
+contig014	unplaced-scaffold	na	na	MKFG01000014.1	=	NZ_MKFG01000014.1	Primary Assembly	40816	na
+contig015	unplaced-scaffold	na	na	MKFG01000015.1	=	NZ_MKFG01000015.1	Primary Assembly	39085	na
+contig016	unplaced-scaffold	na	na	MKFG01000016.1	=	NZ_MKFG01000016.1	Primary Assembly	37025	na
+contig017	unplaced-scaffold	na	na	MKFG01000017.1	=	NZ_MKFG01000017.1	Primary Assembly	36008	na
+contig018	unplaced-scaffold	na	na	MKFG01000018.1	=	NZ_MKFG01000018.1	Primary Assembly	32194	na
+contig019	unplaced-scaffold	na	na	MKFG01000019.1	=	NZ_MKFG01000019.1	Primary Assembly	32173	na
+contig020	unplaced-scaffold	na	na	MKFG01000020.1	=	NZ_MKFG01000020.1	Primary Assembly	31707	na
+contig021	unplaced-scaffold	na	na	MKFG01000021.1	=	NZ_MKFG01000021.1	Primary Assembly	30539	na
+contig022	unplaced-scaffold	na	na	MKFG01000022.1	=	NZ_MKFG01000022.1	Primary Assembly	28446	na
+contig023	unplaced-scaffold	na	na	MKFG01000023.1	=	NZ_MKFG01000023.1	Primary Assembly	26005	na
+contig024	unplaced-scaffold	na	na	MKFG01000024.1	=	NZ_MKFG01000024.1	Primary Assembly	25172	na
+contig025	unplaced-scaffold	na	na	MKFG01000025.1	=	NZ_MKFG01000025.1	Primary Assembly	25032	na
+contig026	unplaced-scaffold	na	na	MKFG01000026.1	=	NZ_MKFG01000026.1	Primary Assembly	24173	na
+contig027	unplaced-scaffold	na	na	MKFG01000027.1	=	NZ_MKFG01000027.1	Primary Assembly	24166	na
+contig028	unplaced-scaffold	na	na	MKFG01000028.1	=	NZ_MKFG01000028.1	Primary Assembly	23446	na
+contig029	unplaced-scaffold	na	na	MKFG01000029.1	=	NZ_MKFG01000029.1	Primary Assembly	23361	na
+contig030	unplaced-scaffold	na	na	MKFG01000030.1	=	NZ_MKFG01000030.1	Primary Assembly	21095	na
+contig031	unplaced-scaffold	na	na	MKFG01000031.1	=	NZ_MKFG01000031.1	Primary Assembly	21016	na
+contig032	unplaced-scaffold	na	na	MKFG01000032.1	=	NZ_MKFG01000032.1	Primary Assembly	18920	na
+contig033	unplaced-scaffold	na	na	MKFG01000033.1	=	NZ_MKFG01000033.1	Primary Assembly	18491	na
+contig034	unplaced-scaffold	na	na	MKFG01000034.1	=	NZ_MKFG01000034.1	Primary Assembly	18439	na
+contig035	unplaced-scaffold	na	na	MKFG01000035.1	=	NZ_MKFG01000035.1	Primary Assembly	17707	na
+contig036	unplaced-scaffold	na	na	MKFG01000036.1	=	NZ_MKFG01000036.1	Primary Assembly	17395	na
+contig037	unplaced-scaffold	na	na	MKFG01000037.1	=	NZ_MKFG01000037.1	Primary Assembly	14170	na
+contig038	unplaced-scaffold	na	na	MKFG01000038.1	=	NZ_MKFG01000038.1	Primary Assembly	13899	na
+contig039	unplaced-scaffold	na	na	MKFG01000039.1	=	NZ_MKFG01000039.1	Primary Assembly	13436	na
+contig040	unplaced-scaffold	na	na	MKFG01000040.1	=	NZ_MKFG01000040.1	Primary Assembly	13018	na
+contig041	unplaced-scaffold	na	na	MKFG01000041.1	=	NZ_MKFG01000041.1	Primary Assembly	12658	na
+contig042	unplaced-scaffold	na	na	MKFG01000042.1	=	NZ_MKFG01000042.1	Primary Assembly	12137	na
+contig043	unplaced-scaffold	na	na	MKFG01000043.1	=	NZ_MKFG01000043.1	Primary Assembly	10513	na
+contig044	unplaced-scaffold	na	na	MKFG01000044.1	=	NZ_MKFG01000044.1	Primary Assembly	10302	na
+contig045	unplaced-scaffold	na	na	MKFG01000045.1	=	NZ_MKFG01000045.1	Primary Assembly	9992	na
+contig046	unplaced-scaffold	na	na	MKFG01000046.1	=	NZ_MKFG01000046.1	Primary Assembly	9257	na
+contig047	unplaced-scaffold	na	na	MKFG01000047.1	=	NZ_MKFG01000047.1	Primary Assembly	8884	na
+contig048	unplaced-scaffold	na	na	MKFG01000048.1	=	NZ_MKFG01000048.1	Primary Assembly	8654	na
+contig049	unplaced-scaffold	na	na	MKFG01000049.1	=	NZ_MKFG01000049.1	Primary Assembly	7179	na
+contig050	unplaced-scaffold	na	na	MKFG01000050.1	=	NZ_MKFG01000050.1	Primary Assembly	7102	na
+contig051	unplaced-scaffold	na	na	MKFG01000051.1	=	NZ_MKFG01000051.1	Primary Assembly	6860	na
+contig052	unplaced-scaffold	na	na	MKFG01000052.1	=	NZ_MKFG01000052.1	Primary Assembly	6402	na
+contig054	unplaced-scaffold	na	na	MKFG01000053.1	=	NZ_MKFG01000053.1	Primary Assembly	5483	na
+contig055	unplaced-scaffold	na	na	MKFG01000054.1	=	NZ_MKFG01000054.1	Primary Assembly	3663	na
+contig056	unplaced-scaffold	na	na	MKFG01000055.1	=	NZ_MKFG01000055.1	Primary Assembly	3608	na
+contig057	unplaced-scaffold	na	na	MKFG01000056.1	=	NZ_MKFG01000056.1	Primary Assembly	3162	na
+contig058	unplaced-scaffold	na	na	MKFG01000057.1	=	NZ_MKFG01000057.1	Primary Assembly	3149	na
+contig059	unplaced-scaffold	na	na	MKFG01000058.1	=	NZ_MKFG01000058.1	Primary Assembly	2840	na
+contig060	unplaced-scaffold	na	na	MKFG01000059.1	=	NZ_MKFG01000059.1	Primary Assembly	2783	na
+contig061	unplaced-scaffold	na	na	MKFG01000060.1	=	NZ_MKFG01000060.1	Primary Assembly	2458	na
+contig062	unplaced-scaffold	na	na	MKFG01000061.1	=	NZ_MKFG01000061.1	Primary Assembly	2216	na
+contig063	unplaced-scaffold	na	na	MKFG01000062.1	=	NZ_MKFG01000062.1	Primary Assembly	2065	na
+contig064	unplaced-scaffold	na	na	MKFG01000063.1	=	NZ_MKFG01000063.1	Primary Assembly	1856	na
+contig065	unplaced-scaffold	na	na	MKFG01000064.1	=	NZ_MKFG01000064.1	Primary Assembly	1842	na
+contig066	unplaced-scaffold	na	na	MKFG01000065.1	=	NZ_MKFG01000065.1	Primary Assembly	1672	na
+contig067	unplaced-scaffold	na	na	MKFG01000066.1	=	NZ_MKFG01000066.1	Primary Assembly	1658	na
+contig068	unplaced-scaffold	na	na	MKFG01000067.1	=	NZ_MKFG01000067.1	Primary Assembly	1647	na
+contig069	unplaced-scaffold	na	na	MKFG01000068.1	=	NZ_MKFG01000068.1	Primary Assembly	1462	na
+contig070	unplaced-scaffold	na	na	MKFG01000069.1	=	NZ_MKFG01000069.1	Primary Assembly	1438	na
+contig071	unplaced-scaffold	na	na	MKFG01000070.1	=	NZ_MKFG01000070.1	Primary Assembly	1406	na
+contig072	unplaced-scaffold	na	na	MKFG01000071.1	=	NZ_MKFG01000071.1	Primary Assembly	1401	na
+contig073	unplaced-scaffold	na	na	MKFG01000072.1	=	NZ_MKFG01000072.1	Primary Assembly	1378	na
+contig074	unplaced-scaffold	na	na	MKFG01000073.1	=	NZ_MKFG01000073.1	Primary Assembly	1378	na
+contig075	unplaced-scaffold	na	na	MKFG01000074.1	=	NZ_MKFG01000074.1	Primary Assembly	1326	na
+contig076	unplaced-scaffold	na	na	MKFG01000075.1	=	NZ_MKFG01000075.1	Primary Assembly	1292	na
+contig077	unplaced-scaffold	na	na	MKFG01000076.1	=	NZ_MKFG01000076.1	Primary Assembly	1265	na
+contig078	unplaced-scaffold	na	na	MKFG01000077.1	=	NZ_MKFG01000077.1	Primary Assembly	1243	na
+contig079	unplaced-scaffold	na	na	MKFG01000078.1	=	NZ_MKFG01000078.1	Primary Assembly	1139	na
+contig080	unplaced-scaffold	na	na	MKFG01000079.1	=	NZ_MKFG01000079.1	Primary Assembly	1069	na
+contig081	unplaced-scaffold	na	na	MKFG01000080.1	=	NZ_MKFG01000080.1	Primary Assembly	994	na
+contig082	unplaced-scaffold	na	na	MKFG01000081.1	=	NZ_MKFG01000081.1	Primary Assembly	921	na
+contig083	unplaced-scaffold	na	na	MKFG01000082.1	=	NZ_MKFG01000082.1	Primary Assembly	855	na
+contig084	unplaced-scaffold	na	na	MKFG01000083.1	=	NZ_MKFG01000083.1	Primary Assembly	855	na
+contig085	unplaced-scaffold	na	na	MKFG01000084.1	=	NZ_MKFG01000084.1	Primary Assembly	794	na
+contig086	unplaced-scaffold	na	na	MKFG01000085.1	=	NZ_MKFG01000085.1	Primary Assembly	594	na
+contig087	unplaced-scaffold	na	na	MKFG01000086.1	=	NZ_MKFG01000086.1	Primary Assembly	770	na
+contig089	unplaced-scaffold	na	na	MKFG01000087.1	=	NZ_MKFG01000087.1	Primary Assembly	729	na
+contig090	unplaced-scaffold	na	na	MKFG01000088.1	=	NZ_MKFG01000088.1	Primary Assembly	726	na
+contig091	unplaced-scaffold	na	na	MKFG01000089.1	=	NZ_MKFG01000089.1	Primary Assembly	723	na
+contig093	unplaced-scaffold	na	na	MKFG01000090.1	=	NZ_MKFG01000090.1	Primary Assembly	719	na
+contig094	unplaced-scaffold	na	na	MKFG01000091.1	=	NZ_MKFG01000091.1	Primary Assembly	704	na
+contig095	unplaced-scaffold	na	na	MKFG01000092.1	=	NZ_MKFG01000092.1	Primary Assembly	692	na
+contig096	unplaced-scaffold	na	na	MKFG01000093.1	=	NZ_MKFG01000093.1	Primary Assembly	680	na
+contig097	unplaced-scaffold	na	na	MKFG01000094.1	=	NZ_MKFG01000094.1	Primary Assembly	675	na
+contig098	unplaced-scaffold	na	na	MKFG01000095.1	=	NZ_MKFG01000095.1	Primary Assembly	673	na
+contig101	unplaced-scaffold	na	na	MKFG01000096.1	=	NZ_MKFG01000096.1	Primary Assembly	649	na
+contig102	unplaced-scaffold	na	na	MKFG01000097.1	=	NZ_MKFG01000097.1	Primary Assembly	648	na
+contig103	unplaced-scaffold	na	na	MKFG01000098.1	=	NZ_MKFG01000098.1	Primary Assembly	644	na
+contig108	unplaced-scaffold	na	na	MKFG01000099.1	=	NZ_MKFG01000099.1	Primary Assembly	627	na
+contig110	unplaced-scaffold	na	na	MKFG01000100.1	=	NZ_MKFG01000100.1	Primary Assembly	620	na
+contig112	unplaced-scaffold	na	na	MKFG01000101.1	=	NZ_MKFG01000101.1	Primary Assembly	606	na
+contig113	unplaced-scaffold	na	na	MKFG01000102.1	=	NZ_MKFG01000102.1	Primary Assembly	605	na
+contig116	unplaced-scaffold	na	na	MKFG01000103.1	=	NZ_MKFG01000103.1	Primary Assembly	576	na
+contig117	unplaced-scaffold	na	na	MKFG01000104.1	=	NZ_MKFG01000104.1	Primary Assembly	575	na
+contig118	unplaced-scaffold	na	na	MKFG01000105.1	=	NZ_MKFG01000105.1	Primary Assembly	575	na
+contig119	unplaced-scaffold	na	na	MKFG01000106.1	=	NZ_MKFG01000106.1	Primary Assembly	575	na
+contig120	unplaced-scaffold	na	na	MKFG01000107.1	=	NZ_MKFG01000107.1	Primary Assembly	575	na
+contig126	unplaced-scaffold	na	na	MKFG01000108.1	=	NZ_MKFG01000108.1	Primary Assembly	549	na
+contig128	unplaced-scaffold	na	na	MKFG01000109.1	=	NZ_MKFG01000109.1	Primary Assembly	544	na
+contig131	unplaced-scaffold	na	na	MKFG01000110.1	=	NZ_MKFG01000110.1	Primary Assembly	542	na
+contig133	unplaced-scaffold	na	na	MKFG01000111.1	=	NZ_MKFG01000111.1	Primary Assembly	539	na
+contig135	unplaced-scaffold	na	na	MKFG01000112.1	=	NZ_MKFG01000112.1	Primary Assembly	538	na
+contig136	unplaced-scaffold	na	na	MKFG01000113.1	=	NZ_MKFG01000113.1	Primary Assembly	538	na
+contig137	unplaced-scaffold	na	na	MKFG01000114.1	=	NZ_MKFG01000114.1	Primary Assembly	537	na
+contig143	unplaced-scaffold	na	na	MKFG01000115.1	=	NZ_MKFG01000115.1	Primary Assembly	531	na
+contig144	unplaced-scaffold	na	na	MKFG01000116.1	=	NZ_MKFG01000116.1	Primary Assembly	530	na
+contig146	unplaced-scaffold	na	na	MKFG01000117.1	=	NZ_MKFG01000117.1	Primary Assembly	530	na
+contig149	unplaced-scaffold	na	na	MKFG01000118.1	=	NZ_MKFG01000118.1	Primary Assembly	529	na
+contig152	unplaced-scaffold	na	na	MKFG01000119.1	=	NZ_MKFG01000119.1	Primary Assembly	524	na
+contig157	unplaced-scaffold	na	na	MKFG01000120.1	=	NZ_MKFG01000120.1	Primary Assembly	517	na
+contig158	unplaced-scaffold	na	na	MKFG01000121.1	=	NZ_MKFG01000121.1	Primary Assembly	517	na
+contig160	unplaced-scaffold	na	na	MKFG01000122.1	=	NZ_MKFG01000122.1	Primary Assembly	514	na
+contig163	unplaced-scaffold	na	na	MKFG01000123.1	=	NZ_MKFG01000123.1	Primary Assembly	513	na
+contig171	unplaced-scaffold	na	na	MKFG01000124.1	=	NZ_MKFG01000124.1	Primary Assembly	501	na
+contig176	unplaced-scaffold	na	na	MKFG01000125.1	=	NZ_MKFG01000125.1	Primary Assembly	495	na
+contig177	unplaced-scaffold	na	na	MKFG01000126.1	=	NZ_MKFG01000126.1	Primary Assembly	494	na
+contig178	unplaced-scaffold	na	na	MKFG01000127.1	=	NZ_MKFG01000127.1	Primary Assembly	494	na
+contig182	unplaced-scaffold	na	na	MKFG01000128.1	=	NZ_MKFG01000128.1	Primary Assembly	493	na
+contig184	unplaced-scaffold	na	na	MKFG01000129.1	=	NZ_MKFG01000129.1	Primary Assembly	492	na
+contig185	unplaced-scaffold	na	na	MKFG01000130.1	=	NZ_MKFG01000130.1	Primary Assembly	491	na
+contig192	unplaced-scaffold	na	na	MKFG01000131.1	=	NZ_MKFG01000131.1	Primary Assembly	487	na
+contig194	unplaced-scaffold	na	na	MKFG01000132.1	=	NZ_MKFG01000132.1	Primary Assembly	487	na
+contig195	unplaced-scaffold	na	na	MKFG01000133.1	=	NZ_MKFG01000133.1	Primary Assembly	486	na
+contig197	unplaced-scaffold	na	na	MKFG01000134.1	=	NZ_MKFG01000134.1	Primary Assembly	484	na
+contig198	unplaced-scaffold	na	na	MKFG01000135.1	=	NZ_MKFG01000135.1	Primary Assembly	483	na
+contig199	unplaced-scaffold	na	na	MKFG01000136.1	=	NZ_MKFG01000136.1	Primary Assembly	482	na
+contig203	unplaced-scaffold	na	na	MKFG01000137.1	=	NZ_MKFG01000137.1	Primary Assembly	480	na
+contig204	unplaced-scaffold	na	na	MKFG01000138.1	=	NZ_MKFG01000138.1	Primary Assembly	480	na
+contig205	unplaced-scaffold	na	na	MKFG01000139.1	=	NZ_MKFG01000139.1	Primary Assembly	479	na
+contig208	unplaced-scaffold	na	na	MKFG01000140.1	=	NZ_MKFG01000140.1	Primary Assembly	476	na
+contig209	unplaced-scaffold	na	na	MKFG01000141.1	=	NZ_MKFG01000141.1	Primary Assembly	476	na
+contig210	unplaced-scaffold	na	na	MKFG01000142.1	=	NZ_MKFG01000142.1	Primary Assembly	475	na
+contig216	unplaced-scaffold	na	na	MKFG01000143.1	=	NZ_MKFG01000143.1	Primary Assembly	472	na
+contig217	unplaced-scaffold	na	na	MKFG01000144.1	=	NZ_MKFG01000144.1	Primary Assembly	472	na
+contig218	unplaced-scaffold	na	na	MKFG01000145.1	=	NZ_MKFG01000145.1	Primary Assembly	472	na
+contig223	unplaced-scaffold	na	na	MKFG01000146.1	=	NZ_MKFG01000146.1	Primary Assembly	471	na
+contig224	unplaced-scaffold	na	na	MKFG01000147.1	=	NZ_MKFG01000147.1	Primary Assembly	470	na
+contig225	unplaced-scaffold	na	na	MKFG01000148.1	=	NZ_MKFG01000148.1	Primary Assembly	470	na
+contig226	unplaced-scaffold	na	na	MKFG01000149.1	=	NZ_MKFG01000149.1	Primary Assembly	469	na
+contig227	unplaced-scaffold	na	na	MKFG01000150.1	=	NZ_MKFG01000150.1	Primary Assembly	469	na
+contig228	unplaced-scaffold	na	na	MKFG01000151.1	=	NZ_MKFG01000151.1	Primary Assembly	469	na
+contig230	unplaced-scaffold	na	na	MKFG01000152.1	=	NZ_MKFG01000152.1	Primary Assembly	468	na
+contig236	unplaced-scaffold	na	na	MKFG01000153.1	=	NZ_MKFG01000153.1	Primary Assembly	465	na
+contig243	unplaced-scaffold	na	na	MKFG01000154.1	=	NZ_MKFG01000154.1	Primary Assembly	462	na
+contig246	unplaced-scaffold	na	na	MKFG01000155.1	=	NZ_MKFG01000155.1	Primary Assembly	461	na
+contig247	unplaced-scaffold	na	na	MKFG01000156.1	=	NZ_MKFG01000156.1	Primary Assembly	460	na
+contig250	unplaced-scaffold	na	na	MKFG01000157.1	=	NZ_MKFG01000157.1	Primary Assembly	460	na
+contig254	unplaced-scaffold	na	na	MKFG01000158.1	=	NZ_MKFG01000158.1	Primary Assembly	458	na
+contig255	unplaced-scaffold	na	na	MKFG01000159.1	=	NZ_MKFG01000159.1	Primary Assembly	457	na
+contig258	unplaced-scaffold	na	na	MKFG01000160.1	=	NZ_MKFG01000160.1	Primary Assembly	456	na
+contig259	unplaced-scaffold	na	na	MKFG01000161.1	=	NZ_MKFG01000161.1	Primary Assembly	455	na
+contig261	unplaced-scaffold	na	na	MKFG01000162.1	=	NZ_MKFG01000162.1	Primary Assembly	454	na
+contig263	unplaced-scaffold	na	na	MKFG01000163.1	=	NZ_MKFG01000163.1	Primary Assembly	450	na
+contig264	unplaced-scaffold	na	na	MKFG01000164.1	=	NZ_MKFG01000164.1	Primary Assembly	450	na
+contig267	unplaced-scaffold	na	na	MKFG01000165.1	=	NZ_MKFG01000165.1	Primary Assembly	450	na
+contig276	unplaced-scaffold	na	na	MKFG01000166.1	=	NZ_MKFG01000166.1	Primary Assembly	436	na
+contig277	unplaced-scaffold	na	na	MKFG01000167.1	=	NZ_MKFG01000167.1	Primary Assembly	443	na
+contig279	unplaced-scaffold	na	na	MKFG01000168.1	=	NZ_MKFG01000168.1	Primary Assembly	443	na
+contig281	unplaced-scaffold	na	na	MKFG01000169.1	=	NZ_MKFG01000169.1	Primary Assembly	443	na
+contig283	unplaced-scaffold	na	na	MKFG01000170.1	=	NZ_MKFG01000170.1	Primary Assembly	443	na
+contig288	unplaced-scaffold	na	na	MKFG01000171.1	=	NZ_MKFG01000171.1	Primary Assembly	440	na
+contig296	unplaced-scaffold	na	na	MKFG01000172.1	=	NZ_MKFG01000172.1	Primary Assembly	438	na
+contig301	unplaced-scaffold	na	na	MKFG01000173.1	=	NZ_MKFG01000173.1	Primary Assembly	437	na
+contig302	unplaced-scaffold	na	na	MKFG01000174.1	=	NZ_MKFG01000174.1	Primary Assembly	437	na
+contig305	unplaced-scaffold	na	na	MKFG01000175.1	=	NZ_MKFG01000175.1	Primary Assembly	435	na
+contig306	unplaced-scaffold	na	na	MKFG01000176.1	=	NZ_MKFG01000176.1	Primary Assembly	435	na
+contig312	unplaced-scaffold	na	na	MKFG01000177.1	=	NZ_MKFG01000177.1	Primary Assembly	434	na
+contig313	unplaced-scaffold	na	na	MKFG01000178.1	=	NZ_MKFG01000178.1	Primary Assembly	434	na
+contig316	unplaced-scaffold	na	na	MKFG01000179.1	=	NZ_MKFG01000179.1	Primary Assembly	433	na
+contig317	unplaced-scaffold	na	na	MKFG01000180.1	=	NZ_MKFG01000180.1	Primary Assembly	432	na
+contig319	unplaced-scaffold	na	na	MKFG01000181.1	=	NZ_MKFG01000181.1	Primary Assembly	432	na
+contig320	unplaced-scaffold	na	na	MKFG01000182.1	=	NZ_MKFG01000182.1	Primary Assembly	431	na
+contig321	unplaced-scaffold	na	na	MKFG01000183.1	=	NZ_MKFG01000183.1	Primary Assembly	431	na
+contig322	unplaced-scaffold	na	na	MKFG01000184.1	=	NZ_MKFG01000184.1	Primary Assembly	431	na
+contig324	unplaced-scaffold	na	na	MKFG01000185.1	=	NZ_MKFG01000185.1	Primary Assembly	430	na
+contig325	unplaced-scaffold	na	na	MKFG01000186.1	=	NZ_MKFG01000186.1	Primary Assembly	430	na
+contig327	unplaced-scaffold	na	na	MKFG01000187.1	=	NZ_MKFG01000187.1	Primary Assembly	430	na
+contig328	unplaced-scaffold	na	na	MKFG01000188.1	=	NZ_MKFG01000188.1	Primary Assembly	430	na
+contig329	unplaced-scaffold	na	na	MKFG01000189.1	=	NZ_MKFG01000189.1	Primary Assembly	430	na
+contig330	unplaced-scaffold	na	na	MKFG01000190.1	=	NZ_MKFG01000190.1	Primary Assembly	429	na
+contig335	unplaced-scaffold	na	na	MKFG01000191.1	=	NZ_MKFG01000191.1	Primary Assembly	253	na
+contig336	unplaced-scaffold	na	na	MKFG01000192.1	=	NZ_MKFG01000192.1	Primary Assembly	253	na
+contig337	unplaced-scaffold	na	na	MKFG01000193.1	=	NZ_MKFG01000193.1	Primary Assembly	248	na

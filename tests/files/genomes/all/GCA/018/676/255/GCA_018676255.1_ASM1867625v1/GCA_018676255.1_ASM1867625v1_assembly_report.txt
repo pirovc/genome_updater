@@ -1,0 +1,188 @@
+# Assembly name:  ASM1867625v1
+# Organism name:  Euryarchaeota archaeon (euryarchaeotes)
+# Isolate:  SI037_bin172
+# Taxid:          2026739
+# BioSample:      SAMN14914095
+# BioProject:     PRJNA630981
+# Submitter:      The University of Melbourne
+# Date:           2021-06-02
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    JABHFD01
+# Assembly method: MEGAHIT v. 1.2.8
+# Expected final version: yes
+# Genome coverage: Not Applicable
+# Sequencing technology: Illumina HiSeq 2000
+# Excluded from RefSeq: derived from metagenome; genus undefined
+# GenBank assembly accession: GCA_018676255.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_018676265.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+k141_1011224	unplaced-scaffold	na	na	JABHFD010000139.1	<>	na	Primary Assembly	4442	na
+k141_102830	unplaced-scaffold	na	na	JABHFD010000018.1	<>	na	Primary Assembly	39530	na
+k141_103707	unplaced-scaffold	na	na	JABHFD010000029.1	<>	na	Primary Assembly	2929	na
+k141_1083724	unplaced-scaffold	na	na	JABHFD010000024.1	<>	na	Primary Assembly	40523	na
+k141_1109567	unplaced-scaffold	na	na	JABHFD010000109.1	<>	na	Primary Assembly	2017	na
+k141_1121925	unplaced-scaffold	na	na	JABHFD010000022.1	<>	na	Primary Assembly	19921	na
+k141_1155166	unplaced-scaffold	na	na	JABHFD010000020.1	<>	na	Primary Assembly	10569	na
+k141_117928	unplaced-scaffold	na	na	JABHFD010000062.1	<>	na	Primary Assembly	11904	na
+k141_1185778	unplaced-scaffold	na	na	JABHFD010000039.1	<>	na	Primary Assembly	6793	na
+k141_1195824	unplaced-scaffold	na	na	JABHFD010000016.1	<>	na	Primary Assembly	19564	na
+k141_1206953	unplaced-scaffold	na	na	JABHFD010000065.1	<>	na	Primary Assembly	3544	na
+k141_1214733	unplaced-scaffold	na	na	JABHFD010000140.1	<>	na	Primary Assembly	14453	na
+k141_1221660	unplaced-scaffold	na	na	JABHFD010000048.1	<>	na	Primary Assembly	2986	na
+k141_1227404	unplaced-scaffold	na	na	JABHFD010000083.1	<>	na	Primary Assembly	10693	na
+k141_1236366	unplaced-scaffold	na	na	JABHFD010000097.1	<>	na	Primary Assembly	8081	na
+k141_123728	unplaced-scaffold	na	na	JABHFD010000091.1	<>	na	Primary Assembly	6601	na
+k141_1245426	unplaced-scaffold	na	na	JABHFD010000095.1	<>	na	Primary Assembly	12012	na
+k141_1254140	unplaced-scaffold	na	na	JABHFD010000099.1	<>	na	Primary Assembly	7323	na
+k141_1265931	unplaced-scaffold	na	na	JABHFD010000100.1	<>	na	Primary Assembly	11478	na
+k141_1271105	unplaced-scaffold	na	na	JABHFD010000133.1	<>	na	Primary Assembly	8796	na
+k141_1289893	unplaced-scaffold	na	na	JABHFD010000101.1	<>	na	Primary Assembly	9373	na
+k141_130666	unplaced-scaffold	na	na	JABHFD010000082.1	<>	na	Primary Assembly	25162	na
+k141_131582	unplaced-scaffold	na	na	JABHFD010000053.1	<>	na	Primary Assembly	26103	na
+k141_1354886	unplaced-scaffold	na	na	JABHFD010000104.1	<>	na	Primary Assembly	4800	na
+k141_1364510	unplaced-scaffold	na	na	JABHFD010000105.1	<>	na	Primary Assembly	6084	na
+k141_136636	unplaced-scaffold	na	na	JABHFD010000019.1	<>	na	Primary Assembly	23268	na
+k141_137498	unplaced-scaffold	na	na	JABHFD010000051.1	<>	na	Primary Assembly	13858	na
+k141_1383955	unplaced-scaffold	na	na	JABHFD010000126.1	<>	na	Primary Assembly	14631	na
+k141_1392310	unplaced-scaffold	na	na	JABHFD010000108.1	<>	na	Primary Assembly	12893	na
+k141_1438521	unplaced-scaffold	na	na	JABHFD010000038.1	<>	na	Primary Assembly	5991	na
+k141_1486394	unplaced-scaffold	na	na	JABHFD010000111.1	<>	na	Primary Assembly	8971	na
+k141_154465	unplaced-scaffold	na	na	JABHFD010000047.1	<>	na	Primary Assembly	23756	na
+k141_157032	unplaced-scaffold	na	na	JABHFD010000060.1	<>	na	Primary Assembly	17749	na
+k141_1578871	unplaced-scaffold	na	na	JABHFD010000121.1	<>	na	Primary Assembly	9181	na
+k141_1589851	unplaced-scaffold	na	na	JABHFD010000117.1	<>	na	Primary Assembly	2158	na
+k141_1595254	unplaced-scaffold	na	na	JABHFD010000110.1	<>	na	Primary Assembly	3152	na
+k141_160179	unplaced-scaffold	na	na	JABHFD010000046.1	<>	na	Primary Assembly	31891	na
+k141_1668909	unplaced-scaffold	na	na	JABHFD010000113.1	<>	na	Primary Assembly	9352	na
+k141_1671770	unplaced-scaffold	na	na	JABHFD010000119.1	<>	na	Primary Assembly	15040	na
+k141_1675343	unplaced-scaffold	na	na	JABHFD010000043.1	<>	na	Primary Assembly	12831	na
+k141_1691273	unplaced-scaffold	na	na	JABHFD010000102.1	<>	na	Primary Assembly	3765	na
+k141_1711369	unplaced-scaffold	na	na	JABHFD010000050.1	<>	na	Primary Assembly	3965	na
+k141_1731373	unplaced-scaffold	na	na	JABHFD010000148.1	<>	na	Primary Assembly	3553	na
+k141_1738173	unplaced-scaffold	na	na	JABHFD010000041.1	<>	na	Primary Assembly	2722	na
+k141_1750005	unplaced-scaffold	na	na	JABHFD010000067.1	<>	na	Primary Assembly	3085	na
+k141_1798132	unplaced-scaffold	na	na	JABHFD010000075.1	<>	na	Primary Assembly	5713	na
+k141_180615	unplaced-scaffold	na	na	JABHFD010000025.1	<>	na	Primary Assembly	4646	na
+k141_1815380	unplaced-scaffold	na	na	JABHFD010000064.1	<>	na	Primary Assembly	2701	na
+k141_1816690	unplaced-scaffold	na	na	JABHFD010000122.1	<>	na	Primary Assembly	8618	na
+k141_1839836	unplaced-scaffold	na	na	JABHFD010000123.1	<>	na	Primary Assembly	12284	na
+k141_1885384	unplaced-scaffold	na	na	JABHFD010000120.1	<>	na	Primary Assembly	2869	na
+k141_1896032	unplaced-scaffold	na	na	JABHFD010000127.1	<>	na	Primary Assembly	12395	na
+k141_1902787	unplaced-scaffold	na	na	JABHFD010000028.1	<>	na	Primary Assembly	5209	na
+k141_1942154	unplaced-scaffold	na	na	JABHFD010000128.1	<>	na	Primary Assembly	35217	na
+k141_1947266	unplaced-scaffold	na	na	JABHFD010000130.1	<>	na	Primary Assembly	5682	na
+k141_1949897	unplaced-scaffold	na	na	JABHFD010000054.1	<>	na	Primary Assembly	12057	na
+k141_1965753	unplaced-scaffold	na	na	JABHFD010000094.1	<>	na	Primary Assembly	5379	na
+k141_197271	unplaced-scaffold	na	na	JABHFD010000061.1	<>	na	Primary Assembly	21962	na
+k141_2040	unplaced-scaffold	na	na	JABHFD010000066.1	<>	na	Primary Assembly	8623	na
+k141_2069626	unplaced-scaffold	na	na	JABHFD010000116.1	<>	na	Primary Assembly	8044	na
+k141_2079515	unplaced-scaffold	na	na	JABHFD010000069.1	<>	na	Primary Assembly	14778	na
+k141_210728	unplaced-scaffold	na	na	JABHFD010000049.1	<>	na	Primary Assembly	11624	na
+k141_2165942	unplaced-scaffold	na	na	JABHFD010000124.1	<>	na	Primary Assembly	9839	na
+k141_2166618	unplaced-scaffold	na	na	JABHFD010000096.1	<>	na	Primary Assembly	12380	na
+k141_2182668	unplaced-scaffold	na	na	JABHFD010000131.1	<>	na	Primary Assembly	8572	na
+k141_2276631	unplaced-scaffold	na	na	JABHFD010000132.1	<>	na	Primary Assembly	4900	na
+k141_2278900	unplaced-scaffold	na	na	JABHFD010000084.1	<>	na	Primary Assembly	11055	na
+k141_229520	unplaced-scaffold	na	na	JABHFD010000063.1	<>	na	Primary Assembly	8760	na
+k141_2347703	unplaced-scaffold	na	na	JABHFD010000134.1	<>	na	Primary Assembly	5833	na
+k141_2380067	unplaced-scaffold	na	na	JABHFD010000098.1	<>	na	Primary Assembly	8918	na
+k141_2398072	unplaced-scaffold	na	na	JABHFD010000135.1	<>	na	Primary Assembly	9974	na
+k141_2402189	unplaced-scaffold	na	na	JABHFD010000137.1	<>	na	Primary Assembly	20278	na
+k141_242796	unplaced-scaffold	na	na	JABHFD010000070.1	<>	na	Primary Assembly	19674	na
+k141_2489776	unplaced-scaffold	na	na	JABHFD010000023.1	<>	na	Primary Assembly	3551	na
+k141_2506983	unplaced-scaffold	na	na	JABHFD010000142.1	<>	na	Primary Assembly	2449	na
+k141_2545186	unplaced-scaffold	na	na	JABHFD010000138.1	<>	na	Primary Assembly	19178	na
+k141_2547565	unplaced-scaffold	na	na	JABHFD010000145.1	<>	na	Primary Assembly	11549	na
+k141_2550376	unplaced-scaffold	na	na	JABHFD010000146.1	<>	na	Primary Assembly	2086	na
+k141_2557486	unplaced-scaffold	na	na	JABHFD010000156.1	<>	na	Primary Assembly	9726	na
+k141_2566017	unplaced-scaffold	na	na	JABHFD010000107.1	<>	na	Primary Assembly	31242	na
+k141_2566384	unplaced-scaffold	na	na	JABHFD010000118.1	<>	na	Primary Assembly	6070	na
+k141_2582679	unplaced-scaffold	na	na	JABHFD010000147.1	<>	na	Primary Assembly	4513	na
+k141_2592336	unplaced-scaffold	na	na	JABHFD010000149.1	<>	na	Primary Assembly	2323	na
+k141_2619596	unplaced-scaffold	na	na	JABHFD010000150.1	<>	na	Primary Assembly	8293	na
+k141_2636351	unplaced-scaffold	na	na	JABHFD010000152.1	<>	na	Primary Assembly	11403	na
+k141_2646470	unplaced-scaffold	na	na	JABHFD010000021.1	<>	na	Primary Assembly	12290	na
+k141_2719407	unplaced-scaffold	na	na	JABHFD010000115.1	<>	na	Primary Assembly	2461	na
+k141_2721747	unplaced-scaffold	na	na	JABHFD010000153.1	<>	na	Primary Assembly	3396	na
+k141_2736694	unplaced-scaffold	na	na	JABHFD010000154.1	<>	na	Primary Assembly	14394	na
+k141_2790661	unplaced-scaffold	na	na	JABHFD010000086.1	<>	na	Primary Assembly	6980	na
+k141_2793447	unplaced-scaffold	na	na	JABHFD010000026.1	<>	na	Primary Assembly	15145	na
+k141_2807756	unplaced-scaffold	na	na	JABHFD010000141.1	<>	na	Primary Assembly	62639	na
+k141_2807958	unplaced-scaffold	na	na	JABHFD010000155.1	<>	na	Primary Assembly	56097	na
+k141_2834401	unplaced-scaffold	na	na	JABHFD010000157.1	<>	na	Primary Assembly	4137	na
+k141_2953585	unplaced-scaffold	na	na	JABHFD010000057.1	<>	na	Primary Assembly	19526	na
+k141_2966977	unplaced-scaffold	na	na	JABHFD010000015.1	<>	na	Primary Assembly	6337	na
+k141_2975961	unplaced-scaffold	na	na	JABHFD010000014.1	<>	na	Primary Assembly	8522	na
+k141_2979064	unplaced-scaffold	na	na	JABHFD010000013.1	<>	na	Primary Assembly	5935	na
+k141_3028440	unplaced-scaffold	na	na	JABHFD010000011.1	<>	na	Primary Assembly	2929	na
+k141_3041194	unplaced-scaffold	na	na	JABHFD010000072.1	<>	na	Primary Assembly	2484	na
+k141_3122440	unplaced-scaffold	na	na	JABHFD010000151.1	<>	na	Primary Assembly	2192	na
+k141_3131600	unplaced-scaffold	na	na	JABHFD010000085.1	<>	na	Primary Assembly	4504	na
+k141_3137786	unplaced-scaffold	na	na	JABHFD010000010.1	<>	na	Primary Assembly	8885	na
+k141_3162288	unplaced-scaffold	na	na	JABHFD010000009.1	<>	na	Primary Assembly	7774	na
+k141_3167709	unplaced-scaffold	na	na	JABHFD010000007.1	<>	na	Primary Assembly	2889	na
+k141_3207390	unplaced-scaffold	na	na	JABHFD010000006.1	<>	na	Primary Assembly	32254	na
+k141_322251	unplaced-scaffold	na	na	JABHFD010000079.1	<>	na	Primary Assembly	3321	na
+k141_3260779	unplaced-scaffold	na	na	JABHFD010000005.1	<>	na	Primary Assembly	3719	na
+k141_3267628	unplaced-scaffold	na	na	JABHFD010000004.1	<>	na	Primary Assembly	5063	na
+k141_3280196	unplaced-scaffold	na	na	JABHFD010000012.1	<>	na	Primary Assembly	34169	na
+k141_3298360	unplaced-scaffold	na	na	JABHFD010000008.1	<>	na	Primary Assembly	2573	na
+k141_3359294	unplaced-scaffold	na	na	JABHFD010000003.1	<>	na	Primary Assembly	5912	na
+k141_3365090	unplaced-scaffold	na	na	JABHFD010000002.1	<>	na	Primary Assembly	17585	na
+k141_3369361	unplaced-scaffold	na	na	JABHFD010000076.1	<>	na	Primary Assembly	3529	na
+k141_3425527	unplaced-scaffold	na	na	JABHFD010000001.1	<>	na	Primary Assembly	72402	na
+k141_356400	unplaced-scaffold	na	na	JABHFD010000136.1	<>	na	Primary Assembly	5856	na
+k141_389828	unplaced-scaffold	na	na	JABHFD010000158.1	<>	na	Primary Assembly	9601	na
+k141_399468	unplaced-scaffold	na	na	JABHFD010000087.1	<>	na	Primary Assembly	39577	na
+k141_421772	unplaced-scaffold	na	na	JABHFD010000055.1	<>	na	Primary Assembly	17015	na
+k141_478875	unplaced-scaffold	na	na	JABHFD010000071.1	<>	na	Primary Assembly	3287	na
+k141_483177	unplaced-scaffold	na	na	JABHFD010000092.1	<>	na	Primary Assembly	5517	na
+k141_483916	unplaced-scaffold	na	na	JABHFD010000088.1	<>	na	Primary Assembly	6678	na
+k141_486301	unplaced-scaffold	na	na	JABHFD010000089.1	<>	na	Primary Assembly	8497	na
+k141_486583	unplaced-scaffold	na	na	JABHFD010000077.1	<>	na	Primary Assembly	4864	na
+k141_490412	unplaced-scaffold	na	na	JABHFD010000090.1	<>	na	Primary Assembly	23620	na
+k141_506441	unplaced-scaffold	na	na	JABHFD010000114.1	<>	na	Primary Assembly	6839	na
+k141_543509	unplaced-scaffold	na	na	JABHFD010000058.1	<>	na	Primary Assembly	5776	na
+k141_544677	unplaced-scaffold	na	na	JABHFD010000017.1	<>	na	Primary Assembly	12685	na
+k141_551288	unplaced-scaffold	na	na	JABHFD010000042.1	<>	na	Primary Assembly	2516	na
+k141_570223	unplaced-scaffold	na	na	JABHFD010000078.1	<>	na	Primary Assembly	3192	na
+k141_575302	unplaced-scaffold	na	na	JABHFD010000040.1	<>	na	Primary Assembly	3771	na
+k141_583119	unplaced-scaffold	na	na	JABHFD010000056.1	<>	na	Primary Assembly	3690	na
+k141_605869	unplaced-scaffold	na	na	JABHFD010000068.1	<>	na	Primary Assembly	2755	na
+k141_611507	unplaced-scaffold	na	na	JABHFD010000037.1	<>	na	Primary Assembly	12278	na
+k141_614463	unplaced-scaffold	na	na	JABHFD010000112.1	<>	na	Primary Assembly	6751	na
+k141_626518	unplaced-scaffold	na	na	JABHFD010000125.1	<>	na	Primary Assembly	10679	na
+k141_650426	unplaced-scaffold	na	na	JABHFD010000033.1	<>	na	Primary Assembly	2520	na
+k141_66188	unplaced-scaffold	na	na	JABHFD010000103.1	<>	na	Primary Assembly	12897	na
+k141_702065	unplaced-scaffold	na	na	JABHFD010000035.1	<>	na	Primary Assembly	15565	na
+k141_724892	unplaced-scaffold	na	na	JABHFD010000031.1	<>	na	Primary Assembly	50294	na
+k141_743994	unplaced-scaffold	na	na	JABHFD010000030.1	<>	na	Primary Assembly	8366	na
+k141_767225	unplaced-scaffold	na	na	JABHFD010000080.1	<>	na	Primary Assembly	3038	na
+k141_783215	unplaced-scaffold	na	na	JABHFD010000052.1	<>	na	Primary Assembly	41338	na
+k141_804786	unplaced-scaffold	na	na	JABHFD010000045.1	<>	na	Primary Assembly	43585	na
+k141_823289	unplaced-scaffold	na	na	JABHFD010000036.1	<>	na	Primary Assembly	5183	na
+k141_845415	unplaced-scaffold	na	na	JABHFD010000074.1	<>	na	Primary Assembly	11628	na
+k141_879181	unplaced-scaffold	na	na	JABHFD010000106.1	<>	na	Primary Assembly	13615	na
+k141_886120	unplaced-scaffold	na	na	JABHFD010000027.1	<>	na	Primary Assembly	14220	na
+k141_888899	unplaced-scaffold	na	na	JABHFD010000034.1	<>	na	Primary Assembly	23176	na
+k141_900270	unplaced-scaffold	na	na	JABHFD010000073.1	<>	na	Primary Assembly	6886	na
+k141_91543	unplaced-scaffold	na	na	JABHFD010000044.1	<>	na	Primary Assembly	4332	na
+k141_939450	unplaced-scaffold	na	na	JABHFD010000093.1	<>	na	Primary Assembly	18666	na
+k141_939919	unplaced-scaffold	na	na	JABHFD010000144.1	<>	na	Primary Assembly	2584	na
+k141_957418	unplaced-scaffold	na	na	JABHFD010000143.1	<>	na	Primary Assembly	4851	na
+k141_971545	unplaced-scaffold	na	na	JABHFD010000059.1	<>	na	Primary Assembly	41897	na
+k141_972071	unplaced-scaffold	na	na	JABHFD010000129.1	<>	na	Primary Assembly	12265	na
+k141_987264	unplaced-scaffold	na	na	JABHFD010000032.1	<>	na	Primary Assembly	7609	na
+k141_996451	unplaced-scaffold	na	na	JABHFD010000081.1	<>	na	Primary Assembly	3139	na

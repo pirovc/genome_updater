@@ -1,0 +1,46 @@
+# Assembly name:  ASM1066755v1
+# Organism name:  Bifidobacterium dentium (high GC Gram+)
+# Infraspecific name:  strain=BRDF 23
+# Taxid:          1689
+# BioSample:      SAMN12785273
+# BioProject:     PRJNA566312
+# Submitter:      University of Bologna
+# Date:           2020-02-14
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    VYSE01
+# Assembly method: SPAdes v. 3.13.0
+# Expected final version: yes
+# Genome coverage: 113x
+# Sequencing technology: Illumina MiSeq
+# GenBank assembly accession: GCA_010667555.1
+# RefSeq assembly accession: GCF_010667555.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_010667585.1	GCF_010667585.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+sequence01	unplaced-scaffold	na	na	VYSE01000001.1	=	NZ_VYSE01000001.1	Primary Assembly	1031564	na
+sequence02	unplaced-scaffold	na	na	VYSE01000002.1	=	NZ_VYSE01000002.1	Primary Assembly	441969	na
+sequence03	unplaced-scaffold	na	na	VYSE01000003.1	=	NZ_VYSE01000003.1	Primary Assembly	368256	na
+sequence04	unplaced-scaffold	na	na	VYSE01000004.1	=	NZ_VYSE01000004.1	Primary Assembly	290105	na
+sequence05	unplaced-scaffold	na	na	VYSE01000005.1	=	NZ_VYSE01000005.1	Primary Assembly	167069	na
+sequence06	unplaced-scaffold	na	na	VYSE01000006.1	=	NZ_VYSE01000006.1	Primary Assembly	116557	na
+sequence07	unplaced-scaffold	na	na	VYSE01000007.1	=	NZ_VYSE01000007.1	Primary Assembly	50316	na
+sequence08	unplaced-scaffold	na	na	VYSE01000008.1	=	NZ_VYSE01000008.1	Primary Assembly	48590	na
+sequence09	unplaced-scaffold	na	na	VYSE01000009.1	=	NZ_VYSE01000009.1	Primary Assembly	15909	na
+sequence10	unplaced-scaffold	na	na	VYSE01000010.1	=	NZ_VYSE01000010.1	Primary Assembly	14204	na
+sequence11	unplaced-scaffold	na	na	VYSE01000011.1	=	NZ_VYSE01000011.1	Primary Assembly	5070	na
+sequence12	unplaced-scaffold	na	na	VYSE01000012.1	=	NZ_VYSE01000012.1	Primary Assembly	3704	na
+sequence13	unplaced-scaffold	na	na	VYSE01000013.1	=	NZ_VYSE01000013.1	Primary Assembly	2538	na
+sequence14	unplaced-scaffold	na	na	VYSE01000014.1	=	NZ_VYSE01000014.1	Primary Assembly	1272	na
+sequence15	unplaced-scaffold	na	na	VYSE01000015.1	=	NZ_VYSE01000015.1	Primary Assembly	305	na

@@ -1,0 +1,24 @@
+# Assembly name:  ASM2135520v1
+# Organism name:  Burkholderia phage BgManors32 (viruses)
+# Taxid:          2894335
+# Submitter:      na
+# Date:           2021-11-22
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Complete Genome
+# Genome representation: full
+# Assembly method: Geneious Prime v. 2021.1.1
+# Sequencing technology: Illumina
+# GenBank assembly accession: GCA_021355205.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_021355204.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+OK665842.1	assembled-molecule	na	Segment	OK665842.1	<>	na	Primary Assembly	59762	na

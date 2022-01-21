@@ -1,0 +1,55 @@
+# Assembly name:  ASM1765649v1
+# Organism name:  Thermococcus sp. (euryarchaeotes)
+# Isolate:  GB_MAG1_027
+# Taxid:          35749
+# BioSample:      SAMN15049706
+# BioProject:     PRJNA635695
+# Submitter:      Marine Biological Laboratory
+# Date:           2021-04-01
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    JACDNS01
+# Assembly method: SPAdes v. 3.13
+# Expected final version: yes
+# Genome coverage: 34x
+# Sequencing technology: Illumina NextSeq
+# Excluded from RefSeq: derived from metagenome
+# GenBank assembly accession: GCA_017656495.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_017656515.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+c_000000000020	unplaced-scaffold	na	na	JACDNS010000001.1	<>	na	Primary Assembly	299451	na
+c_000000000035	unplaced-scaffold	na	na	JACDNS010000002.1	<>	na	Primary Assembly	240659	na
+c_000000000079	unplaced-scaffold	na	na	JACDNS010000003.1	<>	na	Primary Assembly	162668	na
+c_000000000083	unplaced-scaffold	na	na	JACDNS010000004.1	<>	na	Primary Assembly	161430	na
+c_000000000112	unplaced-scaffold	na	na	JACDNS010000005.1	<>	na	Primary Assembly	136561	na
+c_000000000114	unplaced-scaffold	na	na	JACDNS010000006.1	<>	na	Primary Assembly	134980	na
+c_000000000145	unplaced-scaffold	na	na	JACDNS010000007.1	<>	na	Primary Assembly	117996	na
+c_000000000202	unplaced-scaffold	na	na	JACDNS010000008.1	<>	na	Primary Assembly	97922	na
+c_000000000257	unplaced-scaffold	na	na	JACDNS010000009.1	<>	na	Primary Assembly	83823	na
+c_000000000284	unplaced-scaffold	na	na	JACDNS010000010.1	<>	na	Primary Assembly	77465	na
+c_000000000369	unplaced-scaffold	na	na	JACDNS010000011.1	<>	na	Primary Assembly	63882	na
+c_000000000409	unplaced-scaffold	na	na	JACDNS010000012.1	<>	na	Primary Assembly	59211	na
+c_000000000453	unplaced-scaffold	na	na	JACDNS010000013.1	<>	na	Primary Assembly	55315	na
+c_000000000459	unplaced-scaffold	na	na	JACDNS010000014.1	<>	na	Primary Assembly	54998	na
+c_000000000535	unplaced-scaffold	na	na	JACDNS010000015.1	<>	na	Primary Assembly	49546	na
+c_000000000565	unplaced-scaffold	na	na	JACDNS010000016.1	<>	na	Primary Assembly	48153	na
+c_000000000619	unplaced-scaffold	na	na	JACDNS010000017.1	<>	na	Primary Assembly	44694	na
+c_000000000643	unplaced-scaffold	na	na	JACDNS010000018.1	<>	na	Primary Assembly	43457	na
+c_000000000719	unplaced-scaffold	na	na	JACDNS010000019.1	<>	na	Primary Assembly	40480	na
+c_000000001259	unplaced-scaffold	na	na	JACDNS010000020.1	<>	na	Primary Assembly	27210	na
+c_000000001818	unplaced-scaffold	na	na	JACDNS010000021.1	<>	na	Primary Assembly	20941	na
+c_000000002216	unplaced-scaffold	na	na	JACDNS010000022.1	<>	na	Primary Assembly	18222	na
+c_000000019498	unplaced-scaffold	na	na	JACDNS010000023.1	<>	na	Primary Assembly	4046	na
+c_000000038398	unplaced-scaffold	na	na	JACDNS010000024.1	<>	na	Primary Assembly	2615	na
+c_000000045243	unplaced-scaffold	na	na	JACDNS010000025.1	<>	na	Primary Assembly	2353	na

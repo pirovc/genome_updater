@@ -1,0 +1,55 @@
+# Assembly name:  ASM1131946v1
+# Organism name:  Candidatus Nitrosotalea sp. TS (archaea)
+# Infraspecific name:  strain=TS
+# Taxid:          2341020
+# BioSample:      SAMN09786340
+# BioProject:     PRJNA485201
+# Submitter:      Chinese Academy of Sciences
+# Date:           2020-03-16
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    RCMB01
+# Assembly method: Velvet v. 1.1
+# Expected final version: yes
+# Genome coverage: 60.0x
+# Sequencing technology: Illumina HiSeq
+# GenBank assembly accession: GCA_011319465.1
+# RefSeq assembly accession: GCF_011319465.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_011319495.1	GCF_011319495.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ctg7180000000048	unplaced-scaffold	na	na	RCMB01000007.1	=	NZ_RCMB01000007.1	Primary Assembly	209986	na
+ctg7180000000049	unplaced-scaffold	na	na	RCMB01000023.1	=	NZ_RCMB01000023.1	Primary Assembly	27622	na
+ctg7180000000050	unplaced-scaffold	na	na	RCMB01000003.1	=	NZ_RCMB01000003.1	Primary Assembly	30326	na
+ctg7180000000051	unplaced-scaffold	na	na	RCMB01000002.1	=	NZ_RCMB01000002.1	Primary Assembly	172257	na
+ctg7180000000052	unplaced-scaffold	na	na	RCMB01000005.1	=	NZ_RCMB01000005.1	Primary Assembly	26515	na
+ctg7180000000053	unplaced-scaffold	na	na	RCMB01000013.1	=	NZ_RCMB01000013.1	Primary Assembly	184681	na
+ctg7180000000054	unplaced-scaffold	na	na	RCMB01000008.1	=	NZ_RCMB01000008.1	Primary Assembly	13051	na
+ctg7180000000055	unplaced-scaffold	na	na	RCMB01000018.1	=	NZ_RCMB01000018.1	Primary Assembly	138076	na
+ctg7180000000056	unplaced-scaffold	na	na	RCMB01000010.1	=	NZ_RCMB01000010.1	Primary Assembly	88998	na
+ctg7180000000062	unplaced-scaffold	na	na	RCMB01000016.1	=	NZ_RCMB01000016.1	Primary Assembly	105749	na
+ctg7180000000064	unplaced-scaffold	na	na	RCMB01000009.1	=	NZ_RCMB01000009.1	Primary Assembly	155224	na
+ctg7180000000065	unplaced-scaffold	na	na	RCMB01000024.1	=	NZ_RCMB01000024.1	Primary Assembly	14447	na
+ctg7180000000067	unplaced-scaffold	na	na	RCMB01000004.1	=	NZ_RCMB01000004.1	Primary Assembly	65193	na
+ctg7180000000071	unplaced-scaffold	na	na	RCMB01000019.1	=	NZ_RCMB01000019.1	Primary Assembly	62902	na
+ctg7180000000073	unplaced-scaffold	na	na	RCMB01000001.1	=	NZ_RCMB01000001.1	Primary Assembly	56218	na
+ctg7180000000074	unplaced-scaffold	na	na	RCMB01000020.1	=	NZ_RCMB01000020.1	Primary Assembly	8489	na
+ctg7180000000077	unplaced-scaffold	na	na	RCMB01000017.1	=	NZ_RCMB01000017.1	Primary Assembly	25608	na
+ctg7180000000078	unplaced-scaffold	na	na	RCMB01000006.1	=	NZ_RCMB01000006.1	Primary Assembly	21069	na
+ctg7180000000080	unplaced-scaffold	na	na	RCMB01000015.1	=	NZ_RCMB01000015.1	Primary Assembly	27189	na
+ctg7180000000081	unplaced-scaffold	na	na	RCMB01000022.1	=	NZ_RCMB01000022.1	Primary Assembly	22309	na
+ctg7180000000082	unplaced-scaffold	na	na	RCMB01000011.1	=	NZ_RCMB01000011.1	Primary Assembly	35754	na
+ctg7180000000083	unplaced-scaffold	na	na	RCMB01000014.1	=	NZ_RCMB01000014.1	Primary Assembly	14233	na
+ctg7180000000089	unplaced-scaffold	na	na	RCMB01000021.1	=	NZ_RCMB01000021.1	Primary Assembly	14246	na
+ctg7180000000092	unplaced-scaffold	na	na	RCMB01000012.1	=	NZ_RCMB01000012.1	Primary Assembly	20053	na

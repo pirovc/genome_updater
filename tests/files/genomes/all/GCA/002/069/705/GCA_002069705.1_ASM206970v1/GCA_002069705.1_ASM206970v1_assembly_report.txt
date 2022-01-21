@@ -1,0 +1,125 @@
+# Assembly name:  ASM206970v1
+# Organism name:  Candidatus Diapherotrites archaeon ADurb.Bin253 (archaea)
+# Isolate:  ADurb.Bin253
+# Taxid:          1852841
+# BioSample:      SAMN05004159
+# BioProject:     PRJNA321808
+# Submitter:      University of Illinois
+# Date:           2017-03-22
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    MWBV01
+# Assembly method: SPAdes v. 3.6.2
+# Expected final version: yes
+# Genome coverage: 3.1x
+# Sequencing technology: Illumina HiSeq
+# Excluded from RefSeq: derived from metagenome; genus undefined
+# GenBank assembly accession: GCA_002069705.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_002069735.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+BWY36_contig000001	unplaced-scaffold	na	na	MWBV01000001.1	<>	na	Primary Assembly	128436	na
+BWY36_contig000002	unplaced-scaffold	na	na	MWBV01000002.1	<>	na	Primary Assembly	71002	na
+BWY36_contig000003	unplaced-scaffold	na	na	MWBV01000003.1	<>	na	Primary Assembly	64959	na
+BWY36_contig000004	unplaced-scaffold	na	na	MWBV01000004.1	<>	na	Primary Assembly	48358	na
+BWY36_contig000005	unplaced-scaffold	na	na	MWBV01000005.1	<>	na	Primary Assembly	45104	na
+BWY36_contig000006	unplaced-scaffold	na	na	MWBV01000006.1	<>	na	Primary Assembly	32553	na
+BWY36_contig000007	unplaced-scaffold	na	na	MWBV01000007.1	<>	na	Primary Assembly	31173	na
+BWY36_contig000008	unplaced-scaffold	na	na	MWBV01000008.1	<>	na	Primary Assembly	24991	na
+BWY36_contig000009	unplaced-scaffold	na	na	MWBV01000009.1	<>	na	Primary Assembly	23032	na
+BWY36_contig000010	unplaced-scaffold	na	na	MWBV01000010.1	<>	na	Primary Assembly	20825	na
+BWY36_contig000011	unplaced-scaffold	na	na	MWBV01000011.1	<>	na	Primary Assembly	20818	na
+BWY36_contig000012	unplaced-scaffold	na	na	MWBV01000012.1	<>	na	Primary Assembly	20277	na
+BWY36_contig000013	unplaced-scaffold	na	na	MWBV01000013.1	<>	na	Primary Assembly	19176	na
+BWY36_contig000014	unplaced-scaffold	na	na	MWBV01000014.1	<>	na	Primary Assembly	19039	na
+BWY36_contig000015	unplaced-scaffold	na	na	MWBV01000015.1	<>	na	Primary Assembly	17869	na
+BWY36_contig000016	unplaced-scaffold	na	na	MWBV01000016.1	<>	na	Primary Assembly	17633	na
+BWY36_contig000017	unplaced-scaffold	na	na	MWBV01000017.1	<>	na	Primary Assembly	15461	na
+BWY36_contig000018	unplaced-scaffold	na	na	MWBV01000018.1	<>	na	Primary Assembly	13906	na
+BWY36_contig000019	unplaced-scaffold	na	na	MWBV01000019.1	<>	na	Primary Assembly	13433	na
+BWY36_contig000020	unplaced-scaffold	na	na	MWBV01000020.1	<>	na	Primary Assembly	12324	na
+BWY36_contig000021	unplaced-scaffold	na	na	MWBV01000021.1	<>	na	Primary Assembly	10349	na
+BWY36_contig000022	unplaced-scaffold	na	na	MWBV01000022.1	<>	na	Primary Assembly	9307	na
+BWY36_contig000023	unplaced-scaffold	na	na	MWBV01000023.1	<>	na	Primary Assembly	9155	na
+BWY36_contig000024	unplaced-scaffold	na	na	MWBV01000024.1	<>	na	Primary Assembly	9079	na
+BWY36_contig000025	unplaced-scaffold	na	na	MWBV01000025.1	<>	na	Primary Assembly	8849	na
+BWY36_contig000026	unplaced-scaffold	na	na	MWBV01000026.1	<>	na	Primary Assembly	7517	na
+BWY36_contig000027	unplaced-scaffold	na	na	MWBV01000027.1	<>	na	Primary Assembly	5332	na
+BWY36_contig000028	unplaced-scaffold	na	na	MWBV01000028.1	<>	na	Primary Assembly	4709	na
+BWY36_contig000029	unplaced-scaffold	na	na	MWBV01000029.1	<>	na	Primary Assembly	4652	na
+BWY36_contig000030	unplaced-scaffold	na	na	MWBV01000030.1	<>	na	Primary Assembly	4622	na
+BWY36_contig000031	unplaced-scaffold	na	na	MWBV01000031.1	<>	na	Primary Assembly	4582	na
+BWY36_contig000032	unplaced-scaffold	na	na	MWBV01000032.1	<>	na	Primary Assembly	4542	na
+BWY36_contig000033	unplaced-scaffold	na	na	MWBV01000033.1	<>	na	Primary Assembly	4492	na
+BWY36_contig000034	unplaced-scaffold	na	na	MWBV01000034.1	<>	na	Primary Assembly	4475	na
+BWY36_contig000035	unplaced-scaffold	na	na	MWBV01000035.1	<>	na	Primary Assembly	4459	na
+BWY36_contig000036	unplaced-scaffold	na	na	MWBV01000036.1	<>	na	Primary Assembly	4422	na
+BWY36_contig000037	unplaced-scaffold	na	na	MWBV01000037.1	<>	na	Primary Assembly	4407	na
+BWY36_contig000038	unplaced-scaffold	na	na	MWBV01000038.1	<>	na	Primary Assembly	4247	na
+BWY36_contig000039	unplaced-scaffold	na	na	MWBV01000039.1	<>	na	Primary Assembly	4165	na
+BWY36_contig000040	unplaced-scaffold	na	na	MWBV01000040.1	<>	na	Primary Assembly	3957	na
+BWY36_contig000041	unplaced-scaffold	na	na	MWBV01000041.1	<>	na	Primary Assembly	3927	na
+BWY36_contig000042	unplaced-scaffold	na	na	MWBV01000042.1	<>	na	Primary Assembly	3923	na
+BWY36_contig000043	unplaced-scaffold	na	na	MWBV01000043.1	<>	na	Primary Assembly	3841	na
+BWY36_contig000044	unplaced-scaffold	na	na	MWBV01000044.1	<>	na	Primary Assembly	3610	na
+BWY36_contig000045	unplaced-scaffold	na	na	MWBV01000045.1	<>	na	Primary Assembly	3531	na
+BWY36_contig000046	unplaced-scaffold	na	na	MWBV01000046.1	<>	na	Primary Assembly	3526	na
+BWY36_contig000047	unplaced-scaffold	na	na	MWBV01000047.1	<>	na	Primary Assembly	3314	na
+BWY36_contig000048	unplaced-scaffold	na	na	MWBV01000048.1	<>	na	Primary Assembly	2945	na
+BWY36_contig000049	unplaced-scaffold	na	na	MWBV01000049.1	<>	na	Primary Assembly	2938	na
+BWY36_contig000050	unplaced-scaffold	na	na	MWBV01000050.1	<>	na	Primary Assembly	2844	na
+BWY36_contig000051	unplaced-scaffold	na	na	MWBV01000051.1	<>	na	Primary Assembly	2320	na
+BWY36_contig000052	unplaced-scaffold	na	na	MWBV01000052.1	<>	na	Primary Assembly	2303	na
+BWY36_contig000053	unplaced-scaffold	na	na	MWBV01000053.1	<>	na	Primary Assembly	2136	na
+BWY36_contig000054	unplaced-scaffold	na	na	MWBV01000054.1	<>	na	Primary Assembly	2103	na
+BWY36_contig000055	unplaced-scaffold	na	na	MWBV01000055.1	<>	na	Primary Assembly	2103	na
+BWY36_contig000056	unplaced-scaffold	na	na	MWBV01000056.1	<>	na	Primary Assembly	2102	na
+BWY36_contig000057	unplaced-scaffold	na	na	MWBV01000057.1	<>	na	Primary Assembly	2013	na
+BWY36_contig000058	unplaced-scaffold	na	na	MWBV01000058.1	<>	na	Primary Assembly	1850	na
+BWY36_contig000059	unplaced-scaffold	na	na	MWBV01000059.1	<>	na	Primary Assembly	1774	na
+BWY36_contig000060	unplaced-scaffold	na	na	MWBV01000060.1	<>	na	Primary Assembly	1734	na
+BWY36_contig000061	unplaced-scaffold	na	na	MWBV01000061.1	<>	na	Primary Assembly	1691	na
+BWY36_contig000062	unplaced-scaffold	na	na	MWBV01000062.1	<>	na	Primary Assembly	1669	na
+BWY36_contig000063	unplaced-scaffold	na	na	MWBV01000063.1	<>	na	Primary Assembly	1669	na
+BWY36_contig000064	unplaced-scaffold	na	na	MWBV01000064.1	<>	na	Primary Assembly	1654	na
+BWY36_contig000065	unplaced-scaffold	na	na	MWBV01000065.1	<>	na	Primary Assembly	1642	na
+BWY36_contig000066	unplaced-scaffold	na	na	MWBV01000066.1	<>	na	Primary Assembly	1612	na
+BWY36_contig000067	unplaced-scaffold	na	na	MWBV01000067.1	<>	na	Primary Assembly	1588	na
+BWY36_contig000068	unplaced-scaffold	na	na	MWBV01000068.1	<>	na	Primary Assembly	1434	na
+BWY36_contig000069	unplaced-scaffold	na	na	MWBV01000069.1	<>	na	Primary Assembly	1412	na
+BWY36_contig000070	unplaced-scaffold	na	na	MWBV01000070.1	<>	na	Primary Assembly	1394	na
+BWY36_contig000071	unplaced-scaffold	na	na	MWBV01000071.1	<>	na	Primary Assembly	1392	na
+BWY36_contig000072	unplaced-scaffold	na	na	MWBV01000072.1	<>	na	Primary Assembly	1385	na
+BWY36_contig000073	unplaced-scaffold	na	na	MWBV01000073.1	<>	na	Primary Assembly	1355	na
+BWY36_contig000074	unplaced-scaffold	na	na	MWBV01000074.1	<>	na	Primary Assembly	1348	na
+BWY36_contig000075	unplaced-scaffold	na	na	MWBV01000075.1	<>	na	Primary Assembly	1319	na
+BWY36_contig000076	unplaced-scaffold	na	na	MWBV01000076.1	<>	na	Primary Assembly	1254	na
+BWY36_contig000077	unplaced-scaffold	na	na	MWBV01000077.1	<>	na	Primary Assembly	1248	na
+BWY36_contig000078	unplaced-scaffold	na	na	MWBV01000078.1	<>	na	Primary Assembly	1244	na
+BWY36_contig000079	unplaced-scaffold	na	na	MWBV01000079.1	<>	na	Primary Assembly	1236	na
+BWY36_contig000080	unplaced-scaffold	na	na	MWBV01000080.1	<>	na	Primary Assembly	1221	na
+BWY36_contig000081	unplaced-scaffold	na	na	MWBV01000081.1	<>	na	Primary Assembly	1217	na
+BWY36_contig000082	unplaced-scaffold	na	na	MWBV01000082.1	<>	na	Primary Assembly	1217	na
+BWY36_contig000083	unplaced-scaffold	na	na	MWBV01000083.1	<>	na	Primary Assembly	1215	na
+BWY36_contig000084	unplaced-scaffold	na	na	MWBV01000084.1	<>	na	Primary Assembly	1197	na
+BWY36_contig000085	unplaced-scaffold	na	na	MWBV01000085.1	<>	na	Primary Assembly	1174	na
+BWY36_contig000086	unplaced-scaffold	na	na	MWBV01000086.1	<>	na	Primary Assembly	1145	na
+BWY36_contig000087	unplaced-scaffold	na	na	MWBV01000087.1	<>	na	Primary Assembly	1082	na
+BWY36_contig000088	unplaced-scaffold	na	na	MWBV01000088.1	<>	na	Primary Assembly	1078	na
+BWY36_contig000089	unplaced-scaffold	na	na	MWBV01000089.1	<>	na	Primary Assembly	1068	na
+BWY36_contig000090	unplaced-scaffold	na	na	MWBV01000090.1	<>	na	Primary Assembly	1046	na
+BWY36_contig000091	unplaced-scaffold	na	na	MWBV01000091.1	<>	na	Primary Assembly	1038	na
+BWY36_contig000092	unplaced-scaffold	na	na	MWBV01000092.1	<>	na	Primary Assembly	1037	na
+BWY36_contig000093	unplaced-scaffold	na	na	MWBV01000093.1	<>	na	Primary Assembly	1015	na
+BWY36_contig000094	unplaced-scaffold	na	na	MWBV01000094.1	<>	na	Primary Assembly	1013	na
+BWY36_contig000095	unplaced-scaffold	na	na	MWBV01000095.1	<>	na	Primary Assembly	1008	na

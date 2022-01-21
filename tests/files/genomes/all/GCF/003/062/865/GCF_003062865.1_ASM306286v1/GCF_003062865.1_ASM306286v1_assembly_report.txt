@@ -1,0 +1,122 @@
+# Assembly name:  ASM306286v1
+# Organism name:  Klebsiella pneumoniae (enterobacteria)
+# Infraspecific name:  strain=ITU3908
+# Taxid:          573
+# BioSample:      SAMN08644156
+# BioProject:     PRJNA437224
+# Submitter:      Robert Koch Institute
+# Date:           2018-04-23
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    PZMT01
+# Assembly method: SPAdes v. 3.9.0
+# Expected final version: no
+# Genome coverage: 90.0x
+# Sequencing technology: Illumina MiSeq
+# GenBank assembly accession: GCA_003062865.1
+# RefSeq assembly accession: GCF_003062865.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_003062875.1	GCF_003062875.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+NODE_107_length_768_cov_485.778	unplaced-scaffold	na	na	PZMT01000078.1	=	NZ_PZMT01000078.1	Primary Assembly	768	na
+NODE_10_length_225015_cov_169.883	unplaced-scaffold	na	na	PZMT01000010.1	=	NZ_PZMT01000010.1	Primary Assembly	225015	na
+NODE_11_length_222935_cov_152.913	unplaced-scaffold	na	na	PZMT01000011.1	=	NZ_PZMT01000011.1	Primary Assembly	222935	na
+NODE_12_length_210551_cov_147.978	unplaced-scaffold	na	na	PZMT01000012.1	=	NZ_PZMT01000012.1	Primary Assembly	210551	na
+NODE_132_length_713_cov_730.696	unplaced-scaffold	na	na	PZMT01000079.1	=	NZ_PZMT01000079.1	Primary Assembly	713	na
+NODE_13_length_196462_cov_164.382	unplaced-scaffold	na	na	PZMT01000013.1	=	NZ_PZMT01000013.1	Primary Assembly	196462	na
+NODE_14_length_194413_cov_161.477	unplaced-scaffold	na	na	PZMT01000014.1	=	NZ_PZMT01000014.1	Primary Assembly	194413	na
+NODE_15_length_189025_cov_169.727	unplaced-scaffold	na	na	PZMT01000015.1	=	NZ_PZMT01000015.1	Primary Assembly	189025	na
+NODE_16_length_151815_cov_169.617	unplaced-scaffold	na	na	PZMT01000016.1	=	NZ_PZMT01000016.1	Primary Assembly	151815	na
+NODE_170_length_657_cov_341.817	unplaced-scaffold	na	na	PZMT01000080.1	=	NZ_PZMT01000080.1	Primary Assembly	657	na
+NODE_177_length_649_cov_404.854	unplaced-scaffold	na	na	PZMT01000081.1	=	NZ_PZMT01000081.1	Primary Assembly	649	na
+NODE_17_length_110242_cov_107.689	unplaced-scaffold	na	na	PZMT01000017.1	=	NZ_PZMT01000017.1	Primary Assembly	110242	na
+NODE_18_length_103967_cov_168.694	unplaced-scaffold	na	na	PZMT01000018.1	=	NZ_PZMT01000018.1	Primary Assembly	103967	na
+NODE_19_length_97596_cov_143.714	unplaced-scaffold	na	na	PZMT01000019.1	=	NZ_PZMT01000019.1	Primary Assembly	97596	na
+NODE_1_length_547762_cov_153.727	unplaced-scaffold	na	na	PZMT01000001.1	=	NZ_PZMT01000001.1	Primary Assembly	547762	na
+NODE_20_length_94348_cov_171.808	unplaced-scaffold	na	na	PZMT01000020.1	=	NZ_PZMT01000020.1	Primary Assembly	94348	na
+NODE_213_length_602_cov_226.575	unplaced-scaffold	na	na	PZMT01000082.1	=	NZ_PZMT01000082.1	Primary Assembly	602	na
+NODE_21_length_90054_cov_164.424	unplaced-scaffold	na	na	PZMT01000021.1	=	NZ_PZMT01000021.1	Primary Assembly	90054	na
+NODE_227_length_590_cov_105.415	unplaced-scaffold	na	na	PZMT01000083.1	=	NZ_PZMT01000083.1	Primary Assembly	590	na
+NODE_228_length_590_cov_155.33	unplaced-scaffold	na	na	PZMT01000084.1	=	NZ_PZMT01000084.1	Primary Assembly	590	na
+NODE_22_length_88399_cov_159.56	unplaced-scaffold	na	na	PZMT01000022.1	=	NZ_PZMT01000022.1	Primary Assembly	88399	na
+NODE_23_length_86770_cov_171.547	unplaced-scaffold	na	na	PZMT01000023.1	=	NZ_PZMT01000023.1	Primary Assembly	86770	na
+NODE_24_length_77033_cov_142.979	unplaced-scaffold	na	na	PZMT01000024.1	=	NZ_PZMT01000024.1	Primary Assembly	77033	na
+NODE_25_length_75182_cov_144.224	unplaced-scaffold	na	na	PZMT01000025.1	=	NZ_PZMT01000025.1	Primary Assembly	75182	na
+NODE_26_length_71477_cov_170.676	unplaced-scaffold	na	na	PZMT01000026.1	=	NZ_PZMT01000026.1	Primary Assembly	71477	na
+NODE_27_length_58694_cov_170.532	unplaced-scaffold	na	na	PZMT01000027.1	=	NZ_PZMT01000027.1	Primary Assembly	58694	na
+NODE_283_length_557_cov_614.902	unplaced-scaffold	na	na	PZMT01000085.1	=	NZ_PZMT01000085.1	Primary Assembly	557	na
+NODE_28_length_58456_cov_147.408	unplaced-scaffold	na	na	PZMT01000028.1	=	NZ_PZMT01000028.1	Primary Assembly	58456	na
+NODE_29_length_56832_cov_149.932	unplaced-scaffold	na	na	PZMT01000029.1	=	NZ_PZMT01000029.1	Primary Assembly	56832	na
+NODE_2_length_361690_cov_154.435	unplaced-scaffold	na	na	PZMT01000002.1	=	NZ_PZMT01000002.1	Primary Assembly	361690	na
+NODE_301_length_545_cov_178.778	unplaced-scaffold	na	na	PZMT01000086.1	=	NZ_PZMT01000086.1	Primary Assembly	545	na
+NODE_309_length_537_cov_102.102	unplaced-scaffold	na	na	PZMT01000087.1	=	NZ_PZMT01000087.1	Primary Assembly	537	na
+NODE_30_length_45220_cov_104.93	unplaced-scaffold	na	na	PZMT01000030.1	=	NZ_PZMT01000030.1	Primary Assembly	45220	na
+NODE_31_length_37705_cov_105.669	unplaced-scaffold	na	na	PZMT01000031.1	=	NZ_PZMT01000031.1	Primary Assembly	37705	na
+NODE_325_length_526_cov_301.168	unplaced-scaffold	na	na	PZMT01000088.1	=	NZ_PZMT01000088.1	Primary Assembly	526	na
+NODE_32_length_34649_cov_173.973	unplaced-scaffold	na	na	PZMT01000032.1	=	NZ_PZMT01000032.1	Primary Assembly	34649	na
+NODE_337_length_518_cov_127.76	unplaced-scaffold	na	na	PZMT01000089.1	=	NZ_PZMT01000089.1	Primary Assembly	518	na
+NODE_338_length_518_cov_98.4194	unplaced-scaffold	na	na	PZMT01000090.1	=	NZ_PZMT01000090.1	Primary Assembly	518	na
+NODE_33_length_34123_cov_104.364	unplaced-scaffold	na	na	PZMT01000033.1	=	NZ_PZMT01000033.1	Primary Assembly	34123	na
+NODE_34_length_26447_cov_179.73	unplaced-scaffold	na	na	PZMT01000034.1	=	NZ_PZMT01000034.1	Primary Assembly	26447	na
+NODE_356_length_508_cov_319.171	unplaced-scaffold	na	na	PZMT01000091.1	=	NZ_PZMT01000091.1	Primary Assembly	508	na
+NODE_35_length_22774_cov_106.82	unplaced-scaffold	na	na	PZMT01000035.1	=	NZ_PZMT01000035.1	Primary Assembly	22774	na
+NODE_36_length_21158_cov_107.106	unplaced-scaffold	na	na	PZMT01000036.1	=	NZ_PZMT01000036.1	Primary Assembly	21158	na
+NODE_37_length_15901_cov_146.239	unplaced-scaffold	na	na	PZMT01000037.1	=	NZ_PZMT01000037.1	Primary Assembly	15901	na
+NODE_38_length_12591_cov_103.96	unplaced-scaffold	na	na	PZMT01000038.1	=	NZ_PZMT01000038.1	Primary Assembly	12591	na
+NODE_39_length_11711_cov_102.046	unplaced-scaffold	na	na	PZMT01000039.1	=	NZ_PZMT01000039.1	Primary Assembly	11711	na
+NODE_3_length_326058_cov_159.742	unplaced-scaffold	na	na	PZMT01000003.1	=	NZ_PZMT01000003.1	Primary Assembly	326058	na
+NODE_40_length_10961_cov_223.031	unplaced-scaffold	na	na	PZMT01000040.1	=	NZ_PZMT01000040.1	Primary Assembly	10961	na
+NODE_41_length_8875_cov_151.987	unplaced-scaffold	na	na	PZMT01000041.1	=	NZ_PZMT01000041.1	Primary Assembly	8875	na
+NODE_42_length_8555_cov_151.451	unplaced-scaffold	na	na	PZMT01000042.1	=	NZ_PZMT01000042.1	Primary Assembly	8555	na
+NODE_43_length_7667_cov_96.9049	unplaced-scaffold	na	na	PZMT01000043.1	=	NZ_PZMT01000043.1	Primary Assembly	7667	na
+NODE_44_length_7446_cov_217.508	unplaced-scaffold	na	na	PZMT01000044.1	=	NZ_PZMT01000044.1	Primary Assembly	7446	na
+NODE_45_length_6524_cov_109.9	unplaced-scaffold	na	na	PZMT01000045.1	=	NZ_PZMT01000045.1	Primary Assembly	6524	na
+NODE_46_length_6474_cov_112.912	unplaced-scaffold	na	na	PZMT01000046.1	=	NZ_PZMT01000046.1	Primary Assembly	6474	na
+NODE_47_length_6419_cov_169.104	unplaced-scaffold	na	na	PZMT01000047.1	=	NZ_PZMT01000047.1	Primary Assembly	6419	na
+NODE_48_length_6279_cov_163.073	unplaced-scaffold	na	na	PZMT01000048.1	=	NZ_PZMT01000048.1	Primary Assembly	6279	na
+NODE_49_length_6028_cov_197.383	unplaced-scaffold	na	na	PZMT01000049.1	=	NZ_PZMT01000049.1	Primary Assembly	6028	na
+NODE_4_length_317857_cov_144.584	unplaced-scaffold	na	na	PZMT01000004.1	=	NZ_PZMT01000004.1	Primary Assembly	317857	na
+NODE_50_length_5362_cov_1766.94	unplaced-scaffold	na	na	PZMT01000050.1	=	NZ_PZMT01000050.1	Primary Assembly	5362	na
+NODE_51_length_5189_cov_106.796	unplaced-scaffold	na	na	PZMT01000051.1	=	NZ_PZMT01000051.1	Primary Assembly	5189	na
+NODE_52_length_5046_cov_1165.45	unplaced-scaffold	na	na	PZMT01000052.1	=	NZ_PZMT01000052.1	Primary Assembly	5046	na
+NODE_53_length_4688_cov_179.446	unplaced-scaffold	na	na	PZMT01000053.1	=	NZ_PZMT01000053.1	Primary Assembly	4688	na
+NODE_54_length_4111_cov_100.781	unplaced-scaffold	na	na	PZMT01000054.1	=	NZ_PZMT01000054.1	Primary Assembly	4111	na
+NODE_55_length_3887_cov_113.575	unplaced-scaffold	na	na	PZMT01000055.1	=	NZ_PZMT01000055.1	Primary Assembly	3887	na
+NODE_56_length_3593_cov_101.467	unplaced-scaffold	na	na	PZMT01000056.1	=	NZ_PZMT01000056.1	Primary Assembly	3593	na
+NODE_57_length_2703_cov_154.526	unplaced-scaffold	na	na	PZMT01000057.1	=	NZ_PZMT01000057.1	Primary Assembly	2703	na
+NODE_58_length_2216_cov_1650.22	unplaced-scaffold	na	na	PZMT01000058.1	=	NZ_PZMT01000058.1	Primary Assembly	2216	na
+NODE_59_length_2135_cov_2.23805	unplaced-scaffold	na	na	PZMT01000059.1	=	NZ_PZMT01000059.1	Primary Assembly	2135	na
+NODE_5_length_272683_cov_166.451	unplaced-scaffold	na	na	PZMT01000005.1	=	NZ_PZMT01000005.1	Primary Assembly	272683	na
+NODE_60_length_2022_cov_302.221	unplaced-scaffold	na	na	PZMT01000060.1	=	NZ_PZMT01000060.1	Primary Assembly	2022	na
+NODE_61_length_2010_cov_220.854	unplaced-scaffold	na	na	PZMT01000061.1	=	NZ_PZMT01000061.1	Primary Assembly	2010	na
+NODE_62_length_1921_cov_291.885	unplaced-scaffold	na	na	PZMT01000062.1	=	NZ_PZMT01000062.1	Primary Assembly	1921	na
+NODE_63_length_1894_cov_427.735	unplaced-scaffold	na	na	PZMT01000063.1	=	NZ_PZMT01000063.1	Primary Assembly	1894	na
+NODE_64_length_1870_cov_302.185	unplaced-scaffold	na	na	PZMT01000064.1	=	NZ_PZMT01000064.1	Primary Assembly	1870	na
+NODE_65_length_1814_cov_176.743	unplaced-scaffold	na	na	PZMT01000065.1	=	NZ_PZMT01000065.1	Primary Assembly	1814	na
+NODE_66_length_1802_cov_113.506	unplaced-scaffold	na	na	PZMT01000066.1	=	NZ_PZMT01000066.1	Primary Assembly	1802	na
+NODE_67_length_1745_cov_1.66316	unplaced-scaffold	na	na	PZMT01000067.1	=	NZ_PZMT01000067.1	Primary Assembly	1745	na
+NODE_68_length_1630_cov_218.198	unplaced-scaffold	na	na	PZMT01000068.1	=	NZ_PZMT01000068.1	Primary Assembly	1630	na
+NODE_69_length_1609_cov_111.249	unplaced-scaffold	na	na	PZMT01000069.1	=	NZ_PZMT01000069.1	Primary Assembly	1609	na
+NODE_6_length_268877_cov_148.942	unplaced-scaffold	na	na	PZMT01000006.1	=	NZ_PZMT01000006.1	Primary Assembly	268877	na
+NODE_70_length_1549_cov_196.966	unplaced-scaffold	na	na	PZMT01000070.1	=	NZ_PZMT01000070.1	Primary Assembly	1549	na
+NODE_71_length_1483_cov_161.733	unplaced-scaffold	na	na	PZMT01000071.1	=	NZ_PZMT01000071.1	Primary Assembly	1483	na
+NODE_73_length_1355_cov_295.103	unplaced-scaffold	na	na	PZMT01000072.1	=	NZ_PZMT01000072.1	Primary Assembly	1355	na
+NODE_74_length_1329_cov_2087.03	unplaced-scaffold	na	na	PZMT01000073.1	=	NZ_PZMT01000073.1	Primary Assembly	1329	na
+NODE_77_length_1200_cov_202.38	unplaced-scaffold	na	na	PZMT01000074.1	=	NZ_PZMT01000074.1	Primary Assembly	1200	na
+NODE_78_length_1123_cov_646.387	unplaced-scaffold	na	na	PZMT01000075.1	=	NZ_PZMT01000075.1	Primary Assembly	1123	na
+NODE_79_length_1097_cov_296.323	unplaced-scaffold	na	na	PZMT01000076.1	=	NZ_PZMT01000076.1	Primary Assembly	1097	na
+NODE_7_length_248112_cov_173.426	unplaced-scaffold	na	na	PZMT01000007.1	=	NZ_PZMT01000007.1	Primary Assembly	248112	na
+NODE_87_length_932_cov_338.263	unplaced-scaffold	na	na	PZMT01000077.1	=	NZ_PZMT01000077.1	Primary Assembly	932	na
+NODE_8_length_230706_cov_170.286	unplaced-scaffold	na	na	PZMT01000008.1	=	NZ_PZMT01000008.1	Primary Assembly	230706	na
+NODE_9_length_229960_cov_159.458	unplaced-scaffold	na	na	PZMT01000009.1	=	NZ_PZMT01000009.1	Primary Assembly	229960	na

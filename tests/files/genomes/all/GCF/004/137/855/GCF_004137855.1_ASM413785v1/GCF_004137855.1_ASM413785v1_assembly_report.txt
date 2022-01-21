@@ -1,0 +1,37 @@
+# Assembly name:  ASM413785v1
+# Organism name:  Methanohalophilus profundi (euryarchaeotes)
+# Infraspecific name:  strain=SLHTYRO
+# Taxid:          2138083
+# BioSample:      SAMN08804086
+# BioProject:     PRJNA445966
+# Submitter:      UBO
+# Date:           2019-02-05
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    QBKB01
+# Assembly method: SPAdes v. 3.10.0
+# Expected final version: yes
+# Genome coverage: 5000.0x
+# Sequencing technology: Illumina; PacBio
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_004137855.1
+# RefSeq assembly accession: GCF_004137855.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_004137915.1	GCF_004137915.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+Scaffold_1	unplaced-scaffold	na	na	QBKB01000001.1	=	NZ_QBKB01000001.1	Primary Assembly	4747	na
+Scaffold_2	unplaced-scaffold	na	na	QBKB01000002.1	=	NZ_QBKB01000002.1	Primary Assembly	1823601	na
+Scaffold_3	unplaced-scaffold	na	na	QBKB01000003.1	=	NZ_QBKB01000003.1	Primary Assembly	888	na
+Scaffold_4	unplaced-scaffold	na	na	QBKB01000004.1	=	NZ_QBKB01000004.1	Primary Assembly	852	na

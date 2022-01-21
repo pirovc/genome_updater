@@ -1,0 +1,196 @@
+# Assembly name:  ASM1138938v1
+# Organism name:  Candidatus Bathyarchaeota archaeon (archaea)
+# Isolate:  SpSt-755
+# Taxid:          2026714
+# BioSample:      SAMN09639886
+# BioProject:     PRJNA480137
+# Submitter:      The University of Hong Kong
+# Date:           2020-03-17
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    DTGE01
+# Assembly method: MEGAHIT v. 1.1.2
+# Expected final version: yes
+# Genome coverage: 23.23x
+# Sequencing technology: Illumina HiSeq 2500
+# Excluded from RefSeq: derived from metagenome; genus undefined
+# GenBank assembly accession: GCA_011389385.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_011389415.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+Ga0123519_10000505	unplaced-scaffold	na	na	DTGE01000039.1	<>	na	Primary Assembly	68852	na
+Ga0123519_10002041	unplaced-scaffold	na	na	DTGE01000112.1	<>	na	Primary Assembly	34390	na
+Ga0123519_10002449	unplaced-scaffold	na	na	DTGE01000143.1	<>	na	Primary Assembly	31335	na
+Ga0123519_10003489	unplaced-scaffold	na	na	DTGE01000154.1	<>	na	Primary Assembly	25977	na
+Ga0123519_10004540	unplaced-scaffold	na	na	DTGE01000050.1	<>	na	Primary Assembly	22427	na
+Ga0123519_10005860	unplaced-scaffold	na	na	DTGE01000152.1	<>	na	Primary Assembly	19482	na
+Ga0123519_10006174	unplaced-scaffold	na	na	DTGE01000139.1	<>	na	Primary Assembly	18927	na
+Ga0123519_10006338	unplaced-scaffold	na	na	DTGE01000059.1	<>	na	Primary Assembly	18639	na
+Ga0123519_10006667	unplaced-scaffold	na	na	DTGE01000134.1	<>	na	Primary Assembly	18060	na
+Ga0123519_10006732	unplaced-scaffold	na	na	DTGE01000033.1	<>	na	Primary Assembly	17963	na
+Ga0123519_10006971	unplaced-scaffold	na	na	DTGE01000040.1	<>	na	Primary Assembly	17621	na
+Ga0123519_10007018	unplaced-scaffold	na	na	DTGE01000153.1	<>	na	Primary Assembly	17563	na
+Ga0123519_10007261	unplaced-scaffold	na	na	DTGE01000093.1	<>	na	Primary Assembly	17216	na
+Ga0123519_10008212	unplaced-scaffold	na	na	DTGE01000150.1	<>	na	Primary Assembly	15974	na
+Ga0123519_10009345	unplaced-scaffold	na	na	DTGE01000043.1	<>	na	Primary Assembly	14786	na
+Ga0123519_10009493	unplaced-scaffold	na	na	DTGE01000029.1	<>	na	Primary Assembly	14639	na
+Ga0123519_10009682	unplaced-scaffold	na	na	DTGE01000162.1	<>	na	Primary Assembly	14463	na
+Ga0123519_10010155	unplaced-scaffold	na	na	DTGE01000149.1	<>	na	Primary Assembly	14053	na
+Ga0123519_10010322	unplaced-scaffold	na	na	DTGE01000158.1	<>	na	Primary Assembly	13928	na
+Ga0123519_10010686	unplaced-scaffold	na	na	DTGE01000011.1	<>	na	Primary Assembly	13631	na
+Ga0123519_10010694	unplaced-scaffold	na	na	DTGE01000036.1	<>	na	Primary Assembly	13622	na
+Ga0123519_10011799	unplaced-scaffold	na	na	DTGE01000132.1	<>	na	Primary Assembly	12819	na
+Ga0123519_10012283	unplaced-scaffold	na	na	DTGE01000113.1	<>	na	Primary Assembly	12487	na
+Ga0123519_10012795	unplaced-scaffold	na	na	DTGE01000070.1	<>	na	Primary Assembly	12154	na
+Ga0123519_10012964	unplaced-scaffold	na	na	DTGE01000142.1	<>	na	Primary Assembly	12035	na
+Ga0123519_10012995	unplaced-scaffold	na	na	DTGE01000165.1	<>	na	Primary Assembly	12020	na
+Ga0123519_10013800	unplaced-scaffold	na	na	DTGE01000126.1	<>	na	Primary Assembly	11567	na
+Ga0123519_10014998	unplaced-scaffold	na	na	DTGE01000085.1	<>	na	Primary Assembly	10935	na
+Ga0123519_10015991	unplaced-scaffold	na	na	DTGE01000095.1	<>	na	Primary Assembly	10480	na
+Ga0123519_10016131	unplaced-scaffold	na	na	DTGE01000014.1	<>	na	Primary Assembly	10416	na
+Ga0123519_10016178	unplaced-scaffold	na	na	DTGE01000080.1	<>	na	Primary Assembly	10395	na
+Ga0123519_10016510	unplaced-scaffold	na	na	DTGE01000114.1	<>	na	Primary Assembly	10244	na
+Ga0123519_10017152	unplaced-scaffold	na	na	DTGE01000020.1	<>	na	Primary Assembly	9991	na
+Ga0123519_10017708	unplaced-scaffold	na	na	DTGE01000138.1	<>	na	Primary Assembly	9772	na
+Ga0123519_10018000	unplaced-scaffold	na	na	DTGE01000071.1	<>	na	Primary Assembly	9643	na
+Ga0123519_10018012	unplaced-scaffold	na	na	DTGE01000088.1	<>	na	Primary Assembly	9640	na
+Ga0123519_10018188	unplaced-scaffold	na	na	DTGE01000008.1	<>	na	Primary Assembly	9577	na
+Ga0123519_10018510	unplaced-scaffold	na	na	DTGE01000069.1	<>	na	Primary Assembly	9468	na
+Ga0123519_10018949	unplaced-scaffold	na	na	DTGE01000018.1	<>	na	Primary Assembly	9312	na
+Ga0123519_10019566	unplaced-scaffold	na	na	DTGE01000111.1	<>	na	Primary Assembly	9095	na
+Ga0123519_10020123	unplaced-scaffold	na	na	DTGE01000035.1	<>	na	Primary Assembly	8907	na
+Ga0123519_10020187	unplaced-scaffold	na	na	DTGE01000073.1	<>	na	Primary Assembly	8886	na
+Ga0123519_10021179	unplaced-scaffold	na	na	DTGE01000120.1	<>	na	Primary Assembly	8579	na
+Ga0123519_10021701	unplaced-scaffold	na	na	DTGE01000001.1	<>	na	Primary Assembly	8418	na
+Ga0123519_10022253	unplaced-scaffold	na	na	DTGE01000072.1	<>	na	Primary Assembly	8279	na
+Ga0123519_10022934	unplaced-scaffold	na	na	DTGE01000041.1	<>	na	Primary Assembly	8105	na
+Ga0123519_10024510	unplaced-scaffold	na	na	DTGE01000047.1	<>	na	Primary Assembly	7714	na
+Ga0123519_10024582	unplaced-scaffold	na	na	DTGE01000007.1	<>	na	Primary Assembly	7697	na
+Ga0123519_10024982	unplaced-scaffold	na	na	DTGE01000002.1	<>	na	Primary Assembly	7606	na
+Ga0123519_10025164	unplaced-scaffold	na	na	DTGE01000147.1	<>	na	Primary Assembly	7567	na
+Ga0123519_10025601	unplaced-scaffold	na	na	DTGE01000164.1	<>	na	Primary Assembly	7471	na
+Ga0123519_10026003	unplaced-scaffold	na	na	DTGE01000097.1	<>	na	Primary Assembly	7386	na
+Ga0123519_10026108	unplaced-scaffold	na	na	DTGE01000133.1	<>	na	Primary Assembly	7363	na
+Ga0123519_10026528	unplaced-scaffold	na	na	DTGE01000159.1	<>	na	Primary Assembly	7274	na
+Ga0123519_10027353	unplaced-scaffold	na	na	DTGE01000048.1	<>	na	Primary Assembly	7104	na
+Ga0123519_10027805	unplaced-scaffold	na	na	DTGE01000009.1	<>	na	Primary Assembly	7021	na
+Ga0123519_10027985	unplaced-scaffold	na	na	DTGE01000136.1	<>	na	Primary Assembly	6987	na
+Ga0123519_10028070	unplaced-scaffold	na	na	DTGE01000032.1	<>	na	Primary Assembly	6971	na
+Ga0123519_10028554	unplaced-scaffold	na	na	DTGE01000096.1	<>	na	Primary Assembly	6870	na
+Ga0123519_10028831	unplaced-scaffold	na	na	DTGE01000119.1	<>	na	Primary Assembly	6820	na
+Ga0123519_10028946	unplaced-scaffold	na	na	DTGE01000052.1	<>	na	Primary Assembly	6802	na
+Ga0123519_10029806	unplaced-scaffold	na	na	DTGE01000042.1	<>	na	Primary Assembly	6651	na
+Ga0123519_10030025	unplaced-scaffold	na	na	DTGE01000109.1	<>	na	Primary Assembly	6617	na
+Ga0123519_10030277	unplaced-scaffold	na	na	DTGE01000091.1	<>	na	Primary Assembly	6578	na
+Ga0123519_10030522	unplaced-scaffold	na	na	DTGE01000021.1	<>	na	Primary Assembly	6540	na
+Ga0123519_10030960	unplaced-scaffold	na	na	DTGE01000063.1	<>	na	Primary Assembly	6475	na
+Ga0123519_10031231	unplaced-scaffold	na	na	DTGE01000116.1	<>	na	Primary Assembly	6431	na
+Ga0123519_10031392	unplaced-scaffold	na	na	DTGE01000004.1	<>	na	Primary Assembly	6406	na
+Ga0123519_10031701	unplaced-scaffold	na	na	DTGE01000144.1	<>	na	Primary Assembly	6358	na
+Ga0123519_10033751	unplaced-scaffold	na	na	DTGE01000046.1	<>	na	Primary Assembly	6059	na
+Ga0123519_10033872	unplaced-scaffold	na	na	DTGE01000157.1	<>	na	Primary Assembly	6044	na
+Ga0123519_10033944	unplaced-scaffold	na	na	DTGE01000025.1	<>	na	Primary Assembly	6035	na
+Ga0123519_10033949	unplaced-scaffold	na	na	DTGE01000023.1	<>	na	Primary Assembly	6034	na
+Ga0123519_10034577	unplaced-scaffold	na	na	DTGE01000022.1	<>	na	Primary Assembly	5946	na
+Ga0123519_10035403	unplaced-scaffold	na	na	DTGE01000068.1	<>	na	Primary Assembly	5841	na
+Ga0123519_10035657	unplaced-scaffold	na	na	DTGE01000030.1	<>	na	Primary Assembly	5811	na
+Ga0123519_10036104	unplaced-scaffold	na	na	DTGE01000031.1	<>	na	Primary Assembly	5752	na
+Ga0123519_10036829	unplaced-scaffold	na	na	DTGE01000135.1	<>	na	Primary Assembly	5664	na
+Ga0123519_10036906	unplaced-scaffold	na	na	DTGE01000015.1	<>	na	Primary Assembly	5656	na
+Ga0123519_10037079	unplaced-scaffold	na	na	DTGE01000081.1	<>	na	Primary Assembly	5637	na
+Ga0123519_10037821	unplaced-scaffold	na	na	DTGE01000024.1	<>	na	Primary Assembly	5552	na
+Ga0123519_10037829	unplaced-scaffold	na	na	DTGE01000027.1	<>	na	Primary Assembly	5551	na
+Ga0123519_10038245	unplaced-scaffold	na	na	DTGE01000034.1	<>	na	Primary Assembly	5500	na
+Ga0123519_10038560	unplaced-scaffold	na	na	DTGE01000146.1	<>	na	Primary Assembly	5465	na
+Ga0123519_10038814	unplaced-scaffold	na	na	DTGE01000078.1	<>	na	Primary Assembly	5437	na
+Ga0123519_10040783	unplaced-scaffold	na	na	DTGE01000163.1	<>	na	Primary Assembly	5234	na
+Ga0123519_10041375	unplaced-scaffold	na	na	DTGE01000066.1	<>	na	Primary Assembly	5172	na
+Ga0123519_10042149	unplaced-scaffold	na	na	DTGE01000038.1	<>	na	Primary Assembly	5095	na
+Ga0123519_10042225	unplaced-scaffold	na	na	DTGE01000124.1	<>	na	Primary Assembly	5086	na
+Ga0123519_10043380	unplaced-scaffold	na	na	DTGE01000054.1	<>	na	Primary Assembly	4977	na
+Ga0123519_10043604	unplaced-scaffold	na	na	DTGE01000103.1	<>	na	Primary Assembly	4956	na
+Ga0123519_10043701	unplaced-scaffold	na	na	DTGE01000064.1	<>	na	Primary Assembly	4947	na
+Ga0123519_10044055	unplaced-scaffold	na	na	DTGE01000131.1	<>	na	Primary Assembly	4916	na
+Ga0123519_10045059	unplaced-scaffold	na	na	DTGE01000104.1	<>	na	Primary Assembly	4830	na
+Ga0123519_10045967	unplaced-scaffold	na	na	DTGE01000156.1	<>	na	Primary Assembly	4751	na
+Ga0123519_10046651	unplaced-scaffold	na	na	DTGE01000137.1	<>	na	Primary Assembly	4691	na
+Ga0123519_10046662	unplaced-scaffold	na	na	DTGE01000118.1	<>	na	Primary Assembly	4691	na
+Ga0123519_10046939	unplaced-scaffold	na	na	DTGE01000013.1	<>	na	Primary Assembly	4671	na
+Ga0123519_10047785	unplaced-scaffold	na	na	DTGE01000076.1	<>	na	Primary Assembly	4602	na
+Ga0123519_10047884	unplaced-scaffold	na	na	DTGE01000100.1	<>	na	Primary Assembly	4595	na
+Ga0123519_10049746	unplaced-scaffold	na	na	DTGE01000141.1	<>	na	Primary Assembly	4454	na
+Ga0123519_10050117	unplaced-scaffold	na	na	DTGE01000056.1	<>	na	Primary Assembly	4424	na
+Ga0123519_10051223	unplaced-scaffold	na	na	DTGE01000055.1	<>	na	Primary Assembly	4345	na
+Ga0123519_10051311	unplaced-scaffold	na	na	DTGE01000084.1	<>	na	Primary Assembly	4339	na
+Ga0123519_10053137	unplaced-scaffold	na	na	DTGE01000074.1	<>	na	Primary Assembly	4216	na
+Ga0123519_10054531	unplaced-scaffold	na	na	DTGE01000110.1	<>	na	Primary Assembly	4130	na
+Ga0123519_10054732	unplaced-scaffold	na	na	DTGE01000045.1	<>	na	Primary Assembly	4118	na
+Ga0123519_10055201	unplaced-scaffold	na	na	DTGE01000117.1	<>	na	Primary Assembly	4090	na
+Ga0123519_10055357	unplaced-scaffold	na	na	DTGE01000108.1	<>	na	Primary Assembly	4081	na
+Ga0123519_10056158	unplaced-scaffold	na	na	DTGE01000122.1	<>	na	Primary Assembly	4035	na
+Ga0123519_10056812	unplaced-scaffold	na	na	DTGE01000060.1	<>	na	Primary Assembly	3998	na
+Ga0123519_10057036	unplaced-scaffold	na	na	DTGE01000089.1	<>	na	Primary Assembly	3985	na
+Ga0123519_10057047	unplaced-scaffold	na	na	DTGE01000058.1	<>	na	Primary Assembly	3985	na
+Ga0123519_10058340	unplaced-scaffold	na	na	DTGE01000094.1	<>	na	Primary Assembly	3911	na
+Ga0123519_10058619	unplaced-scaffold	na	na	DTGE01000106.1	<>	na	Primary Assembly	3897	na
+Ga0123519_10058698	unplaced-scaffold	na	na	DTGE01000012.1	<>	na	Primary Assembly	3893	na
+Ga0123519_10058962	unplaced-scaffold	na	na	DTGE01000010.1	<>	na	Primary Assembly	3878	na
+Ga0123519_10061001	unplaced-scaffold	na	na	DTGE01000006.1	<>	na	Primary Assembly	3769	na
+Ga0123519_10061956	unplaced-scaffold	na	na	DTGE01000003.1	<>	na	Primary Assembly	3720	na
+Ga0123519_10062181	unplaced-scaffold	na	na	DTGE01000123.1	<>	na	Primary Assembly	3708	na
+Ga0123519_10064281	unplaced-scaffold	na	na	DTGE01000005.1	<>	na	Primary Assembly	3607	na
+Ga0123519_10064403	unplaced-scaffold	na	na	DTGE01000092.1	<>	na	Primary Assembly	3603	na
+Ga0123519_10064420	unplaced-scaffold	na	na	DTGE01000140.1	<>	na	Primary Assembly	3602	na
+Ga0123519_10065235	unplaced-scaffold	na	na	DTGE01000115.1	<>	na	Primary Assembly	3565	na
+Ga0123519_10065282	unplaced-scaffold	na	na	DTGE01000102.1	<>	na	Primary Assembly	3563	na
+Ga0123519_10065788	unplaced-scaffold	na	na	DTGE01000086.1	<>	na	Primary Assembly	3540	na
+Ga0123519_10066031	unplaced-scaffold	na	na	DTGE01000019.1	<>	na	Primary Assembly	3530	na
+Ga0123519_10066109	unplaced-scaffold	na	na	DTGE01000057.1	<>	na	Primary Assembly	3527	na
+Ga0123519_10066120	unplaced-scaffold	na	na	DTGE01000127.1	<>	na	Primary Assembly	3526	na
+Ga0123519_10066177	unplaced-scaffold	na	na	DTGE01000037.1	<>	na	Primary Assembly	3524	na
+Ga0123519_10067861	unplaced-scaffold	na	na	DTGE01000044.1	<>	na	Primary Assembly	3448	na
+Ga0123519_10068646	unplaced-scaffold	na	na	DTGE01000067.1	<>	na	Primary Assembly	3415	na
+Ga0123519_10071554	unplaced-scaffold	na	na	DTGE01000105.1	<>	na	Primary Assembly	3299	na
+Ga0123519_10072406	unplaced-scaffold	na	na	DTGE01000166.1	<>	na	Primary Assembly	3266	na
+Ga0123519_10072674	unplaced-scaffold	na	na	DTGE01000151.1	<>	na	Primary Assembly	3256	na
+Ga0123519_10074141	unplaced-scaffold	na	na	DTGE01000083.1	<>	na	Primary Assembly	3203	na
+Ga0123519_10074266	unplaced-scaffold	na	na	DTGE01000087.1	<>	na	Primary Assembly	3197	na
+Ga0123519_10074376	unplaced-scaffold	na	na	DTGE01000129.1	<>	na	Primary Assembly	3194	na
+Ga0123519_10075118	unplaced-scaffold	na	na	DTGE01000130.1	<>	na	Primary Assembly	3168	na
+Ga0123519_10075154	unplaced-scaffold	na	na	DTGE01000049.1	<>	na	Primary Assembly	3167	na
+Ga0123519_10075408	unplaced-scaffold	na	na	DTGE01000028.1	<>	na	Primary Assembly	3158	na
+Ga0123519_10075584	unplaced-scaffold	na	na	DTGE01000079.1	<>	na	Primary Assembly	3151	na
+Ga0123519_10076586	unplaced-scaffold	na	na	DTGE01000062.1	<>	na	Primary Assembly	3116	na
+Ga0123519_10076650	unplaced-scaffold	na	na	DTGE01000107.1	<>	na	Primary Assembly	3114	na
+Ga0123519_10082017	unplaced-scaffold	na	na	DTGE01000148.1	<>	na	Primary Assembly	2937	na
+Ga0123519_10082659	unplaced-scaffold	na	na	DTGE01000161.1	<>	na	Primary Assembly	2917	na
+Ga0123519_10083419	unplaced-scaffold	na	na	DTGE01000016.1	<>	na	Primary Assembly	2894	na
+Ga0123519_10083725	unplaced-scaffold	na	na	DTGE01000160.1	<>	na	Primary Assembly	2884	na
+Ga0123519_10084035	unplaced-scaffold	na	na	DTGE01000145.1	<>	na	Primary Assembly	2875	na
+Ga0123519_10084692	unplaced-scaffold	na	na	DTGE01000082.1	<>	na	Primary Assembly	2856	na
+Ga0123519_10085249	unplaced-scaffold	na	na	DTGE01000061.1	<>	na	Primary Assembly	2841	na
+Ga0123519_10085376	unplaced-scaffold	na	na	DTGE01000051.1	<>	na	Primary Assembly	2838	na
+Ga0123519_10085711	unplaced-scaffold	na	na	DTGE01000017.1	<>	na	Primary Assembly	2829	na
+Ga0123519_10085909	unplaced-scaffold	na	na	DTGE01000128.1	<>	na	Primary Assembly	2823	na
+Ga0123519_10086566	unplaced-scaffold	na	na	DTGE01000155.1	<>	na	Primary Assembly	2804	na
+Ga0123519_10086729	unplaced-scaffold	na	na	DTGE01000098.1	<>	na	Primary Assembly	2800	na
+Ga0123519_10087798	unplaced-scaffold	na	na	DTGE01000065.1	<>	na	Primary Assembly	2770	na
+Ga0123519_10087920	unplaced-scaffold	na	na	DTGE01000099.1	<>	na	Primary Assembly	2767	na
+Ga0123519_10091227	unplaced-scaffold	na	na	DTGE01000125.1	<>	na	Primary Assembly	2682	na
+Ga0123519_10093577	unplaced-scaffold	na	na	DTGE01000053.1	<>	na	Primary Assembly	2625	na
+Ga0123519_10093769	unplaced-scaffold	na	na	DTGE01000026.1	<>	na	Primary Assembly	2621	na
+Ga0123519_10095443	unplaced-scaffold	na	na	DTGE01000090.1	<>	na	Primary Assembly	2583	na
+Ga0123519_10095613	unplaced-scaffold	na	na	DTGE01000101.1	<>	na	Primary Assembly	2578	na
+Ga0123519_10095746	unplaced-scaffold	na	na	DTGE01000075.1	<>	na	Primary Assembly	2575	na
+Ga0123519_10095760	unplaced-scaffold	na	na	DTGE01000121.1	<>	na	Primary Assembly	2575	na
+Ga0123519_10096532	unplaced-scaffold	na	na	DTGE01000077.1	<>	na	Primary Assembly	2557	na

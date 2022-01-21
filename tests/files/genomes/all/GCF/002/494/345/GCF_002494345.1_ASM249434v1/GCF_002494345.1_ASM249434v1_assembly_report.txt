@@ -1,0 +1,36 @@
+# Assembly name:  ASM249434v1
+# Organism name:  Natrinema ejinorense (euryarchaeotes)
+# Infraspecific name:  strain=JCM 13890
+# Taxid:          373386
+# BioSample:      SAMN07714153
+# BioProject:     PRJNA412437
+# Submitter:      World Institute of Kimchi
+# Date:           2017-10-03
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    NXNI01
+# Assembly method: PacBio SMRT Analysis v. 2.3.0
+# Expected final version: yes
+# Genome coverage: 176.73x
+# Sequencing technology: PacBio
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_002494345.1
+# RefSeq assembly accession: GCF_002494345.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_002494355.1	GCF_002494355.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig00001	unplaced-scaffold	na	na	NXNI01000001.1	=	NZ_NXNI01000001.1	Primary Assembly	3988345	na
+contig00002	unplaced-scaffold	na	na	NXNI01000002.1	=	NZ_NXNI01000002.1	Primary Assembly	415920	na
+contig00003	unplaced-scaffold	na	na	NXNI01000003.1	=	NZ_NXNI01000003.1	Primary Assembly	72059	na

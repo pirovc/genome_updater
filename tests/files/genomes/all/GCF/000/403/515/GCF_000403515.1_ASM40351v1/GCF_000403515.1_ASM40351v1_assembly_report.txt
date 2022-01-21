@@ -1,0 +1,105 @@
+# Assembly name:  ASM40351v1
+# Organism name:  Pseudozyma hubeiensis SY62 (smut fungi)
+# Infraspecific name:  strain=SY62
+# Taxid:          1305764
+# BioSample:      SAMD00002584
+# BioProject:     PRJDB993
+# Submitter:      Kitami Institute of Technology
+# Date:           2013-05-16
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    BAOW01
+# Assembly method: Velvet v 1.2.08
+# Genome coverage: 200x
+# Sequencing technology: HiSeq 2000
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000403515.1
+# RefSeq assembly accession: GCF_000403515.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000403525.1	GCF_000403525.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+scaffold_PHS1	unplaced-scaffold	na	na	DF238764.1	=	NW_012133783.1	Primary Assembly	125631	na
+scaffold_PHS2	unplaced-scaffold	na	na	DF238765.1	=	NW_012133784.1	Primary Assembly	29078	na
+scaffold_PHS3	unplaced-scaffold	na	na	DF238766.1	=	NW_012133785.1	Primary Assembly	66601	na
+scaffold_PHS4	unplaced-scaffold	na	na	DF238767.1	=	NW_012133786.1	Primary Assembly	431385	na
+scaffold_PHS5	unplaced-scaffold	na	na	DF238768.1	=	NW_012133787.1	Primary Assembly	127308	na
+scaffold_PHS6	unplaced-scaffold	na	na	DF238769.1	=	NW_012133788.1	Primary Assembly	179134	na
+scaffold_PHS7	unplaced-scaffold	na	na	DF238770.1	=	NW_012133789.1	Primary Assembly	203610	na
+scaffold_PHS8	unplaced-scaffold	na	na	DF238771.1	=	NW_012133790.1	Primary Assembly	270416	na
+scaffold_PHS9	unplaced-scaffold	na	na	DF238772.1	=	NW_012133791.1	Primary Assembly	331142	na
+scaffold_PHS10	unplaced-scaffold	na	na	DF238773.1	=	NW_012133792.1	Primary Assembly	137553	na
+scaffold_PHS11	unplaced-scaffold	na	na	DF238774.1	=	NW_012133793.1	Primary Assembly	153456	na
+scaffold_PHS12	unplaced-scaffold	na	na	DF238775.1	=	NW_012133794.1	Primary Assembly	214363	na
+scaffold_PHS13	unplaced-scaffold	na	na	DF238776.1	=	NW_012133795.1	Primary Assembly	575316	na
+scaffold_PHS14	unplaced-scaffold	na	na	DF238777.1	=	NW_012133796.1	Primary Assembly	122654	na
+scaffold_PHS15	unplaced-scaffold	na	na	DF238778.1	=	NW_012133797.1	Primary Assembly	673809	na
+scaffold_PHS16	unplaced-scaffold	na	na	DF238779.1	=	NW_012133798.1	Primary Assembly	71933	na
+scaffold_PHS17	unplaced-scaffold	na	na	DF238780.1	=	NW_012133799.1	Primary Assembly	93344	na
+scaffold_PHS18	unplaced-scaffold	na	na	DF238781.1	=	NW_012133800.1	Primary Assembly	74140	na
+scaffold_PHS19	unplaced-scaffold	na	na	DF238782.1	=	NW_012133801.1	Primary Assembly	377407	na
+scaffold_PHS20	unplaced-scaffold	na	na	DF238783.1	=	NW_012133802.1	Primary Assembly	445580	na
+scaffold_PHS21	unplaced-scaffold	na	na	DF238784.1	=	NW_012133803.1	Primary Assembly	440687	na
+scaffold_PHS22	unplaced-scaffold	na	na	DF238785.1	=	NW_012133804.1	Primary Assembly	503295	na
+scaffold_PHS23	unplaced-scaffold	na	na	DF238786.1	=	NW_012133805.1	Primary Assembly	413010	na
+scaffold_PHS24	unplaced-scaffold	na	na	DF238787.1	=	NW_012133806.1	Primary Assembly	109808	na
+scaffold_PHS25	unplaced-scaffold	na	na	DF238788.1	=	NW_012133807.1	Primary Assembly	81359	na
+scaffold_PHS26	unplaced-scaffold	na	na	DF238789.1	=	NW_012133808.1	Primary Assembly	438	na
+scaffold_PHS27	unplaced-scaffold	na	na	DF238790.1	=	NW_012133809.1	Primary Assembly	390281	na
+scaffold_PHS28	unplaced-scaffold	na	na	DF238791.1	=	NW_012133810.1	Primary Assembly	264623	na
+scaffold_PHS29	unplaced-scaffold	na	na	DF238792.1	=	NW_012133811.1	Primary Assembly	75847	na
+scaffold_PHS30	unplaced-scaffold	na	na	DF238793.1	=	NW_012133812.1	Primary Assembly	264166	na
+scaffold_PHS31	unplaced-scaffold	na	na	DF238794.1	=	NW_012133813.1	Primary Assembly	7305	na
+scaffold_PHS32	unplaced-scaffold	na	na	DF238795.1	=	NW_012133814.1	Primary Assembly	674530	na
+scaffold_PHS33	unplaced-scaffold	na	na	DF238796.1	=	NW_012133815.1	Primary Assembly	271055	na
+scaffold_PHS34	unplaced-scaffold	na	na	DF238797.1	=	NW_012133816.1	Primary Assembly	43288	na
+scaffold_PHS35	unplaced-scaffold	na	na	DF238798.1	=	NW_012133817.1	Primary Assembly	198412	na
+scaffold_PHS36	unplaced-scaffold	na	na	DF238799.1	=	NW_012133818.1	Primary Assembly	388395	na
+scaffold_PHS37	unplaced-scaffold	na	na	DF238800.1	=	NW_012133819.1	Primary Assembly	221125	na
+scaffold_PHS38	unplaced-scaffold	na	na	DF238801.1	=	NW_012133820.1	Primary Assembly	1089200	na
+scaffold_PHS39	unplaced-scaffold	na	na	DF238802.1	=	NW_012133821.1	Primary Assembly	66126	na
+scaffold_PHS40	unplaced-scaffold	na	na	DF238803.1	=	NW_012133822.1	Primary Assembly	121	na
+scaffold_PHS41	unplaced-scaffold	na	na	DF238804.1	=	NW_012133823.1	Primary Assembly	13574	na
+scaffold_PHS42	unplaced-scaffold	na	na	DF238805.1	=	NW_012133824.1	Primary Assembly	479769	na
+scaffold_PHS43	unplaced-scaffold	na	na	DF238806.1	=	NW_012133825.1	Primary Assembly	20889	na
+scaffold_PHS44	unplaced-scaffold	na	na	DF238807.1	=	NW_012133826.1	Primary Assembly	565	na
+scaffold_PHS45	unplaced-scaffold	na	na	DF238808.1	=	NW_012133827.1	Primary Assembly	1398671	na
+scaffold_PHS46	unplaced-scaffold	na	na	DF238809.1	=	NW_012133828.1	Primary Assembly	103509	na
+scaffold_PHS47	unplaced-scaffold	na	na	DF238810.1	=	NW_012133829.1	Primary Assembly	719361	na
+scaffold_PHS48	unplaced-scaffold	na	na	DF238811.1	=	NW_012133830.1	Primary Assembly	268352	na
+scaffold_PHS49	unplaced-scaffold	na	na	DF238812.1	=	NW_012133831.1	Primary Assembly	60037	na
+scaffold_PHS50	unplaced-scaffold	na	na	DF238813.1	=	NW_012133832.1	Primary Assembly	17915	na
+scaffold_PHS51	unplaced-scaffold	na	na	DF238814.1	=	NW_012133833.1	Primary Assembly	390522	na
+scaffold_PHS52	unplaced-scaffold	na	na	DF238815.1	=	NW_012133834.1	Primary Assembly	405462	na
+scaffold_PHS53	unplaced-scaffold	na	na	DF238816.1	=	NW_012133835.1	Primary Assembly	275346	na
+scaffold_PHS54	unplaced-scaffold	na	na	DF238817.1	=	NW_012133836.1	Primary Assembly	5799	na
+scaffold_PHS55	unplaced-scaffold	na	na	DF238818.1	=	NW_012133837.1	Primary Assembly	1180	na
+scaffold_PHS56	unplaced-scaffold	na	na	DF238819.1	=	NW_012133838.1	Primary Assembly	36747	na
+scaffold_PHS57	unplaced-scaffold	na	na	DF238820.1	=	NW_012133839.1	Primary Assembly	537368	na
+scaffold_PHS58	unplaced-scaffold	na	na	DF238821.1	=	NW_012133840.1	Primary Assembly	1015093	na
+scaffold_PHS59	unplaced-scaffold	na	na	DF238822.1	=	NW_012133841.1	Primary Assembly	463590	na
+scaffold_PHS60	unplaced-scaffold	na	na	DF238823.1	=	NW_012133842.1	Primary Assembly	60400	na
+scaffold_PHS61	unplaced-scaffold	na	na	DF238824.1	=	NW_012133843.1	Primary Assembly	93368	na
+scaffold_PHS62	unplaced-scaffold	na	na	DF238825.1	=	NW_012133844.1	Primary Assembly	152	na
+scaffold_PHS63	unplaced-scaffold	na	na	DF238826.1	=	NW_012133845.1	Primary Assembly	218	na
+scaffold_PHS64	unplaced-scaffold	na	na	DF238827.1	=	NW_012133846.1	Primary Assembly	215	na
+scaffold_PHS65	unplaced-scaffold	na	na	DF238828.1	=	NW_012133847.1	Primary Assembly	131	na
+scaffold_PHS66	unplaced-scaffold	na	na	DF238829.1	=	NW_012133848.1	Primary Assembly	246392	na
+scaffold_PHS67	unplaced-scaffold	na	na	DF238830.1	=	NW_012133849.1	Primary Assembly	186	na
+scaffold_PHS68	unplaced-scaffold	na	na	DF238831.1	=	NW_012133850.1	Primary Assembly	860993	na
+scaffold_PHS69	unplaced-scaffold	na	na	DF238832.1	=	NW_012133851.1	Primary Assembly	425100	na
+scaffold_PHS70	unplaced-scaffold	na	na	DF238833.1	=	NW_012133852.1	Primary Assembly	333658	na
+scaffold_PHS71	unplaced-scaffold	na	na	DF238834.1	=	NW_012133853.1	Primary Assembly	218	na
+scaffold_PHS72	unplaced-scaffold	na	na	DF238835.1	=	NW_012133854.1	Primary Assembly	129	na
+scaffold_PHS73	unplaced-scaffold	na	na	DF238836.1	=	NW_012133855.1	Primary Assembly	213	na
+scaffold_PHS74	unplaced-scaffold	na	na	DF238837.1	=	NW_012133856.1	Primary Assembly	885	na

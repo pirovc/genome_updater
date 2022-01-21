@@ -1,0 +1,124 @@
+# Assembly name:  Rumen uncultured genome RUG201
+# Organism name:  uncultured Methanobrevibacter sp. (euryarchaeotes)
+# Isolate:  RUG201
+# Taxid:          253161
+# BioSample:      SAMEA104666887
+# BioProject:     PRJEB21624
+# Submitter:      THE ROSLIN INSTITUTE
+# Date:           2018-03-21
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    ONDQ01
+# Genome coverage: 279x
+# Excluded from RefSeq: derived from environmental source
+# GenBank assembly accession: GCA_900316635.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_900316634.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ONDQ01000097.1	unplaced-scaffold	na	na	ONDQ01000097.1	<>	na	Primary Assembly	2071	na
+ONDQ01000046.1	unplaced-scaffold	na	na	ONDQ01000046.1	<>	na	Primary Assembly	13206	na
+ONDQ01000040.1	unplaced-scaffold	na	na	ONDQ01000040.1	<>	na	Primary Assembly	17030	na
+ONDQ01000028.1	unplaced-scaffold	na	na	ONDQ01000028.1	<>	na	Primary Assembly	25509	na
+ONDQ01000054.1	unplaced-scaffold	na	na	ONDQ01000054.1	<>	na	Primary Assembly	10596	na
+ONDQ01000037.1	unplaced-scaffold	na	na	ONDQ01000037.1	<>	na	Primary Assembly	14997	na
+ONDQ01000042.1	unplaced-scaffold	na	na	ONDQ01000042.1	<>	na	Primary Assembly	14391	na
+ONDQ01000044.1	unplaced-scaffold	na	na	ONDQ01000044.1	<>	na	Primary Assembly	14238	na
+ONDQ01000033.1	unplaced-scaffold	na	na	ONDQ01000033.1	<>	na	Primary Assembly	29750	na
+ONDQ01000027.1	unplaced-scaffold	na	na	ONDQ01000027.1	<>	na	Primary Assembly	38698	na
+ONDQ01000066.1	unplaced-scaffold	na	na	ONDQ01000066.1	<>	na	Primary Assembly	9689	na
+ONDQ01000024.1	unplaced-scaffold	na	na	ONDQ01000024.1	<>	na	Primary Assembly	20061	na
+ONDQ01000023.1	unplaced-scaffold	na	na	ONDQ01000023.1	<>	na	Primary Assembly	52706	na
+ONDQ01000019.1	unplaced-scaffold	na	na	ONDQ01000019.1	<>	na	Primary Assembly	27670	na
+ONDQ01000082.1	unplaced-scaffold	na	na	ONDQ01000082.1	<>	na	Primary Assembly	4838	na
+ONDQ01000041.1	unplaced-scaffold	na	na	ONDQ01000041.1	<>	na	Primary Assembly	16661	na
+ONDQ01000008.1	unplaced-scaffold	na	na	ONDQ01000008.1	<>	na	Primary Assembly	55254	na
+ONDQ01000021.1	unplaced-scaffold	na	na	ONDQ01000021.1	<>	na	Primary Assembly	20574	na
+ONDQ01000022.1	unplaced-scaffold	na	na	ONDQ01000022.1	<>	na	Primary Assembly	20372	na
+ONDQ01000009.1	unplaced-scaffold	na	na	ONDQ01000009.1	<>	na	Primary Assembly	30878	na
+ONDQ01000080.1	unplaced-scaffold	na	na	ONDQ01000080.1	<>	na	Primary Assembly	6582	na
+ONDQ01000010.1	unplaced-scaffold	na	na	ONDQ01000010.1	<>	na	Primary Assembly	46031	na
+ONDQ01000005.1	unplaced-scaffold	na	na	ONDQ01000005.1	<>	na	Primary Assembly	50596	na
+ONDQ01000063.1	unplaced-scaffold	na	na	ONDQ01000063.1	<>	na	Primary Assembly	11328	na
+ONDQ01000089.1	unplaced-scaffold	na	na	ONDQ01000089.1	<>	na	Primary Assembly	5268	na
+ONDQ01000048.1	unplaced-scaffold	na	na	ONDQ01000048.1	<>	na	Primary Assembly	12864	na
+ONDQ01000006.1	unplaced-scaffold	na	na	ONDQ01000006.1	<>	na	Primary Assembly	101665	na
+ONDQ01000035.1	unplaced-scaffold	na	na	ONDQ01000035.1	<>	na	Primary Assembly	15939	na
+ONDQ01000034.1	unplaced-scaffold	na	na	ONDQ01000034.1	<>	na	Primary Assembly	16715	na
+ONDQ01000002.1	unplaced-scaffold	na	na	ONDQ01000002.1	<>	na	Primary Assembly	43346	na
+ONDQ01000026.1	unplaced-scaffold	na	na	ONDQ01000026.1	<>	na	Primary Assembly	32540	na
+ONDQ01000073.1	unplaced-scaffold	na	na	ONDQ01000073.1	<>	na	Primary Assembly	10356	na
+ONDQ01000013.1	unplaced-scaffold	na	na	ONDQ01000013.1	<>	na	Primary Assembly	30342	na
+ONDQ01000096.1	unplaced-scaffold	na	na	ONDQ01000096.1	<>	na	Primary Assembly	2541	na
+ONDQ01000004.1	unplaced-scaffold	na	na	ONDQ01000004.1	<>	na	Primary Assembly	60384	na
+ONDQ01000039.1	unplaced-scaffold	na	na	ONDQ01000039.1	<>	na	Primary Assembly	14659	na
+ONDQ01000052.1	unplaced-scaffold	na	na	ONDQ01000052.1	<>	na	Primary Assembly	11358	na
+ONDQ01000016.1	unplaced-scaffold	na	na	ONDQ01000016.1	<>	na	Primary Assembly	29006	na
+ONDQ01000003.1	unplaced-scaffold	na	na	ONDQ01000003.1	<>	na	Primary Assembly	39134	na
+ONDQ01000014.1	unplaced-scaffold	na	na	ONDQ01000014.1	<>	na	Primary Assembly	23717	na
+ONDQ01000018.1	unplaced-scaffold	na	na	ONDQ01000018.1	<>	na	Primary Assembly	21257	na
+ONDQ01000012.1	unplaced-scaffold	na	na	ONDQ01000012.1	<>	na	Primary Assembly	25397	na
+ONDQ01000001.1	unplaced-scaffold	na	na	ONDQ01000001.1	<>	na	Primary Assembly	78187	na
+ONDQ01000032.1	unplaced-scaffold	na	na	ONDQ01000032.1	<>	na	Primary Assembly	20162	na
+ONDQ01000017.1	unplaced-scaffold	na	na	ONDQ01000017.1	<>	na	Primary Assembly	21265	na
+ONDQ01000047.1	unplaced-scaffold	na	na	ONDQ01000047.1	<>	na	Primary Assembly	17191	na
+ONDQ01000031.1	unplaced-scaffold	na	na	ONDQ01000031.1	<>	na	Primary Assembly	17010	na
+ONDQ01000029.1	unplaced-scaffold	na	na	ONDQ01000029.1	<>	na	Primary Assembly	25721	na
+ONDQ01000069.1	unplaced-scaffold	na	na	ONDQ01000069.1	<>	na	Primary Assembly	7216	na
+ONDQ01000038.1	unplaced-scaffold	na	na	ONDQ01000038.1	<>	na	Primary Assembly	30130	na
+ONDQ01000045.1	unplaced-scaffold	na	na	ONDQ01000045.1	<>	na	Primary Assembly	21764	na
+ONDQ01000088.1	unplaced-scaffold	na	na	ONDQ01000088.1	<>	na	Primary Assembly	4173	na
+ONDQ01000025.1	unplaced-scaffold	na	na	ONDQ01000025.1	<>	na	Primary Assembly	19500	na
+ONDQ01000030.1	unplaced-scaffold	na	na	ONDQ01000030.1	<>	na	Primary Assembly	23242	na
+ONDQ01000061.1	unplaced-scaffold	na	na	ONDQ01000061.1	<>	na	Primary Assembly	9078	na
+ONDQ01000020.1	unplaced-scaffold	na	na	ONDQ01000020.1	<>	na	Primary Assembly	21894	na
+ONDQ01000095.1	unplaced-scaffold	na	na	ONDQ01000095.1	<>	na	Primary Assembly	3181	na
+ONDQ01000049.1	unplaced-scaffold	na	na	ONDQ01000049.1	<>	na	Primary Assembly	12724	na
+ONDQ01000050.1	unplaced-scaffold	na	na	ONDQ01000050.1	<>	na	Primary Assembly	11987	na
+ONDQ01000053.1	unplaced-scaffold	na	na	ONDQ01000053.1	<>	na	Primary Assembly	14585	na
+ONDQ01000007.1	unplaced-scaffold	na	na	ONDQ01000007.1	<>	na	Primary Assembly	74761	na
+ONDQ01000055.1	unplaced-scaffold	na	na	ONDQ01000055.1	<>	na	Primary Assembly	10527	na
+ONDQ01000057.1	unplaced-scaffold	na	na	ONDQ01000057.1	<>	na	Primary Assembly	10137	na
+ONDQ01000058.1	unplaced-scaffold	na	na	ONDQ01000058.1	<>	na	Primary Assembly	13792	na
+ONDQ01000078.1	unplaced-scaffold	na	na	ONDQ01000078.1	<>	na	Primary Assembly	6031	na
+ONDQ01000083.1	unplaced-scaffold	na	na	ONDQ01000083.1	<>	na	Primary Assembly	4816	na
+ONDQ01000036.1	unplaced-scaffold	na	na	ONDQ01000036.1	<>	na	Primary Assembly	61952	na
+ONDQ01000059.1	unplaced-scaffold	na	na	ONDQ01000059.1	<>	na	Primary Assembly	15718	na
+ONDQ01000060.1	unplaced-scaffold	na	na	ONDQ01000060.1	<>	na	Primary Assembly	19167	na
+ONDQ01000062.1	unplaced-scaffold	na	na	ONDQ01000062.1	<>	na	Primary Assembly	10001	na
+ONDQ01000071.1	unplaced-scaffold	na	na	ONDQ01000071.1	<>	na	Primary Assembly	6854	na
+ONDQ01000065.1	unplaced-scaffold	na	na	ONDQ01000065.1	<>	na	Primary Assembly	10766	na
+ONDQ01000067.1	unplaced-scaffold	na	na	ONDQ01000067.1	<>	na	Primary Assembly	7819	na
+ONDQ01000043.1	unplaced-scaffold	na	na	ONDQ01000043.1	<>	na	Primary Assembly	14297	na
+ONDQ01000084.1	unplaced-scaffold	na	na	ONDQ01000084.1	<>	na	Primary Assembly	4754	na
+ONDQ01000068.1	unplaced-scaffold	na	na	ONDQ01000068.1	<>	na	Primary Assembly	12233	na
+ONDQ01000051.1	unplaced-scaffold	na	na	ONDQ01000051.1	<>	na	Primary Assembly	22228	na
+ONDQ01000070.1	unplaced-scaffold	na	na	ONDQ01000070.1	<>	na	Primary Assembly	7156	na
+ONDQ01000086.1	unplaced-scaffold	na	na	ONDQ01000086.1	<>	na	Primary Assembly	7927	na
+ONDQ01000072.1	unplaced-scaffold	na	na	ONDQ01000072.1	<>	na	Primary Assembly	8106	na
+ONDQ01000074.1	unplaced-scaffold	na	na	ONDQ01000074.1	<>	na	Primary Assembly	6024	na
+ONDQ01000092.1	unplaced-scaffold	na	na	ONDQ01000092.1	<>	na	Primary Assembly	5258	na
+ONDQ01000087.1	unplaced-scaffold	na	na	ONDQ01000087.1	<>	na	Primary Assembly	4436	na
+ONDQ01000064.1	unplaced-scaffold	na	na	ONDQ01000064.1	<>	na	Primary Assembly	9003	na
+ONDQ01000075.1	unplaced-scaffold	na	na	ONDQ01000075.1	<>	na	Primary Assembly	5985	na
+ONDQ01000076.1	unplaced-scaffold	na	na	ONDQ01000076.1	<>	na	Primary Assembly	5962	na
+ONDQ01000077.1	unplaced-scaffold	na	na	ONDQ01000077.1	<>	na	Primary Assembly	5822	na
+ONDQ01000015.1	unplaced-scaffold	na	na	ONDQ01000015.1	<>	na	Primary Assembly	32054	na
+ONDQ01000079.1	unplaced-scaffold	na	na	ONDQ01000079.1	<>	na	Primary Assembly	5383	na
+ONDQ01000011.1	unplaced-scaffold	na	na	ONDQ01000011.1	<>	na	Primary Assembly	30687	na
+ONDQ01000094.1	unplaced-scaffold	na	na	ONDQ01000094.1	<>	na	Primary Assembly	3884	na
+ONDQ01000081.1	unplaced-scaffold	na	na	ONDQ01000081.1	<>	na	Primary Assembly	5174	na
+ONDQ01000085.1	unplaced-scaffold	na	na	ONDQ01000085.1	<>	na	Primary Assembly	4605	na
+ONDQ01000090.1	unplaced-scaffold	na	na	ONDQ01000090.1	<>	na	Primary Assembly	4674	na
+ONDQ01000056.1	unplaced-scaffold	na	na	ONDQ01000056.1	<>	na	Primary Assembly	46294	na
+ONDQ01000091.1	unplaced-scaffold	na	na	ONDQ01000091.1	<>	na	Primary Assembly	3493	na
+ONDQ01000093.1	unplaced-scaffold	na	na	ONDQ01000093.1	<>	na	Primary Assembly	3275	na

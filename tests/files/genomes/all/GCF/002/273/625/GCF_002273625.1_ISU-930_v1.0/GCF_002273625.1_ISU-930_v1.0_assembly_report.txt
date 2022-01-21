@@ -1,0 +1,121 @@
+# Assembly name:  ISU-930_v1.0
+# Organism name:  Staphylococcus aureus (firmicutes)
+# Infraspecific name:  strain=ISU 930
+# Taxid:          1280
+# BioSample:      SAMN03893265
+# BioProject:     PRJNA290378
+# Submitter:      USDA-ARS
+# Date:           2017-08-28
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    LKWZ01
+# Assembly method: MIRA v. 4.0.2
+# Genome coverage: 37.43x
+# Sequencing technology: Illumina
+# GenBank assembly accession: GCA_002273625.1
+# RefSeq assembly accession: GCF_002273625.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_002273645.1	GCF_002273645.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ISU-930_c46	unlocalized-scaffold	unnamed1	Plasmid	LKWZ01000048.1	=	NZ_LKWZ01000048.1	Primary Assembly	11877	na
+ISU-930_c95	unlocalized-scaffold	unnamed2	Plasmid	LKWZ01000090.1	=	NZ_LKWZ01000090.1	Primary Assembly	3337	na
+ISU-930_c270	unlocalized-scaffold	unnamed3	Plasmid	LKWZ01000027.1	=	NZ_LKWZ01000027.1	Primary Assembly	2845	na
+ISU-930_c111	unlocalized-scaffold	unnamed4	Plasmid	LKWZ01000004.1	=	NZ_LKWZ01000004.1	Primary Assembly	10047	na
+ISU-930_c112	unlocalized-scaffold	unnamed5	Plasmid	LKWZ01000005.1	=	NZ_LKWZ01000005.1	Primary Assembly	2213	na
+ISU-930_c113	unlocalized-scaffold	unnamed6	Plasmid	LKWZ01000006.1	=	NZ_LKWZ01000006.1	Primary Assembly	5782	na
+ISU-930_c1	unplaced-scaffold	na	na	LKWZ01000001.1	=	NZ_LKWZ01000001.1	Primary Assembly	201970	na
+ISU-930_c10	unplaced-scaffold	na	na	LKWZ01000002.1	=	NZ_LKWZ01000002.1	Primary Assembly	222158	na
+ISU-930_c11	unplaced-scaffold	na	na	LKWZ01000003.1	=	NZ_LKWZ01000003.1	Primary Assembly	70534	na
+ISU-930_c116	unplaced-scaffold	na	na	LKWZ01000007.1	=	NZ_LKWZ01000007.1	Primary Assembly	3493	na
+ISU-930_c117	unplaced-scaffold	na	na	LKWZ01000008.1	=	NZ_LKWZ01000008.1	Primary Assembly	2774	na
+ISU-930_c118	unplaced-scaffold	na	na	LKWZ01000009.1	=	NZ_LKWZ01000009.1	Primary Assembly	2703	na
+ISU-930_c12	unplaced-scaffold	na	na	LKWZ01000010.1	=	NZ_LKWZ01000010.1	Primary Assembly	57667	na
+ISU-930_c13	unplaced-scaffold	na	na	LKWZ01000011.1	=	NZ_LKWZ01000011.1	Primary Assembly	48014	na
+ISU-930_c14	unplaced-scaffold	na	na	LKWZ01000012.1	=	NZ_LKWZ01000012.1	Primary Assembly	15473	na
+ISU-930_c15	unplaced-scaffold	na	na	LKWZ01000013.1	=	NZ_LKWZ01000013.1	Primary Assembly	143066	na
+ISU-930_c16	unplaced-scaffold	na	na	LKWZ01000014.1	=	NZ_LKWZ01000014.1	Primary Assembly	23189	na
+ISU-930_c17	unplaced-scaffold	na	na	LKWZ01000015.1	=	NZ_LKWZ01000015.1	Primary Assembly	50723	na
+ISU-930_c18	unplaced-scaffold	na	na	LKWZ01000016.1	=	NZ_LKWZ01000016.1	Primary Assembly	54145	na
+ISU-930_c19	unplaced-scaffold	na	na	LKWZ01000017.1	=	NZ_LKWZ01000017.1	Primary Assembly	28787	na
+ISU-930_c2	unplaced-scaffold	na	na	LKWZ01000018.1	=	NZ_LKWZ01000018.1	Primary Assembly	166525	na
+ISU-930_c20	unplaced-scaffold	na	na	LKWZ01000019.1	=	NZ_LKWZ01000019.1	Primary Assembly	25062	na
+ISU-930_c21	unplaced-scaffold	na	na	LKWZ01000020.1	=	NZ_LKWZ01000020.1	Primary Assembly	10059	na
+ISU-930_c22	unplaced-scaffold	na	na	LKWZ01000021.1	=	NZ_LKWZ01000021.1	Primary Assembly	96726	na
+ISU-930_c23	unplaced-scaffold	na	na	LKWZ01000022.1	=	NZ_LKWZ01000022.1	Primary Assembly	54403	na
+ISU-930_c24	unplaced-scaffold	na	na	LKWZ01000023.1	=	NZ_LKWZ01000023.1	Primary Assembly	35332	na
+ISU-930_c25	unplaced-scaffold	na	na	LKWZ01000024.1	=	NZ_LKWZ01000024.1	Primary Assembly	20797	na
+ISU-930_c26	unplaced-scaffold	na	na	LKWZ01000025.1	=	NZ_LKWZ01000025.1	Primary Assembly	22519	na
+ISU-930_c27	unplaced-scaffold	na	na	LKWZ01000026.1	=	NZ_LKWZ01000026.1	Primary Assembly	145749	na
+ISU-930_c271	unplaced-scaffold	na	na	LKWZ01000028.1	=	NZ_LKWZ01000028.1	Primary Assembly	3267	na
+ISU-930_c28	unplaced-scaffold	na	na	LKWZ01000029.1	=	NZ_LKWZ01000029.1	Primary Assembly	29464	na
+ISU-930_c29	unplaced-scaffold	na	na	LKWZ01000030.1	=	NZ_LKWZ01000030.1	Primary Assembly	55704	na
+ISU-930_c3	unplaced-scaffold	na	na	LKWZ01000031.1	=	NZ_LKWZ01000031.1	Primary Assembly	25427	na
+ISU-930_c30	unplaced-scaffold	na	na	LKWZ01000032.1	=	NZ_LKWZ01000032.1	Primary Assembly	31085	na
+ISU-930_c31	unplaced-scaffold	na	na	LKWZ01000033.1	=	NZ_LKWZ01000033.1	Primary Assembly	29711	na
+ISU-930_c32	unplaced-scaffold	na	na	LKWZ01000034.1	=	NZ_LKWZ01000034.1	Primary Assembly	43912	na
+ISU-930_c33	unplaced-scaffold	na	na	LKWZ01000035.1	=	NZ_LKWZ01000035.1	Primary Assembly	24227	na
+ISU-930_c35	unplaced-scaffold	na	na	LKWZ01000036.1	=	NZ_LKWZ01000036.1	Primary Assembly	23430	na
+ISU-930_c36	unplaced-scaffold	na	na	LKWZ01000037.1	=	NZ_LKWZ01000037.1	Primary Assembly	27188	na
+ISU-930_c37	unplaced-scaffold	na	na	LKWZ01000038.1	=	NZ_LKWZ01000038.1	Primary Assembly	20109	na
+ISU-930_c38	unplaced-scaffold	na	na	LKWZ01000039.1	=	NZ_LKWZ01000039.1	Primary Assembly	30814	na
+ISU-930_c39	unplaced-scaffold	na	na	LKWZ01000040.1	=	NZ_LKWZ01000040.1	Primary Assembly	44466	na
+ISU-930_c4	unplaced-scaffold	na	na	LKWZ01000041.1	=	NZ_LKWZ01000041.1	Primary Assembly	52012	na
+ISU-930_c40	unplaced-scaffold	na	na	LKWZ01000042.1	=	NZ_LKWZ01000042.1	Primary Assembly	19885	na
+ISU-930_c41	unplaced-scaffold	na	na	LKWZ01000043.1	=	NZ_LKWZ01000043.1	Primary Assembly	5763	na
+ISU-930_c42	unplaced-scaffold	na	na	LKWZ01000044.1	=	NZ_LKWZ01000044.1	Primary Assembly	21439	na
+ISU-930_c43	unplaced-scaffold	na	na	LKWZ01000045.1	=	NZ_LKWZ01000045.1	Primary Assembly	26576	na
+ISU-930_c44	unplaced-scaffold	na	na	LKWZ01000046.1	=	NZ_LKWZ01000046.1	Primary Assembly	40826	na
+ISU-930_c45	unplaced-scaffold	na	na	LKWZ01000047.1	=	NZ_LKWZ01000047.1	Primary Assembly	36693	na
+ISU-930_c47	unplaced-scaffold	na	na	LKWZ01000049.1	=	NZ_LKWZ01000049.1	Primary Assembly	39754	na
+ISU-930_c48	unplaced-scaffold	na	na	LKWZ01000050.1	=	NZ_LKWZ01000050.1	Primary Assembly	18809	na
+ISU-930_c49	unplaced-scaffold	na	na	LKWZ01000051.1	=	NZ_LKWZ01000051.1	Primary Assembly	14329	na
+ISU-930_c5	unplaced-scaffold	na	na	LKWZ01000052.1	=	NZ_LKWZ01000052.1	Primary Assembly	13475	na
+ISU-930_c50	unplaced-scaffold	na	na	LKWZ01000053.1	=	NZ_LKWZ01000053.1	Primary Assembly	16486	na
+ISU-930_c51	unplaced-scaffold	na	na	LKWZ01000054.1	=	NZ_LKWZ01000054.1	Primary Assembly	21948	na
+ISU-930_c52	unplaced-scaffold	na	na	LKWZ01000055.1	=	NZ_LKWZ01000055.1	Primary Assembly	16821	na
+ISU-930_c53	unplaced-scaffold	na	na	LKWZ01000056.1	=	NZ_LKWZ01000056.1	Primary Assembly	6332	na
+ISU-930_c54	unplaced-scaffold	na	na	LKWZ01000057.1	=	NZ_LKWZ01000057.1	Primary Assembly	44003	na
+ISU-930_c55	unplaced-scaffold	na	na	LKWZ01000058.1	=	NZ_LKWZ01000058.1	Primary Assembly	10596	na
+ISU-930_c56	unplaced-scaffold	na	na	LKWZ01000059.1	=	NZ_LKWZ01000059.1	Primary Assembly	6560	na
+ISU-930_c57	unplaced-scaffold	na	na	LKWZ01000060.1	=	NZ_LKWZ01000060.1	Primary Assembly	46331	na
+ISU-930_c58	unplaced-scaffold	na	na	LKWZ01000061.1	=	NZ_LKWZ01000061.1	Primary Assembly	15159	na
+ISU-930_c59	unplaced-scaffold	na	na	LKWZ01000062.1	=	NZ_LKWZ01000062.1	Primary Assembly	21821	na
+ISU-930_c6	unplaced-scaffold	na	na	LKWZ01000063.1	=	NZ_LKWZ01000063.1	Primary Assembly	24012	na
+ISU-930_c60	unplaced-scaffold	na	na	LKWZ01000064.1	=	NZ_LKWZ01000064.1	Primary Assembly	9870	na
+ISU-930_c61	unplaced-scaffold	na	na	LKWZ01000065.1	=	NZ_LKWZ01000065.1	Primary Assembly	14980	na
+ISU-930_c62	unplaced-scaffold	na	na	LKWZ01000066.1	=	NZ_LKWZ01000066.1	Primary Assembly	38450	na
+ISU-930_c63	unplaced-scaffold	na	na	LKWZ01000067.1	=	NZ_LKWZ01000067.1	Primary Assembly	7162	na
+ISU-930_c64	unplaced-scaffold	na	na	LKWZ01000068.1	=	NZ_LKWZ01000068.1	Primary Assembly	18287	na
+ISU-930_c66	unplaced-scaffold	na	na	LKWZ01000069.1	=	NZ_LKWZ01000069.1	Primary Assembly	2130	na
+ISU-930_c67	unplaced-scaffold	na	na	LKWZ01000070.1	=	NZ_LKWZ01000070.1	Primary Assembly	13870	na
+ISU-930_c68	unplaced-scaffold	na	na	LKWZ01000071.1	=	NZ_LKWZ01000071.1	Primary Assembly	6355	na
+ISU-930_c69	unplaced-scaffold	na	na	LKWZ01000072.1	=	NZ_LKWZ01000072.1	Primary Assembly	11318	na
+ISU-930_c7	unplaced-scaffold	na	na	LKWZ01000073.1	=	NZ_LKWZ01000073.1	Primary Assembly	26143	na
+ISU-930_c70	unplaced-scaffold	na	na	LKWZ01000074.1	=	NZ_LKWZ01000074.1	Primary Assembly	10291	na
+ISU-930_c71	unplaced-scaffold	na	na	LKWZ01000075.1	=	NZ_LKWZ01000075.1	Primary Assembly	3196	na
+ISU-930_c72	unplaced-scaffold	na	na	LKWZ01000076.1	=	NZ_LKWZ01000076.1	Primary Assembly	3750	na
+ISU-930_c73	unplaced-scaffold	na	na	LKWZ01000077.1	=	NZ_LKWZ01000077.1	Primary Assembly	8865	na
+ISU-930_c75	unplaced-scaffold	na	na	LKWZ01000078.1	=	NZ_LKWZ01000078.1	Primary Assembly	4513	na
+ISU-930_c76	unplaced-scaffold	na	na	LKWZ01000079.1	=	NZ_LKWZ01000079.1	Primary Assembly	3362	na
+ISU-930_c77	unplaced-scaffold	na	na	LKWZ01000080.1	=	NZ_LKWZ01000080.1	Primary Assembly	3437	na
+ISU-930_c78	unplaced-scaffold	na	na	LKWZ01000081.1	=	NZ_LKWZ01000081.1	Primary Assembly	2790	na
+ISU-930_c79	unplaced-scaffold	na	na	LKWZ01000082.1	=	NZ_LKWZ01000082.1	Primary Assembly	2887	na
+ISU-930_c8	unplaced-scaffold	na	na	LKWZ01000083.1	=	NZ_LKWZ01000083.1	Primary Assembly	54175	na
+ISU-930_c80	unplaced-scaffold	na	na	LKWZ01000084.1	=	NZ_LKWZ01000084.1	Primary Assembly	3140	na
+ISU-930_c81	unplaced-scaffold	na	na	LKWZ01000085.1	=	NZ_LKWZ01000085.1	Primary Assembly	2616	na
+ISU-930_c83	unplaced-scaffold	na	na	LKWZ01000086.1	=	NZ_LKWZ01000086.1	Primary Assembly	6030	na
+ISU-930_c84	unplaced-scaffold	na	na	LKWZ01000087.1	=	NZ_LKWZ01000087.1	Primary Assembly	3658	na
+ISU-930_c85	unplaced-scaffold	na	na	LKWZ01000088.1	=	NZ_LKWZ01000088.1	Primary Assembly	3441	na
+ISU-930_c9	unplaced-scaffold	na	na	LKWZ01000089.1	=	NZ_LKWZ01000089.1	Primary Assembly	72304	na
+ISU-930_c97	unplaced-scaffold	na	na	LKWZ01000091.1	=	NZ_LKWZ01000091.1	Primary Assembly	2876	na

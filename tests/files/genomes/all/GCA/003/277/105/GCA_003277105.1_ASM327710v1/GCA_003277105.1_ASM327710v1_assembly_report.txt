@@ -1,0 +1,88 @@
+# Assembly name:  ASM327710v1
+# Organism name:  Saccharomyces cerevisiae (baker's yeast)
+# Infraspecific name:  strain=HN7
+# Taxid:          4932
+# BioSample:      SAMN07436824
+# BioProject:     PRJNA396809
+# Submitter:      Institute Of Microbiology Chinese Academy of Sciences
+# Date:           2018-11-28
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# WGS project:    NPYI01
+# Assembly method: Velvet v. 1.2.10
+# Expected final version: yes
+# Reference guided assembly: GCA_000146045.2
+# Genome coverage: 204x
+# Sequencing technology: Illumina HiSeq
+# GenBank assembly accession: GCA_003277105.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_003277145.1		Primary Assembly
+## GCA_003277175.1		non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ChrI	assembled-molecule	I	Chromosome	CM011746.1	<>	na	Primary Assembly	188190	na
+ChrII	assembled-molecule	II	Chromosome	CM011747.1	<>	na	Primary Assembly	731883	na
+ChrIII	assembled-molecule	III	Chromosome	CM011748.1	<>	na	Primary Assembly	300358	na
+ChrIV	assembled-molecule	IV	Chromosome	CM011749.1	<>	na	Primary Assembly	1413912	na
+ChrV	assembled-molecule	V	Chromosome	CM011750.1	<>	na	Primary Assembly	539435	na
+ChrVI	assembled-molecule	VI	Chromosome	CM011751.1	<>	na	Primary Assembly	278813	na
+ChrVII	assembled-molecule	VII	Chromosome	CM011752.1	<>	na	Primary Assembly	848275	na
+ChrVIII	assembled-molecule	VIII	Chromosome	CM011753.1	<>	na	Primary Assembly	449323	na
+ChrIX	assembled-molecule	IX	Chromosome	CM011754.1	<>	na	Primary Assembly	418932	na
+ChrX	assembled-molecule	X	Chromosome	CM011755.1	<>	na	Primary Assembly	508210	na
+ChrXI	assembled-molecule	XI	Chromosome	CM011756.1	<>	na	Primary Assembly	661083	na
+ChrXII	assembled-molecule	XII	Chromosome	CM011757.1	<>	na	Primary Assembly	949385	na
+ChrXIII	assembled-molecule	XIII	Chromosome	CM011758.1	<>	na	Primary Assembly	900442	na
+ChrXIV	assembled-molecule	XIV	Chromosome	CM011759.1	<>	na	Primary Assembly	784288	na
+ChrXV	assembled-molecule	XV	Chromosome	CM011760.1	<>	na	Primary Assembly	1067689	na
+ChrXVI	assembled-molecule	XVI	Chromosome	CM011761.1	<>	na	Primary Assembly	786459	na
+Contig18	unplaced-scaffold	na	na	NPYI01000017.1	<>	na	Primary Assembly	471806	na
+Contig19	unplaced-scaffold	na	na	NPYI01000018.1	<>	na	Primary Assembly	114005	na
+Contig20	unplaced-scaffold	na	na	NPYI01000019.1	<>	na	Primary Assembly	91214	na
+Contig21	unplaced-scaffold	na	na	NPYI01000020.1	<>	na	Primary Assembly	41863	na
+Contig22	unplaced-scaffold	na	na	NPYI01000021.1	<>	na	Primary Assembly	16334	na
+Contig23	unplaced-scaffold	na	na	NPYI01000022.1	<>	na	Primary Assembly	15288	na
+Contig24	unplaced-scaffold	na	na	NPYI01000023.1	<>	na	Primary Assembly	13985	na
+Contig25	unplaced-scaffold	na	na	NPYI01000024.1	<>	na	Primary Assembly	10997	na
+Contig26	unplaced-scaffold	na	na	NPYI01000025.1	<>	na	Primary Assembly	10056	na
+Contig27	unplaced-scaffold	na	na	NPYI01000026.1	<>	na	Primary Assembly	6028	na
+Contig28	unplaced-scaffold	na	na	NPYI01000027.1	<>	na	Primary Assembly	5367	na
+Contig29	unplaced-scaffold	na	na	NPYI01000028.1	<>	na	Primary Assembly	4976	na
+Contig30	unplaced-scaffold	na	na	NPYI01000029.1	<>	na	Primary Assembly	4313	na
+Contig31	unplaced-scaffold	na	na	NPYI01000030.1	<>	na	Primary Assembly	4238	na
+Contig32	unplaced-scaffold	na	na	NPYI01000031.1	<>	na	Primary Assembly	3936	na
+Contig33	unplaced-scaffold	na	na	NPYI01000032.1	<>	na	Primary Assembly	3447	na
+Contig34	unplaced-scaffold	na	na	NPYI01000033.1	<>	na	Primary Assembly	2340	na
+Contig35	unplaced-scaffold	na	na	NPYI01000034.1	<>	na	Primary Assembly	2156	na
+Contig36	unplaced-scaffold	na	na	NPYI01000035.1	<>	na	Primary Assembly	1893	na
+Contig37	unplaced-scaffold	na	na	NPYI01000036.1	<>	na	Primary Assembly	1838	na
+Contig38	unplaced-scaffold	na	na	NPYI01000037.1	<>	na	Primary Assembly	1597	na
+Contig39	unplaced-scaffold	na	na	NPYI01000038.1	<>	na	Primary Assembly	1409	na
+Contig40	unplaced-scaffold	na	na	NPYI01000039.1	<>	na	Primary Assembly	1357	na
+Contig41	unplaced-scaffold	na	na	NPYI01000040.1	<>	na	Primary Assembly	1347	na
+Contig42	unplaced-scaffold	na	na	NPYI01000041.1	<>	na	Primary Assembly	1339	na
+Contig43	unplaced-scaffold	na	na	NPYI01000042.1	<>	na	Primary Assembly	1296	na
+Contig44	unplaced-scaffold	na	na	NPYI01000043.1	<>	na	Primary Assembly	1254	na
+Contig45	unplaced-scaffold	na	na	NPYI01000044.1	<>	na	Primary Assembly	1231	na
+Contig46	unplaced-scaffold	na	na	NPYI01000045.1	<>	na	Primary Assembly	1226	na
+Contig47	unplaced-scaffold	na	na	NPYI01000046.1	<>	na	Primary Assembly	1206	na
+Contig48	unplaced-scaffold	na	na	NPYI01000047.1	<>	na	Primary Assembly	1147	na
+Contig49	unplaced-scaffold	na	na	NPYI01000048.1	<>	na	Primary Assembly	1047	na
+Contig50	unplaced-scaffold	na	na	NPYI01000049.1	<>	na	Primary Assembly	1011	na
+Contig51	unplaced-scaffold	na	na	NPYI01000050.1	<>	na	Primary Assembly	999	na
+Contig52	unplaced-scaffold	na	na	NPYI01000051.1	<>	na	Primary Assembly	978	na
+Contig53	unplaced-scaffold	na	na	NPYI01000052.1	<>	na	Primary Assembly	883	na
+Contig54	unplaced-scaffold	na	na	NPYI01000053.1	<>	na	Primary Assembly	834	na
+Contig55	unplaced-scaffold	na	na	NPYI01000054.1	<>	na	Primary Assembly	796	na
+Contig56	unplaced-scaffold	na	na	NPYI01000055.1	<>	na	Primary Assembly	634	na
+Contig57	unplaced-scaffold	na	na	NPYI01000056.1	<>	na	Primary Assembly	581	na
+Mitochondrion	unlocalized-scaffold	MT	Mitochondrion	NPYI01000057.1	<>	na	non-nuclear	58995	na

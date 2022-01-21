@@ -1,0 +1,83 @@
+# Assembly name:  ASM755656v1
+# Organism name:  Elsinoe fawcettii (citrus scab fungus)
+# Isolate:  DAR-70024
+# Taxid:          40997
+# BioSample:      SAMN11479276
+# BioProject:     PRJNA534185
+# Submitter:      Yeungnam University
+# Date:           2019-07-26
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    SWCR01
+# Assembly method: SPAdes v. 3.1
+# Expected final version: yes
+# Genome coverage: 128.0x
+# Sequencing technology: Illumina
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_007556565.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_007556575.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+scaffold109_cov155	unplaced-scaffold	na	na	SWCR01000046.1	<>	na	Primary Assembly	16074	na
+scaffold1210_cov171	unplaced-scaffold	na	na	SWCR01000020.1	<>	na	Primary Assembly	156521	na
+scaffold1212_cov136	unplaced-scaffold	na	na	SWCR01000037.1	<>	na	Primary Assembly	27054	na
+scaffold125_cov140	unplaced-scaffold	na	na	SWCR01000027.1	<>	na	Primary Assembly	62974	na
+scaffold12_cov170	unplaced-scaffold	na	na	SWCR01000040.1	<>	na	Primary Assembly	23832	na
+scaffold131_cov105	unplaced-scaffold	na	na	SWCR01000017.1	<>	na	Primary Assembly	239386	na
+scaffold137_cov145	unplaced-scaffold	na	na	SWCR01000033.1	<>	na	Primary Assembly	37988	na
+scaffold14_cov108	unplaced-scaffold	na	na	SWCR01000006.1	<>	na	Primary Assembly	1757000	na
+scaffold1567_cov474	unplaced-scaffold	na	na	SWCR01000047.1	<>	na	Primary Assembly	15012	na
+scaffold1569_cov328	unplaced-scaffold	na	na	SWCR01000045.1	<>	na	Primary Assembly	16341	na
+scaffold15_cov115	unplaced-scaffold	na	na	SWCR01000011.1	<>	na	Primary Assembly	1098078	na
+scaffold1607_cov328	unplaced-scaffold	na	na	SWCR01000044.1	<>	na	Primary Assembly	19452	na
+scaffold163_cov144	unplaced-scaffold	na	na	SWCR01000038.1	<>	na	Primary Assembly	24770	na
+scaffold16_cov108	unplaced-scaffold	na	na	SWCR01000007.1	<>	na	Primary Assembly	1709514	na
+scaffold1707_cov463	unplaced-scaffold	na	na	SWCR01000041.1	<>	na	Primary Assembly	22295	na
+scaffold1725_cov301	unplaced-scaffold	na	na	SWCR01000025.1	<>	na	Primary Assembly	76666	na
+scaffold1753_cov328	unplaced-scaffold	na	na	SWCR01000050.1	<>	na	Primary Assembly	14026	na
+scaffold176_cov142	unplaced-scaffold	na	na	SWCR01000035.1	<>	na	Primary Assembly	35347	na
+scaffold177_cov121	unplaced-scaffold	na	na	SWCR01000030.1	<>	na	Primary Assembly	43392	na
+scaffold1931_cov398	unplaced-scaffold	na	na	SWCR01000052.1	<>	na	Primary Assembly	12512	na
+scaffold1940_cov280	unplaced-scaffold	na	na	SWCR01000042.1	<>	na	Primary Assembly	22132	na
+scaffold19_cov189	unplaced-scaffold	na	na	SWCR01000039.1	<>	na	Primary Assembly	24590	na
+scaffold20_cov161	unplaced-scaffold	na	na	SWCR01000051.1	<>	na	Primary Assembly	13870	na
+scaffold2153_cov328	unplaced-scaffold	na	na	SWCR01000048.1	<>	na	Primary Assembly	14759	na
+scaffold2166_cov3477	unplaced-scaffold	na	na	SWCR01000034.1	<>	na	Primary Assembly	35439	na
+scaffold222_cov247	unplaced-scaffold	na	na	SWCR01000049.1	<>	na	Primary Assembly	14652	na
+scaffold22_cov248	unplaced-scaffold	na	na	SWCR01000016.1	<>	na	Primary Assembly	239615	na
+scaffold2407_cov328	unplaced-scaffold	na	na	SWCR01000023.1	<>	na	Primary Assembly	101225	na
+scaffold2474_cov323	unplaced-scaffold	na	na	SWCR01000043.1	<>	na	Primary Assembly	21620	na
+scaffold24_cov176	unplaced-scaffold	na	na	SWCR01000029.1	<>	na	Primary Assembly	46225	na
+scaffold25_cov251	unplaced-scaffold	na	na	SWCR01000018.1	<>	na	Primary Assembly	203761	na
+scaffold266_cov225	unplaced-scaffold	na	na	SWCR01000032.1	<>	na	Primary Assembly	40463	na
+scaffold269_cov253	unplaced-scaffold	na	na	SWCR01000053.1	<>	na	Primary Assembly	11638	na
+scaffold2_cov113	unplaced-scaffold	na	na	SWCR01000004.1	<>	na	Primary Assembly	2058520	na
+scaffold30_cov108	unplaced-scaffold	na	na	SWCR01000001.1	<>	na	Primary Assembly	3349883	na
+scaffold34_cov158	unplaced-scaffold	na	na	SWCR01000026.1	<>	na	Primary Assembly	73256	na
+scaffold36_cov109	unplaced-scaffold	na	na	SWCR01000002.1	<>	na	Primary Assembly	2661180	na
+scaffold37_cov110	unplaced-scaffold	na	na	SWCR01000003.1	<>	na	Primary Assembly	2235046	na
+scaffold3_cov108	unplaced-scaffold	na	na	SWCR01000009.1	<>	na	Primary Assembly	1624067	na
+scaffold444_cov179	unplaced-scaffold	na	na	SWCR01000024.1	<>	na	Primary Assembly	97305	na
+scaffold47_cov108	unplaced-scaffold	na	na	SWCR01000014.1	<>	na	Primary Assembly	537299	na
+scaffold4_cov108	unplaced-scaffold	na	na	SWCR01000012.1	<>	na	Primary Assembly	854430	na
+scaffold50_cov132	unplaced-scaffold	na	na	SWCR01000015.1	<>	na	Primary Assembly	310673	na
+scaffold51_cov143	unplaced-scaffold	na	na	SWCR01000019.1	<>	na	Primary Assembly	165685	na
+scaffold59_cov108	unplaced-scaffold	na	na	SWCR01000013.1	<>	na	Primary Assembly	672264	na
+scaffold606_cov149	unplaced-scaffold	na	na	SWCR01000031.1	<>	na	Primary Assembly	41192	na
+scaffold65_cov181	unplaced-scaffold	na	na	SWCR01000021.1	<>	na	Primary Assembly	135387	na
+scaffold799_cov261	unplaced-scaffold	na	na	SWCR01000036.1	<>	na	Primary Assembly	35269	na
+scaffold7_cov109	unplaced-scaffold	na	na	SWCR01000008.1	<>	na	Primary Assembly	1696223	na
+scaffold86_cov109	unplaced-scaffold	na	na	SWCR01000005.1	<>	na	Primary Assembly	1812082	na
+scaffold929_cov108	unplaced-scaffold	na	na	SWCR01000022.1	<>	na	Primary Assembly	128154	na
+scaffold95_cov108	unplaced-scaffold	na	na	SWCR01000010.1	<>	na	Primary Assembly	1587664	na
+scaffold9_cov157	unplaced-scaffold	na	na	SWCR01000028.1	<>	na	Primary Assembly	52062	na

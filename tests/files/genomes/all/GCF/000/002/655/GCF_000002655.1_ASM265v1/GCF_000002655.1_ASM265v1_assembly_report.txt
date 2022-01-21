@@ -1,0 +1,36 @@
+# Assembly name:  ASM265v1
+# Organism name:  Aspergillus fumigatus Af293 (ascomycetes)
+# Infraspecific name:  strain=Af293
+# Taxid:          330879
+# BioSample:      SAMN00115746
+# BioProject:     PRJNA131
+# Submitter:      J. Craig Venter Institute
+# Date:           2005-06-10
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# WGS project:    AAHF01
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000002655.1
+# RefSeq assembly accession: GCF_000002655.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000000835.1	GCF_000000835.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+1	assembled-molecule	1	Chromosome	CM000169.1	=	NC_007194.1	Primary Assembly	4918979	na
+2	assembled-molecule	2	Chromosome	CM000170.1	=	NC_007195.1	Primary Assembly	4844472	na
+3	assembled-molecule	3	Chromosome	CM000171.1	=	NC_007196.1	Primary Assembly	4079167	na
+4	assembled-molecule	4	Chromosome	CM000172.1	=	NC_007197.1	Primary Assembly	3923705	na
+5	assembled-molecule	5	Chromosome	CM000173.1	=	NC_007198.1	Primary Assembly	3948441	na
+6	assembled-molecule	6	Chromosome	CM000174.1	=	NC_007199.1	Primary Assembly	3778736	na
+7	assembled-molecule	7	Chromosome	CM000175.1	=	NC_007200.1	Primary Assembly	2058334	na
+8	assembled-molecule	8	Chromosome	CM000176.1	=	NC_007201.1	Primary Assembly	1833124	na

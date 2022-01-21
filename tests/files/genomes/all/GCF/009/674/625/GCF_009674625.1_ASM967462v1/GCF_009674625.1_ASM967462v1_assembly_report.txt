@@ -1,0 +1,36 @@
+# Assembly name:  ASM967462v1
+# Organism name:  Haloferax marinum (euryarchaeotes)
+# Infraspecific name:  strain=MBLA0078
+# Taxid:          2666143
+# BioSample:      SAMN13255728
+# BioProject:     PRJNA588694
+# Submitter:      Incheon National University
+# Date:           2019-11-19
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    WKJQ01
+# Assembly method: CLC Denovo assembly v. 7.0.4
+# Expected final version: yes
+# Genome coverage: 336.64x
+# Sequencing technology: PacBio
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_009674625.1
+# RefSeq assembly accession: GCF_009674625.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_009674645.1	GCF_009674645.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig00001	unplaced-scaffold	na	na	WKJQ01000001.1	=	NZ_WKJQ01000001.1	Primary Assembly	3071932	na
+contig00002	unplaced-scaffold	na	na	WKJQ01000002.1	=	NZ_WKJQ01000002.1	Primary Assembly	213762	na
+contig00003	unplaced-scaffold	na	na	WKJQ01000003.1	=	NZ_WKJQ01000003.1	Primary Assembly	195008	na

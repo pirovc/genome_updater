@@ -1,0 +1,234 @@
+# Assembly name:  PDT001069867.1
+# Description:    NCBI Pathogen Detection Assembly PDT001069867.1
+# Organism name:  Escherichia coli (E. coli)
+# Infraspecific name:  strain=PNUSAE074529
+# Taxid:          562
+# BioSample:      SAMN19697485
+# BioProject:     PRJNA218110
+# Submitter:      CDC
+# Date:           2021-06-17
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    ABAWPX01
+# Assembly method: SKESA v. 2.2
+# Expected final version: no
+# Genome coverage: 41x
+# Sequencing technology: ILLUMINA
+# GenBank assembly accession: GCA_018937815.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_018937825.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+SAMN19697485-rid12481493.denovo.001	unplaced-scaffold	na	na	ABAWPX010000001.1	<>	na	Primary Assembly	347358	na
+SAMN19697485-rid12481493.denovo.002	unplaced-scaffold	na	na	ABAWPX010000002.1	<>	na	Primary Assembly	297481	na
+SAMN19697485-rid12481493.denovo.003	unplaced-scaffold	na	na	ABAWPX010000003.1	<>	na	Primary Assembly	280268	na
+SAMN19697485-rid12481493.denovo.004	unplaced-scaffold	na	na	ABAWPX010000004.1	<>	na	Primary Assembly	257787	na
+SAMN19697485-rid12481493.denovo.005	unplaced-scaffold	na	na	ABAWPX010000005.1	<>	na	Primary Assembly	254439	na
+SAMN19697485-rid12481493.denovo.006	unplaced-scaffold	na	na	ABAWPX010000006.1	<>	na	Primary Assembly	201362	na
+SAMN19697485-rid12481493.denovo.007	unplaced-scaffold	na	na	ABAWPX010000007.1	<>	na	Primary Assembly	199689	na
+SAMN19697485-rid12481493.denovo.008	unplaced-scaffold	na	na	ABAWPX010000008.1	<>	na	Primary Assembly	187974	na
+SAMN19697485-rid12481493.denovo.009	unplaced-scaffold	na	na	ABAWPX010000009.1	<>	na	Primary Assembly	180203	na
+SAMN19697485-rid12481493.denovo.010	unplaced-scaffold	na	na	ABAWPX010000010.1	<>	na	Primary Assembly	170483	na
+SAMN19697485-rid12481493.denovo.011	unplaced-scaffold	na	na	ABAWPX010000011.1	<>	na	Primary Assembly	159446	na
+SAMN19697485-rid12481493.denovo.012	unplaced-scaffold	na	na	ABAWPX010000012.1	<>	na	Primary Assembly	136358	na
+SAMN19697485-rid12481493.denovo.013	unplaced-scaffold	na	na	ABAWPX010000013.1	<>	na	Primary Assembly	135446	na
+SAMN19697485-rid12481493.denovo.014	unplaced-scaffold	na	na	ABAWPX010000014.1	<>	na	Primary Assembly	133574	na
+SAMN19697485-rid12481493.denovo.015	unplaced-scaffold	na	na	ABAWPX010000015.1	<>	na	Primary Assembly	123741	na
+SAMN19697485-rid12481493.denovo.016	unplaced-scaffold	na	na	ABAWPX010000016.1	<>	na	Primary Assembly	114486	na
+SAMN19697485-rid12481493.denovo.017	unplaced-scaffold	na	na	ABAWPX010000017.1	<>	na	Primary Assembly	104530	na
+SAMN19697485-rid12481493.denovo.018	unplaced-scaffold	na	na	ABAWPX010000018.1	<>	na	Primary Assembly	100394	na
+SAMN19697485-rid12481493.denovo.019	unplaced-scaffold	na	na	ABAWPX010000019.1	<>	na	Primary Assembly	93744	na
+SAMN19697485-rid12481493.denovo.020	unplaced-scaffold	na	na	ABAWPX010000020.1	<>	na	Primary Assembly	88935	na
+SAMN19697485-rid12481493.denovo.021	unplaced-scaffold	na	na	ABAWPX010000021.1	<>	na	Primary Assembly	84388	na
+SAMN19697485-rid12481493.denovo.022	unplaced-scaffold	na	na	ABAWPX010000022.1	<>	na	Primary Assembly	73223	na
+SAMN19697485-rid12481493.denovo.023	unplaced-scaffold	na	na	ABAWPX010000023.1	<>	na	Primary Assembly	68425	na
+SAMN19697485-rid12481493.denovo.024	unplaced-scaffold	na	na	ABAWPX010000024.1	<>	na	Primary Assembly	65885	na
+SAMN19697485-rid12481493.denovo.025	unplaced-scaffold	na	na	ABAWPX010000025.1	<>	na	Primary Assembly	60758	na
+SAMN19697485-rid12481493.denovo.026	unplaced-scaffold	na	na	ABAWPX010000026.1	<>	na	Primary Assembly	58705	na
+SAMN19697485-rid12481493.denovo.027	unplaced-scaffold	na	na	ABAWPX010000027.1	<>	na	Primary Assembly	58244	na
+SAMN19697485-rid12481493.denovo.028	unplaced-scaffold	na	na	ABAWPX010000028.1	<>	na	Primary Assembly	57262	na
+SAMN19697485-rid12481493.denovo.029	unplaced-scaffold	na	na	ABAWPX010000029.1	<>	na	Primary Assembly	56021	na
+SAMN19697485-rid12481493.denovo.030	unplaced-scaffold	na	na	ABAWPX010000030.1	<>	na	Primary Assembly	55996	na
+SAMN19697485-rid12481493.denovo.031	unplaced-scaffold	na	na	ABAWPX010000031.1	<>	na	Primary Assembly	55904	na
+SAMN19697485-rid12481493.denovo.032	unplaced-scaffold	na	na	ABAWPX010000032.1	<>	na	Primary Assembly	55578	na
+SAMN19697485-rid12481493.denovo.033	unplaced-scaffold	na	na	ABAWPX010000033.1	<>	na	Primary Assembly	47350	na
+SAMN19697485-rid12481493.denovo.034	unplaced-scaffold	na	na	ABAWPX010000034.1	<>	na	Primary Assembly	47055	na
+SAMN19697485-rid12481493.denovo.035	unplaced-scaffold	na	na	ABAWPX010000035.1	<>	na	Primary Assembly	43907	na
+SAMN19697485-rid12481493.denovo.036	unplaced-scaffold	na	na	ABAWPX010000036.1	<>	na	Primary Assembly	43560	na
+SAMN19697485-rid12481493.denovo.037	unplaced-scaffold	na	na	ABAWPX010000037.1	<>	na	Primary Assembly	43535	na
+SAMN19697485-rid12481493.denovo.038	unplaced-scaffold	na	na	ABAWPX010000038.1	<>	na	Primary Assembly	43078	na
+SAMN19697485-rid12481493.denovo.039	unplaced-scaffold	na	na	ABAWPX010000039.1	<>	na	Primary Assembly	42422	na
+SAMN19697485-rid12481493.denovo.040	unplaced-scaffold	na	na	ABAWPX010000040.1	<>	na	Primary Assembly	41182	na
+SAMN19697485-rid12481493.denovo.041	unplaced-scaffold	na	na	ABAWPX010000041.1	<>	na	Primary Assembly	40656	na
+SAMN19697485-rid12481493.denovo.042	unplaced-scaffold	na	na	ABAWPX010000042.1	<>	na	Primary Assembly	36735	na
+SAMN19697485-rid12481493.denovo.043	unplaced-scaffold	na	na	ABAWPX010000043.1	<>	na	Primary Assembly	36639	na
+SAMN19697485-rid12481493.denovo.044	unplaced-scaffold	na	na	ABAWPX010000044.1	<>	na	Primary Assembly	29946	na
+SAMN19697485-rid12481493.denovo.045	unplaced-scaffold	na	na	ABAWPX010000045.1	<>	na	Primary Assembly	26255	na
+SAMN19697485-rid12481493.denovo.046	unplaced-scaffold	na	na	ABAWPX010000046.1	<>	na	Primary Assembly	25863	na
+SAMN19697485-rid12481493.denovo.047	unplaced-scaffold	na	na	ABAWPX010000047.1	<>	na	Primary Assembly	22481	na
+SAMN19697485-rid12481493.denovo.048	unplaced-scaffold	na	na	ABAWPX010000048.1	<>	na	Primary Assembly	21765	na
+SAMN19697485-rid12481493.denovo.049	unplaced-scaffold	na	na	ABAWPX010000049.1	<>	na	Primary Assembly	20910	na
+SAMN19697485-rid12481493.denovo.050	unplaced-scaffold	na	na	ABAWPX010000050.1	<>	na	Primary Assembly	16490	na
+SAMN19697485-rid12481493.denovo.051	unplaced-scaffold	na	na	ABAWPX010000051.1	<>	na	Primary Assembly	15811	na
+SAMN19697485-rid12481493.denovo.052	unplaced-scaffold	na	na	ABAWPX010000052.1	<>	na	Primary Assembly	11750	na
+SAMN19697485-rid12481493.denovo.053	unplaced-scaffold	na	na	ABAWPX010000053.1	<>	na	Primary Assembly	11667	na
+SAMN19697485-rid12481493.denovo.054	unplaced-scaffold	na	na	ABAWPX010000054.1	<>	na	Primary Assembly	11560	na
+SAMN19697485-rid12481493.denovo.055	unplaced-scaffold	na	na	ABAWPX010000055.1	<>	na	Primary Assembly	11330	na
+SAMN19697485-rid12481493.denovo.056	unplaced-scaffold	na	na	ABAWPX010000056.1	<>	na	Primary Assembly	11245	na
+SAMN19697485-rid12481493.denovo.057	unplaced-scaffold	na	na	ABAWPX010000057.1	<>	na	Primary Assembly	11024	na
+SAMN19697485-rid12481493.denovo.058	unplaced-scaffold	na	na	ABAWPX010000058.1	<>	na	Primary Assembly	10219	na
+SAMN19697485-rid12481493.denovo.059	unplaced-scaffold	na	na	ABAWPX010000059.1	<>	na	Primary Assembly	9169	na
+SAMN19697485-rid12481493.denovo.060	unplaced-scaffold	na	na	ABAWPX010000060.1	<>	na	Primary Assembly	8456	na
+SAMN19697485-rid12481493.denovo.061	unplaced-scaffold	na	na	ABAWPX010000061.1	<>	na	Primary Assembly	8177	na
+SAMN19697485-rid12481493.denovo.062	unplaced-scaffold	na	na	ABAWPX010000062.1	<>	na	Primary Assembly	8010	na
+SAMN19697485-rid12481493.denovo.063	unplaced-scaffold	na	na	ABAWPX010000063.1	<>	na	Primary Assembly	7777	na
+SAMN19697485-rid12481493.denovo.064	unplaced-scaffold	na	na	ABAWPX010000064.1	<>	na	Primary Assembly	7757	na
+SAMN19697485-rid12481493.denovo.065	unplaced-scaffold	na	na	ABAWPX010000065.1	<>	na	Primary Assembly	6873	na
+SAMN19697485-rid12481493.denovo.066	unplaced-scaffold	na	na	ABAWPX010000066.1	<>	na	Primary Assembly	6752	na
+SAMN19697485-rid12481493.denovo.067	unplaced-scaffold	na	na	ABAWPX010000067.1	<>	na	Primary Assembly	6552	na
+SAMN19697485-rid12481493.denovo.068	unplaced-scaffold	na	na	ABAWPX010000068.1	<>	na	Primary Assembly	5611	na
+SAMN19697485-rid12481493.denovo.069	unplaced-scaffold	na	na	ABAWPX010000069.1	<>	na	Primary Assembly	5517	na
+SAMN19697485-rid12481493.denovo.070	unplaced-scaffold	na	na	ABAWPX010000070.1	<>	na	Primary Assembly	5400	na
+SAMN19697485-rid12481493.denovo.071	unplaced-scaffold	na	na	ABAWPX010000071.1	<>	na	Primary Assembly	5388	na
+SAMN19697485-rid12481493.denovo.072	unplaced-scaffold	na	na	ABAWPX010000072.1	<>	na	Primary Assembly	4963	na
+SAMN19697485-rid12481493.denovo.073	unplaced-scaffold	na	na	ABAWPX010000073.1	<>	na	Primary Assembly	4794	na
+SAMN19697485-rid12481493.denovo.074	unplaced-scaffold	na	na	ABAWPX010000074.1	<>	na	Primary Assembly	4699	na
+SAMN19697485-rid12481493.denovo.075	unplaced-scaffold	na	na	ABAWPX010000075.1	<>	na	Primary Assembly	4595	na
+SAMN19697485-rid12481493.denovo.076	unplaced-scaffold	na	na	ABAWPX010000076.1	<>	na	Primary Assembly	4461	na
+SAMN19697485-rid12481493.denovo.077	unplaced-scaffold	na	na	ABAWPX010000077.1	<>	na	Primary Assembly	4394	na
+SAMN19697485-rid12481493.denovo.078	unplaced-scaffold	na	na	ABAWPX010000078.1	<>	na	Primary Assembly	4329	na
+SAMN19697485-rid12481493.denovo.079	unplaced-scaffold	na	na	ABAWPX010000079.1	<>	na	Primary Assembly	4316	na
+SAMN19697485-rid12481493.denovo.080	unplaced-scaffold	na	na	ABAWPX010000080.1	<>	na	Primary Assembly	4307	na
+SAMN19697485-rid12481493.denovo.081	unplaced-scaffold	na	na	ABAWPX010000081.1	<>	na	Primary Assembly	4283	na
+SAMN19697485-rid12481493.denovo.082	unplaced-scaffold	na	na	ABAWPX010000082.1	<>	na	Primary Assembly	4209	na
+SAMN19697485-rid12481493.denovo.083	unplaced-scaffold	na	na	ABAWPX010000083.1	<>	na	Primary Assembly	3825	na
+SAMN19697485-rid12481493.denovo.084	unplaced-scaffold	na	na	ABAWPX010000084.1	<>	na	Primary Assembly	3748	na
+SAMN19697485-rid12481493.denovo.085	unplaced-scaffold	na	na	ABAWPX010000085.1	<>	na	Primary Assembly	3591	na
+SAMN19697485-rid12481493.denovo.086	unplaced-scaffold	na	na	ABAWPX010000086.1	<>	na	Primary Assembly	3552	na
+SAMN19697485-rid12481493.denovo.087	unplaced-scaffold	na	na	ABAWPX010000087.1	<>	na	Primary Assembly	3500	na
+SAMN19697485-rid12481493.denovo.088	unplaced-scaffold	na	na	ABAWPX010000088.1	<>	na	Primary Assembly	3439	na
+SAMN19697485-rid12481493.denovo.089	unplaced-scaffold	na	na	ABAWPX010000089.1	<>	na	Primary Assembly	3357	na
+SAMN19697485-rid12481493.denovo.090	unplaced-scaffold	na	na	ABAWPX010000090.1	<>	na	Primary Assembly	3292	na
+SAMN19697485-rid12481493.denovo.091	unplaced-scaffold	na	na	ABAWPX010000091.1	<>	na	Primary Assembly	3233	na
+SAMN19697485-rid12481493.denovo.092	unplaced-scaffold	na	na	ABAWPX010000092.1	<>	na	Primary Assembly	3064	na
+SAMN19697485-rid12481493.denovo.093	unplaced-scaffold	na	na	ABAWPX010000093.1	<>	na	Primary Assembly	3058	na
+SAMN19697485-rid12481493.denovo.094	unplaced-scaffold	na	na	ABAWPX010000094.1	<>	na	Primary Assembly	3011	na
+SAMN19697485-rid12481493.denovo.095	unplaced-scaffold	na	na	ABAWPX010000095.1	<>	na	Primary Assembly	2981	na
+SAMN19697485-rid12481493.denovo.096	unplaced-scaffold	na	na	ABAWPX010000096.1	<>	na	Primary Assembly	2939	na
+SAMN19697485-rid12481493.denovo.097	unplaced-scaffold	na	na	ABAWPX010000097.1	<>	na	Primary Assembly	2931	na
+SAMN19697485-rid12481493.denovo.098	unplaced-scaffold	na	na	ABAWPX010000098.1	<>	na	Primary Assembly	2808	na
+SAMN19697485-rid12481493.denovo.099	unplaced-scaffold	na	na	ABAWPX010000099.1	<>	na	Primary Assembly	2806	na
+SAMN19697485-rid12481493.denovo.100	unplaced-scaffold	na	na	ABAWPX010000100.1	<>	na	Primary Assembly	2801	na
+SAMN19697485-rid12481493.denovo.101	unplaced-scaffold	na	na	ABAWPX010000101.1	<>	na	Primary Assembly	2602	na
+SAMN19697485-rid12481493.denovo.102	unplaced-scaffold	na	na	ABAWPX010000102.1	<>	na	Primary Assembly	2575	na
+SAMN19697485-rid12481493.denovo.103	unplaced-scaffold	na	na	ABAWPX010000103.1	<>	na	Primary Assembly	2560	na
+SAMN19697485-rid12481493.denovo.104	unplaced-scaffold	na	na	ABAWPX010000104.1	<>	na	Primary Assembly	2532	na
+SAMN19697485-rid12481493.denovo.105	unplaced-scaffold	na	na	ABAWPX010000105.1	<>	na	Primary Assembly	2490	na
+SAMN19697485-rid12481493.denovo.106	unplaced-scaffold	na	na	ABAWPX010000106.1	<>	na	Primary Assembly	2426	na
+SAMN19697485-rid12481493.denovo.107	unplaced-scaffold	na	na	ABAWPX010000107.1	<>	na	Primary Assembly	2394	na
+SAMN19697485-rid12481493.denovo.108	unplaced-scaffold	na	na	ABAWPX010000108.1	<>	na	Primary Assembly	2290	na
+SAMN19697485-rid12481493.denovo.111	unplaced-scaffold	na	na	ABAWPX010000109.1	<>	na	Primary Assembly	2229	na
+SAMN19697485-rid12481493.denovo.112	unplaced-scaffold	na	na	ABAWPX010000110.1	<>	na	Primary Assembly	2201	na
+SAMN19697485-rid12481493.denovo.113	unplaced-scaffold	na	na	ABAWPX010000111.1	<>	na	Primary Assembly	2191	na
+SAMN19697485-rid12481493.denovo.115	unplaced-scaffold	na	na	ABAWPX010000112.1	<>	na	Primary Assembly	2011	na
+SAMN19697485-rid12481493.denovo.116	unplaced-scaffold	na	na	ABAWPX010000113.1	<>	na	Primary Assembly	1990	na
+SAMN19697485-rid12481493.denovo.117	unplaced-scaffold	na	na	ABAWPX010000114.1	<>	na	Primary Assembly	1934	na
+SAMN19697485-rid12481493.denovo.118	unplaced-scaffold	na	na	ABAWPX010000115.1	<>	na	Primary Assembly	1883	na
+SAMN19697485-rid12481493.denovo.119	unplaced-scaffold	na	na	ABAWPX010000116.1	<>	na	Primary Assembly	1882	na
+SAMN19697485-rid12481493.denovo.120	unplaced-scaffold	na	na	ABAWPX010000117.1	<>	na	Primary Assembly	1863	na
+SAMN19697485-rid12481493.denovo.121	unplaced-scaffold	na	na	ABAWPX010000118.1	<>	na	Primary Assembly	1863	na
+SAMN19697485-rid12481493.denovo.122	unplaced-scaffold	na	na	ABAWPX010000119.1	<>	na	Primary Assembly	1847	na
+SAMN19697485-rid12481493.denovo.123	unplaced-scaffold	na	na	ABAWPX010000120.1	<>	na	Primary Assembly	1836	na
+SAMN19697485-rid12481493.denovo.124	unplaced-scaffold	na	na	ABAWPX010000121.1	<>	na	Primary Assembly	1742	na
+SAMN19697485-rid12481493.denovo.125	unplaced-scaffold	na	na	ABAWPX010000122.1	<>	na	Primary Assembly	1699	na
+SAMN19697485-rid12481493.denovo.126	unplaced-scaffold	na	na	ABAWPX010000123.1	<>	na	Primary Assembly	1683	na
+SAMN19697485-rid12481493.denovo.127	unplaced-scaffold	na	na	ABAWPX010000124.1	<>	na	Primary Assembly	1656	na
+SAMN19697485-rid12481493.denovo.128	unplaced-scaffold	na	na	ABAWPX010000125.1	<>	na	Primary Assembly	1599	na
+SAMN19697485-rid12481493.denovo.129	unplaced-scaffold	na	na	ABAWPX010000126.1	<>	na	Primary Assembly	1586	na
+SAMN19697485-rid12481493.denovo.130	unplaced-scaffold	na	na	ABAWPX010000127.1	<>	na	Primary Assembly	1586	na
+SAMN19697485-rid12481493.denovo.131	unplaced-scaffold	na	na	ABAWPX010000128.1	<>	na	Primary Assembly	1584	na
+SAMN19697485-rid12481493.denovo.132	unplaced-scaffold	na	na	ABAWPX010000129.1	<>	na	Primary Assembly	1571	na
+SAMN19697485-rid12481493.denovo.133	unplaced-scaffold	na	na	ABAWPX010000130.1	<>	na	Primary Assembly	1565	na
+SAMN19697485-rid12481493.denovo.134	unplaced-scaffold	na	na	ABAWPX010000131.1	<>	na	Primary Assembly	1547	na
+SAMN19697485-rid12481493.denovo.135	unplaced-scaffold	na	na	ABAWPX010000132.1	<>	na	Primary Assembly	1517	na
+SAMN19697485-rid12481493.denovo.136	unplaced-scaffold	na	na	ABAWPX010000133.1	<>	na	Primary Assembly	1500	na
+SAMN19697485-rid12481493.denovo.137	unplaced-scaffold	na	na	ABAWPX010000134.1	<>	na	Primary Assembly	1487	na
+SAMN19697485-rid12481493.denovo.138	unplaced-scaffold	na	na	ABAWPX010000135.1	<>	na	Primary Assembly	1427	na
+SAMN19697485-rid12481493.denovo.139	unplaced-scaffold	na	na	ABAWPX010000136.1	<>	na	Primary Assembly	1415	na
+SAMN19697485-rid12481493.denovo.140	unplaced-scaffold	na	na	ABAWPX010000137.1	<>	na	Primary Assembly	1370	na
+SAMN19697485-rid12481493.denovo.141	unplaced-scaffold	na	na	ABAWPX010000138.1	<>	na	Primary Assembly	1284	na
+SAMN19697485-rid12481493.denovo.142	unplaced-scaffold	na	na	ABAWPX010000139.1	<>	na	Primary Assembly	1248	na
+SAMN19697485-rid12481493.denovo.143	unplaced-scaffold	na	na	ABAWPX010000140.1	<>	na	Primary Assembly	1247	na
+SAMN19697485-rid12481493.denovo.144	unplaced-scaffold	na	na	ABAWPX010000141.1	<>	na	Primary Assembly	1241	na
+SAMN19697485-rid12481493.denovo.145	unplaced-scaffold	na	na	ABAWPX010000142.1	<>	na	Primary Assembly	1226	na
+SAMN19697485-rid12481493.denovo.146	unplaced-scaffold	na	na	ABAWPX010000143.1	<>	na	Primary Assembly	1208	na
+SAMN19697485-rid12481493.denovo.147	unplaced-scaffold	na	na	ABAWPX010000144.1	<>	na	Primary Assembly	1204	na
+SAMN19697485-rid12481493.denovo.148	unplaced-scaffold	na	na	ABAWPX010000145.1	<>	na	Primary Assembly	1177	na
+SAMN19697485-rid12481493.denovo.149	unplaced-scaffold	na	na	ABAWPX010000146.1	<>	na	Primary Assembly	1142	na
+SAMN19697485-rid12481493.denovo.150	unplaced-scaffold	na	na	ABAWPX010000147.1	<>	na	Primary Assembly	1120	na
+SAMN19697485-rid12481493.denovo.151	unplaced-scaffold	na	na	ABAWPX010000148.1	<>	na	Primary Assembly	1112	na
+SAMN19697485-rid12481493.denovo.152	unplaced-scaffold	na	na	ABAWPX010000149.1	<>	na	Primary Assembly	1097	na
+SAMN19697485-rid12481493.denovo.153	unplaced-scaffold	na	na	ABAWPX010000150.1	<>	na	Primary Assembly	1088	na
+SAMN19697485-rid12481493.denovo.154	unplaced-scaffold	na	na	ABAWPX010000151.1	<>	na	Primary Assembly	1083	na
+SAMN19697485-rid12481493.denovo.155	unplaced-scaffold	na	na	ABAWPX010000152.1	<>	na	Primary Assembly	1027	na
+SAMN19697485-rid12481493.denovo.156	unplaced-scaffold	na	na	ABAWPX010000153.1	<>	na	Primary Assembly	1020	na
+SAMN19697485-rid12481493.denovo.157	unplaced-scaffold	na	na	ABAWPX010000154.1	<>	na	Primary Assembly	1008	na
+SAMN19697485-rid12481493.denovo.158	unplaced-scaffold	na	na	ABAWPX010000155.1	<>	na	Primary Assembly	1004	na
+SAMN19697485-rid12481493.denovo.159	unplaced-scaffold	na	na	ABAWPX010000156.1	<>	na	Primary Assembly	986	na
+SAMN19697485-rid12481493.denovo.160	unplaced-scaffold	na	na	ABAWPX010000157.1	<>	na	Primary Assembly	962	na
+SAMN19697485-rid12481493.denovo.161	unplaced-scaffold	na	na	ABAWPX010000158.1	<>	na	Primary Assembly	942	na
+SAMN19697485-rid12481493.denovo.162	unplaced-scaffold	na	na	ABAWPX010000159.1	<>	na	Primary Assembly	929	na
+SAMN19697485-rid12481493.denovo.163	unplaced-scaffold	na	na	ABAWPX010000160.1	<>	na	Primary Assembly	927	na
+SAMN19697485-rid12481493.denovo.164	unplaced-scaffold	na	na	ABAWPX010000161.1	<>	na	Primary Assembly	904	na
+SAMN19697485-rid12481493.denovo.165	unplaced-scaffold	na	na	ABAWPX010000162.1	<>	na	Primary Assembly	898	na
+SAMN19697485-rid12481493.denovo.166	unplaced-scaffold	na	na	ABAWPX010000163.1	<>	na	Primary Assembly	885	na
+SAMN19697485-rid12481493.denovo.167	unplaced-scaffold	na	na	ABAWPX010000164.1	<>	na	Primary Assembly	866	na
+SAMN19697485-rid12481493.denovo.168	unplaced-scaffold	na	na	ABAWPX010000165.1	<>	na	Primary Assembly	846	na
+SAMN19697485-rid12481493.denovo.169	unplaced-scaffold	na	na	ABAWPX010000166.1	<>	na	Primary Assembly	842	na
+SAMN19697485-rid12481493.denovo.170	unplaced-scaffold	na	na	ABAWPX010000167.1	<>	na	Primary Assembly	818	na
+SAMN19697485-rid12481493.denovo.171	unplaced-scaffold	na	na	ABAWPX010000168.1	<>	na	Primary Assembly	792	na
+SAMN19697485-rid12481493.denovo.172	unplaced-scaffold	na	na	ABAWPX010000169.1	<>	na	Primary Assembly	777	na
+SAMN19697485-rid12481493.denovo.173	unplaced-scaffold	na	na	ABAWPX010000170.1	<>	na	Primary Assembly	769	na
+SAMN19697485-rid12481493.denovo.174	unplaced-scaffold	na	na	ABAWPX010000171.1	<>	na	Primary Assembly	765	na
+SAMN19697485-rid12481493.denovo.175	unplaced-scaffold	na	na	ABAWPX010000172.1	<>	na	Primary Assembly	746	na
+SAMN19697485-rid12481493.denovo.176	unplaced-scaffold	na	na	ABAWPX010000173.1	<>	na	Primary Assembly	736	na
+SAMN19697485-rid12481493.denovo.177	unplaced-scaffold	na	na	ABAWPX010000174.1	<>	na	Primary Assembly	734	na
+SAMN19697485-rid12481493.denovo.178	unplaced-scaffold	na	na	ABAWPX010000175.1	<>	na	Primary Assembly	718	na
+SAMN19697485-rid12481493.denovo.179	unplaced-scaffold	na	na	ABAWPX010000176.1	<>	na	Primary Assembly	717	na
+SAMN19697485-rid12481493.denovo.180	unplaced-scaffold	na	na	ABAWPX010000177.1	<>	na	Primary Assembly	709	na
+SAMN19697485-rid12481493.denovo.181	unplaced-scaffold	na	na	ABAWPX010000178.1	<>	na	Primary Assembly	686	na
+SAMN19697485-rid12481493.denovo.182	unplaced-scaffold	na	na	ABAWPX010000179.1	<>	na	Primary Assembly	683	na
+SAMN19697485-rid12481493.denovo.183	unplaced-scaffold	na	na	ABAWPX010000180.1	<>	na	Primary Assembly	675	na
+SAMN19697485-rid12481493.denovo.184	unplaced-scaffold	na	na	ABAWPX010000181.1	<>	na	Primary Assembly	663	na
+SAMN19697485-rid12481493.denovo.185	unplaced-scaffold	na	na	ABAWPX010000182.1	<>	na	Primary Assembly	603	na
+SAMN19697485-rid12481493.denovo.187	unplaced-scaffold	na	na	ABAWPX010000183.1	<>	na	Primary Assembly	554	na
+SAMN19697485-rid12481493.denovo.188	unplaced-scaffold	na	na	ABAWPX010000184.1	<>	na	Primary Assembly	541	na
+SAMN19697485-rid12481493.denovo.189	unplaced-scaffold	na	na	ABAWPX010000185.1	<>	na	Primary Assembly	539	na
+SAMN19697485-rid12481493.denovo.190	unplaced-scaffold	na	na	ABAWPX010000186.1	<>	na	Primary Assembly	538	na
+SAMN19697485-rid12481493.denovo.191	unplaced-scaffold	na	na	ABAWPX010000187.1	<>	na	Primary Assembly	529	na
+SAMN19697485-rid12481493.denovo.192	unplaced-scaffold	na	na	ABAWPX010000188.1	<>	na	Primary Assembly	482	na
+SAMN19697485-rid12481493.denovo.193	unplaced-scaffold	na	na	ABAWPX010000189.1	<>	na	Primary Assembly	480	na
+SAMN19697485-rid12481493.denovo.194	unplaced-scaffold	na	na	ABAWPX010000190.1	<>	na	Primary Assembly	452	na
+SAMN19697485-rid12481493.denovo.195	unplaced-scaffold	na	na	ABAWPX010000191.1	<>	na	Primary Assembly	452	na
+SAMN19697485-rid12481493.denovo.196	unplaced-scaffold	na	na	ABAWPX010000192.1	<>	na	Primary Assembly	433	na
+SAMN19697485-rid12481493.denovo.197	unplaced-scaffold	na	na	ABAWPX010000193.1	<>	na	Primary Assembly	420	na
+SAMN19697485-rid12481493.denovo.198	unplaced-scaffold	na	na	ABAWPX010000194.1	<>	na	Primary Assembly	419	na
+SAMN19697485-rid12481493.denovo.199	unplaced-scaffold	na	na	ABAWPX010000195.1	<>	na	Primary Assembly	393	na
+SAMN19697485-rid12481493.denovo.200	unplaced-scaffold	na	na	ABAWPX010000196.1	<>	na	Primary Assembly	387	na
+SAMN19697485-rid12481493.denovo.201	unplaced-scaffold	na	na	ABAWPX010000197.1	<>	na	Primary Assembly	387	na
+SAMN19697485-rid12481493.denovo.202	unplaced-scaffold	na	na	ABAWPX010000198.1	<>	na	Primary Assembly	385	na
+SAMN19697485-rid12481493.denovo.203	unplaced-scaffold	na	na	ABAWPX010000199.1	<>	na	Primary Assembly	377	na
+SAMN19697485-rid12481493.denovo.204	unplaced-scaffold	na	na	ABAWPX010000200.1	<>	na	Primary Assembly	369	na
+SAMN19697485-rid12481493.guided.109	unplaced-scaffold	na	na	ABAWPX010000201.1	<>	na	Primary Assembly	2230	na
+SAMN19697485-rid12481493.guided.110	unplaced-scaffold	na	na	ABAWPX010000202.1	<>	na	Primary Assembly	2230	na
+SAMN19697485-rid12481493.guided.114	unplaced-scaffold	na	na	ABAWPX010000203.1	<>	na	Primary Assembly	2077	na
+SAMN19697485-rid12481493.guided.186	unplaced-scaffold	na	na	ABAWPX010000204.1	<>	na	Primary Assembly	584	na

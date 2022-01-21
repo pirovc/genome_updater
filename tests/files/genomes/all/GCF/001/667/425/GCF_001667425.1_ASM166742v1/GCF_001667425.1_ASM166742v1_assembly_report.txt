@@ -1,0 +1,117 @@
+# Assembly name:  ASM166742v1
+# Organism name:  Mycobacterium sp. 852002-51613_SCH5001154 (high GC Gram+)
+# Infraspecific name:  strain=852002-51613_SCH5001154
+# Taxid:          1834104
+# BioSample:      SAMN04691946
+# BioProject:     PRJNA305922
+# Submitter:      JCVI
+# Date:           2016-06-17
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    LZII01
+# Assembly method: SPAdes v. 3.1.1
+# Expected final version: no
+# Genome coverage: 108.88x
+# Sequencing technology: Illumina NextSeq 500
+# GenBank assembly accession: GCA_001667425.1
+# RefSeq assembly accession: GCF_001667425.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_001667435.1	GCF_001667435.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig_1	unplaced-scaffold	na	na	LZII01000001.1	=	NZ_LZII01000001.1	Primary Assembly	1530	na
+contig_10	unplaced-scaffold	na	na	LZII01000002.1	=	NZ_LZII01000002.1	Primary Assembly	67696	na
+contig_11	unplaced-scaffold	na	na	LZII01000003.1	=	NZ_LZII01000003.1	Primary Assembly	1434	na
+contig_12	unplaced-scaffold	na	na	LZII01000004.1	=	NZ_LZII01000004.1	Primary Assembly	37351	na
+contig_13	unplaced-scaffold	na	na	LZII01000005.1	=	NZ_LZII01000005.1	Primary Assembly	299944	na
+contig_14	unplaced-scaffold	na	na	LZII01000006.1	=	NZ_LZII01000006.1	Primary Assembly	275823	na
+contig_15	unplaced-scaffold	na	na	LZII01000007.1	=	NZ_LZII01000007.1	Primary Assembly	36421	na
+contig_16	unplaced-scaffold	na	na	LZII01000008.1	=	NZ_LZII01000008.1	Primary Assembly	109038	na
+contig_17	unplaced-scaffold	na	na	LZII01000009.1	=	NZ_LZII01000009.1	Primary Assembly	33281	na
+contig_18	unplaced-scaffold	na	na	LZII01000010.1	=	NZ_LZII01000010.1	Primary Assembly	139340	na
+contig_19	unplaced-scaffold	na	na	LZII01000011.1	=	NZ_LZII01000011.1	Primary Assembly	13954	na
+contig_2	unplaced-scaffold	na	na	LZII01000012.1	=	NZ_LZII01000012.1	Primary Assembly	3957	na
+contig_20	unplaced-scaffold	na	na	LZII01000013.1	=	NZ_LZII01000013.1	Primary Assembly	10033	na
+contig_21	unplaced-scaffold	na	na	LZII01000014.1	=	NZ_LZII01000014.1	Primary Assembly	68872	na
+contig_22	unplaced-scaffold	na	na	LZII01000015.1	=	NZ_LZII01000015.1	Primary Assembly	19482	na
+contig_23	unplaced-scaffold	na	na	LZII01000016.1	=	NZ_LZII01000016.1	Primary Assembly	104056	na
+contig_24	unplaced-scaffold	na	na	LZII01000017.1	=	NZ_LZII01000017.1	Primary Assembly	48959	na
+contig_25	unplaced-scaffold	na	na	LZII01000018.1	=	NZ_LZII01000018.1	Primary Assembly	4069	na
+contig_26	unplaced-scaffold	na	na	LZII01000019.1	=	NZ_LZII01000019.1	Primary Assembly	128297	na
+contig_27	unplaced-scaffold	na	na	LZII01000020.1	=	NZ_LZII01000020.1	Primary Assembly	12513	na
+contig_28	unplaced-scaffold	na	na	LZII01000021.1	=	NZ_LZII01000021.1	Primary Assembly	43037	na
+contig_29	unplaced-scaffold	na	na	LZII01000022.1	=	NZ_LZII01000022.1	Primary Assembly	1909	na
+contig_3	unplaced-scaffold	na	na	LZII01000023.1	=	NZ_LZII01000023.1	Primary Assembly	20704	na
+contig_30	unplaced-scaffold	na	na	LZII01000024.1	=	NZ_LZII01000024.1	Primary Assembly	650	na
+contig_31	unplaced-scaffold	na	na	LZII01000025.1	=	NZ_LZII01000025.1	Primary Assembly	67921	na
+contig_32	unplaced-scaffold	na	na	LZII01000026.1	=	NZ_LZII01000026.1	Primary Assembly	7320	na
+contig_33	unplaced-scaffold	na	na	LZII01000027.1	=	NZ_LZII01000027.1	Primary Assembly	8433	na
+contig_34	unplaced-scaffold	na	na	LZII01000028.1	=	NZ_LZII01000028.1	Primary Assembly	790	na
+contig_35	unplaced-scaffold	na	na	LZII01000029.1	=	NZ_LZII01000029.1	Primary Assembly	129064	na
+contig_36	unplaced-scaffold	na	na	LZII01000030.1	=	NZ_LZII01000030.1	Primary Assembly	565	na
+contig_37	unplaced-scaffold	na	na	LZII01000031.1	=	NZ_LZII01000031.1	Primary Assembly	146116	na
+contig_38	unplaced-scaffold	na	na	LZII01000032.1	=	NZ_LZII01000032.1	Primary Assembly	21464	na
+contig_39	unplaced-scaffold	na	na	LZII01000033.1	=	NZ_LZII01000033.1	Primary Assembly	615	na
+contig_4	unplaced-scaffold	na	na	LZII01000034.1	=	NZ_LZII01000034.1	Primary Assembly	100516	na
+contig_40	unplaced-scaffold	na	na	LZII01000035.1	=	NZ_LZII01000035.1	Primary Assembly	547	na
+contig_41	unplaced-scaffold	na	na	LZII01000036.1	=	NZ_LZII01000036.1	Primary Assembly	19539	na
+contig_42	unplaced-scaffold	na	na	LZII01000037.1	=	NZ_LZII01000037.1	Primary Assembly	204546	na
+contig_43	unplaced-scaffold	na	na	LZII01000038.1	=	NZ_LZII01000038.1	Primary Assembly	2014	na
+contig_44	unplaced-scaffold	na	na	LZII01000039.1	=	NZ_LZII01000039.1	Primary Assembly	1886	na
+contig_45	unplaced-scaffold	na	na	LZII01000040.1	=	NZ_LZII01000040.1	Primary Assembly	80803	na
+contig_46	unplaced-scaffold	na	na	LZII01000041.1	=	NZ_LZII01000041.1	Primary Assembly	1205	na
+contig_47	unplaced-scaffold	na	na	LZII01000042.1	=	NZ_LZII01000042.1	Primary Assembly	56652	na
+contig_48	unplaced-scaffold	na	na	LZII01000043.1	=	NZ_LZII01000043.1	Primary Assembly	184059	na
+contig_49	unplaced-scaffold	na	na	LZII01000044.1	=	NZ_LZII01000044.1	Primary Assembly	15964	na
+contig_5	unplaced-scaffold	na	na	LZII01000045.1	=	NZ_LZII01000045.1	Primary Assembly	144386	na
+contig_50	unplaced-scaffold	na	na	LZII01000046.1	=	NZ_LZII01000046.1	Primary Assembly	17967	na
+contig_51	unplaced-scaffold	na	na	LZII01000047.1	=	NZ_LZII01000047.1	Primary Assembly	9897	na
+contig_52	unplaced-scaffold	na	na	LZII01000048.1	=	NZ_LZII01000048.1	Primary Assembly	3861	na
+contig_53	unplaced-scaffold	na	na	LZII01000049.1	=	NZ_LZII01000049.1	Primary Assembly	113900	na
+contig_54	unplaced-scaffold	na	na	LZII01000050.1	=	NZ_LZII01000050.1	Primary Assembly	1411	na
+contig_55	unplaced-scaffold	na	na	LZII01000051.1	=	NZ_LZII01000051.1	Primary Assembly	16190	na
+contig_56	unplaced-scaffold	na	na	LZII01000052.1	=	NZ_LZII01000052.1	Primary Assembly	196503	na
+contig_57	unplaced-scaffold	na	na	LZII01000053.1	=	NZ_LZII01000053.1	Primary Assembly	504	na
+contig_58	unplaced-scaffold	na	na	LZII01000054.1	=	NZ_LZII01000054.1	Primary Assembly	165416	na
+contig_59	unplaced-scaffold	na	na	LZII01000055.1	=	NZ_LZII01000055.1	Primary Assembly	118658	na
+contig_6	unplaced-scaffold	na	na	LZII01000056.1	=	NZ_LZII01000056.1	Primary Assembly	171468	na
+contig_60	unplaced-scaffold	na	na	LZII01000057.1	=	NZ_LZII01000057.1	Primary Assembly	4621	na
+contig_61	unplaced-scaffold	na	na	LZII01000058.1	=	NZ_LZII01000058.1	Primary Assembly	87568	na
+contig_62	unplaced-scaffold	na	na	LZII01000059.1	=	NZ_LZII01000059.1	Primary Assembly	597	na
+contig_63	unplaced-scaffold	na	na	LZII01000060.1	=	NZ_LZII01000060.1	Primary Assembly	49330	na
+contig_64	unplaced-scaffold	na	na	LZII01000061.1	=	NZ_LZII01000061.1	Primary Assembly	14577	na
+contig_65	unplaced-scaffold	na	na	LZII01000062.1	=	NZ_LZII01000062.1	Primary Assembly	107084	na
+contig_66	unplaced-scaffold	na	na	LZII01000063.1	=	NZ_LZII01000063.1	Primary Assembly	31476	na
+contig_67	unplaced-scaffold	na	na	LZII01000064.1	=	NZ_LZII01000064.1	Primary Assembly	12149	na
+contig_68	unplaced-scaffold	na	na	LZII01000065.1	=	NZ_LZII01000065.1	Primary Assembly	137605	na
+contig_69	unplaced-scaffold	na	na	LZII01000066.1	=	NZ_LZII01000066.1	Primary Assembly	31657	na
+contig_7	unplaced-scaffold	na	na	LZII01000067.1	=	NZ_LZII01000067.1	Primary Assembly	6125	na
+contig_70	unplaced-scaffold	na	na	LZII01000068.1	=	NZ_LZII01000068.1	Primary Assembly	82282	na
+contig_71	unplaced-scaffold	na	na	LZII01000069.1	=	NZ_LZII01000069.1	Primary Assembly	68916	na
+contig_72	unplaced-scaffold	na	na	LZII01000070.1	=	NZ_LZII01000070.1	Primary Assembly	29903	na
+contig_73	unplaced-scaffold	na	na	LZII01000071.1	=	NZ_LZII01000071.1	Primary Assembly	860	na
+contig_74	unplaced-scaffold	na	na	LZII01000072.1	=	NZ_LZII01000072.1	Primary Assembly	684	na
+contig_75	unplaced-scaffold	na	na	LZII01000073.1	=	NZ_LZII01000073.1	Primary Assembly	93651	na
+contig_76	unplaced-scaffold	na	na	LZII01000074.1	=	NZ_LZII01000074.1	Primary Assembly	57747	na
+contig_77	unplaced-scaffold	na	na	LZII01000075.1	=	NZ_LZII01000075.1	Primary Assembly	770	na
+contig_78	unplaced-scaffold	na	na	LZII01000076.1	=	NZ_LZII01000076.1	Primary Assembly	70534	na
+contig_79	unplaced-scaffold	na	na	LZII01000077.1	=	NZ_LZII01000077.1	Primary Assembly	19581	na
+contig_8	unplaced-scaffold	na	na	LZII01000078.1	=	NZ_LZII01000078.1	Primary Assembly	36725	na
+contig_80	unplaced-scaffold	na	na	LZII01000079.1	=	NZ_LZII01000079.1	Primary Assembly	612	na
+contig_81	unplaced-scaffold	na	na	LZII01000080.1	=	NZ_LZII01000080.1	Primary Assembly	242067	na
+contig_82	unplaced-scaffold	na	na	LZII01000081.1	=	NZ_LZII01000081.1	Primary Assembly	22422	na
+contig_83	unplaced-scaffold	na	na	LZII01000082.1	=	NZ_LZII01000082.1	Primary Assembly	26529	na
+contig_84	unplaced-scaffold	na	na	LZII01000083.1	=	NZ_LZII01000083.1	Primary Assembly	428223	na
+contig_85	unplaced-scaffold	na	na	LZII01000084.1	=	NZ_LZII01000084.1	Primary Assembly	14433	na
+contig_86	unplaced-scaffold	na	na	LZII01000085.1	=	NZ_LZII01000085.1	Primary Assembly	194023	na
+contig_9	unplaced-scaffold	na	na	LZII01000086.1	=	NZ_LZII01000086.1	Primary Assembly	31970	na

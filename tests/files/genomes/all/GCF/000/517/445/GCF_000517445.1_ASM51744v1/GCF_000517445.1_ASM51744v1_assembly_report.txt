@@ -1,0 +1,31 @@
+# Assembly name:  ASM51744v1
+# Organism name:  Thermococcus paralvinellae (euryarchaeotes)
+# Infraspecific name:  strain=ES1
+# Taxid:          582419
+# BioSample:      SAMN03081513
+# BioProject:     PRJNA230233
+# Submitter:      Kyung Hee University
+# Date:           2014-01-10
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Complete Genome
+# Genome representation: full
+# Assembly method: Newbler v. 2.3
+# Sequencing technology: 454; Illumina
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000517445.1
+# RefSeq assembly accession: GCF_000517445.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000517455.1	GCF_000517455.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ANONYMOUS	assembled-molecule	na	Chromosome	CP006965.1	=	NZ_CP006965.1	Primary Assembly	1957742	na

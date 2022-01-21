@@ -1,0 +1,102 @@
+# Assembly name:  Phisc1
+# Organism name:  Mollisia scopiformis (ascomycetes)
+# Infraspecific name:  strain=CBS 120377
+# Taxid:          149040
+# BioSample:      SAMN04009710
+# BioProject:     PRJNA262390
+# Submitter:      DOE Joint Genome Institute
+# Date:           2016-01-07
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    LKNI01
+# Assembly method: Allpaths-LG v. R36892
+# Genome coverage: 80.5x
+# Sequencing technology: Illumina
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_001500285.1
+# RefSeq assembly accession: GCF_001500285.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_001500295.1	GCF_001500295.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+LY89scaffold_1	unplaced-scaffold	na	na	KQ947404.1	=	NW_017263581.1	Primary Assembly	2762476	na
+LY89scaffold_2	unplaced-scaffold	na	na	KQ947405.1	=	NW_017263582.1	Primary Assembly	1957112	na
+LY89scaffold_3	unplaced-scaffold	na	na	KQ947406.1	=	NW_017263583.1	Primary Assembly	1913266	na
+LY89scaffold_4	unplaced-scaffold	na	na	KQ947407.1	=	NW_017263584.1	Primary Assembly	1888314	na
+LY89scaffold_5	unplaced-scaffold	na	na	KQ947408.1	=	NW_017263585.1	Primary Assembly	1787800	na
+LY89scaffold_6	unplaced-scaffold	na	na	KQ947409.1	=	NW_017263586.1	Primary Assembly	1724183	na
+LY89scaffold_7	unplaced-scaffold	na	na	KQ947410.1	=	NW_017263587.1	Primary Assembly	1615722	na
+LY89scaffold_8	unplaced-scaffold	na	na	KQ947411.1	=	NW_017263588.1	Primary Assembly	1610439	na
+LY89scaffold_9	unplaced-scaffold	na	na	KQ947412.1	=	NW_017263589.1	Primary Assembly	1547631	na
+LY89scaffold_10	unplaced-scaffold	na	na	KQ947413.1	=	NW_017263590.1	Primary Assembly	1543492	na
+LY89scaffold_11	unplaced-scaffold	na	na	KQ947414.1	=	NW_017263591.1	Primary Assembly	1506468	na
+LY89scaffold_12	unplaced-scaffold	na	na	KQ947415.1	=	NW_017263592.1	Primary Assembly	1482706	na
+LY89scaffold_13	unplaced-scaffold	na	na	KQ947416.1	=	NW_017263593.1	Primary Assembly	1427021	na
+LY89scaffold_14	unplaced-scaffold	na	na	KQ947417.1	=	NW_017263594.1	Primary Assembly	1375738	na
+LY89scaffold_15	unplaced-scaffold	na	na	KQ947418.1	=	NW_017263595.1	Primary Assembly	1331786	na
+LY89scaffold_16	unplaced-scaffold	na	na	KQ947419.1	=	NW_017263596.1	Primary Assembly	1327714	na
+LY89scaffold_17	unplaced-scaffold	na	na	KQ947420.1	=	NW_017263597.1	Primary Assembly	1298762	na
+LY89scaffold_18	unplaced-scaffold	na	na	KQ947421.1	=	NW_017263598.1	Primary Assembly	1269695	na
+LY89scaffold_19	unplaced-scaffold	na	na	KQ947422.1	=	NW_017263599.1	Primary Assembly	1242337	na
+LY89scaffold_20	unplaced-scaffold	na	na	KQ947423.1	=	NW_017263600.1	Primary Assembly	1223848	na
+LY89scaffold_21	unplaced-scaffold	na	na	KQ947424.1	=	NW_017263601.1	Primary Assembly	1136343	na
+LY89scaffold_22	unplaced-scaffold	na	na	KQ947425.1	=	NW_017263602.1	Primary Assembly	1119900	na
+LY89scaffold_23	unplaced-scaffold	na	na	KQ947426.1	=	NW_017263603.1	Primary Assembly	1010172	na
+LY89scaffold_24	unplaced-scaffold	na	na	KQ947427.1	=	NW_017263604.1	Primary Assembly	1007869	na
+LY89scaffold_25	unplaced-scaffold	na	na	KQ947428.1	=	NW_017263605.1	Primary Assembly	1004535	na
+LY89scaffold_26	unplaced-scaffold	na	na	KQ947429.1	=	NW_017263606.1	Primary Assembly	969302	na
+LY89scaffold_27	unplaced-scaffold	na	na	KQ947430.1	=	NW_017263607.1	Primary Assembly	951970	na
+LY89scaffold_28	unplaced-scaffold	na	na	KQ947431.1	=	NW_017263608.1	Primary Assembly	909471	na
+LY89scaffold_29	unplaced-scaffold	na	na	KQ947432.1	=	NW_017263609.1	Primary Assembly	862304	na
+LY89scaffold_30	unplaced-scaffold	na	na	KQ947433.1	=	NW_017263610.1	Primary Assembly	776694	na
+LY89scaffold_31	unplaced-scaffold	na	na	KQ947434.1	=	NW_017263611.1	Primary Assembly	732377	na
+LY89scaffold_32	unplaced-scaffold	na	na	KQ947435.1	=	NW_017263612.1	Primary Assembly	684601	na
+LY89scaffold_33	unplaced-scaffold	na	na	KQ947436.1	=	NW_017263613.1	Primary Assembly	635198	na
+LY89scaffold_34	unplaced-scaffold	na	na	KQ947437.1	=	NW_017263614.1	Primary Assembly	603786	na
+LY89scaffold_35	unplaced-scaffold	na	na	KQ947438.1	=	NW_017263615.1	Primary Assembly	602987	na
+LY89scaffold_36	unplaced-scaffold	na	na	KQ947439.1	=	NW_017263616.1	Primary Assembly	585617	na
+LY89scaffold_37	unplaced-scaffold	na	na	KQ947440.1	=	NW_017263617.1	Primary Assembly	479966	na
+LY89scaffold_38	unplaced-scaffold	na	na	KQ947441.1	=	NW_017263618.1	Primary Assembly	465738	na
+LY89scaffold_39	unplaced-scaffold	na	na	KQ947442.1	=	NW_017263619.1	Primary Assembly	446794	na
+LY89scaffold_40	unplaced-scaffold	na	na	KQ947443.1	=	NW_017263620.1	Primary Assembly	409309	na
+LY89scaffold_41	unplaced-scaffold	na	na	KQ947444.1	=	NW_017263621.1	Primary Assembly	330899	na
+LY89scaffold_42	unplaced-scaffold	na	na	KQ947445.1	=	NW_017263622.1	Primary Assembly	298824	na
+LY89scaffold_43	unplaced-scaffold	na	na	KQ947446.1	=	NW_017263623.1	Primary Assembly	217773	na
+LY89scaffold_44	unplaced-scaffold	na	na	KQ947447.1	=	NW_017263624.1	Primary Assembly	185456	na
+LY89scaffold_45	unplaced-scaffold	na	na	KQ947448.1	=	NW_017263625.1	Primary Assembly	164814	na
+LY89scaffold_46	unplaced-scaffold	na	na	KQ947449.1	=	NW_017263626.1	Primary Assembly	139701	na
+LY89scaffold_47	unplaced-scaffold	na	na	KQ947450.1	=	NW_017263627.1	Primary Assembly	79862	na
+LY89scaffold_48	unplaced-scaffold	na	na	KQ947451.1	=	NW_017263628.1	Primary Assembly	64611	na
+LY89scaffold_49	unplaced-scaffold	na	na	KQ947452.1	=	NW_017263629.1	Primary Assembly	30176	na
+LY89scaffold_50	unplaced-scaffold	na	na	KQ947453.1	=	NW_017263630.1	Primary Assembly	22826	na
+LY89scaffold_51	unplaced-scaffold	na	na	KQ947454.1	=	NW_017263631.1	Primary Assembly	16906	na
+LY89scaffold_52	unplaced-scaffold	na	na	KQ947455.1	=	NW_017263632.1	Primary Assembly	14344	na
+LY89scaffold_53	unplaced-scaffold	na	na	KQ947456.1	=	NW_017263633.1	Primary Assembly	13886	na
+LY89scaffold_54	unplaced-scaffold	na	na	KQ947457.1	=	NW_017263634.1	Primary Assembly	13303	na
+LY89scaffold_55	unplaced-scaffold	na	na	KQ947458.1	=	NW_017263635.1	Primary Assembly	12231	na
+LY89scaffold_56	unplaced-scaffold	na	na	KQ947459.1	=	NW_017263636.1	Primary Assembly	7368	na
+LY89scaffold_57	unplaced-scaffold	na	na	KQ947460.1	=	NW_017263637.1	Primary Assembly	3987	na
+LY89scaffold_58	unplaced-scaffold	na	na	KQ947461.1	=	NW_017263638.1	Primary Assembly	3352	na
+LY89scaffold_59	unplaced-scaffold	na	na	KQ947462.1	=	NW_017263639.1	Primary Assembly	2688	na
+LY89scaffold_60	unplaced-scaffold	na	na	KQ947463.1	=	NW_017263640.1	Primary Assembly	2671	na
+LY89scaffold_61	unplaced-scaffold	na	na	KQ947464.1	=	NW_017263641.1	Primary Assembly	2555	na
+LY89scaffold_62	unplaced-scaffold	na	na	KQ947465.1	=	NW_017263642.1	Primary Assembly	2346	na
+LY89scaffold_63	unplaced-scaffold	na	na	KQ947466.1	=	NW_017263643.1	Primary Assembly	2024	na
+LY89scaffold_64	unplaced-scaffold	na	na	KQ947467.1	=	NW_017263644.1	Primary Assembly	2023	na
+LY89scaffold_65	unplaced-scaffold	na	na	KQ947468.1	=	NW_017263645.1	Primary Assembly	1758	na
+LY89scaffold_66	unplaced-scaffold	na	na	KQ947469.1	=	NW_017263646.1	Primary Assembly	1696	na
+LY89scaffold_67	unplaced-scaffold	na	na	KQ947470.1	=	NW_017263647.1	Primary Assembly	1682	na
+LY89scaffold_68	unplaced-scaffold	na	na	KQ947471.1	=	NW_017263648.1	Primary Assembly	1566	na
+LY89scaffold_69	unplaced-scaffold	na	na	KQ947472.1	=	NW_017263649.1	Primary Assembly	1323	na
+LY89scaffold_70	unplaced-scaffold	na	na	KQ947473.1	=	NW_017263650.1	Primary Assembly	1130	na
+LY89scaffold_71	unplaced-scaffold	na	na	KQ947474.1	=	NW_017263651.1	Primary Assembly	1033	na

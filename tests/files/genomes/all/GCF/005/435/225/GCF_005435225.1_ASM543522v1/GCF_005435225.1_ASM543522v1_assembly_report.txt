@@ -1,0 +1,178 @@
+# Assembly name:  ASM543522v1
+# Organism name:  Halorubrum sp. ASP121 (euryarchaeotes)
+# Infraspecific name:  strain=ASP121
+# Taxid:          1855858
+# BioSample:      SAMN10910413
+# BioProject:     PRJNA521777
+# Submitter:      University of Connecticut
+# Date:           2019-05-16
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    SGXX01
+# Assembly method: SPAdes v. 3.11.1
+# Expected final version: yes
+# Genome coverage: 113x
+# Sequencing technology: Illumina MiSeq
+# GenBank assembly accession: GCA_005435225.1
+# RefSeq assembly accession: GCF_005435225.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_005435245.1	GCF_005435245.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+NODE_100_length_481_cov_0.000000	unplaced-scaffold	na	na	SGXX01000099.1	=	NZ_SGXX01000099.1	Primary Assembly	481	na
+NODE_101_length_479_cov_0.000000	unplaced-scaffold	na	na	SGXX01000100.1	=	NZ_SGXX01000100.1	Primary Assembly	479	na
+NODE_102_length_474_cov_0.000000	unplaced-scaffold	na	na	SGXX01000101.1	=	NZ_SGXX01000101.1	Primary Assembly	474	na
+NODE_103_length_472_cov_0.000000	unplaced-scaffold	na	na	SGXX01000102.1	=	NZ_SGXX01000102.1	Primary Assembly	472	na
+NODE_105_length_471_cov_0.000000	unplaced-scaffold	na	na	SGXX01000103.1	=	NZ_SGXX01000103.1	Primary Assembly	422	na
+NODE_106_length_470_cov_0.000000	unplaced-scaffold	na	na	SGXX01000104.1	=	NZ_SGXX01000104.1	Primary Assembly	470	na
+NODE_108_length_468_cov_0.000000	unplaced-scaffold	na	na	SGXX01000105.1	=	NZ_SGXX01000105.1	Primary Assembly	427	na
+NODE_109_length_466_cov_0.000000	unplaced-scaffold	na	na	SGXX01000106.1	=	NZ_SGXX01000106.1	Primary Assembly	466	na
+NODE_10_length_116541_cov_0.000000	unplaced-scaffold	na	na	SGXX01000010.1	=	NZ_SGXX01000010.1	Primary Assembly	116541	na
+NODE_111_length_462_cov_0.000000	unplaced-scaffold	na	na	SGXX01000107.1	=	NZ_SGXX01000107.1	Primary Assembly	462	na
+NODE_113_length_461_cov_0.000000	unplaced-scaffold	na	na	SGXX01000108.1	=	NZ_SGXX01000108.1	Primary Assembly	461	na
+NODE_114_length_461_cov_0.000000	unplaced-scaffold	na	na	SGXX01000109.1	=	NZ_SGXX01000109.1	Primary Assembly	461	na
+NODE_115_length_460_cov_0.000000	unplaced-scaffold	na	na	SGXX01000110.1	=	NZ_SGXX01000110.1	Primary Assembly	460	na
+NODE_116_length_460_cov_0.000000	unplaced-scaffold	na	na	SGXX01000111.1	=	NZ_SGXX01000111.1	Primary Assembly	460	na
+NODE_117_length_459_cov_0.000000	unplaced-scaffold	na	na	SGXX01000112.1	=	NZ_SGXX01000112.1	Primary Assembly	459	na
+NODE_118_length_459_cov_0.000000	unplaced-scaffold	na	na	SGXX01000113.1	=	NZ_SGXX01000113.1	Primary Assembly	404	na
+NODE_119_length_457_cov_0.000000	unplaced-scaffold	na	na	SGXX01000114.1	=	NZ_SGXX01000114.1	Primary Assembly	457	na
+NODE_11_length_94272_cov_0.000000	unplaced-scaffold	na	na	SGXX01000011.1	=	NZ_SGXX01000011.1	Primary Assembly	94272	na
+NODE_120_length_455_cov_0.000000	unplaced-scaffold	na	na	SGXX01000115.1	=	NZ_SGXX01000115.1	Primary Assembly	455	na
+NODE_121_length_454_cov_0.000000	unplaced-scaffold	na	na	SGXX01000116.1	=	NZ_SGXX01000116.1	Primary Assembly	454	na
+NODE_122_length_453_cov_0.000000	unplaced-scaffold	na	na	SGXX01000117.1	=	NZ_SGXX01000117.1	Primary Assembly	453	na
+NODE_123_length_451_cov_0.000000	unplaced-scaffold	na	na	SGXX01000118.1	=	NZ_SGXX01000118.1	Primary Assembly	451	na
+NODE_124_length_451_cov_0.000000	unplaced-scaffold	na	na	SGXX01000119.1	=	NZ_SGXX01000119.1	Primary Assembly	451	na
+NODE_125_length_451_cov_0.000000	unplaced-scaffold	na	na	SGXX01000120.1	=	NZ_SGXX01000120.1	Primary Assembly	451	na
+NODE_126_length_451_cov_0.000000	unplaced-scaffold	na	na	SGXX01000121.1	=	NZ_SGXX01000121.1	Primary Assembly	451	na
+NODE_127_length_449_cov_0.000000	unplaced-scaffold	na	na	SGXX01000122.1	=	NZ_SGXX01000122.1	Primary Assembly	449	na
+NODE_128_length_449_cov_0.000000	unplaced-scaffold	na	na	SGXX01000123.1	=	NZ_SGXX01000123.1	Primary Assembly	449	na
+NODE_129_length_448_cov_0.000000	unplaced-scaffold	na	na	SGXX01000124.1	=	NZ_SGXX01000124.1	Primary Assembly	448	na
+NODE_12_length_91249_cov_0.000000	unplaced-scaffold	na	na	SGXX01000012.1	=	NZ_SGXX01000012.1	Primary Assembly	91249	na
+NODE_130_length_447_cov_0.000000	unplaced-scaffold	na	na	SGXX01000125.1	=	NZ_SGXX01000125.1	Primary Assembly	447	na
+NODE_133_length_443_cov_0.000000	unplaced-scaffold	na	na	SGXX01000126.1	=	NZ_SGXX01000126.1	Primary Assembly	443	na
+NODE_134_length_443_cov_0.000000	unplaced-scaffold	na	na	SGXX01000127.1	=	NZ_SGXX01000127.1	Primary Assembly	443	na
+NODE_135_length_440_cov_0.000000	unplaced-scaffold	na	na	SGXX01000128.1	=	NZ_SGXX01000128.1	Primary Assembly	440	na
+NODE_136_length_440_cov_0.000000	unplaced-scaffold	na	na	SGXX01000129.1	=	NZ_SGXX01000129.1	Primary Assembly	440	na
+NODE_137_length_440_cov_0.000000	unplaced-scaffold	na	na	SGXX01000130.1	=	NZ_SGXX01000130.1	Primary Assembly	440	na
+NODE_138_length_439_cov_0.000000	unplaced-scaffold	na	na	SGXX01000131.1	=	NZ_SGXX01000131.1	Primary Assembly	439	na
+NODE_139_length_439_cov_0.000000	unplaced-scaffold	na	na	SGXX01000132.1	=	NZ_SGXX01000132.1	Primary Assembly	439	na
+NODE_13_length_87317_cov_26.653458	unplaced-scaffold	na	na	SGXX01000013.1	=	NZ_SGXX01000013.1	Primary Assembly	87317	na
+NODE_140_length_438_cov_0.000000	unplaced-scaffold	na	na	SGXX01000133.1	=	NZ_SGXX01000133.1	Primary Assembly	438	na
+NODE_142_length_438_cov_0.000000	unplaced-scaffold	na	na	SGXX01000134.1	=	NZ_SGXX01000134.1	Primary Assembly	438	na
+NODE_143_length_438_cov_0.000000	unplaced-scaffold	na	na	SGXX01000135.1	=	NZ_SGXX01000135.1	Primary Assembly	438	na
+NODE_144_length_437_cov_0.000000	unplaced-scaffold	na	na	SGXX01000136.1	=	NZ_SGXX01000136.1	Primary Assembly	437	na
+NODE_145_length_436_cov_0.000000	unplaced-scaffold	na	na	SGXX01000137.1	=	NZ_SGXX01000137.1	Primary Assembly	436	na
+NODE_146_length_435_cov_0.000000	unplaced-scaffold	na	na	SGXX01000138.1	=	NZ_SGXX01000138.1	Primary Assembly	435	na
+NODE_147_length_435_cov_0.000000	unplaced-scaffold	na	na	SGXX01000139.1	=	NZ_SGXX01000139.1	Primary Assembly	435	na
+NODE_148_length_434_cov_0.000000	unplaced-scaffold	na	na	SGXX01000140.1	=	NZ_SGXX01000140.1	Primary Assembly	372	na
+NODE_149_length_434_cov_0.000000	unplaced-scaffold	na	na	SGXX01000141.1	=	NZ_SGXX01000141.1	Primary Assembly	434	na
+NODE_14_length_85848_cov_0.000000	unplaced-scaffold	na	na	SGXX01000014.1	=	NZ_SGXX01000014.1	Primary Assembly	85848	na
+NODE_150_length_430_cov_0.000000	unplaced-scaffold	na	na	SGXX01000142.1	=	NZ_SGXX01000142.1	Primary Assembly	430	na
+NODE_151_length_429_cov_0.000000	unplaced-scaffold	na	na	SGXX01000143.1	=	NZ_SGXX01000143.1	Primary Assembly	429	na
+NODE_152_length_389_cov_0.000000	unplaced-scaffold	na	na	SGXX01000144.1	=	NZ_SGXX01000144.1	Primary Assembly	389	na
+NODE_153_length_310_cov_0.000000	unplaced-scaffold	na	na	SGXX01000145.1	=	NZ_SGXX01000145.1	Primary Assembly	310	na
+NODE_154_length_259_cov_0.000000	unplaced-scaffold	na	na	SGXX01000146.1	=	NZ_SGXX01000146.1	Primary Assembly	259	na
+NODE_155_length_240_cov_0.000000	unplaced-scaffold	na	na	SGXX01000147.1	=	NZ_SGXX01000147.1	Primary Assembly	240	na
+NODE_15_length_82507_cov_0.000000	unplaced-scaffold	na	na	SGXX01000015.1	=	NZ_SGXX01000015.1	Primary Assembly	82507	na
+NODE_16_length_80827_cov_0.000000	unplaced-scaffold	na	na	SGXX01000016.1	=	NZ_SGXX01000016.1	Primary Assembly	80827	na
+NODE_17_length_74797_cov_0.000000	unplaced-scaffold	na	na	SGXX01000017.1	=	NZ_SGXX01000017.1	Primary Assembly	74797	na
+NODE_18_length_71664_cov_28.499182	unplaced-scaffold	na	na	SGXX01000018.1	=	NZ_SGXX01000018.1	Primary Assembly	71664	na
+NODE_19_length_69790_cov_15.466991	unplaced-scaffold	na	na	SGXX01000019.1	=	NZ_SGXX01000019.1	Primary Assembly	69790	na
+NODE_1_length_343327_cov_6.740626	unplaced-scaffold	na	na	SGXX01000001.1	=	NZ_SGXX01000001.1	Primary Assembly	343327	na
+NODE_20_length_68766_cov_0.000000	unplaced-scaffold	na	na	SGXX01000020.1	=	NZ_SGXX01000020.1	Primary Assembly	68766	na
+NODE_21_length_56002_cov_0.000000	unplaced-scaffold	na	na	SGXX01000021.1	=	NZ_SGXX01000021.1	Primary Assembly	56002	na
+NODE_22_length_50628_cov_34.095364	unplaced-scaffold	na	na	SGXX01000022.1	=	NZ_SGXX01000022.1	Primary Assembly	50628	na
+NODE_23_length_49957_cov_0.000000	unplaced-scaffold	na	na	SGXX01000023.1	=	NZ_SGXX01000023.1	Primary Assembly	49957	na
+NODE_24_length_48907_cov_0.000000	unplaced-scaffold	na	na	SGXX01000024.1	=	NZ_SGXX01000024.1	Primary Assembly	48907	na
+NODE_25_length_35735_cov_0.000000	unplaced-scaffold	na	na	SGXX01000025.1	=	NZ_SGXX01000025.1	Primary Assembly	35735	na
+NODE_26_length_21836_cov_0.000000	unplaced-scaffold	na	na	SGXX01000026.1	=	NZ_SGXX01000026.1	Primary Assembly	21836	na
+NODE_27_length_14558_cov_0.000000	unplaced-scaffold	na	na	SGXX01000027.1	=	NZ_SGXX01000027.1	Primary Assembly	14558	na
+NODE_28_length_11108_cov_0.000000	unplaced-scaffold	na	na	SGXX01000028.1	=	NZ_SGXX01000028.1	Primary Assembly	11108	na
+NODE_29_length_7547_cov_61.927898	unplaced-scaffold	na	na	SGXX01000029.1	=	NZ_SGXX01000029.1	Primary Assembly	7547	na
+NODE_2_length_303917_cov_0.000000	unplaced-scaffold	na	na	SGXX01000002.1	=	NZ_SGXX01000002.1	Primary Assembly	303917	na
+NODE_30_length_5359_cov_0.000000	unplaced-scaffold	na	na	SGXX01000030.1	=	NZ_SGXX01000030.1	Primary Assembly	5359	na
+NODE_31_length_4419_cov_840.485089	unplaced-scaffold	na	na	SGXX01000031.1	=	NZ_SGXX01000031.1	Primary Assembly	4419	na
+NODE_32_length_3822_cov_0.000000	unplaced-scaffold	na	na	SGXX01000032.1	=	NZ_SGXX01000032.1	Primary Assembly	3822	na
+NODE_33_length_3509_cov_0.000000	unplaced-scaffold	na	na	SGXX01000033.1	=	NZ_SGXX01000033.1	Primary Assembly	3509	na
+NODE_34_length_2744_cov_24.218953	unplaced-scaffold	na	na	SGXX01000034.1	=	NZ_SGXX01000034.1	Primary Assembly	2744	na
+NODE_35_length_2723_cov_0.000000	unplaced-scaffold	na	na	SGXX01000035.1	=	NZ_SGXX01000035.1	Primary Assembly	2723	na
+NODE_36_length_2299_cov_320.986648	unplaced-scaffold	na	na	SGXX01000036.1	=	NZ_SGXX01000036.1	Primary Assembly	2299	na
+NODE_37_length_2099_cov_0.000000	unplaced-scaffold	na	na	SGXX01000037.1	=	NZ_SGXX01000037.1	Primary Assembly	2099	na
+NODE_38_length_2085_cov_0.000000	unplaced-scaffold	na	na	SGXX01000038.1	=	NZ_SGXX01000038.1	Primary Assembly	2085	na
+NODE_39_length_1851_cov_0.000000	unplaced-scaffold	na	na	SGXX01000039.1	=	NZ_SGXX01000039.1	Primary Assembly	1851	na
+NODE_3_length_291348_cov_0.000000	unplaced-scaffold	na	na	SGXX01000003.1	=	NZ_SGXX01000003.1	Primary Assembly	291348	na
+NODE_40_length_1730_cov_0.000000	unplaced-scaffold	na	na	SGXX01000040.1	=	NZ_SGXX01000040.1	Primary Assembly	1730	na
+NODE_41_length_1656_cov_0.000000	unplaced-scaffold	na	na	SGXX01000041.1	=	NZ_SGXX01000041.1	Primary Assembly	1656	na
+NODE_42_length_1638_cov_0.000000	unplaced-scaffold	na	na	SGXX01000042.1	=	NZ_SGXX01000042.1	Primary Assembly	1638	na
+NODE_43_length_1608_cov_727.528022	unplaced-scaffold	na	na	SGXX01000043.1	=	NZ_SGXX01000043.1	Primary Assembly	1608	na
+NODE_44_length_1587_cov_0.000000	unplaced-scaffold	na	na	SGXX01000044.1	=	NZ_SGXX01000044.1	Primary Assembly	1587	na
+NODE_45_length_1572_cov_0.000000	unplaced-scaffold	na	na	SGXX01000045.1	=	NZ_SGXX01000045.1	Primary Assembly	1572	na
+NODE_46_length_1524_cov_0.000000	unplaced-scaffold	na	na	SGXX01000046.1	=	NZ_SGXX01000046.1	Primary Assembly	1524	na
+NODE_47_length_1445_cov_0.000000	unplaced-scaffold	na	na	SGXX01000047.1	=	NZ_SGXX01000047.1	Primary Assembly	1445	na
+NODE_48_length_1363_cov_0.000000	unplaced-scaffold	na	na	SGXX01000048.1	=	NZ_SGXX01000048.1	Primary Assembly	1363	na
+NODE_49_length_1269_cov_0.000000	unplaced-scaffold	na	na	SGXX01000049.1	=	NZ_SGXX01000049.1	Primary Assembly	1230	na
+NODE_4_length_271253_cov_7.519430	unplaced-scaffold	na	na	SGXX01000004.1	=	NZ_SGXX01000004.1	Primary Assembly	271253	na
+NODE_50_length_1067_cov_0.000000	unplaced-scaffold	na	na	SGXX01000050.1	=	NZ_SGXX01000050.1	Primary Assembly	1067	na
+NODE_51_length_949_cov_0.000000	unplaced-scaffold	na	na	SGXX01000051.1	=	NZ_SGXX01000051.1	Primary Assembly	949	na
+NODE_52_length_730_cov_0.000000	unplaced-scaffold	na	na	SGXX01000052.1	=	NZ_SGXX01000052.1	Primary Assembly	730	na
+NODE_53_length_713_cov_0.000000	unplaced-scaffold	na	na	SGXX01000053.1	=	NZ_SGXX01000053.1	Primary Assembly	687	na
+NODE_54_length_712_cov_0.000000	unplaced-scaffold	na	na	SGXX01000054.1	=	NZ_SGXX01000054.1	Primary Assembly	712	na
+NODE_55_length_708_cov_0.000000	unplaced-scaffold	na	na	SGXX01000055.1	=	NZ_SGXX01000055.1	Primary Assembly	708	na
+NODE_56_length_703_cov_0.000000	unplaced-scaffold	na	na	SGXX01000056.1	=	NZ_SGXX01000056.1	Primary Assembly	703	na
+NODE_57_length_680_cov_0.000000	unplaced-scaffold	na	na	SGXX01000057.1	=	NZ_SGXX01000057.1	Primary Assembly	680	na
+NODE_58_length_668_cov_0.000000	unplaced-scaffold	na	na	SGXX01000058.1	=	NZ_SGXX01000058.1	Primary Assembly	668	na
+NODE_59_length_663_cov_0.000000	unplaced-scaffold	na	na	SGXX01000059.1	=	NZ_SGXX01000059.1	Primary Assembly	663	na
+NODE_5_length_230816_cov_34.067892	unplaced-scaffold	na	na	SGXX01000005.1	=	NZ_SGXX01000005.1	Primary Assembly	230816	na
+NODE_60_length_647_cov_0.000000	unplaced-scaffold	na	na	SGXX01000060.1	=	NZ_SGXX01000060.1	Primary Assembly	647	na
+NODE_61_length_635_cov_0.000000	unplaced-scaffold	na	na	SGXX01000061.1	=	NZ_SGXX01000061.1	Primary Assembly	635	na
+NODE_62_length_624_cov_0.000000	unplaced-scaffold	na	na	SGXX01000062.1	=	NZ_SGXX01000062.1	Primary Assembly	624	na
+NODE_63_length_620_cov_0.000000	unplaced-scaffold	na	na	SGXX01000063.1	=	NZ_SGXX01000063.1	Primary Assembly	620	na
+NODE_64_length_620_cov_0.000000	unplaced-scaffold	na	na	SGXX01000064.1	=	NZ_SGXX01000064.1	Primary Assembly	620	na
+NODE_65_length_510_cov_0.000000	unplaced-scaffold	na	na	SGXX01000065.1	=	NZ_SGXX01000065.1	Primary Assembly	510	na
+NODE_66_length_609_cov_0.000000	unplaced-scaffold	na	na	SGXX01000066.1	=	NZ_SGXX01000066.1	Primary Assembly	609	na
+NODE_67_length_601_cov_0.000000	unplaced-scaffold	na	na	SGXX01000067.1	=	NZ_SGXX01000067.1	Primary Assembly	601	na
+NODE_68_length_596_cov_0.000000	unplaced-scaffold	na	na	SGXX01000068.1	=	NZ_SGXX01000068.1	Primary Assembly	596	na
+NODE_69_length_587_cov_0.000000	unplaced-scaffold	na	na	SGXX01000069.1	=	NZ_SGXX01000069.1	Primary Assembly	558	na
+NODE_6_length_224546_cov_9.555229	unplaced-scaffold	na	na	SGXX01000006.1	=	NZ_SGXX01000006.1	Primary Assembly	224546	na
+NODE_70_length_577_cov_0.000000	unplaced-scaffold	na	na	SGXX01000070.1	=	NZ_SGXX01000070.1	Primary Assembly	577	na
+NODE_71_length_574_cov_0.000000	unplaced-scaffold	na	na	SGXX01000071.1	=	NZ_SGXX01000071.1	Primary Assembly	574	na
+NODE_72_length_570_cov_0.000000	unplaced-scaffold	na	na	SGXX01000072.1	=	NZ_SGXX01000072.1	Primary Assembly	570	na
+NODE_73_length_546_cov_0.000000	unplaced-scaffold	na	na	SGXX01000073.1	=	NZ_SGXX01000073.1	Primary Assembly	480	na
+NODE_74_length_543_cov_0.000000	unplaced-scaffold	na	na	SGXX01000074.1	=	NZ_SGXX01000074.1	Primary Assembly	517	na
+NODE_75_length_528_cov_0.000000	unplaced-scaffold	na	na	SGXX01000075.1	=	NZ_SGXX01000075.1	Primary Assembly	528	na
+NODE_76_length_528_cov_0.000000	unplaced-scaffold	na	na	SGXX01000076.1	=	NZ_SGXX01000076.1	Primary Assembly	528	na
+NODE_77_length_527_cov_0.000000	unplaced-scaffold	na	na	SGXX01000077.1	=	NZ_SGXX01000077.1	Primary Assembly	527	na
+NODE_78_length_522_cov_0.000000	unplaced-scaffold	na	na	SGXX01000078.1	=	NZ_SGXX01000078.1	Primary Assembly	522	na
+NODE_79_length_519_cov_0.000000	unplaced-scaffold	na	na	SGXX01000079.1	=	NZ_SGXX01000079.1	Primary Assembly	519	na
+NODE_7_length_142149_cov_0.000000	unplaced-scaffold	na	na	SGXX01000007.1	=	NZ_SGXX01000007.1	Primary Assembly	142149	na
+NODE_80_length_518_cov_0.000000	unplaced-scaffold	na	na	SGXX01000080.1	=	NZ_SGXX01000080.1	Primary Assembly	518	na
+NODE_81_length_514_cov_0.000000	unplaced-scaffold	na	na	SGXX01000081.1	=	NZ_SGXX01000081.1	Primary Assembly	514	na
+NODE_82_length_513_cov_0.000000	unplaced-scaffold	na	na	SGXX01000082.1	=	NZ_SGXX01000082.1	Primary Assembly	513	na
+NODE_83_length_510_cov_0.000000	unplaced-scaffold	na	na	SGXX01000083.1	=	NZ_SGXX01000083.1	Primary Assembly	510	na
+NODE_84_length_508_cov_0.000000	unplaced-scaffold	na	na	SGXX01000084.1	=	NZ_SGXX01000084.1	Primary Assembly	475	na
+NODE_85_length_508_cov_0.000000	unplaced-scaffold	na	na	SGXX01000085.1	=	NZ_SGXX01000085.1	Primary Assembly	508	na
+NODE_86_length_503_cov_0.000000	unplaced-scaffold	na	na	SGXX01000086.1	=	NZ_SGXX01000086.1	Primary Assembly	503	na
+NODE_87_length_503_cov_0.000000	unplaced-scaffold	na	na	SGXX01000087.1	=	NZ_SGXX01000087.1	Primary Assembly	503	na
+NODE_88_length_499_cov_0.000000	unplaced-scaffold	na	na	SGXX01000088.1	=	NZ_SGXX01000088.1	Primary Assembly	499	na
+NODE_89_length_496_cov_0.000000	unplaced-scaffold	na	na	SGXX01000089.1	=	NZ_SGXX01000089.1	Primary Assembly	496	na
+NODE_8_length_131525_cov_0.000000	unplaced-scaffold	na	na	SGXX01000008.1	=	NZ_SGXX01000008.1	Primary Assembly	131525	na
+NODE_90_length_496_cov_0.000000	unplaced-scaffold	na	na	SGXX01000090.1	=	NZ_SGXX01000090.1	Primary Assembly	496	na
+NODE_91_length_494_cov_0.000000	unplaced-scaffold	na	na	SGXX01000091.1	=	NZ_SGXX01000091.1	Primary Assembly	494	na
+NODE_92_length_493_cov_0.000000	unplaced-scaffold	na	na	SGXX01000092.1	=	NZ_SGXX01000092.1	Primary Assembly	493	na
+NODE_93_length_490_cov_0.000000	unplaced-scaffold	na	na	SGXX01000093.1	=	NZ_SGXX01000093.1	Primary Assembly	490	na
+NODE_94_length_490_cov_0.000000	unplaced-scaffold	na	na	SGXX01000094.1	=	NZ_SGXX01000094.1	Primary Assembly	490	na
+NODE_95_length_488_cov_0.000000	unplaced-scaffold	na	na	SGXX01000095.1	=	NZ_SGXX01000095.1	Primary Assembly	488	na
+NODE_97_length_484_cov_0.000000	unplaced-scaffold	na	na	SGXX01000096.1	=	NZ_SGXX01000096.1	Primary Assembly	484	na
+NODE_98_length_483_cov_0.000000	unplaced-scaffold	na	na	SGXX01000097.1	=	NZ_SGXX01000097.1	Primary Assembly	483	na
+NODE_99_length_481_cov_0.000000	unplaced-scaffold	na	na	SGXX01000098.1	=	NZ_SGXX01000098.1	Primary Assembly	481	na
+NODE_9_length_123530_cov_0.513602	unplaced-scaffold	na	na	SGXX01000009.1	=	NZ_SGXX01000009.1	Primary Assembly	123530	na

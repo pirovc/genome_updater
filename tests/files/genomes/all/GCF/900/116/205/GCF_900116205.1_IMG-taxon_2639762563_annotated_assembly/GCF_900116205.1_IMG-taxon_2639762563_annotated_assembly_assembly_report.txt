@@ -1,0 +1,46 @@
+# Assembly name:  IMG-taxon 2639762563 annotated assembly
+# Organism name:  Halostagnicola kamekurae (euryarchaeotes)
+# Infraspecific name:  strain=DSM 22427
+# Taxid:          619731
+# BioSample:      SAMN04488556
+# BioProject:     PRJEB17531
+# Submitter:      DOE - JOINT GENOME INSTITUTE
+# Date:           2016-11-02
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    FOZS01
+# Genome coverage: 315x
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_900116205.1
+# RefSeq assembly accession: GCF_900116205.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_900116204.1	GCF_900116204.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+FOZS01000013.1	unplaced-scaffold	na	na	FOZS01000013.1	=	NZ_FOZS01000013.1	Primary Assembly	19164	na
+FOZS01000016.1	unplaced-scaffold	na	na	FOZS01000016.1	=	NZ_FOZS01000016.1	Primary Assembly	1834	na
+FOZS01000012.1	unplaced-scaffold	na	na	FOZS01000012.1	=	NZ_FOZS01000012.1	Primary Assembly	32502	na
+FOZS01000011.1	unplaced-scaffold	na	na	FOZS01000011.1	=	NZ_FOZS01000011.1	Primary Assembly	33433	na
+FOZS01000001.1	unplaced-scaffold	na	na	FOZS01000001.1	=	NZ_FOZS01000001.1	Primary Assembly	1498774	na
+FOZS01000003.1	unplaced-scaffold	na	na	FOZS01000003.1	=	NZ_FOZS01000003.1	Primary Assembly	491679	na
+FOZS01000010.1	unplaced-scaffold	na	na	FOZS01000010.1	=	NZ_FOZS01000010.1	Primary Assembly	41583	na
+FOZS01000004.1	unplaced-scaffold	na	na	FOZS01000004.1	=	NZ_FOZS01000004.1	Primary Assembly	466894	na
+FOZS01000005.1	unplaced-scaffold	na	na	FOZS01000005.1	=	NZ_FOZS01000005.1	Primary Assembly	92418	na
+FOZS01000015.1	unplaced-scaffold	na	na	FOZS01000015.1	=	NZ_FOZS01000015.1	Primary Assembly	4609	na
+FOZS01000006.1	unplaced-scaffold	na	na	FOZS01000006.1	=	NZ_FOZS01000006.1	Primary Assembly	65221	na
+FOZS01000014.1	unplaced-scaffold	na	na	FOZS01000014.1	=	NZ_FOZS01000014.1	Primary Assembly	7744	na
+FOZS01000007.1	unplaced-scaffold	na	na	FOZS01000007.1	=	NZ_FOZS01000007.1	Primary Assembly	55856	na
+FOZS01000002.1	unplaced-scaffold	na	na	FOZS01000002.1	=	NZ_FOZS01000002.1	Primary Assembly	1202185	na
+FOZS01000008.1	unplaced-scaffold	na	na	FOZS01000008.1	=	NZ_FOZS01000008.1	Primary Assembly	48751	na
+FOZS01000009.1	unplaced-scaffold	na	na	FOZS01000009.1	=	NZ_FOZS01000009.1	Primary Assembly	45500	na
