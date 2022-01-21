@@ -274,6 +274,15 @@ setup_file() {
     assert_output ""
 }
 
+@test "Using curl" {
+    outdir=${outprefix}using-curl/
+    label="test"
+    use_curl=1
+    export use_curl
+    run ./genome_updater.sh -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+}
+
 @test "Mode FIX" {
     outdir=${outprefix}mode-fix/
     label="test"
