@@ -40,7 +40,7 @@ Downloading all complete genome sequences from Archaea in the RefSeq repository 
  - Add `-k` to perform a dry-run before the actual run. genome_updater will show how many files will be downloaded or updated and exit without changes
  - The *same command* executed again (e.g. some days later), will update the snapshot of the requested dataset to its latest state, accounting for new, updated and removed sequences.
 
-## Main functionalities
+## Options
 
 Data selection:
 - **-d**: database selection (genbank and/or refseq)
