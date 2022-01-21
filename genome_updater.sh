@@ -409,7 +409,7 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
 
     # parallel -k parameter keeps job output order (better for showing progress) but makes it a bit slower 
     # send url, job number and total files (to print progress)
-    parallel --gnu -a ${url_list_download} -j ${threads} download "{}" "{#}" "${total_files}" "${url_success_download}"
+    parallel --gnu --tmpdir ${working_dir} -a ${url_list_download} -j ${threads} download "{}" "{#}" "${total_files}" "${url_success_download}"
 
     print_progress ${total_files} ${total_files} #print final 100%
 
@@ -457,7 +457,7 @@ output_sequence_accession() # parameters: ${1} file, ${2} field [assembly access
 {
     join <(list_files ${1} ${2} "assembly_report.txt" | sort -k 1,1) <(check_complete_record ${1} ${2} ${3} | sort -k 1,1) -t$'\t' -o "1.1,1.3" | # List assembly accession and filename for all assembly_report.txt with complete record (no missing files) - returns assembly accesion, filename
     join - <(sort -k 1,1 ${5}) -t$'\t' -o "1.1,1.2,2.6" | # Get taxid {1} assembly accesion, {2} filename {3} taxid
-    parallel --colsep "\t" -j ${threads} -k 'grep "^[^#]" "'"${target_output_prefix}${files_dir}"'{2}" | tr -d "\r" | cut -f 5,7,9 | sed "s/^/{1}\\t/" | sed "s/$/\\t{3}/"' | # Retrieve info from assembly_report.txt and add assemby accession in the beggining and taxid at the end
+    parallel --tmpdir ${working_dir} --colsep "\t" -j ${threads} -k 'grep "^[^#]" "'"${target_output_prefix}${files_dir}"'{2}" | tr -d "\r" | cut -f 5,7,9 | sed "s/^/{1}\\t/" | sed "s/$/\\t{3}/"' | # Retrieve info from assembly_report.txt and add assemby accession in the beggining and taxid at the end
     sed "s/^/${4}\t/" # Add mode A/R at the end    
 }
 
