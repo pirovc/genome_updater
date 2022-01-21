@@ -6,9 +6,9 @@ With genome_updater you can download and keep several snapshots of a certain sub
 
 ## Details
 
-- genome_updater runs on a working directory (defined with **-o**) and creates a snapshot (**-b**) of refseq and/or genbank (**-d**) genome repositories based on selected parameters: organism groups (**-g**), taxonomic ids (**-S**/**-T**) with the desired files type(s) (**-f**)
-- Many filters can be applied to the selection: RefSeq category (**-c**), assembly level (**-l**), custom filters (**-F**), top assemblies (**-P**/**-A**), GTDB [3] compatible sequences (**-z**).
-- genome_updater can update the selected repository (after some days, for example). It will identify previous files and update the working directory with the most recent versions, keeping track of all changes and just downloading/removing what is necessary
+- genome_updater runs on a working directory (defined with `-o`) and creates a snapshot (`-b`) of refseq and/or genbank (`-d`) genome repositories based on selected organism groups (`-g`) and/or taxonomic ids (`-S`/`-T`) with the desired files type(s) (`-f`)
+- Many filters can be applied to refine the selection: RefSeq category (`-c`), assembly level (`-l`), custom filters (`-F`), top assemblies (`-P`/`-A`), GTDB [3] compatible sequences (`-z`).
+- genome_updater can update the selected repository after some days, for example. It will identify previous files and update the working directory with the most recent versions, keeping track of all changes and just downloading/removing what is necessary
 
 ## Installation
 
@@ -23,9 +23,9 @@ or simply download the raw file and give execution permissions:
 	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
 	chmod +x genome_updater.sh
 
- - genome_updater depends on the GNU Core Utilities and additional tools (`awk` `bc` `find` `join` `md5sum` `parallel` `sed` `tar` `xargs` `wget`/`curl`) which are commonly available in most distributions. If you are not sure if you have them all, just run `genome_updater.sh` and it will tell you if something is missing (otherwise the it will show the help page).
+ - genome_updater is portable and depends on the GNU Core Utilities + few additional tools (`awk` `bc` `find` `join` `md5sum` `parallel` `sed` `tar` `xargs` `wget`/`curl`) which are commonly available and installed in most distributions. If you are not sure if you have them all, just run `genome_updater.sh` and it will tell you if something is missing (otherwise the it will show the help page).
 
-To test if genome_updater is running properly on your system:
+To test if all genome_updater functions are running properly on your system:
 
 	git clone --recurse-submodules https://github.com/pirovc/genome_updater.git
 	cd genome_updater
@@ -33,7 +33,7 @@ To test if genome_updater is running properly on your system:
 
 ## Usage
 
-Downloading all complete genome sequences from Archaea in the RefSeq repository (`-t` defines the number parallel downloads and `-m` to check MD5 after download):
+Downloads complete genome sequences from Archaea in the RefSeq repository (`-t` number parallel downloads, `-m` checks download completeness):
 
 	./genome_updater.sh -g "archaea" -d "refseq" -l "complete genome" -f "genomic.fna.gz" -o "arc_refseq_cg" -t 12 -m
 
@@ -43,29 +43,29 @@ Downloading all complete genome sequences from Archaea in the RefSeq repository 
 ## Options
 
 Data selection:
-- **-d**: database selection (genbank and/or refseq)
-- **-g**: selection of assemblies by organism groups (**-g "archaea,bacteria"**)
-- **-S**: selection of assemblies by species taxids (**-S "562,623"**)
-- **-T**: selection of assemblies by any taxids including all children nodes (**-T "620,1643685"**)
-- **-f**: suffix of files to be downloaded for each entry [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
-- **-l**: filter by Assembly level [all, complete genome, chromosome, scaffold, contig]
-- **-c**: filter by RefSeq Category [all, reference genome, representative genome, na]
-- **-P**: select [top assemblies](#top-assemblies) for species entries (**-P 3**) to download the top 3 assemblies for each species
-- **-A**: select [top assemblies](#top-assemblies) for taxids entries (**-A 3**) to download the top 3 assemblies for each taxid selected
-- **-z**: select only assemblies included in the latest GTDB release
+- `-d`: database selection (genbank and/or refseq)
+- `-g`: selection of assemblies by organism groups (`-g "archaea,bacteria"`)
+- `-S`: selection of assemblies by species taxids (`-S "562,623"`)
+- `-T`: selection of assemblies by any taxids including all children nodes (`-T "620,1643685"`)
+- `-f`: suffix of files to be downloaded for each entry [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
+- `-l`: filter by Assembly level [all, complete genome, chromosome, scaffold, contig]
+- `-c`: filter by RefSeq Category [all, reference genome, representative genome, na]
+- `-P`: select [top assemblies](#top-assemblies) for species entries (`-P 3`) to download the top 3 assemblies for each species
+- `-A`: select [top assemblies](#top-assemblies) for taxids entries (`-A 3`) to download the top 3 assemblies for each taxid selected
+- `-z`: select only assemblies included in the latest GTDB release
 
 Utilities:
-- **-i**: fixes current snapshot in case of network or any other failure during download
-- **-k**: dry-run - do not perform any download or update, but shows number of files to be downloaded or updated
-- **-t**: run many parallel downloads
-- **-m**: checks for file integrity (MD5)
-- **-e**: re-downloads entries from any "assembly_summary.txt" obtained from external sources. Easy way to share snapshots of exact database version used.
-- **-a**: downloads the current version of the NCBI taxonomy database (taxdump.tar.gz)
+- `-i`: fixes current snapshot in case of network or any other failure during download
+- `-k`: dry-run - do not perform any download or update, but shows number of files to be downloaded or updated
+- `-t`: run many parallel downloads
+- `-m`: checks for file integrity (MD5)
+- `-e`: re-downloads entries from any "assembly_summary.txt" obtained from external sources. Easy way to share snapshots of exact database version used.
+- `-a`: downloads the current version of the NCBI taxonomy database (taxdump.tar.gz)
 
 Reports:
-- **-u**: Added/Removed assembly accessions
-- **-r**: Added/Removed sequence accessions 
-- **-p**: Output list of URLs for downloaded and failed files
+- `-u`: Added/Removed assembly accessions
+- `-r`: Added/Removed sequence accessions 
+- `-p`: Output list of URLs for downloaded and failed files
 
 ## Examples
 
@@ -85,15 +85,15 @@ Reports:
 
 ### Download all RNA Viruses (under the taxon Riboviria) on RefSeq
 
-	./genome_updater.sh -d "refseq" -g "taxids:2559587" -f "genomic.fna.gz" -o "all_rna_virus" -t 12
+	./genome_updater.sh -d "refseq" -T "2559587" -f "genomic.fna.gz" -o "all_rna_virus" -t 12
 
 ### Download one genome assembly for each bacterial species in genbank
 
-	./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_genbank" -t 12 -P "1"
+	./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_genbank" -t 12 -P 1
 
-### Download all E. Coli assemblies available on GenBank and RefSeq with a named label (v1)
+### Download all E. Coli assemblies available on GenBank and RefSeq under a label (v1)
 
-	./genome_updater.sh -d "genbank,refseq" -g "species:562" -f "genomic.fna.gz" -o "all_ecoli" -t 12 -b v1
+	./genome_updater.sh -d "genbank,refseq" -S "562" -f "genomic.fna.gz" -o "all_ecoli" -t 12 -b v1
 
 ### Check amount of reference entries available for the set of Viral genomes on genbank
 
@@ -105,15 +105,15 @@ Reports:
 
 ### Recovering fasta files from a previously obtained assembly_summary.txt
 
-	./genome_updater.sh -e /my/path/assembly_summary.txt -f "genomic.fna.gz" -o "recovered_sequences" -b january_2018
+	./genome_updater.sh -e /my/path/assembly_summary.txt -f "genomic.fna.gz" -o "recovered_sequences" -b "january_2018"
 
-### Changing timeout, retries and downloader (curl instead of default wget)
+### Use curl, change timeout and retries for download (default wget)
 
 	retries=10 timeout=600 use_curl=1 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt"
 
 ## Top assemblies
 
-The top assemblies (**-P**/**-A**) will be selected based on the species/taxid entries in the assembly_summary.txt and not for the taxids provided with -g "taxids:...". They are selected sorted by categories in the following order of importance:
+The top assemblies (`-P`/`-A`) will be selected based on the species/taxid entries in the assembly_summary.txt and not for the taxids provided with  (`-S`/`-T`). They are selected sorted by categories in the following order of importance:
 	
 	A) RefSeq Category: 
 		1) reference genome
