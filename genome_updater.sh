@@ -530,7 +530,7 @@ check_md5=0
 updated_assembly_accession=0
 updated_sequence_accession=0
 url_list=0
-just_check=0
+dry_run=0
 just_fix=0
 conditional_exit=0
 silent=0
@@ -558,22 +558,22 @@ function showhelp {
     print_logo
     echo
     echo $'Database options:'
-    echo $' -d Database [genbank, refseq] to use both: genbank,refeseq\n\tDefault: refseq'
+    echo $' -d Database (comma-separated entries) [genbank, refseq]\tDefault: refseq'
     echo
     echo $'Organism options:'
-    echo $' -g Organism group (one or more comma-separated entries) [archaea, bacteria, fungi, human, invertebrate, metagenomes, other, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]. Example: archaea,bacteria.\n\tDefault: ""'
-    echo $' -S Species level taxids (one or more comma-separated entries). Example: 622,562\n\tDefault: ""'
-    echo $' -T Any level taxids - children lineage will be generated (one or more comma-separated entries). Example: 620,649776\n\tDefault: ""'
+    echo $' -g Organism group (comma-separated entries) [archaea, bacteria, fungi, human, invertebrate, metagenomes, other, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]. Example: archaea,bacteria.\n\tDefault: ""'
+    echo $' -S Species level taxonomic ids (comma-separated entries). Example: 622,562\n\tDefault: ""'
+    echo $' -T Any taxonomic ids - children lineage will be generated (comma-separated entries). Example: 620,649776\n\tDefault: ""'
     echo
     echo $'File options:'
     echo $' -f files to download [genomic.fna.gz,assembly_report.txt, ...] check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats\n\tDefault: assembly_report.txt'
     echo
     echo $'Filter options:'
-    echo $' -c refseq category (one or several comma-separated entries, empty for all) [reference genome, representative genome, na]\n\tDefault: ""'
-    echo $' -l assembly level (one or several comma-separated entries, empty for all) [complete genome, chromosome, scaffold, contig]\n\tDefault: ""'
+    echo $' -c refseq category (comma-separated entries, empty for all) [reference genome, representative genome, na]\n\tDefault: ""'
+    echo $' -l assembly level (comma-separated entries, empty for all) [complete genome, chromosome, scaffold, contig]\n\tDefault: ""'
     echo $' -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive). Example: -F "2:PRJNA12377,PRJNA670754|14:Partial" for column infos check ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
-    echo $' -P Number of top references for each species nodes to download. 0 to not filter. Selection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first)\n\tDefault: 0'
-    echo $' -A Number of top references for each taxids (leaf nodes) to download. 0 to not filter. Selection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first)\n\tDefault: 0'
+    echo $' -P Number of top references for each species nodes to download. 0 for all. Selection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first)\n\tDefault: 0'
+    echo $' -A Number of top references for each taxids (leaf nodes) to download. 0 for all. Selection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first)\n\tDefault: 0'
     echo $' -z Keep only assemblies present on the latest GTDB release'
     echo
     echo $'Report options:'
@@ -596,7 +596,7 @@ function showhelp {
     echo $' -s Silent output'
     echo $' -w Silent output with download progress (%) and download version at the end'
     echo $' -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)\n\tDefault: 0'
-    echo $' -V verbose log reporting successful file downloads'
+    echo $' -V Verbose log to report successful file downloads'
     echo $' -D Print print debug information and exit'
     echo
 }
@@ -638,7 +638,7 @@ while getopts "d:g:S:T:c:l:F:o:e:b:t:f:P:A:zn:akixmurpswhDV" opt; do
     A) top_assemblies_taxids=${OPTARG} ;;
     z) gtdb_only=1 ;;
     a) download_taxonomy=1 ;;
-    k) just_check=1 ;;
+    k) dry_run=1 ;;
     i) just_fix=1 ;;
     x) delete_extra_files=1 ;;
     m) check_md5=1 ;;
@@ -792,7 +792,7 @@ if [ "${silent}" -eq 0 ]; then
 fi
 
 echolog "--- genome_updater version: ${version} ---" "0"
-echolog "Mode: ${MODE} - $(if [[ "${just_check}" -eq 1 ]]; then echo "CHECK"; else echo "DOWNLOAD"; fi)" "1"
+echolog "Mode: ${MODE} - $(if [[ "${dry_run}" -eq 1 ]]; then echo "DRY-RUN"; else echo "DOWNLOAD"; fi)" "1"
 echolog "Timestamp: ${timestamp}" "0"
 echolog "Database: ${database}" "0"
 echolog "Organims group: ${organism_group}" "0"
@@ -806,7 +806,7 @@ echolog "Top assemblies species: ${top_assemblies_species}" "0"
 echolog "Top assemblies taxids: ${top_assemblies_taxids}" "0"
 echolog "GTDB Only: ${gtdb_only}" "0"
 echolog "Download taxonomy: ${download_taxonomy}" "0"
-echolog "Just check for updates: ${just_check}" "0"
+echolog "Dry-run: ${dry_run}" "0"
 echolog "Just fix/recover current version: ${just_fix}" "0"
 echolog "Delete extra files: ${delete_extra_files}" "0"
 echolog "Check md5: ${check_md5}" "0"
@@ -851,7 +851,7 @@ if [[ "${MODE}" == "NEW" ]]; then
     echolog " - ${filtered_lines} assembly entries to download" "1"
     echolog "" "1"
     
-    if [[ "${just_check}" -eq 1 ]]; then
+    if [[ "${dry_run}" -eq 1 ]]; then
         rm "${new_assembly_summary}" "${log_file}"
         if [ ! "$(ls -A ${new_output_prefix}${files_dir})" ]; then rm -r "${new_output_prefix}${files_dir}"; fi #Remove folder that was just created (if there's nothing in it)
         if [ ! "$(ls -A ${new_output_prefix})" ]; then rm -r "${new_output_prefix}"; fi #Remove folder that was just created (if there's nothing in it)
@@ -891,7 +891,7 @@ else # update/fix
     missing_lines=$(count_lines_file "${missing}")
     if [ "${missing_lines}" -gt 0 ]; then
         echolog " - ${missing_lines} missing files" "1"
-        if [ "${just_check}" -eq 0 ]; then
+        if [ "${dry_run}" -eq 0 ]; then
             echolog " - Downloading ${missing_lines} files with ${threads} threads"    "1"
             download_files "${missing}" "2,3"
 
@@ -917,7 +917,7 @@ else # update/fix
     extra_lines=$(count_lines_file "${extra}")
     if [ "${extra_lines}" -gt 0 ]; then
         echolog " - ${extra_lines} extra files" "1"
-        if [ "${just_check}" -eq 0 ]; then
+        if [ "${dry_run}" -eq 0 ]; then
             if [ "${delete_extra_files}" -eq 1 ]; then
                 echolog " - Deleting ${extra_lines} files" "1";
                 remove_files "${extra}" "1";
@@ -951,7 +951,7 @@ else # update/fix
         echolog " - ${filtered_lines} assembly entries to download" "1"
         echolog "" "1"
 
-        if [[ "${just_check}" -eq 0 ]]; then
+        if [[ "${dry_run}" -eq 0 ]]; then
             # Link versions (current and new)
             echolog "Linking versions [${current_label} --> ${new_label}]" "1"
             find "${current_output_prefix}${files_dir}" -maxdepth 1 -xtype f -print0 | xargs -P "${threads}" -I{} -0 ln -s -r "{}" "${new_output_prefix}${files_dir}"
@@ -975,7 +975,7 @@ else # update/fix
         echolog "Updating [${current_label} --> ${new_label}]" "1"
         echolog " - ${update_lines} updated, ${delete_lines} deleted, ${new_lines} new entries" "1"
 
-        if [ "${just_check}" -eq 1 ]; then
+        if [ "${dry_run}" -eq 1 ]; then
             rm ${update} ${delete} ${new}
             rm -r "${new_output_prefix}"
         else
@@ -1033,7 +1033,7 @@ else # update/fix
     fi
 fi
 
-if [ "${just_check}" -eq 0 ]; then
+if [ "${dry_run}" -eq 0 ]; then
 	if [ "${download_taxonomy}" -eq 1 ]; then
         echolog "Downloading current Taxonomy database [${target_output_prefix}taxdump.tar.gz] " "1"
         download_static "${base_url}/pub/taxonomy/taxdump.tar.gz" "${target_output_prefix}taxdump.tar.gz"

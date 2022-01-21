@@ -1,48 +1,54 @@
 # genome_updater
 
+Bash script to download and update snapshots of the NCBI genomes repository (refseq/genbank) [1] with several filters, detailed logs, reports, file integrity check (MD5) and parallel [2] download support.
+
+With genome_updater you can download and keep several snapshots of a certain sub-set of the genomes repository, without redundancy and with incremental track of changes.
+
+## Details
+
+- genome_updater runs on a working directory (defined with **-o**) and creates a snapshot (**-b**) of refseq and/or genbank (**-d**) genome repositories based on selected parameters: organism groups (**-g**), taxonomic ids (**-S**/**-T**) with the desired files type(s) (**-f**)
+- Many filters can be applied to the selection: RefSeq category (**-c**), assembly level (**-l**), custom filters (**-F**), top assemblies (**-P**/**-A**), GTDB [3] compatible sequences (**-z**).
+- genome_updater can update the selected repository (after some days, for example). It will identify previous files and update the working directory with the most recent versions, keeping track of all changes and just downloading/removing what is necessary
+
+## Installation
+
 [![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/genome_updater/README.html)
 
-Bash script to download and update snapshots of the NCBI genomes repository (refseq/genbank) [1] keeping all files and detailed log for each download and update, with file integrity check (MD5) and parallel [2] download support.
-
-## Description:
-
-- genome_updater runs on a working directory (**-o**) and creates snapshots/versions (**-b**) of refseq/genbank genome repositories based on selected parameters: database (**-d**), organism group or species/taxids (**-g**), RefSeq category (**-c**), assembly level (**-l**), top assemblies (**-P**/**-A**), GTDB [3] compatible (**-z**) and file type(s) (**-f**)
-- genome_updater can update the selected repository by executing the same command again. It will identify previous files and update the working directory with the most recent version, keeping track of changes and just downloading/removing updated files
-
-## Installation:
+With conda:
 
 	conda install -c bioconda genome_updater 
 
-or
-
-	git clone --recurse-submodules https://github.com/pirovc/genome_updater.git
-
-or
+or simply download the raw file and give execution permissions:
 
 	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
+	chmod +x genome_updater.sh
 
- - genome_updater depends only on the GNU Core Utilities and additional tools (`awk` `bc` `find` `join` `md5sum` `parallel` `sed` `tar` `xargs` `wget`) which are commonly available in most distributions. If you are not sure if you have them all, just run genome_updater.sh and it will tell you if something is missing (otherwise the it will show the help page).
- - To test genome_updater basic functions, run the script `tests/tests.sh`. It should print "All tests finished successfully" at the end.
- - Make sure you have access to the NCBI ftp folders: `ftp://ftp.ncbi.nlm.nih.gov/genomes/` and `ftp://ftp.ncbi.nih.gov/pub/taxonomy/`
- - If you still run into issues it may be that some utilities are incompatible or outdated. Please open an issue (https://github.com/pirovc/genome_updater/issues) describing the problem and the output of the command `genome_updater.sh -D`.
+ - genome_updater depends on the GNU Core Utilities and additional tools (`awk` `bc` `find` `join` `md5sum` `parallel` `sed` `tar` `xargs` `wget`/`curl`) which are commonly available in most distributions. If you are not sure if you have them all, just run `genome_updater.sh` and it will tell you if something is missing (otherwise the it will show the help page).
 
-## Simple example:
+To test if genome_updater is running properly on your system:
 
-Downloading Archaeal complete genome sequences from RefSeq:
+	git clone --recurse-submodules https://github.com/pirovc/genome_updater.git
+	cd genome_updater
+	tests/test.sh
 
-	./genome_updater.sh -g "archaea" -d "refseq" -l "Complete Genome" -f "genomic.fna.gz" -o "arc_refseq_cg" -t 12 -m
+## Usage
 
-The same command executed again (some days later), will create a second snapshot of the requested dataset, checking for new, updated and removed sequences.
+Downloading all complete genome sequences from Archaea in the RefSeq repository (`-t` defines the number parallel downloads and `-m` to check MD5 after download):
+
+	./genome_updater.sh -g "archaea" -d "refseq" -l "complete genome" -f "genomic.fna.gz" -o "arc_refseq_cg" -t 12 -m
+
+ - Add `-k` to perform a dry-run before the actual run. genome_updater will show how many files will be downloaded or updated and exit without changes
+ - The *same command* executed again (e.g. some days later), will update the snapshot of the requested dataset to its latest state, accounting for new, updated and removed sequences.
 
 ## Main functionalities:
 
 Data selection:
+- **-d**: database selection (genbank and/or refseq)
 - **-g**: selection of assemblies by organism groups (**-g "archaea,bacteria"**)
 - **-S**: selection of assemblies by species taxids (**-S "562,623"**)
 - **-T**: selection of assemblies by any taxids including all children nodes (**-T "620,1643685"**)
-- **-d**: database selection (genbank and/or refseq)
 - **-f**: suffix of files to be downloaded for each entry [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
-- **-l**: filter by Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]
+- **-l**: filter by Assembly level [all, complete genome, chromosome, scaffold, contig]
 - **-c**: filter by RefSeq Category [all, reference genome, representative genome, na]
 - **-P**: select [top assemblies](#top-assemblies) for species entries (**-P 3**) to download the top 3 assemblies for each species
 - **-A**: select [top assemblies](#top-assemblies) for taxids entries (**-A 3**) to download the top 3 assemblies for each taxid selected
@@ -83,7 +89,7 @@ Reports:
 
 ### Download one genome assembly for each bacterial species in genbank
 
-	./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_genbank" -t 12 -j "species:1"
+	./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_genbank" -t 12 -P "1"
 
 ### Download all E. Coli assemblies available on GenBank and RefSeq with a named label (v1)
 
@@ -101,13 +107,13 @@ Reports:
 
 	./genome_updater.sh -e /my/path/assembly_summary.txt -f "genomic.fna.gz" -o "recovered_sequences" -b january_2018
 
-### Changing timeout, retries and downloader (wget/curl)
+### Changing timeout, retries and downloader (curl instead of default wget)
 
 	retries=10 timeout=600 use_curl=1 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt"
 
 ## Top assemblies:
 
-The top assemblies (**-j**) will be selected based on the species/taxid entries in the assembly_summary.txt and not for the taxids provided with -g "taxids:...". They are selected sorted by categories in the following order of importance:
+The top assemblies (**-P**/**-A**) will be selected based on the species/taxid entries in the assembly_summary.txt and not for the taxids provided with -g "taxids:...". They are selected sorted by categories in the following order of importance:
 	
 	A) RefSeq Category: 
 		1) reference genome
@@ -173,51 +179,63 @@ or
 	┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐
 	│ ┬├┤ ││││ ││││├┤     │ │├─┘ ││├─┤ │ ├┤ ├┬┘
 	└─┘└─┘┘└┘└─┘┴ ┴└─┘────└─┘┴  ─┴┘┴ ┴ ┴ └─┘┴└─
-	                                     v0.2.5 
+	                                     v0.3.0 
 
-	 -g Organism group (one or more comma-separated entries) [archaea, bacteria, fungi, human (also contained in vertebrate_mammalian), invertebrate, metagenomes (genbank), other (synthetic genomes - only genbank), plant, protozoa, vertebrate_mammalian, vertebrate_other, viral (only refseq)]. Example: archaea,bacteria
-	    or Species level taxids (one or more comma-separated entries). Example: species:622,562
-	    or Any level taxids - lineage will be generated (one or more comma-separated entries). Example: taxids:620,649776
+	Database options:
+	 -d Database (comma-separated entries) [genbank, refseq]	Default: refseq
 
-	 -d Database [genbank, refseq]
-		Default: refseq
-	 -c RefSeq Category [all, reference genome, representative genome, na]
-		Default: all
-	 -l Assembly level [all, Complete Genome, Chromosome, Scaffold, Contig]
-		Default: all
-	 -f File formats [genomic.fna.gz,assembly_report.txt, ...]
-		check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats
-		Default: assembly_report.txt
-	 -j Number of top references for each species/taxids to download ["", species:INT, taxids:INT]. Example: "species:3". Selection is based on 1) RefSeq Category, 2) Assembly level, 3) Relation to type material and 4) Date (most recent first)
+	Organism options:
+	 -g Organism group (comma-separated entries) [archaea, bacteria, fungi, human, invertebrate, metagenomes, other, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]. Example: archaea,bacteria.
 		Default: ""
+	 -S Species level taxonomic ids (comma-separated entries). Example: 622,562
+		Default: ""
+	 -T Any taxonomic ids - children lineage will be generated (comma-separated entries). Example: 620,649776
+		Default: ""
+
+	File options:
+	 -f files to download [genomic.fna.gz,assembly_report.txt, ...] check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats
+		Default: assembly_report.txt
+
+	Filter options:
+	 -c refseq category (comma-separated entries, empty for all) [reference genome, representative genome, na]
+		Default: ""
+	 -l assembly level (comma-separated entries, empty for all) [complete genome, chromosome, scaffold, contig]
+		Default: ""
+	 -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive). Example: -F "2:PRJNA12377,PRJNA670754|14:Partial" for column infos check ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt
+		Default: ""
+	 -P Number of top references for each species nodes to download. 0 for all. Selection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first)
+		Default: 0
+	 -A Number of top references for each taxids (leaf nodes) to download. 0 for all. Selection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first)
+		Default: 0
 	 -z Keep only assemblies present on the latest GTDB release
 
-	 -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes
-	 -i Fix failed downloads or any incomplete data from a previous run, keep current version
-	 -x Allow the deletion of extra files if some are found in the repository folder
-
+	Report options:
 	 -u Report of updated assembly accessions (Added/Removed, assembly accession, url)
-	 -r Report of updated sequence accessions (Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid). Only available when file assembly_report.txt selected and successfully downloaded
+	 -r Report of updated sequence accessions (Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid). Only available when file format assembly_report.txt is selected and successfully downloaded
 	 -p Output list of URLs for downloaded and failed files
-	 -a Download the current version of the Taxonomy database (taxdump.tar.gz)
 
-	 -o Working output directory 
+	Run options:
+	 -o Output/Working directory 
 		Default: ./tmp.XXXXXXXXXX
 	 -b Version label
 		Default: current timestamp (YYYY-MM-DD_HH-MM-SS)
 	 -e External "assembly_summary.txt" file to recover data from 
 		Default: ""
+	 -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes
+	 -i Fix failed downloads or any incomplete data from a previous run, keep current version
+	 -m Check MD5 for downloaded files
 	 -t Threads
 		Default: 1
 
-	 -m Check MD5 for downloaded files
+	Misc. options:
+	 -x Allow the deletion of extra files if any found in the repository folder
+	 -a Download the current version of the NCBI taxonomy database (taxdump.tar.gz)
 	 -s Silent output
 	 -w Silent output with download progress (%) and download version at the end
 	 -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)
 		Default: 0
-
+	 -V Verbose log to report successful file downloads
 	 -D Print print debug information and exit
-
 
 ## References:
 
