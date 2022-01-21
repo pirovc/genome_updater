@@ -1,0 +1,27 @@
+# Assembly name:  ASM2246v1
+# Organism name:  Sulfolobus islandicus Y.G.57.14 (crenarchaeotes)
+# Infraspecific name:  strain=Y.G.57.14
+# Taxid:          439386
+# BioSample:      SAMN02598422
+# BioProject:     PRJNA19487
+# Submitter:      US DOE Joint Genome Institute
+# Date:           2009-04-29
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Complete Genome
+# Genome representation: full
+# GenBank assembly accession: GCA_000022465.1
+# RefSeq assembly accession: GCF_000022465.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000022475.1	GCF_000022475.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ANONYMOUS	assembled-molecule	na	Chromosome	CP001403.1	=	NC_012622.1	Primary Assembly	2702058	na

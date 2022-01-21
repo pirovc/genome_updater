@@ -1,0 +1,45 @@
+# Assembly name:  ASM918454v1
+# Organism name:  Halosegnis rubeus (euryarchaeotes)
+# Infraspecific name:  strain=F17-44
+# Taxid:          2212850
+# BioSample:      SAMN09291540
+# BioProject:     PRJNA474095
+# Submitter:      University of Sevilla, Spain
+# Date:           2019-10-19
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    QJOW01
+# Assembly method: SPAdes v. 3.12.0
+# Expected final version: yes
+# Genome coverage: 397.93x
+# Sequencing technology: Illumina HiSeq
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_009184545.1
+# RefSeq assembly accession: GCF_009184545.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_009184565.1	GCF_009184565.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+NODE_5_length_168359_cov_13.302844	unlocalized-scaffold	unnamed1	Plasmid	QJOW01000005.1	=	NZ_QJOW01000005.1	Primary Assembly	168359	na
+NODE_6_length_127365_cov_2.614628	unlocalized-scaffold	unnamed2	Plasmid	QJOW01000006.1	=	NZ_QJOW01000006.1	Primary Assembly	127365	na
+NODE_10_length_11136_cov_14.981379	unplaced-scaffold	na	na	QJOW01000010.1	=	NZ_QJOW01000010.1	Primary Assembly	11136	na
+NODE_12_length_1412_cov_32.073930	unplaced-scaffold	na	na	QJOW01000011.1	=	NZ_QJOW01000011.1	Primary Assembly	1412	na
+NODE_13_length_1179_cov_34.865970	unplaced-scaffold	na	na	QJOW01000012.1	=	NZ_QJOW01000012.1	Primary Assembly	1179	na
+NODE_1_length_837246_cov_15.366710	unplaced-scaffold	na	na	QJOW01000001.1	=	NZ_QJOW01000001.1	Primary Assembly	837246	na
+NODE_2_length_553928_cov_16.537690	unplaced-scaffold	na	na	QJOW01000002.1	=	NZ_QJOW01000002.1	Primary Assembly	553928	na
+NODE_3_length_384399_cov_17.426266	unplaced-scaffold	na	na	QJOW01000003.1	=	NZ_QJOW01000003.1	Primary Assembly	384399	na
+NODE_4_length_302948_cov_14.605549	unplaced-scaffold	na	na	QJOW01000004.1	=	NZ_QJOW01000004.1	Primary Assembly	302948	na
+NODE_7_length_112349_cov_14.060362	unplaced-scaffold	na	na	QJOW01000007.1	=	NZ_QJOW01000007.1	Primary Assembly	112349	na
+NODE_8_length_105519_cov_13.668779	unplaced-scaffold	na	na	QJOW01000008.1	=	NZ_QJOW01000008.1	Primary Assembly	105519	na
+NODE_9_length_54759_cov_15.509079	unplaced-scaffold	na	na	QJOW01000009.1	=	NZ_QJOW01000009.1	Primary Assembly	54759	na

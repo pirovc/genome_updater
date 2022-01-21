@@ -1,0 +1,93 @@
+# Assembly name:  ASM249936v1
+# Organism name:  Euryarchaeota archaeon UBA29 (archaea)
+# Isolate:  UBA29
+# Taxid:          1915872
+# BioSample:      SAMN06027185
+# BioProject:     PRJNA348753
+# Submitter:      University of Queensland
+# Date:           2017-10-10
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    DALD01
+# Assembly method: CLC de novo assembler v. 4.4.1
+# Genome coverage: 68.83x
+# Sequencing technology: Illumina HiSeq 2000
+# Excluded from RefSeq: derived from metagenome; genus undefined
+# GenBank assembly accession: GCA_002499365.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_002499385.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+UBA29_contig_10032	unplaced-scaffold	na	na	DALD01000044.1	<>	na	Primary Assembly	10715	na
+UBA29_contig_11389	unplaced-scaffold	na	na	DALD01000037.1	<>	na	Primary Assembly	22722	na
+UBA29_contig_12437	unplaced-scaffold	na	na	DALD01000042.1	<>	na	Primary Assembly	8695	na
+UBA29_contig_1292	unplaced-scaffold	na	na	DALD01000003.1	<>	na	Primary Assembly	8796	na
+UBA29_contig_1304	unplaced-scaffold	na	na	DALD01000016.1	<>	na	Primary Assembly	32295	na
+UBA29_contig_13295	unplaced-scaffold	na	na	DALD01000049.1	<>	na	Primary Assembly	5673	na
+UBA29_contig_1608	unplaced-scaffold	na	na	DALD01000012.1	<>	na	Primary Assembly	3473	na
+UBA29_contig_1645	unplaced-scaffold	na	na	DALD01000008.1	<>	na	Primary Assembly	4630	na
+UBA29_contig_16526	unplaced-scaffold	na	na	DALD01000064.1	<>	na	Primary Assembly	8187	na
+UBA29_contig_16743	unplaced-scaffold	na	na	DALD01000054.1	<>	na	Primary Assembly	3866	na
+UBA29_contig_1680	unplaced-scaffold	na	na	DALD01000004.1	<>	na	Primary Assembly	9834	na
+UBA29_contig_1736	unplaced-scaffold	na	na	DALD01000046.1	<>	na	Primary Assembly	7690	na
+UBA29_contig_18708	unplaced-scaffold	na	na	DALD01000032.1	<>	na	Primary Assembly	11165	na
+UBA29_contig_2243	unplaced-scaffold	na	na	DALD01000005.1	<>	na	Primary Assembly	15078	na
+UBA29_contig_24420	unplaced-scaffold	na	na	DALD01000025.1	<>	na	Primary Assembly	5536	na
+UBA29_contig_255	unplaced-scaffold	na	na	DALD01000015.1	<>	na	Primary Assembly	64374	na
+UBA29_contig_2585	unplaced-scaffold	na	na	DALD01000053.1	<>	na	Primary Assembly	37747	na
+UBA29_contig_2617	unplaced-scaffold	na	na	DALD01000043.1	<>	na	Primary Assembly	5270	na
+UBA29_contig_2669	unplaced-scaffold	na	na	DALD01000050.1	<>	na	Primary Assembly	7396	na
+UBA29_contig_2676	unplaced-scaffold	na	na	DALD01000026.1	<>	na	Primary Assembly	36907	na
+UBA29_contig_2735	unplaced-scaffold	na	na	DALD01000027.1	<>	na	Primary Assembly	52310	na
+UBA29_contig_2741	unplaced-scaffold	na	na	DALD01000048.1	<>	na	Primary Assembly	19613	na
+UBA29_contig_276	unplaced-scaffold	na	na	DALD01000013.1	<>	na	Primary Assembly	35276	na
+UBA29_contig_2775	unplaced-scaffold	na	na	DALD01000033.1	<>	na	Primary Assembly	14122	na
+UBA29_contig_2873	unplaced-scaffold	na	na	DALD01000051.1	<>	na	Primary Assembly	37718	na
+UBA29_contig_3060	unplaced-scaffold	na	na	DALD01000007.1	<>	na	Primary Assembly	6302	na
+UBA29_contig_3312	unplaced-scaffold	na	na	DALD01000020.1	<>	na	Primary Assembly	24206	na
+UBA29_contig_3374	unplaced-scaffold	na	na	DALD01000014.1	<>	na	Primary Assembly	5052	na
+UBA29_contig_3471	unplaced-scaffold	na	na	DALD01000021.1	<>	na	Primary Assembly	70271	na
+UBA29_contig_3593	unplaced-scaffold	na	na	DALD01000055.1	<>	na	Primary Assembly	38879	na
+UBA29_contig_3634	unplaced-scaffold	na	na	DALD01000019.1	<>	na	Primary Assembly	7609	na
+UBA29_contig_39	unplaced-scaffold	na	na	DALD01000034.1	<>	na	Primary Assembly	18155	na
+UBA29_contig_3922	unplaced-scaffold	na	na	DALD01000045.1	<>	na	Primary Assembly	68497	na
+UBA29_contig_3977	unplaced-scaffold	na	na	DALD01000057.1	<>	na	Primary Assembly	20544	na
+UBA29_contig_4041	unplaced-scaffold	na	na	DALD01000056.1	<>	na	Primary Assembly	28711	na
+UBA29_contig_4096	unplaced-scaffold	na	na	DALD01000031.1	<>	na	Primary Assembly	38576	na
+UBA29_contig_414	unplaced-scaffold	na	na	DALD01000011.1	<>	na	Primary Assembly	62813	na
+UBA29_contig_4152	unplaced-scaffold	na	na	DALD01000018.1	<>	na	Primary Assembly	34272	na
+UBA29_contig_4489	unplaced-scaffold	na	na	DALD01000061.1	<>	na	Primary Assembly	22763	na
+UBA29_contig_4897	unplaced-scaffold	na	na	DALD01000060.1	<>	na	Primary Assembly	27294	na
+UBA29_contig_503	unplaced-scaffold	na	na	DALD01000047.1	<>	na	Primary Assembly	26840	na
+UBA29_contig_5237	unplaced-scaffold	na	na	DALD01000039.1	<>	na	Primary Assembly	6740	na
+UBA29_contig_5441	unplaced-scaffold	na	na	DALD01000063.1	<>	na	Primary Assembly	16269	na
+UBA29_contig_581	unplaced-scaffold	na	na	DALD01000036.1	<>	na	Primary Assembly	15327	na
+UBA29_contig_5835	unplaced-scaffold	na	na	DALD01000035.1	<>	na	Primary Assembly	5256	na
+UBA29_contig_5836	unplaced-scaffold	na	na	DALD01000001.1	<>	na	Primary Assembly	5475	na
+UBA29_contig_5895	unplaced-scaffold	na	na	DALD01000017.1	<>	na	Primary Assembly	35462	na
+UBA29_contig_6083	unplaced-scaffold	na	na	DALD01000009.1	<>	na	Primary Assembly	18337	na
+UBA29_contig_6344	unplaced-scaffold	na	na	DALD01000030.1	<>	na	Primary Assembly	22626	na
+UBA29_contig_7026	unplaced-scaffold	na	na	DALD01000041.1	<>	na	Primary Assembly	12334	na
+UBA29_contig_707	unplaced-scaffold	na	na	DALD01000023.1	<>	na	Primary Assembly	21416	na
+UBA29_contig_7145	unplaced-scaffold	na	na	DALD01000029.1	<>	na	Primary Assembly	25197	na
+UBA29_contig_7172	unplaced-scaffold	na	na	DALD01000058.1	<>	na	Primary Assembly	26743	na
+UBA29_contig_7853	unplaced-scaffold	na	na	DALD01000059.1	<>	na	Primary Assembly	4288	na
+UBA29_contig_8123	unplaced-scaffold	na	na	DALD01000024.1	<>	na	Primary Assembly	6236	na
+UBA29_contig_832	unplaced-scaffold	na	na	DALD01000040.1	<>	na	Primary Assembly	42105	na
+UBA29_contig_85	unplaced-scaffold	na	na	DALD01000062.1	<>	na	Primary Assembly	44589	na
+UBA29_contig_865	unplaced-scaffold	na	na	DALD01000006.1	<>	na	Primary Assembly	25596	na
+UBA29_contig_870	unplaced-scaffold	na	na	DALD01000038.1	<>	na	Primary Assembly	15549	na
+UBA29_contig_889	unplaced-scaffold	na	na	DALD01000022.1	<>	na	Primary Assembly	7396	na
+UBA29_contig_9016	unplaced-scaffold	na	na	DALD01000028.1	<>	na	Primary Assembly	10434	na
+UBA29_contig_963	unplaced-scaffold	na	na	DALD01000002.1	<>	na	Primary Assembly	87942	na
+UBA29_contig_991	unplaced-scaffold	na	na	DALD01000052.1	<>	na	Primary Assembly	4718	na
+UBA29_contig_9974	unplaced-scaffold	na	na	DALD01000010.1	<>	na	Primary Assembly	31032	na

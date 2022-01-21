@@ -1,0 +1,41 @@
+# Assembly name:  IMG-taxon 2728369221 annotated assembly
+# Organism name:  Natronoarchaeum philippinense (euryarchaeotes)
+# Infraspecific name:  strain=DSM 27208
+# Taxid:          558529
+# BioSample:      SAMN06269185
+# BioProject:     PRJEB22458
+# Submitter:      DOE - JOINT GENOME INSTITUTE
+# Date:           2017-09-28
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    OBEJ01
+# Genome coverage: 149x
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_900215575.1
+# RefSeq assembly accession: GCF_900215575.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_900215574.1	GCF_900215574.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+OBEJ01000006.1	unplaced-scaffold	na	na	OBEJ01000006.1	=	NZ_OBEJ01000006.1	Primary Assembly	75994	na
+OBEJ01000010.1	unplaced-scaffold	na	na	OBEJ01000010.1	=	NZ_OBEJ01000010.1	Primary Assembly	19467	na
+OBEJ01000003.1	unplaced-scaffold	na	na	OBEJ01000003.1	=	NZ_OBEJ01000003.1	Primary Assembly	546162	na
+OBEJ01000004.1	unplaced-scaffold	na	na	OBEJ01000004.1	=	NZ_OBEJ01000004.1	Primary Assembly	143081	na
+OBEJ01000005.1	unplaced-scaffold	na	na	OBEJ01000005.1	=	NZ_OBEJ01000005.1	Primary Assembly	130138	na
+OBEJ01000002.1	unplaced-scaffold	na	na	OBEJ01000002.1	=	NZ_OBEJ01000002.1	Primary Assembly	788061	na
+OBEJ01000009.1	unplaced-scaffold	na	na	OBEJ01000009.1	=	NZ_OBEJ01000009.1	Primary Assembly	45294	na
+OBEJ01000001.1	unplaced-scaffold	na	na	OBEJ01000001.1	=	NZ_OBEJ01000001.1	Primary Assembly	1279368	na
+OBEJ01000007.1	unplaced-scaffold	na	na	OBEJ01000007.1	=	NZ_OBEJ01000007.1	Primary Assembly	75097	na
+OBEJ01000011.1	unplaced-scaffold	na	na	OBEJ01000011.1	=	NZ_OBEJ01000011.1	Primary Assembly	5429	na
+OBEJ01000008.1	unplaced-scaffold	na	na	OBEJ01000008.1	=	NZ_OBEJ01000008.1	Primary Assembly	56088	na

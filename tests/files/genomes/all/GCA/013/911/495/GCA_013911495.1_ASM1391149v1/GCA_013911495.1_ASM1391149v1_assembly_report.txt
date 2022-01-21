@@ -1,0 +1,132 @@
+# Assembly name:  ASM1391149v1
+# Organism name:  Synechococcus sp. (cyanobacteria)
+# Isolate:  MCMED-G31
+# Taxid:          1131
+# BioSample:      SAMN15215249
+# BioProject:     PRJNA638822
+# Submitter:      Evolutionary Genomics Group
+# Date:           2020-07-29
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    JACETB01
+# Assembly method: IDBA_UD v. 1.1.1
+# Expected final version: yes
+# Genome coverage: 20x
+# Sequencing technology: Illumina NextSeq
+# Excluded from RefSeq: derived from metagenome
+# GenBank assembly accession: GCA_013911495.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_013911525.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+Synechococcus-MCMED-G31-C1	unplaced-scaffold	na	na	JACETB010000001.1	<>	na	Primary Assembly	50528	na
+Synechococcus-MCMED-G31-C10	unplaced-scaffold	na	na	JACETB010000010.1	<>	na	Primary Assembly	24763	na
+Synechococcus-MCMED-G31-C100	unplaced-scaffold	na	na	JACETB010000100.1	<>	na	Primary Assembly	5167	na
+Synechococcus-MCMED-G31-C101	unplaced-scaffold	na	na	JACETB010000101.1	<>	na	Primary Assembly	5064	na
+Synechococcus-MCMED-G31-C102	unplaced-scaffold	na	na	JACETB010000102.1	<>	na	Primary Assembly	5022	na
+Synechococcus-MCMED-G31-C11	unplaced-scaffold	na	na	JACETB010000011.1	<>	na	Primary Assembly	24053	na
+Synechococcus-MCMED-G31-C12	unplaced-scaffold	na	na	JACETB010000012.1	<>	na	Primary Assembly	24009	na
+Synechococcus-MCMED-G31-C13	unplaced-scaffold	na	na	JACETB010000013.1	<>	na	Primary Assembly	23714	na
+Synechococcus-MCMED-G31-C14	unplaced-scaffold	na	na	JACETB010000014.1	<>	na	Primary Assembly	23580	na
+Synechococcus-MCMED-G31-C15	unplaced-scaffold	na	na	JACETB010000015.1	<>	na	Primary Assembly	22885	na
+Synechococcus-MCMED-G31-C16	unplaced-scaffold	na	na	JACETB010000016.1	<>	na	Primary Assembly	22037	na
+Synechococcus-MCMED-G31-C17	unplaced-scaffold	na	na	JACETB010000017.1	<>	na	Primary Assembly	21465	na
+Synechococcus-MCMED-G31-C18	unplaced-scaffold	na	na	JACETB010000018.1	<>	na	Primary Assembly	20582	na
+Synechococcus-MCMED-G31-C19	unplaced-scaffold	na	na	JACETB010000019.1	<>	na	Primary Assembly	20402	na
+Synechococcus-MCMED-G31-C2	unplaced-scaffold	na	na	JACETB010000002.1	<>	na	Primary Assembly	39177	na
+Synechococcus-MCMED-G31-C20	unplaced-scaffold	na	na	JACETB010000020.1	<>	na	Primary Assembly	19578	na
+Synechococcus-MCMED-G31-C21	unplaced-scaffold	na	na	JACETB010000021.1	<>	na	Primary Assembly	19046	na
+Synechococcus-MCMED-G31-C22	unplaced-scaffold	na	na	JACETB010000022.1	<>	na	Primary Assembly	19024	na
+Synechococcus-MCMED-G31-C23	unplaced-scaffold	na	na	JACETB010000023.1	<>	na	Primary Assembly	18966	na
+Synechococcus-MCMED-G31-C24	unplaced-scaffold	na	na	JACETB010000024.1	<>	na	Primary Assembly	18689	na
+Synechococcus-MCMED-G31-C25	unplaced-scaffold	na	na	JACETB010000025.1	<>	na	Primary Assembly	18356	na
+Synechococcus-MCMED-G31-C26	unplaced-scaffold	na	na	JACETB010000026.1	<>	na	Primary Assembly	18077	na
+Synechococcus-MCMED-G31-C27	unplaced-scaffold	na	na	JACETB010000027.1	<>	na	Primary Assembly	17458	na
+Synechococcus-MCMED-G31-C28	unplaced-scaffold	na	na	JACETB010000028.1	<>	na	Primary Assembly	16903	na
+Synechococcus-MCMED-G31-C29	unplaced-scaffold	na	na	JACETB010000029.1	<>	na	Primary Assembly	14714	na
+Synechococcus-MCMED-G31-C3	unplaced-scaffold	na	na	JACETB010000003.1	<>	na	Primary Assembly	34390	na
+Synechococcus-MCMED-G31-C30	unplaced-scaffold	na	na	JACETB010000030.1	<>	na	Primary Assembly	14622	na
+Synechococcus-MCMED-G31-C31	unplaced-scaffold	na	na	JACETB010000031.1	<>	na	Primary Assembly	14571	na
+Synechococcus-MCMED-G31-C32	unplaced-scaffold	na	na	JACETB010000032.1	<>	na	Primary Assembly	14343	na
+Synechococcus-MCMED-G31-C33	unplaced-scaffold	na	na	JACETB010000033.1	<>	na	Primary Assembly	14087	na
+Synechococcus-MCMED-G31-C34	unplaced-scaffold	na	na	JACETB010000034.1	<>	na	Primary Assembly	13855	na
+Synechococcus-MCMED-G31-C35	unplaced-scaffold	na	na	JACETB010000035.1	<>	na	Primary Assembly	13712	na
+Synechococcus-MCMED-G31-C36	unplaced-scaffold	na	na	JACETB010000036.1	<>	na	Primary Assembly	13536	na
+Synechococcus-MCMED-G31-C37	unplaced-scaffold	na	na	JACETB010000037.1	<>	na	Primary Assembly	12427	na
+Synechococcus-MCMED-G31-C38	unplaced-scaffold	na	na	JACETB010000038.1	<>	na	Primary Assembly	12000	na
+Synechococcus-MCMED-G31-C39	unplaced-scaffold	na	na	JACETB010000039.1	<>	na	Primary Assembly	11917	na
+Synechococcus-MCMED-G31-C4	unplaced-scaffold	na	na	JACETB010000004.1	<>	na	Primary Assembly	34291	na
+Synechococcus-MCMED-G31-C40	unplaced-scaffold	na	na	JACETB010000040.1	<>	na	Primary Assembly	11874	na
+Synechococcus-MCMED-G31-C41	unplaced-scaffold	na	na	JACETB010000041.1	<>	na	Primary Assembly	11592	na
+Synechococcus-MCMED-G31-C42	unplaced-scaffold	na	na	JACETB010000042.1	<>	na	Primary Assembly	11455	na
+Synechococcus-MCMED-G31-C43	unplaced-scaffold	na	na	JACETB010000043.1	<>	na	Primary Assembly	11191	na
+Synechococcus-MCMED-G31-C44	unplaced-scaffold	na	na	JACETB010000044.1	<>	na	Primary Assembly	11166	na
+Synechococcus-MCMED-G31-C45	unplaced-scaffold	na	na	JACETB010000045.1	<>	na	Primary Assembly	11128	na
+Synechococcus-MCMED-G31-C46	unplaced-scaffold	na	na	JACETB010000046.1	<>	na	Primary Assembly	11114	na
+Synechococcus-MCMED-G31-C47	unplaced-scaffold	na	na	JACETB010000047.1	<>	na	Primary Assembly	10906	na
+Synechococcus-MCMED-G31-C48	unplaced-scaffold	na	na	JACETB010000048.1	<>	na	Primary Assembly	10876	na
+Synechococcus-MCMED-G31-C49	unplaced-scaffold	na	na	JACETB010000049.1	<>	na	Primary Assembly	10320	na
+Synechococcus-MCMED-G31-C5	unplaced-scaffold	na	na	JACETB010000005.1	<>	na	Primary Assembly	34245	na
+Synechococcus-MCMED-G31-C50	unplaced-scaffold	na	na	JACETB010000050.1	<>	na	Primary Assembly	9999	na
+Synechococcus-MCMED-G31-C51	unplaced-scaffold	na	na	JACETB010000051.1	<>	na	Primary Assembly	9292	na
+Synechococcus-MCMED-G31-C52	unplaced-scaffold	na	na	JACETB010000052.1	<>	na	Primary Assembly	9179	na
+Synechococcus-MCMED-G31-C53	unplaced-scaffold	na	na	JACETB010000053.1	<>	na	Primary Assembly	9142	na
+Synechococcus-MCMED-G31-C54	unplaced-scaffold	na	na	JACETB010000054.1	<>	na	Primary Assembly	9014	na
+Synechococcus-MCMED-G31-C55	unplaced-scaffold	na	na	JACETB010000055.1	<>	na	Primary Assembly	8958	na
+Synechococcus-MCMED-G31-C56	unplaced-scaffold	na	na	JACETB010000056.1	<>	na	Primary Assembly	8923	na
+Synechococcus-MCMED-G31-C57	unplaced-scaffold	na	na	JACETB010000057.1	<>	na	Primary Assembly	8751	na
+Synechococcus-MCMED-G31-C58	unplaced-scaffold	na	na	JACETB010000058.1	<>	na	Primary Assembly	8696	na
+Synechococcus-MCMED-G31-C59	unplaced-scaffold	na	na	JACETB010000059.1	<>	na	Primary Assembly	8618	na
+Synechococcus-MCMED-G31-C6	unplaced-scaffold	na	na	JACETB010000006.1	<>	na	Primary Assembly	33484	na
+Synechococcus-MCMED-G31-C60	unplaced-scaffold	na	na	JACETB010000060.1	<>	na	Primary Assembly	8557	na
+Synechococcus-MCMED-G31-C61	unplaced-scaffold	na	na	JACETB010000061.1	<>	na	Primary Assembly	8546	na
+Synechococcus-MCMED-G31-C62	unplaced-scaffold	na	na	JACETB010000062.1	<>	na	Primary Assembly	8335	na
+Synechococcus-MCMED-G31-C63	unplaced-scaffold	na	na	JACETB010000063.1	<>	na	Primary Assembly	8329	na
+Synechococcus-MCMED-G31-C64	unplaced-scaffold	na	na	JACETB010000064.1	<>	na	Primary Assembly	8214	na
+Synechococcus-MCMED-G31-C65	unplaced-scaffold	na	na	JACETB010000065.1	<>	na	Primary Assembly	8179	na
+Synechococcus-MCMED-G31-C66	unplaced-scaffold	na	na	JACETB010000066.1	<>	na	Primary Assembly	8143	na
+Synechococcus-MCMED-G31-C67	unplaced-scaffold	na	na	JACETB010000067.1	<>	na	Primary Assembly	7881	na
+Synechococcus-MCMED-G31-C68	unplaced-scaffold	na	na	JACETB010000068.1	<>	na	Primary Assembly	7865	na
+Synechococcus-MCMED-G31-C69	unplaced-scaffold	na	na	JACETB010000069.1	<>	na	Primary Assembly	7708	na
+Synechococcus-MCMED-G31-C7	unplaced-scaffold	na	na	JACETB010000007.1	<>	na	Primary Assembly	32852	na
+Synechococcus-MCMED-G31-C70	unplaced-scaffold	na	na	JACETB010000070.1	<>	na	Primary Assembly	7651	na
+Synechococcus-MCMED-G31-C71	unplaced-scaffold	na	na	JACETB010000071.1	<>	na	Primary Assembly	7526	na
+Synechococcus-MCMED-G31-C72	unplaced-scaffold	na	na	JACETB010000072.1	<>	na	Primary Assembly	7477	na
+Synechococcus-MCMED-G31-C73	unplaced-scaffold	na	na	JACETB010000073.1	<>	na	Primary Assembly	7120	na
+Synechococcus-MCMED-G31-C74	unplaced-scaffold	na	na	JACETB010000074.1	<>	na	Primary Assembly	7093	na
+Synechococcus-MCMED-G31-C75	unplaced-scaffold	na	na	JACETB010000075.1	<>	na	Primary Assembly	7052	na
+Synechococcus-MCMED-G31-C76	unplaced-scaffold	na	na	JACETB010000076.1	<>	na	Primary Assembly	6834	na
+Synechococcus-MCMED-G31-C77	unplaced-scaffold	na	na	JACETB010000077.1	<>	na	Primary Assembly	6758	na
+Synechococcus-MCMED-G31-C78	unplaced-scaffold	na	na	JACETB010000078.1	<>	na	Primary Assembly	6485	na
+Synechococcus-MCMED-G31-C79	unplaced-scaffold	na	na	JACETB010000079.1	<>	na	Primary Assembly	6401	na
+Synechococcus-MCMED-G31-C8	unplaced-scaffold	na	na	JACETB010000008.1	<>	na	Primary Assembly	28256	na
+Synechococcus-MCMED-G31-C80	unplaced-scaffold	na	na	JACETB010000080.1	<>	na	Primary Assembly	6380	na
+Synechococcus-MCMED-G31-C81	unplaced-scaffold	na	na	JACETB010000081.1	<>	na	Primary Assembly	6264	na
+Synechococcus-MCMED-G31-C82	unplaced-scaffold	na	na	JACETB010000082.1	<>	na	Primary Assembly	6250	na
+Synechococcus-MCMED-G31-C83	unplaced-scaffold	na	na	JACETB010000083.1	<>	na	Primary Assembly	6246	na
+Synechococcus-MCMED-G31-C84	unplaced-scaffold	na	na	JACETB010000084.1	<>	na	Primary Assembly	6244	na
+Synechococcus-MCMED-G31-C85	unplaced-scaffold	na	na	JACETB010000085.1	<>	na	Primary Assembly	6200	na
+Synechococcus-MCMED-G31-C86	unplaced-scaffold	na	na	JACETB010000086.1	<>	na	Primary Assembly	6136	na
+Synechococcus-MCMED-G31-C87	unplaced-scaffold	na	na	JACETB010000087.1	<>	na	Primary Assembly	6112	na
+Synechococcus-MCMED-G31-C88	unplaced-scaffold	na	na	JACETB010000088.1	<>	na	Primary Assembly	6045	na
+Synechococcus-MCMED-G31-C89	unplaced-scaffold	na	na	JACETB010000089.1	<>	na	Primary Assembly	6012	na
+Synechococcus-MCMED-G31-C9	unplaced-scaffold	na	na	JACETB010000009.1	<>	na	Primary Assembly	25638	na
+Synechococcus-MCMED-G31-C90	unplaced-scaffold	na	na	JACETB010000090.1	<>	na	Primary Assembly	5788	na
+Synechococcus-MCMED-G31-C91	unplaced-scaffold	na	na	JACETB010000091.1	<>	na	Primary Assembly	5714	na
+Synechococcus-MCMED-G31-C92	unplaced-scaffold	na	na	JACETB010000092.1	<>	na	Primary Assembly	5663	na
+Synechococcus-MCMED-G31-C93	unplaced-scaffold	na	na	JACETB010000093.1	<>	na	Primary Assembly	5604	na
+Synechococcus-MCMED-G31-C94	unplaced-scaffold	na	na	JACETB010000094.1	<>	na	Primary Assembly	5561	na
+Synechococcus-MCMED-G31-C95	unplaced-scaffold	na	na	JACETB010000095.1	<>	na	Primary Assembly	5487	na
+Synechococcus-MCMED-G31-C96	unplaced-scaffold	na	na	JACETB010000096.1	<>	na	Primary Assembly	5388	na
+Synechococcus-MCMED-G31-C97	unplaced-scaffold	na	na	JACETB010000097.1	<>	na	Primary Assembly	5207	na
+Synechococcus-MCMED-G31-C98	unplaced-scaffold	na	na	JACETB010000098.1	<>	na	Primary Assembly	5201	na
+Synechococcus-MCMED-G31-C99	unplaced-scaffold	na	na	JACETB010000099.1	<>	na	Primary Assembly	5172	na

@@ -1,0 +1,67 @@
+# Assembly name:  ASM1361971v1
+# Organism name:  Pseudomonas aeruginosa (g-proteobacteria)
+# Infraspecific name:  strain=LiP14
+# Taxid:          287
+# BioSample:      SAMN14453445
+# BioProject:     PRJNA615626
+# Submitter:      University of Oxford
+# Date:           2020-07-24
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    JACEKU01
+# Assembly method: A5-miseq v. 20140401
+# Expected final version: yes
+# Genome coverage: 44.019x
+# Sequencing technology: Illumina HiSeq
+# GenBank assembly accession: GCA_013619715.1
+# RefSeq assembly accession: GCF_013619715.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_013619755.1	GCF_013619755.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+LiP14.1	unplaced-scaffold	na	na	JACEKU010000001.1	=	NZ_JACEKU010000001.1	Primary Assembly	458982	na
+LiP14.10	unplaced-scaffold	na	na	JACEKU010000010.1	=	NZ_JACEKU010000010.1	Primary Assembly	353082	na
+LiP14.11	unplaced-scaffold	na	na	JACEKU010000011.1	=	NZ_JACEKU010000011.1	Primary Assembly	206997	na
+LiP14.12	unplaced-scaffold	na	na	JACEKU010000012.1	=	NZ_JACEKU010000012.1	Primary Assembly	622432	na
+LiP14.13	unplaced-scaffold	na	na	JACEKU010000013.1	=	NZ_JACEKU010000013.1	Primary Assembly	12396	na
+LiP14.14	unplaced-scaffold	na	na	JACEKU010000014.1	=	NZ_JACEKU010000014.1	Primary Assembly	234786	na
+LiP14.15	unplaced-scaffold	na	na	JACEKU010000015.1	=	NZ_JACEKU010000015.1	Primary Assembly	3819	na
+LiP14.16	unplaced-scaffold	na	na	JACEKU010000016.1	=	NZ_JACEKU010000016.1	Primary Assembly	215176	na
+LiP14.17	unplaced-scaffold	na	na	JACEKU010000017.1	=	NZ_JACEKU010000017.1	Primary Assembly	6372	na
+LiP14.18	unplaced-scaffold	na	na	JACEKU010000018.1	=	NZ_JACEKU010000018.1	Primary Assembly	11935	na
+LiP14.19	unplaced-scaffold	na	na	JACEKU010000019.1	=	NZ_JACEKU010000019.1	Primary Assembly	18469	na
+LiP14.2	unplaced-scaffold	na	na	JACEKU010000002.1	=	NZ_JACEKU010000002.1	Primary Assembly	2765	na
+LiP14.20	unplaced-scaffold	na	na	JACEKU010000020.1	=	NZ_JACEKU010000020.1	Primary Assembly	66558	na
+LiP14.21	unplaced-scaffold	na	na	JACEKU010000021.1	=	NZ_JACEKU010000021.1	Primary Assembly	1438	na
+LiP14.22	unplaced-scaffold	na	na	JACEKU010000022.1	=	NZ_JACEKU010000022.1	Primary Assembly	2324	na
+LiP14.23	unplaced-scaffold	na	na	JACEKU010000023.1	=	NZ_JACEKU010000023.1	Primary Assembly	5841	na
+LiP14.24	unplaced-scaffold	na	na	JACEKU010000024.1	=	NZ_JACEKU010000024.1	Primary Assembly	107819	na
+LiP14.25	unplaced-scaffold	na	na	JACEKU010000025.1	=	NZ_JACEKU010000025.1	Primary Assembly	96673	na
+LiP14.26	unplaced-scaffold	na	na	JACEKU010000026.1	=	NZ_JACEKU010000026.1	Primary Assembly	444443	na
+LiP14.27	unplaced-scaffold	na	na	JACEKU010000027.1	=	NZ_JACEKU010000027.1	Primary Assembly	72281	na
+LiP14.28	unplaced-scaffold	na	na	JACEKU010000028.1	=	NZ_JACEKU010000028.1	Primary Assembly	534259	na
+LiP14.29	unplaced-scaffold	na	na	JACEKU010000029.1	=	NZ_JACEKU010000029.1	Primary Assembly	253866	na
+LiP14.3	unplaced-scaffold	na	na	JACEKU010000003.1	=	NZ_JACEKU010000003.1	Primary Assembly	409093	na
+LiP14.30	unplaced-scaffold	na	na	JACEKU010000030.1	=	NZ_JACEKU010000030.1	Primary Assembly	461845	na
+LiP14.31	unplaced-scaffold	na	na	JACEKU010000031.1	=	NZ_JACEKU010000031.1	Primary Assembly	2967	na
+LiP14.32	unplaced-scaffold	na	na	JACEKU010000032.1	=	NZ_JACEKU010000032.1	Primary Assembly	665838	na
+LiP14.33	unplaced-scaffold	na	na	JACEKU010000033.1	=	NZ_JACEKU010000033.1	Primary Assembly	106797	na
+LiP14.34	unplaced-scaffold	na	na	JACEKU010000034.1	=	NZ_JACEKU010000034.1	Primary Assembly	49534	na
+LiP14.35	unplaced-scaffold	na	na	JACEKU010000035.1	=	NZ_JACEKU010000035.1	Primary Assembly	920	na
+LiP14.36	unplaced-scaffold	na	na	JACEKU010000036.1	=	NZ_JACEKU010000036.1	Primary Assembly	256523	na
+LiP14.4	unplaced-scaffold	na	na	JACEKU010000004.1	=	NZ_JACEKU010000004.1	Primary Assembly	9212	na
+LiP14.5	unplaced-scaffold	na	na	JACEKU010000005.1	=	NZ_JACEKU010000005.1	Primary Assembly	16803	na
+LiP14.6	unplaced-scaffold	na	na	JACEKU010000006.1	=	NZ_JACEKU010000006.1	Primary Assembly	48599	na
+LiP14.7	unplaced-scaffold	na	na	JACEKU010000007.1	=	NZ_JACEKU010000007.1	Primary Assembly	683262	na
+LiP14.8	unplaced-scaffold	na	na	JACEKU010000008.1	=	NZ_JACEKU010000008.1	Primary Assembly	8553	na
+LiP14.9	unplaced-scaffold	na	na	JACEKU010000009.1	=	NZ_JACEKU010000009.1	Primary Assembly	1223	na

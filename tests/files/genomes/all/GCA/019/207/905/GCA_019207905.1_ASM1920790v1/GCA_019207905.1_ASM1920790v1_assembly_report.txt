@@ -1,0 +1,103 @@
+# Assembly name:  ASM1920790v1
+# Organism name:  Ogataea polymorpha (budding yeasts)
+# Isolate:  Y-2423
+# Taxid:          460523
+# BioSample:      SAMN18128823
+# BioProject:     PRJNA706707
+# Submitter:      Colorado College
+# Date:           2021-07-13
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    JAHLVQ01
+# Assembly method: SPAdes v. 3.11
+# Expected final version: yes
+# Genome coverage: 100x
+# Sequencing technology: Illumina HiSeq
+# GenBank assembly accession: GCA_019207905.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_019207915.1		Primary Assembly
+## GCA_019207925.1		non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+Y-2423_NODE_1_length_878739_cov_96.017722	unplaced-scaffold	na	na	JAHLVQ010000001.1	<>	na	Primary Assembly	878739	na
+Y-2423_NODE_2_length_851509_cov_95.572170	unplaced-scaffold	na	na	JAHLVQ010000002.1	<>	na	Primary Assembly	851509	na
+Y-2423_NODE_3_length_816037_cov_93.064357	unplaced-scaffold	na	na	JAHLVQ010000003.1	<>	na	Primary Assembly	816037	na
+Y-2423_NODE_4_length_716994_cov_94.490376	unplaced-scaffold	na	na	JAHLVQ010000004.1	<>	na	Primary Assembly	716994	na
+Y-2423_NODE_5_length_632645_cov_94.187406	unplaced-scaffold	na	na	JAHLVQ010000005.1	<>	na	Primary Assembly	632645	na
+Y-2423_NODE_6_length_608010_cov_97.227477	unplaced-scaffold	na	na	JAHLVQ010000006.1	<>	na	Primary Assembly	608010	na
+Y-2423_NODE_7_length_552813_cov_93.574533	unplaced-scaffold	na	na	JAHLVQ010000007.1	<>	na	Primary Assembly	552813	na
+Y-2423_NODE_8_length_512927_cov_95.084311	unplaced-scaffold	na	na	JAHLVQ010000008.1	<>	na	Primary Assembly	512927	na
+Y-2423_NODE_9_length_491211_cov_99.280923	unplaced-scaffold	na	na	JAHLVQ010000009.1	<>	na	Primary Assembly	491211	na
+Y-2423_NODE_10_length_442885_cov_94.113379	unplaced-scaffold	na	na	JAHLVQ010000010.1	<>	na	Primary Assembly	442885	na
+Y-2423_NODE_11_length_440692_cov_96.051321	unplaced-scaffold	na	na	JAHLVQ010000011.1	<>	na	Primary Assembly	440692	na
+Y-2423_NODE_12_length_298230_cov_93.675559	unplaced-scaffold	na	na	JAHLVQ010000012.1	<>	na	Primary Assembly	298230	na
+Y-2423_NODE_13_length_288997_cov_97.909269	unplaced-scaffold	na	na	JAHLVQ010000013.1	<>	na	Primary Assembly	288997	na
+Y-2423_NODE_14_length_281744_cov_94.997462	unplaced-scaffold	na	na	JAHLVQ010000014.1	<>	na	Primary Assembly	281744	na
+Y-2423_NODE_15_length_236881_cov_95.172712	unplaced-scaffold	na	na	JAHLVQ010000015.1	<>	na	Primary Assembly	236881	na
+Y-2423_NODE_16_length_160897_cov_93.426788	unplaced-scaffold	na	na	JAHLVQ010000016.1	<>	na	Primary Assembly	160897	na
+Y-2423_NODE_17_length_156666_cov_97.998493	unplaced-scaffold	na	na	JAHLVQ010000017.1	<>	na	Primary Assembly	156666	na
+Y-2423_NODE_18_length_145649_cov_95.286092	unplaced-scaffold	na	na	JAHLVQ010000018.1	<>	na	Primary Assembly	145649	na
+Y-2423_NODE_19_length_95681_cov_97.756171	unplaced-scaffold	na	na	JAHLVQ010000019.1	<>	na	Primary Assembly	95681	na
+Y-2423_NODE_20_length_90852_cov_98.177979	unplaced-scaffold	na	na	JAHLVQ010000020.1	<>	na	Primary Assembly	90852	na
+Y-2423_NODE_21_length_85917_cov_93.183842	unplaced-scaffold	na	na	JAHLVQ010000021.1	<>	na	Primary Assembly	85917	na
+Y-2423_NODE_22_length_18864_cov_94.331612	unplaced-scaffold	na	na	JAHLVQ010000022.1	<>	na	Primary Assembly	18864	na
+Y-2423_NODE_23_length_18501_cov_96.043008	unplaced-scaffold	na	na	JAHLVQ010000023.1	<>	na	Primary Assembly	18501	na
+Y-2423_NODE_25_length_8361_cov_663.916586	unplaced-scaffold	na	na	JAHLVQ010000025.1	<>	na	Primary Assembly	8361	na
+Y-2423_NODE_27_length_6613_cov_1451.300184	unplaced-scaffold	na	na	JAHLVQ010000027.1	<>	na	Primary Assembly	6613	na
+Y-2423_NODE_29_length_6015_cov_153.300943	unplaced-scaffold	na	na	JAHLVQ010000028.1	<>	na	Primary Assembly	6015	na
+Y-2423_NODE_31_length_5006_cov_93.459119	unplaced-scaffold	na	na	JAHLVQ010000029.1	<>	na	Primary Assembly	5006	na
+Y-2423_NODE_32_length_4742_cov_93.950697	unplaced-scaffold	na	na	JAHLVQ010000030.1	<>	na	Primary Assembly	4742	na
+Y-2423_NODE_33_length_4391_cov_580.350023	unplaced-scaffold	na	na	JAHLVQ010000031.1	<>	na	Primary Assembly	4391	na
+Y-2423_NODE_41_length_2369_cov_192.267452	unplaced-scaffold	na	na	JAHLVQ010000035.1	<>	na	Primary Assembly	2369	na
+Y-2423_NODE_42_length_2350_cov_662.331720	unplaced-scaffold	na	na	JAHLVQ010000036.1	<>	na	Primary Assembly	2350	na
+Y-2423_NODE_44_length_2049_cov_195.236815	unplaced-scaffold	na	na	JAHLVQ010000037.1	<>	na	Primary Assembly	2049	na
+Y-2423_NODE_45_length_2046_cov_187.689182	unplaced-scaffold	na	na	JAHLVQ010000038.1	<>	na	Primary Assembly	2046	na
+Y-2423_NODE_47_length_1830_cov_195.007986	unplaced-scaffold	na	na	JAHLVQ010000039.1	<>	na	Primary Assembly	1830	na
+Y-2423_NODE_50_length_1645_cov_94.740434	unplaced-scaffold	na	na	JAHLVQ010000041.1	<>	na	Primary Assembly	1645	na
+Y-2423_NODE_54_length_1373_cov_661.307099	unplaced-scaffold	na	na	JAHLVQ010000043.1	<>	na	Primary Assembly	1373	na
+Y-2423_NODE_57_length_1292_cov_196.261728	unplaced-scaffold	na	na	JAHLVQ010000044.1	<>	na	Primary Assembly	1292	na
+Y-2423_NODE_70_length_1144_cov_97.371134	unplaced-scaffold	na	na	JAHLVQ010000046.1	<>	na	Primary Assembly	1144	na
+Y-2423_NODE_73_length_1109_cov_113.742248	unplaced-scaffold	na	na	JAHLVQ010000047.1	<>	na	Primary Assembly	1109	na
+Y-2423_NODE_88_length_1026_cov_804.804004	unplaced-scaffold	na	na	JAHLVQ010000048.1	<>	na	Primary Assembly	1026	na
+Y-2423_NODE_105_length_966_cov_117.272216	unplaced-scaffold	na	na	JAHLVQ010000049.1	<>	na	Primary Assembly	966	na
+Y-2423_NODE_120_length_929_cov_119.022300	unplaced-scaffold	na	na	JAHLVQ010000050.1	<>	na	Primary Assembly	929	na
+Y-2423_NODE_121_length_929_cov_100.819249	unplaced-scaffold	na	na	JAHLVQ010000051.1	<>	na	Primary Assembly	929	na
+Y-2423_NODE_166_length_843_cov_211.007833	unplaced-scaffold	na	na	JAHLVQ010000052.1	<>	na	Primary Assembly	843	na
+Y-2423_NODE_240_length_772_cov_189.483453	unplaced-scaffold	na	na	JAHLVQ010000054.1	<>	na	Primary Assembly	772	na
+Y-2423_NODE_291_length_732_cov_131.639695	unplaced-scaffold	na	na	JAHLVQ010000055.1	<>	na	Primary Assembly	732	na
+Y-2423_NODE_311_length_719_cov_207.637072	unplaced-scaffold	na	na	JAHLVQ010000056.1	<>	na	Primary Assembly	719	na
+Y-2423_NODE_401_length_668_cov_361.949239	unplaced-scaffold	na	na	JAHLVQ010000057.1	<>	na	Primary Assembly	668	na
+Y-2423_NODE_830_length_547_cov_1165.427660	unplaced-scaffold	na	na	JAHLVQ010000058.1	<>	na	Primary Assembly	547	na
+Y-2423_NODE_1002_length_514_cov_97.654462	unplaced-scaffold	na	na	JAHLVQ010000059.1	<>	na	Primary Assembly	514	na
+Y-2423_NODE_1106_length_498_cov_102.945368	unplaced-scaffold	na	na	JAHLVQ010000060.1	<>	na	Primary Assembly	498	na
+Y-2423_NODE_1260_length_477_cov_96.730000	unplaced-scaffold	na	na	JAHLVQ010000061.1	<>	na	Primary Assembly	477	na
+Y-2423_NODE_1446_length_458_cov_186.842520	unplaced-scaffold	na	na	JAHLVQ010000062.1	<>	na	Primary Assembly	458	na
+Y-2423_NODE_2653_length_378_cov_106.325581	unplaced-scaffold	na	na	JAHLVQ010000063.1	<>	na	Primary Assembly	378	na
+Y-2423_NODE_2654_length_378_cov_86.073090	unplaced-scaffold	na	na	JAHLVQ010000064.1	<>	na	Primary Assembly	378	na
+Y-2423_NODE_2752_length_373_cov_197.500000	unplaced-scaffold	na	na	JAHLVQ010000065.1	<>	na	Primary Assembly	373	na
+Y-2423_NODE_3327_length_347_cov_98.648148	unplaced-scaffold	na	na	JAHLVQ010000066.1	<>	na	Primary Assembly	347	na
+Y-2423_NODE_3893_length_326_cov_97.301205	unplaced-scaffold	na	na	JAHLVQ010000067.1	<>	na	Primary Assembly	326	na
+Y-2423_NODE_4066_length_320_cov_104.679012	unplaced-scaffold	na	na	JAHLVQ010000068.1	<>	na	Primary Assembly	320	na
+Y-2423_NODE_4346_length_311_cov_100.850427	unplaced-scaffold	na	na	JAHLVQ010000069.1	<>	na	Primary Assembly	311	na
+Y-2423_NODE_4347_length_311_cov_99.179487	unplaced-scaffold	na	na	JAHLVQ010000070.1	<>	na	Primary Assembly	311	na
+Y-2423_NODE_4348_length_311_cov_90.094017	unplaced-scaffold	na	na	JAHLVQ010000071.1	<>	na	Primary Assembly	311	na
+Y-2423_NODE_5068_length_291_cov_98.149533	unplaced-scaffold	na	na	JAHLVQ010000072.1	<>	na	Primary Assembly	291	na
+Y-2423_NODE_9366_length_212_cov_200.266667	unplaced-scaffold	na	na	JAHLVQ010000073.1	<>	na	Primary Assembly	212	na
+Y-2423_NODE_190_length_813_cov_708.870924	unlocalized-scaffold	MT	Mitochondrion	JAHLVQ010000053.1	<>	na	non-nuclear	813	na
+Y-2423_NODE_24_length_10929_cov_788.735809	unlocalized-scaffold	MT	Mitochondrion	JAHLVQ010000024.1	<>	na	non-nuclear	10929	na
+Y-2423_NODE_26_length_7886_cov_712.367781	unlocalized-scaffold	MT	Mitochondrion	JAHLVQ010000026.1	<>	na	non-nuclear	7886	na
+Y-2423_NODE_37_length_3515_cov_751.933682	unlocalized-scaffold	MT	Mitochondrion	JAHLVQ010000032.1	<>	na	non-nuclear	3515	na
+Y-2423_NODE_38_length_3485_cov_701.872359	unlocalized-scaffold	MT	Mitochondrion	JAHLVQ010000033.1	<>	na	non-nuclear	3485	na
+Y-2423_NODE_39_length_2638_cov_809.621242	unlocalized-scaffold	MT	Mitochondrion	JAHLVQ010000034.1	<>	na	non-nuclear	2638	na
+Y-2423_NODE_49_length_1684_cov_725.229620	unlocalized-scaffold	MT	Mitochondrion	JAHLVQ010000040.1	<>	na	non-nuclear	1684	na
+Y-2423_NODE_51_length_1597_cov_749.390789	unlocalized-scaffold	MT	Mitochondrion	JAHLVQ010000042.1	<>	na	non-nuclear	1597	na
+Y-2423_NODE_60_length_1221_cov_881.083916	unlocalized-scaffold	MT	Mitochondrion	JAHLVQ010000045.1	<>	na	non-nuclear	1221	na

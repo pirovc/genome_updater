@@ -1,0 +1,153 @@
+# Assembly name:  Aspacu1
+# Organism name:  Aspergillus aculeatinus CBS 121060 (ascomycetes)
+# Infraspecific name:  strain=CBS 121060
+# Taxid:          1448322
+# BioSample:      SAMN05660730
+# BioProject:     PRJNA235093
+# Submitter:      DOE Joint Genome Institute
+# Date:           2018-06-04
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    PSTE01
+# Assembly method: AllPathsLG v. R47710
+# Genome coverage: 95.8x
+# Sequencing technology: Illumina
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_003184765.1
+# RefSeq assembly accession: GCF_003184765.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_003184805.1	GCF_003184805.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+BO66scaffold_1	unplaced-scaffold	na	na	KZ824933.1	=	NW_020291470.1	Primary Assembly	1782628	na
+BO66scaffold_2	unplaced-scaffold	na	na	KZ824934.1	=	NW_020291471.1	Primary Assembly	1225403	na
+BO66scaffold_3	unplaced-scaffold	na	na	KZ824935.1	=	NW_020291472.1	Primary Assembly	1001035	na
+BO66scaffold_4	unplaced-scaffold	na	na	KZ824936.1	=	NW_020291473.1	Primary Assembly	940726	na
+BO66scaffold_5	unplaced-scaffold	na	na	KZ824937.1	=	NW_020291474.1	Primary Assembly	881320	na
+BO66scaffold_6	unplaced-scaffold	na	na	KZ824938.1	=	NW_020291475.1	Primary Assembly	837083	na
+BO66scaffold_7	unplaced-scaffold	na	na	KZ824939.1	=	NW_020291476.1	Primary Assembly	809348	na
+BO66scaffold_8	unplaced-scaffold	na	na	KZ824940.1	=	NW_020291477.1	Primary Assembly	764194	na
+BO66scaffold_9	unplaced-scaffold	na	na	KZ824941.1	=	NW_020291478.1	Primary Assembly	728895	na
+BO66scaffold_10	unplaced-scaffold	na	na	KZ824942.1	=	NW_020291479.1	Primary Assembly	722949	na
+BO66scaffold_11	unplaced-scaffold	na	na	KZ824943.1	=	NW_020291480.1	Primary Assembly	659324	na
+BO66scaffold_12	unplaced-scaffold	na	na	KZ824944.1	=	NW_020291481.1	Primary Assembly	633776	na
+BO66scaffold_13	unplaced-scaffold	na	na	KZ824945.1	=	NW_020291482.1	Primary Assembly	633684	na
+BO66scaffold_14	unplaced-scaffold	na	na	KZ824946.1	=	NW_020291483.1	Primary Assembly	608062	na
+BO66scaffold_15	unplaced-scaffold	na	na	KZ824947.1	=	NW_020291484.1	Primary Assembly	606856	na
+BO66scaffold_16	unplaced-scaffold	na	na	KZ824948.1	=	NW_020291485.1	Primary Assembly	600915	na
+BO66scaffold_17	unplaced-scaffold	na	na	KZ824949.1	=	NW_020291486.1	Primary Assembly	575461	na
+BO66scaffold_18	unplaced-scaffold	na	na	KZ824950.1	=	NW_020291487.1	Primary Assembly	553402	na
+BO66scaffold_19	unplaced-scaffold	na	na	KZ824951.1	=	NW_020291488.1	Primary Assembly	548560	na
+BO66scaffold_20	unplaced-scaffold	na	na	KZ824952.1	=	NW_020291489.1	Primary Assembly	538311	na
+BO66scaffold_21	unplaced-scaffold	na	na	KZ824953.1	=	NW_020291490.1	Primary Assembly	536749	na
+BO66scaffold_22	unplaced-scaffold	na	na	KZ824954.1	=	NW_020291491.1	Primary Assembly	525514	na
+BO66scaffold_23	unplaced-scaffold	na	na	KZ824955.1	=	NW_020291492.1	Primary Assembly	525278	na
+BO66scaffold_24	unplaced-scaffold	na	na	KZ824956.1	=	NW_020291493.1	Primary Assembly	514030	na
+BO66scaffold_25	unplaced-scaffold	na	na	KZ824957.1	=	NW_020291494.1	Primary Assembly	493913	na
+BO66scaffold_26	unplaced-scaffold	na	na	KZ824958.1	=	NW_020291495.1	Primary Assembly	489650	na
+BO66scaffold_27	unplaced-scaffold	na	na	KZ824959.1	=	NW_020291496.1	Primary Assembly	483700	na
+BO66scaffold_28	unplaced-scaffold	na	na	KZ824960.1	=	NW_020291497.1	Primary Assembly	483358	na
+BO66scaffold_29	unplaced-scaffold	na	na	KZ824961.1	=	NW_020291498.1	Primary Assembly	474345	na
+BO66scaffold_30	unplaced-scaffold	na	na	KZ824962.1	=	NW_020291499.1	Primary Assembly	462652	na
+BO66scaffold_31	unplaced-scaffold	na	na	KZ824963.1	=	NW_020291500.1	Primary Assembly	441749	na
+BO66scaffold_32	unplaced-scaffold	na	na	KZ824964.1	=	NW_020291501.1	Primary Assembly	441585	na
+BO66scaffold_33	unplaced-scaffold	na	na	KZ824965.1	=	NW_020291502.1	Primary Assembly	429675	na
+BO66scaffold_34	unplaced-scaffold	na	na	KZ824966.1	=	NW_020291503.1	Primary Assembly	415605	na
+BO66scaffold_35	unplaced-scaffold	na	na	KZ824967.1	=	NW_020291504.1	Primary Assembly	410232	na
+BO66scaffold_36	unplaced-scaffold	na	na	KZ824968.1	=	NW_020291505.1	Primary Assembly	409894	na
+BO66scaffold_37	unplaced-scaffold	na	na	KZ824969.1	=	NW_020291506.1	Primary Assembly	377541	na
+BO66scaffold_38	unplaced-scaffold	na	na	KZ824970.1	=	NW_020291507.1	Primary Assembly	377206	na
+BO66scaffold_39	unplaced-scaffold	na	na	KZ824971.1	=	NW_020291508.1	Primary Assembly	372342	na
+BO66scaffold_40	unplaced-scaffold	na	na	KZ824972.1	=	NW_020291509.1	Primary Assembly	370389	na
+BO66scaffold_41	unplaced-scaffold	na	na	KZ824973.1	=	NW_020291510.1	Primary Assembly	370155	na
+BO66scaffold_42	unplaced-scaffold	na	na	KZ824974.1	=	NW_020291511.1	Primary Assembly	367955	na
+BO66scaffold_43	unplaced-scaffold	na	na	KZ824975.1	=	NW_020291512.1	Primary Assembly	360837	na
+BO66scaffold_44	unplaced-scaffold	na	na	KZ824976.1	=	NW_020291513.1	Primary Assembly	356292	na
+BO66scaffold_45	unplaced-scaffold	na	na	KZ824977.1	=	NW_020291514.1	Primary Assembly	352058	na
+BO66scaffold_46	unplaced-scaffold	na	na	KZ824978.1	=	NW_020291515.1	Primary Assembly	344478	na
+BO66scaffold_47	unplaced-scaffold	na	na	KZ824979.1	=	NW_020291516.1	Primary Assembly	338729	na
+BO66scaffold_48	unplaced-scaffold	na	na	KZ824980.1	=	NW_020291517.1	Primary Assembly	337715	na
+BO66scaffold_49	unplaced-scaffold	na	na	KZ824981.1	=	NW_020291518.1	Primary Assembly	323922	na
+BO66scaffold_50	unplaced-scaffold	na	na	KZ824982.1	=	NW_020291519.1	Primary Assembly	316286	na
+BO66scaffold_51	unplaced-scaffold	na	na	KZ824983.1	=	NW_020291520.1	Primary Assembly	285838	na
+BO66scaffold_52	unplaced-scaffold	na	na	KZ824984.1	=	NW_020291521.1	Primary Assembly	284869	na
+BO66scaffold_53	unplaced-scaffold	na	na	KZ824985.1	=	NW_020291522.1	Primary Assembly	261894	na
+BO66scaffold_54	unplaced-scaffold	na	na	KZ824986.1	=	NW_020291523.1	Primary Assembly	260298	na
+BO66scaffold_55	unplaced-scaffold	na	na	KZ824987.1	=	NW_020291524.1	Primary Assembly	230339	na
+BO66scaffold_56	unplaced-scaffold	na	na	KZ824988.1	=	NW_020291525.1	Primary Assembly	230008	na
+BO66scaffold_57	unplaced-scaffold	na	na	KZ824989.1	=	NW_020291526.1	Primary Assembly	229338	na
+BO66scaffold_58	unplaced-scaffold	na	na	KZ824990.1	=	NW_020291527.1	Primary Assembly	222523	na
+BO66scaffold_59	unplaced-scaffold	na	na	KZ824991.1	=	NW_020291528.1	Primary Assembly	221566	na
+BO66scaffold_60	unplaced-scaffold	na	na	KZ824992.1	=	NW_020291529.1	Primary Assembly	217218	na
+BO66scaffold_61	unplaced-scaffold	na	na	KZ824993.1	=	NW_020291530.1	Primary Assembly	216325	na
+BO66scaffold_62	unplaced-scaffold	na	na	KZ824994.1	=	NW_020291531.1	Primary Assembly	214817	na
+BO66scaffold_63	unplaced-scaffold	na	na	KZ824995.1	=	NW_020291532.1	Primary Assembly	211756	na
+BO66scaffold_64	unplaced-scaffold	na	na	KZ824996.1	=	NW_020291533.1	Primary Assembly	211714	na
+BO66scaffold_65	unplaced-scaffold	na	na	KZ824997.1	=	NW_020291534.1	Primary Assembly	205249	na
+BO66scaffold_66	unplaced-scaffold	na	na	KZ824998.1	=	NW_020291535.1	Primary Assembly	200731	na
+BO66scaffold_67	unplaced-scaffold	na	na	KZ824999.1	=	NW_020291536.1	Primary Assembly	198845	na
+BO66scaffold_68	unplaced-scaffold	na	na	KZ825000.1	=	NW_020291537.1	Primary Assembly	189940	na
+BO66scaffold_69	unplaced-scaffold	na	na	KZ825001.1	=	NW_020291538.1	Primary Assembly	183502	na
+BO66scaffold_70	unplaced-scaffold	na	na	KZ825002.1	=	NW_020291539.1	Primary Assembly	177358	na
+BO66scaffold_71	unplaced-scaffold	na	na	KZ825003.1	=	NW_020291540.1	Primary Assembly	171662	na
+BO66scaffold_72	unplaced-scaffold	na	na	KZ825004.1	=	NW_020291541.1	Primary Assembly	169998	na
+BO66scaffold_73	unplaced-scaffold	na	na	KZ825005.1	=	NW_020291542.1	Primary Assembly	166269	na
+BO66scaffold_74	unplaced-scaffold	na	na	KZ825006.1	=	NW_020291543.1	Primary Assembly	162962	na
+BO66scaffold_75	unplaced-scaffold	na	na	KZ825007.1	=	NW_020291544.1	Primary Assembly	161262	na
+BO66scaffold_76	unplaced-scaffold	na	na	KZ825008.1	=	NW_020291545.1	Primary Assembly	146879	na
+BO66scaffold_77	unplaced-scaffold	na	na	KZ825009.1	=	NW_020291546.1	Primary Assembly	146805	na
+BO66scaffold_78	unplaced-scaffold	na	na	KZ825010.1	=	NW_020291547.1	Primary Assembly	137684	na
+BO66scaffold_79	unplaced-scaffold	na	na	KZ825011.1	=	NW_020291548.1	Primary Assembly	136023	na
+BO66scaffold_80	unplaced-scaffold	na	na	KZ825012.1	=	NW_020291549.1	Primary Assembly	135888	na
+BO66scaffold_81	unplaced-scaffold	na	na	KZ825013.1	=	NW_020291550.1	Primary Assembly	134873	na
+BO66scaffold_82	unplaced-scaffold	na	na	KZ825014.1	=	NW_020291551.1	Primary Assembly	128519	na
+BO66scaffold_83	unplaced-scaffold	na	na	KZ825015.1	=	NW_020291552.1	Primary Assembly	126604	na
+BO66scaffold_84	unplaced-scaffold	na	na	KZ825016.1	=	NW_020291553.1	Primary Assembly	116071	na
+BO66scaffold_85	unplaced-scaffold	na	na	KZ825017.1	=	NW_020291554.1	Primary Assembly	112822	na
+BO66scaffold_86	unplaced-scaffold	na	na	KZ825018.1	=	NW_020291555.1	Primary Assembly	111616	na
+BO66scaffold_87	unplaced-scaffold	na	na	KZ825019.1	=	NW_020291556.1	Primary Assembly	110199	na
+BO66scaffold_88	unplaced-scaffold	na	na	KZ825020.1	=	NW_020291557.1	Primary Assembly	110199	na
+BO66scaffold_89	unplaced-scaffold	na	na	KZ825021.1	=	NW_020291558.1	Primary Assembly	106565	na
+BO66scaffold_90	unplaced-scaffold	na	na	KZ825022.1	=	NW_020291559.1	Primary Assembly	105750	na
+BO66scaffold_91	unplaced-scaffold	na	na	KZ825023.1	=	NW_020291560.1	Primary Assembly	103361	na
+BO66scaffold_92	unplaced-scaffold	na	na	KZ825024.1	=	NW_020291561.1	Primary Assembly	95758	na
+BO66scaffold_93	unplaced-scaffold	na	na	KZ825025.1	=	NW_020291562.1	Primary Assembly	90692	na
+BO66scaffold_94	unplaced-scaffold	na	na	KZ825026.1	=	NW_020291563.1	Primary Assembly	90284	na
+BO66scaffold_95	unplaced-scaffold	na	na	KZ825027.1	=	NW_020291564.1	Primary Assembly	88755	na
+BO66scaffold_96	unplaced-scaffold	na	na	KZ825028.1	=	NW_020291565.1	Primary Assembly	79156	na
+BO66scaffold_97	unplaced-scaffold	na	na	KZ825029.1	=	NW_020291566.1	Primary Assembly	78454	na
+BO66scaffold_98	unplaced-scaffold	na	na	KZ825030.1	=	NW_020291567.1	Primary Assembly	74474	na
+BO66scaffold_99	unplaced-scaffold	na	na	KZ825031.1	=	NW_020291568.1	Primary Assembly	66670	na
+BO66scaffold_100	unplaced-scaffold	na	na	KZ825032.1	=	NW_020291569.1	Primary Assembly	62771	na
+BO66scaffold_101	unplaced-scaffold	na	na	KZ825033.1	=	NW_020291570.1	Primary Assembly	57096	na
+BO66scaffold_102	unplaced-scaffold	na	na	KZ825034.1	=	NW_020291571.1	Primary Assembly	38082	na
+BO66scaffold_103	unplaced-scaffold	na	na	KZ825035.1	=	NW_020291572.1	Primary Assembly	32632	na
+BO66scaffold_104	unplaced-scaffold	na	na	KZ825036.1	=	NW_020291573.1	Primary Assembly	23954	na
+BO66scaffold_105	unplaced-scaffold	na	na	KZ825037.1	=	NW_020291574.1	Primary Assembly	23418	na
+BO66scaffold_106	unplaced-scaffold	na	na	KZ825038.1	=	NW_020291575.1	Primary Assembly	22150	na
+BO66scaffold_107	unplaced-scaffold	na	na	KZ825039.1	=	NW_020291576.1	Primary Assembly	21744	na
+BO66scaffold_108	unplaced-scaffold	na	na	KZ825040.1	=	NW_020291577.1	Primary Assembly	18835	na
+BO66scaffold_109	unplaced-scaffold	na	na	KZ825041.1	=	NW_020291578.1	Primary Assembly	16917	na
+BO66scaffold_110	unplaced-scaffold	na	na	KZ825042.1	=	NW_020291579.1	Primary Assembly	16115	na
+BO66scaffold_111	unplaced-scaffold	na	na	KZ825043.1	=	NW_020291580.1	Primary Assembly	14638	na
+BO66scaffold_112	unplaced-scaffold	na	na	KZ825044.1	=	NW_020291581.1	Primary Assembly	14136	na
+BO66scaffold_113	unplaced-scaffold	na	na	KZ825045.1	=	NW_020291582.1	Primary Assembly	7171	na
+BO66scaffold_114	unplaced-scaffold	na	na	KZ825046.1	=	NW_020291583.1	Primary Assembly	5083	na
+BO66scaffold_115	unplaced-scaffold	na	na	KZ825047.1	=	NW_020291584.1	Primary Assembly	5062	na
+BO66scaffold_116	unplaced-scaffold	na	na	KZ825048.1	=	NW_020291585.1	Primary Assembly	3499	na
+BO66scaffold_117	unplaced-scaffold	na	na	KZ825049.1	=	NW_020291586.1	Primary Assembly	3482	na
+BO66scaffold_118	unplaced-scaffold	na	na	KZ825050.1	=	NW_020291587.1	Primary Assembly	2589	na
+BO66scaffold_119	unplaced-scaffold	na	na	KZ825051.1	=	NW_020291588.1	Primary Assembly	2466	na
+BO66scaffold_120	unplaced-scaffold	na	na	KZ825052.1	=	NW_020291589.1	Primary Assembly	2050	na
+BO66scaffold_121	unplaced-scaffold	na	na	KZ825053.1	=	NW_020291590.1	Primary Assembly	1611	na

@@ -1,0 +1,104 @@
+# Assembly name:  PDT000883933.1
+# Description:    NCBI Pathogen Detection Assembly PDT000883933.1
+# Organism name:  Raoultella planticola (enterobacteria)
+# Isolate:  MISC077
+# Taxid:          575
+# BioSample:      SAMN15566993
+# BioProject:     PRJNA514245
+# Submitter:      National Center for Biotechnology Information
+# Date:           2020-12-09
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    DACSEB01
+# Assembly method: SKESA v. 2.2
+# Expected final version: no
+# Genome coverage: 143x
+# Sequencing technology: ILLUMINA
+# Excluded from RefSeq: from large multi-isolate project
+# GenBank assembly accession: GCA_015893745.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_015893755.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+SAMN15566993-rid11003153.denovo.01	unplaced-scaffold	na	na	DACSEB010000001.1	<>	na	Primary Assembly	391886	na
+SAMN15566993-rid11003153.denovo.02	unplaced-scaffold	na	na	DACSEB010000002.1	<>	na	Primary Assembly	380356	na
+SAMN15566993-rid11003153.denovo.03	unplaced-scaffold	na	na	DACSEB010000003.1	<>	na	Primary Assembly	365201	na
+SAMN15566993-rid11003153.denovo.04	unplaced-scaffold	na	na	DACSEB010000004.1	<>	na	Primary Assembly	357822	na
+SAMN15566993-rid11003153.denovo.05	unplaced-scaffold	na	na	DACSEB010000005.1	<>	na	Primary Assembly	351071	na
+SAMN15566993-rid11003153.denovo.06	unplaced-scaffold	na	na	DACSEB010000006.1	<>	na	Primary Assembly	293172	na
+SAMN15566993-rid11003153.denovo.07	unplaced-scaffold	na	na	DACSEB010000007.1	<>	na	Primary Assembly	218849	na
+SAMN15566993-rid11003153.denovo.08	unplaced-scaffold	na	na	DACSEB010000008.1	<>	na	Primary Assembly	213244	na
+SAMN15566993-rid11003153.denovo.09	unplaced-scaffold	na	na	DACSEB010000009.1	<>	na	Primary Assembly	176530	na
+SAMN15566993-rid11003153.denovo.10	unplaced-scaffold	na	na	DACSEB010000010.1	<>	na	Primary Assembly	140345	na
+SAMN15566993-rid11003153.denovo.11	unplaced-scaffold	na	na	DACSEB010000011.1	<>	na	Primary Assembly	139840	na
+SAMN15566993-rid11003153.denovo.12	unplaced-scaffold	na	na	DACSEB010000012.1	<>	na	Primary Assembly	138783	na
+SAMN15566993-rid11003153.denovo.13	unplaced-scaffold	na	na	DACSEB010000013.1	<>	na	Primary Assembly	131888	na
+SAMN15566993-rid11003153.denovo.14	unplaced-scaffold	na	na	DACSEB010000014.1	<>	na	Primary Assembly	130403	na
+SAMN15566993-rid11003153.denovo.15	unplaced-scaffold	na	na	DACSEB010000015.1	<>	na	Primary Assembly	122254	na
+SAMN15566993-rid11003153.denovo.16	unplaced-scaffold	na	na	DACSEB010000016.1	<>	na	Primary Assembly	119929	na
+SAMN15566993-rid11003153.denovo.17	unplaced-scaffold	na	na	DACSEB010000017.1	<>	na	Primary Assembly	109902	na
+SAMN15566993-rid11003153.denovo.18	unplaced-scaffold	na	na	DACSEB010000018.1	<>	na	Primary Assembly	102069	na
+SAMN15566993-rid11003153.denovo.19	unplaced-scaffold	na	na	DACSEB010000019.1	<>	na	Primary Assembly	95350	na
+SAMN15566993-rid11003153.denovo.20	unplaced-scaffold	na	na	DACSEB010000020.1	<>	na	Primary Assembly	93111	na
+SAMN15566993-rid11003153.denovo.21	unplaced-scaffold	na	na	DACSEB010000021.1	<>	na	Primary Assembly	92429	na
+SAMN15566993-rid11003153.denovo.22	unplaced-scaffold	na	na	DACSEB010000022.1	<>	na	Primary Assembly	92378	na
+SAMN15566993-rid11003153.denovo.23	unplaced-scaffold	na	na	DACSEB010000023.1	<>	na	Primary Assembly	89878	na
+SAMN15566993-rid11003153.denovo.24	unplaced-scaffold	na	na	DACSEB010000024.1	<>	na	Primary Assembly	88984	na
+SAMN15566993-rid11003153.denovo.25	unplaced-scaffold	na	na	DACSEB010000025.1	<>	na	Primary Assembly	82047	na
+SAMN15566993-rid11003153.denovo.26	unplaced-scaffold	na	na	DACSEB010000026.1	<>	na	Primary Assembly	67672	na
+SAMN15566993-rid11003153.denovo.27	unplaced-scaffold	na	na	DACSEB010000027.1	<>	na	Primary Assembly	64930	na
+SAMN15566993-rid11003153.denovo.28	unplaced-scaffold	na	na	DACSEB010000028.1	<>	na	Primary Assembly	61821	na
+SAMN15566993-rid11003153.denovo.29	unplaced-scaffold	na	na	DACSEB010000029.1	<>	na	Primary Assembly	57913	na
+SAMN15566993-rid11003153.denovo.30	unplaced-scaffold	na	na	DACSEB010000030.1	<>	na	Primary Assembly	52940	na
+SAMN15566993-rid11003153.denovo.31	unplaced-scaffold	na	na	DACSEB010000031.1	<>	na	Primary Assembly	52878	na
+SAMN15566993-rid11003153.denovo.32	unplaced-scaffold	na	na	DACSEB010000032.1	<>	na	Primary Assembly	47483	na
+SAMN15566993-rid11003153.denovo.33	unplaced-scaffold	na	na	DACSEB010000033.1	<>	na	Primary Assembly	43783	na
+SAMN15566993-rid11003153.denovo.34	unplaced-scaffold	na	na	DACSEB010000034.1	<>	na	Primary Assembly	36120	na
+SAMN15566993-rid11003153.denovo.35	unplaced-scaffold	na	na	DACSEB010000035.1	<>	na	Primary Assembly	35869	na
+SAMN15566993-rid11003153.denovo.36	unplaced-scaffold	na	na	DACSEB010000036.1	<>	na	Primary Assembly	35605	na
+SAMN15566993-rid11003153.denovo.37	unplaced-scaffold	na	na	DACSEB010000037.1	<>	na	Primary Assembly	34887	na
+SAMN15566993-rid11003153.denovo.38	unplaced-scaffold	na	na	DACSEB010000038.1	<>	na	Primary Assembly	31625	na
+SAMN15566993-rid11003153.denovo.39	unplaced-scaffold	na	na	DACSEB010000039.1	<>	na	Primary Assembly	30962	na
+SAMN15566993-rid11003153.denovo.41	unplaced-scaffold	na	na	DACSEB010000040.1	<>	na	Primary Assembly	29968	na
+SAMN15566993-rid11003153.denovo.42	unplaced-scaffold	na	na	DACSEB010000041.1	<>	na	Primary Assembly	29615	na
+SAMN15566993-rid11003153.denovo.43	unplaced-scaffold	na	na	DACSEB010000042.1	<>	na	Primary Assembly	29167	na
+SAMN15566993-rid11003153.denovo.44	unplaced-scaffold	na	na	DACSEB010000043.1	<>	na	Primary Assembly	27912	na
+SAMN15566993-rid11003153.denovo.45	unplaced-scaffold	na	na	DACSEB010000044.1	<>	na	Primary Assembly	26585	na
+SAMN15566993-rid11003153.denovo.46	unplaced-scaffold	na	na	DACSEB010000045.1	<>	na	Primary Assembly	26047	na
+SAMN15566993-rid11003153.denovo.47	unplaced-scaffold	na	na	DACSEB010000046.1	<>	na	Primary Assembly	23835	na
+SAMN15566993-rid11003153.denovo.49	unplaced-scaffold	na	na	DACSEB010000047.1	<>	na	Primary Assembly	20512	na
+SAMN15566993-rid11003153.denovo.50	unplaced-scaffold	na	na	DACSEB010000048.1	<>	na	Primary Assembly	19281	na
+SAMN15566993-rid11003153.denovo.51	unplaced-scaffold	na	na	DACSEB010000049.1	<>	na	Primary Assembly	18909	na
+SAMN15566993-rid11003153.denovo.52	unplaced-scaffold	na	na	DACSEB010000050.1	<>	na	Primary Assembly	18586	na
+SAMN15566993-rid11003153.denovo.53	unplaced-scaffold	na	na	DACSEB010000051.1	<>	na	Primary Assembly	13670	na
+SAMN15566993-rid11003153.denovo.55	unplaced-scaffold	na	na	DACSEB010000052.1	<>	na	Primary Assembly	10608	na
+SAMN15566993-rid11003153.denovo.56	unplaced-scaffold	na	na	DACSEB010000053.1	<>	na	Primary Assembly	10282	na
+SAMN15566993-rid11003153.denovo.59	unplaced-scaffold	na	na	DACSEB010000054.1	<>	na	Primary Assembly	6461	na
+SAMN15566993-rid11003153.denovo.60	unplaced-scaffold	na	na	DACSEB010000055.1	<>	na	Primary Assembly	4455	na
+SAMN15566993-rid11003153.denovo.61	unplaced-scaffold	na	na	DACSEB010000056.1	<>	na	Primary Assembly	1504	na
+SAMN15566993-rid11003153.denovo.62	unplaced-scaffold	na	na	DACSEB010000057.1	<>	na	Primary Assembly	1493	na
+SAMN15566993-rid11003153.denovo.63	unplaced-scaffold	na	na	DACSEB010000058.1	<>	na	Primary Assembly	1431	na
+SAMN15566993-rid11003153.denovo.64	unplaced-scaffold	na	na	DACSEB010000059.1	<>	na	Primary Assembly	859	na
+SAMN15566993-rid11003153.denovo.65	unplaced-scaffold	na	na	DACSEB010000060.1	<>	na	Primary Assembly	737	na
+SAMN15566993-rid11003153.denovo.66	unplaced-scaffold	na	na	DACSEB010000061.1	<>	na	Primary Assembly	731	na
+SAMN15566993-rid11003153.denovo.67	unplaced-scaffold	na	na	DACSEB010000062.1	<>	na	Primary Assembly	634	na
+SAMN15566993-rid11003153.denovo.68	unplaced-scaffold	na	na	DACSEB010000063.1	<>	na	Primary Assembly	617	na
+SAMN15566993-rid11003153.denovo.69	unplaced-scaffold	na	na	DACSEB010000064.1	<>	na	Primary Assembly	615	na
+SAMN15566993-rid11003153.denovo.70	unplaced-scaffold	na	na	DACSEB010000065.1	<>	na	Primary Assembly	593	na
+SAMN15566993-rid11003153.denovo.71	unplaced-scaffold	na	na	DACSEB010000066.1	<>	na	Primary Assembly	412	na
+SAMN15566993-rid11003153.denovo.72	unplaced-scaffold	na	na	DACSEB010000067.1	<>	na	Primary Assembly	407	na
+SAMN15566993-rid11003153.denovo.73	unplaced-scaffold	na	na	DACSEB010000068.1	<>	na	Primary Assembly	385	na
+SAMN15566993-rid11003153.guided.40	unplaced-scaffold	na	na	DACSEB010000069.1	<>	na	Primary Assembly	30960	na
+SAMN15566993-rid11003153.guided.48	unplaced-scaffold	na	na	DACSEB010000070.1	<>	na	Primary Assembly	23197	na
+SAMN15566993-rid11003153.guided.54	unplaced-scaffold	na	na	DACSEB010000071.1	<>	na	Primary Assembly	10745	na
+SAMN15566993-rid11003153.guided.57	unplaced-scaffold	na	na	DACSEB010000072.1	<>	na	Primary Assembly	8126	na
+SAMN15566993-rid11003153.guided.58	unplaced-scaffold	na	na	DACSEB010000073.1	<>	na	Primary Assembly	8126	na

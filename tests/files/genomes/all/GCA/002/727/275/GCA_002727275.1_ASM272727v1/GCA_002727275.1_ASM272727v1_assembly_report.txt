@@ -1,0 +1,90 @@
+# Assembly name:  ASM272727v1
+# Organism name:  Euryarchaeota archaeon (euryarchaeotes)
+# Isolate:  RS814
+# Taxid:          2026739
+# BioSample:      SAMN07618837
+# BioProject:     PRJNA391943
+# Submitter:      Tara Oceans Consortium
+# Date:           2017-10-26
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    PBWO01
+# Assembly method: Megahit v. 1.0.3, minimus2 v. 2.0.8
+# Expected final version: yes
+# Genome coverage: Not Applicable
+# Sequencing technology: Illumina HiSeq
+# Excluded from RefSeq: derived from metagenome; genus undefined
+# GenBank assembly accession: GCA_002727275.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_002727285.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+11039	unplaced-scaffold	na	na	PBWO01000013.1	<>	na	Primary Assembly	5250	na
+11074	unplaced-scaffold	na	na	PBWO01000014.1	<>	na	Primary Assembly	26575	na
+11983	unplaced-scaffold	na	na	PBWO01000015.1	<>	na	Primary Assembly	12868	na
+12021	unplaced-scaffold	na	na	PBWO01000016.1	<>	na	Primary Assembly	73700	na
+12207	unplaced-scaffold	na	na	PBWO01000017.1	<>	na	Primary Assembly	22452	na
+13522	unplaced-scaffold	na	na	PBWO01000018.1	<>	na	Primary Assembly	9587	na
+13985	unplaced-scaffold	na	na	PBWO01000019.1	<>	na	Primary Assembly	88182	na
+14874	unplaced-scaffold	na	na	PBWO01000020.1	<>	na	Primary Assembly	15721	na
+15378	unplaced-scaffold	na	na	PBWO01000021.1	<>	na	Primary Assembly	12629	na
+15755	unplaced-scaffold	na	na	PBWO01000022.1	<>	na	Primary Assembly	6611	na
+16454	unplaced-scaffold	na	na	PBWO01000023.1	<>	na	Primary Assembly	23779	na
+17135	unplaced-scaffold	na	na	PBWO01000024.1	<>	na	Primary Assembly	27534	na
+17139	unplaced-scaffold	na	na	PBWO01000025.1	<>	na	Primary Assembly	8634	na
+18304	unplaced-scaffold	na	na	PBWO01000026.1	<>	na	Primary Assembly	6086	na
+18507	unplaced-scaffold	na	na	PBWO01000027.1	<>	na	Primary Assembly	25282	na
+19993	unplaced-scaffold	na	na	PBWO01000028.1	<>	na	Primary Assembly	21526	na
+2001	unplaced-scaffold	na	na	PBWO01000003.1	<>	na	Primary Assembly	13737	na
+21070	unplaced-scaffold	na	na	PBWO01000029.1	<>	na	Primary Assembly	8481	na
+21082	unplaced-scaffold	na	na	PBWO01000030.1	<>	na	Primary Assembly	5196	na
+2235	unplaced-scaffold	na	na	PBWO01000004.1	<>	na	Primary Assembly	76449	na
+22708	unplaced-scaffold	na	na	PBWO01000031.1	<>	na	Primary Assembly	11099	na
+23592	unplaced-scaffold	na	na	PBWO01000032.1	<>	na	Primary Assembly	6354	na
+23966	unplaced-scaffold	na	na	PBWO01000033.1	<>	na	Primary Assembly	15309	na
+24216	unplaced-scaffold	na	na	PBWO01000034.1	<>	na	Primary Assembly	107784	na
+24652	unplaced-scaffold	na	na	PBWO01000035.1	<>	na	Primary Assembly	11469	na
+29420	unplaced-scaffold	na	na	PBWO01000036.1	<>	na	Primary Assembly	7409	na
+29772	unplaced-scaffold	na	na	PBWO01000037.1	<>	na	Primary Assembly	6592	na
+3153	unplaced-scaffold	na	na	PBWO01000005.1	<>	na	Primary Assembly	25709	na
+3232	unplaced-scaffold	na	na	PBWO01000006.1	<>	na	Primary Assembly	16357	na
+3767	unplaced-scaffold	na	na	PBWO01000007.1	<>	na	Primary Assembly	15104	na
+4658	unplaced-scaffold	na	na	PBWO01000008.1	<>	na	Primary Assembly	20059	na
+4846	unplaced-scaffold	na	na	PBWO01000009.1	<>	na	Primary Assembly	11025	na
+5990	unplaced-scaffold	na	na	PBWO01000010.1	<>	na	Primary Assembly	16443	na
+6651	unplaced-scaffold	na	na	PBWO01000011.1	<>	na	Primary Assembly	30388	na
+771	unplaced-scaffold	na	na	PBWO01000001.1	<>	na	Primary Assembly	38001	na
+787	unplaced-scaffold	na	na	PBWO01000002.1	<>	na	Primary Assembly	123712	na
+8582	unplaced-scaffold	na	na	PBWO01000012.1	<>	na	Primary Assembly	10801	na
+TaraRedSea_contig_10112	unplaced-scaffold	na	na	PBWO01000039.1	<>	na	Primary Assembly	53952	na
+TaraRedSea_contig_16865	unplaced-scaffold	na	na	PBWO01000040.1	<>	na	Primary Assembly	18573	na
+TaraRedSea_contig_169735	unplaced-scaffold	na	na	PBWO01000058.1	<>	na	Primary Assembly	5137	na
+TaraRedSea_contig_17731	unplaced-scaffold	na	na	PBWO01000041.1	<>	na	Primary Assembly	31171	na
+TaraRedSea_contig_178367	unplaced-scaffold	na	na	PBWO01000059.1	<>	na	Primary Assembly	8401	na
+TaraRedSea_contig_188108	unplaced-scaffold	na	na	PBWO01000060.1	<>	na	Primary Assembly	7381	na
+TaraRedSea_contig_24716	unplaced-scaffold	na	na	PBWO01000042.1	<>	na	Primary Assembly	14470	na
+TaraRedSea_contig_34842	unplaced-scaffold	na	na	PBWO01000043.1	<>	na	Primary Assembly	12183	na
+TaraRedSea_contig_36506	unplaced-scaffold	na	na	PBWO01000044.1	<>	na	Primary Assembly	22844	na
+TaraRedSea_contig_38465	unplaced-scaffold	na	na	PBWO01000045.1	<>	na	Primary Assembly	31632	na
+TaraRedSea_contig_38769	unplaced-scaffold	na	na	PBWO01000046.1	<>	na	Primary Assembly	29029	na
+TaraRedSea_contig_43844	unplaced-scaffold	na	na	PBWO01000047.1	<>	na	Primary Assembly	13583	na
+TaraRedSea_contig_46485	unplaced-scaffold	na	na	PBWO01000048.1	<>	na	Primary Assembly	10545	na
+TaraRedSea_contig_4969	unplaced-scaffold	na	na	PBWO01000038.1	<>	na	Primary Assembly	21821	na
+TaraRedSea_contig_51877	unplaced-scaffold	na	na	PBWO01000049.1	<>	na	Primary Assembly	22548	na
+TaraRedSea_contig_57759	unplaced-scaffold	na	na	PBWO01000050.1	<>	na	Primary Assembly	21032	na
+TaraRedSea_contig_61104	unplaced-scaffold	na	na	PBWO01000051.1	<>	na	Primary Assembly	5526	na
+TaraRedSea_contig_62677	unplaced-scaffold	na	na	PBWO01000052.1	<>	na	Primary Assembly	15114	na
+TaraRedSea_contig_65973	unplaced-scaffold	na	na	PBWO01000053.1	<>	na	Primary Assembly	21318	na
+TaraRedSea_contig_71214	unplaced-scaffold	na	na	PBWO01000054.1	<>	na	Primary Assembly	10075	na
+TaraRedSea_contig_73372	unplaced-scaffold	na	na	PBWO01000055.1	<>	na	Primary Assembly	28758	na
+TaraRedSea_contig_74724	unplaced-scaffold	na	na	PBWO01000056.1	<>	na	Primary Assembly	7372	na
+TaraRedSea_contig_94245	unplaced-scaffold	na	na	PBWO01000057.1	<>	na	Primary Assembly	6318	na

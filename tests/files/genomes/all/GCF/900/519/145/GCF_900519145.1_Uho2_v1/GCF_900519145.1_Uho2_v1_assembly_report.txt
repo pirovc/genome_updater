@@ -1,0 +1,74 @@
+# Assembly name:  Uho2_v1
+# Organism name:  Ustilago hordei (smut fungi)
+# Infraspecific name:  strain=Uho2
+# Taxid:          120017
+# BioSample:      SAMEA4827382
+# BioProject:     PRJEB19641
+# Submitter:      Technische Universitat Munchen - WZW
+# Date:           2021-02-23
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    ULHA01
+# Genome coverage: 65x
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_900519145.1
+# RefSeq assembly accession: GCF_900519145.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_900519144.1	GCF_900519144.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig1	unplaced-scaffold	na	na	ULHA01000001.1	=	NW_024545252.1	Primary Assembly	2735898	na
+contig2	unplaced-scaffold	na	na	ULHA01000002.1	=	NW_024545253.1	Primary Assembly	1170964	na
+contig3	unplaced-scaffold	na	na	ULHA01000003.1	=	NW_024545254.1	Primary Assembly	804449	na
+contig4	unplaced-scaffold	na	na	ULHA01000004.1	=	NW_024545255.1	Primary Assembly	707427	na
+contig5	unplaced-scaffold	na	na	ULHA01000005.1	=	NW_024545256.1	Primary Assembly	565402	na
+contig6	unplaced-scaffold	na	na	ULHA01000006.1	=	NW_024545257.1	Primary Assembly	327298	na
+contig7	unplaced-scaffold	na	na	ULHA01000007.1	=	NW_024545258.1	Primary Assembly	39407	na
+contig8	unplaced-scaffold	na	na	ULHA01000008.1	=	NW_024545259.1	Primary Assembly	22344	na
+contig9	unplaced-scaffold	na	na	ULHA01000009.1	=	NW_024545260.1	Primary Assembly	25736	na
+contig10	unplaced-scaffold	na	na	ULHA01000010.1	=	NW_024545261.1	Primary Assembly	2234398	na
+contig11	unplaced-scaffold	na	na	ULHA01000011.1	=	NW_024545262.1	Primary Assembly	951667	na
+contig12	unplaced-scaffold	na	na	ULHA01000012.1	=	NW_024545263.1	Primary Assembly	737130	na
+contig13	unplaced-scaffold	na	na	ULHA01000013.1	=	NW_024545264.1	Primary Assembly	613239	na
+contig14	unplaced-scaffold	na	na	ULHA01000014.1	=	NW_024545265.1	Primary Assembly	413250	na
+contig15	unplaced-scaffold	na	na	ULHA01000015.1	=	NW_024545266.1	Primary Assembly	200620	na
+contig16	unplaced-scaffold	na	na	ULHA01000016.1	=	NW_024545267.1	Primary Assembly	17652	na
+contig17	unplaced-scaffold	na	na	ULHA01000017.1	=	NW_024545268.1	Primary Assembly	25398	na
+contig18	unplaced-scaffold	na	na	ULHA01000018.1	=	NW_024545269.1	Primary Assembly	30400	na
+contig19	unplaced-scaffold	na	na	ULHA01000019.1	=	NW_024545270.1	Primary Assembly	2757119	na
+contig20	unplaced-scaffold	na	na	ULHA01000020.1	=	NW_024545271.1	Primary Assembly	154269	na
+contig21	unplaced-scaffold	na	na	ULHA01000021.1	=	NW_024545272.1	Primary Assembly	771341	na
+contig22	unplaced-scaffold	na	na	ULHA01000022.1	=	NW_024545273.1	Primary Assembly	678129	na
+contig23	unplaced-scaffold	na	na	ULHA01000023.1	=	NW_024545274.1	Primary Assembly	460861	na
+contig24	unplaced-scaffold	na	na	ULHA01000024.1	=	NW_024545275.1	Primary Assembly	28700	na
+contig25	unplaced-scaffold	na	na	ULHA01000025.1	=	NW_024545276.1	Primary Assembly	28870	na
+contig26	unplaced-scaffold	na	na	ULHA01000026.1	=	NW_024545277.1	Primary Assembly	24173	na
+contig27	unplaced-scaffold	na	na	ULHA01000027.1	=	NW_024545278.1	Primary Assembly	23414	na
+contig28	unplaced-scaffold	na	na	ULHA01000028.1	=	NW_024545279.1	Primary Assembly	1759339	na
+contig29	unplaced-scaffold	na	na	ULHA01000029.1	=	NW_024545280.1	Primary Assembly	832235	na
+contig30	unplaced-scaffold	na	na	ULHA01000030.1	=	NW_024545281.1	Primary Assembly	696739	na
+contig31	unplaced-scaffold	na	na	ULHA01000031.1	=	NW_024545282.1	Primary Assembly	527708	na
+contig32	unplaced-scaffold	na	na	ULHA01000032.1	=	NW_024545283.1	Primary Assembly	374163	na
+contig33	unplaced-scaffold	na	na	ULHA01000033.1	=	NW_024545284.1	Primary Assembly	133418	na
+contig34	unplaced-scaffold	na	na	ULHA01000034.1	=	NW_024545285.1	Primary Assembly	17790	na
+contig35	unplaced-scaffold	na	na	ULHA01000035.1	=	NW_024545286.1	Primary Assembly	30862	na
+contig36	unplaced-scaffold	na	na	ULHA01000036.1	=	NW_024545287.1	Primary Assembly	24422	na
+contig37	unplaced-scaffold	na	na	ULHA01000037.1	=	NW_024545288.1	Primary Assembly	2471258	na
+contig38	unplaced-scaffold	na	na	ULHA01000038.1	=	NW_024545289.1	Primary Assembly	1146471	na
+contig39	unplaced-scaffold	na	na	ULHA01000039.1	=	NW_024545290.1	Primary Assembly	723847	na
+contig40	unplaced-scaffold	na	na	ULHA01000040.1	=	NW_024545291.1	Primary Assembly	667147	na
+contig41	unplaced-scaffold	na	na	ULHA01000041.1	=	NW_024545292.1	Primary Assembly	417070	na
+contig42	unplaced-scaffold	na	na	ULHA01000042.1	=	NW_024545293.1	Primary Assembly	232479	na
+contig43	unplaced-scaffold	na	na	ULHA01000043.1	=	NW_024545294.1	Primary Assembly	12437	na
+contig44	unplaced-scaffold	na	na	ULHA01000044.1	=	NW_024545295.1	Primary Assembly	15624	na
+contig45	unplaced-scaffold	na	na	ULHA01000045.1	=	NW_024545296.1	Primary Assembly	4441	na

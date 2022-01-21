@@ -1,0 +1,60 @@
+# Assembly name:  TRIAT v2.0
+# Organism name:  Trichoderma atroviride IMI 206040 (ascomycetes)
+# Infraspecific name:  strain=IMI 206040
+# Taxid:          452589
+# BioSample:      SAMN02744066
+# BioProject:     PRJNA19867
+# Submitter:      DOE Joint Genome Institute
+# Date:           2011-11-29
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    ABDG02
+# Assembly method: phredPhrap v. RH3.65
+# Genome coverage: 8.26x
+# Sequencing technology: Sanger
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000171015.2
+# RefSeq assembly accession: GCF_000171015.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000171025.2	GCF_000171025.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+TRIATcontig_29	unplaced-scaffold	na	na	ABDG02000029.1	=	NW_014013627.1	Primary Assembly	1544261	na
+TRIATcontig_28	unplaced-scaffold	na	na	ABDG02000028.1	=	NW_014013628.1	Primary Assembly	2007903	na
+TRIATcontig_27	unplaced-scaffold	na	na	ABDG02000027.1	=	NW_014013629.1	Primary Assembly	5621775	na
+TRIATcontig_26	unplaced-scaffold	na	na	ABDG02000026.1	=	NW_014013630.1	Primary Assembly	4122911	na
+TRIATcontig_25	unplaced-scaffold	na	na	ABDG02000025.1	=	NW_014013631.1	Primary Assembly	3049622	na
+TRIATcontig_24	unplaced-scaffold	na	na	ABDG02000024.1	=	NW_014013632.1	Primary Assembly	2790066	na
+TRIATcontig_23	unplaced-scaffold	na	na	ABDG02000023.1	=	NW_014013633.1	Primary Assembly	2124193	na
+TRIATcontig_22	unplaced-scaffold	na	na	ABDG02000022.1	=	NW_014013634.1	Primary Assembly	1899297	na
+TRIATcontig_21	unplaced-scaffold	na	na	ABDG02000021.1	=	NW_014013635.1	Primary Assembly	1650603	na
+TRIATcontig_20	unplaced-scaffold	na	na	ABDG02000020.1	=	NW_014013636.1	Primary Assembly	1588798	na
+TRIATcontig_19	unplaced-scaffold	na	na	ABDG02000019.1	=	NW_014013637.1	Primary Assembly	1567605	na
+TRIATcontig_18	unplaced-scaffold	na	na	ABDG02000018.1	=	NW_014013638.1	Primary Assembly	1417455	na
+TRIATcontig_17	unplaced-scaffold	na	na	ABDG02000017.1	=	NW_014013639.1	Primary Assembly	1474880	na
+TRIATcontig_16	unplaced-scaffold	na	na	ABDG02000016.1	=	NW_014013640.1	Primary Assembly	1160020	na
+TRIATcontig_15	unplaced-scaffold	na	na	ABDG02000015.1	=	NW_014013641.1	Primary Assembly	1127681	na
+TRIATcontig_14	unplaced-scaffold	na	na	ABDG02000014.1	=	NW_014013642.1	Primary Assembly	997338	na
+TRIATcontig_13	unplaced-scaffold	na	na	ABDG02000013.1	=	NW_014013643.1	Primary Assembly	911962	na
+TRIATcontig_12	unplaced-scaffold	na	na	ABDG02000012.1	=	NW_014013644.1	Primary Assembly	487615	na
+TRIATcontig_11	unplaced-scaffold	na	na	ABDG02000011.1	=	NW_014013645.1	Primary Assembly	311306	na
+TRIATcontig_10	unplaced-scaffold	na	na	ABDG02000010.1	=	NW_014013646.1	Primary Assembly	205695	na
+TRIATcontig_9	unplaced-scaffold	na	na	ABDG02000009.1	=	NW_014013647.1	Primary Assembly	25523	na
+TRIATcontig_8	unplaced-scaffold	na	na	ABDG02000008.1	=	NW_014013648.1	Primary Assembly	10219	na
+TRIATcontig_7	unplaced-scaffold	na	na	ABDG02000007.1	=	NW_014013649.1	Primary Assembly	8555	na
+TRIATcontig_6	unplaced-scaffold	na	na	ABDG02000006.1	=	NW_014013650.1	Primary Assembly	7936	na
+TRIATcontig_5	unplaced-scaffold	na	na	ABDG02000005.1	=	NW_014013651.1	Primary Assembly	8316	na
+TRIATcontig_4	unplaced-scaffold	na	na	ABDG02000004.1	=	NW_014013652.1	Primary Assembly	4483	na
+TRIATcontig_3	unplaced-scaffold	na	na	ABDG02000003.1	=	NW_014013653.1	Primary Assembly	9774	na
+TRIATcontig_2	unplaced-scaffold	na	na	ABDG02000002.1	=	NW_014013654.1	Primary Assembly	3162	na
+TRIATcontig_1	unplaced-scaffold	na	na	ABDG02000001.1	=	NW_014013655.1	Primary Assembly	4710	na

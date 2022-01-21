@@ -1,0 +1,69 @@
+# Assembly name:  ASM1420251v1
+# Organism name:  Halobacterium salinarum (euryarchaeotes)
+# Infraspecific name:  strain=DSM 669
+# Taxid:          2242
+# BioSample:      SAMN14908392
+# BioProject:     PRJNA632312
+# Submitter:      DOE Joint Genome Institute
+# Date:           2020-08-14
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    JACHGX01
+# Assembly method: SPAdes v. 3.13.0
+# Expected final version: no
+# Genome coverage: 590.0x
+# Sequencing technology: Illumina
+# Relation to type material: assembly from synonym type material
+# GenBank assembly accession: GCA_014202515.1
+# RefSeq assembly accession: GCF_014202515.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_014202555.1	GCF_014202555.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+Ga0415228_01	unplaced-scaffold	na	na	JACHGX010000001.1	=	NZ_JACHGX010000001.1	Primary Assembly	642117	na
+Ga0415228_02	unplaced-scaffold	na	na	JACHGX010000002.1	=	NZ_JACHGX010000002.1	Primary Assembly	388193	na
+Ga0415228_03	unplaced-scaffold	na	na	JACHGX010000003.1	=	NZ_JACHGX010000003.1	Primary Assembly	312307	na
+Ga0415228_04	unplaced-scaffold	na	na	JACHGX010000004.1	=	NZ_JACHGX010000004.1	Primary Assembly	234404	na
+Ga0415228_05	unplaced-scaffold	na	na	JACHGX010000005.1	=	NZ_JACHGX010000005.1	Primary Assembly	171178	na
+Ga0415228_06	unplaced-scaffold	na	na	JACHGX010000006.1	=	NZ_JACHGX010000006.1	Primary Assembly	143016	na
+Ga0415228_07	unplaced-scaffold	na	na	JACHGX010000007.1	=	NZ_JACHGX010000007.1	Primary Assembly	80848	na
+Ga0415228_08	unplaced-scaffold	na	na	JACHGX010000008.1	=	NZ_JACHGX010000008.1	Primary Assembly	66570	na
+Ga0415228_09	unplaced-scaffold	na	na	JACHGX010000009.1	=	NZ_JACHGX010000009.1	Primary Assembly	51979	na
+Ga0415228_10	unplaced-scaffold	na	na	JACHGX010000010.1	=	NZ_JACHGX010000010.1	Primary Assembly	46112	na
+Ga0415228_11	unplaced-scaffold	na	na	JACHGX010000011.1	=	NZ_JACHGX010000011.1	Primary Assembly	21901	na
+Ga0415228_12	unplaced-scaffold	na	na	JACHGX010000012.1	=	NZ_JACHGX010000012.1	Primary Assembly	19569	na
+Ga0415228_13	unplaced-scaffold	na	na	JACHGX010000013.1	=	NZ_JACHGX010000013.1	Primary Assembly	19554	na
+Ga0415228_14	unplaced-scaffold	na	na	JACHGX010000014.1	=	NZ_JACHGX010000014.1	Primary Assembly	15989	na
+Ga0415228_15	unplaced-scaffold	na	na	JACHGX010000015.1	=	NZ_JACHGX010000015.1	Primary Assembly	14555	na
+Ga0415228_16	unplaced-scaffold	na	na	JACHGX010000016.1	=	NZ_JACHGX010000016.1	Primary Assembly	12614	na
+Ga0415228_17	unplaced-scaffold	na	na	JACHGX010000017.1	=	NZ_JACHGX010000017.1	Primary Assembly	11980	na
+Ga0415228_18	unplaced-scaffold	na	na	JACHGX010000018.1	=	NZ_JACHGX010000018.1	Primary Assembly	11930	na
+Ga0415228_19	unplaced-scaffold	na	na	JACHGX010000019.1	=	NZ_JACHGX010000019.1	Primary Assembly	11079	na
+Ga0415228_20	unplaced-scaffold	na	na	JACHGX010000020.1	=	NZ_JACHGX010000020.1	Primary Assembly	10556	na
+Ga0415228_21	unplaced-scaffold	na	na	JACHGX010000021.1	=	NZ_JACHGX010000021.1	Primary Assembly	10158	na
+Ga0415228_22	unplaced-scaffold	na	na	JACHGX010000022.1	=	NZ_JACHGX010000022.1	Primary Assembly	9116	na
+Ga0415228_23	unplaced-scaffold	na	na	JACHGX010000023.1	=	NZ_JACHGX010000023.1	Primary Assembly	8843	na
+Ga0415228_24	unplaced-scaffold	na	na	JACHGX010000024.1	=	NZ_JACHGX010000024.1	Primary Assembly	8618	na
+Ga0415228_25	unplaced-scaffold	na	na	JACHGX010000025.1	=	NZ_JACHGX010000025.1	Primary Assembly	7778	na
+Ga0415228_26	unplaced-scaffold	na	na	JACHGX010000026.1	=	NZ_JACHGX010000026.1	Primary Assembly	7657	na
+Ga0415228_27	unplaced-scaffold	na	na	JACHGX010000027.1	=	NZ_JACHGX010000027.1	Primary Assembly	6526	na
+Ga0415228_28	unplaced-scaffold	na	na	JACHGX010000028.1	=	NZ_JACHGX010000028.1	Primary Assembly	5651	na
+Ga0415228_29	unplaced-scaffold	na	na	JACHGX010000029.1	=	NZ_JACHGX010000029.1	Primary Assembly	4250	na
+Ga0415228_30	unplaced-scaffold	na	na	JACHGX010000030.1	=	NZ_JACHGX010000030.1	Primary Assembly	4019	na
+Ga0415228_31	unplaced-scaffold	na	na	JACHGX010000031.1	=	NZ_JACHGX010000031.1	Primary Assembly	1774	na
+Ga0415228_32	unplaced-scaffold	na	na	JACHGX010000032.1	=	NZ_JACHGX010000032.1	Primary Assembly	1584	na
+Ga0415228_33	unplaced-scaffold	na	na	JACHGX010000033.1	=	NZ_JACHGX010000033.1	Primary Assembly	1404	na
+Ga0415228_34	unplaced-scaffold	na	na	JACHGX010000034.1	=	NZ_JACHGX010000034.1	Primary Assembly	1403	na
+Ga0415228_35	unplaced-scaffold	na	na	JACHGX010000035.1	=	NZ_JACHGX010000035.1	Primary Assembly	1401	na
+Ga0415228_36	unplaced-scaffold	na	na	JACHGX010000036.1	=	NZ_JACHGX010000036.1	Primary Assembly	1324	na
+Ga0415228_37	unplaced-scaffold	na	na	JACHGX010000037.1	=	NZ_JACHGX010000037.1	Primary Assembly	1004	na

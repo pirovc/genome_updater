@@ -1,0 +1,45 @@
+# Assembly name:  CNA3
+# Organism name:  Cryptococcus neoformans var. grubii H99 (basidiomycetes)
+# Infraspecific name:  strain=H99
+# Taxid:          235443
+# BioSample:      SAMN03081441
+# BioProject:     PRJNA411
+# Submitter:      Broad Institute
+# Date:           2014-02-07
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# Assembly method: Arachne v. 1.0
+# Genome coverage: 11.8x
+# Sequencing technology: Sanger
+# GenBank assembly accession: GCA_000149245.3
+# RefSeq assembly accession: GCF_000149245.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000149255.3	GCF_000149255.1	Primary Assembly
+## GCA_000298165.1	GCF_000298165.1	non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+1	assembled-molecule	1	Chromosome	CP003820.1	=	NC_026745.1	Primary Assembly	2291499	na
+2	assembled-molecule	2	Chromosome	CP003821.1	=	NC_026746.1	Primary Assembly	1621675	na
+3	assembled-molecule	3	Chromosome	CP003822.1	=	NC_026747.1	Primary Assembly	1575141	na
+4	assembled-molecule	4	Chromosome	CP003823.1	=	NC_026748.1	Primary Assembly	1084805	na
+5	assembled-molecule	5	Chromosome	CP003824.1	=	NC_026749.1	Primary Assembly	1814975	na
+6	assembled-molecule	6	Chromosome	CP003825.1	=	NC_026750.1	Primary Assembly	1422463	na
+7	assembled-molecule	7	Chromosome	CP003826.1	=	NC_026751.1	Primary Assembly	1399503	na
+8	assembled-molecule	8	Chromosome	CP003827.1	=	NC_026752.1	Primary Assembly	1398693	na
+9	assembled-molecule	9	Chromosome	CP003828.1	=	NC_026753.1	Primary Assembly	1186808	na
+10	assembled-molecule	10	Chromosome	CP003829.1	=	NC_026754.1	Primary Assembly	1059964	na
+11	assembled-molecule	11	Chromosome	CP003830.1	=	NC_026755.1	Primary Assembly	1561994	na
+12	assembled-molecule	12	Chromosome	CP003831.1	=	NC_026756.1	Primary Assembly	774062	na
+13	assembled-molecule	13	Chromosome	CP003832.1	=	NC_026757.1	Primary Assembly	756744	na
+14	assembled-molecule	14	Chromosome	CP003833.2	=	NC_026758.1	Primary Assembly	942867	na
+MT	assembled-molecule	MT	Mitochondrion	CP003834.1	=	NC_018792.1	non-nuclear	24919	na

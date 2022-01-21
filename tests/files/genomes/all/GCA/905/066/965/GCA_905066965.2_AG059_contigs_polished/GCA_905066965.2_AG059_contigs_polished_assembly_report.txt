@@ -1,0 +1,63 @@
+# Assembly name:  AG059_contigs_polished
+# Organism name:  Pyricularia oryzae (rice blast fungus)
+# Isolate:  AG059
+# Taxid:          318829
+# BioSample:      SAMEA7473260
+# BioProject:     PRJEB40915
+# Submitter:      THE SAINSBURY LABORATORY
+# Date:           2020-12-16
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    CAJHIF02
+# Genome coverage: 138x
+# GenBank assembly accession: GCA_905066965.2
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_905066964.2		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig1	unplaced-scaffold	na	na	CAJHIF020000001.1	<>	na	Primary Assembly	153748	na
+contig2	unplaced-scaffold	na	na	CAJHIF020000002.1	<>	na	Primary Assembly	6004778	na
+contig3	unplaced-scaffold	na	na	CAJHIF020000003.1	<>	na	Primary Assembly	897278	na
+contig4	unplaced-scaffold	na	na	CAJHIF020000004.1	<>	na	Primary Assembly	7152446	na
+contig5	unplaced-scaffold	na	na	CAJHIF020000005.1	<>	na	Primary Assembly	1707998	na
+contig6	unplaced-scaffold	na	na	CAJHIF020000006.1	<>	na	Primary Assembly	134113	na
+contig7	unplaced-scaffold	na	na	CAJHIF020000007.1	<>	na	Primary Assembly	6740178	na
+contig8	unplaced-scaffold	na	na	CAJHIF020000008.1	<>	na	Primary Assembly	1959904	na
+contig9	unplaced-scaffold	na	na	CAJHIF020000009.1	<>	na	Primary Assembly	2988346	na
+contig10	unplaced-scaffold	na	na	CAJHIF020000010.1	<>	na	Primary Assembly	928142	na
+contig11	unplaced-scaffold	na	na	CAJHIF020000011.1	<>	na	Primary Assembly	5900770	na
+contig12	unplaced-scaffold	na	na	CAJHIF020000012.1	<>	na	Primary Assembly	356302	na
+contig13	unplaced-scaffold	na	na	CAJHIF020000013.1	<>	na	Primary Assembly	370800	na
+contig14	unplaced-scaffold	na	na	CAJHIF020000014.1	<>	na	Primary Assembly	180500	na
+contig15	unplaced-scaffold	na	na	CAJHIF020000015.1	<>	na	Primary Assembly	753198	na
+contig16	unplaced-scaffold	na	na	CAJHIF020000016.1	<>	na	Primary Assembly	4313370	na
+contig17	unplaced-scaffold	na	na	CAJHIF020000017.1	<>	na	Primary Assembly	4940171	na
+contig18	unplaced-scaffold	na	na	CAJHIF020000018.1	<>	na	Primary Assembly	177180	na
+contig19	unplaced-scaffold	na	na	CAJHIF020000019.1	<>	na	Primary Assembly	59092	na
+contig20	unplaced-scaffold	na	na	CAJHIF020000020.1	<>	na	Primary Assembly	54239	na
+contig21	unplaced-scaffold	na	na	CAJHIF020000021.1	<>	na	Primary Assembly	46598	na
+contig22	unplaced-scaffold	na	na	CAJHIF020000022.1	<>	na	Primary Assembly	138085	na
+contig23	unplaced-scaffold	na	na	CAJHIF020000023.1	<>	na	Primary Assembly	66015	na
+contig24	unplaced-scaffold	na	na	CAJHIF020000024.1	<>	na	Primary Assembly	81746	na
+contig25	unplaced-scaffold	na	na	CAJHIF020000025.1	<>	na	Primary Assembly	246483	na
+contig26	unplaced-scaffold	na	na	CAJHIF020000026.1	<>	na	Primary Assembly	95971	na
+contig27	unplaced-scaffold	na	na	CAJHIF020000027.1	<>	na	Primary Assembly	60618	na
+contig28	unplaced-scaffold	na	na	CAJHIF020000028.1	<>	na	Primary Assembly	49338	na
+contig29	unplaced-scaffold	na	na	CAJHIF020000029.1	<>	na	Primary Assembly	93215	na
+contig30	unplaced-scaffold	na	na	CAJHIF020000030.1	<>	na	Primary Assembly	480560	na
+contig31	unplaced-scaffold	na	na	CAJHIF020000031.1	<>	na	Primary Assembly	51209	na
+contig32	unplaced-scaffold	na	na	CAJHIF020000032.1	<>	na	Primary Assembly	78430	na
+contig33	unplaced-scaffold	na	na	CAJHIF020000033.1	<>	na	Primary Assembly	91891	na
+contig34	unplaced-scaffold	na	na	CAJHIF020000034.1	<>	na	Primary Assembly	57607	na
+contig35	unplaced-scaffold	na	na	CAJHIF020000035.1	<>	na	Primary Assembly	173827	na
+contig36	unplaced-scaffold	na	na	CAJHIF020000036.1	<>	na	Primary Assembly	116606	na
+contig37	unplaced-scaffold	na	na	CAJHIF020000037.1	<>	na	Primary Assembly	42369	na
