@@ -821,9 +821,9 @@ echolog "Threads: ${threads}" "0"
 echolog "Verbose log: ${verbose_log}" "0"
 echolog "Working directory: ${working_dir}" "1"
 if [[ "${use_curl}" -eq 1 ]]; then
-    echolog "Downloader: curl" "1"
+    echolog "Downloader: curl" "0"
 else
-    echolog "Downloader: wget" "1"
+    echolog "Downloader: wget" "0"
 fi
 echolog "Label: ${label}" "0"
 echolog "-------------------------------------------" "1"

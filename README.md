@@ -87,6 +87,10 @@ Reports:
 
 	./genome_updater.sh -d "refseq" -T "2559587" -f "genomic.fna.gz" -o "all_rna_virus" -t 12
 
+### Download all genome sequences used in the latests GTDB release
+
+	./genome_updater.sh -d "refseq,genbank" -f "genomic.fna.gz" -o "GTDB" -z -t 12
+
 ### Download one genome assembly for each bacterial species in genbank
 
 	./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_genbank" -t 12 -P 1
