@@ -245,6 +245,6 @@ or
 
 [1] ftp://ftp.ncbi.nlm.nih.gov/genomes/
 
-[2] Tange (2011): GNU Parallel - The Command-Line Power Tool, ;login: The USENIX Magazine, February 2011:42-47.
+[2] O. Tange (2018): GNU Parallel 2018, March 2018, https://doi.org/10.5281/zenodo.1146014.
 
 [3] https://gtdb.ecogenomic.org/
