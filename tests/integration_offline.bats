@@ -193,6 +193,63 @@ setup_file() {
     done
 }
 
+@test "Date start filter" {
+    outdir=${outprefix}date-start-filter/
+    
+    # Get all possible dates and sort it
+    dates=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 15 | sed 's|/||g' | sort) )
+
+    label="test_all"
+    # Use first date as start, should return everything
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -D ${dates[0]}
+    sanity_check ${outdir} ${label}
+    assert_equal $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") $(count_lines_file ${outdir}assembly_summary.txt)
+
+    label="test_some"
+    # Use second date as start, should return less than everything
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -D ${dates[1]}
+    sanity_check ${outdir} ${label}
+    assert [ $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") > $(count_lines_file ${outdir}assembly_summary.txt) ]
+}
+
+@test "Date end filter" {
+    outdir=${outprefix}date-end-filter/
+    
+    # Get all possible dates and sort it
+    dates=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 15 | sed 's|/||g' | sort) )
+
+    label="test_all"
+    # Use last date as end, should return everything
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -E ${dates[-1]}
+    sanity_check ${outdir} ${label}
+    assert_equal $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") $(count_lines_file ${outdir}assembly_summary.txt)
+
+    label="test_some"
+    # Use second last date as end, should return less than everything
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -E ${dates[-2]}
+    sanity_check ${outdir} ${label}
+    assert [ $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") > $(count_lines_file ${outdir}assembly_summary.txt) ]
+}
+
+@test "Date start-end filter" {
+    outdir=${outprefix}date-start-end-filter/
+    
+    # Get all possible dates and sort it
+    dates=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 15 | sed 's|/||g' | sort) )
+
+    label="test_all"
+    # Use first date as start, last as end, should return everything
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -D ${dates[0]} -E ${dates[-1]}
+    sanity_check ${outdir} ${label}
+    assert_equal $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") $(count_lines_file ${outdir}assembly_summary.txt)
+
+    label="test_some"
+    # Use second date as start, second to last as end, should return less than everything
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -D ${dates[1]} -E ${dates[-2]}
+    sanity_check ${outdir} ${label}
+    assert [ $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") > $(count_lines_file ${outdir}assembly_summary.txt) ]
+}
+
 @test "Report assembly accession" {
     outdir=${outprefix}report-assembly-accession/
     label="test"

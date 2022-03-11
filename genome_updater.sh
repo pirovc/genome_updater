@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.3.1"
+version="0.4.0"
 
 # Define base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -53,7 +53,7 @@ alias sort="sort --field-separator=$'\t'"
 if [[ ! -z "${local_dir}" || "${use_curl}" -eq 1 ]]; then
     alias downloader="curl --silent --retry ${retries} --connect-timeout ${timeout} --output "
 else
-    alias downloader="wget --quiet --continue --tries ${retries} --read-timeout ${timeout} --output-document "
+    alias downloader="wget --no-cache --quiet --continue --tries ${retries} --read-timeout ${timeout} --output-document "
 fi
 
 download_url() # parameter: ${1} url, ${2} output file/directory (omit/empty to STDOUT)
@@ -76,7 +76,9 @@ download_url() # parameter: ${1} url, ${2} output file/directory (omit/empty to 
 export -f download_url  #export it to be accessible to the parallel call
 
 download_static() # parameter: ${1} url, ${2} output file
-{
+{   
+    echo ${2}
+    echo ${1}
     downloader ${2} ${1}
 }
 
@@ -139,6 +141,14 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
     filtered_lines=${2}
     if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
     
+    # DATE
+    if [[ ! -z "${date_start}" || ! -z "${date_end}" ]]; then
+        date_lines=$(filter_date "${assembly_summary}")
+        echolog " - $((filtered_lines-date_lines)) assemblies removed not in the date range [ ${date_start} .. ${date_end} ]" "1"
+        filtered_lines=${date_lines}
+        if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
+    fi
+
     # SPECIES taxids
     if [[ ! -z "${species}" ]]; then
         species_lines=$(filter_species "${assembly_summary}")
@@ -204,6 +214,13 @@ filter_species() # parameter: ${1} assembly_summary file - return number of line
 {
     join -1 7 -2 1 <(sort -k 7,7 "${1}") <(echo "${species//,/$'\n'}" | sort -k 1,1) -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" | sort | uniq > "${1}_species"
     mv "${1}_species" "${1}"
+    count_lines_file "${1}"
+}
+
+filter_date() # parameter: ${1} assembly_summary file - return number of lines
+{
+    awk -v dstart="${date_start}" -v dend="${date_end}" 'BEGIN{FS=OFS="\t"}{date=$15; gsub("/","",date); if((date>=dstart || dstart=="") && (date<=dend || dend=="")) print $0}' "${1}" > "${1}_date"
+    mv "${1}_date" "${1}"
     count_lines_file "${1}"
 }
 
@@ -523,6 +540,8 @@ custom_filter=""
 file_formats="assembly_report.txt"
 top_assemblies_species=0
 top_assemblies_taxids=0
+date_start=""
+date_end=""
 gtdb_only=0
 download_taxonomy=0
 delete_extra_files=0
@@ -570,10 +589,12 @@ function showhelp {
     echo
     echo $'Filter options:'
     echo $' -c refseq category (comma-separated entries, empty for all) [reference genome, representative genome, na]\n\tDefault: ""'
-    echo $' -l assembly level (comma-separated entries, empty for all) [complete genome, chromosome, scaffold, contig]\n\tDefault: ""'
-    echo $' -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive). Example: -F "2:PRJNA12377,PRJNA670754|14:Partial" for column infos check ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
+    echo $' -l assembly level (comma-separated entries, empty for all) [complete genome, chromosome, scaffold, contig]\n\tDefault: ""' 
     echo $' -P Number of top references for each species nodes to download. 0 for all. Selection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first)\n\tDefault: 0'
     echo $' -A Number of top references for each taxids (leaf nodes) to download. 0 for all. Selection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first)\n\tDefault: 0'
+    echo $' -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive). Example: -F "2:PRJNA12377,PRJNA670754|14:Partial" for column infos check ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
+    echo $' -D Start date to keep sequences (>=), based on the sequence release date. Format YYYYMMDD. Example: -D 20201030\n\tDefault: ""'
+    echo $' -E End date to keep sequences (<=), based on the sequence release date. Format YYYYMMDD. Example: -D 20201231\n\tDefault: ""'
     echo $' -z Keep only assemblies present on the latest GTDB release'
     echo
     echo $'Report options:'
@@ -620,7 +641,7 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 OPTIND=1 # Reset getopts
-while getopts "d:g:S:T:c:l:F:o:e:b:t:f:P:A:zn:akixmurpswhDV" opt; do
+while getopts "d:g:S:T:c:l:F:o:e:b:t:f:P:A:D:E:zn:akixmurpswhDV" opt; do
   case ${opt} in
     d) database=${OPTARG} ;;
     g) organism_group=${OPTARG// } ;; #remove spaces
@@ -636,6 +657,8 @@ while getopts "d:g:S:T:c:l:F:o:e:b:t:f:P:A:zn:akixmurpswhDV" opt; do
     f) file_formats=${OPTARG// } ;; #remove spaces
     P) top_assemblies_species=${OPTARG} ;;
     A) top_assemblies_taxids=${OPTARG} ;;
+    D) date_start=${OPTARG} ;;
+    E) date_end=${OPTARG} ;;
     z) gtdb_only=1 ;;
     a) download_taxonomy=1 ;;
     k) dry_run=1 ;;
@@ -696,8 +719,10 @@ if [[ ! -z "${taxids}"  ]]; then
 fi
 
 # If fixing/recovering, need to have assembly_summary.txt
-if [[ ! -z "${external_assembly_summary}" ]] && [[ ! -f "${external_assembly_summary}" ]]; then
-    echo "External assembly_summary.txt not found [$(readlink -m ${external_assembly_summary})]"; exit 1;
+if [[ ! -f "${external_assembly_summary}" ]]; then
+    if [[ ! -z "${external_assembly_summary}" ]] ; then
+        echo "External assembly_summary.txt not found [$(readlink -m ${external_assembly_summary})]"; exit 1;
+    fi
 fi
 
 # top taxids/species
@@ -804,6 +829,8 @@ echolog "Custom filter: ${custom_filter}" "0"
 echolog "File formats: ${file_formats}" "0"
 echolog "Top assemblies species: ${top_assemblies_species}" "0"
 echolog "Top assemblies taxids: ${top_assemblies_taxids}" "0"
+echolog "Date start: ${date_start}" "0"
+echolog "Date end: ${date_end}" "0"
 echolog "GTDB Only: ${gtdb_only}" "0"
 echolog "Download taxonomy: ${download_taxonomy}" "0"
 echolog "Dry-run: ${dry_run}" "0"

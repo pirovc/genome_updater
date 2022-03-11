@@ -5,7 +5,7 @@ get_values_as() { # $1 assembly_summary file, $2 col
 }
 
 count_lines_file(){ # $1 file
-    sed '/^\s*$/d' ${1:-} | wc -l | cut -f1 -d' '
+    grep -v "^#" ${1:-} | sed '/^\s*$/d' | wc -l | cut -f1 -d' '
 }
 
 count_files() { # $1 outdir, $2 label
