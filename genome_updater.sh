@@ -26,6 +26,8 @@ IFS=$' '
 # THE SOFTWARE.
 
 version="0.4.0"
+genome_updater_args=$( printf "%q " "$@" )
+export genome_updater_args
 
 # Define base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -131,6 +133,16 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
         fi
     done
     count_lines_file "${1}"
+}
+
+write_history(){ # parameter: ${1} timestamp, ${2} label, ${3} assembly_summary file, ${4} New (0->no/1->yes), ${5} arguments
+    if [[ "${4}" -eq 1 ]]; then 
+        echo -e "#timestamp\tlabel\tassembly_summary_entries\targuments" > ${history_file}
+    fi
+    echo -n -e "${1}\t" >> ${history_file}
+    echo -n -e "${2}\t" >> ${history_file}
+    echo -n -e "$(count_lines_file ${3})\t" >> ${history_file}
+    echo -e "${genome_updater_args}" >> ${history_file}
 }
 
 filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number of lines
@@ -411,6 +423,8 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
 {
     url_list_download=${working_dir}url_list_download.tmp #Temporary url list of files to download in this call
     url_success_download=${working_dir}url_success_download.tmp #Temporary url list of downloaded files
+
+
     touch ${url_success_download}
     # sort files to get all files for the same entry in sequence, in case of failure 
     if [ -z ${3:-} ] #direct download (url+file)
@@ -425,8 +439,9 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
     # parallel -k parameter keeps job output order (better for showing progress) but makes it a bit slower 
     # send url, job number and total files (to print progress)
     parallel --gnu --tmpdir ${working_dir} -a ${url_list_download} -j ${threads} download "{}" "{#}" "${total_files}" "${url_success_download}"
-
-    print_progress ${total_files} ${total_files} #print final 100%
+    
+    #print final 100%
+    print_progress ${total_files} ${total_files} 
 
     downloaded_count=$(count_lines_file "${url_success_download}")
     failed_count=$(( total_files - downloaded_count ))
@@ -766,6 +781,7 @@ files_dir="files/"
 export files_dir working_dir
 
 default_assembly_summary=${working_dir}assembly_summary.txt
+history_file=${working_dir}history.tsv
 
 # set MODE
 if [[ "${just_fix}" -eq 1 ]]; then
@@ -828,6 +844,7 @@ if [ "${silent}" -eq 0 ]; then
 fi
 
 echolog "--- genome_updater version: ${version} ---" "0"
+echolog "args: ${genome_updater_args}" "0"
 echolog "Mode: ${MODE} - $(if [[ "${dry_run}" -eq 1 ]]; then echo "DRY-RUN"; else echo "DOWNLOAD"; fi)" "1"
 echolog "Timestamp: ${timestamp}" "0"
 echolog "Database: ${database}" "0"
@@ -902,7 +919,9 @@ if [[ "${MODE}" == "NEW" ]]; then
     else
         # Set version - link new assembly as the default
         ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
-        
+        # Add entry on history
+        write_history ${timestamp} ${new_label} ${new_assembly_summary} "1"
+
         if [[ "${filtered_lines}" -gt 0 ]] ; then
             echolog " - Downloading $((filtered_lines*(n_formats+1))) files with ${threads} threads" "1"
             download_files "${new_assembly_summary}" "1,20" "${file_formats}"
@@ -1022,6 +1041,8 @@ else # update/fix
             echolog "Setting-up new version [${new_label}]" "1"
             rm "${default_assembly_summary}"
             ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
+            # Add entry on history
+            write_history ${timestamp} ${new_label} ${new_assembly_summary} "0"
             echolog " - Done." "1"
             echolog "" "1"
 

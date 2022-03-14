@@ -210,7 +210,7 @@ setup_file() {
     # Use second date as start, should return less than everything
     run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -D ${dates[1]}
     sanity_check ${outdir} ${label}
-    assert [ $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") > $(count_lines_file ${outdir}assembly_summary.txt) ]
+    assert [ $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") -gt $(count_lines_file ${outdir}assembly_summary.txt) ]
 }
 
 @test "Date end filter" {
@@ -229,7 +229,7 @@ setup_file() {
     # Use second last date as end, should return less than everything
     run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -E ${dates[-2]}
     sanity_check ${outdir} ${label}
-    assert [ $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") > $(count_lines_file ${outdir}assembly_summary.txt) ]
+    assert [ $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") -gt $(count_lines_file ${outdir}assembly_summary.txt) ]
 }
 
 @test "Date start-end filter" {
@@ -248,7 +248,7 @@ setup_file() {
     # Use second date as start, second to last as end, should return less than everything
     run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -D ${dates[1]} -E ${dates[-2]}
     sanity_check ${outdir} ${label}
-    assert [ $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") > $(count_lines_file ${outdir}assembly_summary.txt) ]
+    assert [ $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") -gt $(count_lines_file ${outdir}assembly_summary.txt) ]
 }
 
 @test "Report assembly accession" {

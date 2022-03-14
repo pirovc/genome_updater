@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 get_values_as() { # $1 assembly_summary file, $2 col
-    grep -v "^#" ${1} | cut -f $2
+    grep -v "^#" ${1} | cut -f ${2}
 }
 
 count_lines_file(){ # $1 file
@@ -26,6 +26,8 @@ sanity_check() { # $1 outdir, $2 label, [$3 number of file types]
     assert_success
     # Created assembly_summary file 
     assert_file_exist ${1}${2}/assembly_summary.txt
+    # Created history file 
+    assert_file_exist ${1}history.tsv
     # Created link to current version of assembly_summary
     assert_link_exist ${1}assembly_summary.txt
     # Created log file
