@@ -20,6 +20,7 @@ setup_file() {
     export outprefix
 }
 
+
 @test "Run genome_updater.sh and show help" {
     run ./genome_updater.sh -h
     assert_success
@@ -296,23 +297,34 @@ setup_file() {
     sanity_check ${outdir} ${label}
 }
 
+
 @test "Delete extra files" {
     outdir=${outprefix}delete-extra-files/
     label="test"
     run ./genome_updater.sh -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
-
     # Create extra files
     touch "${outdir}${label}/files/EXTRA_FILE.txt"
     assert_file_exist "${outdir}${label}/files/EXTRA_FILE.txt"
-
     # Run to fix and delete
     run ./genome_updater.sh -b ${label} -o ${outdir} -i -x
     sanity_check ${outdir} ${label}
-
     # File was removed
     assert_not_exist "${outdir}${label}/files/EXTRA_FILE.txt"
+
+    # Create extra files
+    touch "${outdir}${label}/files/ANOTHER_EXTRA_FILE.txt"
+    assert_file_exist "${outdir}${label}/files/ANOTHER_EXTRA_FILE.txt"
+    
+    # update label
+    label="update"
+    # Update (should not not carry extra file over to new version)
+    run ./genome_updater.sh -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+
+    assert_not_exist "${outdir}${label}/files/ANOTHER_EXTRA_FILE.txt"
 }
+
 
 @test "Threads" {
     outdir=${outprefix}threads/
