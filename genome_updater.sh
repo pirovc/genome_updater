@@ -395,7 +395,7 @@ check_md5_ftp() # parameter: ${1} url - returns 0 (ok) / 1 (error)
 }
 export -f check_md5_ftp #export it to be accessible to the parallel call
 
-download() # parameter: ${1} url, ${2} job number, ${3} total files, ${4} url_success_download
+download() # parameter: ${1} url, ${2} job number, ${3} total files, ${4} url_success_download (append)
 {
     ex=0
     dl=0
@@ -421,37 +421,52 @@ export -f download
 
 download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or field [url,filename], ${3} extension
 {
+
     url_list_download=${working_dir}url_list_download.tmp #Temporary url list of files to download in this call
     url_success_download=${working_dir}url_success_download.tmp #Temporary url list of downloaded files
-
-
     touch ${url_success_download}
+
     # sort files to get all files for the same entry in sequence, in case of failure 
     if [ -z ${3:-} ] #direct download (url+file)
     then
-        total_files=$(count_lines_file ${1})
         cut --fields="${2}" ${1} | tr '\t' '/' | sort > "${url_list_download}"
     else
-        total_files=$(( $(count_lines_file ${1}) * (n_formats+1) ))
         list_files ${1} ${2} ${3} | cut -f 2,3 | tr '\t' '/' | sort > "${url_list_download}"
     fi
+    total_files=$(count_lines_file "${url_list_download}")
 
-    # parallel -k parameter keeps job output order (better for showing progress) but makes it a bit slower 
-    # send url, job number and total files (to print progress)
-    parallel --gnu --tmpdir ${working_dir} -a ${url_list_download} -j ${threads} download "{}" "{#}" "${total_files}" "${url_success_download}"
-    
-    #print final 100%
-    print_progress ${total_files} ${total_files} 
+    # Retry download in batches
+    for (( att=1; att<=${retry_download_batch}; att++ )); do
 
-    downloaded_count=$(count_lines_file "${url_success_download}")
-    failed_count=$(( total_files - downloaded_count ))
+        if [ "${att}" -gt 1 ]; then
+            echolog " - Download attempt #${att}" "1"
+            # Remove successful downloads from list for next attemp
+            join <(sort "${url_list_download}") <(sort "${url_success_download}") -v 1 > "${url_list_download}_2"
+            mv "${url_list_download}_2" "${url_list_download}"
+            total_to_download=$(count_lines_file "${url_list_download}")
+        else
+            total_to_download=${total_files}
+        fi
+        
+        # send url, job number and total files (to print progress)
+        parallel --gnu --tmpdir ${working_dir} -a ${url_list_download} -j ${threads} download "{}" "{#}" "${total_to_download}" "${url_success_download}"
+
+        downloaded_count=$(count_lines_file "${url_success_download}")
+        failed_count=$(( total_files - downloaded_count ))
+
+        echolog " - $(( total_files-failed_count ))/${total_files} files successfully downloaded" "1"
+        # If no failures, break
+        if [ "${failed_count}" -eq 0 ]; then
+            break;
+        fi
+    done
+
     if [ "${url_list}" -eq 1 ]; then # Output URLs
         # add failed urls to log
         join <(sort "${url_list_download}") <(sort "${url_success_download}") -v 1 >> "${target_output_prefix}${timestamp}_url_failed.txt"
         # add successful downloads from this run to the log
         cat "${url_success_download}" >> "${target_output_prefix}${timestamp}_url_downloaded.txt"
     fi
-    echolog " - ${downloaded_count}/${total_files} files successfully downloaded" "1"
     rm -f ${url_list_download} ${url_success_download}
 }
 
@@ -583,6 +598,7 @@ silent_progress=0
 debug_mode=0
 working_dir=""
 external_assembly_summary=""
+retry_download_batch=3
 label=""
 threads=1
 verbose_log=0
@@ -632,6 +648,7 @@ function showhelp {
     echo $' -o Output/Working directory \n\tDefault: ./tmp.XXXXXXXXXX'
     echo $' -b Version label\n\tDefault: current timestamp (YYYY-MM-DD_HH-MM-SS)'
     echo $' -e External "assembly_summary.txt" file to recover data from \n\tDefault: ""'
+    echo $' -R Number of attempts to retry to download files in batches \n\tDefault: 3'
     echo $' -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes'
     echo $' -i Fix failed downloads or any incomplete data from a previous run, keep current version'
     echo $' -m Check MD5 for downloaded files'
@@ -667,7 +684,7 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 OPTIND=1 # Reset getopts
-while getopts "d:g:S:T:c:l:F:o:e:b:t:f:P:A:D:E:zn:akixmurpswhDV" opt; do
+while getopts "d:g:S:T:c:l:F:o:e:R:b:t:f:P:A:D:E:zn:akixmurpswhDV" opt; do
   case ${opt} in
     d) database=${OPTARG} ;;
     g) organism_group=${OPTARG// } ;; #remove spaces
@@ -678,6 +695,7 @@ while getopts "d:g:S:T:c:l:F:o:e:b:t:f:P:A:D:E:zn:akixmurpswhDV" opt; do
     F) custom_filter=${OPTARG} ;;
     o) working_dir=${OPTARG} ;;
     e) external_assembly_summary=${OPTARG} ;;
+    R) retry_download_batch=${OPTARG} ;;
     b) label=${OPTARG} ;;
     t) threads=${OPTARG} ;;
     f) file_formats=${OPTARG// } ;; #remove spaces
@@ -862,7 +880,8 @@ echolog "Date end: ${date_end}" "0"
 echolog "GTDB Only: ${gtdb_only}" "0"
 echolog "Download taxonomy: ${download_taxonomy}" "0"
 echolog "Dry-run: ${dry_run}" "0"
-echolog "Just fix/recover current version: ${just_fix}" "0"
+echolog "Fix/recover: ${just_fix}" "0"
+echolog "Retries download in batches: ${retry_download_batch}" "0"
 echolog "Delete extra files: ${delete_extra_files}" "0"
 echolog "Check md5: ${check_md5}" "0"
 echolog "Output updated assembly accessions: ${updated_assembly_accession}" "0"
@@ -925,15 +944,16 @@ if [[ "${MODE}" == "NEW" ]]; then
         if [[ "${filtered_lines}" -gt 0 ]] ; then
             echolog " - Downloading $((filtered_lines*(n_formats+1))) files with ${threads} threads" "1"
             download_files "${new_assembly_summary}" "1,20" "${file_formats}"
+            echolog "" "1"
             # UPDATED INDICES assembly accession
             if [ "${updated_assembly_accession}" -eq 1 ]; then 
                 output_assembly_accession "${new_assembly_summary}" "1,20" "${file_formats}" "A" > "${new_output_prefix}updated_assembly_accession.txt"
-                echolog " - Assembly accession report written [${new_output_prefix}updated_assembly_accession.txt]" "1"
+                echolog "Assembly accession report written [${new_output_prefix}updated_assembly_accession.txt]" "1"
             fi
             # UPDATED INDICES sequence accession
             if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
                 output_sequence_accession "${new_assembly_summary}" "1,20" "${file_formats}" "A" "${new_assembly_summary}" > "${new_output_prefix}updated_sequence_accession.txt"
-                echolog " - Sequence accession report written [${new_output_prefix}updated_sequence_accession.txt]" "1"
+                echolog "Sequence accession report written [${new_output_prefix}updated_sequence_accession.txt]" "1"
             fi
             echolog "" "1"
         fi
@@ -956,7 +976,7 @@ else # update/fix
         if [ "${dry_run}" -eq 0 ]; then
             echolog " - Downloading ${missing_lines} files with ${threads} threads"    "1"
             download_files "${missing}" "2,3"
-
+            echolog "" "1"
             # if new files were downloaded, rewrite reports (overwrite information on Removed accessions - all become Added)
             if [ "${updated_assembly_accession}" -eq 1 ]; then 
                 output_assembly_accession "${current_assembly_summary}" "1,20" "${file_formats}" "A" > "${current_output_prefix}updated_assembly_accession.txt"
