@@ -20,7 +20,6 @@ setup_file() {
     export outprefix
 }
 
-
 @test "Run genome_updater.sh and show help" {
     run ./genome_updater.sh -h
     assert_success
@@ -297,6 +296,38 @@ setup_file() {
     sanity_check ${outdir} ${label}
 }
 
+
+@test "Rollback label" {
+    outdir=${outprefix}rollback-label/
+    
+    # Base version with only refseq
+    label1="v1"
+    run ./genome_updater.sh -b ${label1} -o ${outdir} -d refseq
+    sanity_check ${outdir} ${label1}
+
+    # Second version with more entries (refseq,genbank)
+    label2="v2"
+    run ./genome_updater.sh -b ${label2} -o ${outdir} -d refseq,genbank
+    sanity_check ${outdir} ${label2}
+
+    # Third version with same entries (nothing to download)
+    label3="v3"
+    run ./genome_updater.sh -b ${label3} -o ${outdir} -d refseq,genbank
+    sanity_check ${outdir} ${label3}
+
+    # Check log for no updates
+    grep "0 updated, 0 deleted, 0 new entries" ${outdir}${label3}/*.log # >&3
+    assert_success
+
+    # Fourth version with the same as second but rolling back from first, re-download files
+    label4="v4"
+    run ./genome_updater.sh -b ${label4} -o ${outdir} -d refseq,genbank -B v1
+    sanity_check ${outdir} ${label4}
+
+    # Check log for updates
+    grep "0 updated, 0 deleted, [0-9]* new entries" ${outdir}${label4}/*.log # >&3
+    assert_success
+}
 
 @test "Delete extra files" {
     outdir=${outprefix}delete-extra-files/

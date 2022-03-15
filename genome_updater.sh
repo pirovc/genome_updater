@@ -135,13 +135,14 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
     count_lines_file "${1}"
 }
 
-write_history(){ # parameter: ${1} timestamp, ${2} label, ${3} assembly_summary file, ${4} New (0->no/1->yes), ${5} arguments
-    if [[ "${4}" -eq 1 ]]; then 
-        echo -e "#timestamp\tlabel\tassembly_summary_entries\targuments" > ${history_file}
+write_history(){ # parameter: ${1} current label, ${2} new label, ${3} new timestamp, ${4} assembly_summary file, ${5} New (0->no/1->yes)
+    if [[ "${5}" -eq 1 ]]; then 
+        echo -e "#current_label\tnew_label\ttimestamp\tassembly_summary_entries\targuments" > ${history_file}
     fi
     echo -n -e "${1}\t" >> ${history_file}
     echo -n -e "${2}\t" >> ${history_file}
-    echo -n -e "$(count_lines_file ${3})\t" >> ${history_file}
+    echo -n -e "${3}\t" >> ${history_file}
+    echo -n -e "$(count_lines_file ${4})\t" >> ${history_file}
     echo -e "${genome_updater_args}" >> ${history_file}
 }
 
@@ -440,7 +441,7 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
 
         if [ "${att}" -gt 1 ]; then
             echolog " - Download attempt #${att}" "1"
-            # Remove successful downloads from list for next attemp
+            # Make a new list to download without entres already successfuly downloaded
             join <(sort "${url_list_download}") <(sort "${url_success_download}") -v 1 > "${url_list_download}_2"
             mv "${url_list_download}_2" "${url_list_download}"
             total_to_download=$(count_lines_file "${url_list_download}")
@@ -449,6 +450,7 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
         fi
         
         # send url, job number and total files (to print progress)
+        # successfuly files are appended to the $url_success_download
         parallel --gnu --tmpdir ${working_dir} -a ${url_list_download} -j ${threads} download "{}" "{#}" "${total_to_download}" "${url_success_download}"
 
         downloaded_count=$(count_lines_file "${url_success_download}")
@@ -460,11 +462,13 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
             break;
         fi
     done
+    #print_progress 100 100
 
-    if [ "${url_list}" -eq 1 ]; then # Output URLs
-        # add failed urls to log
+    # Output URL reports
+    if [ "${url_list}" -eq 1 ]; then 
+        # add left overs of the list to the failed urls
         join <(sort "${url_list_download}") <(sort "${url_success_download}") -v 1 >> "${target_output_prefix}${timestamp}_url_failed.txt"
-        # add successful downloads from this run to the log
+        # add successful downloads the the downloaded urls
         cat "${url_success_download}" >> "${target_output_prefix}${timestamp}_url_downloaded.txt"
     fi
     rm -f ${url_list_download} ${url_success_download}
@@ -600,6 +604,7 @@ working_dir=""
 external_assembly_summary=""
 retry_download_batch=3
 label=""
+rollback_label=""
 threads=1
 verbose_log=0
 
@@ -647,8 +652,9 @@ function showhelp {
     echo $'Run options:'
     echo $' -o Output/Working directory \n\tDefault: ./tmp.XXXXXXXXXX'
     echo $' -b Version label\n\tDefault: current timestamp (YYYY-MM-DD_HH-MM-SS)'
-    echo $' -e External "assembly_summary.txt" file to recover data from \n\tDefault: ""'
+    echo $' -e External "assembly_summary.txt" file to recover data from. Mutually exclusive with -d / -g \n\tDefault: ""'
     echo $' -R Number of attempts to retry to download files in batches \n\tDefault: 3'
+    echo $' -B Base label to use as the current version. Can be used to rollback to an older version or to create multiple branches from a base version. It only applies for updates. \n\tDefault: ""'
     echo $' -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes'
     echo $' -i Fix failed downloads or any incomplete data from a previous run, keep current version'
     echo $' -m Check MD5 for downloaded files'
@@ -684,7 +690,7 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 OPTIND=1 # Reset getopts
-while getopts "d:g:S:T:c:l:F:o:e:R:b:t:f:P:A:D:E:zn:akixmurpswhDV" opt; do
+while getopts "d:g:S:T:c:l:F:o:e:R:b:B:t:f:P:A:D:E:zn:akixmurpswhDV" opt; do
   case ${opt} in
     d) database=${OPTARG} ;;
     g) organism_group=${OPTARG// } ;; #remove spaces
@@ -697,6 +703,7 @@ while getopts "d:g:S:T:c:l:F:o:e:R:b:t:f:P:A:D:E:zn:akixmurpswhDV" opt; do
     e) external_assembly_summary=${OPTARG} ;;
     R) retry_download_batch=${OPTARG} ;;
     b) label=${OPTARG} ;;
+    B) rollback_label=${OPTARG} ;;
     t) threads=${OPTARG} ;;
     f) file_formats=${OPTARG// } ;; #remove spaces
     P) top_assemblies_species=${OPTARG} ;;
@@ -763,9 +770,11 @@ if [[ ! -z "${taxids}"  ]]; then
 fi
 
 # If fixing/recovering, need to have assembly_summary.txt
-if [[ ! -f "${external_assembly_summary}" ]]; then
-    if [[ ! -z "${external_assembly_summary}" ]] ; then
+if [[ ! -z "${external_assembly_summary}" ]]; then
+    if [[ ! -f "${external_assembly_summary}" ]] ; then
         echo "External assembly_summary.txt not found [$(readlink -m ${external_assembly_summary})]"; exit 1;
+    elif [[ ! -z "${organism_group}"  ]]; then
+        echo "External assembly_summary.txt cannot be used with organism group (-g)"; exit 1;
     fi
 fi
 
@@ -822,7 +831,23 @@ fi
 
 # mode specific variables
 if [[ "${MODE}" == "UPDATE" ]] || [[ "${MODE}" == "FIX" ]]; then # get existing version information
-    # Current version info
+    # Check if default assembly_summary is a symbolic link to some version
+    if [[ ! -L "${default_assembly_summary}"  ]]; then
+        echo "assembly_summary.txt is not a link to any version [${default_assembly_summary}]"; exit 1
+    fi
+    
+    # Rollback to a different base version
+    if [[ ! -z "${rollback_label}" ]]; then
+        rollback_assembly_summary="${working_dir}${rollback_label}/assembly_summary.txt"
+        if [[ -f "${rollback_assembly_summary}" ]]; then
+            rm ${default_assembly_summary}
+            ln -s -r "${rollback_assembly_summary}" "${default_assembly_summary}"
+
+        else
+            echo "Rollback label/assembly_summary.txt not found ["${rollback_assembly_summary}"]"; exit 1
+        fi
+    fi
+
     current_assembly_summary="$(readlink -m ${default_assembly_summary})"
     current_output_prefix="$(dirname ${current_assembly_summary})/"
     current_label="$(basename ${current_output_prefix})" 
@@ -894,12 +919,13 @@ echolog "External assembly summary: ${external_assembly_summary}" "0"
 echolog "Threads: ${threads}" "0"
 echolog "Verbose log: ${verbose_log}" "0"
 echolog "Working directory: ${working_dir}" "1"
+echolog "Label: ${label}" "0"
+echolog "Rollback label: ${rollback_label}" "0"
 if [[ "${use_curl}" -eq 1 ]]; then
     echolog "Downloader: curl" "0"
 else
     echolog "Downloader: wget" "0"
 fi
-echolog "Label: ${label}" "0"
 echolog "-------------------------------------------" "1"
 
 # new
@@ -913,7 +939,7 @@ if [[ "${MODE}" == "NEW" ]]; then
         echolog "Using external assembly summary [$(readlink -m ${external_assembly_summary})]" "1"
         # Skip possible header lines
         grep -v "^#" "${external_assembly_summary}" > "${new_assembly_summary}";
-        echolog " - Database [${database}] and Organism group [${organism_group}] selection are ignored when using an external assembly summary" "1";
+        echolog " - Database [${database}] selection is ignored when using an external assembly summary" "1";
         all_lines=$(count_lines_file "${new_assembly_summary}")
     else
         echolog "Downloading assembly summary [${new_label}]" "1"
@@ -939,7 +965,7 @@ if [[ "${MODE}" == "NEW" ]]; then
         # Set version - link new assembly as the default
         ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
         # Add entry on history
-        write_history ${timestamp} ${new_label} ${new_assembly_summary} "1"
+        write_history "" ${new_label} ${timestamp} ${new_assembly_summary} "1"
 
         if [[ "${filtered_lines}" -gt 0 ]] ; then
             echolog " - Downloading $((filtered_lines*(n_formats+1))) files with ${threads} threads" "1"
@@ -1062,7 +1088,7 @@ else # update/fix
             rm "${default_assembly_summary}"
             ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
             # Add entry on history
-            write_history ${timestamp} ${new_label} ${new_assembly_summary} "0"
+            write_history ${current_label} ${new_label} ${timestamp} ${new_assembly_summary} "0"
             echolog " - Done." "1"
             echolog "" "1"
 
