@@ -49,7 +49,7 @@ setup_file() {
     label="test"
     run ./genome_updater.sh -b ${label} -o ${outdir} -t ${threads} -e ${files_dir}simulated/assembly_summary_all_invalid_url.txt
     assert_success
-    assert_equal $(count_files ${outdir}${label}/files/) 0
+    assert_equal $(count_files ${outdir} ${label}) 0
 }
 
 @test "Some invalid URLs" {
@@ -57,7 +57,7 @@ setup_file() {
     label="test"
     run ./genome_updater.sh -b ${label} -o ${outdir} -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
     assert_success
-    assert_equal $(count_files ${outdir}${label}/files/) 2
+    assert_equal $(count_files ${outdir} ${label}) 2
 }
 
 

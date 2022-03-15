@@ -25,7 +25,9 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.3.0"
+version="0.4.0"
+genome_updater_args=$( printf "%q " "$@" )
+export genome_updater_args
 
 # Define base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -133,12 +135,31 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
     count_lines_file "${1}"
 }
 
+write_history(){ # parameter: ${1} current label, ${2} new label, ${3} new timestamp, ${4} assembly_summary file, ${5} New (0->no/1->yes)
+    if [[ "${5}" -eq 1 ]]; then 
+        echo -e "#current_label\tnew_label\ttimestamp\tassembly_summary_entries\targuments" > ${history_file}
+    fi
+    echo -n -e "${1}\t" >> ${history_file}
+    echo -n -e "${2}\t" >> ${history_file}
+    echo -n -e "${3}\t" >> ${history_file}
+    echo -n -e "$(count_lines_file ${4})\t" >> ${history_file}
+    echo -e "${genome_updater_args}" >> ${history_file}
+}
+
 filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number of lines
 {
     assembly_summary="${1}"
     filtered_lines=${2}
     if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
     
+    # DATE
+    if [[ ! -z "${date_start}" || ! -z "${date_end}" ]]; then
+        date_lines=$(filter_date "${assembly_summary}")
+        echolog " - $((filtered_lines-date_lines)) assemblies removed not in the date range [ ${date_start} .. ${date_end} ]" "1"
+        filtered_lines=${date_lines}
+        if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
+    fi
+
     # SPECIES taxids
     if [[ ! -z "${species}" ]]; then
         species_lines=$(filter_species "${assembly_summary}")
@@ -204,6 +225,13 @@ filter_species() # parameter: ${1} assembly_summary file - return number of line
 {
     join -1 7 -2 1 <(sort -k 7,7 "${1}") <(echo "${species//,/$'\n'}" | sort -k 1,1) -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" | sort | uniq > "${1}_species"
     mv "${1}_species" "${1}"
+    count_lines_file "${1}"
+}
+
+filter_date() # parameter: ${1} assembly_summary file - return number of lines
+{
+    awk -v dstart="${date_start}" -v dend="${date_end}" 'BEGIN{FS=OFS="\t"}{date=$15; gsub("/","",date); if((date>=dstart || dstart=="") && (date<=dend || dend=="")) print $0}' "${1}" > "${1}_date"
+    mv "${1}_date" "${1}"
     count_lines_file "${1}"
 }
 
@@ -368,7 +396,7 @@ check_md5_ftp() # parameter: ${1} url - returns 0 (ok) / 1 (error)
 }
 export -f check_md5_ftp #export it to be accessible to the parallel call
 
-download() # parameter: ${1} url, ${2} job number, ${3} total files, ${4} url_success_download
+download() # parameter: ${1} url, ${2} job number, ${3} total files, ${4} url_success_download (append)
 {
     ex=0
     dl=0
@@ -394,45 +422,79 @@ export -f download
 
 download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or field [url,filename], ${3} extension
 {
+
     url_list_download=${working_dir}url_list_download.tmp #Temporary url list of files to download in this call
     url_success_download=${working_dir}url_success_download.tmp #Temporary url list of downloaded files
     touch ${url_success_download}
+
     # sort files to get all files for the same entry in sequence, in case of failure 
     if [ -z ${3:-} ] #direct download (url+file)
     then
-        total_files=$(count_lines_file ${1})
         cut --fields="${2}" ${1} | tr '\t' '/' | sort > "${url_list_download}"
     else
-        total_files=$(( $(count_lines_file ${1}) * (n_formats+1) ))
         list_files ${1} ${2} ${3} | cut -f 2,3 | tr '\t' '/' | sort > "${url_list_download}"
     fi
+    total_files=$(count_lines_file "${url_list_download}")
 
-    # parallel -k parameter keeps job output order (better for showing progress) but makes it a bit slower 
-    # send url, job number and total files (to print progress)
-    parallel --gnu --tmpdir ${working_dir} -a ${url_list_download} -j ${threads} download "{}" "{#}" "${total_files}" "${url_success_download}"
+    # Retry download in batches
+    for (( att=1; att<=${retry_download_batch}; att++ )); do
 
-    print_progress ${total_files} ${total_files} #print final 100%
+        if [ "${att}" -gt 1 ]; then
+            echolog " - Download attempt #${att}" "1"
+            # Make a new list to download without entres already successfuly downloaded
+            join <(sort "${url_list_download}") <(sort "${url_success_download}") -v 1 > "${url_list_download}_2"
+            mv "${url_list_download}_2" "${url_list_download}"
+            total_to_download=$(count_lines_file "${url_list_download}")
+        else
+            total_to_download=${total_files}
+        fi
+        
+        # send url, job number and total files (to print progress)
+        # successfuly files are appended to the $url_success_download
+        parallel --gnu --tmpdir ${working_dir} -a ${url_list_download} -j ${threads} download "{}" "{#}" "${total_to_download}" "${url_success_download}"
 
-    downloaded_count=$(count_lines_file "${url_success_download}")
-    failed_count=$(( total_files - downloaded_count ))
-    if [ "${url_list}" -eq 1 ]; then # Output URLs
-        # add failed urls to log
+        downloaded_count=$(count_lines_file "${url_success_download}")
+        failed_count=$(( total_files - downloaded_count ))
+
+        echolog " - $(( total_files-failed_count ))/${total_files} files successfully downloaded" "1"
+        # If no failures, break
+        if [ "${failed_count}" -eq 0 ]; then
+            break;
+        fi
+    done
+    #print_progress 100 100
+
+    # Output URL reports
+    if [ "${url_list}" -eq 1 ]; then 
+        # add left overs of the list to the failed urls
         join <(sort "${url_list_download}") <(sort "${url_success_download}") -v 1 >> "${target_output_prefix}${timestamp}_url_failed.txt"
-        # add successful downloads from this run to the log
+        # add successful downloads the the downloaded urls
         cat "${url_success_download}" >> "${target_output_prefix}${timestamp}_url_downloaded.txt"
     fi
-    echolog " - ${downloaded_count}/${total_files} files successfully downloaded" "1"
     rm -f ${url_list_download} ${url_success_download}
 }
 
-remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR field [filename], ${3} extension
+remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR field [filename], ${3} extension - returns number of deleted files
 {
-    if [ -z ${3:-} ] #direct remove (filename)
-    then
-        cut --fields="${2}" ${1} | xargs --no-run-if-empty -I{} rm ${target_output_prefix}${files_dir}{} -v >> ${log_file} 2>&1
+    if [ -z ${3:-} ]; then
+        # direct remove (filename)
+        filelist=$(cut --fields="${2}" ${1});
     else
-        list_files ${1} ${2} ${3} | cut -f 3 | xargs --no-run-if-empty -I{} rm ${target_output_prefix}${files_dir}{} -v >> ${log_file} 2>&1
+        # generate files
+        filelist=$(list_files ${1} ${2} ${3} | cut -f 3);
     fi
+    deleted_files=0
+    while read f; do
+        fname="${target_output_prefix}${files_dir}${f}"
+        # Only delete if delete option is enable or if it's a symbolic link (from updates)
+        if [[ -L "${fname}" || "${delete_extra_files}" -eq 1 ]]; then
+            rm "${target_output_prefix}${files_dir}${f}" -v >> ${log_file}
+            deleted_files=$((deleted_files + 1))
+        else
+            echolog "kept '${fname}'" "0"
+        fi
+    done <<< "${filelist}"
+    echo ${deleted_files}
 }
 
 check_missing_files() # ${1} file, ${2} fields [assembly_accesion,url], ${3} extension - returns assembly accession, url and filename
@@ -523,6 +585,8 @@ custom_filter=""
 file_formats="assembly_report.txt"
 top_assemblies_species=0
 top_assemblies_taxids=0
+date_start=""
+date_end=""
 gtdb_only=0
 download_taxonomy=0
 delete_extra_files=0
@@ -538,7 +602,9 @@ silent_progress=0
 debug_mode=0
 working_dir=""
 external_assembly_summary=""
+retry_download_batch=3
 label=""
+rollback_label=""
 threads=1
 verbose_log=0
 
@@ -570,10 +636,12 @@ function showhelp {
     echo
     echo $'Filter options:'
     echo $' -c refseq category (comma-separated entries, empty for all) [reference genome, representative genome, na]\n\tDefault: ""'
-    echo $' -l assembly level (comma-separated entries, empty for all) [complete genome, chromosome, scaffold, contig]\n\tDefault: ""'
-    echo $' -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive). Example: -F "2:PRJNA12377,PRJNA670754|14:Partial" for column infos check ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
+    echo $' -l assembly level (comma-separated entries, empty for all) [complete genome, chromosome, scaffold, contig]\n\tDefault: ""' 
     echo $' -P Number of top references for each species nodes to download. 0 for all. Selection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first)\n\tDefault: 0'
     echo $' -A Number of top references for each taxids (leaf nodes) to download. 0 for all. Selection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first)\n\tDefault: 0'
+    echo $' -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive). Example: -F "2:PRJNA12377,PRJNA670754|14:Partial" for column infos check ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
+    echo $' -D Start date to keep sequences (>=), based on the sequence release date. Format YYYYMMDD. Example: -D 20201030\n\tDefault: ""'
+    echo $' -E End date to keep sequences (<=), based on the sequence release date. Format YYYYMMDD. Example: -D 20201231\n\tDefault: ""'
     echo $' -z Keep only assemblies present on the latest GTDB release'
     echo
     echo $'Report options:'
@@ -584,14 +652,16 @@ function showhelp {
     echo $'Run options:'
     echo $' -o Output/Working directory \n\tDefault: ./tmp.XXXXXXXXXX'
     echo $' -b Version label\n\tDefault: current timestamp (YYYY-MM-DD_HH-MM-SS)'
-    echo $' -e External "assembly_summary.txt" file to recover data from \n\tDefault: ""'
+    echo $' -e External "assembly_summary.txt" file to recover data from. Mutually exclusive with -d / -g \n\tDefault: ""'
+    echo $' -R Number of attempts to retry to download files in batches \n\tDefault: 3'
+    echo $' -B Base label to use as the current version. Can be used to rollback to an older version or to create multiple branches from a base version. It only applies for updates. \n\tDefault: ""'
     echo $' -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes'
     echo $' -i Fix failed downloads or any incomplete data from a previous run, keep current version'
     echo $' -m Check MD5 for downloaded files'
     echo $' -t Threads\n\tDefault: 1'
     echo
     echo $'Misc. options:'
-    echo $' -x Allow the deletion of extra files if any found in the repository folder'
+    echo $' -x Allow the deletion of regular extra files if any found in the files folder. Symbolic links that do not belong to the current version will always be deleted.'
     echo $' -a Download the current version of the NCBI taxonomy database (taxdump.tar.gz)'
     echo $' -s Silent output'
     echo $' -w Silent output with download progress (%) and download version at the end'
@@ -620,7 +690,7 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 OPTIND=1 # Reset getopts
-while getopts "d:g:S:T:c:l:F:o:e:b:t:f:P:A:zn:akixmurpswhDV" opt; do
+while getopts "d:g:S:T:c:l:F:o:e:R:b:B:t:f:P:A:D:E:zn:akixmurpswhDV" opt; do
   case ${opt} in
     d) database=${OPTARG} ;;
     g) organism_group=${OPTARG// } ;; #remove spaces
@@ -631,11 +701,15 @@ while getopts "d:g:S:T:c:l:F:o:e:b:t:f:P:A:zn:akixmurpswhDV" opt; do
     F) custom_filter=${OPTARG} ;;
     o) working_dir=${OPTARG} ;;
     e) external_assembly_summary=${OPTARG} ;;
+    R) retry_download_batch=${OPTARG} ;;
     b) label=${OPTARG} ;;
+    B) rollback_label=${OPTARG} ;;
     t) threads=${OPTARG} ;;
     f) file_formats=${OPTARG// } ;; #remove spaces
     P) top_assemblies_species=${OPTARG} ;;
     A) top_assemblies_taxids=${OPTARG} ;;
+    D) date_start=${OPTARG} ;;
+    E) date_end=${OPTARG} ;;
     z) gtdb_only=1 ;;
     a) download_taxonomy=1 ;;
     k) dry_run=1 ;;
@@ -696,8 +770,12 @@ if [[ ! -z "${taxids}"  ]]; then
 fi
 
 # If fixing/recovering, need to have assembly_summary.txt
-if [[ ! -z "${external_assembly_summary}" ]] && [[ ! -f "${external_assembly_summary}" ]]; then
-    echo "External assembly_summary.txt not found [$(readlink -m ${external_assembly_summary})]"; exit 1;
+if [[ ! -z "${external_assembly_summary}" ]]; then
+    if [[ ! -f "${external_assembly_summary}" ]] ; then
+        echo "External assembly_summary.txt not found [$(readlink -m ${external_assembly_summary})]"; exit 1;
+    elif [[ ! -z "${organism_group}"  ]]; then
+        echo "External assembly_summary.txt cannot be used with organism group (-g)"; exit 1;
+    fi
 fi
 
 # top taxids/species
@@ -730,6 +808,7 @@ files_dir="files/"
 export files_dir working_dir
 
 default_assembly_summary=${working_dir}assembly_summary.txt
+history_file=${working_dir}history.tsv
 
 # set MODE
 if [[ "${just_fix}" -eq 1 ]]; then
@@ -752,7 +831,23 @@ fi
 
 # mode specific variables
 if [[ "${MODE}" == "UPDATE" ]] || [[ "${MODE}" == "FIX" ]]; then # get existing version information
-    # Current version info
+    # Check if default assembly_summary is a symbolic link to some version
+    if [[ ! -L "${default_assembly_summary}"  ]]; then
+        echo "assembly_summary.txt is not a link to any version [${default_assembly_summary}]"; exit 1
+    fi
+    
+    # Rollback to a different base version
+    if [[ ! -z "${rollback_label}" ]]; then
+        rollback_assembly_summary="${working_dir}${rollback_label}/assembly_summary.txt"
+        if [[ -f "${rollback_assembly_summary}" ]]; then
+            rm ${default_assembly_summary}
+            ln -s -r "${rollback_assembly_summary}" "${default_assembly_summary}"
+
+        else
+            echo "Rollback label/assembly_summary.txt not found ["${rollback_assembly_summary}"]"; exit 1
+        fi
+    fi
+
     current_assembly_summary="$(readlink -m ${default_assembly_summary})"
     current_output_prefix="$(dirname ${current_assembly_summary})/"
     current_label="$(basename ${current_output_prefix})" 
@@ -783,7 +878,7 @@ fi
 export log_file
 
 # count of extra files for report
-extra_lines=0
+extra_files=0
 
 if [ "${silent}" -eq 0 ]; then 
     print_line
@@ -792,6 +887,7 @@ if [ "${silent}" -eq 0 ]; then
 fi
 
 echolog "--- genome_updater version: ${version} ---" "0"
+echolog "args: ${genome_updater_args}" "0"
 echolog "Mode: ${MODE} - $(if [[ "${dry_run}" -eq 1 ]]; then echo "DRY-RUN"; else echo "DOWNLOAD"; fi)" "1"
 echolog "Timestamp: ${timestamp}" "0"
 echolog "Database: ${database}" "0"
@@ -804,10 +900,13 @@ echolog "Custom filter: ${custom_filter}" "0"
 echolog "File formats: ${file_formats}" "0"
 echolog "Top assemblies species: ${top_assemblies_species}" "0"
 echolog "Top assemblies taxids: ${top_assemblies_taxids}" "0"
+echolog "Date start: ${date_start}" "0"
+echolog "Date end: ${date_end}" "0"
 echolog "GTDB Only: ${gtdb_only}" "0"
 echolog "Download taxonomy: ${download_taxonomy}" "0"
 echolog "Dry-run: ${dry_run}" "0"
-echolog "Just fix/recover current version: ${just_fix}" "0"
+echolog "Fix/recover: ${just_fix}" "0"
+echolog "Retries download in batches: ${retry_download_batch}" "0"
 echolog "Delete extra files: ${delete_extra_files}" "0"
 echolog "Check md5: ${check_md5}" "0"
 echolog "Output updated assembly accessions: ${updated_assembly_accession}" "0"
@@ -820,12 +919,13 @@ echolog "External assembly summary: ${external_assembly_summary}" "0"
 echolog "Threads: ${threads}" "0"
 echolog "Verbose log: ${verbose_log}" "0"
 echolog "Working directory: ${working_dir}" "1"
-if [[ "${use_curl}" -eq 1 ]]; then
-    echolog "Downloader: curl" "1"
-else
-    echolog "Downloader: wget" "1"
-fi
 echolog "Label: ${label}" "0"
+echolog "Rollback label: ${rollback_label}" "0"
+if [[ "${use_curl}" -eq 1 ]]; then
+    echolog "Downloader: curl" "0"
+else
+    echolog "Downloader: wget" "0"
+fi
 echolog "-------------------------------------------" "1"
 
 # new
@@ -839,7 +939,7 @@ if [[ "${MODE}" == "NEW" ]]; then
         echolog "Using external assembly summary [$(readlink -m ${external_assembly_summary})]" "1"
         # Skip possible header lines
         grep -v "^#" "${external_assembly_summary}" > "${new_assembly_summary}";
-        echolog " - Database [${database}] and Organism group [${organism_group}] selection are ignored when using an external assembly summary" "1";
+        echolog " - Database [${database}] selection is ignored when using an external assembly summary" "1";
         all_lines=$(count_lines_file "${new_assembly_summary}")
     else
         echolog "Downloading assembly summary [${new_label}]" "1"
@@ -864,19 +964,22 @@ if [[ "${MODE}" == "NEW" ]]; then
     else
         # Set version - link new assembly as the default
         ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
-        
+        # Add entry on history
+        write_history "" ${new_label} ${timestamp} ${new_assembly_summary} "1"
+
         if [[ "${filtered_lines}" -gt 0 ]] ; then
             echolog " - Downloading $((filtered_lines*(n_formats+1))) files with ${threads} threads" "1"
             download_files "${new_assembly_summary}" "1,20" "${file_formats}"
+            echolog "" "1"
             # UPDATED INDICES assembly accession
             if [ "${updated_assembly_accession}" -eq 1 ]; then 
                 output_assembly_accession "${new_assembly_summary}" "1,20" "${file_formats}" "A" > "${new_output_prefix}updated_assembly_accession.txt"
-                echolog " - Assembly accession report written [${new_output_prefix}updated_assembly_accession.txt]" "1"
+                echolog "Assembly accession report written [${new_output_prefix}updated_assembly_accession.txt]" "1"
             fi
             # UPDATED INDICES sequence accession
             if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
                 output_sequence_accession "${new_assembly_summary}" "1,20" "${file_formats}" "A" "${new_assembly_summary}" > "${new_output_prefix}updated_sequence_accession.txt"
-                echolog " - Sequence accession report written [${new_output_prefix}updated_sequence_accession.txt]" "1"
+                echolog "Sequence accession report written [${new_output_prefix}updated_sequence_accession.txt]" "1"
             fi
             echolog "" "1"
         fi
@@ -899,15 +1002,17 @@ else # update/fix
         if [ "${dry_run}" -eq 0 ]; then
             echolog " - Downloading ${missing_lines} files with ${threads} threads"    "1"
             download_files "${missing}" "2,3"
-
+            echolog "" "1"
             # if new files were downloaded, rewrite reports (overwrite information on Removed accessions - all become Added)
             if [ "${updated_assembly_accession}" -eq 1 ]; then 
                 output_assembly_accession "${current_assembly_summary}" "1,20" "${file_formats}" "A" > "${current_output_prefix}updated_assembly_accession.txt"
-                echolog " - Assembly accession report rewritten [${current_output_prefix}updated_assembly_accession.txt]" "1"
+                echolog "Assembly accession report rewritten [${current_output_prefix}updated_assembly_accession.txt]" "1"
+                echolog " - In fix mode, all entries are report as 'A' (Added)" "1"
             fi
             if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
                 output_sequence_accession "${current_assembly_summary}" "1,20" "${file_formats}" "A" "${current_assembly_summary}" > "${current_output_prefix}updated_sequence_accession.txt"
-                echolog " - Sequence accession report rewritten [${current_output_prefix}updated_sequence_accession.txt]" "1"
+                echolog "Sequence accession report rewritten [${current_output_prefix}updated_sequence_accession.txt]" "1"
+                echolog " - In fix mode, all entries are report as 'A' (Added)" "1"
             fi
         fi
     else
@@ -916,20 +1021,17 @@ else # update/fix
     echolog "" "1"
     rm "${missing}"
     
-    echolog "Checking for extra files [${current_label}]" "1"
+    echolog "Checking for extra files in the current version [${current_label}]" "1"
     extra="${working_dir}extra.tmp"
     join <(ls -1 "${current_output_prefix}${files_dir}" | sort) <(list_files "${current_assembly_summary}" "1,20" "${file_formats}" | cut -f 3 | sed -e 's/.*\///' | sort) -v 1 > "${extra}"
-    extra_lines=$(count_lines_file "${extra}")
-    if [ "${extra_lines}" -gt 0 ]; then
-        echolog " - ${extra_lines} extra files" "1"
-        if [ "${dry_run}" -eq 0 ]; then
-            if [ "${delete_extra_files}" -eq 1 ]; then
-                echolog " - Deleting ${extra_lines} files" "1";
-                remove_files "${extra}" "1";
-                extra_lines=0;
-            else
-                cat "${extra}" >> "${log_file}"; #List file in the log when -x is not enabled
-            fi
+    extra_files=$(count_lines_file "${extra}")
+    if [ "${extra_files}" -gt 0 ]; then
+        echolog " - ${extra_files} extra files" "1"
+        if [ "${dry_run}" -eq 0 ]; then    
+            del_files=$(remove_files "${extra}" "1")
+            echolog " - ${del_files} files successfully deleted" "1";
+            # Keep track how many extra files were kept
+            extra_files=$((extra_files - del_files))
         fi
     else
         echolog " - None" "1"
@@ -955,14 +1057,6 @@ else # update/fix
         filtered_lines=$(count_lines_file "${new_assembly_summary}")
         echolog " - ${filtered_lines} assembly entries to download" "1"
         echolog "" "1"
-
-        if [[ "${dry_run}" -eq 0 ]]; then
-            # Link versions (current and new)
-            echolog "Linking versions [${current_label} --> ${new_label}]" "1"
-            find "${current_output_prefix}${files_dir}" -maxdepth 1 -xtype f -print0 | xargs -P "${threads}" -I{} -0 ln -s -r "{}" "${new_output_prefix}${files_dir}"
-            echolog " - Done." "1"
-            echolog "" "1"
-        fi
         
         update=${working_dir}update.tmp
         delete=${working_dir}delete.tmp
@@ -976,14 +1070,28 @@ else # update/fix
         # NEW
         join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' ${new_assembly_summary} | sort -k 1,1) <(cut -f 1 ${current_assembly_summary} | sed 's/\.[0-9]*//g' | sort) -o "1.2,1.3" -v 1 | tr ' ' '\t' > ${new}
         new_lines=$(count_lines_file "${new}")
-        
-        echolog "Updating [${current_label} --> ${new_label}]" "1"
+        echolog "Updates available [${current_label} --> ${new_label}]" "1"
         echolog " - ${update_lines} updated, ${delete_lines} deleted, ${new_lines} new entries" "1"
+        echolog "" "1"
 
         if [ "${dry_run}" -eq 1 ]; then
-            rm ${update} ${delete} ${new}
             rm -r "${new_output_prefix}"
         else
+            # Link versions
+            echolog "Linking versions [${current_label} --> ${new_label}]" "1"
+            # Only link existing files relative to the current version
+            list_files "${current_assembly_summary}" "1,20" "${file_formats}" | cut -f 3 | xargs -P "${threads}" -I{} bash -c 'if [[ -f '"${current_output_prefix}${files_dir}{}"' ]]; then ln -s -r '"${current_output_prefix}${files_dir}{}"' '"${new_output_prefix}${files_dir}"'; fi'
+            echolog " - Done." "1"
+            echolog "" "1"
+            # set version - update default assembly summary
+            echolog "Setting-up new version [${new_label}]" "1"
+            rm "${default_assembly_summary}"
+            ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
+            # Add entry on history
+            write_history ${current_label} ${new_label} ${timestamp} ${new_assembly_summary} "0"
+            echolog " - Done." "1"
+            echolog "" "1"
+
             # UPDATED INDICES assembly accession
             if [ "${updated_assembly_accession}" -eq 1 ]; then 
                 output_assembly_accession "${update}" "3,4" "${file_formats}" "R" > "${new_output_prefix}updated_assembly_accession.txt"
@@ -991,50 +1099,49 @@ else # update/fix
             fi
             # UPDATED INDICES sequence accession (removed entries - do it before deleting them)
             if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
-                output_sequence_accession "${update}" "3,4" "${file_formats}" "R" "${default_assembly_summary}" > "${new_output_prefix}updated_sequence_accession.txt"
-                output_sequence_accession "${delete}" "1,2" "${file_formats}" "R" "${default_assembly_summary}" >> "${new_output_prefix}updated_sequence_accession.txt"
+                # current_assembly_summary is the old summary
+                output_sequence_accession "${update}" "3,4" "${file_formats}" "R" "${current_assembly_summary}" > "${new_output_prefix}updated_sequence_accession.txt"
+                output_sequence_accession "${delete}" "1,2" "${file_formats}" "R" "${current_assembly_summary}" >> "${new_output_prefix}updated_sequence_accession.txt"
             fi
             
             # Execute updates
+            echolog "Updating" "1"
             if [ "${update_lines}" -gt 0 ]; then
                 echolog " - UPDATE: Deleting $((update_lines*(n_formats+1))) files " "1"
                 # delete old version
-                remove_files "${update}" "3,4" "${file_formats}"
+                del_lines=$(remove_files "${update}" "3,4" "${file_formats}")
+                echolog " - ${del_lines} files successfully deleted " "1"
                 echolog " - UPDATE: Downloading $((update_lines*(n_formats+1))) files with ${threads} threads" "1"
                 # download new version
                 download_files "${update}" "1,2" "${file_formats}"
             fi
             if [ "${delete_lines}" -gt 0 ]; then
                 echolog " - DELETE: Deleting $((delete_lines*(n_formats+1))) files" "1"
-                remove_files "${delete}" "1,2" "${file_formats}"
+                del_lines=$(remove_files "${delete}" "1,2" "${file_formats}")
+                echolog " - ${del_lines} files successfully deleted " "1"
             fi
             if [ "${new_lines}" -gt 0 ]; then
                 echolog " - NEW: Downloading $((new_lines*(n_formats+1))) files with ${threads} threads"    "1"
                 download_files "${new}" "1,2" "${file_formats}"
             fi 
+            echolog " - Done." "1"
+            echolog "" "1"
 
             # UPDATED INDICES assembly accession (added entries - do it after downloading them)
             if [ "${updated_assembly_accession}" -eq 1 ]; then 
                 output_assembly_accession "${update}" "1,2" "${file_formats}" "A" >> "${new_output_prefix}updated_assembly_accession.txt"
                 output_assembly_accession "${new}" "1,2" "${file_formats}" "A" >> "${new_output_prefix}updated_assembly_accession.txt"
-                echolog " - Assembly accession report written [${new_output_prefix}updated_assembly_accession.txt]" "1"
+                echolog "Assembly accession report written [${new_output_prefix}updated_assembly_accession.txt]" "1"
             fi
             # UPDATED INDICES sequence accession (added entries - do it after downloading them)
             if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
                 output_sequence_accession "${update}" "1,2" "${file_formats}" "A" "${new_assembly_summary}">> "${new_output_prefix}updated_sequence_accession.txt"
                 output_sequence_accession "${new}" "1,2" "${file_formats}" "A" "${new_assembly_summary}" >> "${new_output_prefix}updated_sequence_accession.txt"
-                echolog " - Sequence accession report written [${new_output_prefix}updated_sequence_accession.txt]" "1"
+                echolog "Sequence accession report written [${new_output_prefix}updated_sequence_accession.txt]" "1"
             fi
-            rm "${update}" "${delete}" "${new}"
-            echolog "" "1"
-
-            # set version - update default assembly summary
-            echolog "Setting new version [${new_label}]" "1"
-            rm "${default_assembly_summary}"
-            ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
-            echolog " - Done." "1"
-            echolog "" "1"
         fi
+        # Remove update files
+        rm ${update} ${delete} ${new}
     fi
 fi
 
@@ -1045,19 +1152,27 @@ if [ "${dry_run}" -eq 0 ]; then
         echolog " - Done" "1"
         echolog "" "1"
     fi
+
     expected_files=$(( $(count_lines_file "${default_assembly_summary}")*(n_formats+1) )) # From assembly summary * file formats
-    current_files=$(( $(ls "${target_output_prefix}${files_dir}" | wc -l | cut -f1 -d' ') - extra_lines )) # From current folder - extra files
-    # Check if the valid amount of files on folder amount of files on folder
+    current_files=$(ls "${target_output_prefix}${files_dir}" | wc -l | cut -f1 -d' ') # From current folder
+    # If is in fixing mode, remove kept extra files from calculation
+    if [[ "${extra_files}" -gt 0 && "${just_fix}" -eq 1 ]]; then
+        current_files=$(( current_files-extra_files ))
+    fi
+
     [ "${silent}" -eq 0 ] && print_line
     echolog "# ${current_files}/${expected_files} files in the current version" "1"
+    # Check if the valid amount of files on folder amount of files on folder
     if [ $(( expected_files-current_files )) -gt 0 ]; then
-        echolog " - $(( expected_files-current_files )) file(s) failed to download. Please re-run your command with -i to fix it again" "1"
+        echolog " - $(( expected_files-current_files )) file(s) failed to download. Please re-run your command again with -i to fix it" "1"
     fi
-    if [ "${extra_lines}" -gt 0 ]; then
-        echolog " - ${extra_lines} extra file(s) in the output files folder. To delete them, re-run your command with -i -x" "1"
+    if [[ "${extra_files}" -gt 0 && "${just_fix}" -eq 1 ]]; then
+        echolog " - ${extra_files} extra file(s) found in the output files folder. To delete them, re-run your command with -i -x" "1"
     fi
-    echolog "# Log file: ${log_file}" "1"
-    echolog "# Finished! Current version: $(dirname $(readlink -m ${default_assembly_summary}))" "1"
+    echolog "# Current version: $(dirname $(readlink -m ${default_assembly_summary}))" "1"
+    echolog "# Log file       : ${log_file}" "1"
+    [ "${silent}" -eq 0 ] && print_line
+
     if [ "${silent_progress}" -eq 1 ] ; then
         echo "$(dirname $(readlink -m ${default_assembly_summary}))"
     fi

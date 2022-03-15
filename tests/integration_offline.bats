@@ -193,6 +193,63 @@ setup_file() {
     done
 }
 
+@test "Date start filter" {
+    outdir=${outprefix}date-start-filter/
+    
+    # Get all possible dates and sort it
+    dates=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 15 | sed 's|/||g' | sort) )
+
+    label="test_all"
+    # Use first date as start, should return everything
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -D ${dates[0]}
+    sanity_check ${outdir} ${label}
+    assert_equal $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") $(count_lines_file ${outdir}assembly_summary.txt)
+
+    label="test_some"
+    # Use second date as start, should return less than everything
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -D ${dates[1]}
+    sanity_check ${outdir} ${label}
+    assert [ $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") -gt $(count_lines_file ${outdir}assembly_summary.txt) ]
+}
+
+@test "Date end filter" {
+    outdir=${outprefix}date-end-filter/
+    
+    # Get all possible dates and sort it
+    dates=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 15 | sed 's|/||g' | sort) )
+
+    label="test_all"
+    # Use last date as end, should return everything
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -E ${dates[-1]}
+    sanity_check ${outdir} ${label}
+    assert_equal $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") $(count_lines_file ${outdir}assembly_summary.txt)
+
+    label="test_some"
+    # Use second last date as end, should return less than everything
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -E ${dates[-2]}
+    sanity_check ${outdir} ${label}
+    assert [ $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") -gt $(count_lines_file ${outdir}assembly_summary.txt) ]
+}
+
+@test "Date start-end filter" {
+    outdir=${outprefix}date-start-end-filter/
+    
+    # Get all possible dates and sort it
+    dates=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 15 | sed 's|/||g' | sort) )
+
+    label="test_all"
+    # Use first date as start, last as end, should return everything
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -D ${dates[0]} -E ${dates[-1]}
+    sanity_check ${outdir} ${label}
+    assert_equal $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") $(count_lines_file ${outdir}assembly_summary.txt)
+
+    label="test_some"
+    # Use second date as start, second to last as end, should return less than everything
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -D ${dates[1]} -E ${dates[-2]}
+    sanity_check ${outdir} ${label}
+    assert [ $(count_lines_file "${local_dir}genomes/refseq/assembly_summary_refseq.txt") -gt $(count_lines_file ${outdir}assembly_summary.txt) ]
+}
+
 @test "Report assembly accession" {
     outdir=${outprefix}report-assembly-accession/
     label="test"
@@ -239,23 +296,66 @@ setup_file() {
     sanity_check ${outdir} ${label}
 }
 
+
+@test "Rollback label" {
+    outdir=${outprefix}rollback-label/
+    
+    # Base version with only refseq
+    label1="v1"
+    run ./genome_updater.sh -b ${label1} -o ${outdir} -d refseq
+    sanity_check ${outdir} ${label1}
+
+    # Second version with more entries (refseq,genbank)
+    label2="v2"
+    run ./genome_updater.sh -b ${label2} -o ${outdir} -d refseq,genbank
+    sanity_check ${outdir} ${label2}
+
+    # Third version with same entries (nothing to download)
+    label3="v3"
+    run ./genome_updater.sh -b ${label3} -o ${outdir} -d refseq,genbank
+    sanity_check ${outdir} ${label3}
+
+    # Check log for no updates
+    grep "0 updated, 0 deleted, 0 new entries" ${outdir}${label3}/*.log # >&3
+    assert_success
+
+    # Fourth version with the same as second but rolling back from first, re-download files
+    label4="v4"
+    run ./genome_updater.sh -b ${label4} -o ${outdir} -d refseq,genbank -B v1
+    sanity_check ${outdir} ${label4}
+
+    # Check log for updates
+    grep "0 updated, 0 deleted, [0-9]* new entries" ${outdir}${label4}/*.log # >&3
+    assert_success
+}
+
 @test "Delete extra files" {
     outdir=${outprefix}delete-extra-files/
     label="test"
     run ./genome_updater.sh -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
-
     # Create extra files
     touch "${outdir}${label}/files/EXTRA_FILE.txt"
     assert_file_exist "${outdir}${label}/files/EXTRA_FILE.txt"
-
     # Run to fix and delete
     run ./genome_updater.sh -b ${label} -o ${outdir} -i -x
     sanity_check ${outdir} ${label}
-
     # File was removed
     assert_not_exist "${outdir}${label}/files/EXTRA_FILE.txt"
+
+    # Create extra files
+    touch "${outdir}${label}/files/ANOTHER_EXTRA_FILE.txt"
+    assert_file_exist "${outdir}${label}/files/ANOTHER_EXTRA_FILE.txt"
+    
+    # update label
+    label="update"
+    # Update (should not not carry extra file over to new version)
+    run ./genome_updater.sh -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+
+    assert_not_exist "${outdir}${label}/files/ANOTHER_EXTRA_FILE.txt"
 }
+
 
 @test "Threads" {
     outdir=${outprefix}threads/
