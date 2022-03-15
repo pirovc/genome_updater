@@ -7,8 +7,8 @@ With genome_updater you can download and keep several snapshots of a certain sub
 ## Details
 
 - genome_updater runs on a working directory (defined with `-o`) and creates a snapshot (`-b`) of refseq and/or genbank (`-d`) genome repositories based on selected organism groups (`-g`) and/or taxonomic ids (`-S`/`-T`) with the desired files type(s) (`-f`)
-- Many filters can be applied to refine the selection: RefSeq category (`-c`), assembly level (`-l`), custom filters (`-F`), top assemblies (`-P`/`-A`), GTDB [3] compatible sequences (`-z`).
-- genome_updater can update the selected repository after some days, for example. It will identify previous files and update the working directory with the most recent versions, keeping track of all changes and just downloading/removing what is necessary
+- filters can be applied to refine the selection: RefSeq category (`-c`), assembly level (`-l`), dates (`-D`/`-E`), custom filters (`-F`), top assemblies (`-P`/`-A`), GTDB [3] compatible sequences (`-z`).
+- the repository can updated (e.g. after some days) with only incremental changes. genome_updater will identify previous files and update the working directory with the most recent versions, keeping track of all changes and just downloading/removing what is necessary
 
 ## Installation
 
@@ -39,25 +39,28 @@ Downloads complete genome sequences from Archaea in the RefSeq repository (`-t` 
 
  - Add `-k` to perform a dry-run before the actual run. genome_updater will show how many files will be downloaded or updated and exit without changes
  - The *same command* executed again (e.g. some days later), will update the snapshot of the requested dataset to its latest state, accounting for new, updated and removed sequences.
+ - `history.tsv` will be created in the output folder, tracking versions and arguments used
 
 ## Options
 
 Data selection:
 - `-d`: database selection (genbank and/or refseq)
-- `-g`: selection of assemblies by organism groups (`-g "archaea,bacteria"`)
-- `-S`: selection of assemblies by species taxids (`-S "562,623"`)
-- `-T`: selection of assemblies by any taxids including all children nodes (`-T "620,1643685"`)
-- `-f`: suffix of files to be downloaded for each entry [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
+- `-g`: organism groups (`-g "archaea,bacteria"`)
+- `-S`: species taxids (`-S "562,623"`)
+- `-T`: any taxids including all children nodes (`-T "620,1643685"`)
+- `-f`: files to be downloaded [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
 - `-l`: filter by Assembly level [complete genome, chromosome, scaffold, contig]
 - `-c`: filter by RefSeq Category [reference genome, representative genome, na]
-- `-P`: select [top assemblies](#top-assemblies) for species entries (`-P 3`) to download the top 3 assemblies for each species
-- `-A`: select [top assemblies](#top-assemblies) for taxids entries (`-A 3`) to download the top 3 assemblies for each taxid selected
+- `-P`: select [top assemblies](#top-assemblies) for species entries. `-P 3` downloads the top 3 assemblies for each species
+- `-A`: select [top assemblies](#top-assemblies) for taxids entries. `-A 3` downloads the top 3 assemblies for each taxid selected
+- `-D`: filter entries published on or after this date
+- `-E`: filter entries published on or before this date
 - `-z`: select only assemblies included in the latest GTDB release
 
 Utilities:
 - `-i`: fixes current snapshot in case of network or any other failure during download
-- `-k`: dry-run - do not perform any download or update, but shows number of files to be downloaded or updated
-- `-t`: run many parallel downloads
+- `-k`: dry-run - do not perform any action but shows number of files to be downloaded or updated
+- `-t`: downloads in parallel
 - `-m`: checks for file integrity (MD5)
 - `-e`: re-downloads entries from any "assembly_summary.txt" obtained from external sources. Easy way to share snapshots of exact database version used.
 - `-a`: downloads the current version of the NCBI taxonomy database (taxdump.tar.gz)
@@ -66,6 +69,10 @@ Reports:
 - `-u`: Added/Removed assembly accessions
 - `-r`: Added/Removed sequence accessions 
 - `-p`: Output list of URLs for downloaded and failed files
+
+Version control:
+- `-b`: name a version under a label (timestamp by default)
+- `-B`: when updating, use a different label as a base version. Useful for rolling back updates or to branch out of a base version.
 
 ## Examples
 
@@ -90,6 +97,15 @@ Reports:
 ### Download all genome sequences used in the latests GTDB release
 
 	./genome_updater.sh -d "refseq,genbank" -f "genomic.fna.gz" -o "GTDB" -z -t 12
+
+### Branching base version for specific filters
+
+	# Download the complete bacterial refseq
+	./genome_updater.sh -d "refseq" -g "bacteria" -f "genomic.fna.gz" -o "bac_refseq" -t 12 -m -b "all"
+
+	# Branch the main files into two sub-versions (no new files will be downloaded or copied)
+	./genome_updater.sh -d "refseq" -g "bacteria" -f "genomic.fna.gz" -o "bac_refseq" -t 12 -m -B "all" -b "complete" -l "complete genome"
+	./genome_updater.sh -d "refseq" -g "bacteria" -f "genomic.fna.gz" -o "bac_refseq" -t 12 -m -B "all" -b "representative" -c "representative genome"
 
 ### Download one genome assembly for each bacterial species in genbank
 
@@ -183,7 +199,7 @@ or
 	┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐
 	│ ┬├┤ ││││ ││││├┤     │ │├─┘ ││├─┤ │ ├┤ ├┬┘
 	└─┘└─┘┘└┘└─┘┴ ┴└─┘────└─┘┴  ─┴┘┴ ┴ ┴ └─┘┴└─
-	                                     v0.3.0 
+	                                     v0.4.0 
 
 	Database options:
 	 -d Database (comma-separated entries) [genbank, refseq]	Default: refseq
@@ -205,12 +221,16 @@ or
 		Default: ""
 	 -l assembly level (comma-separated entries, empty for all) [complete genome, chromosome, scaffold, contig]
 		Default: ""
-	 -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive). Example: -F "2:PRJNA12377,PRJNA670754|14:Partial" for column infos check ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt
-		Default: ""
 	 -P Number of top references for each species nodes to download. 0 for all. Selection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first)
 		Default: 0
 	 -A Number of top references for each taxids (leaf nodes) to download. 0 for all. Selection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first)
 		Default: 0
+	 -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive). Example: -F "2:PRJNA12377,PRJNA670754|14:Partial" for column infos check ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt
+		Default: ""
+	 -D Start date to keep sequences (>=), based on the sequence release date. Format YYYYMMDD. Example: -D 20201030
+		Default: ""
+	 -E End date to keep sequences (<=), based on the sequence release date. Format YYYYMMDD. Example: -D 20201231
+		Default: ""
 	 -z Keep only assemblies present on the latest GTDB release
 
 	Report options:
@@ -223,7 +243,11 @@ or
 		Default: ./tmp.XXXXXXXXXX
 	 -b Version label
 		Default: current timestamp (YYYY-MM-DD_HH-MM-SS)
-	 -e External "assembly_summary.txt" file to recover data from 
+	 -e External "assembly_summary.txt" file to recover data from. Mutually exclusive with -d / -g 
+		Default: ""
+	 -R Number of attempts to retry to download files in batches 
+		Default: 3
+	 -B Base label to use as the current version. Can be used to rollback to an older version or to create multiple branches from a base version. It only applies for updates. 
 		Default: ""
 	 -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes
 	 -i Fix failed downloads or any incomplete data from a previous run, keep current version
@@ -232,7 +256,7 @@ or
 		Default: 1
 
 	Misc. options:
-	 -x Allow the deletion of extra files if any found in the repository folder
+	 -x Allow the deletion of regular extra files if any found in the files folder. Symbolic links that do not belong to the current version will always be deleted.
 	 -a Download the current version of the NCBI taxonomy database (taxdump.tar.gz)
 	 -s Silent output
 	 -w Silent output with download progress (%) and download version at the end
