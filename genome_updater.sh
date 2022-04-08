@@ -500,7 +500,7 @@ remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR fi
 check_missing_files() # ${1} file, ${2} fields [assembly_accesion,url], ${3} extension - returns assembly accession, url and filename
 {
     # Just returns if file doesn't exist or if it's zero size
-    list_files ${1} ${2} ${3} | xargs --no-run-if-empty -n3 sh -c 'if [ ! -s "'"${target_output_prefix}${files_dir}"'${2}" ]; then echo "${0}'$'\t''${1}'$'\t''${2}"; fi'
+    list_files ${1} ${2} ${3} | xargs -P "${threads}" --no-run-if-empty -n3 sh -c 'if [ ! -s "'"${target_output_prefix}${files_dir}"'${2}" ]; then echo "${0}'$'\t''${1}'$'\t''${2}"; fi'
 }
 
 check_complete_record() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension - returns assembly accession, url
@@ -657,8 +657,8 @@ function showhelp {
     echo $' -B Base label to use as the current version. Can be used to rollback to an older version or to create multiple branches from a base version. It only applies for updates. \n\tDefault: ""'
     echo $' -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes'
     echo $' -i Fix failed downloads or any incomplete data from a previous run, keep current version'
-    echo $' -m Check MD5 for downloaded files'
-    echo $' -t Threads\n\tDefault: 1'
+    echo $' -m Check MD5 of downloaded files'
+    echo $' -t Threads to parallelize download and some file operations\n\tDefault: 1'
     echo
     echo $'Misc. options:'
     echo $' -x Allow the deletion of regular extra files if any found in the files folder. Symbolic links that do not belong to the current version will always be deleted.'
@@ -667,7 +667,7 @@ function showhelp {
     echo $' -w Silent output with download progress (%) and download version at the end'
     echo $' -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)\n\tDefault: 0'
     echo $' -V Verbose log to report successful file downloads'
-    echo $' -Z Print print debug information and exit'
+    echo $' -Z Print debug information and run in debug mode'
     echo
 }
 

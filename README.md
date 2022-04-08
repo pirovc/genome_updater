@@ -202,7 +202,7 @@ or
 	                                     v0.4.1 
 
 	Database options:
-	 -d Database (comma-separated entries) [genbank, refseq]	Default: refseq
+	 -d Database (comma-separated entries) [genbank, refseq]
 
 	Organism options:
 	 -g Organism group (comma-separated entries) [archaea, bacteria, fungi, human, invertebrate, metagenomes, other, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]. Example: archaea,bacteria.
@@ -251,8 +251,8 @@ or
 		Default: ""
 	 -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes
 	 -i Fix failed downloads or any incomplete data from a previous run, keep current version
-	 -m Check MD5 for downloaded files
-	 -t Threads
+	 -m Check MD5 of downloaded files
+	 -t Threads to parallelize download and some file operations
 		Default: 1
 
 	Misc. options:
@@ -263,7 +263,8 @@ or
 	 -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)
 		Default: 0
 	 -V Verbose log to report successful file downloads
-	 -Z Print print debug information and exit
+	 -Z Print debug information and run in debug mode
+
 
 ## References:
 
