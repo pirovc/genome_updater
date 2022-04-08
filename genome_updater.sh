@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.4.0"
+version="0.4.1"
 genome_updater_args=$( printf "%q " "$@" )
 export genome_updater_args
 
@@ -44,7 +44,7 @@ use_curl=${use_curl:-0}
 # Export locale numeric to avoid errors on printf in different setups
 export LC_NUMERIC="en_US.UTF-8"
 
-gtdb_urls=( "https://data.gtdb.ecogenomic.org/releases/latest/ar122_taxonomy.tsv.gz" 
+gtdb_urls=( "https://data.gtdb.ecogenomic.org/releases/latest/ar53_taxonomy.tsv.gz" 
             "https://data.gtdb.ecogenomic.org/releases/latest/bac120_taxonomy.tsv.gz" )
 
 #activate aliases in the script
@@ -575,7 +575,7 @@ print_debug() # parameters: ${1} tools
 }
 
 # Defaults
-database="refseq"
+database=""
 organism_group=""
 species=""
 taxids=""
@@ -624,7 +624,7 @@ function showhelp {
     print_logo
     echo
     echo $'Database options:'
-    echo $' -d Database (comma-separated entries) [genbank, refseq]\tDefault: refseq'
+    echo $' -d Database (comma-separated entries) [genbank, refseq]'
     echo
     echo $'Organism options:'
     echo $' -g Organism group (comma-separated entries) [archaea, bacteria, fungi, human, invertebrate, metagenomes, other, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]. Example: archaea,bacteria.\n\tDefault: ""'
@@ -640,8 +640,8 @@ function showhelp {
     echo $' -P Number of top references for each species nodes to download. 0 for all. Selection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first)\n\tDefault: 0'
     echo $' -A Number of top references for each taxids (leaf nodes) to download. 0 for all. Selection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first)\n\tDefault: 0'
     echo $' -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive). Example: -F "2:PRJNA12377,PRJNA670754|14:Partial" for column infos check ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
-    echo $' -D Start date to keep sequences (>=), based on the sequence release date. Format YYYYMMDD. Example: -D 20201030\n\tDefault: ""'
-    echo $' -E End date to keep sequences (<=), based on the sequence release date. Format YYYYMMDD. Example: -D 20201231\n\tDefault: ""'
+    echo $' -D Start date to keep sequences (>=), based on the sequence release date. Format YYYYMMDD. Example: 20201030\n\tDefault: ""'
+    echo $' -E End date to keep sequences (<=), based on the sequence release date. Format YYYYMMDD. Example: 20201231\n\tDefault: ""'
     echo $' -z Keep only assemblies present on the latest GTDB release'
     echo
     echo $'Report options:'
@@ -667,7 +667,7 @@ function showhelp {
     echo $' -w Silent output with download progress (%) and download version at the end'
     echo $' -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)\n\tDefault: 0'
     echo $' -V Verbose log to report successful file downloads'
-    echo $' -D Print print debug information and exit'
+    echo $' -Z Print print debug information and exit'
     echo
 }
 
@@ -690,52 +690,63 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 OPTIND=1 # Reset getopts
-while getopts "d:g:S:T:c:l:F:o:e:R:b:B:t:f:P:A:D:E:zn:akixmurpswhDV" opt; do
+while getopts "aA:b:B:d:D:c:De:E:f:F:g:hikl:mn:o:pP:rR:sS:t:T:uVwxzZ" opt; do
   case ${opt} in
-    d) database=${OPTARG} ;;
-    g) organism_group=${OPTARG// } ;; #remove spaces
-    S) species=${OPTARG// } ;; #remove spaces
-    T) taxids=${OPTARG// } ;; #remove spaces
-    c) refseq_category=${OPTARG} ;;
-    l) assembly_level=${OPTARG} ;;
-    F) custom_filter=${OPTARG} ;;
-    o) working_dir=${OPTARG} ;;
-    e) external_assembly_summary=${OPTARG} ;;
-    R) retry_download_batch=${OPTARG} ;;
+    a) download_taxonomy=1 ;;
+    A) top_assemblies_taxids=${OPTARG} ;;
     b) label=${OPTARG} ;;
     B) rollback_label=${OPTARG} ;;
-    t) threads=${OPTARG} ;;
-    f) file_formats=${OPTARG// } ;; #remove spaces
-    P) top_assemblies_species=${OPTARG} ;;
-    A) top_assemblies_taxids=${OPTARG} ;;
+    c) refseq_category=${OPTARG} ;;
+    d) database=${OPTARG} ;;
     D) date_start=${OPTARG} ;;
+    e) external_assembly_summary=${OPTARG} ;;
     E) date_end=${OPTARG} ;;
-    z) gtdb_only=1 ;;
-    a) download_taxonomy=1 ;;
-    k) dry_run=1 ;;
-    i) just_fix=1 ;;
-    x) delete_extra_files=1 ;;
-    m) check_md5=1 ;;
-    u) updated_assembly_accession=1 ;;
-    r) updated_sequence_accession=1 ;;
-    p) url_list=1 ;;
-    n) conditional_exit=${OPTARG} ;;
-    s) silent=1 ;;
-    w) silent_progress=1 ;;
-    D) debug_mode=1 ;;
-    V) verbose_log=1 ;;
+    f) file_formats=${OPTARG// } ;; #remove spaces
+    F) custom_filter=${OPTARG} ;;
+    g) organism_group=${OPTARG// } ;; #remove spaces
     h|\?) showhelp; exit 0 ;;
+    i) just_fix=1 ;;
+    k) dry_run=1 ;;
+    l) assembly_level=${OPTARG} ;;
+    m) check_md5=1 ;;
+    n) conditional_exit=${OPTARG} ;;
+    o) working_dir=${OPTARG} ;;
+    p) url_list=1 ;;
+    P) top_assemblies_species=${OPTARG} ;;
+    r) updated_sequence_accession=1 ;;
+    R) retry_download_batch=${OPTARG} ;;
+    s) silent=1 ;;
+    S) species=${OPTARG// } ;; #remove spaces
+    t) threads=${OPTARG} ;;
+    T) taxids=${OPTARG// } ;; #remove spaces
+    u) updated_assembly_accession=1 ;;
+    V) verbose_log=1 ;;
+    w) silent_progress=1 ;;
+    x) delete_extra_files=1 ;;
+    z) gtdb_only=1 ;;
+    Z) debug_mode=1 ;;
     :) echo "Option -${OPTARG} requires an argument." >&2; exit 1 ;;
   esac
 done
-if [ ${OPTIND} -eq 1 ]; then showhelp; exit 1; fi
+
+# Print tools and versions
+if [ "${debug_mode}" -eq 1 ] ; then 
+    print_debug tools;
+    # If debug is the only parameter, exit, otherwise set debug mode for the run (set -x)
+    if [ ${OPTIND} -eq 2 ]; then
+        exit 0;
+    else
+        set -x
+    fi
+fi
+# No params
+if [ ${OPTIND} -eq 1 ]; then 
+    showhelp; 
+    exit 1;
+fi
 shift $((OPTIND-1))
 [ "${1:-}" = "--" ] && shift
 
-if [ "${debug_mode}" -eq 1 ] ; then 
-    print_debug tools;
-    exit 0;
-fi
 ######################### General parameter validation ######################### 
 if [[ -z "${database}" ]]; then
     echo "Database is required (-d)"; exit 1;
@@ -842,7 +853,6 @@ if [[ "${MODE}" == "UPDATE" ]] || [[ "${MODE}" == "FIX" ]]; then # get existing 
         if [[ -f "${rollback_assembly_summary}" ]]; then
             rm ${default_assembly_summary}
             ln -s -r "${rollback_assembly_summary}" "${default_assembly_summary}"
-
         else
             echo "Rollback label/assembly_summary.txt not found ["${rollback_assembly_summary}"]"; exit 1
         fi
@@ -928,6 +938,10 @@ else
 fi
 echolog "-------------------------------------------" "1"
 
+if [ "${debug_mode}" -eq 1 ] ; then 
+    ls -laR "${working_dir}"
+fi
+
 # new
 if [[ "${MODE}" == "NEW" ]]; then
 
@@ -983,7 +997,6 @@ if [[ "${MODE}" == "NEW" ]]; then
             fi
             echolog "" "1"
         fi
-        
     fi
     
 else # update/fix
@@ -1176,6 +1189,11 @@ if [ "${dry_run}" -eq 0 ]; then
     if [ "${silent_progress}" -eq 1 ] ; then
         echo "$(dirname $(readlink -m ${default_assembly_summary}))"
     fi
+
+    if [ "${debug_mode}" -eq 1 ] ; then 
+        ls -laR "${working_dir}"
+    fi
+
     # Exit conditional status
     exit $(exit_status ${expected_files} ${current_files})
 fi

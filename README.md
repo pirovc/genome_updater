@@ -199,7 +199,7 @@ or
 	┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐
 	│ ┬├┤ ││││ ││││├┤     │ │├─┘ ││├─┤ │ ├┤ ├┬┘
 	└─┘└─┘┘└┘└─┘┴ ┴└─┘────└─┘┴  ─┴┘┴ ┴ ┴ └─┘┴└─
-	                                     v0.4.0 
+	                                     v0.4.1 
 
 	Database options:
 	 -d Database (comma-separated entries) [genbank, refseq]	Default: refseq
@@ -227,9 +227,9 @@ or
 		Default: 0
 	 -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive). Example: -F "2:PRJNA12377,PRJNA670754|14:Partial" for column infos check ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt
 		Default: ""
-	 -D Start date to keep sequences (>=), based on the sequence release date. Format YYYYMMDD. Example: -D 20201030
+	 -D Start date to keep sequences (>=), based on the sequence release date. Format YYYYMMDD. Example: 20201030
 		Default: ""
-	 -E End date to keep sequences (<=), based on the sequence release date. Format YYYYMMDD. Example: -D 20201231
+	 -E End date to keep sequences (<=), based on the sequence release date. Format YYYYMMDD. Example: 20201231
 		Default: ""
 	 -z Keep only assemblies present on the latest GTDB release
 
@@ -263,7 +263,7 @@ or
 	 -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)
 		Default: 0
 	 -V Verbose log to report successful file downloads
-	 -D Print print debug information and exit
+	 -Z Print print debug information and exit
 
 ## References:
 

@@ -25,6 +25,11 @@ setup_file() {
     assert_success
 }
 
+@test "Run genome_updater.sh and show debug info" {
+    run ./genome_updater.sh -Z
+    assert_success
+}
+
 @test "DB refseq" {
     outdir=${outprefix}db-refseq/
     label="test"
@@ -59,14 +64,14 @@ setup_file() {
 @test "Organism group archaea" {
     outdir=${outprefix}og-archaea/
     label="test"
-    run ./genome_updater.sh -o archaea -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -o archaea -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 }
 
 @test "Organism group archaea and fungi" {
     outdir=${outprefix}og-archaea-fungi/
     label="test"
-    run ./genome_updater.sh -o archaea,fungi -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -o archaea,fungi -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 }
 
@@ -78,7 +83,7 @@ setup_file() {
     #echo ${txids[@]} >&3
 
     # Use third
-    run ./genome_updater.sh -S "${txids[2]}" -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -S "${txids[2]}" -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # Check if output contains only used taxids
@@ -98,7 +103,7 @@ setup_file() {
     #echo ${rscat[@]} >&3
 
     # Use first
-    run ./genome_updater.sh -c "${rscat[0]}" -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -c "${rscat[0]}" -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # Check if output contains only selected refseq category
@@ -119,7 +124,7 @@ setup_file() {
     #echo ${aslev[@]} >&3
 
     # Use first
-    run ./genome_updater.sh -l "${aslev[0]}" -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -l "${aslev[0]}" -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # Check if output contains only selected assembly level
@@ -141,7 +146,7 @@ setup_file() {
     aslev=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 12 ) )
 
     # Simulate refseq category and assembly level filter using the custom filter
-    run ./genome_updater.sh -F "5:${rscat[0]}|12:${aslev[0]}" -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -F "5:${rscat[0]}|12:${aslev[0]}" -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # Check if output contains only selected refseq category
@@ -253,7 +258,7 @@ setup_file() {
 @test "Report assembly accession" {
     outdir=${outprefix}report-assembly-accession/
     label="test"
-    run ./genome_updater.sh -b ${label} -o ${outdir} -u
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -u
     sanity_check ${outdir} ${label}
 
     # Check if report was printed and has all lines reported
@@ -265,7 +270,7 @@ setup_file() {
 @test "Report sequence accession" {
     outdir=${outprefix}report-sequence-accession/
     label="test"
-    run ./genome_updater.sh -b ${label} -o ${outdir} -r
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -r
     sanity_check ${outdir} ${label}
 
     # Check if report was printed
@@ -276,7 +281,7 @@ setup_file() {
 @test "Report urls" {
     outdir=${outprefix}report-urls/
     label="test"
-    run ./genome_updater.sh -b ${label} -o ${outdir} -p
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -p
     sanity_check ${outdir} ${label}
 
     # Check if report was printed and has all lines reported
@@ -292,7 +297,7 @@ setup_file() {
     outdir=${outprefix}external-assembly-summary/
     label="test"
     # Get assembly_summary from -e (not directly from url)
-    run ./genome_updater.sh -b ${label} -o ${outdir} -e ${local_dir}genomes/refseq/assembly_summary_refseq.txt
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -e ${local_dir}genomes/refseq/assembly_summary_refseq.txt
     sanity_check ${outdir} ${label}
 }
 
@@ -302,17 +307,17 @@ setup_file() {
     
     # Base version with only refseq
     label1="v1"
-    run ./genome_updater.sh -b ${label1} -o ${outdir} -d refseq
+    run ./genome_updater.sh -d refseq -b ${label1} -o ${outdir} -d refseq
     sanity_check ${outdir} ${label1}
 
     # Second version with more entries (refseq,genbank)
     label2="v2"
-    run ./genome_updater.sh -b ${label2} -o ${outdir} -d refseq,genbank
+    run ./genome_updater.sh -d refseq -b ${label2} -o ${outdir} -d refseq,genbank
     sanity_check ${outdir} ${label2}
 
     # Third version with same entries (nothing to download)
     label3="v3"
-    run ./genome_updater.sh -b ${label3} -o ${outdir} -d refseq,genbank
+    run ./genome_updater.sh -d refseq -b ${label3} -o ${outdir} -d refseq,genbank
     sanity_check ${outdir} ${label3}
 
     # Check log for no updates
@@ -321,7 +326,7 @@ setup_file() {
 
     # Fourth version with the same as second but rolling back from first, re-download files
     label4="v4"
-    run ./genome_updater.sh -b ${label4} -o ${outdir} -d refseq,genbank -B v1
+    run ./genome_updater.sh -d refseq -b ${label4} -o ${outdir} -d refseq,genbank -B v1
     sanity_check ${outdir} ${label4}
 
     # Check log for updates
@@ -332,13 +337,13 @@ setup_file() {
 @test "Delete extra files" {
     outdir=${outprefix}delete-extra-files/
     label="test"
-    run ./genome_updater.sh -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     # Create extra files
     touch "${outdir}${label}/files/EXTRA_FILE.txt"
     assert_file_exist "${outdir}${label}/files/EXTRA_FILE.txt"
     # Run to fix and delete
-    run ./genome_updater.sh -b ${label} -o ${outdir} -i -x
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -i -x
     sanity_check ${outdir} ${label}
     # File was removed
     assert_not_exist "${outdir}${label}/files/EXTRA_FILE.txt"
@@ -350,7 +355,7 @@ setup_file() {
     # update label
     label="update"
     # Update (should not not carry extra file over to new version)
-    run ./genome_updater.sh -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     assert_not_exist "${outdir}${label}/files/ANOTHER_EXTRA_FILE.txt"
@@ -360,14 +365,14 @@ setup_file() {
 @test "Threads" {
     outdir=${outprefix}threads/
     label="test"
-    run ./genome_updater.sh -b ${label} -o ${outdir} -t 8
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -t 8
     sanity_check ${outdir} ${label}
 }
 
 @test "Silent" {
     outdir=${outprefix}silent/
     label="test"
-    run ./genome_updater.sh -b ${label} -o ${outdir} -s
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -s
     sanity_check ${outdir} ${label}
 
     # check if printed to STDOUT
@@ -379,7 +384,7 @@ setup_file() {
     label="test"
     use_curl=1
     export use_curl
-    run ./genome_updater.sh -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 }
 
@@ -388,24 +393,24 @@ setup_file() {
     label="test"
 
     # Dry-run NEW
-    run ./genome_updater.sh -b ${label} -o ${outdir} -k
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -k
     assert_success
     assert_dir_not_exist ${outdir}
 
     # Real run NEW
-    run ./genome_updater.sh -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # Remove files to simulate failure
     rm ${outdir}${label}/files/*
 
     # Dry-run FIX
-    run ./genome_updater.sh -b ${label} -o ${outdir} -k -i
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -k -i
     assert_success
     assert_file_empty {outdir}${label}/files/
 
     # Real run FIX
-    run ./genome_updater.sh -b ${label} -o ${outdir} -i
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -i
     sanity_check ${outdir} ${label}
 }
 
@@ -414,20 +419,20 @@ setup_file() {
     label="test"
 
     # Dry-run NEW
-    run ./genome_updater.sh -b ${label} -o ${outdir} -k
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -k
     assert_success
     assert_dir_not_exist ${outdir}
 
     # Real run NEW
-    run ./genome_updater.sh -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # Dry-run UPDATE (use another organism group to simulate change)
     label="update"
-    run ./genome_updater.sh -g archaea,fungi -b ${label} -o ${outdir} -k
+    run ./genome_updater.sh -d refseq -g archaea,fungi -b ${label} -o ${outdir} -k
     assert_success
 
     # Real run FIX
-    run ./genome_updater.sh -g archaea,fungi -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g archaea,fungi -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 }
