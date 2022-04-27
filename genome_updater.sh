@@ -26,8 +26,6 @@ IFS=$' '
 # THE SOFTWARE.
 
 version="0.5.0"
-genome_updater_args=$( printf "%q " "$@" )
-export genome_updater_args
 
 # Define base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -575,40 +573,6 @@ print_debug() # parameters: ${1} tools
     echo "========================================================";
 }
 
-# Defaults
-database=""
-organism_group=""
-species=""
-taxids=""
-refseq_category=""
-assembly_level=""
-custom_filter=""
-file_formats="assembly_report.txt"
-top_assemblies_species=0
-top_assemblies_taxids=0
-date_start=""
-date_end=""
-gtdb_only=0
-download_taxonomy=0
-delete_extra_files=0
-check_md5=0
-updated_assembly_accession=0
-updated_sequence_accession=0
-url_list=0
-dry_run=0
-just_fix=0
-conditional_exit=0
-silent=0
-silent_progress=0
-debug_mode=0
-working_dir=""
-external_assembly_summary=""
-retry_download_batch=3
-label=""
-rollback_label=""
-threads=1
-verbose_log=0
-
 function print_logo {
     echo "┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐";
     echo "│ ┬├┤ ││││ ││││├┤     │ │├─┘ ││├─┤ │ ├┤ ├┬┘";
@@ -672,6 +636,40 @@ function showhelp {
     echo
 }
 
+# Defaults
+database=""
+organism_group=""
+species=""
+taxids=""
+refseq_category=""
+assembly_level=""
+custom_filter=""
+file_formats="assembly_report.txt"
+top_assemblies_species=0
+top_assemblies_taxids=0
+date_start=""
+date_end=""
+gtdb_only=0
+download_taxonomy=0
+delete_extra_files=0
+check_md5=0
+updated_assembly_accession=0
+updated_sequence_accession=0
+url_list=0
+dry_run=0
+just_fix=0
+conditional_exit=0
+silent=0
+silent_progress=0
+debug_mode=0
+working_dir=""
+external_assembly_summary=""
+retry_download_batch=3
+label=""
+rollback_label=""
+threads=1
+verbose_log=0
+
 # Check for required tools
 tool_not_found=0
 tools=( "awk" "bc" "find" "join" "md5sum" "parallel" "sed" "tar" "xargs" )
@@ -690,8 +688,42 @@ do
 done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
+
+
+
 OPTIND=1 # Reset getopts
+# Parses from "$@"
 while getopts "aA:b:B:d:D:c:De:E:f:F:g:hikl:mn:o:pP:rR:sS:t:T:uVwxzZ" opt; do
+  case ${opt} in
+    o) working_dir=${OPTARG} ;;
+    :) echo "Option -${OPTARG} requires an argument." >&2; exit 1 ;;
+  esac
+done
+
+# If workingdir exists and there's a history file, grab params
+if [[ ! -z "${working_dir}" && -s "${working_dir}/history.tsv" ]]; then
+    #vrs="$(cut -f 2 "${working_dir}/history.tsv" | tail -n 1)"
+    
+    # Parse arguments into associative array
+    # automatically replacing the escaped non-printable characters (e.g.: complete\ genome)
+    declare -a "args=($(cut -f 5 "${working_dir}/history.tsv" | tail -n 1))"
+    # declare -p args
+
+    # For each entry of the current argument list, add to the array
+    # at the end to replace history values
+    c=${#args[@]}
+    for f in "$@"; do 
+        args[$c]="${f}"
+        c=$((c+1))
+    done
+else
+    declare -a "args=($( printf "%q " "$@" ))"
+fi
+
+
+declare -A new_args
+OPTIND=1 # Reset getopts
+while getopts "aA:b:B:d:D:c:De:E:f:F:g:hikl:mn:o:pP:rR:sS:t:T:uVwxzZ" opt "${args[@]}"; do
   case ${opt} in
     a) download_taxonomy=1 ;;
     A) top_assemblies_taxids=${OPTARG} ;;
@@ -728,25 +760,36 @@ while getopts "aA:b:B:d:D:c:De:E:f:F:g:hikl:mn:o:pP:rR:sS:t:T:uVwxzZ" opt; do
     Z) debug_mode=1 ;;
     :) echo "Option -${OPTARG} requires an argument." >&2; exit 1 ;;
   esac
+  if [ ! -z "${OPTARG:-}" ]; then
+      # Colect parsed args in an unique array for each opt
+      # the args added later are from current run and replace the ones retrieved from history
+      new_args[${opt}]=${OPTARG}
+  fi
 done
+
+# Build argument list to save, escaping special chars
+genome_updater_args=""
+for k in "${!new_args[@]}"; do
+    genome_updater_args=$( printf "%s-%s %q " "${genome_updater_args}" "${k}" "${new_args[${k}]}" )
+done
+export genome_updater_args
 
 # Print tools and versions
 if [ "${debug_mode}" -eq 1 ] ; then 
     print_debug tools;
     # If debug is the only parameter, exit, otherwise set debug mode for the run (set -x)
-    if [ ${OPTIND} -eq 2 ]; then
+    if [ $# -eq 1 ]; then
         exit 0;
     else
         set -x
     fi
 fi
+
 # No params
 if [ ${OPTIND} -eq 1 ]; then 
     showhelp; 
     exit 1;
 fi
-shift $((OPTIND-1))
-[ "${1:-}" = "--" ] && shift
 
 ######################### General parameter validation ######################### 
 if [[ -z "${database}" ]]; then
@@ -898,8 +941,10 @@ if [ "${silent}" -eq 0 ]; then
 fi
 
 echolog "--- genome_updater version: ${version} ---" "0"
-echolog "args: ${genome_updater_args}" "0"
 echolog "Mode: ${MODE} - $(if [[ "${dry_run}" -eq 1 ]]; then echo "DRY-RUN"; else echo "DOWNLOAD"; fi)" "1"
+echolog "Args: ${genome_updater_args}" "1"
+echolog "Working directory: ${working_dir}" "1"
+
 echolog "Timestamp: ${timestamp}" "0"
 echolog "Database: ${database}" "0"
 echolog "Organims group: ${organism_group}" "0"
@@ -929,7 +974,7 @@ echolog "Output URLs: ${url_list}" "0"
 echolog "External assembly summary: ${external_assembly_summary}" "0"
 echolog "Threads: ${threads}" "0"
 echolog "Verbose log: ${verbose_log}" "0"
-echolog "Working directory: ${working_dir}" "1"
+
 echolog "Label: ${label}" "0"
 echolog "Rollback label: ${rollback_label}" "0"
 if [[ "${use_curl}" -eq 1 ]]; then
@@ -1185,6 +1230,7 @@ if [ "${dry_run}" -eq 0 ]; then
     fi
     echolog "# Current version: $(dirname $(readlink -m ${default_assembly_summary}))" "1"
     echolog "# Log file       : ${log_file}" "1"
+    echolog "# History        : ${history_file}" "1"
     [ "${silent}" -eq 0 ] && print_line
 
     if [ "${debug_mode}" -eq 1 ] ; then 
