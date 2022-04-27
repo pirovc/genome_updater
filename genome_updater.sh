@@ -333,8 +333,10 @@ list_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url], ${3} e
 
 print_progress() # parameter: ${1} file number, ${2} total number of files
 {
-    if [ "${silent_progress}" -eq 0 ] && [ "${silent}" -eq 0 ] ; then printf "%8d/%d - " ${1} ${2}; fi #Only prints when not silent and not only progress
-    if [ "${silent_progress}" -eq 1 ] || [ "${silent}" -eq 0 ] ; then printf "%6.2f%%\r" $(bc -l <<< "scale=4;(${1}/${2})*100"); fi #Always prints besides when it's silent
+    if [ "${silent_progress}" -eq 1 ] || [ "${silent}" -eq 0 ] ; then
+        printf "%5d/%d - " ${1} ${2}
+        printf "%2.2f%%\r" $(bc -l <<< "scale=4;(${1}/${2})*100")
+    fi
 }
 export -f print_progress #export it to be accessible to the parallel call
 
@@ -462,7 +464,6 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
             break;
         fi
     done
-    #print_progress 100 100
 
     # Output URL reports
     if [ "${url_list}" -eq 1 ]; then 
@@ -647,7 +648,7 @@ function showhelp {
     echo $'Report options:'
     echo $' -u Report of updated assembly accessions (Added/Removed, assembly accession, url)'
     echo $' -r Report of updated sequence accessions (Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid). Only available when file format assembly_report.txt is selected and successfully downloaded'
-    echo $' -p Output list of URLs for downloaded and failed files'
+    echo $' -p Output list of URLs with successfuly and failed downloads'
     echo
     echo $'Run options:'
     echo $' -o Output/Working directory \n\tDefault: ./tmp.XXXXXXXXXX'
@@ -664,7 +665,7 @@ function showhelp {
     echo $' -x Allow the deletion of regular extra files if any found in the files folder. Symbolic links that do not belong to the current version will always be deleted.'
     echo $' -a Download the current version of the NCBI taxonomy database (taxdump.tar.gz)'
     echo $' -s Silent output'
-    echo $' -w Silent output with download progress (%) and download version at the end'
+    echo $' -w Silent output with download progress only'
     echo $' -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)\n\tDefault: 0'
     echo $' -V Verbose log to report successful file downloads'
     echo $' -Z Print debug information and run in debug mode'
@@ -1185,10 +1186,6 @@ if [ "${dry_run}" -eq 0 ]; then
     echolog "# Current version: $(dirname $(readlink -m ${default_assembly_summary}))" "1"
     echolog "# Log file       : ${log_file}" "1"
     [ "${silent}" -eq 0 ] && print_line
-
-    if [ "${silent_progress}" -eq 1 ] ; then
-        echo "$(dirname $(readlink -m ${default_assembly_summary}))"
-    fi
 
     if [ "${debug_mode}" -eq 1 ] ; then 
         ls -laR "${working_dir}"
