@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.4.1"
+version="0.5.0"
 genome_updater_args=$( printf "%q " "$@" )
 export genome_updater_args
 
