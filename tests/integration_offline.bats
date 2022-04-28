@@ -436,3 +436,39 @@ setup_file() {
     run ./genome_updater.sh -d refseq -g archaea,fungi -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 }
+
+@test "Mode auto UPDATE" {
+    outdir=${outprefix}mode-auto-update/
+    label="test"
+
+    # Dry-run NEW
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -g archaea -k
+    assert_success
+    assert_dir_not_exist ${outdir}
+
+    # Real run NEW
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -g archaea
+    sanity_check ${outdir} ${label}
+
+    # Dry-run UPDATE (use same parameters)
+    label="update"
+    run ./genome_updater.sh -o ${outdir} -b ${label} -k
+    assert_success
+
+    # Real run (nothin to update, but carry parameters)
+    run ./genome_updater.sh -o ${outdir} -b ${label}
+    sanity_check ${outdir} ${label}
+
+    # Dry-run UPDATE
+    label="update2"
+    run ./genome_updater.sh -o ${outdir} -b ${label} -g "" -d refseq,genbank -u -k
+    assert_success
+
+    # Real run FIX, remove org (get all), add database, add bool report
+    run ./genome_updater.sh -o ${outdir} -b ${label} -g "" -d refseq,genbank -u
+    sanity_check ${outdir} ${label}
+
+    report_file="${outdir}${label}/updated_assembly_accession.txt"
+    assert_file_exist "${report_file}"
+
+}

@@ -11,7 +11,7 @@ Bash script to download and update snapshots of the NCBI genomes repository (ref
 
 ### Download
 
-Downloads complete genome sequences from Archaea in the RefSeq repository (`-t` number parallel downloads):
+Download complete genome Archaea sequences in the RefSeq repository (`-t` number parallel downloads):
 
 	./genome_updater.sh -o "arc_refseq_cg" -d "refseq" -g "archaea" -l "complete genome" -f "genomic.fna.gz" -t 12
 
@@ -29,8 +29,7 @@ Some days later, update the repository:
 
 ## Details
 
-With genome_updater you can download and keep several snapshots of a certain sub-set of the genomes repository, without redundancy and with incremental track of changes:
-
+- with genome_updater you can download and keep several snapshots of a certain sub-set of the genomes repository, without redundancy and with incremental track of changes
 - genome_updater runs on a working directory (defined with `-o`) and creates a snapshot (`-b`) of refseq and/or genbank (`-d`) genome repositories based on selected organism groups (`-g`) and/or taxonomic ids (`-S`/`-T`) with the desired files type(s) (`-f`)
 - filters can be applied to refine the selection: RefSeq category (`-c`), assembly level (`-l`), dates (`-D`/`-E`), custom filters (`-F`), top assemblies (`-P`/`-A`), GTDB [3] compatible sequences (`-z`).
 - the repository can updated (e.g. after some days) with only incremental changes. genome_updater will identify previous files and update the working directory with the most recent versions, keeping track of all changes and just downloading/removing what is necessary
@@ -44,7 +43,7 @@ With conda:
 
 	conda install -c bioconda genome_updater 
 
-or simply download the raw file and give execution permissions:
+or direct file download:
 
 	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
 	chmod +x genome_updater.sh

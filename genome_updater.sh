@@ -249,7 +249,11 @@ filter_columns() # parameter: ${1} assembly_summary file - return number of line
         colfilter="${colfilter}|${custom_filter}"
     fi
 
-    awk -F "\t" -v colfilter="${colfilter}" 'BEGIN{
+    awk -F "\t" -v colfilter="${colfilter}" '
+        function ltrim(s) { sub(/^[ \t\r\n]+/, "", s); return s }
+        function rtrim(s) { sub(/[ \t\r\n]+$/, "", s); return s }
+        function trim(s) { return rtrim(ltrim(s)); }
+        BEGIN{
         split(colfilter, fields, "|");
         for(f in fields){
             split(fields[f], keyvals, ":");
@@ -257,7 +261,7 @@ filter_columns() # parameter: ${1} assembly_summary file - return number of line
         } $20!="na" {
             k=0;
             for(f in filter){
-                split(filter[f], v, ","); for (i in v) vals[tolower(v[i])]="";
+                split(filter[f], v, ","); for (i in v) vals[tolower(trim(v[i]))]="";
                 if(tolower($f) in vals){
                     k+=1;
                 }
@@ -777,7 +781,7 @@ while getopts "${getopts_list}" opt "${args[@]}"; do
       # Colect parsed args in an associative array for each opt
       # the args added later have precedence
       if [ "${OPTARG-unset}" = unset ]; then
-        bool_args="${bool_args} -${opt}"  # boolean args
+        bool_args="${bool_args} -${opt}"  # boolean args, OPTARG is not set in getopts
       elif [[ ! -z "${OPTARG}" ]]; then
         new_args[${opt}]="-${opt} '${OPTARG}'" # args with option argument
       else
@@ -961,7 +965,7 @@ if [ "${silent}" -eq 0 ]; then
 fi
 
 echolog "--- genome_updater version: ${version} ---" "0"
-echolog "Mode: ${MODE} - $(if [[ "${dry_run}" -eq 1 ]]; then echo "DRY-RUN"; else echo "DOWNLOAD"; fi)" "1"
+echolog "Mode: ${MODE} $(if [[ "${dry_run}" -eq 1 ]]; then echo "(DRY-RUN)"; fi)" "1"
 echolog "Args: ${genome_updater_args}${bool_args}" "1"
 echolog "Working directory: ${working_dir}" "1"
 echolog "Timestamp: ${timestamp}" "0"
