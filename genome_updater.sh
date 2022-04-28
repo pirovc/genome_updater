@@ -688,42 +688,52 @@ do
 done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
-
-
-
+# Parse -o first to detect possible updates
+getopts_list="aA:b:B:d:D:c:De:E:f:F:g:hikl:mn:o:pP:rR:sS:t:T:uVwxzZ"
 OPTIND=1 # Reset getopts
-# Parses from "$@"
-while getopts "aA:b:B:d:D:c:De:E:f:F:g:hikl:mn:o:pP:rR:sS:t:T:uVwxzZ" opt; do
+# Parses working_dir from "$@"
+while getopts "${getopts_list}" opt; do
   case ${opt} in
     o) working_dir=${OPTARG} ;;
-    :) echo "Option -${OPTARG} requires an argument." >&2; exit 1 ;;
+    B) rollback_label=${OPTARG} ;;
+    \?) echo "Invalid options" >&2; exit 1 ;;
+    :) echo "Option -$OPTARG requires an argument." >&2; exit 1 ;;
   esac
 done
 
-# If workingdir exists and there's a history file, grab params
+# If workingdir exists and there's a history file, grab and inject params
 if [[ ! -z "${working_dir}" && -s "${working_dir}/history.tsv" ]]; then
-    #vrs="$(cut -f 2 "${working_dir}/history.tsv" | tail -n 1)"
     
-    # Parse arguments into associative array
-    # automatically replacing the escaped non-printable characters (e.g.: complete\ genome)
-    declare -a "args=($(cut -f 5 "${working_dir}/history.tsv" | tail -n 1))"
-    # declare -p args
+    if [[ ! -z "${rollback_label}" ]]; then
+        # If rolling back, get specific parameters of that version
+        rollback_assembly_summary="${working_dir}${rollback_label}/assembly_summary.txt"
+        if [[ -f "${rollback_assembly_summary}" ]]; then
+            declare -a "args=($(awk '$2 == "'${rollback_label}'"' "${working_dir}/history.tsv" | cut -f 5))"
+        else
+            echo "Rollback label/assembly_summary.txt not found ["${rollback_assembly_summary}"]"; exit 1
+        fi
+    else
+        # Parse arguments into associative array
+        # automatically detecting and replacing the escaped non-printable characters (e.g.: complete\ genome)
+        declare -a "args=($(cut -f 5 "${working_dir}/history.tsv" | tail -n 1))"
+    fi
 
-    # For each entry of the current argument list, add to the array
-    # at the end to replace history values
+    # For each entry of the current argument list $@
+    # add to the end of the array to have priority
     c=${#args[@]}
     for f in "$@"; do 
         args[$c]="${f}"
         c=$((c+1))
     done
 else
+    # parse command line arguments by default
     declare -a "args=($( printf "%q " "$@" ))"
 fi
 
-
 declare -A new_args
+bool_args=""
 OPTIND=1 # Reset getopts
-while getopts "aA:b:B:d:D:c:De:E:f:F:g:hikl:mn:o:pP:rR:sS:t:T:uVwxzZ" opt "${args[@]}"; do
+while getopts "${getopts_list}" opt "${args[@]}"; do
   case ${opt} in
     a) download_taxonomy=1 ;;
     A) top_assemblies_taxids=${OPTARG} ;;
@@ -737,7 +747,7 @@ while getopts "aA:b:B:d:D:c:De:E:f:F:g:hikl:mn:o:pP:rR:sS:t:T:uVwxzZ" opt "${arg
     f) file_formats=${OPTARG// } ;; #remove spaces
     F) custom_filter=${OPTARG} ;;
     g) organism_group=${OPTARG// } ;; #remove spaces
-    h|\?) showhelp; exit 0 ;;
+    h) showhelp; exit 0 ;;
     i) just_fix=1 ;;
     k) dry_run=1 ;;
     l) assembly_level=${OPTARG} ;;
@@ -758,20 +768,26 @@ while getopts "aA:b:B:d:D:c:De:E:f:F:g:hikl:mn:o:pP:rR:sS:t:T:uVwxzZ" opt "${arg
     x) delete_extra_files=1 ;;
     z) gtdb_only=1 ;;
     Z) debug_mode=1 ;;
-    :) echo "Option -${OPTARG} requires an argument." >&2; exit 1 ;;
+    \?) echo "Invalid options" >&2; exit 1 ;;
+    :) echo "Option -$OPTARG requires an argument." >&2; exit 1 ;;
   esac
-  if [ ! -z "${OPTARG:-}" ]; then
-      # Colect parsed args in an unique array for each opt
-      # the args added later are from current run and replace the ones retrieved from history
-      new_args[${opt}]=${OPTARG}
+
+  # skip debug mode
+  if [[ "${opt}" != "Z" ]]; then
+      # Colect parsed args in an associative array for each opt
+      # the args added later have precedence
+      if [ "${OPTARG-unset}" = unset ]; then
+        bool_args="${bool_args} -${opt}"  # boolean args
+      elif [[ ! -z "${OPTARG}" ]]; then
+        new_args[${opt}]="-${opt} '${OPTARG}'" # args with option argument
+      else
+        unset new_args[${opt}] # args with option argument set to ''
+      fi
   fi
 done
 
 # Build argument list to save, escaping special chars
-genome_updater_args=""
-for k in "${!new_args[@]}"; do
-    genome_updater_args=$( printf "%s-%s %q " "${genome_updater_args}" "${k}" "${new_args[${k}]}" )
-done
+genome_updater_args="${new_args[@]}"
 export genome_updater_args
 
 # Print tools and versions
@@ -917,7 +933,11 @@ if [[ "${MODE}" == "NEW" ]] || [[ "${MODE}" == "UPDATE" ]]; then # with new info
     new_assembly_summary="${new_output_prefix}assembly_summary.txt"
     # If file already exists and it's a new repo
     if [[ -f "${new_assembly_summary}" ]]; then
-        echo "Cannot start a new repository with an existing assembly_summary.txt in the new directory [${new_assembly_summary}]"; exit 1;
+        if [[ ! -z "${label}" ]]; then 
+            echo "Label ["${label}"] already used. Please set another label with -b"; exit 1;
+        else 
+            echo "Cannot start a new repository with an existing assembly_summary.txt in the new directory [${new_assembly_summary}]"; exit 1;
+        fi
     fi
     mkdir -p "${new_output_prefix}${files_dir}"
 fi
@@ -942,9 +962,8 @@ fi
 
 echolog "--- genome_updater version: ${version} ---" "0"
 echolog "Mode: ${MODE} - $(if [[ "${dry_run}" -eq 1 ]]; then echo "DRY-RUN"; else echo "DOWNLOAD"; fi)" "1"
-echolog "Args: ${genome_updater_args}" "1"
+echolog "Args: ${genome_updater_args}${bool_args}" "1"
 echolog "Working directory: ${working_dir}" "1"
-
 echolog "Timestamp: ${timestamp}" "0"
 echolog "Database: ${database}" "0"
 echolog "Organims group: ${organism_group}" "0"
@@ -974,7 +993,6 @@ echolog "Output URLs: ${url_list}" "0"
 echolog "External assembly summary: ${external_assembly_summary}" "0"
 echolog "Threads: ${threads}" "0"
 echolog "Verbose log: ${verbose_log}" "0"
-
 echolog "Label: ${label}" "0"
 echolog "Rollback label: ${rollback_label}" "0"
 if [[ "${use_curl}" -eq 1 ]]; then

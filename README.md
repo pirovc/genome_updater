@@ -31,15 +31,25 @@ To test if all genome_updater functions are running properly on your system:
 	cd genome_updater
 	tests/test.sh
 
-## Usage
+## Usage example
+
+### Download
 
 Downloads complete genome sequences from Archaea in the RefSeq repository (`-t` number parallel downloads, `-m` checks download completeness):
 
-	./genome_updater.sh -g "archaea" -d "refseq" -l "complete genome" -f "genomic.fna.gz" -o "arc_refseq_cg" -t 12 -m
+	./genome_updater.sh -o "arc_refseq_cg" -d "refseq" -g "archaea" -l "complete genome" -f "genomic.fna.gz" -t 12 -m
+
+### Update
+
+Some days later, update using the same parameters as the last run:
+
+	./genome_updater.sh -o "arc_refseq_cg" -m
+
+ - Parameters can be changed for each update by just calling the command with the desired values. For example `./genome_updater.sh -o "arc_refseq_cg" -t 2` to use a different number of threads or `./genome_updater.sh -o "arc_refseq_cg" -l ""` to remove the "complete genome" filter.
 
  - Add `-k` to perform a dry-run before the actual run. genome_updater will show how many files will be downloaded or updated and exit without changes
- - The *same command* executed again (e.g. some days later), will update the snapshot of the requested dataset to its latest state, accounting for new, updated and removed sequences.
- - `history.tsv` will be created in the output folder, tracking versions and arguments used
+
+ - `history.tsv` will be created in the output folder, tracking versions and arguments used (boolean arguments are not tracked).
 
 ## Options
 
