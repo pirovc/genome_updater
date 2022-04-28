@@ -2,13 +2,39 @@
 
 Bash script to download and update snapshots of the NCBI genomes repository (refseq/genbank) [1] with several filters, detailed logs, reports, file integrity check (MD5) and parallel [2] download support.
 
-With genome_updater you can download and keep several snapshots of a certain sub-set of the genomes repository, without redundancy and with incremental track of changes.
+## Quick usage guide
+
+### Get genome_updater
+
+	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
+	chmod +x genome_updater.sh
+
+### Download
+
+Downloads complete genome sequences from Archaea in the RefSeq repository (`-t` number parallel downloads):
+
+	./genome_updater.sh -o "arc_refseq_cg" -d "refseq" -g "archaea" -l "complete genome" -f "genomic.fna.gz" -t 12
+
+### Update
+
+Some days later, update the repository:
+
+	./genome_updater.sh -o "arc_refseq_cg"
+
+ - Add `-k` to perform a dry-run before the actual run. genome_updater will show how many files will be downloaded/updated and exit without changes
+
+ - Parameters can be changed for each update by just calling the command with the desired values. For example `./genome_updater.sh -o "arc_refseq_cg" -t 2` to use a different number of threads or `./genome_updater.sh -o "arc_refseq_cg" -l ""` to remove the "complete genome" filter.
+
+ - `history.tsv` will be created in the output folder, tracking versions and arguments used (boolean arguments are not tracked).
 
 ## Details
+
+With genome_updater you can download and keep several snapshots of a certain sub-set of the genomes repository, without redundancy and with incremental track of changes:
 
 - genome_updater runs on a working directory (defined with `-o`) and creates a snapshot (`-b`) of refseq and/or genbank (`-d`) genome repositories based on selected organism groups (`-g`) and/or taxonomic ids (`-S`/`-T`) with the desired files type(s) (`-f`)
 - filters can be applied to refine the selection: RefSeq category (`-c`), assembly level (`-l`), dates (`-D`/`-E`), custom filters (`-F`), top assemblies (`-P`/`-A`), GTDB [3] compatible sequences (`-z`).
 - the repository can updated (e.g. after some days) with only incremental changes. genome_updater will identify previous files and update the working directory with the most recent versions, keeping track of all changes and just downloading/removing what is necessary
+
 
 ## Installation
 
@@ -31,25 +57,6 @@ To test if all genome_updater functions are running properly on your system:
 	cd genome_updater
 	tests/test.sh
 
-## Usage example
-
-### Download
-
-Downloads complete genome sequences from Archaea in the RefSeq repository (`-t` number parallel downloads, `-m` checks download completeness):
-
-	./genome_updater.sh -o "arc_refseq_cg" -d "refseq" -g "archaea" -l "complete genome" -f "genomic.fna.gz" -t 12 -m
-
-### Update
-
-Some days later, update using the same parameters as the last run:
-
-	./genome_updater.sh -o "arc_refseq_cg" -m
-
- - Parameters can be changed for each update by just calling the command with the desired values. For example `./genome_updater.sh -o "arc_refseq_cg" -t 2` to use a different number of threads or `./genome_updater.sh -o "arc_refseq_cg" -l ""` to remove the "complete genome" filter.
-
- - Add `-k` to perform a dry-run before the actual run. genome_updater will show how many files will be downloaded or updated and exit without changes
-
- - `history.tsv` will be created in the output folder, tracking versions and arguments used (boolean arguments are not tracked).
 
 ## Options
 
