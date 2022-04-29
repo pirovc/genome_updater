@@ -37,6 +37,15 @@ setup_file() {
     done
 }
 
+@test "Curl" {
+    outdir=${outprefix}curl/
+    label="test"
+
+    # Protozoa in refseq is the smallest available assembly_summary at the time of writing this test (01.2022)
+    run ./genome_updater.sh -d refseq -g protozoa -b ${label} -t ${threads} -o ${outdir} -L curl
+    sanity_check ${outdir} ${label}
+}
+
 @test "NA URL" {
     outdir=${outprefix}na-url/
     label="test"

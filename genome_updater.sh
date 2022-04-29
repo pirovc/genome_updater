@@ -37,7 +37,6 @@ base_url=${base_url:-ftp://ftp.ncbi.nlm.nih.gov/} #Alternative ftp://ftp.ncbi.ni
 retries=${retries:-3}
 timeout=${timeout:-120}
 export retries timeout base_url local_dir
-use_curl=${use_curl:-0}
 
 # Export locale numeric to avoid errors on printf in different setups
 export LC_NUMERIC="en_US.UTF-8"
@@ -48,13 +47,6 @@ gtdb_urls=( "https://data.gtdb.ecogenomic.org/releases/latest/ar53_taxonomy.tsv.
 #activate aliases in the script
 shopt -s expand_aliases
 alias sort="sort --field-separator=$'\t'"
-
-# Define downloader to use
-if [[ ! -z "${local_dir}" || "${use_curl}" -eq 1 ]]; then
-    alias downloader="curl --silent --retry ${retries} --connect-timeout ${timeout} --output "
-else
-    alias downloader="wget --quiet --continue --tries ${retries} --read-timeout ${timeout} --output-document "
-fi
 
 download_url() # parameter: ${1} url, ${2} output file/directory (omit/empty to STDOUT)
 {
@@ -635,6 +627,7 @@ function showhelp {
     echo $' -s Silent output'
     echo $' -w Silent output with download progress only'
     echo $' -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)\n\tDefault: 0'
+    echo $' -L Downloader to use [wget,curl]\n\tDefault: wget'
     echo $' -V Verbose log to report successful file downloads'
     echo $' -Z Print debug information and run in debug mode'
     echo
@@ -673,16 +666,11 @@ label=""
 rollback_label=""
 threads=1
 verbose_log=0
+downloader_tool="wget"
 
 # Check for required tools
 tool_not_found=0
-tools=( "awk" "bc" "find" "join" "md5sum" "parallel" "sed" "tar" "xargs" )
-if [[ "${use_curl}" -eq 1 ]]; then
-    tools+=("curl")
-else
-    tools+=("wget")
-fi
-
+tools=( "awk" "bc" "find" "join" "md5sum" "parallel" "sed" "tar" "xargs" "wget" )
 for t in "${tools[@]}"
 do
     if [ ! -x "$(command -v ${t})" ]; then
@@ -693,7 +681,7 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 # Parse -o and -B first to detect possible updates
-getopts_list="aA:b:B:d:D:c:De:E:f:F:g:hikl:mn:o:pP:rR:sS:t:T:uVwxzZ"
+getopts_list="aA:b:B:d:D:c:De:E:f:F:g:hikl:L:mn:o:pP:rR:sS:t:T:uVwxzZ"
 OPTIND=1 # Reset getopts
 # Parses working_dir from "$@"
 while getopts "${getopts_list}" opt; do
@@ -755,6 +743,7 @@ while getopts "${getopts_list}" opt "${args[@]}"; do
     i) just_fix=1 ;;
     k) dry_run=1 ;;
     l) assembly_level=${OPTARG} ;;
+    L) downloader_tool=${OPTARG} ;;
     m) check_md5=1 ;;
     n) conditional_exit=${OPTARG} ;;
     o) working_dir=${OPTARG} ;;
@@ -806,6 +795,17 @@ fi
 genome_updater_args="${new_args[@]}"
 export genome_updater_args
 
+# Define downloader to use
+if [[ ! -z "${local_dir}" || "${downloader_tool}" == "curl" ]]; then
+    function downloader(){ # parameter: ${1} output file, ${2} url
+        curl --silent --retry ${retries} --connect-timeout ${timeout} --output "${1}" "${2}"
+    }
+else
+    function downloader(){ # parameter: ${1} output file, ${2} url
+        wget --quiet --continue --tries ${retries} --read-timeout ${timeout} --output-document "${1}" "${2}"
+    }
+fi
+export -f downloader
 
 ######################### General parameter validation ######################### 
 if [[ -z "${database}" ]]; then
@@ -964,42 +964,6 @@ echolog "--- genome_updater version: ${version} ---" "0"
 echolog "Mode: ${MODE} $(if [[ "${dry_run}" -eq 1 ]]; then echo "(DRY-RUN)"; fi)" "1"
 echolog "Args: ${genome_updater_args}${bool_args}" "1"
 echolog "Working directory: ${working_dir}" "1"
-echolog "Timestamp: ${timestamp}" "0"
-echolog "Database: ${database}" "0"
-echolog "Organims group: ${organism_group}" "0"
-echolog "Species: ${species}" "0"
-echolog "Taxids: ${taxids}" "0"
-echolog "Refseq category: ${refseq_category}" "0"
-echolog "Assembly level: ${assembly_level}" "0"
-echolog "Custom filter: ${custom_filter}" "0"
-echolog "File formats: ${file_formats}" "0"
-echolog "Top assemblies species: ${top_assemblies_species}" "0"
-echolog "Top assemblies taxids: ${top_assemblies_taxids}" "0"
-echolog "Date start: ${date_start}" "0"
-echolog "Date end: ${date_end}" "0"
-echolog "GTDB Only: ${gtdb_only}" "0"
-echolog "Download taxonomy: ${download_taxonomy}" "0"
-echolog "Dry-run: ${dry_run}" "0"
-echolog "Fix/recover: ${just_fix}" "0"
-echolog "Retries download in batches: ${retry_download_batch}" "0"
-echolog "Delete extra files: ${delete_extra_files}" "0"
-echolog "Check md5: ${check_md5}" "0"
-echolog "Output updated assembly accessions: ${updated_assembly_accession}" "0"
-echolog "Output updated sequence accessions: ${updated_sequence_accession}" "0"
-echolog "Conditional exit status: ${conditional_exit}" "0"
-echolog "Silent: ${silent}" "0"
-echolog "Silent with progress and version: ${silent_progress}" "0"
-echolog "Output URLs: ${url_list}" "0"
-echolog "External assembly summary: ${external_assembly_summary}" "0"
-echolog "Threads: ${threads}" "0"
-echolog "Verbose log: ${verbose_log}" "0"
-echolog "Label: ${label}" "0"
-echolog "Rollback label: ${rollback_label}" "0"
-if [[ "${use_curl}" -eq 1 ]]; then
-    echolog "Downloader: curl" "0"
-else
-    echolog "Downloader: wget" "0"
-fi
 echolog "-------------------------------------------" "1"
 
 if [ "${debug_mode}" -eq 1 ] ; then 
