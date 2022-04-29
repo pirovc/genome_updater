@@ -1,6 +1,6 @@
 # genome_updater
 
-Bash script to download and update snapshots of the NCBI genomes repository (refseq/genbank) [1] with several filters, detailed logs, reports, file integrity check (MD5) and parallel [2] download support.
+Bash script to download ***and update*** snapshots of the NCBI genomes repository (refseq/genbank) [1] with filters, detailed log, reports, file integrity check (MD5) and parallel [2] download support.
 
 ## Quick usage guide
 
@@ -11,7 +11,7 @@ Bash script to download and update snapshots of the NCBI genomes repository (ref
 
 ### Download
 
-Download complete genome Archaea sequences in the RefSeq repository (`-t` number parallel downloads):
+Download Archaeal complete genome sequences from the RefSeq repository (`-t` number parallel downloads):
 
 	./genome_updater.sh -o "arc_refseq_cg" -d "refseq" -g "archaea" -l "complete genome" -f "genomic.fna.gz" -t 12
 
@@ -21,19 +21,19 @@ Some days later, update the repository:
 
 	./genome_updater.sh -o "arc_refseq_cg"
 
- - Add `-k` to perform a dry-run before the actual run. genome_updater will show how many files will be downloaded/updated and exit without changes
+ - Add `-k` to perform a dry-run, showing how many files will be downloaded/updated without any changes.
 
- - Parameters can be changed for each update by just calling the command with the desired values. For example `./genome_updater.sh -o "arc_refseq_cg" -t 2` to use a different number of threads or `./genome_updater.sh -o "arc_refseq_cg" -l ""` to remove the "complete genome" filter.
+ - Arguments can be added or changed in the update. For example `./genome_updater.sh -o "arc_refseq_cg" -t 2` to use a different number of threads or `./genome_updater.sh -o "arc_refseq_cg" -l ""` to remove the "complete genome" filter.
 
- - `history.tsv` will be created in the output folder, tracking versions and arguments used (boolean arguments are not tracked).
+ - `history.tsv` will be created in the output folder (`-o`), tracking versions and arguments used (obs: boolean arguments are not tracked).
 
 ## Details
 
-- with genome_updater you can download and keep several snapshots of a certain sub-set of the genomes repository, without redundancy and with incremental track of changes
-- genome_updater runs on a working directory (defined with `-o`) and creates a snapshot (`-b`) of refseq and/or genbank (`-d`) genome repositories based on selected organism groups (`-g`) and/or taxonomic ids (`-S`/`-T`) with the desired files type(s) (`-f`)
-- filters can be applied to refine the selection: RefSeq category (`-c`), assembly level (`-l`), dates (`-D`/`-E`), custom filters (`-F`), top assemblies (`-P`/`-A`), GTDB [3] compatible sequences (`-z`).
-- the repository can updated (e.g. after some days) with only incremental changes. genome_updater will identify previous files and update the working directory with the most recent versions, keeping track of all changes and just downloading/removing what is necessary
+genome_updater downloads and keeps several snapshots of a certain sub-set of the genomes repository, without redundancy and with incremental track of changes.
 
+- it runs on a working directory (defined with `-o`) and creates a snapshot (optionally named with `-b`) of refseq and/or genbank (`-d`) genome repositories based on selected organism groups (`-g`) and/or taxonomic ids (`-S`/`-T`) with the desired files type(s) (`-f`)
+- filters can be applied to refine the selection: RefSeq category (`-c`), assembly level (`-l`), dates (`-D`/`-E`), custom filters (`-F`), top assemblies (`-P`/`-A`), GTDB [3] compatible sequences (`-z`).
+- the repository can be updated or changed with incremental changes. outdated files are kept in their respective version and repeated files linked to the new version. genome_updater keepts track of all changes and just downloads what is necessary
 
 ## Installation
 
@@ -56,55 +56,24 @@ To test if all genome_updater functions are running properly on your system:
 	cd genome_updater
 	tests/test.sh
 
-
-## Options
-
-Data selection:
-- `-d`: database selection (genbank and/or refseq)
-- `-g`: organism groups (`-g "archaea,bacteria"`)
-- `-S`: species taxids (`-S "562,623"`)
-- `-T`: any taxids including all children nodes (`-T "620,1643685"`)
-- `-f`: files to be downloaded [genomic.fna.gz,assembly_report.txt, ... - check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats]
-- `-l`: filter by Assembly level [complete genome, chromosome, scaffold, contig]
-- `-c`: filter by RefSeq Category [reference genome, representative genome, na]
-- `-P`: select [top assemblies](#top-assemblies) for species entries. `-P 3` downloads the top 3 assemblies for each species
-- `-A`: select [top assemblies](#top-assemblies) for taxids entries. `-A 3` downloads the top 3 assemblies for each taxid selected
-- `-D`: filter entries published on or after this date
-- `-E`: filter entries published on or before this date
-- `-z`: select only assemblies included in the latest GTDB release
-
-Utilities:
-- `-i`: fixes current snapshot in case of network or any other failure during download
-- `-k`: dry-run - do not perform any action but shows number of files to be downloaded or updated
-- `-t`: downloads in parallel
-- `-m`: checks for file integrity (MD5)
-- `-e`: re-downloads entries from any "assembly_summary.txt" obtained from external sources. Easy way to share snapshots of exact database version used.
-- `-a`: downloads the current version of the NCBI taxonomy database (taxdump.tar.gz)
-
-Reports:
-- `-u`: Added/Removed assembly accessions
-- `-r`: Added/Removed sequence accessions 
-- `-p`: Output list of URLs for downloaded and failed files
-
-Version control:
-- `-b`: name a version under a label (timestamp by default)
-- `-B`: when updating, use a different label as a base version. Useful for rolling back updates or to branch out of a base version.
-
 ## Examples
 
 ### Downloading genomic sequences (.fna files) for the Complete Genome sequences from RefSeq for Bacteria and Archaea and keep them updated
 
-	# Download (checking md5, 12 threads, with extended assembly accession report)
+	# Check files to be downloaded
+	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -l "complete genome" -f "genomic.fna.gz" -k
+	
+	# Download (-o output folder, -t threads, -m checking md5, -u extended assembly accession report)
 	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -l "Complete Genome" -f "genomic.fna.gz" -o "arc_bac_refseq_cg" -t 12 -u -m
 	
-	# Downloading additional .gbff files for the current snapshot (adding genomic.gbff.gz to -f and adding -i command)
-	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -l "Complete Genome" -f "genomic.fna.gz,genomic.gbff.gz" -o "arc_bac_refseq_cg" -t 12 -u -m -i
+	# Downloading additional .gbff files for the current snapshot (adding genomic.gbff.gz to -f , -i to just add files and not update)
+	./genome_updater.sh -f "genomic.fna.gz,genomic.gbff.gz" -o "arc_bac_refseq_cg" -u -m -i
 	
 	# Some days later, just check for updates but do not update
-	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -l "Complete Genome" -f "genomic.fna.gz,genomic.gbff.gz" -o "arc_bac_refseq_cg" -k
+	./genome_updater.sh -o "arc_bac_refseq_cg" -k
 
-	# Perform update
-	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -l "Complete Genome" -f "genomic.fna.gz,genomic.gbff.gz" -o "arc_bac_refseq_cg" -t 12 -u -m
+	# Perform update (generating )
+	./genome_updater.sh -o "arc_bac_refseq_cg" -u -m
 
 ### Download all RNA Viruses (under the taxon Riboviria) on RefSeq
 
@@ -147,30 +116,6 @@ Version control:
 
 	retries=10 timeout=600 use_curl=1 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt"
 
-## Top assemblies
-
-The top assemblies (`-P`/`-A`) will be selected based on the species/taxid entries in the assembly_summary.txt and not for the taxids provided with  (`-S`/`-T`). They are selected sorted by categories in the following order of importance:
-	
-	A) RefSeq Category: 
-		1) reference genome
-		2) representative genome
-		3) na
-	B) Assembly level:
-		1) Complete genome
-		2) Chromosome
-		3) Scaffold
-		4) Contig
-	C) Relation to type material:
-		1) assembly from type material
-		2) assembly from synonym type material
-		3) assembly from pathotype material
-		4) assembly designated as neotype
-		5) assembly designated as reftype
-		6) ICTV species exemplar
-		7) ICTV additional isolate
-	D) Date:
-		1) Most recent first
-
 ## Extended reports
 
 ### assembly accessions
@@ -209,6 +154,31 @@ To obtain a list of successfully downloaded files from this report (useful to ge
 or
 
 	find output_folder/version/files/ -type f
+
+## Top assemblies
+
+The top assemblies (`-P`/`-A`) will be selected based on the species/taxid entries in the assembly_summary.txt and not for the taxids provided with  (`-S`/`-T`). They are selected sorted by categories in the following order of importance:
+	
+	A) RefSeq Category: 
+		1) reference genome
+		2) representative genome
+		3) na
+	B) Assembly level:
+		1) Complete genome
+		2) Chromosome
+		3) Scaffold
+		4) Contig
+	C) Relation to type material:
+		1) assembly from type material
+		2) assembly from synonym type material
+		3) assembly from pathotype material
+		4) assembly designated as neotype
+		5) assembly designated as reftype
+		6) ICTV species exemplar
+		7) ICTV additional isolate
+	D) Date:
+		1) Most recent first
+
 
 ## Parameters
 
