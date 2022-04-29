@@ -692,7 +692,7 @@ do
 done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
-# Parse -o first to detect possible updates
+# Parse -o and -B first to detect possible updates
 getopts_list="aA:b:B:d:D:c:De:E:f:F:g:hikl:mn:o:pP:rR:sS:t:T:uVwxzZ"
 OPTIND=1 # Reset getopts
 # Parses working_dir from "$@"
@@ -712,7 +712,7 @@ if [[ ! -z "${working_dir}" && -s "${working_dir}/history.tsv" ]]; then
         # If rolling back, get specific parameters of that version
         rollback_assembly_summary="${working_dir}${rollback_label}/assembly_summary.txt"
         if [[ -f "${rollback_assembly_summary}" ]]; then
-            declare -a "args=($(awk '$2 == "'${rollback_label}'"' "${working_dir}/history.tsv" | cut -f 5))"
+            declare -a "args=($(awk -F '\t' '$2 == "'${rollback_label}'"' "${working_dir}/history.tsv" | cut -f 5))"
         else
             echo "Rollback label/assembly_summary.txt not found ["${rollback_assembly_summary}"]"; exit 1
         fi
@@ -776,23 +776,20 @@ while getopts "${getopts_list}" opt "${args[@]}"; do
     :) echo "Option -$OPTARG requires an argument." >&2; exit 1 ;;
   esac
 
-  # skip debug mode
-  if [[ "${opt}" != "Z" ]]; then
-      # Colect parsed args in an associative array for each opt
-      # the args added later have precedence
-      if [ "${OPTARG-unset}" = unset ]; then
-        bool_args="${bool_args} -${opt}"  # boolean args, OPTARG is not set in getopts
-      elif [[ ! -z "${OPTARG}" ]]; then
-        new_args[${opt}]="-${opt} '${OPTARG}'" # args with option argument
-      else
-        unset new_args[${opt}] # args with option argument set to ''
-      fi
+  # Colect parsed args in an associative array for each opt
+  # the args added later have precedence
+  if [ "${OPTARG-unset}" = unset ]; then
+    bool_args="${bool_args} -${opt}"  # boolean args, OPTARG is not set in getopts
+  elif [[ ! -z "${OPTARG}" ]]; then
+    new_args[${opt}]="-${opt} '${OPTARG}'" # args with option argument
+  else
+    unset new_args[${opt}] # args with option argument set to ''
   fi
+
 done
 
-# Build argument list to save, escaping special chars
-genome_updater_args="${new_args[@]}"
-export genome_updater_args
+# No params
+if [ ${OPTIND} -eq 1 ]; then showhelp; exit 1; fi
 
 # Print tools and versions
 if [ "${debug_mode}" -eq 1 ] ; then 
@@ -805,11 +802,10 @@ if [ "${debug_mode}" -eq 1 ] ; then
     fi
 fi
 
-# No params
-if [ ${OPTIND} -eq 1 ]; then 
-    showhelp; 
-    exit 1;
-fi
+# Build argument list to save
+genome_updater_args="${new_args[@]}"
+export genome_updater_args
+
 
 ######################### General parameter validation ######################### 
 if [[ -z "${database}" ]]; then

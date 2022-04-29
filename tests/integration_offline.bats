@@ -312,12 +312,12 @@ setup_file() {
 
     # Second version with more entries (refseq,genbank)
     label2="v2"
-    run ./genome_updater.sh -d refseq -b ${label2} -o ${outdir} -d refseq,genbank
+    run ./genome_updater.sh -b ${label2} -o ${outdir} -d refseq,genbank
     sanity_check ${outdir} ${label2}
 
     # Third version with same entries (nothing to download)
     label3="v3"
-    run ./genome_updater.sh -d refseq -b ${label3} -o ${outdir} -d refseq,genbank
+    run ./genome_updater.sh -b ${label3} -o ${outdir} -d refseq,genbank
     sanity_check ${outdir} ${label3}
 
     # Check log for no updates
@@ -326,11 +326,52 @@ setup_file() {
 
     # Fourth version with the same as second but rolling back from first, re-download files
     label4="v4"
-    run ./genome_updater.sh -d refseq -b ${label4} -o ${outdir} -d refseq,genbank -B v1
+    run ./genome_updater.sh -b ${label4} -o ${outdir} -d refseq,genbank -B v1
     sanity_check ${outdir} ${label4}
 
     # Check log for updates
-    grep "0 updated, 0 deleted, [0-9]* new entries" ${outdir}${label4}/*.log # >&3
+    grep "0 updated, 0 deleted, [1-9][0-9]* new entries" ${outdir}${label4}/*.log # >&3
+    assert_success
+}
+
+@test "Rollback label auto update" {
+    outdir=${outprefix}rollback-label-auto-update/
+    
+    # Base version with only refseq
+    label1="v1"
+    run ./genome_updater.sh -d refseq -b ${label1} -o ${outdir}
+    sanity_check ${outdir} ${label1}
+
+    # Second version with more entries (refseq,genbank)
+    label2="v2"
+    run ./genome_updater.sh -b ${label2} -o ${outdir} -d refseq,genbank
+    sanity_check ${outdir} ${label2}
+
+    # Third version with same entries (nothing to download)
+    label3="v3"
+    run ./genome_updater.sh -b ${label3} -o ${outdir}
+    sanity_check ${outdir} ${label3}
+
+    # Check log for no updates
+    grep "0 updated, 0 deleted, 0 new entries" ${outdir}${label3}/*.log # >&3
+    assert_success
+
+    # Fourth version with the same as second but rolling back from first
+    label4="v4"
+    run ./genome_updater.sh -b ${label4} -o ${outdir} -B v1 -d refseq,genbank
+    sanity_check ${outdir} ${label4}
+
+    # Check log for updates
+    grep "0 updated, 0 deleted, [1-9][0-9]* new entries" ${outdir}${label4}/*.log # >&3
+    assert_success
+
+    # Continue the update from v4 (without rolling back to v1) 
+    label5="v5"
+    run ./genome_updater.sh -b ${label5} -o ${outdir} -B ""
+    sanity_check ${outdir} ${label5}
+
+    # Check log for updates
+    grep "0 updated, 0 deleted, 0 new entries" ${outdir}${label5}/*.log # >&3
     assert_success
 }
 
@@ -471,4 +512,7 @@ setup_file() {
     report_file="${outdir}${label}/updated_assembly_accession.txt"
     assert_file_exist "${report_file}"
 
+    # Check log for updates
+    grep "0 updated, [1-9][0-9]* deleted, [1-9][0-9]* new entries" ${outdir}${label}/*.log # >&3
+    assert_success
 }
