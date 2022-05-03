@@ -125,11 +125,14 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
     count_lines_file "${1}"
 }
 
-write_history(){ # parameter: ${1} current label, ${2} new label, ${3} new timestamp, ${4} assembly_summary file, ${5} New (0->no/1->yes)
-    if [[ "${5}" -eq 1 ]]; then 
+write_history(){ # parameter: ${1} current label, ${2} new label, ${3} new timestamp, ${4} assembly_summary file
+    # if current label is the same as new label (new)
+    if [[ "${1}" == "${2}" ]]; then 
         echo -e "#current_label\tnew_label\ttimestamp\tassembly_summary_entries\targuments" > ${history_file}
+        echo -n -e "\t" >> ${history_file}
+    else
+        echo -n -e "${1}\t" >> ${history_file}
     fi
-    echo -n -e "${1}\t" >> ${history_file}
     echo -n -e "${2}\t" >> ${history_file}
     echo -n -e "${3}\t" >> ${history_file}
     echo -n -e "$(count_lines_file ${4})\t" >> ${history_file}
@@ -419,19 +422,18 @@ export -f download
 download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or field [url,filename], ${3} extension
 {
 
-    url_list_download=${working_dir}url_list_download.tmp #Temporary url list of files to download in this call
-    url_success_download=${working_dir}url_success_download.tmp #Temporary url list of downloaded files
-    touch ${url_success_download}
-
     # sort files to get all files for the same entry in sequence, in case of failure 
-    if [ -z ${3:-} ] #direct download (url+file)
-    then
+    url_list_download=${working_dir}url_list_download.tmp #Temporary url list of files to download in this call
+    if [ -z ${3:-} ]; then #direct download (url+file)
         cut --fields="${2}" ${1} | tr '\t' '/' | sort > "${url_list_download}"
     else
         list_files ${1} ${2} ${3} | cut -f 2,3 | tr '\t' '/' | sort > "${url_list_download}"
     fi
     total_files=$(count_lines_file "${url_list_download}")
 
+    url_success_download=${working_dir}url_success_download.tmp #Temporary url list of downloaded files
+    rm -f ${url_success_download}  # remove in case already exists
+    touch ${url_success_download}  # create in case no valid url is written
     # Retry download in batches
     for (( att=1; att<=${retry_download_batch}; att++ )); do
 
@@ -698,7 +700,7 @@ if [[ ! -z "${working_dir}" && -s "${working_dir}/history.tsv" ]]; then
     
     if [[ ! -z "${rollback_label}" ]]; then
         # If rolling back, get specific parameters of that version
-        rollback_assembly_summary="${working_dir}${rollback_label}/assembly_summary.txt"
+        rollback_assembly_summary="${working_dir}/${rollback_label}/assembly_summary.txt"
         if [[ -f "${rollback_assembly_summary}" ]]; then
             declare -a "args=($(awk -F '\t' '$2 == "'${rollback_label}'"' "${working_dir}/history.tsv" | cut -f 5))"
         else
@@ -780,9 +782,9 @@ done
 # No params
 if [ ${OPTIND} -eq 1 ]; then showhelp; exit 1; fi
 
-# Print tools and versions
+# Activate debug mode
 if [ "${debug_mode}" -eq 1 ] ; then 
-    print_debug tools;
+    print_debug tools  # Print tools and versions
     # If debug is the only parameter, exit, otherwise set debug mode for the run (set -x)
     if [ $# -eq 1 ]; then
         exit 0;
@@ -795,19 +797,8 @@ fi
 genome_updater_args="${new_args[@]}"
 export genome_updater_args
 
-# Define downloader to use
-if [[ ! -z "${local_dir}" || "${downloader_tool}" == "curl" ]]; then
-    function downloader(){ # parameter: ${1} output file, ${2} url
-        curl --silent --retry ${retries} --connect-timeout ${timeout} --output "${1}" "${2}"
-    }
-else
-    function downloader(){ # parameter: ${1} output file, ${2} url
-        wget --quiet --continue --tries ${retries} --read-timeout ${timeout} --output-document "${1}" "${2}"
-    }
-fi
-export -f downloader
+######################### Parameter validation ######################### 
 
-######################### General parameter validation ######################### 
 if [[ -z "${database}" ]]; then
     echo "Database is required (-d)"; exit 1;
 else
@@ -857,8 +848,20 @@ if [[ ! "${top_assemblies_taxids}" =~ ^[0-9]+$ ]]; then
     echo "Invalid numberof top assemblies by taxids"; exit 1;
 fi
 
-
 ######################### Variable assignment ######################### 
+
+# Define downloader to use
+if [[ ! -z "${local_dir}" || "${downloader_tool}" == "curl" ]]; then
+    function downloader(){ # parameter: ${1} output file, ${2} url
+        curl --silent --retry ${retries} --connect-timeout ${timeout} --output "${1}" "${2}"
+    }
+else
+    function downloader(){ # parameter: ${1} output file, ${2} url
+        wget --quiet --continue --tries ${retries} --read-timeout ${timeout} --output-document "${1}" "${2}"
+    }
+fi
+export -f downloader
+
 if [ "${silent}" -eq 1 ] ; then 
     silent_progress=0
 elif [ "${silent_progress}" -eq 1 ] ; then 
@@ -902,6 +905,7 @@ fi
 
 # mode specific variables
 if [[ "${MODE}" == "UPDATE" ]] || [[ "${MODE}" == "FIX" ]]; then # get existing version information
+
     # Check if default assembly_summary is a symbolic link to some version
     if [[ ! -L "${default_assembly_summary}"  ]]; then
         echo "assembly_summary.txt is not a link to any version [${default_assembly_summary}]"; exit 1
@@ -909,7 +913,7 @@ if [[ "${MODE}" == "UPDATE" ]] || [[ "${MODE}" == "FIX" ]]; then # get existing 
     
     # Rollback to a different base version
     if [[ ! -z "${rollback_label}" ]]; then
-        rollback_assembly_summary="${working_dir}${rollback_label}/assembly_summary.txt"
+        rollback_assembly_summary="${working_dir}/${rollback_label}/assembly_summary.txt"
         if [[ -f "${rollback_assembly_summary}" ]]; then
             rm ${default_assembly_summary}
             ln -s -r "${rollback_assembly_summary}" "${default_assembly_summary}"
@@ -964,7 +968,7 @@ echolog "--- genome_updater version: ${version} ---" "0"
 echolog "Mode: ${MODE} $(if [[ "${dry_run}" -eq 1 ]]; then echo "(DRY-RUN)"; fi)" "1"
 echolog "Args: ${genome_updater_args}${bool_args}" "1"
 echolog "Working directory: ${working_dir}" "1"
-echolog "-------------------------------------------" "1"
+echolog "-------------------------------------" "1"
 
 if [ "${debug_mode}" -eq 1 ] ; then 
     ls -laR "${working_dir}"
@@ -1007,7 +1011,7 @@ if [[ "${MODE}" == "NEW" ]]; then
         # Set version - link new assembly as the default
         ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
         # Add entry on history
-        write_history "" ${new_label} ${timestamp} ${new_assembly_summary} "1"
+        write_history ${new_label} ${new_label} ${timestamp} ${new_assembly_summary}
 
         if [[ "${filtered_lines}" -gt 0 ]] ; then
             echolog " - Downloading $((filtered_lines*(n_formats+1))) files with ${threads} threads" "1"
@@ -1038,10 +1042,16 @@ else # update/fix
     missing="${working_dir}missing.tmp"
     check_missing_files "${current_assembly_summary}" "1,20" "${file_formats}" > "${missing}" # assembly accession, url, filename
     missing_lines=$(count_lines_file "${missing}")
+
     if [ "${missing_lines}" -gt 0 ]; then
         echolog " - ${missing_lines} missing files" "1"
         if [ "${dry_run}" -eq 0 ]; then
-            echolog " - Downloading ${missing_lines} files with ${threads} threads"    "1"
+
+            if [ "${just_fix}" -eq 1 ]; then
+                write_history ${current_label} "" ${timestamp} ${current_assembly_summary}
+            fi
+
+            echolog " - Downloading ${missing_lines} files with ${threads} threads" "1"
             download_files "${missing}" "2,3"
             echolog "" "1"
             # if new files were downloaded, rewrite reports (overwrite information on Removed accessions - all become Added)
@@ -1061,7 +1071,7 @@ else # update/fix
     fi
     echolog "" "1"
     rm "${missing}"
-    
+
     echolog "Checking for extra files in the current version [${current_label}]" "1"
     extra="${working_dir}extra.tmp"
     join <(ls -1 "${current_output_prefix}${files_dir}" | sort) <(list_files "${current_assembly_summary}" "1,20" "${file_formats}" | cut -f 3 | sed -e 's/.*\///' | sort) -v 1 > "${extra}"
@@ -1079,7 +1089,7 @@ else # update/fix
     fi
     echolog "" "1"
     rm "${extra}"
-    
+
     if [[ "${MODE}" == "UPDATE" ]]; then
 
         # change TARGET for update
@@ -1129,7 +1139,7 @@ else # update/fix
             rm "${default_assembly_summary}"
             ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
             # Add entry on history
-            write_history ${current_label} ${new_label} ${timestamp} ${new_assembly_summary} "0"
+            write_history ${current_label} ${new_label} ${timestamp} ${new_assembly_summary}
             echolog " - Done." "1"
             echolog "" "1"
 
