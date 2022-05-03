@@ -41,9 +41,6 @@ export retries timeout base_url local_dir
 # Export locale numeric to avoid errors on printf in different setups
 export LC_NUMERIC="en_US.UTF-8"
 
-gtdb_urls=( "https://data.gtdb.ecogenomic.org/releases/latest/ar53_taxonomy.tsv.gz" 
-            "https://data.gtdb.ecogenomic.org/releases/latest/bac120_taxonomy.tsv.gz" )
-
 #activate aliases in the script
 shopt -s expand_aliases
 alias sort="sort --field-separator=$'\t'"
@@ -110,6 +107,9 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
         # If no organism group is chosen, get complete assembly_summary for the database
         if [[ -z "${3}" ]]; then
             download_url "${base_url}/genomes/${d}/assembly_summary_${d}.txt" | tail -n+3 >> "${1}"
+            if [ "${gtdb_only}" -eq 1 ]; then
+                download_url "${base_url}/genomes/${d}/assembly_summary_${d}_historical.txt" | tail -n+3 >> "${1}"
+            fi
         else
             for og in ${3//,/ }
             do
@@ -119,6 +119,9 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
                     og="vertebrate_mammalian/Homo_sapiens"
                 fi
                 download_url "${base_url}/genomes/${d}/${og}/assembly_summary.txt" | tail -n+3 >> "${1}"
+                if [ "${gtdb_only}" -eq 1 ]; then
+                    download_url "${base_url}/genomes/${d}/${og}/assembly_summary_historical.txt" | tail -n+3 >> "${1}"
+                fi
             done
         fi
     done
@@ -127,6 +130,10 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
 
 write_history(){ # parameter: ${1} current label, ${2} new label, ${3} new timestamp, ${4} assembly_summary file
     # if current label is the same as new label (new)
+    # reading the history
+    # Only new_label = NEW
+    # both current and new_label = UPDATE
+    # only current_label = FIX
     if [[ "${1}" == "${2}" ]]; then 
         echo -e "#current_label\tnew_label\ttimestamp\tassembly_summary_entries\targuments" > ${history_file}
         echo -n -e "\t" >> ${history_file}
@@ -175,7 +182,7 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
     if [ "$((filtered_lines-columns_lines))" -gt 0 ]; then
         echolog " - $((filtered_lines-columns_lines)) assemblies removed based on filters:" "1"
         echolog "   valid URLs" "1"
-        echolog "   version status=latest" "1"
+        if [ "${gtdb_only}" -eq 0 ]; then echolog "   version status=latest" "1"; fi
         if [ ! -z "${refseq_category}" ]; then echolog "   refseq category=${refseq_category}" "1"; fi
         if [ ! -z "${assembly_level}" ]; then echolog "   assembly level=${assembly_level}" "1"; fi
         if [ ! -z "${custom_filter}" ]; then echolog "   custom filter=${custom_filter}" "1"; fi
@@ -185,9 +192,18 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
 
     #GTDB
     if [ "${gtdb_only}" -eq 1 ]; then
-        gtdb_lines=$(filter_gtdb "${assembly_summary}")
+        gtdb_missing=${working_dir}"gtdb_missing"
+        gtdb_lines=$(filter_gtdb "${assembly_summary}" "${gtdb_missing}")
         echolog " - $((filtered_lines-gtdb_lines)) assemblies removed not in GTDB" "1"
         filtered_lines=${gtdb_lines}
+
+        gtdb_missing_lines=$(count_lines_file "${gtdb_missing}")
+        # If missing file has entries
+        if [[ "${gtdb_missing_lines}" -gt 0 ]]; then
+            echolog " - Could not retrieve "${gtdb_missing_lines}" GTDB assemblies" "1"
+            cat "${gtdb_missing}" >> "${log_file}"
+            rm "${gtdb_missing}"
+        fi
         if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
     fi
 
@@ -233,43 +249,49 @@ filter_columns() # parameter: ${1} assembly_summary file - return number of line
     # Build string to filter file by columns in the format
     # colA:val1,val2|colB:val3
     # AND between cols, OR between values
-    colfilter="11:latest"
+    
+    colfilter=""
+    if [ "${gtdb_only}" -eq 0 ]; then
+        colfilter="11:latest|"
+    fi
     if [[ ! -z "${refseq_category}" ]]; then
-        colfilter="${colfilter}|5:${refseq_category}"
+        colfilter="${colfilter}5:${refseq_category}|"
     fi
     if [[ ! -z "${assembly_level}" ]]; then
-        colfilter="${colfilter}|12:${assembly_level}"
+        colfilter="${colfilter}12:${assembly_level}|"
     fi
     if [[ ! -z "${custom_filter}" ]]; then
-        colfilter="${colfilter}|${custom_filter}"
+        colfilter="${colfilter}${custom_filter}|"
     fi
 
-    awk -F "\t" -v colfilter="${colfilter}" '
-        function ltrim(s) { sub(/^[ \t\r\n]+/, "", s); return s }
-        function rtrim(s) { sub(/[ \t\r\n]+$/, "", s); return s }
-        function trim(s) { return rtrim(ltrim(s)); }
-        BEGIN{
-        split(colfilter, fields, "|");
-        for(f in fields){
-            split(fields[f], keyvals, ":");
-            filter[keyvals[1]]=keyvals[2];}
-        } $20!="na" {
-            k=0;
-            for(f in filter){
-                split(filter[f], v, ","); for (i in v) vals[tolower(trim(v[i]))]="";
-                if(tolower($f) in vals){
-                    k+=1;
+    if [[ ! -z "${colfilter}" ]]; then
+        awk -F "\t" -v colfilter="${colfilter%?}" '
+            function ltrim(s) { sub(/^[ \t\r\n]+/, "", s); return s }
+            function rtrim(s) { sub(/[ \t\r\n]+$/, "", s); return s }
+            function trim(s) { return rtrim(ltrim(s)); }
+            BEGIN{
+            split(colfilter, fields, "|");
+            for(f in fields){
+                split(fields[f], keyvals, ":");
+                filter[keyvals[1]]=keyvals[2];}
+            } $20!="na" {
+                k=0;
+                for(f in filter){
+                    split(filter[f], v, ","); for (i in v) vals[tolower(trim(v[i]))]="";
+                    if(tolower($f) in vals){
+                        k+=1;
+                    }
+                };
+                if(k==length(filter)){
+                    print $0;
                 }
-            };
-            if(k==length(filter)){
-                print $0;
-            }
-        }' "${1}" > "${1}_filtered"
-    mv "${1}_filtered" "${1}"
+            }' "${1}" > "${1}_filtered"
+        mv "${1}_filtered" "${1}"
+    fi
     count_lines_file "${1}"
 }
 
-filter_gtdb() # parameter: ${1} assembly_summary file - return number of lines
+filter_gtdb() # parameter: ${1} assembly_summary file,  ${2} gtdb_missing file - return number of lines
 {
     gtdb_acc=${working_dir}"gtdb_acc"
     for url in "${gtdb_urls[@]}"
@@ -277,8 +299,12 @@ filter_gtdb() # parameter: ${1} assembly_summary file - return number of lines
         # awk to remove prefix RS_ or GB_
         download_url "${url}" | zcat | awk -F "\t" '{print substr($1, 4, length($1))}' >> "${gtdb_acc}"
     done
+    # Check for missing entries
+    join -1 1 -2 1 <(sort -k 1,1 "${1}") <(sort -k 1,1 "${gtdb_acc}") -v 2 > ${2}
+
+    # Match entries
     join -1 1 -2 1 <(sort -k 1,1 "${1}") <(sort -k 1,1 "${gtdb_acc}") -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" | sort | uniq > "${1}_gtdb"
-    mv "${1}_gtdb" "${1}"
+    mv "${1}_gtdb" "${1}"    
     rm "${gtdb_acc}"
     count_lines_file "${1}"
 }
@@ -683,7 +709,7 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 # Parse -o and -B first to detect possible updates
-getopts_list="aA:b:B:d:D:c:De:E:f:F:g:hikl:L:mn:o:pP:rR:sS:t:T:uVwxzZ"
+getopts_list="aA:b:B:c:d:D:e:E:f:F:g:hikl:L:mn:o:pP:rR:sS:t:T:uVwxzZ"
 OPTIND=1 # Reset getopts
 # Parses working_dir from "$@"
 while getopts "${getopts_list}" opt; do
@@ -811,13 +837,35 @@ else
     done
 fi
 
-valid_organism_groups=( "archaea" "bacteria" "fungi" "human" "invertebrate" "metagenomes" "other" "plant" "protozoa" "vertebrate_mammalian" "vertebrate_other" "viral" )
-for og in ${organism_group//,/ }
-do
-    if [[ ! " ${valid_organism_groups[@]} " =~ " ${og} " ]]; then
-        echo "Invalid organism group - ${og}"; exit 1;
+gtdb_urls=()
+if [ "${gtdb_only}" -eq 1 ]; then
+    if [[ -z "${organism_group}" ]]; then
+        gtdb_urls+=("https://data.gtdb.ecogenomic.org/releases/latest/ar53_taxonomy.tsv.gz")
+        gtdb_urls+=("https://data.gtdb.ecogenomic.org/releases/latest/bac120_taxonomy.tsv.gz")
+    else
+        for og in ${organism_group//,/ }
+        do
+            if [[ "${og}" == "archaea" ]]; then
+                gtdb_urls+=("https://data.gtdb.ecogenomic.org/releases/latest/ar53_taxonomy.tsv.gz")
+            elif [[ "${og}" == "bacteria" ]]; then
+                gtdb_urls+=("https://data.gtdb.ecogenomic.org/releases/latest/bac120_taxonomy.tsv.gz")
+            else
+                echo "Invalid organism group for GTDB - ${og}"; exit 1;
+            fi
+        done
     fi
-done
+else
+    valid_organism_groups=( "archaea" "bacteria" "fungi" "human" "invertebrate" "metagenomes" "other" "plant" "protozoa" "vertebrate_mammalian" "vertebrate_other" "viral" )
+
+    for og in ${organism_group//,/ }
+    do
+        if [[ ! " ${valid_organism_groups[@]} " =~ " ${og} " ]]; then
+            echo "Invalid organism group - ${og}"; exit 1;
+        fi
+    done
+
+fi
+
 
 if [[ ! -z "${species}"  ]]; then
     if [[ ! "${species}" =~ ^[0-9,]+$ ]]; then
@@ -842,10 +890,10 @@ fi
 
 # top taxids/species
 if [[ ! "${top_assemblies_species}" =~ ^[0-9]+$ ]]; then
-    echo "Invalid numberof top assemblies by species"; exit 1;
+    echo "Invalid number of top assemblies by species"; exit 1;
 fi
 if [[ ! "${top_assemblies_taxids}" =~ ^[0-9]+$ ]]; then
-    echo "Invalid numberof top assemblies by taxids"; exit 1;
+    echo "Invalid number of top assemblies by taxids"; exit 1;
 fi
 
 ######################### Variable assignment ######################### 
