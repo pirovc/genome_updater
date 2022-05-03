@@ -112,9 +112,9 @@ To test if all genome_updater functions are running properly on your system:
 
 	./genome_updater.sh -e /my/path/assembly_summary.txt -f "genomic.fna.gz" -o "recovered_sequences" -b "january_2018"
 
-### Use curl, change timeout and retries for download (default wget)
+### Use curl (default wget), change timeout and retries for download 
 
-	retries=10 timeout=600 use_curl=1 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt"
+	retries=10 timeout=600 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt" -L curl
 
 ## Extended reports
 
