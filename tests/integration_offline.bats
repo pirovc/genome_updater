@@ -321,7 +321,7 @@ setup_file() {
     sanity_check ${outdir} ${label3}
 
     # Check log for no updates
-    grep "0 updated, 0 deleted, 0 new entries" ${outdir}${label3}/*.log # >&3
+    grep "0 updated, 0 removed, 0 new entries" ${outdir}${label3}/*.log # >&3
     assert_success
 
     # Fourth version with the same as second but rolling back from first, re-download files
@@ -330,7 +330,7 @@ setup_file() {
     sanity_check ${outdir} ${label4}
 
     # Check log for updates
-    grep "0 updated, 0 deleted, [1-9][0-9]* new entries" ${outdir}${label4}/*.log # >&3
+    grep "0 updated, 0 removed, [1-9][0-9]* new entries" ${outdir}${label4}/*.log # >&3
     assert_success
 }
 
@@ -353,7 +353,7 @@ setup_file() {
     sanity_check ${outdir} ${label3}
 
     # Check log for no updates
-    grep "0 updated, 0 deleted, 0 new entries" ${outdir}${label3}/*.log # >&3
+    grep "0 updated, 0 removed, 0 new entries" ${outdir}${label3}/*.log # >&3
     assert_success
 
     # Fourth version with the same as second but rolling back from first
@@ -362,7 +362,7 @@ setup_file() {
     sanity_check ${outdir} ${label4}
 
     # Check log for updates
-    grep "0 updated, 0 deleted, [1-9][0-9]* new entries" ${outdir}${label4}/*.log # >&3
+    grep "0 updated, 0 removed, [1-9][0-9]* new entries" ${outdir}${label4}/*.log # >&3
     assert_success
 
     # Continue the update from v4 (without rolling back to v1) 
@@ -371,7 +371,7 @@ setup_file() {
     sanity_check ${outdir} ${label5}
 
     # Check log for updates
-    grep "0 updated, 0 deleted, 0 new entries" ${outdir}${label5}/*.log # >&3
+    grep "0 updated, 0 removed, 0 new entries" ${outdir}${label5}/*.log # >&3
     assert_success
 }
 
@@ -504,6 +504,6 @@ setup_file() {
     assert_file_exist "${report_file}"
 
     # Check log for updates
-    grep "0 updated, [1-9][0-9]* deleted, [1-9][0-9]* new entries" ${outdir}${label}/*.log # >&3
+    grep "0 updated, [1-9][0-9]* removed, [1-9][0-9]* new entries" ${outdir}${label}/*.log # >&3
     assert_success
 }

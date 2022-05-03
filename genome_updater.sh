@@ -628,7 +628,7 @@ function showhelp {
     echo $' -a Download the current version of the NCBI taxonomy database (taxdump.tar.gz)'
     echo $' -s Silent output'
     echo $' -w Silent output with download progress only'
-    echo $' -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)\n\tDefault: 0'
+    echo $' -n Conditional exit status based on number of failures accepted, otherwie will Exit Code = 1. Example: -n 10 will exit code 0 up-to 10 failed downloads, then it will exit code 1. (integer for file number, float for percentage, 0 -> off)\n\tDefault: 0'
     echo $' -L Downloader to use [wget,curl]\n\tDefault: wget'
     echo $' -V Verbose log to report successful file downloads'
     echo $' -Z Print debug information and run in debug mode'
@@ -1110,19 +1110,19 @@ else # update/fix
         echolog "" "1"
         
         update=${working_dir}update.tmp
-        delete=${working_dir}delete.tmp
+        remove=${working_dir}remove.tmp
         new=${working_dir}new.tmp
         # UPDATED (verify if version or date changed)
         join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' ${new_assembly_summary} | sort -k 1,1) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' ${current_assembly_summary} | sort -k 1,1) -o "1.2,1.3,1.4,2.2,2.3,2.4" | awk '{if($2>$5 || $1!=$4){print $1"\t"$3"\t"$4"\t"$6}}' > ${update}
         update_lines=$(count_lines_file "${update}")
-        # DELETED
-        join <(cut -f 1 ${new_assembly_summary} | sed 's/\.[0-9]*//g' | sort) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' ${current_assembly_summary} | sort -k 1,1) -v 2 -o "2.2,2.3" | tr ' ' '\t' > ${delete}
-        delete_lines=$(count_lines_file "${delete}")
+        # REMOVED
+        join <(cut -f 1 ${new_assembly_summary} | sed 's/\.[0-9]*//g' | sort) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' ${current_assembly_summary} | sort -k 1,1) -v 2 -o "2.2,2.3" | tr ' ' '\t' > ${remove}
+        remove_lines=$(count_lines_file "${remove}")
         # NEW
         join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' ${new_assembly_summary} | sort -k 1,1) <(cut -f 1 ${current_assembly_summary} | sed 's/\.[0-9]*//g' | sort) -o "1.2,1.3" -v 1 | tr ' ' '\t' > ${new}
         new_lines=$(count_lines_file "${new}")
         echolog "Updates available [${current_label} --> ${new_label}]" "1"
-        echolog " - ${update_lines} updated, ${delete_lines} deleted, ${new_lines} new entries" "1"
+        echolog " - ${update_lines} updated, ${remove_lines} removed, ${new_lines} new entries" "1"
         echolog "" "1"
 
         if [ "${dry_run}" -eq 1 ]; then
@@ -1146,30 +1146,30 @@ else # update/fix
             # UPDATED INDICES assembly accession
             if [ "${updated_assembly_accession}" -eq 1 ]; then 
                 output_assembly_accession "${update}" "3,4" "${file_formats}" "R" > "${new_output_prefix}updated_assembly_accession.txt"
-                output_assembly_accession "${delete}" "1,2" "${file_formats}" "R" >> "${new_output_prefix}updated_assembly_accession.txt"
+                output_assembly_accession "${remove}" "1,2" "${file_formats}" "R" >> "${new_output_prefix}updated_assembly_accession.txt"
             fi
             # UPDATED INDICES sequence accession (removed entries - do it before deleting them)
             if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
                 # current_assembly_summary is the old summary
                 output_sequence_accession "${update}" "3,4" "${file_formats}" "R" "${current_assembly_summary}" > "${new_output_prefix}updated_sequence_accession.txt"
-                output_sequence_accession "${delete}" "1,2" "${file_formats}" "R" "${current_assembly_summary}" >> "${new_output_prefix}updated_sequence_accession.txt"
+                output_sequence_accession "${remove}" "1,2" "${file_formats}" "R" "${current_assembly_summary}" >> "${new_output_prefix}updated_sequence_accession.txt"
             fi
             
             # Execute updates
             echolog "Updating" "1"
             if [ "${update_lines}" -gt 0 ]; then
-                echolog " - UPDATE: Deleting $((update_lines*(n_formats+1))) files " "1"
-                # delete old version
+                echolog " - UPDATE: Removing $((update_lines*(n_formats+1))) files " "1"
+                # remove old version
                 del_lines=$(remove_files "${update}" "3,4" "${file_formats}")
-                echolog " - ${del_lines} files successfully deleted " "1"
+                echolog " - ${del_lines} files successfully removed from the current version" "1"
                 echolog " - UPDATE: Downloading $((update_lines*(n_formats+1))) files with ${threads} threads" "1"
                 # download new version
                 download_files "${update}" "1,2" "${file_formats}"
             fi
-            if [ "${delete_lines}" -gt 0 ]; then
-                echolog " - DELETE: Deleting $((delete_lines*(n_formats+1))) files" "1"
-                del_lines=$(remove_files "${delete}" "1,2" "${file_formats}")
-                echolog " - ${del_lines} files successfully deleted " "1"
+            if [ "${remove_lines}" -gt 0 ]; then
+                echolog " - REMOVE: Removing $((remove_lines*(n_formats+1))) files" "1"
+                del_lines=$(remove_files "${remove}" "1,2" "${file_formats}")
+                echolog " - ${del_lines} files successfully removed from the current version" "1"
             fi
             if [ "${new_lines}" -gt 0 ]; then
                 echolog " - NEW: Downloading $((new_lines*(n_formats+1))) files with ${threads} threads"    "1"
@@ -1192,7 +1192,7 @@ else # update/fix
             fi
         fi
         # Remove update files
-        rm ${update} ${delete} ${new}
+        rm ${update} ${remove} ${new}
     fi
 fi
 

@@ -69,6 +69,43 @@ setup_file() {
     assert_equal $(count_files ${outdir} ${label}) 2
 }
 
+@test "Conditional exit" {
+
+    outdir=${outprefix}conditional-exit/
+    label="n0"
+    # 2 out of 4 genomes will be downloaded
+    run ./genome_updater.sh -n 0 -R 1 -d refseq -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    assert_success
+
+    label="n1"
+    run ./genome_updater.sh -n 1 -R 1 -d refseq -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    assert_failure
+    
+    label="n2"
+    run ./genome_updater.sh -n 2 -R 1 -d refseq -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    assert_failure
+
+    label="n3"
+    run ./genome_updater.sh -n 3 -R 1 -d refseq -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    assert_success
+
+    label="n0.2"
+    run ./genome_updater.sh -n 0.2 -R 1 -d refseq -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    assert_failure
+
+    label="n0.5"
+    run ./genome_updater.sh -n 0.5 -R 1 -d refseq -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    assert_failure
+
+    label="n0.51"
+    run ./genome_updater.sh -n 0.51 -R 1 -d refseq -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    assert_success
+
+    label="n0.99"
+    run ./genome_updater.sh -n 0.99 -R 1 -d refseq -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    assert_success
+
+}
 
 @test "Multiple file types" {
     outdir=${outprefix}multiple-file-types/
