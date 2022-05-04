@@ -25,7 +25,7 @@ Some days later, update the repository:
 
  - Arguments can be added or changed in the update. For example `./genome_updater.sh -o "arc_refseq_cg" -t 2` to use a different number of threads or `./genome_updater.sh -o "arc_refseq_cg" -l ""` to remove the "complete genome" filter.
 
- - `history.tsv` will be created in the output folder (`-o`), tracking versions and arguments used (obs: boolean arguments are not tracked).
+ - `history.tsv` will be created in the output folder (`-o`), tracking versions and arguments used (obs: boolean flags/arguments are not tracked - e.g. `-m`).
 
 ## Details
 

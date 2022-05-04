@@ -134,14 +134,26 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
     filtered_lines=${2}
     if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
     
-    #GTDB mode
+    
     if [[ "${tax_mode}" == "gtdb" ]]; then
-        # Parse GTDB tax
+        echolog " - Downloading taxonomy (gtdb)" "1"
+        # Download and parse GTDB tax
         gtdb_tax=$(tmp_file "gtdb_tax.tmp")
         for url in "${gtdb_urls[@]}"; do
             download_url "${url}" | zcat | awk -F "\t" '{print substr($1, 4, length($1))"\t"$2}' >> "${gtdb_tax}" # awk to remove prefix RS_ or GB_
         done
+    elif [[ "${tax_mode}" == "ncbi" && ( ! -z "${taxids}" || ! -z "${top_assemblies}" ) ]]; then
+        # Download and parse NCBI new_taxdump - use taxidlineage.dmp
+        echolog " - Downloading taxonomy (ncbi)" "1"
+        tmp_new_taxdump="${target_output_prefix}new_taxdump.tar.gz"
+        download_static "${base_url}/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}"
+        unpack "${tmp_new_taxdump}" "${working_dir}" "taxidlineage.dmp"
+        unpack "${tmp_new_taxdump}" "${working_dir}" "rankedlineage.dmp"    
+        ncbi_tax_="${working_dir}taxidlineage.dmp"
+        ncbi_rank_tax="${working_dir}rankedlineage.dmp"
+    fi
 
+    if [[ "${tax_mode}" == "gtdb" ]]; then
         tmp_gtdb_missing=$(tmp_file "gtdb_missing")
         gtdb_lines=$(filter_gtdb "${assembly_summary}" "${gtdb_tax}" "${tmp_gtdb_missing}")
         echolog " - $((filtered_lines-gtdb_lines)) assemblies removed not in GTDB" "1"
@@ -169,14 +181,11 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
     # TAXIDS
     if [[ ! -z "${taxids}" ]]; then
         if [[ "${tax_mode}" == "ncbi" ]]; then
-            echolog " - Downloading and parsing lineages (ncbi)" "1"
-            taxids_lines=$(filter_taxids_ncbi "${assembly_summary}")
-            echolog " - $((filtered_lines-taxids_lines)) assemblies removed not in taxids [${taxids}]" "1"
+            taxids_lines=$(filter_taxids_ncbi "${assembly_summary}" "${ncbi_tax}")
         else
-            echolog " - Downloading and parsing lineages (gtdb)" "1"
             taxids_lines=$(filter_taxids_gtdb "${assembly_summary}" "${gtdb_tax}")
-            echolog " - $((filtered_lines-taxids_lines)) assemblies removed not in taxids [${taxids}]" "1"
         fi
+        echolog " - $((filtered_lines-taxids_lines)) assemblies removed not in taxids [${taxids}]" "1"
         filtered_lines=${taxids_lines}
         if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
     fi
@@ -195,34 +204,36 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
     fi
 
     #TOP ASSEMBLIES
-    if [[ "${top_assemblies_species}" -gt 0 || "${top_assemblies_taxids}" -gt 0 ]]; then
-        top_lines=$(filter_top_assemblies "${assembly_summary}")
-        if [[ "${top_assemblies_species}" -gt 0 ]]; then
-            echolog " - $((filtered_lines-top_lines)) entries removed with top ${top_assemblies_species} assembly/species " "1"
+    if [[ ! -z "${top_assemblies}" ]]; then
+        # Add chosen rank as last col of a temporary assembly_summary
+        if [[ "${tax_mode}" == "ncbi" ]]; then
+            #taxids_lines=$(add_rank_ncbi "${assembly_summary}" "${assembly_summary}_rank" "${ncbi_tax}")
+            add_rank_ncbi "${assembly_summary}" "${assembly_summary}_rank" "${ncbi_rank_tax}"
         else
-            echolog " - $((filtered_lines-top_lines)) entries removed with top ${top_assemblies_taxids} assembly/taxid" "1"
+            taxids_lines=$(add_rank_gtdb "${assembly_summary}" "${assembly_summary}_rank" "${gtdb_tax}")
         fi
+        top_lines=$(filter_top_assemblies "${assembly_summary}" "${assembly_summary}_rank")
+        echolog " - $((filtered_lines-top_lines)) entries removed with top ${top_assemblies}" "1"
         filtered_lines=${top_lines}
         if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
     fi
+
+    #rm -f "${tmp_new_taxdump}" "${ncbi_tax}" "${ncbi_rank_tax}" "${gtdb_tax}"
+
     return 0
 }
 
-filter_taxids_ncbi() # parameter: ${1} assembly_summary file - return number of lines
+filter_taxids_ncbi() # parameter: ${1} assembly_summary file, ${2} ncbi_tax file - return number of lines
 {
     # Keep only selected taxid lineage, removing at the end duplicated entries from duplicates on taxids
-    tmp_new_taxdump="${target_output_prefix}new_taxdump.tar.gz"
-    download_static "${base_url}/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}"
-    unpack "${tmp_new_taxdump}" "${working_dir}" "taxidlineage.dmp"
-    tmp_taxidlineage="${working_dir}taxidlineage.dmp"
     tmp_lineage=$(tmp_file "lineage.tmp")
     for tx in ${taxids//,/ }; do
-        txids_lin=$(grep "[^0-9]${tx}[^0-9]" "${tmp_taxidlineage}" | cut -f 1) #get only taxids in the lineage section
+        txids_lin=$(grep "[^0-9]${tx}[^0-9]" "${2}" | cut -f 1) #get only taxids in the lineage section
         echolog " - $(count_lines "${txids_lin}") children taxids in the lineage of ${tx}" "0"
         echo "${txids_lin}" >> "${tmp_lineage}" 
     done
     lineage_taxids=$(sort ${tmp_lineage} | uniq | tr '\n' ',')${taxids} # put lineage back into the taxids variable with the provided taxids
-    rm "${tmp_new_taxdump}" "${tmp_taxidlineage}" "${tmp_lineage}"
+    rm "${tmp_lineage}"
 
     # Join with assembly_summary based on taxid field 6
     join -1 6 -2 1 <(sort -k 6,6 "${1}") <(echo "${lineage_taxids//,/$'\n'}" | sort -k 1,1) -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22" | sort | uniq > "${1}_taxids"
@@ -306,18 +317,41 @@ filter_gtdb() # parameter: ${1} assembly_summary file, ${2} gtdb_tax file,  ${3}
     count_lines_file "${1}"
 }
 
-filter_top_assemblies() # parameter: ${1} assembly_summary file - return number of lines
-{
-    if [ "${top_assemblies_species}" -gt 0 ]; then
-        taxcol="7";
-        top="${top_assemblies_species}";
+add_rank_ncbi(){ # parameter: ${1} assembly_summary file, ${2} modified assembly_summary file with rank as last col (23), ${3} ncbi_tax file - return number of lines
+    # rankedlineage.dmp cols (sep tab|tab):
+    # $1=taxid, $3=name, $5=species, $7=genus, $9=family, $11=order, $13=class, $15=phylum, $17=kingdom, $19=superkingdom
+    if [[ ! -z "${top_assemblies_rank}" ]]; then
+        # export taxid <tab> ranked name
+        tmp_ranked_taxids=$(tmp_file "ranked_taxids.tmp")
+        awk -v rank="${top_assemblies_rank}" 'BEGIN{
+                FS=OFS="\t";
+                r["species"]=5;
+                r["genus"]=7;
+                r["family"]=9;
+                r["order"]=11;
+                r["class"]=13;
+                r["phylum"]=15;
+                r["superkingdom"]=19;
+            }{
+                print $1, $r[rank] ? $r[rank] : $1;
+            }' "${3}" > "${tmp_ranked_taxids}"
+        
+        # Join ranked name by taxid col
+        join -1 6 -2 1 <(sort -k 6,6 "${1}") <(sort -k 1,1 "${tmp_ranked_taxids}") -t$'\t' -o "1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22,2.2" > "${2}"
     else
-        taxcol="6";
-        top="${top_assemblies_taxids}";
+        # Repeat leaf taxid
+        awk 'BEGIN{FS=OFS="\t"}{print $0,$6}' "${1}" > "${2}"
     fi
+    #rm "${tmp_ranked_taxids}"
+}
 
-    awk -v taxcol="${taxcol}" 'BEGIN{
-            FS="\t";OFS="\t";
+filter_top_assemblies() # parameter: ${1} assembly_summary file, ${2} modified assembly_summary file with rank as last col (23) - return number of lines
+{
+
+    taxcol="23";
+    # Added col with proper rank info
+    awk -v taxcol="23" 'BEGIN{
+            FS=OFS="\t";
             col5["reference genome"]=1;
             col5["representative genome"]=2;
             col5["na"]=3;
@@ -335,10 +369,10 @@ filter_top_assemblies() # parameter: ${1} assembly_summary file - return number 
         }{
             gsub("/","",$15); 
             print $1,$taxcol,$5 in col5 ? col5[$5] : 9 ,$12 in col12 ? col12[$12] : 9,$22 in col22 ? col22[$22] : 9 ,$15;
-        }' "${1}" | sort -t$'\t' -k 2,2 -k 3,3 -k 4,4 -k 5,5 -k 6nr,6 -k 1,1 | awk -v top="${top}" '{if(cnt[$2]<top){print $1;cnt[$2]+=1}}' > "${1}_top_acc"
-    join <(sort -k 1,1 "${1}_top_acc") <(sort -k 1,1 "${1}") -t$'\t' -o "2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,2.10,2.11,2.12,2.13,2.14,2.15,2.16,2.17,2.18,2.19,2.20,2.21,2.22" > "${1}_top"
+        }' "${2}" | sort -t$'\t' -k 2,2 -k 3,3 -k 4,4 -k 5,5 -k 6nr,6 -k 1,1 | awk -v top="${top_assemblies_num}" '{if(cnt[$2]<top){print $1;cnt[$2]+=1}}' > "${2}_top_acc"
+    join <(sort -k 1,1 "${2}_top_acc") <(sort -k 1,1 "${1}") -t$'\t' -o "2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,2.10,2.11,2.12,2.13,2.14,2.15,2.16,2.17,2.18,2.19,2.20,2.21,2.22" > "${1}_top"
     mv "${1}_top" "${1}"
-    rm "${1}_top_acc"
+    #rm "${2}" "${2}_top_acc"
     count_lines_file "${1}"
 }
 
@@ -631,7 +665,7 @@ function showhelp {
     echo $' -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive).\n\tExample: -F "2:PRJNA12377,PRJNA670754|14:Partial" (AND between cols, OR between values)\n\tColumn info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
     echo
     echo $'Taxonomy options:'
-    echo $' -M Taxonomy mode. gtdb will keep only assemblies from the latest GTDB release. ncbi keep only latest assemblies. \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
+    echo $' -M Taxonomy mode. gtdb will use only assemblies from the latest GTDB release. ncbi keep only latest assemblies. \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
     echo $' -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. \n\tSelection by ranks are also supported with rank:number (species:3)\n\t[species, genus, family, order, class, phylum, kingdom, superkingdom]\n\tSelection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first).\n\tDefault: 0'
     echo $' -a Keep the current version of the taxonomy database in the output folder'
     echo
@@ -670,8 +704,7 @@ refseq_category=""
 assembly_level=""
 custom_filter=""
 file_formats="assembly_report.txt"
-top_assemblies_species=0
-top_assemblies_taxids=0
+top_assemblies=0
 date_start=""
 date_end=""
 tax_mode="ncbi"
@@ -709,7 +742,7 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 # Parse -o and -B first to detect possible updates
-getopts_list="aA:b:B:c:d:D:e:E:f:F:g:hikl:L:mM:n:o:pP:rR:st:T:uVwxZ"
+getopts_list="aA:b:B:c:d:D:e:E:f:F:g:hikl:L:mM:n:o:prR:st:T:uVwxZ"
 OPTIND=1 # Reset getopts
 # Parses working_dir from "$@"
 while getopts "${getopts_list}" opt; do
@@ -756,7 +789,7 @@ OPTIND=1 # Reset getopts
 while getopts "${getopts_list}" opt "${args[@]}"; do
   case ${opt} in
     a) download_taxonomy=1 ;;
-    A) top_assemblies_taxids=${OPTARG} ;;
+    A) top_assemblies=${OPTARG} ;;
     b) label=${OPTARG} ;;
     B) rollback_label=${OPTARG} ;;
     c) refseq_category=${OPTARG} ;;
@@ -777,7 +810,6 @@ while getopts "${getopts_list}" opt "${args[@]}"; do
     n) conditional_exit=${OPTARG} ;;
     o) working_dir=${OPTARG} ;;
     p) url_list=1 ;;
-    P) top_assemblies_species=${OPTARG} ;;
     r) updated_sequence_accession=1 ;;
     R) retry_download_batch=${OPTARG} ;;
     s) silent=1 ;;
@@ -889,12 +921,17 @@ if [[ ! -z "${external_assembly_summary}" ]]; then
     fi
 fi
 
-# top taxids/species
-if [[ ! "${top_assemblies_species}" =~ ^[0-9]+$ ]]; then
-    echo "${top_assemblies_species}: invalid number of top assemblies by species"; exit 1;
-fi
-if [[ ! "${top_assemblies_taxids}" =~ ^[0-9]+$ ]]; then
-    echo "${top_assemblies_taxids}: invalid number of top assemblies by taxids"; exit 1;
+# top assemblies by rank
+if [[ ! "${top_assemblies}" =~ ^[0-9]+$ && ! "${top_assemblies}" =~ ^(superkingdom|phylum|class|order|family|genus|species)\:[1-9]+$ ]]; then
+    echo "${top_assemblies}: invalid top assemblies - should be a number > 0 or [superkingdom|phylum|class|order|family|genus|species]:number"; exit 1;
+else
+    top_assemblies_rank=""
+    if [[ "${top_assemblies}" =~ ^[0-9]+$ ]]; then
+        top_assemblies_num=${top_assemblies}
+    else
+        top_assemblies_rank=${top_assemblies%:*}
+        top_assemblies_num=${top_assemblies#*:}
+    fi
 fi
 
 ######################### Variable assignment ######################### 
@@ -1064,7 +1101,7 @@ if [[ "${MODE}" == "NEW" ]]; then
         write_history ${new_label} ${new_label} ${timestamp} ${new_assembly_summary}
 
         if [[ "${filtered_lines}" -gt 0 ]] ; then
-            echolog " - Downloading $((filtered_lines*(n_formats+1))) files with ${threads} threads" "1"
+            echolog "Downloading $((filtered_lines*(n_formats+1))) files with ${threads} threads" "1"
             download_files "${new_assembly_summary}" "1,20" "${file_formats}"
             echolog "" "1"
             # UPDATED INDICES assembly accession
@@ -1077,7 +1114,6 @@ if [[ "${MODE}" == "NEW" ]]; then
                 output_sequence_accession "${new_assembly_summary}" "1,20" "${file_formats}" "A" "${new_assembly_summary}" > "${new_output_prefix}updated_sequence_accession.txt"
                 echolog "Sequence accession report written [${new_output_prefix}updated_sequence_accession.txt]" "1"
             fi
-            echolog "" "1"
         fi
     fi
     
@@ -1096,12 +1132,10 @@ else # update/fix
     if [ "${missing_lines}" -gt 0 ]; then
         echolog " - ${missing_lines} missing files" "1"
         if [ "${dry_run}" -eq 0 ]; then
-
             if [ "${just_fix}" -eq 1 ]; then
                 write_history ${current_label} "" ${timestamp} ${current_assembly_summary}
             fi
-
-            echolog " - Downloading ${missing_lines} files with ${threads} threads" "1"
+            echolog "Downloading ${missing_lines} files with ${threads} threads" "1"
             download_files "${missing}" "2,3"
             echolog "" "1"
             # if new files were downloaded, rewrite reports (overwrite information on Removed accessions - all become Added)
