@@ -35,6 +35,7 @@ setup_file() {
     label="test"
     run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
+    assert [ $(count_files ${outdir} ${label}) -gt 0 ]
 
     # Check filenames
     for file in $(ls_files ${outdir} ${label}); do
@@ -47,7 +48,8 @@ setup_file() {
     label="test"
     run ./genome_updater.sh -d genbank -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
-    
+    assert [ $(count_files ${outdir} ${label}) -gt 0 ]
+
     # Check filenames
     for file in $(ls_files ${outdir} ${label}); do
         [[ "$(basename $file)" = GCA* ]] # filename starts with GCA_
@@ -75,15 +77,17 @@ setup_file() {
     sanity_check ${outdir} ${label}
 }
 
-@test "Species taxids" {
-    outdir=${outprefix}species-taxids/
+@test "Taxids leaves ncbi" {
+    # taxids on lower levels need the complete taxonomy to work properly (tested online)
+
+    outdir=${outprefix}taxids-leaves-ncbi/
     label="test"
     # Get all possible taxids from base assembly_summary
     txids=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 7 ) )
     #echo ${txids[@]} >&3
 
     # Use third
-    run ./genome_updater.sh -d refseq -S "${txids[2]}" -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -T "${txids[2]}" -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # Check if output contains only used taxids
@@ -93,6 +97,17 @@ setup_file() {
     # Used taxid should be the only one 
     assert_equal ${#txids_ret[@]} 1 #length
     assert_equal ${txids[2]} ${txids_ret[0]} #same taxid 
+}
+
+@test "Taxids leaves gtdb" {
+    # taxids on lower levels need the complete taxonomy to work properly (tested online)
+
+    outdir=${outprefix}taxids-leaves-gtdb/
+    label="test"
+    # Use fixed one
+    run ./genome_updater.sh -d refseq,genbank -T 's__MWBV01 sp002069705' -b ${label} -o ${outdir} -g archaea -M gtdb
+    sanity_check ${outdir} ${label}
+    assert [ $(count_files ${outdir} ${label}) -eq 1 ]
 }
 
 @test "Refseq category" {
@@ -164,11 +179,28 @@ setup_file() {
     done
 }
 
-@test "Top species" {
-    outdir=${outprefix}top-species/
+@test "Top 1 leaves ncbi" {
+    outdir=${outprefix}top-leaves-ncbi/
     label="test"
     # Keep only top 1 for selected species
-    run ./genome_updater.sh -d refseq,genbank -P 1 -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq,genbank -A 1 -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+
+    # Get counts of species taxids on output
+    txids_ret=$(get_values_as ${outdir}assembly_summary.txt 6 )
+    ret_occ=( $( echo ${txids_ret}  | tr ' ' '\n' | sort | uniq -c | awk '{print $1}' ) )
+   
+    # Should have one assembly for each species taxid
+    for occ in ${ret_occ[@]}; do
+        assert_equal ${occ} 1
+    done
+}
+
+@test "Top 1 species ncbi" {
+    outdir=${outprefix}top-species-ncbi/
+    label="test"
+    # Keep only top 1 for selected species
+    run ./genome_updater.sh -d refseq,genbank -A species:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # Get counts of species taxids on output
@@ -181,22 +213,47 @@ setup_file() {
     done
 }
 
-@test "Top taxids" {
-    outdir=${outprefix}top-taxids/
+@test "Top 1 superkingdom ncbi" {
+    outdir=${outprefix}top-superkingdom-ncbi/
     label="test"
-    # Keep only top 1 for selected leaf
-    run ./genome_updater.sh -d refseq,genbank -A 1 -b ${label} -o ${outdir}
+    # Keep only top 1 for selected species
+    run ./genome_updater.sh -d refseq -g archaea,fungi -A superkingdom:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
-    # Get counts of leaf taxids on output
-    txids_ret=$(get_values_as ${outdir}assembly_summary.txt 6 )
-    ret_occ=( $( echo ${txids_ret}  | tr ' ' '\n' | sort | uniq -c | awk '{print $1}' ) )
-   
-    # Should have one assembly for each leaf taxid
-    for occ in ${ret_occ[@]}; do
-        assert_equal ${occ} 1
-    done
+    # Check if output contains one file for archaea and one for fungi
+    assert [ $(count_files ${outdir} ${label}) -eq 2 ]
 }
+
+@test "Top gtdb" {
+    outdir=${outprefix}top-gtdb/
+    label_none="none"
+    # no top
+    run ./genome_updater.sh -M gtdb -d refseq,genbank -g archaea -b ${label_none} -o ${outdir}
+    sanity_check ${outdir} ${label_none}
+
+    # Keep only top 1 for species
+    label_species="top-species"
+    run ./genome_updater.sh -M gtdb -d refseq,genbank -g archaea -A species:1 -b ${label_species} -o ${outdir}
+    sanity_check ${outdir} ${label_species}
+    # Check if reduce number of files with filter
+    assert [ $(count_files ${outdir} ${label_none}) -gt $(count_files ${outdir} ${label_species}) ]
+
+    # Keep only top 1 for species
+    label_genus="top-genus"
+    run ./genome_updater.sh -M gtdb -d refseq,genbank -g archaea -A genus:1 -b ${label_genus} -o ${outdir}
+    sanity_check ${outdir} ${label_genus}
+    assert [ $(count_files ${outdir} ${label_species}) -gt $(count_files ${outdir} ${label_genus}) ]
+
+    # Keep only top 1 for species
+    label_phylum="top-phylum"
+    run ./genome_updater.sh -M gtdb -d refseq,genbank -g archaea -A phylum:1 -b ${label_phylum} -o ${outdir}
+    sanity_check ${outdir} ${label_phylum}
+    assert [ $(count_files ${outdir} ${label_genus}) -gt $(count_files ${outdir} ${label_phylum}) ]
+
+    # Check if not 0
+    assert [ $(count_files ${outdir} ${label_phylum}) -gt 0 ]
+}
+
 
 @test "Date start filter" {
     outdir=${outprefix}date-start-filter/
@@ -505,5 +562,17 @@ setup_file() {
 
     # Check log for updates
     grep "0 updated, [1-9][0-9]* removed, [1-9][0-9]* new entries" ${outdir}${label}/*.log # >&3
+    assert_success
+}
+
+
+@test "Tax. Mode GTDB" {
+    outdir=${outprefix}tax-gtdb/
+    label="test"
+    run ./genome_updater.sh -d refseq,genbank -g archaea -b ${label} -o ${outdir} -M gtdb
+    sanity_check ${outdir} ${label}
+    
+    # Check log for filer with GTDB
+    grep "[1-9][0-9]* assemblies removed not in GTDB" ${outdir}${label}/*.log # >&3
     assert_success
 }

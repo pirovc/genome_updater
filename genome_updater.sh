@@ -44,7 +44,6 @@ export LC_NUMERIC="en_US.UTF-8"
 #activate aliases in the script
 shopt -s expand_aliases
 alias sort="sort --field-separator=$'\t'"
-
 join_as_fields1="1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22,1.23"
 join_as_fields2="2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,2.10,2.11,2.12,2.13,2.14,2.15,2.16,2.17,2.18,2.19,2.20,2.21,2.22,2.23"
 
@@ -62,7 +61,9 @@ download_url() # parameter: ${1} url, ${2} output file/directory (omit/empty to 
         outfile="-" # STDOUT
     fi
     # Replace base url with local directory if provided
-    if [[ ! -z "${local_dir}" ]]; then url=${url/${url%/genomes/*}/${local_dir}}; fi
+    if [[ ! -z "${local_dir}" ]]; then 
+        url="${local_dir}/${url#*://*/}";
+    fi
     downloader "${outfile}" "${url}"
 }
 export -f download_url  #export it to be accessible to the parallel call
@@ -151,7 +152,7 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
         # Download and parse NCBI new_taxdump - use taxidlineage.dmp
         echolog " - Downloading taxonomy (ncbi)" "1"
         tmp_new_taxdump="${target_output_prefix}new_taxdump.tar.gz"
-        download_static "${base_url}/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}"
+        download_url "${base_url}/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}"
         unpack "${tmp_new_taxdump}" "${working_dir}" "taxidlineage.dmp"
         unpack "${tmp_new_taxdump}" "${working_dir}" "rankedlineage.dmp"    
         ncbi_tax="${working_dir}taxidlineage.dmp"
@@ -210,7 +211,7 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
     fi
 
     #TOP ASSEMBLIES
-    if [[ ! -z "${top_assemblies}" ]]; then
+    if [ "${top_assemblies_num}" -gt 0 ]; then
         # Add chosen rank as first col of a temporary assembly_summary
         if [[ "${tax_mode}" == "ncbi" ]]; then
             ranked_lines=$(add_rank_ncbi "${assembly_summary}" "${assembly_summary}_rank" "${ncbi_rank_tax}")
@@ -252,9 +253,11 @@ filter_taxids_ncbi() # parameter: ${1} assembly_summary file, ${2} ncbi_tax file
 filter_taxids_gtdb() # parameter: ${1} assembly_summary file, ${2} gtdb_tax file return number of lines
 {
     tmp_gtdb_acc=$(tmp_file "gtdb_acc.tmp")
-    for tx in ${taxids//,/ }; do
+    IFS=","
+    for tx in ${taxids}; do
         sed -e 's/\t/\t;/g' -e 's/$/;/p' ${2} | grep ";${tx};" | cut -f 1 >> "${tmp_gtdb_acc}"
     done
+    IFS=$' '
     join -1 1 -2 1 <(sort -k 1,1 "${1}") <(sort -k 1,1 "${tmp_gtdb_acc}" | uniq) -t$'\t' -o ${join_as_fields1} | sort | uniq > "${1}_taxids"
     mv "${1}_taxids" "${1}"
     rm "${tmp_gtdb_acc}"
@@ -711,8 +714,8 @@ function showhelp {
     echo $' -m Check MD5 of downloaded files'
     echo
     echo $'Report options:'
-    echo $' -u Report of updated assembly accessions (Added/Removed, assembly accession, url)'
-    echo $' -r Report of updated sequence accessions (Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid).\n\tOnly available when file format assembly_report.txt is selected and successfully downloaded'
+    echo $' -u Report of updated assembly accessions\n\t(Added/Removed, assembly accession, url)'
+    echo $' -r Report of updated sequence accessions\n\t(Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid)\n\tOnly available when file format assembly_report.txt is selected and successfully downloaded'
     echo $' -p Output list of URLs with successfuly and failed downloads'
     echo
     echo $'Misc. options:'
@@ -848,7 +851,7 @@ while getopts "${getopts_list}" opt "${args[@]}"; do
     R) retry_download_batch=${OPTARG} ;;
     s) silent=1 ;;
     t) threads=${OPTARG} ;;
-    T) taxids=${OPTARG// } ;; #remove spaces
+    T) taxids=${OPTARG} ;;
     u) updated_assembly_accession=1 ;;
     V) verbose_log=1 ;;
     w) silent_progress=1 ;;
@@ -938,12 +941,15 @@ if [[ "${tax_mode}" == "ncbi" ]]; then
             echo "${taxids}: invalid taxids"; exit 1;
         fi
     fi
+    taxids=${taxids// } # remove spaces
 elif [[ "${tax_mode}" == "gtdb" ]]; then
-    for tx in ${taxids//,/ }; do
+    IFS=","
+    for tx in ${taxids}; do
         if [[ ! "${tx}" =~ ^[dpcofgs]__.* ]]; then
             echo "${tx}: invalid taxid"; exit 1;
         fi
     done
+    IFS=$' '
 fi
 
 # If fixing/recovering, need to have assembly_summary.txt
@@ -1322,7 +1328,7 @@ if [ "${dry_run}" -eq 0 ]; then
             download_static "${base_url}/pub/taxonomy/taxdump.tar.gz" "${target_output_prefix}taxdump.tar.gz"
         else
             for url in "${gtdb_urls[@]}"; do
-                download_url "${url}" ${target_output_prefix}
+                download_static "${url}" "${target_output_prefix}${url##*/}"
             done
         fi
         echolog " - Done" "1"
