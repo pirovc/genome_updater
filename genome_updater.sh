@@ -359,8 +359,9 @@ add_rank_gtdb(){ # parameter: ${1} assembly_summary file, ${2} modified assembly
     # gtdb taxonomy (RS_ and GB_ already stripped)
     # accession.version <tab> d__Bacteria;p__Firmicutes;c__Bacilli;o__Staphylococcales;f__Staphylococcaceae;g__Staphylococcus;s__Staphylococcus aureus
     # export accession <tab> ranked name
+    #if top_assemblies_rank empty, default to species (leaves on gtdb)
     tmp_ranked_accessions=$(tmp_file "ranked_accessions.tmp")
-    cat "${3}" | tr ';' '\t' | awk -v rank="${top_assemblies_rank}" 'BEGIN{
+    cat "${3}" | tr ';' '\t' | awk -v rank="${top_assemblies_rank:-species}" 'BEGIN{
             FS=OFS="\t";
             r["species"]=8;
             r["genus"]=7;
@@ -719,7 +720,7 @@ function showhelp {
     echo $' -e External "assembly_summary.txt" file to recover data from. Mutually exclusive with -d / -g \n\tDefault: ""'
     echo $' -B Alternative version label to use as the current version.\n\tCan be used to rollback to an older version or to create multiple branches from a base version.\n\tDefault: ""'
     echo $' -R Number of attempts to retry to download files in batches \n\tDefault: 3'
-    echo $' -n Conditional exit status based on number of failures accepted, otherwise will Exit Code = 1.\n\tExample: -n 10 will exit code 0 up-to 10 failed downloads\n\t[integer for file number, float for percentage, 0 = off]\n\tDefault: 0'
+    echo $' -n Conditional exit status based on number of failures accepted, otherwise will Exit Code = 1.\n\tExample: -n 10 will exit code 1 if 10 or more files failed to download\n\t[integer for file number, float for percentage, 0 = off]\n\tDefault: 0'
     echo $' -L Downloader\n\t[wget,curl]\n\tDefault: wget'
     echo $' -x Allow the deletion of regular extra files (not symbolic links) found in the output folder'
     echo $' -s Silent output'
