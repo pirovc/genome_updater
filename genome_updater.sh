@@ -698,8 +698,8 @@ function showhelp {
     echo $' -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive).\n\tExample: -F "2:PRJNA12377,PRJNA670754|14:Partial" (AND between cols, OR between values)\n\tColumn info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
     echo
     echo $'Taxonomy options:'
-    echo $' -M Taxonomy mode. gtdb will filter only assemblies from the latest GTDB release. ncbi keep only latest assemblies (version_status). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
-    echo $' -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. \n\tSelection by ranks are also supported with rank:number (e.g genus:3)\n\t[species, genus, family, order, class, phylum, kingdom, superkingdom]\n\tSelection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first).\n\tDefault: 0'
+    echo $' -M Taxonomy mode. gtdb keeps only assemblies from the latest GTDB release. ncbi keeps only latest assemblies (version_status). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
+    echo $' -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. \n\tSelection by ranks are also supported with rank:number (e.g genus:3)\n\t[species, genus, family, order, class, phylum, kingdom, superkingdom]\n\tSelection order based on: RefSeq Category, Assembly level, Relation to type material, Date (recent first).\n\tDefault: 0'
     echo $' -a Keep the current version of the taxonomy database in the output folder'
     echo
     echo $'Run options:'
@@ -1316,8 +1316,14 @@ fi
 
 if [ "${dry_run}" -eq 0 ]; then
     if [ "${download_taxonomy}" -eq 1 ]; then
-        echolog "Downloading current Taxonomy database [${target_output_prefix}taxdump.tar.gz] " "1"
-        download_static "${base_url}/pub/taxonomy/taxdump.tar.gz" "${target_output_prefix}taxdump.tar.gz"
+        echolog "Downloading taxonomy database ["${tax_mode}"] to ${target_output_prefix}" "1"
+        if [[ "${tax_mode}" == "ncbi" ]]; then
+            download_static "${base_url}/pub/taxonomy/taxdump.tar.gz" "${target_output_prefix}taxdump.tar.gz"
+        else
+            for url in "${gtdb_urls[@]}"; do
+                download_url "${url}" ${target_output_prefix}
+            done
+        fi
         echolog " - Done" "1"
         echolog "" "1"
     fi
