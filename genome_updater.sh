@@ -704,7 +704,7 @@ function showhelp {
     echo $' -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive).\n\tExample: -F "2:PRJNA12377,PRJNA670754|14:Partial" (AND between cols, OR between values)\n\tColumn info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
     echo
     echo $'Taxonomy options:'
-    echo $' -M Taxonomy mode. gtdb keeps only assemblies from the latest GTDB release. ncbi keeps only latest assemblies (version_status). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
+    echo $' -M Taxonomy. gtdb keeps only assemblies in the latest GTDB release. ncbi keeps only latest assemblies (version_status). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
     echo $' -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. \n\tSelection by ranks are also supported with rank:number (e.g genus:3)\n\t[species, genus, family, order, class, phylum, kingdom, superkingdom]\n\tSelection order based on: RefSeq Category, Assembly level, Relation to type material, Date (recent first).\n\tDefault: 0'
     echo $' -a Keep the current version of the taxonomy database in the output folder'
     echo
@@ -726,7 +726,7 @@ function showhelp {
     echo $' -B Alternative version label to use as the current version.\n\tCan be used to rollback to an older version or to create multiple branches from a base version.\n\tDefault: ""'
     echo $' -R Number of attempts to retry to download files in batches \n\tDefault: 3'
     echo $' -n Conditional exit status based on number of failures accepted, otherwise will Exit Code = 1.\n\tExample: -n 10 will exit code 1 if 10 or more files failed to download\n\t[integer for file number, float for percentage, 0 = off]\n\tDefault: 0'
-    echo $' -L Downloader\n\t[wget,curl]\n\tDefault: wget'
+    echo $' -L Downloader\n\t[wget, curl]\n\tDefault: wget'
     echo $' -x Allow the deletion of regular extra files (not symbolic links) found in the output folder'
     echo $' -s Silent output'
     echo $' -w Silent output with download progress only'
