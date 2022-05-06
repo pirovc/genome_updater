@@ -6,7 +6,7 @@ Bash script to download ***and update*** snapshots of the NCBI genomes repositor
 
 ### Get genome_updater
 
-	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
+	wget --quiet --show-progress https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
 	chmod +x genome_updater.sh
 
 ### Download
@@ -25,14 +25,15 @@ Some days later, update the repository:
 
  - Arguments can be added or changed in the update. For example `./genome_updater.sh -o "arc_refseq_cg" -t 2` to use a different number of threads or `./genome_updater.sh -o "arc_refseq_cg" -l ""` to remove the "complete genome" filter.
 
- - `history.tsv` will be created in the output folder (`-o`), tracking versions and arguments used (obs: boolean arguments are not tracked).
+ - `history.tsv` will be created in the output folder (`-o`), tracking versions and arguments used (obs: boolean flags/arguments are not tracked - e.g. `-m`).
 
 ## Details
 
 genome_updater downloads and keeps several snapshots of a certain sub-set of the genomes repository, without redundancy and with incremental track of changes.
 
-- it runs on a working directory (defined with `-o`) and creates a snapshot (optionally named with `-b`) of refseq and/or genbank (`-d`) genome repositories based on selected organism groups (`-g`) and/or taxonomic ids (`-S`/`-T`) with the desired files type(s) (`-f`)
-- filters can be applied to refine the selection: RefSeq category (`-c`), assembly level (`-l`), dates (`-D`/`-E`), custom filters (`-F`), top assemblies (`-P`/`-A`), GTDB [3] compatible sequences (`-z`).
+- it runs on a working directory (defined with `-o`) and creates a snapshot (optionally named with `-b`) of refseq and/or genbank (`-d`) genome repositories based on selected organism groups (`-g`) and/or taxonomic ids (`-T`) with the desired files type(s) (`-f`)
+- filters can be applied to refine the selection: RefSeq category (`-c`), assembly level (`-l`), dates (`-D`/`-E`), custom filters (`-F`), top assemblies (`-A`)
+- `-M gtdb` enables GTDB [3] compability. Only assemblies from the latest GTDB release will be kept and taxonomic filters will work with GTDB nodes (e.g. `-T "c__Hydrothermarchaeia"` or `-A genus:3`)
 - the repository can be updated or changed with incremental changes. outdated files are kept in their respective version and repeated files linked to the new version. genome_updater keepts track of all changes and just downloads what is necessary
 
 ## Installation
@@ -60,19 +61,19 @@ To test if all genome_updater functions are running properly on your system:
 
 ### Downloading genomic sequences (.fna files) for the Complete Genome sequences from RefSeq for Bacteria and Archaea and keep them updated
 
-	# Check files to be downloaded
+	# Dry-run to check files available
 	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -l "complete genome" -f "genomic.fna.gz" -k
 	
 	# Download (-o output folder, -t threads, -m checking md5, -u extended assembly accession report)
 	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -l "Complete Genome" -f "genomic.fna.gz" -o "arc_bac_refseq_cg" -t 12 -u -m
 	
 	# Downloading additional .gbff files for the current snapshot (adding genomic.gbff.gz to -f , -i to just add files and not update)
-	./genome_updater.sh -f "genomic.fna.gz,genomic.gbff.gz" -o "arc_bac_refseq_cg" -u -m -i
+	./genome_updater.sh -f "genomic.fna.gz,genomic.gbff.gz" -o "arc_bac_refseq_cg" -i
 	
 	# Some days later, just check for updates but do not update
 	./genome_updater.sh -o "arc_bac_refseq_cg" -k
 
-	# Perform update (generating )
+	# Perform update
 	./genome_updater.sh -o "arc_bac_refseq_cg" -u -m
 
 ### Download all RNA Viruses (under the taxon Riboviria) on RefSeq
@@ -81,7 +82,7 @@ To test if all genome_updater functions are running properly on your system:
 
 ### Download all genome sequences used in the latests GTDB release
 
-	./genome_updater.sh -d "refseq,genbank" -f "genomic.fna.gz" -o "GTDB" -z -t 12
+	./genome_updater.sh -d "refseq,genbank" -g "archaea,bacteria" -f "genomic.fna.gz" -o "GTDB" -M gtdb -t 12
 
 ### Branching base version for specific filters
 
