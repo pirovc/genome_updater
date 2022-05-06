@@ -141,6 +141,7 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
     gtdb_tax=""
     ncbi_tax=""
     ncbi_rank_tax=""
+    tmp_new_taxdump=""
     if [[ "${tax_mode}" == "gtdb" ]]; then
         echolog " - Downloading taxonomy (gtdb)" "1"
         # Download and parse GTDB tax
@@ -150,14 +151,9 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
         done
     elif [[ "${tax_mode}" == "ncbi" && ( ! -z "${taxids}" || ( ! -z "${top_assemblies_rank}" && "${top_assemblies_rank}" != "species" ) ) ]]; then
         # Download and parse NCBI new_taxdump - use taxidlineage.dmp
+        tmp_new_taxdump="${working_dir}new_taxdump.tar.gz"
         echolog " - Downloading taxonomy (ncbi)" "1"
-        tmp_new_taxdump="${target_output_prefix}new_taxdump.tar.gz"
         download_url "${base_url}/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}"
-        unpack "${tmp_new_taxdump}" "${working_dir}" "taxidlineage.dmp"
-        unpack "${tmp_new_taxdump}" "${working_dir}" "rankedlineage.dmp"    
-        ncbi_tax="${working_dir}taxidlineage.dmp"
-        ncbi_rank_tax="${working_dir}rankedlineage.dmp"
-        rm -f "${tmp_new_taxdump}"
     fi
 
     if [[ "${tax_mode}" == "gtdb" ]]; then
@@ -188,6 +184,8 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
     # TAXIDS
     if [[ ! -z "${taxids}" ]]; then
         if [[ "${tax_mode}" == "ncbi" ]]; then
+            unpack "${tmp_new_taxdump}" "${working_dir}" "taxidlineage.dmp"
+            ncbi_tax="${working_dir}taxidlineage.dmp"
             taxids_lines=$(filter_taxids_ncbi "${assembly_summary}" "${ncbi_tax}")
         else
             taxids_lines=$(filter_taxids_gtdb "${assembly_summary}" "${gtdb_tax}")
@@ -214,6 +212,10 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
     if [ "${top_assemblies_num}" -gt 0 ]; then
         # Add chosen rank as first col of a temporary assembly_summary
         if [[ "${tax_mode}" == "ncbi" ]]; then
+            if [[ ! -z "${top_assemblies_rank}" && "${top_assemblies_rank}" != "species" ]]; then
+                unpack "${tmp_new_taxdump}" "${working_dir}" "rankedlineage.dmp"    
+                ncbi_rank_tax="${working_dir}rankedlineage.dmp"
+            fi
             ranked_lines=$(add_rank_ncbi "${assembly_summary}" "${assembly_summary}_rank" "${ncbi_rank_tax}")
         else
             ranked_lines=$(add_rank_gtdb "${assembly_summary}" "${assembly_summary}_rank" "${gtdb_tax}")
@@ -228,7 +230,7 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
         if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
     fi
 
-    rm -f "${ncbi_tax}" "${ncbi_rank_tax}" "${gtdb_tax}"
+    rm -f "${ncbi_tax}" "${ncbi_rank_tax}" "${gtdb_tax}" "${tmp_new_taxdump}"
     return 0
 }
 

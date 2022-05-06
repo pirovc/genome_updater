@@ -20,6 +20,11 @@ setup_file() {
     export outprefix
 }
 
+@test "Run genome_updater.sh without args" {
+    run ./genome_updater.sh
+    assert_failure
+}
+
 @test "Run genome_updater.sh and show help" {
     run ./genome_updater.sh -h
     assert_success
@@ -28,53 +33,93 @@ setup_file() {
 @test "Run genome_updater.sh and show debug info" {
     run ./genome_updater.sh -Z
     assert_success
+    assert_output --partial "GNU bash" # Loop for GNU --version info
 }
 
-@test "DB refseq" {
-    outdir=${outprefix}db-refseq/
-    label="test"
+@test "Database -d refseq" {
+    outdir=${outprefix}d-refseq/
+    label="refseq"
     run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
-    assert [ $(count_files ${outdir} ${label}) -gt 0 ]
-
-    # Check filenames
+    assert [ $(count_files ${outdir} ${label}) -gt 0 ] # contains files
     for file in $(ls_files ${outdir} ${label}); do
         [[ "$(basename $file)" = GCF* ]] # filename starts with GCF_
     done
 }
 
-@test "DB genbank" {
-    outdir=${outprefix}db-genbank/
-    label="test"
+@test "Database -d genbank" {
+    outdir=${outprefix}d-genbank/
+    label="genbank"
     run ./genome_updater.sh -d genbank -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
-    assert [ $(count_files ${outdir} ${label}) -gt 0 ]
-
-    # Check filenames
+    assert [ $(count_files ${outdir} ${label}) -gt 0 ] # contains files
     for file in $(ls_files ${outdir} ${label}); do
         [[ "$(basename $file)" = GCA* ]] # filename starts with GCA_
     done
 }
 
-@test "DB refseq and genbank" {
-    outdir=${outprefix}db-refseq-genbank/
-    label="test"
+@test "Database -d refseq,genbank" {
+    outdir=${outprefix}d-refseq-genbank/
+    
+    label="refseq"
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+    files_refseq=$(count_files ${outdir} ${label})
+    assert [ ${files_refseq} -gt 0 ] # contains files
+    for file in $(ls_files ${outdir} ${label}); do
+        [[ "$(basename $file)" = GCF* ]] # filename starts with GCF_
+    done
+
+    label="genbank"
+    run ./genome_updater.sh -d genbank -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+    files_genbank=$(count_files ${outdir} ${label})
+    assert [ ${files_genbank} -gt 0 ] # contains files
+    for file in $(ls_files ${outdir} ${label}); do
+        [[ "$(basename $file)" = GCA* ]] # filename starts with GCA_
+    done
+
+    label="refseq-genbank"
     run ./genome_updater.sh -d refseq,genbank -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
+    assert [ $(count_files ${outdir} ${label}) -eq $((files_refseq+files_genbank)) ]
 }
 
-@test "Organism group archaea" {
-    outdir=${outprefix}og-archaea/
+@test "Organism group -g archaea" {
+    outdir=${outprefix}g-archaea/
     label="test"
-    run ./genome_updater.sh -d refseq -o archaea -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g archaea -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
+    assert [ $(count_files ${outdir} ${label}) -gt 0 ] # contains files
 }
 
-@test "Organism group archaea and fungi" {
-    outdir=${outprefix}og-archaea-fungi/
+@test "Organism group -g fungi" {
+    outdir=${outprefix}g-fungi/
     label="test"
-    run ./genome_updater.sh -d refseq -o archaea,fungi -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g fungi -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
+    assert [ $(count_files ${outdir} ${label}) -gt 0 ] # contains files
+}
+
+@test "Organism group -g archaea,fungi" {
+    outdir=${outprefix}g-archaea-fungi/
+
+    label="archaea"
+    run ./genome_updater.sh -d refseq -g archaea -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+    files_arc=$(count_files ${outdir} ${label})
+    assert [ ${files_arc} -gt 0 ] # contains files
+
+    label="fungi"
+    run ./genome_updater.sh -d refseq -g fungi -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+    files_fun=$(count_files ${outdir} ${label})
+    assert [ ${files_fun} -gt 0 ] # contains files
+
+    label="archaea-fungi"
+    run ./genome_updater.sh -d refseq -g archaea,fungi -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+    assert [ $(count_files ${outdir} ${label}) -eq $((files_arc+files_fun)) ]
 }
 
 @test "Taxids leaves ncbi" {

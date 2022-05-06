@@ -23,24 +23,25 @@ setup_file() {
     export threads
 }
 
-# @test "DB refseq online" {
-#     outdir=${outprefix}db-refseq-online/
-#     label="test"
+@test "DB refseq online" {
+    outdir=${outprefix}db-refseq-online/
+    label="test"
 
-#     # Protozoa in refseq is the smallest available assembly_summary at the time of writing this test (01.2022)
-#     run ./genome_updater.sh -d refseq -g protozoa -b ${label} -t ${threads} -o ${outdir}
-#     sanity_check ${outdir} ${label}
-#     assert [ $(count_files ${outdir} ${label}) -gt 0 ]
+    # Protozoa in refseq is the smallest available assembly_summary at the time of writing this test (01.2022)
+    run ./genome_updater.sh -d refseq -g protozoa -b ${label} -t ${threads} -o ${outdir}
+    sanity_check ${outdir} ${label}
+    assert [ $(count_files ${outdir} ${label}) -gt 0 ]
 
-#     # Check filenames
-#     for file in $(ls_files ${outdir} ${label}); do
-#         [[ "$(basename $file)" = GCF* ]] # filename starts with GCF_
-#     done
-# }
+    # Check filenames
+    for file in $(ls_files ${outdir} ${label}); do
+        [[ "$(basename $file)" = GCF* ]] # filename starts with GCF_
+    done
+}
 
 @test "Taxids genus ncbi" {
     outdir=${outprefix}taxids-genus-ncbi/
-    
+    mkdir -p "${outdir}"
+
     # Protozoa in refseq is the smallest available assembly_summary at the time of writing this test (01.2022)
     # 5820 genus Plasmodium
     label_genus="genus"
@@ -60,16 +61,17 @@ setup_file() {
 
 @test "Taxids genus gtdb" {
     outdir=${outprefix}taxids-genus-gtdb/
-    #d__Archaea;p__Thermoproteota;c__Thermoproteia;o__Sulfolobales;f__Sulfolobaceae;g__Saccharolobus;s__Saccharolobus islandicus
-    #d__Archaea;p__Halobacteriota;c__Halobacteria;o__Halobacteriales;f__Natrialbaceae;g__Natrinema;s__Natrinema ejinorense
-    # g__Saccharolobus
+    # p__Undinarchaeota lineage
+    #d__Archaea; p__Undinarchaeota; c__Undinarchaeia; o__Undinarchaeales; f__Naiadarchaeaceae; g__Naiadarchaeum; s__Naiadarchaeum limnaeum 
+    #d__Archaea; p__Undinarchaeota; c__Undinarchaeia; o__Undinarchaeales; f__Undinarchaeaceae; g__Undinarchaeum; s__Undinarchaeum marinum
+    #d__Archaea; p__Undinarchaeota; c__Undinarchaeia; o__Undinarchaeales; f__UBA543; g__UBA543; s__UBA543 sp002502135 
+
     label_genus="genus"
-    run ./genome_updater.sh -d refseq,genbank -g archaea -M gtdb -T "g__Saccharolobus,g__Natrinema" -b ${label_genus} -t ${threads} -o ${outdir}
+    run ./genome_updater.sh -d genbank -g archaea -M gtdb -T "g__Naiadarchaeum,g__Undinarchaeum" -b ${label_genus} -t ${threads} -o ${outdir}
     sanity_check ${outdir} ${label_genus}
 
-    # 5794 phylum Apicomplexa
     label_phylum="phylum"
-    run ./genome_updater.sh -d refseq,genbank -g archaea -M gtdb -T "p__Thermoproteota,p__Halobacteriota" -b ${label_phylum} -t ${threads} -o ${outdir}
+    run ./genome_updater.sh -d genbank -g archaea -M gtdb -T "p__Undinarchaeota" -b ${label_phylum} -t ${threads} -o ${outdir}
     sanity_check ${outdir} ${label_phylum}
     
     # More files filtering by phylum than genus
@@ -152,10 +154,7 @@ setup_file() {
     outdir=${outprefix}multiple-file-types/
     label="test"
 
-    # archaea has a relative small assembly_summary
-    # taxid 2180 small archaeal genome (as of 01.2022)
-    # Get one assembly for the species (3 file types)
-    run ./genome_updater.sh -d refseq -g archaea -T 2180 -A 1 -b ${label} -t ${threads} -o ${outdir} -f "assembly_report.txt,protein.faa.gz,genomic.fna.gz"
+    run ./genome_updater.sh -d refseq -g protozoa -D 20210101 -E 20220101 -b ${label} -t ${threads} -o ${outdir} -f "assembly_report.txt,protein.faa.gz,genomic.fna.gz"
     sanity_check ${outdir} ${label} 3
 }
 
@@ -167,8 +166,8 @@ setup_file() {
     run ./genome_updater.sh -d refseq -g protozoa -T 5690 -A 1 -b ${label} -o ${outdir} -t ${threads} 
     sanity_check ${outdir} ${label}
 
-    # Get counts of species taxids on output
-    txids_ret=$(get_values_as ${outdir}assembly_summary.txt 7 )
+    # Get counts of taxids on output
+    txids_ret=$(get_values_as ${outdir}assembly_summary.txt 6 )
     ret_occ=( $( echo ${txids_ret}  | tr ' ' '\n' | sort | uniq -c | awk '{print $1}' ) )
    
     # Should have one assembly for each species taxid
@@ -181,8 +180,7 @@ setup_file() {
     outdir=${outprefix}md5-verbose-log/
     label="test"
 
-    # 5693 Trypanosoma cruzi
-    run ./genome_updater.sh -d refseq -g protozoa -T 5693 -A 1 -b ${label} -o ${outdir} -t ${threads} -m -V
+    run ./genome_updater.sh -d refseq -g protozoa -D 20210101 -E 20220101 -b ${label} -o ${outdir} -t ${threads} -m -V
     sanity_check ${outdir} ${label}
 
     # Check if MD5 is verified
@@ -202,11 +200,22 @@ setup_file() {
     assert_equal $(count_files ${outdir} ${label}) 1
 }
 
-@test "Download taxdump" {
-    outdir=${outprefix}download-taxdump/
+@test "Download taxdump gtdb" {
+    outdir=${outprefix}download-taxdump-gtdb/
     label="test"
 
-    run ./genome_updater.sh -d refseq -g protozoa -T 5693 -A 1 -b ${label} -o ${outdir} -t ${threads} -a
+    run ./genome_updater.sh -d refseq -g archaea -D 20210101 -E 20220101 -b ${label} -o ${outdir} -t ${threads} -a -M gtdb
+    sanity_check ${outdir} ${label}
+
+    # Downloaded taxdump
+    assert_file_exist ${outdir}${label}/ar53_taxonomy.tsv.gz
+}
+
+@test "Download taxdump ncbi" {
+    outdir=${outprefix}download-taxdump-ncbi/
+    label="test"
+
+    run ./genome_updater.sh -d refseq -g protozoa -D 20210101 -E 20220101 -b ${label} -o ${outdir} -t ${threads} -a -M ncbi
     sanity_check ${outdir} ${label}
 
     # Downloaded taxdump
