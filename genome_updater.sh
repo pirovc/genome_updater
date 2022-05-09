@@ -78,38 +78,78 @@ unpack() # parameter: ${1} file, ${2} output folder[, ${3} files to unpack]
     tar xf "${1}" -C "${2}" "${3}"
 }
 
-count_lines(){ # parameter: ${1} file - return number of lines
+count_lines() # parameter: ${1} file - return number of lines
+{
     echo ${1:-} | sed '/^\s*$/d' | wc -l | cut -f1 -d' '
 }
 
-count_lines_file(){ # parameter: ${1} file - return number of lines
+count_lines_file() # parameter: ${1} file - return number of lines
+{
     sed '/^\s*$/d' ${1:-} | wc -l | cut -f1 -d' '
+}
+
+check_assembly_summary() # parameter: ${1} assembly_summary file - return 0 true 1 false
+{
+    # file exists and it's not empty
+    if [ ! -s "${1}" ]; then return 1; fi
+
+    # if contains header char parts of the header anywhere
+    grep -m 1 "^#" "${1}" > /dev/null
+    if [ $? -eq 0 ]; then return 1; fi
+
+    # if contains parts of the header anywhere
+    ##   See ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt for a description of the columns in this file.
+    grep -m 1 "ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt" "${1}" > /dev/null
+    if [ $? -eq 0 ]; then return 1; fi
+
+    # if every line has 23 cols
+    awk 'BEGIN{FS=OFS="\t"}{print NF}' "${1}" | grep -v "23" > /dev/null
+    if [ $? -eq 0 ]; then return 1; fi
+
+    # if every line starts with GCF_ or GCA_
+    grep -v "^GC[FA]_" "${1}" > /dev/null
+    if [ $? -eq 0 ]; then return 1; fi
+
+    return 0;
 }
 
 get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, ${3} organism_group - return number of lines
 {
-    for d in ${2//,/ }
-    do
-        # If no organism group is chosen, get complete assembly_summary for the database
-        if [[ -z "${3}" ]]; then
-            download_url "${base_url}/genomes/${d}/assembly_summary_${d}.txt" | tail -n+3 >> "${1}"
-            if [[ "${tax_mode}" == "gtdb" ]]; then
-                download_url "${base_url}/genomes/${d}/assembly_summary_${d}_historical.txt" | tail -n+3 >> "${1}"
-            fi
-        else
-            for og in ${3//,/ }
-            do
-                #special case: human
-                if [[ "${og}" == "human" ]]
-                then
-                    og="vertebrate_mammalian/Homo_sapiens"
-                fi
-                download_url "${base_url}/genomes/${d}/${og}/assembly_summary.txt" | tail -n+3 >> "${1}"
-                if [[ "${tax_mode}" == "gtdb" ]]; then
-                    download_url "${base_url}/genomes/${d}/${og}/assembly_summary_historical.txt" | tail -n+3 >> "${1}"
-                fi
-            done
+    for (( att=1; att<=${retry_download_batch}; att++ )); do
+
+        if [ "${att}" -gt 1 ]; then
+            echolog " - Failed to download a valid assembly_summary.txt. Download attempt #${att}" "0"
+            rm -f "${1}"
         fi
+
+        for d in ${2//,/ }
+        do
+            # If no organism group is chosen, get complete assembly_summary for the database
+            if [[ -z "${3}" ]]; then
+                download_url "${base_url}/genomes/${d}/assembly_summary_${d}.txt" | tail -n+3 >> "${1}"
+                if [[ "${tax_mode}" == "gtdb" ]]; then
+                    download_url "${base_url}/genomes/${d}/assembly_summary_${d}_historical.txt" | tail -n+3 >> "${1}"
+                fi
+            else
+                for og in ${3//,/ }
+                do
+                    #special case: human
+                    if [[ "${og}" == "human" ]]
+                    then
+                        og="vertebrate_mammalian/Homo_sapiens"
+                    fi
+                    download_url "${base_url}/genomes/${d}/${og}/assembly_summary.txt" | tail -n+3 >> "${1}"
+                    if [[ "${tax_mode}" == "gtdb" ]]; then
+                        download_url "${base_url}/genomes/${d}/${og}/assembly_summary_historical.txt" | tail -n+3 >> "${1}"
+                    fi
+                done
+            fi
+        done
+
+        if check_assembly_summary "${1}"; then 
+            break; 
+        fi
+
     done
     count_lines_file "${1}"
 }
@@ -1113,6 +1153,10 @@ if [[ "${MODE}" == "NEW" ]]; then
         echolog "Using external assembly summary [$(readlink -m ${external_assembly_summary})]" "1"
         # Skip possible header lines
         grep -v "^#" "${external_assembly_summary}" > "${new_assembly_summary}";
+        if ! check_assembly_summary "${new_assembly_summary}"; then 
+            echolog " - Invalid external assembly_summary.txt" "1";   
+            exit 1; 
+        fi
         echolog " - Database [${database}] selection is ignored when using an external assembly summary" "1";
         all_lines=$(count_lines_file "${new_assembly_summary}")
     else
