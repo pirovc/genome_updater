@@ -61,36 +61,36 @@ To test if all genome_updater functions are running properly on your system:
 
 ## Examples
 
-### Download Archaea, Bacteria, Fungi and Viral complete genome sequences from refseq
+### Archaea, Bacteria, Fungi and Viral complete genome sequences from refseq
 
 	./genome_updater.sh -d "refseq" -g "archaea,bacteria,fungi,viral" -f "genomic.fna.gz" -o "arc_bac_fun_vir_refseq_cg" -t 12 -m
 	
 	# Update some days later
 	./genome_updater.sh -o "arc_bac_fun_vir_refseq_cg" -t 12 -m
 	
-### Download all RNA Viruses (under the taxon Riboviria) on refseq
+### All RNA Viruses (under the taxon Riboviria) on refseq
 
 	./genome_updater.sh -d "refseq" -T "2559587" -f "genomic.fna.gz" -o "all_rna_virus" -t 12 -m
 	
-### Download one genome assembly for each entry (leaf taxonomic nodes) in genbank
+### One genome assembly for each entry (leaf taxonomic nodes) in genbank
     
     ./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_genbank" -P 1 -t 12 -m 
     
-### Download one genome assembly for each species in genbank
+### One genome assembly for each species in genbank
     
     ./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1species_bacteria_genbank" -P "species:1" -t 12 -m 
     
-### Download all genome sequences used in the latests GTDB release
+### All genome sequences used in the latests GTDB release
 
 	./genome_updater.sh -d "refseq,genbank" -g "archaea,bacteria" -f "genomic.fna.gz" -o "GTDB_complete" -M "gtdb" -t 12 -m
 	
-### Download two genome assemblied for every genus in GTDB
+### Two genome assemblies for every genus in GTDB
     
     ./genome_updater.sh -d "refseq,genbank" -g "archaea,bacteria" -f "genomic.fna.gz" -o "GTDB_top2genus" -M "gtdb" -P "genus:2" -t 12 -m
 
-### Download all assemblied from a specific family in GTDB
+### All assemblies from a specific family in GTDB
     
-    ./genome_updater.sh -d "refseq,genbank" -g "archaea,bacteria" -f "genomic.fna.gz" -o "GTDB_top2genus" -M "gtdb" -T "f__Gastranaerophilaceae" -t 12 -m
+    ./genome_updater.sh -d "refseq,genbank" -g "archaea,bacteria" -f "genomic.fna.gz" -o "GTDB_family_Gastranaerophilaceae" -M "gtdb" -T "f__Gastranaerophilaceae" -t 12 -m
 
 ### Recovering fasta files from a previously obtained assembly_summary.txt
 
@@ -128,9 +128,9 @@ To test if all genome_updater functions are running properly on your system:
 
 	./genome_updater.sh -d "refseq" -g "fungi" -f "assembly_report.txt" -o "fungi" -t 12 -r -p
 
-### Use curl (default wget), change timeout and retries for download 
+### Use curl (default wget), change timeout and retries for download, increase retries
 
-	retries=10 timeout=600 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt" -L curl
+	retries=10 timeout=600 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt" -L curl -R 6
 
 ## Reports
 
