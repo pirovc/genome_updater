@@ -780,7 +780,7 @@ function showhelp {
     echo $'Misc. options:'
     echo $' -b Version label\n\tDefault: current timestamp (YYYY-MM-DD_HH-MM-SS)'
     echo $' -e External "assembly_summary.txt" file to recover data from. Mutually exclusive with -d / -g \n\tDefault: ""'
-    echo $' -B Alternative version label to use as the current version.\n\tCan be used to rollback to an older version or to create multiple branches from a base version.\n\tDefault: ""'
+    echo $' -B Alternative version label to use as the current version. Mutually exclusive with -i.\n\tCan be used to rollback to an older version or to create multiple branches from a base version.\n\tDefault: ""'
     echo $' -R Number of attempts to retry to download files in batches \n\tDefault: 3'
     echo $' -n Conditional exit status based on number of failures accepted, otherwise will Exit Code = 1.\n\tExample: -n 10 will exit code 1 if 10 or more files failed to download\n\t[integer for file number, float for percentage, 0 = off]\n\tDefault: 0'
     echo $' -L Downloader\n\t[wget, curl]\n\tDefault: wget'
@@ -1035,6 +1035,10 @@ else
     fi
 fi
 
+if [[ ! -z "${rollback_label}" && "${just_fix}" -eq 1 ]]; then
+    echo "-B and -i are mutually exclusive. If updating from previously used parameters, use -B ''"; exit 1;
+fi
+
 ######################### Variable assignment ######################### 
 
 # Define downloader to use
@@ -1081,23 +1085,20 @@ else
 fi
 
 # If file already exists and it's a new repo
-if [[ ( -f "${default_assembly_summary}" || -L "${default_assembly_summary}" ) && "${MODE}" == "NEW" ]]; then
-    echo "Cannot start a new repository with an existing assembly_summary.txt in the working directory [${default_assembly_summary}]"; exit 1;
+if [[ "${MODE}" == "NEW" ]]; then
+    if [[ -f "${default_assembly_summary}" || -L "${default_assembly_summary}" ]]; then
+        echo "Cannot start a new repository with an existing assembly_summary.txt in the working directory [${default_assembly_summary}]"; exit 1;
+    fi
 fi
 
 # If file already exists and it's a new repo
-if [[ ! -f "${default_assembly_summary}" && "${MODE}" == "FIX" ]]; then
-    echo "Cannot find assembly_summary.txt version to fix [${default_assembly_summary}]"; exit 1;
+if [[ "${MODE}" == "FIX" ]]; then
+    if [[ ! -f "${default_assembly_summary}" ]]; then
+        echo "Cannot find assembly_summary.txt version to fix [${default_assembly_summary}]"; exit 1;
+    fi
 fi
 
-# mode specific variables
-if [[ "${MODE}" == "UPDATE" ]] || [[ "${MODE}" == "FIX" ]]; then # get existing version information
-
-    # Check if default assembly_summary is a symbolic link to some version
-    if [[ ! -L "${default_assembly_summary}"  ]]; then
-        echo "assembly_summary.txt is not a link to any version [${default_assembly_summary}]"; exit 1
-    fi
-    
+if [[ "${MODE}" == "UPDATE" ]]; then
     # Rollback to a different base version
     if [[ ! -z "${rollback_label}" ]]; then
         rollback_assembly_summary="${working_dir}/${rollback_label}/assembly_summary.txt"
@@ -1108,7 +1109,13 @@ if [[ "${MODE}" == "UPDATE" ]] || [[ "${MODE}" == "FIX" ]]; then # get existing 
             echo "Rollback label/assembly_summary.txt not found ["${rollback_assembly_summary}"]"; exit 1
         fi
     fi
+fi
 
+if [[ "${MODE}" == "UPDATE" ]] || [[ "${MODE}" == "FIX" ]]; then # get existing version information
+    # Check if default assembly_summary is a symbolic link to some version
+    if [[ ! -L "${default_assembly_summary}"  ]]; then
+        echo "assembly_summary.txt is not a link to any version [${default_assembly_summary}]"; exit 1
+    fi
     current_assembly_summary="$(readlink -m ${default_assembly_summary})"
     current_output_prefix="$(dirname ${current_assembly_summary})/"
     current_label="$(basename ${current_output_prefix})" 

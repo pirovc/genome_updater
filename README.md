@@ -74,11 +74,11 @@ To test if all genome_updater functions are running properly on your system:
 	
 ### One genome assembly for each entry (leaf taxonomic nodes) in genbank
     
-    ./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_genbank" -P 1 -t 12 -m 
+    ./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_genbank" -A 1 -t 12 -m 
     
 ### One genome assembly for each species in genbank
     
-    ./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1species_bacteria_genbank" -P "species:1" -t 12 -m 
+    ./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1species_bacteria_genbank" -A "species:1" -t 12 -m 
     
 ### All genome sequences used in the latests GTDB release
 
@@ -86,7 +86,7 @@ To test if all genome_updater functions are running properly on your system:
 	
 ### Two genome assemblies for every genus in GTDB
     
-    ./genome_updater.sh -d "refseq,genbank" -g "archaea,bacteria" -f "genomic.fna.gz" -o "GTDB_top2genus" -M "gtdb" -P "genus:2" -t 12 -m
+    ./genome_updater.sh -d "refseq,genbank" -g "archaea,bacteria" -f "genomic.fna.gz" -o "GTDB_top2genus" -M "gtdb" -A "genus:2" -t 12 -m
 
 ### All assemblies from a specific family in GTDB
     
@@ -173,7 +173,7 @@ or
 
 ## Top assemblies
 
-The top assemblies (`-P`/`-A`) will be selected based on the species/taxid entries in the assembly_summary.txt and not for the taxids provided with  (`-S`/`-T`). They are selected sorted by categories in the following order of importance:
+The top assemblies (`-A`) will be selected based the assembly_summary.txt file. They are selected sorted by categories in the following order of importance:
 	
 	A) refseq Category: 
 		1) reference genome
@@ -270,7 +270,7 @@ The top assemblies (`-P`/`-A`) will be selected based on the species/taxid entri
 		Default: current timestamp (YYYY-MM-DD_HH-MM-SS)
 	 -e External "assembly_summary.txt" file to recover data from. Mutually exclusive with -d / -g 
 		Default: ""
-	 -B Alternative version label to use as the current version.
+	 -B Alternative version label to use as the current version. Mutually exclusive with -i.
 		Can be used to rollback to an older version or to create multiple branches from a base version.
 		Default: ""
 	 -R Number of attempts to retry to download files in batches 
@@ -287,6 +287,7 @@ The top assemblies (`-P`/`-A`) will be selected based on the species/taxid entri
 	 -w Silent output with download progress only
 	 -V Verbose log
 	 -Z Print debug information and run in debug mode
+
 
 ## References:
 
