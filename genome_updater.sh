@@ -1168,8 +1168,8 @@ if [[ "${MODE}" == "NEW" ]]; then
 
     if [[ ! -z "${external_assembly_summary}" ]]; then
         echolog "Using external assembly summary [$(readlink -m ${external_assembly_summary})]" "1"
-        # Skip possible header lines
-        grep -v "^#" "${external_assembly_summary}" > "${new_assembly_summary}"
+        # Skip possible header lines (|| true -> do not output error if none)
+        grep -v "^#" "${external_assembly_summary}" > "${new_assembly_summary}" || true
         if ! check_assembly_summary "${new_assembly_summary}"; then 
             echolog " - Invalid external assembly_summary.txt" "1"
             exit 1; 

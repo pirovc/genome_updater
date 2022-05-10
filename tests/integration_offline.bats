@@ -634,7 +634,7 @@ setup_file() {
     run ./genome_updater.sh -d refseq -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_headermiddle.txt
     assert_failure
     label="justheader"
-    run ./genome_updater.sh -d refseq -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid:justheader.txt
+    run ./genome_updater.sh -d refseq -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_justheader.txt
     assert_failure
     label="xCF"
     run ./genome_updater.sh -d refseq -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_xCF.txt
