@@ -9,6 +9,10 @@ setup_file() {
     # Get tests dir
     DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )"
    
+
+    files_dir="$DIR/files/"
+    export files_dir
+
     # Export local_dir to use local files offline instead of ncbi ftp online when testing
     local_dir="$DIR/files/"
     export local_dir
@@ -610,7 +614,6 @@ setup_file() {
     assert_success
 }
 
-
 @test "Tax. Mode GTDB" {
     outdir=${outprefix}tax-gtdb/
     label="test"
@@ -620,4 +623,20 @@ setup_file() {
     # Check log for filer with GTDB
     grep "[1-9][0-9]* assemblies removed not in GTDB" ${outdir}${label}/*.log # >&3
     assert_success
+}
+
+@test "Invalid assembly_summary.txt" {
+    outdir=${outprefix}invalid-as/
+    label="cols"
+    run ./genome_updater.sh -d refseq -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_cols.txt
+    assert_failure
+    label="headermiddle"
+    run ./genome_updater.sh -d refseq -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_headermiddle.txt
+    assert_failure
+    label="justheader"
+    run ./genome_updater.sh -d refseq -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid:justheader.txt
+    assert_failure
+    label="xCF"
+    run ./genome_updater.sh -d refseq -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_xCF.txt
+    assert_failure
 }

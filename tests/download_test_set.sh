@@ -23,6 +23,9 @@ do
         fi
         head -n 2 "full_assembly_summary.txt" > "${out_as}"
         tail -n+3 "full_assembly_summary.txt" | shuf | head -n ${entries} >> "${out_as}"
+        # create a dummy historical for gtdb tests (just a copy)
+        cp "${out_as}" "${out_as%.*}_historical.txt"
+        # Download files
         tail -n+3 "${out_as}" | cut -f 20 | sed 's/https:/ftp:/g' | xargs -P ${entries} wget --quiet --show-progress --directory-prefix="${outfld}" --recursive --level 2 --accept "${ext}"
         cp -r "${outfld}ftp.ncbi.nlm.nih.gov/genomes/" "${outfld}"
         rm -rf "full_assembly_summary.txt" "${outfld}ftp.ncbi.nlm.nih.gov/" 

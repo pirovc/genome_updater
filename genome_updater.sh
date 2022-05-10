@@ -49,7 +49,7 @@ join_as_fields2="2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,2.10,2.11,2.12,2.13,2.14,2.
 
 download_url() # parameter: ${1} url, ${2} output file/directory (omit/empty to STDOUT)
 {
-    url=${1}
+    url="${1}"
     outfiledir="${2:-}"
     if [[ ! -z "${outfiledir}" ]]; then
         if [[ -d "${outfiledir}" ]]; then
@@ -60,6 +60,7 @@ download_url() # parameter: ${1} url, ${2} output file/directory (omit/empty to 
     else
         outfile="-" # STDOUT
     fi
+
     # Replace base url with local directory if provided
     if [[ ! -z "${local_dir}" ]]; then 
         url="${local_dir}/${url#*://*/}";
@@ -78,40 +79,96 @@ unpack() # parameter: ${1} file, ${2} output folder[, ${3} files to unpack]
     tar xf "${1}" -C "${2}" "${3}"
 }
 
-count_lines(){ # parameter: ${1} file - return number of lines
+count_lines() # parameter: ${1} file - return number of lines
+{
     echo ${1:-} | sed '/^\s*$/d' | wc -l | cut -f1 -d' '
 }
 
-count_lines_file(){ # parameter: ${1} file - return number of lines
+count_lines_file() # parameter: ${1} file - return number of lines
+{
     sed '/^\s*$/d' ${1:-} | wc -l | cut -f1 -d' '
+}
+
+check_assembly_summary() # parameter: ${1} assembly_summary file - return 0 true 1 false
+{
+    # file exists and it's not empty
+    if [ ! -s "${1}" ]; then return 1; fi
+
+    # Last char is empty (line break)
+    if [ ! -z $(tail -c -1 "${1}") ]; then return 1; fi
+
+    # if contains header char parts of the header anywhere starting lines
+    grep -m 1 "^#" "${1}" #> /dev/null
+    if [ $? -eq 0 ]; then return 1; fi
+
+    # if contains parts of the header anywhere
+    ##   See ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt for a description of the columns in this file.
+    grep -m 1 "ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt" "${1}" > /dev/null
+    if [ $? -eq 0 ]; then return 1; fi
+    # assembly_accession    bioproject  biosample   wgs_master  refseq_category taxid   species_taxid   organism_name   infraspecific_name  isolate version_status  assembly_levelrelease_type  genome_rep  seq_rel_date    asm_name    submitter   gbrs_paired_asm paired_asm_comp ftp_path    excluded_from_refseq    relation_to_type_material   asm_not_live_date
+    grep -m 1 " assembly_accession" "${1}" > /dev/null
+    if [ $? -eq 0 ]; then return 1; fi
+
+    # if every line has 23 cols
+    awk 'BEGIN{FS=OFS="\t"}{print NF}' "${1}" | grep -v "23" > /dev/null
+    if [ $? -eq 0 ]; then return 1; fi
+
+    # if every line starts with GCF_ or GCA_
+    grep -v "^GC[FA]_" "${1}" > /dev/null
+    if [ $? -eq 0 ]; then return 1; fi
+
+    return 0;
 }
 
 get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, ${3} organism_group - return number of lines
 {
+    # Collect urls to download
+    as_to_download=()
     for d in ${2//,/ }
     do
         # If no organism group is chosen, get complete assembly_summary for the database
         if [[ -z "${3}" ]]; then
-            download_url "${base_url}/genomes/${d}/assembly_summary_${d}.txt" | tail -n+3 >> "${1}"
+            as_to_download+=("${base_url}genomes/${d}/assembly_summary_${d}.txt")
             if [[ "${tax_mode}" == "gtdb" ]]; then
-                download_url "${base_url}/genomes/${d}/assembly_summary_${d}_historical.txt" | tail -n+3 >> "${1}"
+                as_to_download+=("${base_url}genomes/${d}/assembly_summary_${d}_historical.txt")
             fi
         else
             for og in ${3//,/ }
             do
                 #special case: human
-                if [[ "${og}" == "human" ]]
-                then
-                    og="vertebrate_mammalian/Homo_sapiens"
-                fi
-                download_url "${base_url}/genomes/${d}/${og}/assembly_summary.txt" | tail -n+3 >> "${1}"
+                if [[ "${og}" == "human" ]]; then og="vertebrate_mammalian/Homo_sapiens"; fi
+                as_to_download+=("${base_url}genomes/${d}/${og}/assembly_summary.txt")
                 if [[ "${tax_mode}" == "gtdb" ]]; then
-                    download_url "${base_url}/genomes/${d}/${og}/assembly_summary_historical.txt" | tail -n+3 >> "${1}"
+                    as_to_download+=("${base_url}genomes/${d}/${og}/assembly_summary_historical.txt")
                 fi
             done
         fi
     done
-    count_lines_file "${1}"
+
+    # Download files with retry attempts, checking consistency of assembly_summary after every download
+    for as in "${as_to_download[@]}"
+    do
+        for (( att=1; att<=${retry_download_batch}; att++ )); do
+            if [ "${att}" -gt 1 ]; then
+                echolog " - Failed to download ${as}. Trying again #${att}" "1"
+            fi
+            download_url "${as}" | tail -n+3 > "${1}.tmp"
+            if check_assembly_summary "${1}.tmp"; then
+                cat "${1}.tmp" >> "${1}"
+                break; 
+            elif [ ${att} -eq ${retry_download_batch} ]; then
+                return 1; # failed to download after all attempts
+            fi
+        done
+    done
+    rm -f "${1}.tmp"
+
+    # Final check full file
+    if check_assembly_summary "${1}"; then
+        return 0;
+    else
+        return 1;
+    fi
 }
 
 write_history(){ # parameter: ${1} current label, ${2} new label, ${3} new timestamp, ${4} assembly_summary file
@@ -1112,16 +1169,24 @@ if [[ "${MODE}" == "NEW" ]]; then
     if [[ ! -z "${external_assembly_summary}" ]]; then
         echolog "Using external assembly summary [$(readlink -m ${external_assembly_summary})]" "1"
         # Skip possible header lines
-        grep -v "^#" "${external_assembly_summary}" > "${new_assembly_summary}";
+        grep -v "^#" "${external_assembly_summary}" > "${new_assembly_summary}"
+        if ! check_assembly_summary "${new_assembly_summary}"; then 
+            echolog " - Invalid external assembly_summary.txt" "1"
+            exit 1; 
+        fi
         echolog " - Database [${database}] selection is ignored when using an external assembly summary" "1";
         all_lines=$(count_lines_file "${new_assembly_summary}")
     else
         echolog "Downloading assembly summary [${new_label}]" "1"
         echolog " - Database [${database}]" "1"
         if [[ ! -z "${organism_group}" ]]; then
-            echolog " - Organism group [${organism_group}]" "1";
+            echolog " - Organism group [${organism_group}]" "1"
         fi
-        all_lines=$(get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}")
+        if ! get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}"; then 
+            echolog " - Failed to download one or more assembly_summary files" "1"
+            exit 1; 
+        fi
+        all_lines=$(count_lines_file "${new_assembly_summary}")
     fi
     echolog " - ${all_lines} assembly entries available" "1"
     echolog "" "1"
@@ -1227,7 +1292,12 @@ else # update/fix
         if [[ ! -z "${organism_group}" ]]; then
             echolog " - Organism group [${organism_group}]" "1";
         fi
-        all_lines=$(get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}")
+        if ! get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}"; then 
+            echolog " - Failed to download one or more assembly_summary files" "1";   
+            exit 1; 
+        fi
+        all_lines=$(count_lines_file "${new_assembly_summary}")
+
         echolog " - ${all_lines} assembly entries available" "1"
         echolog "" "1"
         echolog "Filtering assembly summary [${new_label}]" "1"
