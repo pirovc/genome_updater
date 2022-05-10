@@ -403,7 +403,7 @@ setup_file() {
     outdir=${outprefix}external-assembly-summary/
     label="test"
     # Get assembly_summary from -e (not directly from url)
-    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -e ${local_dir}genomes/refseq/assembly_summary_refseq.txt
+    run ./genome_updater.sh -b ${label} -o ${outdir} -e ${local_dir}genomes/refseq/assembly_summary_refseq.txt
     sanity_check ${outdir} ${label}
 }
 
@@ -628,15 +628,15 @@ setup_file() {
 @test "Invalid assembly_summary.txt" {
     outdir=${outprefix}invalid-as/
     label="cols"
-    run ./genome_updater.sh -d refseq -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_cols.txt
+    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_cols.txt
     assert_failure
     label="headermiddle"
-    run ./genome_updater.sh -d refseq -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_headermiddle.txt
+    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_headermiddle.txt
     assert_failure
     label="justheader"
-    run ./genome_updater.sh -d refseq -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_justheader.txt
+    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_justheader.txt
     assert_failure
     label="xCF"
-    run ./genome_updater.sh -d refseq -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_xCF.txt
+    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_xCF.txt
     assert_failure
 }

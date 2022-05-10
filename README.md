@@ -94,7 +94,7 @@ To test if all genome_updater functions are running properly on your system:
 
 ### Recovering fasta files from a previously obtained assembly_summary.txt
 
-	./genome_updater.sh -e /my/path/assembly_summary.txt -f "genomic.fna.gz" -o "recovered_sequences" -b "january_2018"
+	./genome_updater.sh -e /my/path/assembly_summary.txt -f "genomic.fna.gz" -o "recovered_sequences"
 
 ## Advanced examples
 

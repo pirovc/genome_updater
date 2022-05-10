@@ -952,9 +952,9 @@ export genome_updater_args
 
 ######################### Parameter validation ######################### 
 
-if [[ -z "${database}" ]]; then
+if [[ -z "${database}" && -z "${external_assembly_summary}" ]]; then
     echo "Database is required (-d)"; exit 1;
-else
+elif [[ ! -z "${database}" ]]; then
     valid_databases=( "genbank" "refseq" )
     for d in ${database//,/ }
     do
@@ -1015,6 +1015,8 @@ fi
 if [[ ! -z "${external_assembly_summary}" ]]; then
     if [[ ! -f "${external_assembly_summary}" ]] ; then
         echo "External assembly_summary.txt not found [$(readlink -m ${external_assembly_summary})]"; exit 1;
+    elif [[ ! -z "${database}"  ]]; then
+        echo "External assembly_summary.txt cannot be used with database (-d)"; exit 1;
     elif [[ ! -z "${organism_group}"  ]]; then
         echo "External assembly_summary.txt cannot be used with organism group (-g)"; exit 1;
     fi
@@ -1174,7 +1176,6 @@ if [[ "${MODE}" == "NEW" ]]; then
             echolog " - Invalid external assembly_summary.txt" "1"
             exit 1; 
         fi
-        echolog " - Database [${database}] selection is ignored when using an external assembly summary" "1";
         all_lines=$(count_lines_file "${new_assembly_summary}")
     else
         echolog "Downloading assembly summary [${new_label}]" "1"
