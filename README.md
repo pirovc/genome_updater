@@ -11,7 +11,7 @@ Bash script to download ***and update*** snapshots of the NCBI genomes repositor
 
 ### Download
 
-Download Archaeal complete genome sequences from the RefSeq repository (`-t` number parallel downloads):
+Download Archaeal complete genome sequences from the refseq repository (`-t` number parallel downloads):
 
 	./genome_updater.sh -o "arc_refseq_cg" -d "refseq" -g "archaea" -l "complete genome" -f "genomic.fna.gz" -t 12
 
@@ -23,6 +23,8 @@ Some days later, update the repository:
 
  - Add `-k` to perform a dry-run, showing how many files will be downloaded/updated without any changes.
 
+ - Newly added sequences will be downloaded and a new version (`-b`, timestamp by default) will be created. Removed or old sequences will be kept but not carried to the new version.
+
  - Arguments can be added or changed in the update. For example `./genome_updater.sh -o "arc_refseq_cg" -t 2` to use a different number of threads or `./genome_updater.sh -o "arc_refseq_cg" -l ""` to remove the "complete genome" filter.
 
  - `history.tsv` will be created in the output folder (`-o`), tracking versions and arguments used (obs: boolean flags/arguments are not tracked - e.g. `-m`).
@@ -31,9 +33,9 @@ Some days later, update the repository:
 
 genome_updater downloads and keeps several snapshots of a certain sub-set of the genomes repository, without redundancy and with incremental track of changes.
 
-- it runs on a working directory (defined with `-o`) and creates a snapshot (optionally named with `-b`) of refseq and/or genbank (`-d`) genome repositories based on selected organism groups (`-g`) and/or taxonomic ids (`-T`) with the desired files type(s) (`-f`)
-- filters can be applied to refine the selection: RefSeq category (`-c`), assembly level (`-l`), dates (`-D`/`-E`), custom filters (`-F`), top assemblies (`-A`)
-- `-M gtdb` enables GTDB [3] compability. Only assemblies from the latest GTDB release will be kept and taxonomic filters will work with GTDB nodes (e.g. `-T "c__Hydrothermarchaeia"` or `-A genus:3`)
+- it runs on a working directory (defined with `-o`) and creates a snapshot (optionally named with `-b`, timestamp by default) of refseq and/or genbank (`-d`) genome repositories based on selected organism groups (`-g`) and/or taxonomic ids (`-T`) with the desired files type(s) (`-f`)
+- filters can be applied to refine the selection: refseq category (`-c`), assembly level (`-l`), dates (`-D`/`-E`), custom filters (`-F`), top assemblies (`-A`)
+- `-M gtdb` enables GTDB [3] compability. Only assemblies from the latest GTDB release will be kept and taxonomic filters will work based on GTDB nodes (e.g. `-T "c__Hydrothermarchaeia"` or `-A genus:3`)
 - the repository can be updated or changed with incremental changes. outdated files are kept in their respective version and repeated files linked to the new version. genome_updater keepts track of all changes and just downloads what is necessary
 
 ## Installation
@@ -59,6 +61,43 @@ To test if all genome_updater functions are running properly on your system:
 
 ## Examples
 
+### Download Archaea, Bacteria, Fungi and Viral complete genome sequences from refseq
+
+	./genome_updater.sh -d "refseq" -g "archaea,bacteria,fungi,viral" -f "genomic.fna.gz" -o "arc_bac_fun_vir_refseq_cg" -t 12 -m
+	
+	# Update some days later
+	./genome_updater.sh -o "arc_bac_fun_vir_refseq_cg" -t 12 -m
+	
+### Download all RNA Viruses (under the taxon Riboviria) on refseq
+
+	./genome_updater.sh -d "refseq" -T "2559587" -f "genomic.fna.gz" -o "all_rna_virus" -t 12 -m
+	
+### Download one genome assembly for each entry (leaf taxonomic nodes) in genbank
+    
+    ./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_genbank" -P 1 -t 12 -m 
+    
+### Download one genome assembly for each species in genbank
+    
+    ./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1species_bacteria_genbank" -P "species:1" -t 12 -m 
+    
+### Download all genome sequences used in the latests GTDB release
+
+	./genome_updater.sh -d "refseq,genbank" -g "archaea,bacteria" -f "genomic.fna.gz" -o "GTDB_complete" -M "gtdb" -t 12 -m
+	
+### Download two genome assemblied for every genus in GTDB
+    
+    ./genome_updater.sh -d "refseq,genbank" -g "archaea,bacteria" -f "genomic.fna.gz" -o "GTDB_top2genus" -M "gtdb" -P "genus:2" -t 12 -m
+
+### Download all assemblied from a specific family in GTDB
+    
+    ./genome_updater.sh -d "refseq,genbank" -g "archaea,bacteria" -f "genomic.fna.gz" -o "GTDB_top2genus" -M "gtdb" -T "f__Gastranaerophilaceae" -t 12 -m
+
+### Recovering fasta files from a previously obtained assembly_summary.txt
+
+	./genome_updater.sh -e /my/path/assembly_summary.txt -f "genomic.fna.gz" -o "recovered_sequences" -b "january_2018"
+
+## Advanced examples
+
 ### Downloading genomic sequences (.fna files) for the Complete Genome sequences from RefSeq for Bacteria and Archaea and keep them updated
 
 	# Dry-run to check files available
@@ -76,14 +115,6 @@ To test if all genome_updater functions are running properly on your system:
 	# Perform update
 	./genome_updater.sh -o "arc_bac_refseq_cg" -u -m
 
-### Download all RNA Viruses (under the taxon Riboviria) on RefSeq
-
-	./genome_updater.sh -d "refseq" -T "2559587" -f "genomic.fna.gz" -o "all_rna_virus" -t 12
-
-### Download all genome sequences used in the latests GTDB release
-
-	./genome_updater.sh -d "refseq,genbank" -g "archaea,bacteria" -f "genomic.fna.gz" -o "GTDB" -M gtdb -t 12
-
 ### Branching base version for specific filters
 
 	# Download the complete bacterial refseq
@@ -93,31 +124,15 @@ To test if all genome_updater functions are running properly on your system:
 	./genome_updater.sh -d "refseq" -g "bacteria" -f "genomic.fna.gz" -o "bac_refseq" -t 12 -m -B "all" -b "complete" -l "complete genome"
 	./genome_updater.sh -d "refseq" -g "bacteria" -f "genomic.fna.gz" -o "bac_refseq" -t 12 -m -B "all" -b "representative" -c "representative genome"
 
-### Download one genome assembly for each bacterial species in genbank
-
-	./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_genbank" -t 12 -P 1
-
-### Download all E. Coli assemblies available on GenBank and RefSeq under a label (v1)
-
-	./genome_updater.sh -d "genbank,refseq" -S "562" -f "genomic.fna.gz" -o "all_ecoli" -t 12 -b v1
-
-### Check amount of reference entries available for the set of Viral genomes on genbank
-
-	./genome_updater.sh -d "genbank" -g "viral" -k
-
 ### Download Fungi RefSeq assembly information and generate sequence reports and URLs
 
 	./genome_updater.sh -d "refseq" -g "fungi" -f "assembly_report.txt" -o "fungi" -t 12 -r -p
-
-### Recovering fasta files from a previously obtained assembly_summary.txt
-
-	./genome_updater.sh -e /my/path/assembly_summary.txt -f "genomic.fna.gz" -o "recovered_sequences" -b "january_2018"
 
 ### Use curl (default wget), change timeout and retries for download 
 
 	retries=10 timeout=600 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt" -L curl
 
-## Extended reports
+## Reports
 
 ### assembly accessions
 
@@ -160,7 +175,7 @@ or
 
 The top assemblies (`-P`/`-A`) will be selected based on the species/taxid entries in the assembly_summary.txt and not for the taxids provided with  (`-S`/`-T`). They are selected sorted by categories in the following order of importance:
 	
-	A) RefSeq Category: 
+	A) refseq Category: 
 		1) reference genome
 		2) representative genome
 		3) na
@@ -186,72 +201,92 @@ The top assemblies (`-P`/`-A`) will be selected based on the species/taxid entri
 	┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐
 	│ ┬├┤ ││││ ││││├┤     │ │├─┘ ││├─┤ │ ├┤ ├┬┘
 	└─┘└─┘┘└┘└─┘┴ ┴└─┘────└─┘┴  ─┴┘┴ ┴ ┴ └─┘┴└─
-	                                     v0.4.1 
+	                                     v0.5.0 
 
 	Database options:
-	 -d Database (comma-separated entries) [genbank, refseq]
+	 -d Database (comma-separated entries)
+		[genbank, refseq]
 
 	Organism options:
-	 -g Organism group (comma-separated entries) [archaea, bacteria, fungi, human, invertebrate, metagenomes, other, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]. Example: archaea,bacteria.
+	 -g Organism group(s) (comma-separated entries, empty for all)
+		[archaea, bacteria, fungi, human, invertebrate, metagenomes, 
+		other, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]
 		Default: ""
-	 -S Species level taxonomic ids (comma-separated entries). Example: 622,562
-		Default: ""
-	 -T Any taxonomic ids - children lineage will be generated (comma-separated entries). Example: 620,649776
+	 -T Taxonomic identifier(s) (comma-separated entries, empty for all). Children nodes will be included. 
 		Default: ""
 
 	File options:
-	 -f files to download [genomic.fna.gz,assembly_report.txt, ...] check ftp://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt for all file formats
+	 -f file type(s) (comma-separated entries)
+		[genomic.fna.gz, assembly_report.txt, protein.faa.gz, genomic.gbff.gz]
+		More formats at https://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt
 		Default: assembly_report.txt
 
 	Filter options:
-	 -c refseq category (comma-separated entries, empty for all) [reference genome, representative genome, na]
+	 -c refseq category (comma-separated entries, empty for all)
+		[reference genome, representative genome, na]
 		Default: ""
-	 -l assembly level (comma-separated entries, empty for all) [complete genome, chromosome, scaffold, contig]
+	 -l assembly level (comma-separated entries, empty for all)
+		[complete genome, chromosome, scaffold, contig]
 		Default: ""
-	 -P Number of top references for each species nodes to download. 0 for all. Selection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first)
-		Default: 0
-	 -A Number of top references for each taxids (leaf nodes) to download. 0 for all. Selection order: RefSeq Category, Assembly level, Relation to type material, Date (most recent first)
-		Default: 0
-	 -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive). Example: -F "2:PRJNA12377,PRJNA670754|14:Partial" for column infos check ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt
+	 -D Start date (>=), based on the sequence release date. Format YYYYMMDD.
 		Default: ""
-	 -D Start date to keep sequences (>=), based on the sequence release date. Format YYYYMMDD. Example: 20201030
+	 -E End date (<=), based on the sequence release date. Format YYYYMMDD.
 		Default: ""
-	 -E End date to keep sequences (<=), based on the sequence release date. Format YYYYMMDD. Example: 20201231
+	 -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive).
+		Example: -F "2:PRJNA12377,PRJNA670754|14:Partial" (AND between cols, OR between values)
+		Column info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt
 		Default: ""
-	 -z Keep only assemblies present on the latest GTDB release
 
-	Report options:
-	 -u Report of updated assembly accessions (Added/Removed, assembly accession, url)
-	 -r Report of updated sequence accessions (Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid). Only available when file format assembly_report.txt is selected and successfully downloaded
-	 -p Output list of URLs for downloaded and failed files
+	Taxonomy options:
+	 -M Taxonomy. gtdb keeps only assemblies in the latest GTDB release. ncbi keeps only latest assemblies (version_status). 
+		[ncbi, gtdb]
+		Default: "ncbi"
+	 -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. 
+		Selection by ranks are also supported with rank:number (e.g genus:3)
+		[species, genus, family, order, class, phylum, kingdom, superkingdom]
+		Selection order based on: RefSeq Category, Assembly level, Relation to type material, Date (recent first).
+		Default: 0
+	 -a Keep the current version of the taxonomy database in the output folder
 
 	Run options:
 	 -o Output/Working directory 
 		Default: ./tmp.XXXXXXXXXX
+	 -t Threads to parallelize download and some file operations
+		Default: 1
+	 -k Dry-run mode. No sequence data is downloaded or updated - just checks for available sequences and changes
+	 -i Fix only mode. Re-downloads incomplete or failed data from a previous run. Can also be used to change files (-f).
+	 -m Check MD5 of downloaded files
+
+	Report options:
+	 -u Report of updated assembly accessions
+		(Added/Removed, assembly accession, url)
+	 -r Report of updated sequence accessions
+		(Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid)
+		Only available when file format assembly_report.txt is selected and successfully downloaded
+	 -p Output list of URLs with successfuly and failed downloads
+
+	Misc. options:
 	 -b Version label
 		Default: current timestamp (YYYY-MM-DD_HH-MM-SS)
 	 -e External "assembly_summary.txt" file to recover data from. Mutually exclusive with -d / -g 
 		Default: ""
+	 -B Alternative version label to use as the current version.
+		Can be used to rollback to an older version or to create multiple branches from a base version.
+		Default: ""
 	 -R Number of attempts to retry to download files in batches 
 		Default: 3
-	 -B Base label to use as the current version. Can be used to rollback to an older version or to create multiple branches from a base version. It only applies for updates. 
-		Default: ""
-	 -k Dry-run, no data is downloaded or updated - just checks for available sequences and changes
-	 -i Fix failed downloads or any incomplete data from a previous run, keep current version
-	 -m Check MD5 of downloaded files
-	 -t Threads to parallelize download and some file operations
-		Default: 1
-
-	Misc. options:
-	 -x Allow the deletion of regular extra files if any found in the files folder. Symbolic links that do not belong to the current version will always be deleted.
-	 -a Download the current version of the NCBI taxonomy database (taxdump.tar.gz)
-	 -s Silent output
-	 -w Silent output with download progress (%) and download version at the end
-	 -n Conditional exit status. Exit Code = 1 if more than N files failed to download (integer for file number, float for percentage, 0 -> off)
+	 -n Conditional exit status based on number of failures accepted, otherwise will Exit Code = 1.
+		Example: -n 10 will exit code 1 if 10 or more files failed to download
+		[integer for file number, float for percentage, 0 = off]
 		Default: 0
-	 -V Verbose log to report successful file downloads
+	 -L Downloader
+		[wget, curl]
+		Default: wget
+	 -x Allow the deletion of regular extra files (not symbolic links) found in the output folder
+	 -s Silent output
+	 -w Silent output with download progress only
+	 -V Verbose log
 	 -Z Print debug information and run in debug mode
-
 
 ## References:
 
