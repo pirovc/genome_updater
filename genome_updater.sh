@@ -93,13 +93,16 @@ check_assembly_summary() # parameter: ${1} assembly_summary file - return 0 true
     # file exists and it's not empty
     if [ ! -s "${1}" ]; then return 1; fi
 
-    # if contains header char parts of the header anywhere
-    grep -m 1 "^#" "${1}" > /dev/null
+    # if contains header char parts of the header anywhere starting lines
+    grep -m 1 "^#" "${1}" #> /dev/null
     if [ $? -eq 0 ]; then return 1; fi
 
     # if contains parts of the header anywhere
     ##   See ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt for a description of the columns in this file.
     grep -m 1 "ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt" "${1}" > /dev/null
+    if [ $? -eq 0 ]; then return 1; fi
+    # assembly_accession    bioproject  biosample   wgs_master  refseq_category taxid   species_taxid   organism_name   infraspecific_name  isolate version_status  assembly_levelrelease_type  genome_rep  seq_rel_date    asm_name    submitter   gbrs_paired_asm paired_asm_comp ftp_path    excluded_from_refseq    relation_to_type_material   asm_not_live_date
+    grep -m 1 " assembly_accession" "${1}" > /dev/null
     if [ $? -eq 0 ]; then return 1; fi
 
     # if every line has 23 cols
