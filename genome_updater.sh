@@ -69,11 +69,6 @@ download_url() # parameter: ${1} url, ${2} output file/directory (omit/empty to 
 }
 export -f download_url  #export it to be accessible to the parallel call
 
-download_static() # parameter: ${1} url, ${2} output file
-{
-    downloader ${2} ${1}
-}
-
 download_retry_md5(){ # parameter: ${1} url, ${2} output file, ${3} url MD5, ${4} re-tries
     for (( att=1; att<=${4:-1}; att++ )); do
         if [ "${att}" -gt 1 ]; then
