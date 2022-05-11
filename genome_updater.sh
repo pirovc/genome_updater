@@ -773,9 +773,9 @@ function showhelp {
     echo $' -m Check MD5 of downloaded files'
     echo
     echo $'Report options:'
-    echo $' -u Report of updated assembly accessions\n\t(Added/Removed, assembly accession, url)'
-    echo $' -r Report of updated sequence accessions\n\t(Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid)\n\tOnly available when file format assembly_report.txt is selected and successfully downloaded'
-    echo $' -p Output list of URLs with successfuly and failed downloads'
+    echo $' -u Updated assembly accessions report\n\t(Added/Removed, assembly accession, url)'
+    echo $' -r Updated sequence accessions report\n\t(Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid)\n\tOnly available when file format assembly_report.txt is selected and successfully downloaded'
+    echo $' -p Reports URLs successfuly downloaded and failed (url_failed.txt url_downloaded.txt)'
     echo
     echo $'Misc. options:'
     echo $' -b Version label\n\tDefault: current timestamp (YYYY-MM-DD_HH-MM-SS)'
@@ -952,14 +952,30 @@ export genome_updater_args
 
 ######################### Parameter validation ######################### 
 
+# If fixing/recovering, need to have assembly_summary.txt
+if [[ ! -z "${external_assembly_summary}" ]]; then
+    if [[ ! -f "${external_assembly_summary}" ]] ; then
+        echo "External assembly_summary.txt not found [$(readlink -m ${external_assembly_summary})]"; exit 1;
+    elif [[ ! -z "${database}" || ! -z "${organism_group}" ]]; then
+        echo "External assembly_summary.txt cannot be used with database (-d) and/or organism group (-g)"; exit 1;
+    fi
+fi
+
+if [[ ! -z "${rollback_label}" && "${just_fix}" -eq 1 ]]; then
+    echo "-B and -i are mutually exclusive. To continue an update from a previus run, use -B ''"; exit 1;
+fi
+
+if [[ ! "${file_formats}" =~ "assembly_report.txt" && "${updated_sequence_accession}" -eq 1 ]]; then
+    echo "Updated sequence accessions report (-r) can only be used if -f contains 'assembly_report.txt'"; exit 1;
+fi
+
 if [[ -z "${database}" && -z "${external_assembly_summary}" ]]; then
     echo "Database is required (-d)"; exit 1;
 elif [[ ! -z "${database}" ]]; then
     valid_databases=( "genbank" "refseq" )
-    for d in ${database//,/ }
-    do
+    for d in ${database//,/ }; do
         if [[ ! " ${valid_databases[@]} " =~ " ${d} " ]]; then
-            echo "${d}: invalid database [${valid_databases[@]}]"; exit 1;
+            echo "${d}: invalid database [ $(printf "'%s' " "${valid_databases[@]}")]"; exit 1;
         fi
     done
 fi
@@ -970,8 +986,7 @@ if [[ "${tax_mode}" == "gtdb" ]]; then
         gtdb_urls+=("https://data.gtdb.ecogenomic.org/releases/latest/ar53_taxonomy.tsv.gz")
         gtdb_urls+=("https://data.gtdb.ecogenomic.org/releases/latest/bac120_taxonomy.tsv.gz")
     else
-        for og in ${organism_group//,/ }
-        do
+        for og in ${organism_group//,/ }; do
             if [[ "${og}" == "archaea" ]]; then
                 gtdb_urls+=("https://data.gtdb.ecogenomic.org/releases/latest/ar53_taxonomy.tsv.gz")
             elif [[ "${og}" == "bacteria" ]]; then
@@ -983,15 +998,13 @@ if [[ "${tax_mode}" == "gtdb" ]]; then
     fi
 elif [[ "${tax_mode}" == "ncbi" ]]; then
     valid_organism_groups=( "archaea" "bacteria" "fungi" "human" "invertebrate" "metagenomes" "other" "plant" "protozoa" "vertebrate_mammalian" "vertebrate_other" "viral" )
-
-    for og in ${organism_group//,/ }
-    do
+    for og in ${organism_group//,/ }; do
         if [[ ! " ${valid_organism_groups[@]} " =~ " ${og} " ]]; then
-            echo "${og}: invalid organism group [${valid_organism_groups[@]}]"; exit 1;
+            echo "${og}: invalid organism group [ $(printf "'%s' " "${valid_organism_groups[@]}")]"; exit 1;
         fi
     done
 else
-    echo "${tax_mode}: invalid taxonomy mode [ncbi gtdb]"; exit 1;
+    echo "${tax_mode}: invalid taxonomy mode ['ncbi' 'gtdb']"; exit 1;
 fi
 
 if [[ "${tax_mode}" == "ncbi" ]]; then
@@ -1011,17 +1024,6 @@ elif [[ "${tax_mode}" == "gtdb" ]]; then
     IFS=$' '
 fi
 
-# If fixing/recovering, need to have assembly_summary.txt
-if [[ ! -z "${external_assembly_summary}" ]]; then
-    if [[ ! -f "${external_assembly_summary}" ]] ; then
-        echo "External assembly_summary.txt not found [$(readlink -m ${external_assembly_summary})]"; exit 1;
-    elif [[ ! -z "${database}"  ]]; then
-        echo "External assembly_summary.txt cannot be used with database (-d)"; exit 1;
-    elif [[ ! -z "${organism_group}"  ]]; then
-        echo "External assembly_summary.txt cannot be used with organism group (-g)"; exit 1;
-    fi
-fi
-
 # top assemblies by rank
 if [[ ! "${top_assemblies}" =~ ^[0-9]+$ && ! "${top_assemblies}" =~ ^(superkingdom|phylum|class|order|family|genus|species)\:[1-9]+$ ]]; then
     echo "${top_assemblies}: invalid top assemblies - should be a number > 0 or [superkingdom|phylum|class|order|family|genus|species]:number"; exit 1;
@@ -1035,8 +1037,35 @@ else
     fi
 fi
 
-if [[ ! -z "${rollback_label}" && "${just_fix}" -eq 1 ]]; then
-    echo "-B and -i are mutually exclusive. If updating from previously used parameters, use -B ''"; exit 1;
+IFS=","
+valid_refseq_category=( "reference genome" "representative genome" "na" )
+if [[ ! -z "${refseq_category}" ]]; then
+    for rc in ${refseq_category}; do
+        # ${rc,,} to lowercase
+        if [[ ! " ${valid_refseq_category[@]} " =~ " ${rc,,} " ]]; then
+            echo "${rc}: invalid refseq category [ $(printf "'%s' " "${valid_refseq_category[@]}")]"; exit 1;
+        fi
+    done
+fi
+if [[ ! -z "${assembly_level}" ]]; then
+    valid_assembly_level=( "complete genome" "chromosome" "scaffold" "contig" )
+    for al in ${assembly_level}; do
+        # ${al,,} to lowercase
+        if [[ ! " ${valid_assembly_level[@]} " =~ " ${al,,} " ]]; then
+            echo "${al}: invalid assembly level [ $(printf "'%s' " "${valid_assembly_level[@]}")]"; exit 1;
+        fi
+    done
+fi
+IFS=$' '
+if [[ ! -z "${date_start}" ]]; then
+    if ! date "+%Y%m%d" -d "${date_start}" > /dev/null 2>&1; then
+        echo "${date_start}: invalid start date"; exit 1;
+    fi
+fi
+if [[ ! -z "${date_end}" ]]; then
+    if ! date "+%Y%m%d" -d "${date_end}" > /dev/null 2>&1; then
+        echo "${date_end}: invalid end date"; exit 1;
+    fi
 fi
 
 ######################### Variable assignment ######################### 
@@ -1225,7 +1254,7 @@ if [[ "${MODE}" == "NEW" ]]; then
                 echolog "Assembly accession report written [${new_output_prefix}updated_assembly_accession.txt]" "1"
             fi
             # UPDATED INDICES sequence accession
-            if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
+            if [ "${updated_sequence_accession}" -eq 1 ]; then
                 output_sequence_accession "${new_assembly_summary}" "1,20" "${file_formats}" "A" "${new_assembly_summary}" > "${new_output_prefix}updated_sequence_accession.txt"
                 echolog "Sequence accession report written [${new_output_prefix}updated_sequence_accession.txt]" "1"
             fi
@@ -1259,7 +1288,7 @@ else # update/fix
                 echolog "Assembly accession report rewritten [${current_output_prefix}updated_assembly_accession.txt]" "1"
                 echolog " - In fix mode, all entries are report as 'A' (Added)" "1"
             fi
-            if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
+            if [ "${updated_sequence_accession}" -eq 1 ]; then
                 output_sequence_accession "${current_assembly_summary}" "1,20" "${file_formats}" "A" "${current_assembly_summary}" > "${current_output_prefix}updated_sequence_accession.txt"
                 echolog "Sequence accession report rewritten [${current_output_prefix}updated_sequence_accession.txt]" "1"
                 echolog " - In fix mode, all entries are report as 'A' (Added)" "1"
@@ -1354,7 +1383,7 @@ else # update/fix
                 output_assembly_accession "${remove}" "1,2" "${file_formats}" "R" >> "${new_output_prefix}updated_assembly_accession.txt"
             fi
             # UPDATED INDICES sequence accession (removed entries - do it before deleting them)
-            if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
+            if [ "${updated_sequence_accession}" -eq 1 ]; then
                 # current_assembly_summary is the old summary
                 output_sequence_accession "${update}" "3,4" "${file_formats}" "R" "${current_assembly_summary}" > "${new_output_prefix}updated_sequence_accession.txt"
                 output_sequence_accession "${remove}" "1,2" "${file_formats}" "R" "${current_assembly_summary}" >> "${new_output_prefix}updated_sequence_accession.txt"
@@ -1390,7 +1419,7 @@ else # update/fix
                 echolog "Assembly accession report written [${new_output_prefix}updated_assembly_accession.txt]" "1"
             fi
             # UPDATED INDICES sequence accession (added entries - do it after downloading them)
-            if [[ "${file_formats}" =~ "assembly_report.txt" ]] && [ "${updated_sequence_accession}" -eq 1 ]; then
+            if [ "${updated_sequence_accession}" -eq 1 ]; then
                 output_sequence_accession "${update}" "1,2" "${file_formats}" "A" "${new_assembly_summary}">> "${new_output_prefix}updated_sequence_accession.txt"
                 output_sequence_accession "${new}" "1,2" "${file_formats}" "A" "${new_assembly_summary}" >> "${new_output_prefix}updated_sequence_accession.txt"
                 echolog "Sequence accession report written [${new_output_prefix}updated_sequence_accession.txt]" "1"
