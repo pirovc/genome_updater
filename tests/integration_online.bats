@@ -92,14 +92,14 @@ setup_file() {
 @test "NA URL" {
     outdir=${outprefix}na-url/
     label="test"
-    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -t ${threads} -e ${files_dir}simulated/assembly_summary_na_url.txt
+    run ./genome_updater.sh -b ${label} -o ${outdir} -t ${threads} -e ${files_dir}simulated/assembly_summary_na_url.txt
     sanity_check ${outdir} ${label}
 }
 
 @test "All invalid URLs" {
     outdir=${outprefix}all-invalid-url/
     label="test"
-    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -t ${threads} -e ${files_dir}simulated/assembly_summary_all_invalid_url.txt
+    run ./genome_updater.sh -b ${label} -o ${outdir} -t ${threads} -e ${files_dir}simulated/assembly_summary_all_invalid_url.txt
     assert_success
     assert_equal $(count_files ${outdir} ${label}) 0
 }
@@ -107,7 +107,7 @@ setup_file() {
 @test "Some invalid URLs" {
     outdir=${outprefix}some-invalid-url/
     label="test"
-    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    run ./genome_updater.sh -b ${label} -o ${outdir} -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
     assert_success
     assert_equal $(count_files ${outdir} ${label}) 2
 }
@@ -117,35 +117,35 @@ setup_file() {
     outdir=${outprefix}conditional-exit/
     label="n0"
     # 2 out of 4 genomes will be downloaded
-    run ./genome_updater.sh -n 0 -R 1 -d refseq -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    run ./genome_updater.sh -n 0 -R 1 -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
     assert_success
 
     label="n1"
-    run ./genome_updater.sh -n 1 -R 1 -d refseq -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    run ./genome_updater.sh -n 1 -R 1 -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
     assert_failure
     
     label="n2"
-    run ./genome_updater.sh -n 2 -R 1 -d refseq -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    run ./genome_updater.sh -n 2 -R 1 -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
     assert_failure
 
     label="n3"
-    run ./genome_updater.sh -n 3 -R 1 -d refseq -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    run ./genome_updater.sh -n 3 -R 1 -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
     assert_success
 
     label="n0.2"
-    run ./genome_updater.sh -n 0.2 -R 1 -d refseq -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    run ./genome_updater.sh -n 0.2 -R 1 -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
     assert_failure
 
     label="n0.5"
-    run ./genome_updater.sh -n 0.5 -R 1 -d refseq -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    run ./genome_updater.sh -n 0.5 -R 1 -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
     assert_failure
 
     label="n0.51"
-    run ./genome_updater.sh -n 0.51 -R 1 -d refseq -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    run ./genome_updater.sh -n 0.51 -R 1 -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
     assert_success
 
     label="n0.99"
-    run ./genome_updater.sh -n 0.99 -R 1 -d refseq -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
+    run ./genome_updater.sh -n 0.99 -R 1 -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
     assert_success
 
 }
@@ -193,7 +193,7 @@ setup_file() {
     label="test"
 
     # 5693 Trypanosoma cruzi
-    run ./genome_updater.sh -d refseq -e ${files_dir}simulated/assembly_summary_gtdb.txt -b ${label} -o ${outdir} -t ${threads} -M gtdb
+    run ./genome_updater.sh -e ${files_dir}simulated/assembly_summary_gtdb.txt -b ${label} -o ${outdir} -t ${threads} -M gtdb
     sanity_check ${outdir} ${label}
 
     # 1 out of 2 available on GTDB
