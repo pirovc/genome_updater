@@ -173,8 +173,8 @@ or
 
 ## Top assemblies
 
-The top assemblies (`-A`) will be selected based the assembly_summary.txt file. They are selected sorted by categories in the following order of importance:
-	
+`-A` will try to selected the "best" assemblies for each leaf taxonomic nodes or a specific rank based on 4 categories (A-D), in the following order of importance:
+
 	A) refseq Category: 
 		1) reference genome
 		2) representative genome

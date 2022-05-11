@@ -208,7 +208,7 @@ setup_file() {
     sanity_check ${outdir} ${label}
 
     # Downloaded taxdump
-    assert_file_exist ${outdir}${label}/ar53_taxonomy.tsv.gz
+    assert_file_exist ${outdir}${label}/ar53_taxonomy_r207.tsv.gz
 }
 
 @test "Download taxdump ncbi" {
