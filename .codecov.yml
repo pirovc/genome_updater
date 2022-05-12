@@ -2,6 +2,9 @@ codecov:
   ci:
     - "travis.org"
 
+fixes:
+  - "/home/travis/build/pirovc/genome_updater/::/genome_updater/" 
+
 ignore:
-  - ".git/"
-  - "tests/"
+  - "/genome_updater/.git/"
+  - "/genome_updater/tests/"
