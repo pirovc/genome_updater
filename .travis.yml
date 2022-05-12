@@ -11,7 +11,7 @@ script:
 after_success:
   - curl -Os https://uploader.codecov.io/latest/linux/codecov
   - chmod +x codecov
-  - ./codecov -f coverage/.resultset.json -Z
+  - ./codecov -f coverage/codecov-results.json -Z
 
 notifications:
   email: false
