@@ -1,4 +1,4 @@
-# genome_updater
+# genome_updater [![Build Status](https://travis-ci.com/pirovc/genome_updater.svg?branch=master)](https://travis-ci.com/pirovc/genome_updater) [![codecov](https://codecov.io/gh/pirovc/genome_updater/branch/master/graph/badge.svg)](https://codecov.io/gh/pirovc/genome_updater) [![Anaconda-Server Badge](https://anaconda.org/bioconda/genome_updater/badges/downloads.svg)](https://anaconda.org/bioconda/genome_updater)
 
 Bash script to download ***and update*** snapshots of the NCBI genomes repository (refseq/genbank) [1] with filters, detailed log, reports, file integrity check (MD5) and parallel [2] download support.
 
@@ -39,8 +39,6 @@ genome_updater downloads and keeps several snapshots of a certain sub-set of the
 - the repository can be updated or changed with incremental changes. outdated files are kept in their respective version and repeated files linked to the new version. genome_updater keepts track of all changes and just downloads what is necessary
 
 ## Installation
-
-[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/genome_updater/README.html)
 
 With conda:
 
