@@ -2,8 +2,7 @@ language: bash
 dist: focal
 
 before_install:
-  - bundle update --bundler && bundle install
-  - gem install bashcov simplecov
+  - gem install bashcov codecov
   - sudo apt-get install parallel
 
 script:
