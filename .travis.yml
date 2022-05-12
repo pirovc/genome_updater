@@ -2,7 +2,7 @@ language: bash
 dist: focal
 
 before_install:
-  - gem install bashcov simplecov 'simplecov-cobertura'
+  - gem install bashcov simplecov
   - sudo apt-get install parallel
 
 script:
