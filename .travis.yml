@@ -6,13 +6,12 @@ before_install:
   - sudo apt-get install parallel
 
 script:
-  - tests/libs/bats/bin/bats tests/integration_offline.bats
+  - bashcov tests/libs/bats/bin/bats tests/integration_offline.bats
 
 after_success:
-  - bashcov tests/libs/bats/bin/bats tests/integration_offline.bats
   - curl -Os https://uploader.codecov.io/latest/linux/codecov
   - chmod +x codecov
-  - ./codecov
+  - ./codecov -f coverage/.resultset.json
 
 notifications:
   email: false
