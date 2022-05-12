@@ -2,6 +2,7 @@ language: bash
 dist: focal
 
 before_install:
+  - bundle update --bundler && bundle install
   - gem install bashcov simplecov
   - sudo apt-get install parallel
 
@@ -11,8 +12,7 @@ script:
 after_success:
   - curl -Os https://uploader.codecov.io/latest/linux/codecov
   - chmod +x codecov
-  - cat coverage/.resultset.json
-  - ./codecov -f coverage/.resultset.json
+  - ./codecov -f coverage/.resultset.json -Z
 
 notifications:
   email: false
