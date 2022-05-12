@@ -69,9 +69,25 @@ download_url() # parameter: ${1} url, ${2} output file/directory (omit/empty to 
 }
 export -f download_url  #export it to be accessible to the parallel call
 
-download_static() # parameter: ${1} url, ${2} output file
-{
-    downloader ${2} ${1}
+download_retry_md5(){ # parameter: ${1} url, ${2} output file, ${3} url MD5, ${4} re-tries
+    for (( att=1; att<=${4:-1}; att++ )); do
+        if [ "${att}" -gt 1 ]; then
+            echolog " - Failed to download ${url}. Trying again #${att}" "1"
+        fi
+        download_url "${1}" "${2}"
+        real_md5=$(download_url "${3}" | grep "${1##*/}" | cut -f1 -d' ')
+        if [ -z "${real_md5}" ]; then
+            continue; # did not find url file on md5 file (or empty), try again
+        else
+            file_md5=$(md5sum ${2} | cut -f1 -d' ')
+            if [ "${file_md5}" != "${real_md5}" ]; then
+                continue; # md5 didn't match, try again
+            else
+                return 0; # md5 matched, return success
+            fi    
+        fi
+    done
+    return 1; # failed to check md5 after all attempts
 }
 
 unpack() # parameter: ${1} file, ${2} output folder[, ${3} files to unpack]
@@ -189,11 +205,11 @@ write_history(){ # parameter: ${1} current label, ${2} new label, ${3} new times
     echo -e "${genome_updater_args}" >> ${history_file}
 }
 
-filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number of lines
+filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number of lines - return 1 if no lines or failed, 0 success
 {
     assembly_summary="${1}"
     filtered_lines=${2}
-    if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
+    if [[ "${filtered_lines}" -eq 0 ]]; then return 1; fi
     
     gtdb_tax=""
     ncbi_tax=""
@@ -204,13 +220,21 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
         # Download and parse GTDB tax
         gtdb_tax=$(tmp_file "gtdb_tax.tmp")
         for url in "${gtdb_urls[@]}"; do
-            download_url "${url}" | zcat | awk -F "\t" '{print substr($1, 4, length($1))"\t"$2}' >> "${gtdb_tax}" # awk to remove prefix RS_ or GB_
+            tmp_tax=$(tmp_file "gtdb_tax.tmp.gz")
+            if ! download_retry_md5 "${url}" "${tmp_tax}" "https://data.gtdb.ecogenomic.org/releases/release207/207.0/MD5SUM" "${retry_download_batch}"; then
+                return 1;
+            else
+                # awk to remove prefix RS_ or GB_
+                zcat "${tmp_tax}" | awk -F "\t" '{print substr($1, 4, length($1))"\t"$2}' >> "${gtdb_tax}"
+            fi
+            rm -f "${tmp_tax}"
         done
     elif [[ "${tax_mode}" == "ncbi" && ( ! -z "${taxids}" || ( ! -z "${top_assemblies_rank}" && "${top_assemblies_rank}" != "species" ) ) ]]; then
-        # Download and parse NCBI new_taxdump - use taxidlineage.dmp
-        tmp_new_taxdump="${working_dir}new_taxdump.tar.gz"
         echolog " - Downloading taxonomy (ncbi)" "1"
-        download_url "${base_url}/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}"
+        tmp_new_taxdump="${working_dir}new_taxdump.tar.gz"
+        if ! download_retry_md5 "${base_url}/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}" "${base_url}/pub/taxonomy/new_taxdump/new_taxdump.tar.gz.md5" "${retry_download_batch}"; then
+            return 1;
+        fi
     fi
 
     if [[ "${tax_mode}" == "gtdb" ]]; then
@@ -227,7 +251,7 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
         rm "${tmp_gtdb_missing}"
 
         filtered_lines=${gtdb_lines}
-        if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
+        if [[ "${filtered_lines}" -eq 0 ]]; then return 0; fi
     fi
 
     # DATE
@@ -235,7 +259,7 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
         date_lines=$(filter_date "${assembly_summary}")
         echolog " - $((filtered_lines-date_lines)) assemblies removed not in the date range [ ${date_start} .. ${date_end} ]" "1"
         filtered_lines=${date_lines}
-        if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
+        if [[ "${filtered_lines}" -eq 0 ]]; then return 0; fi
     fi
 
     # TAXIDS
@@ -249,7 +273,7 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
         fi
         echolog " - $((filtered_lines-taxids_lines)) assemblies removed not in taxids [${taxids}]" "1"
         filtered_lines=${taxids_lines}
-        if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
+        if [[ "${filtered_lines}" -eq 0 ]]; then return 0; fi
     fi
 
     # Filter columns
@@ -262,7 +286,7 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
         if [ ! -z "${assembly_level}" ]; then echolog "   assembly level=${assembly_level}" "1"; fi
         if [ ! -z "${custom_filter}" ]; then echolog "   custom filter=${custom_filter}" "1"; fi
         filtered_lines=${columns_lines}
-        if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
+        if [[ "${filtered_lines}" -eq 0 ]]; then return 0; fi
     fi
 
     #TOP ASSEMBLIES
@@ -284,11 +308,11 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
         echolog " - $((filtered_lines-top_lines)) entries removed with top ${top_assemblies}" "1"
         rm -f "${assembly_summary}_rank"
         filtered_lines=${top_lines}
-        if [[ "${filtered_lines}" -eq 0 ]]; then return; fi
+        if [[ "${filtered_lines}" -eq 0 ]]; then return 0; fi
     fi
 
     rm -f "${ncbi_tax}" "${ncbi_rank_tax}" "${gtdb_tax}" "${tmp_new_taxdump}"
-    return 0
+    return 0;
 }
 
 filter_taxids_ncbi() # parameter: ${1} assembly_summary file, ${2} ncbi_tax file - return number of lines
@@ -593,9 +617,8 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
     url_success_download=$(tmp_file "url_success_download.tmp") #Temporary url list of downloaded files
     # Retry download in batches
     for (( att=1; att<=${retry_download_batch}; att++ )); do
-
         if [ "${att}" -gt 1 ]; then
-            echolog " - Download attempt #${att}" "1"
+            echolog " - Failed download - ${failed_count} files. Trying again #${att}" "1"
             # Make a new list to download without entres already successfuly downloaded
             join <(sort "${url_list_download}") <(sort "${url_success_download}") -v 1 > "${url_list_download}_2"
             mv "${url_list_download}_2" "${url_list_download}"
@@ -761,7 +784,7 @@ function showhelp {
     echo $' -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive).\n\tExample: -F "2:PRJNA12377,PRJNA670754|14:Partial" (AND between cols, OR between values)\n\tColumn info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
     echo
     echo $'Taxonomy options:'
-    echo $' -M Taxonomy. gtdb keeps only assemblies in the latest GTDB release. ncbi keeps only latest assemblies (version_status). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
+    echo $' -M Taxonomy. gtdb keeps only assemblies in GTDB (R207). ncbi keeps only latest assemblies (version_status). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
     echo $' -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. \n\tSelection by ranks are also supported with rank:number (e.g genus:3)\n\t[species, genus, family, order, class, phylum, kingdom, superkingdom]\n\tSelection order based on: RefSeq Category, Assembly level, Relation to type material, Date (recent first).\n\tDefault: 0'
     echo $' -a Keep the current version of the taxonomy database in the output folder'
     echo
@@ -983,16 +1006,16 @@ fi
 gtdb_urls=()
 if [[ "${tax_mode}" == "gtdb" ]]; then
     if [[ -z "${organism_group}" ]]; then
-        gtdb_urls+=("https://data.gtdb.ecogenomic.org/releases/latest/ar53_taxonomy.tsv.gz")
-        gtdb_urls+=("https://data.gtdb.ecogenomic.org/releases/latest/bac120_taxonomy.tsv.gz")
+        gtdb_urls+=("https://data.gtdb.ecogenomic.org/releases/release207/207.0/ar53_taxonomy_r207.tsv.gz")
+        gtdb_urls+=("https://data.gtdb.ecogenomic.org/releases/release207/207.0/bac120_taxonomy_r207.tsv.gz")
     else
         for og in ${organism_group//,/ }; do
             if [[ "${og}" == "archaea" ]]; then
-                gtdb_urls+=("https://data.gtdb.ecogenomic.org/releases/latest/ar53_taxonomy.tsv.gz")
+                gtdb_urls+=("https://data.gtdb.ecogenomic.org/releases/release207/207.0/ar53_taxonomy_r207.tsv.gz")
             elif [[ "${og}" == "bacteria" ]]; then
-                gtdb_urls+=("https://data.gtdb.ecogenomic.org/releases/latest/bac120_taxonomy.tsv.gz")
+                gtdb_urls+=("https://data.gtdb.ecogenomic.org/releases/release207/207.0/bac120_taxonomy_r207.tsv.gz")
             else
-                echo "${og}: invalid organism group for GTDB [archaea bacteria] "; exit 1;
+                echo "${og}: invalid organism group for GTDB [ 'archaea' 'bacteria' ] "; exit 1;
             fi
         done
     fi
@@ -1228,7 +1251,10 @@ if [[ "${MODE}" == "NEW" ]]; then
     echolog " - ${all_lines} assembly entries available" "1"
     echolog "" "1"
     echolog "Filtering assembly summary [${new_label}]" "1"
-    filter_assembly_summary "${new_assembly_summary}" ${all_lines}
+    if ! filter_assembly_summary "${new_assembly_summary}" ${all_lines}; then
+        echolog " - Failed" "1";
+        exit 1;
+    fi
     filtered_lines=$(count_lines_file "${new_assembly_summary}")
     echolog " - ${filtered_lines} assembly entries to download" "1"
     echolog "" "1"
@@ -1338,7 +1364,10 @@ else # update/fix
         echolog " - ${all_lines} assembly entries available" "1"
         echolog "" "1"
         echolog "Filtering assembly summary [${new_label}]" "1"
-        filter_assembly_summary "${new_assembly_summary}" ${all_lines}
+        if ! filter_assembly_summary "${new_assembly_summary}" ${all_lines}; then
+            echolog " - Failed" "1";
+            exit 1;
+        fi
         filtered_lines=$(count_lines_file "${new_assembly_summary}")
         echolog " - ${filtered_lines} assembly entries to download" "1"
         echolog "" "1"
@@ -1432,15 +1461,22 @@ fi
 
 if [ "${dry_run}" -eq 0 ]; then
     if [ "${download_taxonomy}" -eq 1 ]; then
-        echolog "Downloading taxonomy database ["${tax_mode}"] to ${target_output_prefix}" "1"
+        echolog "Downloading taxonomy database [${tax_mode}]" "1"
         if [[ "${tax_mode}" == "ncbi" ]]; then
-            download_static "${base_url}/pub/taxonomy/taxdump.tar.gz" "${target_output_prefix}taxdump.tar.gz"
+            if ! download_retry_md5 "${base_url}/pub/taxonomy/taxdump.tar.gz" "${target_output_prefix}taxdump.tar.gz" "${base_url}/pub/taxonomy/taxdump.tar.gz.md5" "${retry_download_batch}"; then
+                echolog " - Failed" "1"
+            else
+                echolog " - ${target_output_prefix}taxdump.tar.gz" "1"
+            fi
         else
             for url in "${gtdb_urls[@]}"; do
-                download_static "${url}" "${target_output_prefix}${url##*/}"
+                if ! download_retry_md5 "${url}" "${target_output_prefix}${url##*/}" "https://data.gtdb.ecogenomic.org/releases/release207/207.0/MD5SUM" "${retry_download_batch}"; then
+                    echolog " - Failed" "1"
+                else
+                    echolog "${target_output_prefix}${url##*/}" "1"
+                fi
             done
         fi
-        echolog " - Done" "1"
         echolog "" "1"
     fi
 

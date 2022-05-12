@@ -43,15 +43,18 @@ mkdir -p "${outfld}pub/taxonomy/new_taxdump/"
 cat "${outfld}accessions_taxids.txt" | xargs -l bash -c 'grep "[^0-9]${1}[^0-9]" "'${outfld}'taxidlineage.dmp"' >> "${outfld}pub/taxonomy/new_taxdump/taxidlineage.dmp"
 cat "${outfld}accessions_taxids.txt" | xargs -l bash -c 'grep "^${1}[^0-9]" "'${outfld}'rankedlineage.dmp"' >> "${outfld}pub/taxonomy/new_taxdump/rankedlineage.dmp"
 find "${outfld}pub/taxonomy/new_taxdump/" -printf "%P\n" | tar -czf "${outfld}pub/taxonomy/new_taxdump/new_taxdump.tar.gz" --no-recursion -C "${outfld}pub/taxonomy/new_taxdump/" -T -
+md5sum "${outfld}pub/taxonomy/new_taxdump/new_taxdump.tar.gz" > "${outfld}pub/taxonomy/new_taxdump/new_taxdump.tar.gz.md5"
 rm "${outfld}new_taxdump.tar.gz" "${outfld}taxidlineage.dmp" "${outfld}rankedlineage.dmp" "${outfld}pub/taxonomy/new_taxdump/taxidlineage.dmp" "${outfld}pub/taxonomy/new_taxdump/rankedlineage.dmp"
 
 #gtdb
-mkdir -p "${outfld}releases/latest/"
-gtdb_tax=( "ar53_taxonomy.tsv.gz" "bac120_taxonomy.tsv.gz" )
+gtdb_out="${outfld}releases/release207/207.0/"
+mkdir -p "${gtdb_out}"
+gtdb_tax=( "ar53_taxonomy_r207.tsv.gz" "bac120_taxonomy_r207.tsv.gz" )
 for tax in "${gtdb_tax[@]}"; do
-    wget --quiet --show-progress --output-document "${outfld}${tax}" "https://data.gtdb.ecogenomic.org/releases/latest/${tax}"
-    join -1 1 -2 1 <(cut -f 1 "${outfld}accessions_taxids.txt" | sort) <(zcat "${outfld}${tax}" | awk 'BEGIN{FS=OFS="\t"}{print $1,$1,$2}' | sed -r 's/^.{3}//' | sort) -t$'\t' -o "2.2,2.3" | gzip > "${outfld}releases/latest/${tax}"
+    wget --quiet --show-progress --output-document "${outfld}${tax}" "https://data.gtdb.ecogenomic.org/releases/release207/207.0/${tax}"
+    join -1 1 -2 1 <(cut -f 1 "${outfld}accessions_taxids.txt" | sort) <(zcat "${outfld}${tax}" | awk 'BEGIN{FS=OFS="\t"}{print $1,$1,$2}' | sed -r 's/^.{3}//' | sort) -t$'\t' -o "2.2,2.3" | gzip > "${gtdb_out}${tax}"
     rm "${outfld}${tax}"
 done
 
+md5sum ${gtdb_out}*.tsv.gz > "${gtdb_out}MD5SUM"
 rm ${outfld}accessions_taxids.txt
