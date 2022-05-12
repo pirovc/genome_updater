@@ -9,6 +9,10 @@ setup_file() {
     # Get tests dir
     DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )"
    
+
+    files_dir="$DIR/files/"
+    export files_dir
+
     # Export local_dir to use local files offline instead of ncbi ftp online when testing
     local_dir="$DIR/files/"
     export local_dir
@@ -20,6 +24,11 @@ setup_file() {
     export outprefix
 }
 
+@test "Run genome_updater.sh without args" {
+    run ./genome_updater.sh
+    assert_failure
+}
+
 @test "Run genome_updater.sh and show help" {
     run ./genome_updater.sh -h
     assert_success
@@ -28,62 +37,106 @@ setup_file() {
 @test "Run genome_updater.sh and show debug info" {
     run ./genome_updater.sh -Z
     assert_success
+    assert_output --partial "GNU bash" # Loop for GNU --version info
 }
 
-@test "DB refseq" {
-    outdir=${outprefix}db-refseq/
-    label="test"
+@test "Database -d refseq" {
+    outdir=${outprefix}d-refseq/
+    label="refseq"
     run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
-
-    # Check filenames
+    assert [ $(count_files ${outdir} ${label}) -gt 0 ] # contains files
     for file in $(ls_files ${outdir} ${label}); do
         [[ "$(basename $file)" = GCF* ]] # filename starts with GCF_
     done
 }
 
-@test "DB genbank" {
-    outdir=${outprefix}db-genbank/
-    label="test"
+@test "Database -d genbank" {
+    outdir=${outprefix}d-genbank/
+    label="genbank"
     run ./genome_updater.sh -d genbank -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
-    
-    # Check filenames
+    assert [ $(count_files ${outdir} ${label}) -gt 0 ] # contains files
     for file in $(ls_files ${outdir} ${label}); do
         [[ "$(basename $file)" = GCA* ]] # filename starts with GCA_
     done
 }
 
-@test "DB refseq and genbank" {
-    outdir=${outprefix}db-refseq-genbank/
-    label="test"
+@test "Database -d refseq,genbank" {
+    outdir=${outprefix}d-refseq-genbank/
+    
+    label="refseq"
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+    files_refseq=$(count_files ${outdir} ${label})
+    assert [ ${files_refseq} -gt 0 ] # contains files
+    for file in $(ls_files ${outdir} ${label}); do
+        [[ "$(basename $file)" = GCF* ]] # filename starts with GCF_
+    done
+
+    label="genbank"
+    run ./genome_updater.sh -d genbank -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+    files_genbank=$(count_files ${outdir} ${label})
+    assert [ ${files_genbank} -gt 0 ] # contains files
+    for file in $(ls_files ${outdir} ${label}); do
+        [[ "$(basename $file)" = GCA* ]] # filename starts with GCA_
+    done
+
+    label="refseq-genbank"
     run ./genome_updater.sh -d refseq,genbank -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
+    assert [ $(count_files ${outdir} ${label}) -eq $((files_refseq+files_genbank)) ]
 }
 
-@test "Organism group archaea" {
-    outdir=${outprefix}og-archaea/
+@test "Organism group -g archaea" {
+    outdir=${outprefix}g-archaea/
     label="test"
-    run ./genome_updater.sh -d refseq -o archaea -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g archaea -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
+    assert [ $(count_files ${outdir} ${label}) -gt 0 ] # contains files
 }
 
-@test "Organism group archaea and fungi" {
-    outdir=${outprefix}og-archaea-fungi/
+@test "Organism group -g fungi" {
+    outdir=${outprefix}g-fungi/
     label="test"
-    run ./genome_updater.sh -d refseq -o archaea,fungi -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g fungi -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
+    assert [ $(count_files ${outdir} ${label}) -gt 0 ] # contains files
 }
 
-@test "Species taxids" {
-    outdir=${outprefix}species-taxids/
+@test "Organism group -g archaea,fungi" {
+    outdir=${outprefix}g-archaea-fungi/
+
+    label="archaea"
+    run ./genome_updater.sh -d refseq -g archaea -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+    files_arc=$(count_files ${outdir} ${label})
+    assert [ ${files_arc} -gt 0 ] # contains files
+
+    label="fungi"
+    run ./genome_updater.sh -d refseq -g fungi -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+    files_fun=$(count_files ${outdir} ${label})
+    assert [ ${files_fun} -gt 0 ] # contains files
+
+    label="archaea-fungi"
+    run ./genome_updater.sh -d refseq -g archaea,fungi -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+    assert [ $(count_files ${outdir} ${label}) -eq $((files_arc+files_fun)) ]
+}
+
+@test "Taxids leaves ncbi" {
+    # taxids on lower levels need the complete taxonomy to work properly (tested online)
+
+    outdir=${outprefix}taxids-leaves-ncbi/
     label="test"
     # Get all possible taxids from base assembly_summary
     txids=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 7 ) )
     #echo ${txids[@]} >&3
 
     # Use third
-    run ./genome_updater.sh -d refseq -S "${txids[2]}" -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -T "${txids[2]}" -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # Check if output contains only used taxids
@@ -93,6 +146,17 @@ setup_file() {
     # Used taxid should be the only one 
     assert_equal ${#txids_ret[@]} 1 #length
     assert_equal ${txids[2]} ${txids_ret[0]} #same taxid 
+}
+
+@test "Taxids leaves gtdb" {
+    # taxids on lower levels need the complete taxonomy to work properly (tested online)
+
+    outdir=${outprefix}taxids-leaves-gtdb/
+    label="test"
+    # Use fixed one
+    run ./genome_updater.sh -d refseq,genbank -T 's__MWBV01 sp002069705' -b ${label} -o ${outdir} -g archaea -M gtdb
+    sanity_check ${outdir} ${label}
+    assert [ $(count_files ${outdir} ${label}) -eq 1 ]
 }
 
 @test "Refseq category" {
@@ -164,11 +228,28 @@ setup_file() {
     done
 }
 
-@test "Top species" {
-    outdir=${outprefix}top-species/
+@test "Top 1 leaves ncbi" {
+    outdir=${outprefix}top-leaves-ncbi/
     label="test"
     # Keep only top 1 for selected species
-    run ./genome_updater.sh -d refseq,genbank -P 1 -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq,genbank -A 1 -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+
+    # Get counts of species taxids on output
+    txids_ret=$(get_values_as ${outdir}assembly_summary.txt 6 )
+    ret_occ=( $( echo ${txids_ret}  | tr ' ' '\n' | sort | uniq -c | awk '{print $1}' ) )
+   
+    # Should have one assembly for each species taxid
+    for occ in ${ret_occ[@]}; do
+        assert_equal ${occ} 1
+    done
+}
+
+@test "Top 1 species ncbi" {
+    outdir=${outprefix}top-species-ncbi/
+    label="test"
+    # Keep only top 1 for selected species
+    run ./genome_updater.sh -d refseq,genbank -A species:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # Get counts of species taxids on output
@@ -181,22 +262,47 @@ setup_file() {
     done
 }
 
-@test "Top taxids" {
-    outdir=${outprefix}top-taxids/
+@test "Top 1 superkingdom ncbi" {
+    outdir=${outprefix}top-superkingdom-ncbi/
     label="test"
-    # Keep only top 1 for selected leaf
-    run ./genome_updater.sh -d refseq,genbank -A 1 -b ${label} -o ${outdir}
+    # Keep only top 1 for selected species
+    run ./genome_updater.sh -d refseq -g archaea,fungi -A superkingdom:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
-    # Get counts of leaf taxids on output
-    txids_ret=$(get_values_as ${outdir}assembly_summary.txt 6 )
-    ret_occ=( $( echo ${txids_ret}  | tr ' ' '\n' | sort | uniq -c | awk '{print $1}' ) )
-   
-    # Should have one assembly for each leaf taxid
-    for occ in ${ret_occ[@]}; do
-        assert_equal ${occ} 1
-    done
+    # Check if output contains one file for archaea and one for fungi
+    assert [ $(count_files ${outdir} ${label}) -eq 2 ]
 }
+
+@test "Top gtdb" {
+    outdir=${outprefix}top-gtdb/
+    label_none="none"
+    # no top
+    run ./genome_updater.sh -M gtdb -d refseq,genbank -g archaea -b ${label_none} -o ${outdir}
+    sanity_check ${outdir} ${label_none}
+
+    # Keep only top 1 for species
+    label_species="top-species"
+    run ./genome_updater.sh -M gtdb -d refseq,genbank -g archaea -A species:1 -b ${label_species} -o ${outdir}
+    sanity_check ${outdir} ${label_species}
+    # Check if reduce number of files with filter
+    assert [ $(count_files ${outdir} ${label_none}) -gt $(count_files ${outdir} ${label_species}) ]
+
+    # Keep only top 1 for species
+    label_genus="top-genus"
+    run ./genome_updater.sh -M gtdb -d refseq,genbank -g archaea -A genus:1 -b ${label_genus} -o ${outdir}
+    sanity_check ${outdir} ${label_genus}
+    assert [ $(count_files ${outdir} ${label_species}) -gt $(count_files ${outdir} ${label_genus}) ]
+
+    # Keep only top 1 for species
+    label_phylum="top-phylum"
+    run ./genome_updater.sh -M gtdb -d refseq,genbank -g archaea -A phylum:1 -b ${label_phylum} -o ${outdir}
+    sanity_check ${outdir} ${label_phylum}
+    assert [ $(count_files ${outdir} ${label_genus}) -gt $(count_files ${outdir} ${label_phylum}) ]
+
+    # Check if not 0
+    assert [ $(count_files ${outdir} ${label_phylum}) -gt 0 ]
+}
+
 
 @test "Date start filter" {
     outdir=${outprefix}date-start-filter/
@@ -262,9 +368,8 @@ setup_file() {
     sanity_check ${outdir} ${label}
 
     # Check if report was printed and has all lines reported
-    report_file="${outdir}${label}/updated_assembly_accession.txt"
-    assert_file_exist "${report_file}"
-    assert_equal $(count_lines_file "${report_file}") $(count_lines_file ${outdir}assembly_summary.txt)
+    assert_file_exist ${outdir}${label}/*_assembly_accession.txt
+    assert_equal $(count_lines_file ${outdir}${label}/*_assembly_accession.txt) $(count_lines_file ${outdir}assembly_summary.txt)
 }
 
 @test "Report sequence accession" {
@@ -274,8 +379,7 @@ setup_file() {
     sanity_check ${outdir} ${label}
 
     # Check if report was printed
-    report_file="${outdir}${label}/updated_sequence_accession.txt"
-    assert_file_exist "${report_file}"
+    assert_file_exist ${outdir}${label}/*_sequence_accession.txt
 }
 
 @test "Report urls" {
@@ -297,7 +401,7 @@ setup_file() {
     outdir=${outprefix}external-assembly-summary/
     label="test"
     # Get assembly_summary from -e (not directly from url)
-    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -e ${local_dir}genomes/refseq/assembly_summary_refseq.txt
+    run ./genome_updater.sh -b ${label} -o ${outdir} -e ${local_dir}genomes/refseq/assembly_summary_refseq.txt
     sanity_check ${outdir} ${label}
 }
 
@@ -312,25 +416,66 @@ setup_file() {
 
     # Second version with more entries (refseq,genbank)
     label2="v2"
-    run ./genome_updater.sh -d refseq -b ${label2} -o ${outdir} -d refseq,genbank
+    run ./genome_updater.sh -b ${label2} -o ${outdir} -d refseq,genbank
     sanity_check ${outdir} ${label2}
 
     # Third version with same entries (nothing to download)
     label3="v3"
-    run ./genome_updater.sh -d refseq -b ${label3} -o ${outdir} -d refseq,genbank
+    run ./genome_updater.sh -b ${label3} -o ${outdir} -d refseq,genbank
     sanity_check ${outdir} ${label3}
 
     # Check log for no updates
-    grep "0 updated, 0 deleted, 0 new entries" ${outdir}${label3}/*.log # >&3
+    grep "0 updated, 0 removed, 0 new entries" ${outdir}${label3}/*.log # >&3
     assert_success
 
     # Fourth version with the same as second but rolling back from first, re-download files
     label4="v4"
-    run ./genome_updater.sh -d refseq -b ${label4} -o ${outdir} -d refseq,genbank -B v1
+    run ./genome_updater.sh -b ${label4} -o ${outdir} -d refseq,genbank -B v1
     sanity_check ${outdir} ${label4}
 
     # Check log for updates
-    grep "0 updated, 0 deleted, [0-9]* new entries" ${outdir}${label4}/*.log # >&3
+    grep "0 updated, 0 removed, [1-9][0-9]* new entries" ${outdir}${label4}/*.log # >&3
+    assert_success
+}
+
+@test "Rollback label auto update" {
+    outdir=${outprefix}rollback-label-auto-update/
+    
+    # Base version with only refseq
+    label1="v1"
+    run ./genome_updater.sh -d refseq -b ${label1} -o ${outdir}
+    sanity_check ${outdir} ${label1}
+
+    # Second version with more entries (refseq,genbank)
+    label2="v2"
+    run ./genome_updater.sh -b ${label2} -o ${outdir} -d refseq,genbank
+    sanity_check ${outdir} ${label2}
+
+    # Third version with same entries (nothing to download)
+    label3="v3"
+    run ./genome_updater.sh -b ${label3} -o ${outdir}
+    sanity_check ${outdir} ${label3}
+
+    # Check log for no updates
+    grep "0 updated, 0 removed, 0 new entries" ${outdir}${label3}/*.log # >&3
+    assert_success
+
+    # Fourth version with the same as second but rolling back from first
+    label4="v4"
+    run ./genome_updater.sh -b ${label4} -o ${outdir} -B v1 -d refseq,genbank
+    sanity_check ${outdir} ${label4}
+
+    # Check log for updates
+    grep "0 updated, 0 removed, [1-9][0-9]* new entries" ${outdir}${label4}/*.log # >&3
+    assert_success
+
+    # Continue the update from v4 (without rolling back to v1) 
+    label5="v5"
+    run ./genome_updater.sh -b ${label5} -o ${outdir} -B ""
+    sanity_check ${outdir} ${label5}
+
+    # Check log for updates
+    grep "0 updated, 0 removed, 0 new entries" ${outdir}${label5}/*.log # >&3
     assert_success
 }
 
@@ -377,15 +522,6 @@ setup_file() {
 
     # check if printed to STDOUT
     assert_output ""
-}
-
-@test "Using curl" {
-    outdir=${outprefix}using-curl/
-    label="test"
-    use_curl=1
-    export use_curl
-    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
-    sanity_check ${outdir} ${label}
 }
 
 @test "Mode FIX" {
@@ -435,4 +571,69 @@ setup_file() {
     # Real run FIX
     run ./genome_updater.sh -d refseq -g archaea,fungi -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
+}
+
+@test "Mode auto UPDATE" {
+    outdir=${outprefix}mode-auto-update/
+    label="test"
+
+    # Dry-run NEW
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -g archaea -k
+    assert_success
+    assert_dir_not_exist ${outdir}
+
+    # Real run NEW
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -g archaea
+    sanity_check ${outdir} ${label}
+
+    # Dry-run UPDATE (use same parameters)
+    label="update"
+    run ./genome_updater.sh -o ${outdir} -b ${label} -k
+    assert_success
+
+    # Real run (nothin to update, but carry parameters)
+    run ./genome_updater.sh -o ${outdir} -b ${label}
+    sanity_check ${outdir} ${label}
+
+    # Dry-run UPDATE
+    label="update2"
+    run ./genome_updater.sh -o ${outdir} -b ${label} -g "" -d refseq,genbank -u -k
+    assert_success
+
+    # Real run FIX, remove org (get all), add database, add bool report
+    run ./genome_updater.sh -o ${outdir} -b ${label} -g "" -d refseq,genbank -u
+    sanity_check ${outdir} ${label}
+
+    assert_file_exist ${outdir}${label}/*_assembly_accession.txt
+
+    # Check log for updates
+    grep "0 updated, [1-9][0-9]* removed, [1-9][0-9]* new entries" ${outdir}${label}/*.log # >&3
+    assert_success
+}
+
+@test "Tax. Mode GTDB" {
+    outdir=${outprefix}tax-gtdb/
+    label="test"
+    run ./genome_updater.sh -d refseq,genbank -g archaea -b ${label} -o ${outdir} -M gtdb
+    sanity_check ${outdir} ${label}
+    
+    # Check log for filer with GTDB
+    grep "[1-9][0-9]* assemblies removed not in GTDB" ${outdir}${label}/*.log # >&3
+    assert_success
+}
+
+@test "Invalid assembly_summary.txt" {
+    outdir=${outprefix}invalid-as/
+    label="cols"
+    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_cols.txt
+    assert_failure
+    label="headermiddle"
+    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_headermiddle.txt
+    assert_failure
+    label="justheader"
+    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_justheader.txt
+    assert_failure
+    label="xCF"
+    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_xCF.txt
+    assert_failure
 }
