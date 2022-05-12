@@ -368,9 +368,8 @@ setup_file() {
     sanity_check ${outdir} ${label}
 
     # Check if report was printed and has all lines reported
-    report_file="${outdir}${label}/updated_assembly_accession.txt"
-    assert_file_exist "${report_file}"
-    assert_equal $(count_lines_file "${report_file}") $(count_lines_file ${outdir}assembly_summary.txt)
+    assert_file_exist ${outdir}${label}/*_assembly_accession.txt
+    assert_equal $(count_lines_file ${outdir}${label}/*_assembly_accession.txt) $(count_lines_file ${outdir}assembly_summary.txt)
 }
 
 @test "Report sequence accession" {
@@ -380,8 +379,7 @@ setup_file() {
     sanity_check ${outdir} ${label}
 
     # Check if report was printed
-    report_file="${outdir}${label}/updated_sequence_accession.txt"
-    assert_file_exist "${report_file}"
+    assert_file_exist ${outdir}${label}/*_sequence_accession.txt
 }
 
 @test "Report urls" {
@@ -606,8 +604,7 @@ setup_file() {
     run ./genome_updater.sh -o ${outdir} -b ${label} -g "" -d refseq,genbank -u
     sanity_check ${outdir} ${label}
 
-    report_file="${outdir}${label}/updated_assembly_accession.txt"
-    assert_file_exist "${report_file}"
+    assert_file_exist ${outdir}${label}/*_assembly_accession.txt
 
     # Check log for updates
     grep "0 updated, [1-9][0-9]* removed, [1-9][0-9]* new entries" ${outdir}${label}/*.log # >&3

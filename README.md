@@ -34,7 +34,7 @@ Some days later, update the repository:
 genome_updater downloads and keeps several snapshots of a certain sub-set of the genomes repository, without redundancy and with incremental track of changes.
 
 - it runs on a working directory (defined with `-o`) and creates a snapshot (optionally named with `-b`, timestamp by default) of refseq and/or genbank (`-d`) genome repositories based on selected organism groups (`-g`) and/or taxonomic ids (`-T`) with the desired files type(s) (`-f`)
-- filters can be applied to refine the selection: refseq category (`-c`), assembly level (`-l`), dates (`-D`/`-E`), custom filters (`-F`), top assemblies (`-A`)
+- filters can be applied to refine the selection: refseq category (`-c`), assembly level (`-l`), dates (`-D`/`-E`), custom filters (`-F`), [top assemblies](#Top-assemblies) (`-A`)
 - `-M gtdb` enables GTDB [3] compability. Only assemblies from the latest GTDB release will be kept and taxonomic filters will work based on GTDB nodes (e.g. `-T "c__Hydrothermarchaeia"` or `-A genus:3`)
 - the repository can be updated or changed with incremental changes. outdated files are kept in their respective version and repeated files linked to the new version. genome_updater keepts track of all changes and just downloads what is necessary
 
@@ -136,7 +136,7 @@ To test if all genome_updater functions are running properly on your system:
 
 ### assembly accessions
 
-The parameter `-u` activates the output of a list of updated assembly accessions for the entries with all files (`-f`) successfully downloaded. The file `updated_assembly_accession.txt` has the following fields (tab separated):
+The parameter `-u` activates the output of a list of updated assembly accessions for the entries with all files (`-f`) successfully downloaded. The file `{timestamp}_assembly_accession.txt` has the following fields (tab separated):
 
 	Added [A] or Removed [R], assembly accession, url
 
@@ -148,7 +148,7 @@ Example:
 
 ### sequence accessions
 
-The parameter `-r` activates the output of a list of updated sequence accessions for the entries with all files (`-f`) successfully downloaded. It is only available when `assembly_report.txt` is one of the file types. The file `updated_sequence_accession.txt` has the following fields (tab separated):
+The parameter `-r` activates the output of a list of updated sequence accessions for the entries with all files (`-f`) successfully downloaded. It is only available when `assembly_report.txt` is one of the file types. The file `{timestamp}_sequence_accession.txt` has the following fields (tab separated):
 
 	Added [A] or Removed [R], assembly accession, genbank accession, refseq accession, sequence length, taxonomic id
 
@@ -156,8 +156,6 @@ Example:
 
 	A	GCA_000243255.1	CM001436.1	NZ_CM001436.1	3200946	937775
 	R	GCA_000275865.1	CM001555.1	NZ_CM001555.1	2475100	28892
-
-* genome_updater fixes the current version of the database before updating (or just fix with `-i`). In this step if some entry is fixed and the reports are active, all lines are going to be reported as Added.
 
 ### URLs (and files)
 
@@ -173,7 +171,7 @@ or
 
 ## Top assemblies
 
-`-A` will try to selected the "best" assemblies for each leaf taxonomic nodes or a specific rank based on 4 categories (A-D), in the following order of importance:
+`-A` will selected the "best" assemblies for each taxonomic nodes (leaves or specific rank) according to 4 categories (A-D), in the following order of importance:
 
 	A) refseq Category: 
 		1) reference genome
