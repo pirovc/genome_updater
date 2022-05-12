@@ -771,7 +771,7 @@ function showhelp {
     echo
     echo $'Organism options:'
     echo $' -g Organism group(s) (comma-separated entries, empty for all)\n\t[archaea, bacteria, fungi, human, invertebrate, metagenomes, \n\tother, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]\n\tDefault: ""'
-    echo $' -T Taxonomic identifier(s) (comma-separated entries, empty for all). Children nodes will be included. \n\tDefault: ""'
+    echo $' -T Taxonomic identifier(s) (comma-separated entries, empty for all).\n\tExample: "562" (for -M ncbi) or "s__Escherichia coli" (for -M gtdb)\n\tDefault: ""'
     echo
     echo $'File options:'
     echo $' -f file type(s) (comma-separated entries)\n\t[genomic.fna.gz, assembly_report.txt, protein.faa.gz, genomic.gbff.gz]\n\tMore formats at https://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt\n\tDefault: assembly_report.txt'
@@ -785,7 +785,7 @@ function showhelp {
     echo
     echo $'Taxonomy options:'
     echo $' -M Taxonomy. gtdb keeps only assemblies in GTDB (R207). ncbi keeps only latest assemblies (version_status). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
-    echo $' -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. \n\tSelection by ranks are also supported with rank:number (e.g genus:3)\n\t[species, genus, family, order, class, phylum, kingdom, superkingdom]\n\tSelection order based on: RefSeq Category, Assembly level, Relation to type material, Date (recent first).\n\tDefault: 0'
+    echo $' -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. \n\tSelection by ranks are also supported with rank:number (e.g genus:3)\n\t[species, genus, family, order, class, phylum, kingdom, superkingdom]\n\tSelection order based on: RefSeq Category, Assembly level, Relation to type material, Date.\n\tDefault: 0'
     echo $' -a Keep the current version of the taxonomy database in the output folder'
     echo
     echo $'Run options:'

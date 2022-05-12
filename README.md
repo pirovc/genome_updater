@@ -61,20 +61,21 @@ To test if all genome_updater functions are running properly on your system:
 
 ### Archaea, Bacteria, Fungi and Viral complete genome sequences from refseq
 
+	# Download (-m to check integrity of downloaded files)
 	./genome_updater.sh -d "refseq" -g "archaea,bacteria,fungi,viral" -f "genomic.fna.gz" -o "arc_bac_fun_vir_refseq_cg" -t 12 -m
 	
-	# Update some days later
-	./genome_updater.sh -o "arc_bac_fun_vir_refseq_cg" -t 12 -m
+	# Update (e.g. some days later)
+	./genome_updater.sh -o "arc_bac_fun_vir_refseq_cg" -m
 	
 ### All RNA Viruses (under the taxon Riboviria) on refseq
 
 	./genome_updater.sh -d "refseq" -T "2559587" -f "genomic.fna.gz" -o "all_rna_virus" -t 12 -m
 	
-### One genome assembly for each entry (leaf taxonomic nodes) in genbank
+### One genome assembly for each bacterial taxonomic node (leaves) in genbank
     
     ./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_genbank" -A 1 -t 12 -m 
     
-### One genome assembly for each species in genbank
+### One genome assembly for each bacterial species in genbank
     
     ./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1species_bacteria_genbank" -A "species:1" -t 12 -m 
     
@@ -102,7 +103,7 @@ To test if all genome_updater functions are running properly on your system:
 	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -l "complete genome" -f "genomic.fna.gz" -k
 	
 	# Download (-o output folder, -t threads, -m checking md5, -u extended assembly accession report)
-	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -l "Complete Genome" -f "genomic.fna.gz" -o "arc_bac_refseq_cg" -t 12 -u -m
+	./genome_updater.sh -d "refseq" -g "archaea,bacteria" -l "complete genome" -f "genomic.fna.gz" -o "arc_bac_refseq_cg" -t 12 -u -m
 	
 	# Downloading additional .gbff files for the current snapshot (adding genomic.gbff.gz to -f , -i to just add files and not update)
 	./genome_updater.sh -f "genomic.fna.gz,genomic.gbff.gz" -o "arc_bac_refseq_cg" -i
@@ -119,12 +120,12 @@ To test if all genome_updater functions are running properly on your system:
 	./genome_updater.sh -d "refseq" -g "bacteria" -f "genomic.fna.gz" -o "bac_refseq" -t 12 -m -b "all"
 
 	# Branch the main files into two sub-versions (no new files will be downloaded or copied)
-	./genome_updater.sh -d "refseq" -g "bacteria" -f "genomic.fna.gz" -o "bac_refseq" -t 12 -m -B "all" -b "complete" -l "complete genome"
-	./genome_updater.sh -d "refseq" -g "bacteria" -f "genomic.fna.gz" -o "bac_refseq" -t 12 -m -B "all" -b "representative" -c "representative genome"
+	./genome_updater.sh -o "bac_refseq" -B "all" -b "complete" -l "complete genome"
+	./genome_updater.sh -o "bac_refseq" -B "all" -b "represen" -c "representative genome"
 
 ### Download Fungi RefSeq assembly information and generate sequence reports and URLs
 
-	./genome_updater.sh -d "refseq" -g "fungi" -f "assembly_report.txt" -o "fungi" -t 12 -r -p
+	./genome_updater.sh -d "refseq" -g "fungi" -f "assembly_report.txt" -o "fungi" -t 12 -rpu
 
 ### Use curl (default wget), change timeout and retries for download, increase retries
 
@@ -154,6 +155,8 @@ Example:
 
 	A	GCA_000243255.1	CM001436.1	NZ_CM001436.1	3200946	937775
 	R	GCA_000275865.1	CM001555.1	NZ_CM001555.1	2475100	28892
+
+Obs: if genome_updater breaks or do not finish completely some files may be missing from the assembly and sequence accession reports
 
 ### URLs (and files)
 
@@ -208,7 +211,8 @@ or
 		[archaea, bacteria, fungi, human, invertebrate, metagenomes, 
 		other, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]
 		Default: ""
-	 -T Taxonomic identifier(s) (comma-separated entries, empty for all). Children nodes will be included. 
+	 -T Taxonomic identifier(s) (comma-separated entries, empty for all).
+		Example: "562" (for -M ncbi) or "s__Escherichia coli" (for -M gtdb)
 		Default: ""
 
 	File options:
@@ -234,13 +238,13 @@ or
 		Default: ""
 
 	Taxonomy options:
-	 -M Taxonomy. gtdb keeps only assemblies in the latest GTDB release. ncbi keeps only latest assemblies (version_status). 
+	 -M Taxonomy. gtdb keeps only assemblies in GTDB (R207). ncbi keeps only latest assemblies (version_status). 
 		[ncbi, gtdb]
 		Default: "ncbi"
 	 -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. 
 		Selection by ranks are also supported with rank:number (e.g genus:3)
 		[species, genus, family, order, class, phylum, kingdom, superkingdom]
-		Selection order based on: RefSeq Category, Assembly level, Relation to type material, Date (recent first).
+		Selection order based on: RefSeq Category, Assembly level, Relation to type material, Date.
 		Default: 0
 	 -a Keep the current version of the taxonomy database in the output folder
 
@@ -254,12 +258,12 @@ or
 	 -m Check MD5 of downloaded files
 
 	Report options:
-	 -u Report of updated assembly accessions
+	 -u Updated assembly accessions report
 		(Added/Removed, assembly accession, url)
-	 -r Report of updated sequence accessions
+	 -r Updated sequence accessions report
 		(Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid)
 		Only available when file format assembly_report.txt is selected and successfully downloaded
-	 -p Output list of URLs with successfuly and failed downloads
+	 -p Reports URLs successfuly downloaded and failed (url_failed.txt url_downloaded.txt)
 
 	Misc. options:
 	 -b Version label
@@ -283,7 +287,6 @@ or
 	 -w Silent output with download progress only
 	 -V Verbose log
 	 -Z Print debug information and run in debug mode
-
 
 ## References:
 
