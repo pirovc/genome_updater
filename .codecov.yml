@@ -1,0 +1,7 @@
+codecov:
+  ci:
+    - "travis.org"
+
+ignore:
+  - ".git/"
+  - "tests/"
