@@ -1274,15 +1274,18 @@ if [[ "${MODE}" == "NEW" ]]; then
             echolog "Downloading $((filtered_lines*(n_formats+1))) files with ${threads} threads" "1"
             download_files "${new_assembly_summary}" "1,20" "${file_formats}"
             echolog "" "1"
-            # UPDATED INDICES assembly accession
+
             if [ "${updated_assembly_accession}" -eq 1 ]; then 
-                output_assembly_accession "${new_assembly_summary}" "1,20" "${file_formats}" "A" > "${new_output_prefix}updated_assembly_accession.txt"
-                echolog "Assembly accession report written [${new_output_prefix}updated_assembly_accession.txt]" "1"
+                echolog "Writing assembly accession report" "1"
+                output_assembly_accession "${new_assembly_summary}" "1,20" "${file_formats}" "A" > "${new_output_prefix}${timestamp}_assembly_accession.txt"
+                echolog " - ${new_output_prefix}${timestamp}_assembly_accession.txt" "1"
+                echolog "" "1"
             fi
-            # UPDATED INDICES sequence accession
             if [ "${updated_sequence_accession}" -eq 1 ]; then
-                output_sequence_accession "${new_assembly_summary}" "1,20" "${file_formats}" "A" "${new_assembly_summary}" > "${new_output_prefix}updated_sequence_accession.txt"
-                echolog "Sequence accession report written [${new_output_prefix}updated_sequence_accession.txt]" "1"
+                echolog "Writing sequence accession report" "1"
+                output_sequence_accession "${new_assembly_summary}" "1,20" "${file_formats}" "A" "${new_assembly_summary}" > "${new_output_prefix}${timestamp}_sequence_accession.txt"
+                echolog " - ${new_output_prefix}${timestamp}_sequence_accession.txt" "1"
+                echolog "" "1"
             fi
         fi
     fi
@@ -1310,14 +1313,16 @@ else # update/fix
             echolog "" "1"
             # if new files were downloaded, rewrite reports (overwrite information on Removed accessions - all become Added)
             if [ "${updated_assembly_accession}" -eq 1 ]; then 
-                output_assembly_accession "${current_assembly_summary}" "1,20" "${file_formats}" "A" > "${current_output_prefix}updated_assembly_accession.txt"
-                echolog "Assembly accession report rewritten [${current_output_prefix}updated_assembly_accession.txt]" "1"
-                echolog " - In fix mode, all entries are report as 'A' (Added)" "1"
+                echolog "Writing assembly accession report" "1"
+                output_assembly_accession "${missing}" "1,2" "${file_formats}" "A" > "${current_output_prefix}${timestamp}_assembly_accession.txt"
+                echolog " - ${current_output_prefix}${timestamp}_assembly_accession.txt" "1"
+                echolog "" "1"
             fi
             if [ "${updated_sequence_accession}" -eq 1 ]; then
-                output_sequence_accession "${current_assembly_summary}" "1,20" "${file_formats}" "A" "${current_assembly_summary}" > "${current_output_prefix}updated_sequence_accession.txt"
-                echolog "Sequence accession report rewritten [${current_output_prefix}updated_sequence_accession.txt]" "1"
-                echolog " - In fix mode, all entries are report as 'A' (Added)" "1"
+                echolog "Writing sequence accession report" "1"
+                output_sequence_accession "${missing}" "1,2" "${file_formats}" "A" "${current_assembly_summary}" > "${current_output_prefix}${timestamp}_sequence_accession.txt"
+                echolog " - ${current_output_prefix}${timestamp}_sequence_accession.txt" "1"
+                echolog "" "1"
             fi
         fi
     else
@@ -1395,7 +1400,7 @@ else # update/fix
             echolog "Linking versions [${current_label} --> ${new_label}]" "1"
             # Only link existing files relative to the current version
             list_files "${current_assembly_summary}" "1,20" "${file_formats}" | cut -f 3 | xargs -P "${threads}" -I{} bash -c 'if [[ -f '"${current_output_prefix}${files_dir}{}"' ]]; then ln -s -r '"${current_output_prefix}${files_dir}{}"' '"${new_output_prefix}${files_dir}"'; fi'
-            echolog " - Done." "1"
+            echolog " - Done" "1"
             echolog "" "1"
             # set version - update default assembly summary
             echolog "Setting-up new version [${new_label}]" "1"
@@ -1403,19 +1408,19 @@ else # update/fix
             ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
             # Add entry on history
             write_history ${current_label} ${new_label} ${timestamp} ${new_assembly_summary}
-            echolog " - Done." "1"
+            echolog " - Done" "1"
             echolog "" "1"
 
             # UPDATED INDICES assembly accession
             if [ "${updated_assembly_accession}" -eq 1 ]; then 
-                output_assembly_accession "${update}" "3,4" "${file_formats}" "R" > "${new_output_prefix}updated_assembly_accession.txt"
-                output_assembly_accession "${remove}" "1,2" "${file_formats}" "R" >> "${new_output_prefix}updated_assembly_accession.txt"
+                output_assembly_accession "${update}" "3,4" "${file_formats}" "R" > "${new_output_prefix}${timestamp}_assembly_accession.txt"
+                output_assembly_accession "${remove}" "1,2" "${file_formats}" "R" >> "${new_output_prefix}${timestamp}_assembly_accession.txt"
             fi
             # UPDATED INDICES sequence accession (removed entries - do it before deleting them)
             if [ "${updated_sequence_accession}" -eq 1 ]; then
                 # current_assembly_summary is the old summary
-                output_sequence_accession "${update}" "3,4" "${file_formats}" "R" "${current_assembly_summary}" > "${new_output_prefix}updated_sequence_accession.txt"
-                output_sequence_accession "${remove}" "1,2" "${file_formats}" "R" "${current_assembly_summary}" >> "${new_output_prefix}updated_sequence_accession.txt"
+                output_sequence_accession "${update}" "3,4" "${file_formats}" "R" "${current_assembly_summary}" > "${new_output_prefix}${timestamp}_sequence_accession.txt"
+                output_sequence_accession "${remove}" "1,2" "${file_formats}" "R" "${current_assembly_summary}" >> "${new_output_prefix}${timestamp}_sequence_accession.txt"
             fi
             
             # Execute updates
@@ -1438,20 +1443,24 @@ else # update/fix
                 echolog " - NEW: Downloading $((new_lines*(n_formats+1))) files with ${threads} threads"    "1"
                 download_files "${new}" "1,2" "${file_formats}"
             fi 
-            echolog " - Done." "1"
+            echolog " - Done" "1"
             echolog "" "1"
 
             # UPDATED INDICES assembly accession (added entries - do it after downloading them)
             if [ "${updated_assembly_accession}" -eq 1 ]; then 
-                output_assembly_accession "${update}" "1,2" "${file_formats}" "A" >> "${new_output_prefix}updated_assembly_accession.txt"
-                output_assembly_accession "${new}" "1,2" "${file_formats}" "A" >> "${new_output_prefix}updated_assembly_accession.txt"
-                echolog "Assembly accession report written [${new_output_prefix}updated_assembly_accession.txt]" "1"
+                echolog "Writing assembly accession report" "1"
+                output_assembly_accession "${update}" "1,2" "${file_formats}" "A" >> "${new_output_prefix}${timestamp}_assembly_accession.txt"
+                output_assembly_accession "${new}" "1,2" "${file_formats}" "A" >> "${new_output_prefix}${timestamp}_assembly_accession.txt"
+                echolog " - ${new_output_prefix}${timestamp}_assembly_accession.txt" "1"
+                echolog "" "1"
             fi
             # UPDATED INDICES sequence accession (added entries - do it after downloading them)
             if [ "${updated_sequence_accession}" -eq 1 ]; then
-                output_sequence_accession "${update}" "1,2" "${file_formats}" "A" "${new_assembly_summary}">> "${new_output_prefix}updated_sequence_accession.txt"
-                output_sequence_accession "${new}" "1,2" "${file_formats}" "A" "${new_assembly_summary}" >> "${new_output_prefix}updated_sequence_accession.txt"
-                echolog "Sequence accession report written [${new_output_prefix}updated_sequence_accession.txt]" "1"
+                echolog "Writing sequence accession report" "1"
+                output_sequence_accession "${update}" "1,2" "${file_formats}" "A" "${new_assembly_summary}">> "${new_output_prefix}${timestamp}_sequence_accession.txt"
+                output_sequence_accession "${new}" "1,2" "${file_formats}" "A" "${new_assembly_summary}" >> "${new_output_prefix}${timestamp}_sequence_accession.txt"
+                echolog " - ${new_output_prefix}${timestamp}_sequence_accession.txt" "1"
+                echolog "" "1"
             fi
         fi
         # Remove update files
