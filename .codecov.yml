@@ -3,5 +3,5 @@ codecov:
     - "travis.org"
 
 ignore:
-  - "**/.git/"
-  - "**/tests/"
+  - ".git/"
+  - "tests/"
