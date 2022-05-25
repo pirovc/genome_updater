@@ -1048,7 +1048,7 @@ elif [[ "${tax_mode}" == "gtdb" ]]; then
 fi
 
 # top assemblies by rank
-if [[ ! "${top_assemblies}" =~ ^[0-9]+$ && ! "${top_assemblies}" =~ ^(superkingdom|phylum|class|order|family|genus|species)\:[1-9]+$ ]]; then
+if [[ ! "${top_assemblies}" =~ ^[0-9]+$ && ! "${top_assemblies}" =~ ^(superkingdom|phylum|class|order|family|genus|species)\:[1-9][0-9]*$ ]]; then
     echo "${top_assemblies}: invalid top assemblies - should be a number > 0 or [superkingdom|phylum|class|order|family|genus|species]:number"; exit 1;
 else
     top_assemblies_rank=""
