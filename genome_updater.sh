@@ -114,7 +114,7 @@ check_assembly_summary() # parameter: ${1} assembly_summary file - return 0 true
     if [ ! -z $(tail -c -1 "${1}") ]; then return 1; fi
 
     # if contains header char parts of the header anywhere starting lines
-    grep -m 1 "^#" "${1}" #> /dev/null
+    grep -m 1 "^#" "${1}" > /dev/null 2>&1
     if [ $? -eq 0 ]; then return 1; fi
 
     # if contains parts of the header anywhere
