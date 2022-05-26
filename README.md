@@ -179,7 +179,7 @@ or
 		2) representative genome
 		3) na
 	B) Assembly level:
-		1) Complete genome
+		1) Complete Genome
 		2) Chromosome
 		3) Scaffold
 		4) Contig
@@ -200,7 +200,7 @@ or
 	┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐
 	│ ┬├┤ ││││ ││││├┤     │ │├─┘ ││├─┤ │ ├┤ ├┬┘
 	└─┘└─┘┘└┘└─┘┴ ┴└─┘────└─┘┴  ─┴┘┴ ┴ ┴ └─┘┴└─
-	                                     v0.5.0 
+	                                     v0.5.1 
 
 	Database options:
 	 -d Database (comma-separated entries)

@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.5.0"
+version="0.5.1"
 
 # Define base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -114,7 +114,7 @@ check_assembly_summary() # parameter: ${1} assembly_summary file - return 0 true
     if [ ! -z $(tail -c -1 "${1}") ]; then return 1; fi
 
     # if contains header char parts of the header anywhere starting lines
-    grep -m 1 "^#" "${1}" #> /dev/null
+    grep -m 1 "^#" "${1}" > /dev/null 2>&1
     if [ $? -eq 0 ]; then return 1; fi
 
     # if contains parts of the header anywhere
@@ -474,7 +474,7 @@ filter_top_assemblies() # parameter: ${1} assembly_summary file, ${2} modified a
             col5["reference genome"]=1;
             col5["representative genome"]=2;
             col5["na"]=3;
-            col12["Complete genome"]=1;
+            col12["Complete Genome"]=1;
             col12["Chromosome"]=2;
             col12["Scaffold"]=3;
             col12["Contig"]=4;
@@ -1048,7 +1048,7 @@ elif [[ "${tax_mode}" == "gtdb" ]]; then
 fi
 
 # top assemblies by rank
-if [[ ! "${top_assemblies}" =~ ^[0-9]+$ && ! "${top_assemblies}" =~ ^(superkingdom|phylum|class|order|family|genus|species)\:[1-9]+$ ]]; then
+if [[ ! "${top_assemblies}" =~ ^[0-9]+$ && ! "${top_assemblies}" =~ ^(superkingdom|phylum|class|order|family|genus|species)\:[1-9][0-9]*$ ]]; then
     echo "${top_assemblies}: invalid top assemblies - should be a number > 0 or [superkingdom|phylum|class|order|family|genus|species]:number"; exit 1;
 else
     top_assemblies_rank=""

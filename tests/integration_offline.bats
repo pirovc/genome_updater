@@ -265,7 +265,7 @@ setup_file() {
 @test "Top 1 superkingdom ncbi" {
     outdir=${outprefix}top-superkingdom-ncbi/
     label="test"
-    # Keep only top 1 for selected species
+    # Keep only top 1 for superkingdom
     run ./genome_updater.sh -d refseq -g archaea,fungi -A superkingdom:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
@@ -303,6 +303,72 @@ setup_file() {
     assert [ $(count_files ${outdir} ${label_phylum}) -gt 0 ]
 }
 
+@test "Top assemblies order" {
+
+    outdir=${outprefix}top-assemblies-order-refseq-category/
+
+    # Selection order
+    # col5["reference genome"]=1;
+    # col5["representative genome"]=2;
+    # col5["na"]=3;
+    # should always pick the correct refseq category for top superkingdom (just one)
+
+    label="3"
+    rscat="reference genome,representative genome,na"
+    run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A superkingdom:1 -b ${label} -o ${outdir}    
+    sanity_check ${outdir} ${label}
+    # --- no reference genome in example files ---
+    assert_equal "representative genome" "$(get_values_as ${outdir}assembly_summary.txt 5)"
+
+    label="2"
+    rscat="representative genome,na"
+    run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A superkingdom:1 -b ${label} -o ${outdir}    
+    sanity_check ${outdir} ${label}
+    assert_equal "representative genome" "$(get_values_as ${outdir}assembly_summary.txt 5)"
+
+    label="1"
+    rscat="na"
+    run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A superkingdom:1 -b ${label} -o ${outdir}    
+    sanity_check ${outdir} ${label}
+    assert_equal "na" "$(get_values_as ${outdir}assembly_summary.txt 5)"
+
+
+    outdir=${outprefix}top-assemblies-order-assembly-level/
+
+    # Selection order
+    # col12["Complete Genome"]=1;
+    # col12["Chromosome"]=2;
+    # col12["Scaffold"]=3;
+    # col12["Contig"]=4;
+
+    # should always pick the correct assembly level for top superkingdom (just one)
+
+    label="4"
+    aslvl="complete genome,chromosome,scaffold,contig"
+    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}    
+    sanity_check ${outdir} ${label}
+    assert_equal "Complete Genome" "$(get_values_as ${outdir}assembly_summary.txt 12)"
+
+    label="3"
+    aslvl="chromosome,scaffold,contig"
+    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}    
+    sanity_check ${outdir} ${label}
+    assert_equal "Chromosome" "$(get_values_as ${outdir}assembly_summary.txt 12)"
+
+    label="2"
+    aslvl="scaffold,contig"
+    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}    
+    sanity_check ${outdir} ${label}
+    assert_equal "Scaffold" "$(get_values_as ${outdir}assembly_summary.txt 12)"
+
+    label="1"
+    aslvl="contig"
+    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}    
+    sanity_check ${outdir} ${label}
+    assert_equal "Contig" "$(get_values_as ${outdir}assembly_summary.txt 12)"
+
+
+}
 
 @test "Date start filter" {
     outdir=${outprefix}date-start-filter/
