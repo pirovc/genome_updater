@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.5.0"
+version="0.5.1"
 
 # Define base_url or use local files (for testing)
 local_dir=${local_dir:-}
