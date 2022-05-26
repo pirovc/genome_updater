@@ -4,6 +4,7 @@ dist: focal
 before_install:
   - gem install bashcov codecov
   - sudo apt-get install parallel
+  - echo -e "require 'codecov'\nrequire 'simplecov'\nSimpleCov.formatter = Codecov::SimpleCov::Formatter" > .simplecov
 
 script:
   - bashcov tests/libs/bats/bin/bats tests/integration_offline.bats
