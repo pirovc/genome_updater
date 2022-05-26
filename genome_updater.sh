@@ -474,7 +474,7 @@ filter_top_assemblies() # parameter: ${1} assembly_summary file, ${2} modified a
             col5["reference genome"]=1;
             col5["representative genome"]=2;
             col5["na"]=3;
-            col12["Complete genome"]=1;
+            col12["Complete Genome"]=1;
             col12["Chromosome"]=2;
             col12["Scaffold"]=3;
             col12["Contig"]=4;
