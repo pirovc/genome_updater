@@ -169,7 +169,7 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
             if [ "${att}" -gt 1 ]; then
                 echolog " - Failed to download ${as}. Trying again #${att}" "1"
             fi
-            download_url "${as}" 2> /dev/null | tail -n+3 > "${1}.tmp" 
+            download_url "${as}" 2> /dev/null | tail -n+3 > "${1}.tmp"
             if check_assembly_summary "${1}.tmp"; then
                 cat "${1}.tmp" >> "${1}"
                 break; 
@@ -233,7 +233,7 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
     elif [[ "${tax_mode}" == "ncbi" && ( ! -z "${taxids}" || ( ! -z "${top_assemblies_rank}" && "${top_assemblies_rank}" != "species" ) ) ]]; then
         echolog " - Downloading taxonomy (ncbi)" "1"
         tmp_new_taxdump="${working_dir}new_taxdump.tar.gz"
-        if ! download_retry_md5 "${ncbi_base_url}/pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}" "${ncbi_base_url}/pub/taxonomy/new_taxdump/new_taxdump.tar.gz.md5" "${retry_download_batch}"; then
+        if ! download_retry_md5 "${ncbi_base_url}pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}" "${ncbi_base_url}pub/taxonomy/new_taxdump/new_taxdump.tar.gz.md5" "${retry_download_batch}"; then
             return 1;
         fi
     fi
@@ -361,6 +361,9 @@ filter_columns() # parameter: ${1} assembly_summary file - return number of line
     # colA:val1,val2|colB:val3
     # AND between cols, OR between values
     
+    # Valid URLs (not na)
+    awk -F "\t" '{if($20!="na"){print $0}}' "${1}" > "${1}_valid"
+
     colfilter=""
     if [[ "${tax_mode}" == "ncbi" ]]; then
         colfilter="11:latest|"
@@ -385,7 +388,7 @@ filter_columns() # parameter: ${1} assembly_summary file - return number of line
             for(f in fields){
                 split(fields[f], keyvals, ":");
                 filter[keyvals[1]]=keyvals[2];}
-            } $20!="na" {
+            }{
                 k=0;
                 for(f in filter){
                     split(filter[f], v, ","); for (i in v) vals[tolower(trim(v[i]))]="";
@@ -396,8 +399,10 @@ filter_columns() # parameter: ${1} assembly_summary file - return number of line
                 if(k==length(filter)){
                     print $0;
                 }
-            }' "${1}" > "${1}_filtered"
-        mv "${1}_filtered" "${1}"
+            }' "${1}_valid" > "${1}"
+        rm -f "${1}_valid"
+    else
+        mv "${1}_valid" "${1}"
     fi
     count_lines_file "${1}"
 }
@@ -1473,7 +1478,7 @@ if [ "${dry_run}" -eq 0 ]; then
     if [ "${download_taxonomy}" -eq 1 ]; then
         echolog "Downloading taxonomy database [${tax_mode}]" "1"
         if [[ "${tax_mode}" == "ncbi" ]]; then
-            if ! download_retry_md5 "${ncbi_base_url}/pub/taxonomy/taxdump.tar.gz" "${target_output_prefix}taxdump.tar.gz" "${ncbi_base_url}/pub/taxonomy/taxdump.tar.gz.md5" "${retry_download_batch}"; then
+            if ! download_retry_md5 "${ncbi_base_url}pub/taxonomy/taxdump.tar.gz" "${target_output_prefix}taxdump.tar.gz" "${ncbi_base_url}pub/taxonomy/taxdump.tar.gz.md5" "${retry_download_batch}"; then
                 echolog " - Failed" "1"
             else
                 echolog " - ${target_output_prefix}taxdump.tar.gz" "1"
