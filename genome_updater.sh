@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.5.2"
+version="0.6.0"
 
 # Define ncbi_base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -89,6 +89,42 @@ download_retry_md5(){ # parameter: ${1} url, ${2} output file, ${3} url MD5, ${4
         fi
     done
     return 1; # failed to check md5 after all attempts
+}
+
+path_output() # parameter: ${1} file/url
+{
+    f=$(basename ${1})
+    path="${files_dir}";
+    if [[ "${ncbi_folders}" -eq 1 ]]; then
+        path="${path}${f:0:3}/${f:4:3}/${f:7:3}/${f:10:3}/";
+    fi
+    echo "${path}"
+}
+export -f path_output
+
+link_version() # parameter: ${1} current_output_prefix, ${2} new_output_prefix, ${3} file
+{
+    path_out=$(path_output ${3})
+    if [[ -f "${1}${path_out}${3}" ]]; then
+        mkdir -p "${2}${path_out}";
+        ln -s -r "${1}${path_out}${3}" "${2}${path_out}";
+    fi
+}
+export -f link_version  #export it to be accessible to the parallel call
+
+list_local_files() # parameter: ${1} prefix, ${2} 1 list all, "" list only -not -empty
+{
+    # Returns list of local files, without folder structure
+    if [[ "${ncbi_folders}" -eq 0 ]]; then
+        depth="-maxdepth 1";
+    else
+        depth="-mindepth 4";
+    fi
+    param="-not -empty"
+    if [[ ! -z "${2:-}" ]]; then
+        param=""
+    fi
+    find "${1}${files_dir}" ${depth} ${param} -type f,l -printf "%f\n"
 }
 
 unpack() # parameter: ${1} file, ${2} output folder[, ${3} files to unpack]
@@ -530,18 +566,19 @@ export -f print_progress #export it to be accessible to the parallel call
 check_file_folder() # parameter: ${1} url, ${2} log (0->before download/1->after download) - returns 0 (ok) / 1 (error)
 {
     file_name=$(basename ${1})
+    file_path=$(path_output ${file_name})
     # Check if file exists and if it has a size greater than zero (-s)
-    if [ ! -s "${target_output_prefix}${files_dir}${file_name}" ]; then
+    if [ ! -s "${target_output_prefix}${file_path}${file_name}" ]; then
         if [ "${2}" -eq 1 ]; then echolog "${file_name} download failed [${1}]" "0"; fi
         # Remove file if exists (only zero-sized files)
-        rm -vf "${target_output_prefix}${files_dir}${file_name}" >> "${log_file}" 2>&1
+        rm -vf "${target_output_prefix}${file_path}${file_name}" >> "${log_file}" 2>&1
         return 1
     else
         if [ "${verbose_log}" -eq 1 ]; then
             if [ "${2}" -eq 0 ]; then 
-                echolog "${file_name} file found on the output folder [${target_output_prefix}${files_dir}${file_name}]" "0"
+                echolog "${file_name} file found on the output folder [${target_output_prefix}${file_path}${file_name}]" "0"
             else
-                echolog "${file_name} downloaded successfully [${1} -> ${target_output_prefix}${files_dir}${file_name}]" "0"
+                echolog "${file_name} downloaded successfully [${1} -> ${target_output_prefix}${file_path}${file_name}]" "0"
             fi
         fi
         return 0
@@ -564,11 +601,11 @@ check_md5_ftp() # parameter: ${1} url - returns 0 (ok) / 1 (error)
                 echolog "${file_name} MD5checksum file not available [${md5checksums_url}] - FILE KEPT"  "0"
                 return 0
             else
-                file_md5=$(md5sum ${target_output_prefix}${files_dir}${file_name} | cut -f1 -d' ')
+                file_md5=$(md5sum ${target_output_prefix}$(path_output ${file_name})${file_name} | cut -f1 -d' ')
                 if [ "${file_md5}" != "${ftp_md5}" ]; then
                     echolog "${file_name} MD5 not matching [${md5checksums_url}] - FILE REMOVED"  "0"
                     # Remove file only when MD5 doesn't match
-                    rm -v "${target_output_prefix}${files_dir}${file_name}" >> ${log_file} 2>&1
+                    rm -v "${target_output_prefix}$(path_output ${file_name})${file_name}" >> ${log_file} 2>&1
                     return 1
                 else
                     if [ "${verbose_log}" -eq 1 ]; then
@@ -595,7 +632,9 @@ download() # parameter: ${1} url, ${2} job number, ${3} total files, ${4} url_su
         dl=1
     fi
     if [ "${dl}" -eq 1 ]; then # If file is not yet on folder, download it
-        download_url "${1}" "${target_output_prefix}${files_dir}"
+        path_out="${target_output_prefix}$(path_output ${1})"
+        mkdir -p "${path_out}"
+        download_url "${1}" "${path_out}"
         if ! check_file_folder ${1} "1"; then # Check if file was downloaded
             ex=1
         elif ! check_md5_ftp ${1}; then # Check file md5
@@ -668,10 +707,10 @@ remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR fi
     fi
     deleted_files=0
     while read f; do
-        fname="${target_output_prefix}${files_dir}${f}"
+        fname="${target_output_prefix}$(path_output ${f})${f}"
         # Only delete if delete option is enable or if it's a symbolic link (from updates)
         if [[ -L "${fname}" || "${delete_extra_files}" -eq 1 ]]; then
-            rm "${target_output_prefix}${files_dir}${f}" -v >> ${log_file}
+            rm "${fname}" -v >> ${log_file}
             deleted_files=$((deleted_files + 1))
         else
             echolog "kept '${fname}'" "0"
@@ -682,14 +721,13 @@ remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR fi
 
 check_missing_files() # ${1} file, ${2} fields [assembly_accesion,url], ${3} extension - returns assembly accession, url and filename
 {
-    # Just returns if file doesn't exist or if it's zero size
-    list_files ${1} ${2} ${3} | xargs -P "${threads}" --no-run-if-empty -n3 sh -c 'if [ ! -s "'"${target_output_prefix}${files_dir}"'${2}" ]; then echo "${0}'$'\t''${1}'$'\t''${2}"; fi'
+    join -1 3 -2 1 <(list_files ${1} ${2} ${3} | sort -k 3,3 -t$'\t') <(list_local_files "${target_output_prefix}" | sort) -t$'\t' -v 1 -o "1.1,1.2,1.3"
 }
 
 check_complete_record() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension - returns assembly accession, url
 {
     expected_files=$(list_files ${1} ${2} ${3} | sort -k 3,3)
-    join -1 3 -2 1 <(echo "${expected_files}" | sort -k 3,3) <(ls -1 "${target_output_prefix}${files_dir}" | sort) -t$'\t' -o "1.1" -v 1 | sort | uniq | # Check for accessions with at least one missing file
+    join -1 3 -2 1 <(echo "${expected_files}" | sort -k 3,3) <(list_local_files "${target_output_prefix}" | sort) -t$'\t' -o "1.1" -v 1 | sort | uniq | # Check for accessions with at least one missing file
     join -1 1 -2 1 <(echo "${expected_files}" | cut -f 1,2 | sort | uniq) - -t$'\t' -v 1 # Extract just assembly accession and url for complete entries (no missing files)
 }
 
@@ -701,7 +739,7 @@ output_assembly_accession() # parameters: ${1} file, ${2} field [assembly access
 output_sequence_accession() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension, ${4} mode (A/R), ${5} assembly_summary (for taxid)
 {
     join <(list_files ${1} ${2} "assembly_report.txt" | sort -k 1,1) <(check_complete_record ${1} ${2} ${3} | sort -k 1,1) -t$'\t' -o "1.1,1.3" | # List assembly accession and filename for all assembly_report.txt with complete record (no missing files) - returns assembly accesion, filename
-    join - <(sort -k 1,1 ${5}) -t$'\t' -o "1.1,1.2,2.6" | # Get taxid {1} assembly accesion, {2} filename {3} taxid
+    join - <(sort -k 1,1 ${5}) -t$'\t' -o "1.1,1.2,2.6" |     # Get taxid {1} assembly accession, {2} filename {3} taxid
     parallel --tmpdir ${working_dir} --colsep "\t" -j ${threads} -k 'grep "^[^#]" "'"${target_output_prefix}${files_dir}"'{2}" | tr -d "\r" | cut -f 5,7,9 | sed "s/^/{1}\\t/" | sed "s/$/\\t{3}/"' | # Retrieve info from assembly_report.txt and add assemby accession in the beggining and taxid at the end
     sed "s/^/${4}\t/" # Add mode A/R at the end    
 }
@@ -812,6 +850,7 @@ function showhelp {
     echo $' -B Alternative version label to use as the current version. Mutually exclusive with -i.\n\tCan be used to rollback to an older version or to create multiple branches from a base version.\n\tDefault: ""'
     echo $' -R Number of attempts to retry to download files in batches \n\tDefault: 3'
     echo $' -n Conditional exit status based on number of failures accepted, otherwise will Exit Code = 1.\n\tExample: -n 10 will exit code 1 if 10 or more files failed to download\n\t[integer for file number, float for percentage, 0 = off]\n\tDefault: 0'
+    echo $' -N Output in NCBI folder structure (e.g. files/GCF/000/499/605/GCF_000499605.1_EMW001_assembly_report.txt)'
     echo $' -L Downloader\n\t[wget, curl]\n\tDefault: wget'
     echo $' -x Allow the deletion of regular extra files (not symbolic links) found in the output folder'
     echo $' -s Silent output'
@@ -842,6 +881,7 @@ url_list=0
 dry_run=0
 just_fix=0
 conditional_exit=0
+ncbi_folders=0
 silent=0
 silent_progress=0
 debug_mode=0
@@ -867,7 +907,7 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 # Parse -o and -B first to detect possible updates
-getopts_list="aA:b:B:c:d:D:e:E:f:F:g:hikl:L:mM:n:o:prR:st:T:uVwxZ"
+getopts_list="aA:b:B:c:d:D:e:E:f:F:g:hikl:L:mM:n:No:prR:st:T:uVwxZ"
 OPTIND=1 # Reset getopts
 # Parses working_dir from "$@"
 while getopts "${getopts_list}" opt; do
@@ -933,6 +973,7 @@ while getopts "${getopts_list}" opt "${args[@]}"; do
     m) check_md5=1 ;;
     M) tax_mode=${OPTARG} ;;
     n) conditional_exit=${OPTARG} ;;
+    N) ncbi_folders=1 ;;
     o) working_dir=${OPTARG} ;;
     p) url_list=1 ;;
     r) updated_sequence_accession=1 ;;
@@ -1128,7 +1169,7 @@ else
 fi
 working_dir="$(readlink -m ${working_dir})/"
 files_dir="files/"
-export files_dir working_dir
+export files_dir working_dir ncbi_folders
 
 default_assembly_summary=${working_dir}assembly_summary.txt
 history_file=${working_dir}history.tsv
@@ -1339,7 +1380,8 @@ else # update/fix
 
     echolog "Checking for extra files in the current version [${current_label}]" "1"
     extra=$(tmp_file "extra.tmp")
-    join <(ls -1 "${current_output_prefix}${files_dir}" | sort) <(list_files "${current_assembly_summary}" "1,20" "${file_formats}" | cut -f 3 | sed -e 's/.*\///' | sort) -v 1 > "${extra}"
+    # List local files, "1" to list also empty files
+    join <(list_local_files "${current_output_prefix}" "1" | sort) <(list_files "${current_assembly_summary}" "1,20" "${file_formats}" | cut -f 3 | sed -e 's/.*\///' | sort) -v 1 > "${extra}"
     extra_files=$(count_lines_file "${extra}")
     if [ "${extra_files}" -gt 0 ]; then
         echolog " - ${extra_files} extra files" "1"
@@ -1405,7 +1447,7 @@ else # update/fix
             # Link versions
             echolog "Linking versions [${current_label} --> ${new_label}]" "1"
             # Only link existing files relative to the current version
-            list_files "${current_assembly_summary}" "1,20" "${file_formats}" | cut -f 3 | xargs -P "${threads}" -I{} bash -c 'if [[ -f '"${current_output_prefix}${files_dir}{}"' ]]; then ln -s -r '"${current_output_prefix}${files_dir}{}"' '"${new_output_prefix}${files_dir}"'; fi'
+            list_files "${current_assembly_summary}" "1,20" "${file_formats}" | cut -f 3 | parallel -P "${threads}" link_version "${current_output_prefix}" "${new_output_prefix}" "{}"
             echolog " - Done" "1"
             echolog "" "1"
             # set version - update default assembly summary
@@ -1496,7 +1538,8 @@ if [ "${dry_run}" -eq 0 ]; then
     fi
 
     expected_files=$(( $(count_lines_file "${default_assembly_summary}")*(n_formats+1) )) # From assembly summary * file formats
-    current_files=$(ls "${target_output_prefix}${files_dir}" | wc -l | cut -f1 -d' ') # From current folder
+    current_files=$(list_local_files "${target_output_prefix}" | wc -l | cut -f1 -d' ') # From current folder
+
     # If is in fixing mode, remove kept extra files from calculation
     if [[ "${extra_files}" -gt 0 && "${just_fix}" -eq 1 ]]; then
         current_files=$(( current_files-extra_files ))
