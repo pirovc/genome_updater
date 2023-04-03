@@ -566,19 +566,19 @@ export -f print_progress #export it to be accessible to the parallel call
 check_file_folder() # parameter: ${1} url, ${2} log (0->before download/1->after download) - returns 0 (ok) / 1 (error)
 {
     file_name=$(basename ${1})
-    file_path=$(path_output ${file_name})
+    path_name="${target_output_prefix}$(path_output ${file_name})${file_name}"
     # Check if file exists and if it has a size greater than zero (-s)
-    if [ ! -s "${target_output_prefix}${file_path}${file_name}" ]; then
+    if [ ! -s "${path_name}" ]; then
         if [ "${2}" -eq 1 ]; then echolog "${file_name} download failed [${1}]" "0"; fi
         # Remove file if exists (only zero-sized files)
-        rm -vf "${target_output_prefix}${file_path}${file_name}" >> "${log_file}" 2>&1
+        rm -vf "${path_name}" >> "${log_file}" 2>&1
         return 1
     else
         if [ "${verbose_log}" -eq 1 ]; then
             if [ "${2}" -eq 0 ]; then 
-                echolog "${file_name} file found on the output folder [${target_output_prefix}${file_path}${file_name}]" "0"
+                echolog "${file_name} file found on the output folder [${path_name}]" "0"
             else
-                echolog "${file_name} downloaded successfully [${1} -> ${target_output_prefix}${file_path}${file_name}]" "0"
+                echolog "${file_name} downloaded successfully [${1} -> ${path_name}]" "0"
             fi
         fi
         return 0
@@ -601,12 +601,12 @@ check_md5_ftp() # parameter: ${1} url - returns 0 (ok) / 1 (error)
                 echolog "${file_name} MD5checksum file not available [${md5checksums_url}] - FILE KEPT"  "0"
                 return 0
             else
-                pathfile=${target_output_prefix}$(path_output ${file_name})${file_name}
-                file_md5=$(md5sum ${pathfile} | cut -f1 -d' ')
+                path_name="${target_output_prefix}$(path_output ${file_name})${file_name}" # local file path and name
+                file_md5=$(md5sum ${path_name} | cut -f1 -d' ')
                 if [ "${file_md5}" != "${ftp_md5}" ]; then
                     echolog "${file_name} MD5 not matching [${md5checksums_url}] - FILE REMOVED"  "0"
                     # Remove file only when MD5 doesn't match
-                    rm -v "${pathfile}" >> ${log_file} 2>&1
+                    rm -v "${path_name}" >> ${log_file} 2>&1
                     return 1
                 else
                     if [ "${verbose_log}" -eq 1 ]; then
@@ -708,13 +708,13 @@ remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR fi
     fi
     deleted_files=0
     while read f; do
-        fname="${target_output_prefix}$(path_output ${f})${f}"
+        path_name="${target_output_prefix}$(path_output ${f})${f}"
         # Only delete if delete option is enable or if it's a symbolic link (from updates)
-        if [[ -L "${fname}" || "${delete_extra_files}" -eq 1 ]]; then
-            rm "${fname}" -v >> ${log_file}
+        if [[ -L "${path_name}" || "${delete_extra_files}" -eq 1 ]]; then
+            rm "${path_name}" -v >> ${log_file}
             deleted_files=$((deleted_files + 1))
         else
-            echolog "kept '${fname}'" "0"
+            echolog "kept '${path_name}'" "0"
         fi
     done <<< "${filelist}"
     echo ${deleted_files}
@@ -851,7 +851,7 @@ function showhelp {
     echo $' -B Alternative version label to use as the current version. Mutually exclusive with -i.\n\tCan be used to rollback to an older version or to create multiple branches from a base version.\n\tDefault: ""'
     echo $' -R Number of attempts to retry to download files in batches \n\tDefault: 3'
     echo $' -n Conditional exit status based on number of failures accepted, otherwise will Exit Code = 1.\n\tExample: -n 10 will exit code 1 if 10 or more files failed to download\n\t[integer for file number, float for percentage, 0 = off]\n\tDefault: 0'
-    echo $' -N Output in NCBI folder structure (e.g. files/GCF/000/499/605/GCF_000499605.1_EMW001_assembly_report.txt)'
+    echo $' -N Output files in folders like NCBI ftp structure (e.g. files/GCF/000/499/605/GCF_000499605.1_EMW001_assembly_report.txt)'
     echo $' -L Downloader\n\t[wget, curl]\n\tDefault: wget'
     echo $' -x Allow the deletion of regular extra files (not symbolic links) found in the output folder'
     echo $' -s Silent output'
