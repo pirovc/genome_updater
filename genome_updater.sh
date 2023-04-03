@@ -93,12 +93,12 @@ download_retry_md5(){ # parameter: ${1} url, ${2} output file, ${3} url MD5, ${4
 
 path_output() # parameter: ${1} file/url
 {
-    f=$(basename ${1})
+    f=$(basename ${1});
     path="${files_dir}";
     if [[ "${ncbi_folders}" -eq 1 ]]; then
         path="${path}${f:0:3}/${f:4:3}/${f:7:3}/${f:10:3}/";
     fi
-    echo "${path}"
+    echo "${path}";
 }
 export -f path_output
 
@@ -112,7 +112,7 @@ link_version() # parameter: ${1} current_output_prefix, ${2} new_output_prefix, 
 }
 export -f link_version  #export it to be accessible to the parallel call
 
-list_local_files() # parameter: ${1} prefix, ${2} 1 list all, "" list only -not -empty
+list_local_files() # parameter: ${1} prefix, ${2} 1 to list list all, "" list only '-not -empty'
 {
     # Returns list of local files, without folder structure
     if [[ "${ncbi_folders}" -eq 0 ]]; then
@@ -601,11 +601,12 @@ check_md5_ftp() # parameter: ${1} url - returns 0 (ok) / 1 (error)
                 echolog "${file_name} MD5checksum file not available [${md5checksums_url}] - FILE KEPT"  "0"
                 return 0
             else
-                file_md5=$(md5sum ${target_output_prefix}$(path_output ${file_name})${file_name} | cut -f1 -d' ')
+                pathfile=${target_output_prefix}$(path_output ${file_name})${file_name}
+                file_md5=$(md5sum ${pathfile} | cut -f1 -d' ')
                 if [ "${file_md5}" != "${ftp_md5}" ]; then
                     echolog "${file_name} MD5 not matching [${md5checksums_url}] - FILE REMOVED"  "0"
                     # Remove file only when MD5 doesn't match
-                    rm -v "${target_output_prefix}$(path_output ${file_name})${file_name}" >> ${log_file} 2>&1
+                    rm -v "${pathfile}" >> ${log_file} 2>&1
                     return 1
                 else
                     if [ "${verbose_log}" -eq 1 ]; then
@@ -740,7 +741,7 @@ output_sequence_accession() # parameters: ${1} file, ${2} field [assembly access
 {
     join <(list_files ${1} ${2} "assembly_report.txt" | sort -k 1,1) <(check_complete_record ${1} ${2} ${3} | sort -k 1,1) -t$'\t' -o "1.1,1.3" | # List assembly accession and filename for all assembly_report.txt with complete record (no missing files) - returns assembly accesion, filename
     join - <(sort -k 1,1 ${5}) -t$'\t' -o "1.1,1.2,2.6" |     # Get taxid {1} assembly accession, {2} filename {3} taxid
-    parallel --tmpdir ${working_dir} --colsep "\t" -j ${threads} -k 'grep "^[^#]" "'"${target_output_prefix}${files_dir}"'{2}" | tr -d "\r" | cut -f 5,7,9 | sed "s/^/{1}\\t/" | sed "s/$/\\t{3}/"' | # Retrieve info from assembly_report.txt and add assemby accession in the beggining and taxid at the end
+    parallel --tmpdir ${working_dir} --colsep "\t" -j ${threads} -k 'grep "^[^#]" "${target_output_prefix}$(path_output {2}){2}" | tr -d "\r" | cut -f 5,7,9 | sed "s/^/{1}\\t/" | sed "s/$/\\t{3}/"' | # Retrieve info from assembly_report.txt and add assemby accession in the beggining and taxid at the end
     sed "s/^/${4}\t/" # Add mode A/R at the end    
 }
 
@@ -896,7 +897,7 @@ downloader_tool="wget"
 
 # Check for required tools
 tool_not_found=0
-tools=( "awk" "bc" "find" "join" "md5sum" "parallel" "sed" "tar" "xargs" "wget" )
+tools=( "awk" "bc" "find" "join" "md5sum" "parallel" "sed" "tar" "wget" )
 for t in "${tools[@]}"
 do
     if [ ! -x "$(command -v ${t})" ]; then
@@ -1517,6 +1518,12 @@ else # update/fix
 fi
 
 if [ "${dry_run}" -eq 0 ]; then
+
+    # Clean possible empty folders in NCBI structure after update
+    if [[ "${ncbi_folders}" -eq 1 ]]; then
+        find "${target_output_prefix}${files_dir}" -type d -empty -delete
+    fi
+
     if [ "${download_taxonomy}" -eq 1 ]; then
         echolog "Downloading taxonomy database [${tax_mode}]" "1"
         if [[ "${tax_mode}" == "ncbi" ]]; then

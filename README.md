@@ -49,7 +49,7 @@ or direct file download:
 	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
 	chmod +x genome_updater.sh
 
- - genome_updater is portable and depends on the GNU Core Utilities + few additional tools (`awk` `bc` `find` `join` `md5sum` `parallel` `sed` `tar` `xargs` `wget`/`curl`) which are commonly available and installed in most distributions. If you are not sure if you have them all, just run `genome_updater.sh` and it will tell you if something is missing (otherwise the it will show the help page).
+ - genome_updater is portable and depends on the GNU Core Utilities + few additional tools (`awk` `bc` `find` `join` `md5sum` `parallel` `sed` `tar` `wget`/`curl`) which are commonly available and installed in most distributions. If you are not sure if you have them all, just run `genome_updater.sh` and it will tell you if something is missing (otherwise the it will show the help page).
 
 To test if all genome_updater functions are running properly on your system:
 

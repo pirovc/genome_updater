@@ -9,10 +9,10 @@ count_lines_file(){ # $1 file
 }
 
 count_files() { # $1 outdir, $2 label
-    ls_files ${1} ${2} | wc -l | cut -f1 -d' '
+    find_files ${1} ${2} | wc -l | cut -f1 -d' '
 }
 
-ls_files() { # $1 outdir, $2 label
+find_files() { # $1 outdir, $2 label
     find ${1}${2}/files/ -type f,l
 }
 
@@ -37,7 +37,7 @@ sanity_check() { # $1 outdir, $2 label, [$3 number of file types]
     # Check file count based on assembly_summary
     assert_equal $(count_files ${1} ${2}) $(($(count_lines_file ${1}assembly_summary.txt) * ${nfiles}))
     # Check files in folder (if any)
-    for file in $(ls_files ${1} ${2}); do
+    for file in $(find_files ${1} ${2}); do
         assert_file_not_empty $file
     done
 
