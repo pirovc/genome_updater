@@ -45,12 +45,12 @@ setup_file() {
     # Protozoa in refseq is the smallest available assembly_summary at the time of writing this test (01.2022)
     # 5820 genus Plasmodium
     label_genus="genus"
-    run ./genome_updater.sh -d refseq -g protozoa -T 5820 -b ${label_genus} -t ${threads} -o ${outdir}
+    run ./genome_updater.sh -N -d refseq -g protozoa -T 5820 -b ${label_genus} -t ${threads} -o ${outdir}
     sanity_check ${outdir} ${label_genus}
 
     # 5794 phylum Apicomplexa
     label_phylum="phylum"
-    run ./genome_updater.sh -d refseq -g protozoa -T 5794 -b ${label_phylum} -t ${threads} -o ${outdir}
+    run ./genome_updater.sh -N -d refseq -g protozoa -T 5794 -b ${label_phylum} -t ${threads} -o ${outdir}
     sanity_check ${outdir} ${label_phylum}
     
     # More files filtering by phylum than genus

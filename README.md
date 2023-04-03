@@ -34,6 +34,7 @@ Some days later, update the repository:
 genome_updater downloads and keeps several snapshots of a certain sub-set of the genomes repository, without redundancy and with incremental track of changes.
 
 - it runs on a working directory (defined with `-o`) and creates a snapshot (optionally named with `-b`, timestamp by default) of refseq and/or genbank (`-d`) genome repositories based on selected organism groups (`-g`) and/or taxonomic ids (`-T`) with the desired files type(s) (`-f`)
+- files are downloaded to a single folder by default ("{prefix}files/") but can be also saved in the NCBI ftp file structure (`-N`)
 - filters can be applied to refine the selection: refseq category (`-c`), assembly level (`-l`), dates (`-D`/`-E`), custom filters (`-F`), [top assemblies](#Top-assemblies) (`-A`)
 - `-M gtdb` enables GTDB [3] compability. Only assemblies from the latest GTDB release will be kept and taxonomic filters will work based on GTDB nodes (e.g. `-T "c__Hydrothermarchaeia"` or `-A genus:3`)
 - the repository can be updated or changed with incremental changes. outdated files are kept in their respective version and repeated files linked to the new version. genome_updater keepts track of all changes and just downloads what is necessary
@@ -49,7 +50,7 @@ or direct file download:
 	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
 	chmod +x genome_updater.sh
 
- - genome_updater is portable and depends on the GNU Core Utilities + few additional tools (`awk` `bc` `find` `join` `md5sum` `parallel` `sed` `tar` `xargs` `wget`/`curl`) which are commonly available and installed in most distributions. If you are not sure if you have them all, just run `genome_updater.sh` and it will tell you if something is missing (otherwise the it will show the help page).
+ - genome_updater is portable and depends on the GNU Core Utilities + few additional tools (`awk` `bc` `find` `join` `md5sum` `parallel` `sed` `tar` `wget`/`curl`) which are commonly available and installed in most distributions. If you are not sure if you have them all, just run `genome_updater.sh` and it will tell you if something is missing (otherwise the it will show the help page).
 
 To test if all genome_updater functions are running properly on your system:
 
@@ -197,96 +198,99 @@ or
 
 ## Parameters
 
-	┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐
-	│ ┬├┤ ││││ ││││├┤     │ │├─┘ ││├─┤ │ ├┤ ├┬┘
-	└─┘└─┘┘└┘└─┘┴ ┴└─┘────└─┘┴  ─┴┘┴ ┴ ┴ └─┘┴└─
-	                                     v0.5.1 
+```
+┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐
+│ ┬├┤ ││││ ││││├┤     │ │├─┘ ││├─┤ │ ├┤ ├┬┘
+└─┘└─┘┘└┘└─┘┴ ┴└─┘────└─┘┴  ─┴┘┴ ┴ ┴ └─┘┴└─
+                                     v0.6.0 
 
-	Database options:
-	 -d Database (comma-separated entries)
-		[genbank, refseq]
+Database options:
+ -d Database (comma-separated entries)
+	[genbank, refseq]
 
-	Organism options:
-	 -g Organism group(s) (comma-separated entries, empty for all)
-		[archaea, bacteria, fungi, human, invertebrate, metagenomes, 
-		other, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]
-		Default: ""
-	 -T Taxonomic identifier(s) (comma-separated entries, empty for all).
-		Example: "562" (for -M ncbi) or "s__Escherichia coli" (for -M gtdb)
-		Default: ""
+Organism options:
+ -g Organism group(s) (comma-separated entries, empty for all)
+	[archaea, bacteria, fungi, human, invertebrate, metagenomes, 
+	other, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]
+	Default: ""
+ -T Taxonomic identifier(s) (comma-separated entries, empty for all).
+	Example: "562" (for -M ncbi) or "s__Escherichia coli" (for -M gtdb)
+	Default: ""
 
-	File options:
-	 -f file type(s) (comma-separated entries)
-		[genomic.fna.gz, assembly_report.txt, protein.faa.gz, genomic.gbff.gz]
-		More formats at https://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt
-		Default: assembly_report.txt
+File options:
+ -f file type(s) (comma-separated entries)
+	[genomic.fna.gz, assembly_report.txt, protein.faa.gz, genomic.gbff.gz]
+	More formats at https://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt
+	Default: assembly_report.txt
 
-	Filter options:
-	 -c refseq category (comma-separated entries, empty for all)
-		[reference genome, representative genome, na]
-		Default: ""
-	 -l assembly level (comma-separated entries, empty for all)
-		[complete genome, chromosome, scaffold, contig]
-		Default: ""
-	 -D Start date (>=), based on the sequence release date. Format YYYYMMDD.
-		Default: ""
-	 -E End date (<=), based on the sequence release date. Format YYYYMMDD.
-		Default: ""
-	 -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive).
-		Example: -F "2:PRJNA12377,PRJNA670754|14:Partial" (AND between cols, OR between values)
-		Column info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt
-		Default: ""
+Filter options:
+ -c refseq category (comma-separated entries, empty for all)
+	[reference genome, representative genome, na]
+	Default: ""
+ -l assembly level (comma-separated entries, empty for all)
+	[complete genome, chromosome, scaffold, contig]
+	Default: ""
+ -D Start date (>=), based on the sequence release date. Format YYYYMMDD.
+	Default: ""
+ -E End date (<=), based on the sequence release date. Format YYYYMMDD.
+	Default: ""
+ -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive).
+	Example: -F "2:PRJNA12377,PRJNA670754|14:Partial" (AND between cols, OR between values)
+	Column info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt
+	Default: ""
 
-	Taxonomy options:
-	 -M Taxonomy. gtdb keeps only assemblies in GTDB (R207). ncbi keeps only latest assemblies (version_status). 
-		[ncbi, gtdb]
-		Default: "ncbi"
-	 -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. 
-		Selection by ranks are also supported with rank:number (e.g genus:3)
-		[species, genus, family, order, class, phylum, kingdom, superkingdom]
-		Selection order based on: RefSeq Category, Assembly level, Relation to type material, Date.
-		Default: 0
-	 -a Keep the current version of the taxonomy database in the output folder
+Taxonomy options:
+ -M Taxonomy. gtdb keeps only assemblies in GTDB (R207). ncbi keeps only latest assemblies (version_status). 
+	[ncbi, gtdb]
+	Default: "ncbi"
+ -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. 
+	Selection by ranks are also supported with rank:number (e.g genus:3)
+	[species, genus, family, order, class, phylum, kingdom, superkingdom]
+	Selection order based on: RefSeq Category, Assembly level, Relation to type material, Date.
+	Default: 0
+ -a Keep the current version of the taxonomy database in the output folder
 
-	Run options:
-	 -o Output/Working directory 
-		Default: ./tmp.XXXXXXXXXX
-	 -t Threads to parallelize download and some file operations
-		Default: 1
-	 -k Dry-run mode. No sequence data is downloaded or updated - just checks for available sequences and changes
-	 -i Fix only mode. Re-downloads incomplete or failed data from a previous run. Can also be used to change files (-f).
-	 -m Check MD5 of downloaded files
+Run options:
+ -o Output/Working directory 
+	Default: ./tmp.XXXXXXXXXX
+ -t Threads to parallelize download and some file operations
+	Default: 1
+ -k Dry-run mode. No sequence data is downloaded or updated - just checks for available sequences and changes
+ -i Fix only mode. Re-downloads incomplete or failed data from a previous run. Can also be used to change files (-f).
+ -m Check MD5 of downloaded files
 
-	Report options:
-	 -u Updated assembly accessions report
-		(Added/Removed, assembly accession, url)
-	 -r Updated sequence accessions report
-		(Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid)
-		Only available when file format assembly_report.txt is selected and successfully downloaded
-	 -p Reports URLs successfuly downloaded and failed (url_failed.txt url_downloaded.txt)
+Report options:
+ -u Updated assembly accessions report
+	(Added/Removed, assembly accession, url)
+ -r Updated sequence accessions report
+	(Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid)
+	Only available when file format assembly_report.txt is selected and successfully downloaded
+ -p Reports URLs successfuly downloaded and failed (url_failed.txt url_downloaded.txt)
 
-	Misc. options:
-	 -b Version label
-		Default: current timestamp (YYYY-MM-DD_HH-MM-SS)
-	 -e External "assembly_summary.txt" file to recover data from. Mutually exclusive with -d / -g 
-		Default: ""
-	 -B Alternative version label to use as the current version. Mutually exclusive with -i.
-		Can be used to rollback to an older version or to create multiple branches from a base version.
-		Default: ""
-	 -R Number of attempts to retry to download files in batches 
-		Default: 3
-	 -n Conditional exit status based on number of failures accepted, otherwise will Exit Code = 1.
-		Example: -n 10 will exit code 1 if 10 or more files failed to download
-		[integer for file number, float for percentage, 0 = off]
-		Default: 0
-	 -L Downloader
-		[wget, curl]
-		Default: wget
-	 -x Allow the deletion of regular extra files (not symbolic links) found in the output folder
-	 -s Silent output
-	 -w Silent output with download progress only
-	 -V Verbose log
-	 -Z Print debug information and run in debug mode
+Misc. options:
+ -b Version label
+	Default: current timestamp (YYYY-MM-DD_HH-MM-SS)
+ -e External "assembly_summary.txt" file to recover data from. Mutually exclusive with -d / -g 
+	Default: ""
+ -B Alternative version label to use as the current version. Mutually exclusive with -i.
+	Can be used to rollback to an older version or to create multiple branches from a base version.
+	Default: ""
+ -R Number of attempts to retry to download files in batches 
+	Default: 3
+ -n Conditional exit status based on number of failures accepted, otherwise will Exit Code = 1.
+	Example: -n 10 will exit code 1 if 10 or more files failed to download
+	[integer for file number, float for percentage, 0 = off]
+	Default: 0
+ -N Output files in folders like NCBI ftp structure (e.g. files/GCF/000/499/605/GCF_000499605.1_EMW001_assembly_report.txt)
+ -L Downloader
+	[wget, curl]
+	Default: wget
+ -x Allow the deletion of regular extra files (not symbolic links) found in the output folder
+ -s Silent output
+ -w Silent output with download progress only
+ -V Verbose log
+ -Z Print debug information and run in debug mode
+```
 
 ## References:
 
