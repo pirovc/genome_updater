@@ -202,7 +202,7 @@ or
 ┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐
 │ ┬├┤ ││││ ││││├┤     │ │├─┘ ││├─┤ │ ├┤ ├┬┘
 └─┘└─┘┘└┘└─┘┴ ┴└─┘────└─┘┴  ─┴┘┴ ┴ ┴ └─┘┴└─
-                                     v0.6.0 
+                                     v0.6.1 
 
 Database options:
  -d Database (comma-separated entries)
@@ -240,7 +240,7 @@ Filter options:
 	Default: ""
 
 Taxonomy options:
- -M Taxonomy. gtdb keeps only assemblies in GTDB (R207). ncbi keeps only latest assemblies (version_status). 
+ -M Taxonomy. gtdb keeps only assemblies in GTDB (latest). ncbi keeps only latest assemblies (version_status). 
 	[ncbi, gtdb]
 	Default: "ncbi"
  -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. 
@@ -290,6 +290,7 @@ Misc. options:
  -w Silent output with download progress only
  -V Verbose log
  -Z Print debug information and run in debug mode
+
 ```
 
 ## References:
