@@ -1,0 +1,2 @@
+48afb9c5ecb4ee5ed7d4d3a275fe5157  files/releases/latest/ar53_taxonomy.tsv.gz
+10077bd8881757161a5a8a3454a1f75a  files/releases/latest/bac120_taxonomy.tsv.gz
