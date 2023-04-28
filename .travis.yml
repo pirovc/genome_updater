@@ -1,5 +1,5 @@
 language: bash
-dist: focal
+dist: jammy
 
 before_install:
   - gem install bashcov codecov
