@@ -1,2 +1,0 @@
-48afb9c5ecb4ee5ed7d4d3a275fe5157  files/releases/release207/207.0/ar53_taxonomy_r207.tsv.gz
-10077bd8881757161a5a8a3454a1f75a  files/releases/release207/207.0/bac120_taxonomy_r207.tsv.gz

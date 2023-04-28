@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.6.0"
+version="0.6.1"
 
 # Define ncbi_base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -34,7 +34,7 @@ if [[ ! -z "${local_dir}" ]]; then
     local_dir="file://$(cd "${local_dir}" && pwd)"
 fi
 ncbi_base_url=${ncbi_base_url:-ftp://ftp.ncbi.nlm.nih.gov/} #Alternative ftp://ftp.ncbi.nih.gov/
-gtdb_base_url="https://data.gtdb.ecogenomic.org/releases/release207/207.0/"
+gtdb_base_url="https://data.gtdb.ecogenomic.org/releases/latest/"
 retries=${retries:-3}
 timeout=${timeout:-120}
 export retries timeout ncbi_base_url gtdb_base_url local_dir
@@ -829,7 +829,7 @@ function showhelp {
     echo $' -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive).\n\tExample: -F "2:PRJNA12377,PRJNA670754|14:Partial" (AND between cols, OR between values)\n\tColumn info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
     echo
     echo $'Taxonomy options:'
-    echo $' -M Taxonomy. gtdb keeps only assemblies in GTDB (R207). ncbi keeps only latest assemblies (version_status). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
+    echo $' -M Taxonomy. gtdb keeps only assemblies in GTDB (latest). ncbi keeps only latest assemblies (version_status). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
     echo $' -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. \n\tSelection by ranks are also supported with rank:number (e.g genus:3)\n\t[species, genus, family, order, class, phylum, kingdom, superkingdom]\n\tSelection order based on: RefSeq Category, Assembly level, Relation to type material, Date.\n\tDefault: 0'
     echo $' -a Keep the current version of the taxonomy database in the output folder'
     echo
@@ -1054,14 +1054,14 @@ fi
 gtdb_urls=()
 if [[ "${tax_mode}" == "gtdb" ]]; then
     if [[ -z "${organism_group}" ]]; then
-        gtdb_urls+=("${gtdb_base_url}ar53_taxonomy_r207.tsv.gz")
-        gtdb_urls+=("${gtdb_base_url}bac120_taxonomy_r207.tsv.gz")
+        gtdb_urls+=("${gtdb_base_url}ar53_taxonomy.tsv.gz")
+        gtdb_urls+=("${gtdb_base_url}bac120_taxonomy.tsv.gz")
     else
         for og in ${organism_group//,/ }; do
             if [[ "${og}" == "archaea" ]]; then
-                gtdb_urls+=("${gtdb_base_url}ar53_taxonomy_r207.tsv.gz")
+                gtdb_urls+=("${gtdb_base_url}ar53_taxonomy.tsv.gz")
             elif [[ "${og}" == "bacteria" ]]; then
-                gtdb_urls+=("${gtdb_base_url}bac120_taxonomy_r207.tsv.gz")
+                gtdb_urls+=("${gtdb_base_url}bac120_taxonomy.tsv.gz")
             else
                 echo "${og}: invalid organism group for GTDB [ 'archaea' 'bacteria' ] "; exit 1;
             fi
