@@ -4,7 +4,7 @@ IFS=$' '
 
 # The MIT License (MIT)
  
-# Copyright (c) 2022 - Vitor C. Piro - pirovc.github.io
+# Copyright (c) 2023 - Vitor C. Piro - pirovc.github.io
 # All rights reserved.
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.6.1"
+version="0.6.2"
 
 # Define ncbi_base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -124,7 +124,7 @@ list_local_files() # parameter: ${1} prefix, ${2} 1 to list list all, "" list on
     if [[ ! -z "${2:-}" ]]; then
         param=""
     fi
-    find "${1}${files_dir}" ${depth} ${param} -type f,l -printf "%f\n"
+    find "${1}${files_dir}" ${depth} ${param} \( -type f -o -type l \) -printf "%f\n"
 }
 
 unpack() # parameter: ${1} file, ${2} output folder[, ${3} files to unpack]

@@ -1,6 +1,6 @@
 The MIT License (MIT)
  
-Copyright (c) 2022 - Vitor C. Piro - http://github.com/pirovc
+Copyright (c) 2023 - Vitor C. Piro - http://github.com/pirovc
 All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
