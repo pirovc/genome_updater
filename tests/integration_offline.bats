@@ -46,7 +46,7 @@ setup_file() {
     run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert [ $(count_files ${outdir} ${label}) -gt 0 ] # contains files
-    for file in $(ls_files ${outdir} ${label}); do
+    for file in $(find_files ${outdir} ${label}); do
         [[ "$(basename $file)" = GCF* ]] # filename starts with GCF_
     done
 }
@@ -57,7 +57,7 @@ setup_file() {
     run ./genome_updater.sh -d genbank -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert [ $(count_files ${outdir} ${label}) -gt 0 ] # contains files
-    for file in $(ls_files ${outdir} ${label}); do
+    for file in $(find_files ${outdir} ${label}); do
         [[ "$(basename $file)" = GCA* ]] # filename starts with GCA_
     done
 }
@@ -70,7 +70,7 @@ setup_file() {
     sanity_check ${outdir} ${label}
     files_refseq=$(count_files ${outdir} ${label})
     assert [ ${files_refseq} -gt 0 ] # contains files
-    for file in $(ls_files ${outdir} ${label}); do
+    for file in $(find_files ${outdir} ${label}); do
         [[ "$(basename $file)" = GCF* ]] # filename starts with GCF_
     done
 
@@ -79,7 +79,7 @@ setup_file() {
     sanity_check ${outdir} ${label}
     files_genbank=$(count_files ${outdir} ${label})
     assert [ ${files_genbank} -gt 0 ] # contains files
-    for file in $(ls_files ${outdir} ${label}); do
+    for file in $(find_files ${outdir} ${label}); do
         [[ "$(basename $file)" = GCA* ]] # filename starts with GCA_
     done
 

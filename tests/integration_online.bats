@@ -33,7 +33,7 @@ setup_file() {
     assert [ $(count_files ${outdir} ${label}) -gt 0 ]
 
     # Check filenames
-    for file in $(ls_files ${outdir} ${label}); do
+    for file in $(find_files ${outdir} ${label}); do
         [[ "$(basename $file)" = GCF* ]] # filename starts with GCF_
     done
 }
