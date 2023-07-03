@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.6.2"
+version="0.6.3"
 
 # Define ncbi_base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -45,8 +45,8 @@ export LC_NUMERIC="en_US.UTF-8"
 #activate aliases in the script
 shopt -s expand_aliases
 alias sort="sort --field-separator=$'\t'"
-join_as_fields1="1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22,1.23"
-join_as_fields2="2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,2.10,2.11,2.12,2.13,2.14,2.15,2.16,2.17,2.18,2.19,2.20,2.21,2.22,2.23"
+join_as_fields1="1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22,1.23,1.24,1.25,1.26,1.27,1.28,1.29,1.30,1.31,1.32,1.33,1.34,1.35,1.36,1.37,1.38"
+join_as_fields2="1.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,2.10,2.11,2.12,2.13,2.14,2.15,2.16,2.17,2.18,2.19,2.20,2.21,2.22,2.23,2.24,2.25,2.26,2.27,2.28,2.29,2.30,2.31,2.32,2.33,2.34,2.35,2.36,2.37,2.38"
 
 download_url() # parameter: ${1} url, ${2} output file/directory (omit/empty to STDOUT)
 {
@@ -70,22 +70,27 @@ download_url() # parameter: ${1} url, ${2} output file/directory (omit/empty to 
 }
 export -f download_url  #export it to be accessible to the parallel call
 
-download_retry_md5(){ # parameter: ${1} url, ${2} output file, ${3} url MD5, ${4} re-tries
+download_retry_md5(){ # parameter: ${1} url, ${2} output file, ${3} url MD5 (empty to skip), ${4} re-tries
     for (( att=1; att<=${4:-1}; att++ )); do
         if [ "${att}" -gt 1 ]; then
             echolog " - Failed to download ${url}. Trying again #${att}" "1"
         fi
         download_url "${1}" "${2}"
-        real_md5=$(download_url "${3}" | grep "${1##*/}" | cut -f1 -d' ')
-        if [ -z "${real_md5}" ]; then
-            continue; # did not find url file on md5 file (or empty), try again
+        # No md5 file to check
+        if [[ -z "${3}" ]]; then
+            return 0;
         else
-            file_md5=$(md5sum ${2} | cut -f1 -d' ')
-            if [ "${file_md5}" != "${real_md5}" ]; then
-                continue; # md5 didn't match, try again
+            real_md5=$(download_url "${3}" | grep "${1##*/}" | cut -f1 -d' ')
+            if [ -z "${real_md5}" ]; then
+                continue; # did not find url file on md5 file (or empty), try again
             else
-                return 0; # md5 matched, return success
-            fi    
+                file_md5=$(md5sum ${2} | cut -f1 -d' ')
+                if [ "${file_md5}" != "${real_md5}" ]; then
+                    continue; # md5 didn't match, try again
+                else
+                    return 0; # md5 matched, return success
+                fi    
+            fi
         fi
     done
     return 1; # failed to check md5 after all attempts
@@ -150,7 +155,7 @@ check_assembly_summary() # parameter: ${1} assembly_summary file - return 0 true
     # Last char is empty (line break)
     if [ ! -z $(tail -c -1 "${1}") ]; then return 1; fi
 
-    # if contains header char parts of the header anywhere starting lines
+    # if contains header char parts of the header anywhere besides starting lines
     grep -m 1 "^#" "${1}" > /dev/null 2>&1
     if [ $? -eq 0 ]; then return 1; fi
 
@@ -162,9 +167,9 @@ check_assembly_summary() # parameter: ${1} assembly_summary file - return 0 true
     grep -m 1 " assembly_accession" "${1}" > /dev/null 2>&1
     if [ $? -eq 0 ]; then return 1; fi
 
-    # if every line has 23 cols
-    awk 'BEGIN{FS=OFS="\t"}{print NF}' "${1}" | grep -v "23" > /dev/null 2>&1
-    if [ $? -eq 0 ]; then return 1; fi
+    # if every line has same number of cols (besides headers)
+    ncols=$(grep -v "^#" "${1}" | awk 'BEGIN{FS=OFS="\t"}{print NF}' | uniq | wc -l)
+    if [[ ${ncols} -gt 1 ]]; then return 1; fi
 
     # if every line starts with GCF_ or GCA_
     grep -v "^GC[FA]_" "${1}" > /dev/null 2>&1
@@ -258,7 +263,8 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
         gtdb_tax=$(tmp_file "gtdb_tax.tmp")
         for url in "${gtdb_urls[@]}"; do
             tmp_tax=$(tmp_file "gtdb_tax.tmp.gz")
-            if ! download_retry_md5 "${url}" "${tmp_tax}" "${gtdb_base_url}MD5SUM.txt" "${retry_download_batch}"; then
+            #if ! download_retry_md5 "${url}" "${tmp_tax}" "${gtdb_base_url}MD5SUM.txt" "${retry_download_batch}"; then
+            if ! download_retry_md5 "${url}" "${tmp_tax}" "" "${retry_download_batch}"; then
                 return 1;
             else
                 # awk to remove prefix RS_ or GB_
