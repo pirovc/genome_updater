@@ -78,7 +78,7 @@ download_retry_md5(){ # parameter: ${1} url, ${2} output file, ${3} url MD5 (emp
         download_url "${1}" "${2}"
         # No md5 file to check
         if [[ -z "${3}" ]]; then
-            return 0
+            return 0;
         else
             real_md5=$(download_url "${3}" | grep "${1##*/}" | cut -f1 -d' ')
             if [ -z "${real_md5}" ]; then
