@@ -1,0 +1,23 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: genome_updater
+message: >-
+  Bash script to download/update snapshots of files from
+  NCBI genomes repository (refseq/genbank) with track of
+  changes and without redundancy
+type: software
+authors:
+  - given-names: Vitor
+    family-names: C. Piro
+    orcid: 'https://orcid.org/0000-0003-1330-1286'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.8108640
+    description: zenodo
+repository-code: 'https://github.com/pirovc/genome_updater'
+license: MIT
+commit: 5478e931af0e3028fc32b46e20be379b9443fd68
+version: 0.6.3
+date-released: '2023-07-03'
