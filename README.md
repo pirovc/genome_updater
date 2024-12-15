@@ -122,7 +122,7 @@ To test if all genome_updater functions are running properly on your system:
 
 	# Branch the main files into two sub-versions (no new files will be downloaded or copied)
 	./genome_updater.sh -o "bac_refseq" -B "all" -b "complete" -l "complete genome"
-	./genome_updater.sh -o "bac_refseq" -B "all" -b "represen" -c "representative genome"
+	./genome_updater.sh -o "bac_refseq" -B "all" -b "reference" -c "reference genome"
 
 ### Download Fungi RefSeq assembly information and generate sequence reports and URLs
 
@@ -177,8 +177,7 @@ or
 
 	A) refseq Category: 
 		1) reference genome
-		2) representative genome
-		3) na
+		2) na
 	B) Assembly level:
 		1) Complete Genome
 		2) Chromosome

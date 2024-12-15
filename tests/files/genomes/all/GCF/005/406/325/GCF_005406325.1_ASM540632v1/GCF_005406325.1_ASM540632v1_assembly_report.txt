@@ -15,7 +15,7 @@
 # Genome coverage: 475.0x
 # Sequencing technology: PacBio RSII
 # Relation to type material: assembly from type material
-# RefSeq category: Representative Genome
+# RefSeq category: Reference Genome
 # GenBank assembly accession: GCA_005406325.1
 # RefSeq assembly accession: GCF_005406325.1
 # RefSeq assembly and GenBank assemblies identical: yes

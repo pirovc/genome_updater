@@ -14,7 +14,7 @@
 # Assembly method: phredPhrap v. RH3.65
 # Genome coverage: 8.26x
 # Sequencing technology: Sanger
-# RefSeq category: Representative Genome
+# RefSeq category: Reference Genome
 # GenBank assembly accession: GCA_000171015.2
 # RefSeq assembly accession: GCF_000171015.1
 # RefSeq assembly and GenBank assemblies identical: yes

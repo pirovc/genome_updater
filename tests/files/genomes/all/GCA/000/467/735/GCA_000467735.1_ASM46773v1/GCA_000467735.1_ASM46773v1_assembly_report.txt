@@ -14,7 +14,7 @@
 # Assembly method: Velvet v. SEP-2011
 # Genome coverage: 109x
 # Sequencing technology: Illumina GAII
-# RefSeq category: Representative Genome
+# RefSeq category: Reference Genome
 # GenBank assembly accession: GCA_000467735.1
 #
 ## Assembly-Units:

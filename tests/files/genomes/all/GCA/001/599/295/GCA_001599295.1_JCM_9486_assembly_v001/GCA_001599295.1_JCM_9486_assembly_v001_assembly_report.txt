@@ -14,7 +14,7 @@
 # Assembly method: ALLPATHS-LG v. 52488
 # Genome coverage: 182x
 # Sequencing technology: HiSeq 2500
-# RefSeq category: Representative Genome
+# RefSeq category: Reference Genome
 # GenBank assembly accession: GCA_001599295.1
 #
 ## Assembly-Units:

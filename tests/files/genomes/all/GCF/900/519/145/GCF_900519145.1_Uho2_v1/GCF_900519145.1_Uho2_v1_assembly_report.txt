@@ -12,7 +12,7 @@
 # Genome representation: full
 # WGS project:    ULHA01
 # Genome coverage: 65x
-# RefSeq category: Representative Genome
+# RefSeq category: Reference Genome
 # GenBank assembly accession: GCA_900519145.1
 # RefSeq assembly accession: GCF_900519145.1
 # RefSeq assembly and GenBank assemblies identical: yes

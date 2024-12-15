@@ -13,7 +13,7 @@
 # WGS project:    OBEJ01
 # Genome coverage: 149x
 # Relation to type material: assembly from type material
-# RefSeq category: Representative Genome
+# RefSeq category: Reference Genome
 # GenBank assembly accession: GCA_900215575.1
 # RefSeq assembly accession: GCF_900215575.1
 # RefSeq assembly and GenBank assemblies identical: yes

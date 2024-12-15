@@ -16,7 +16,7 @@
 # Genome coverage: 5000.0x
 # Sequencing technology: Illumina; PacBio
 # Relation to type material: assembly from type material
-# RefSeq category: Representative Genome
+# RefSeq category: Reference Genome
 # GenBank assembly accession: GCA_004137855.1
 # RefSeq assembly accession: GCF_004137855.1
 # RefSeq assembly and GenBank assemblies identical: yes

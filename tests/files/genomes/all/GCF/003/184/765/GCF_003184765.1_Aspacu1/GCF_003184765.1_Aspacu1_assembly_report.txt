@@ -15,7 +15,7 @@
 # Genome coverage: 95.8x
 # Sequencing technology: Illumina
 # Relation to type material: assembly from type material
-# RefSeq category: Representative Genome
+# RefSeq category: Reference Genome
 # GenBank assembly accession: GCA_003184765.1
 # RefSeq assembly accession: GCF_003184765.1
 # RefSeq assembly and GenBank assemblies identical: yes

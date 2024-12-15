@@ -15,7 +15,7 @@
 # Expected final version: yes
 # Genome coverage: 120.0x
 # Sequencing technology: DNB-seq
-# RefSeq category: Representative Genome
+# RefSeq category: Reference Genome
 # GenBank assembly accession: GCA_021369635.1
 # RefSeq assembly accession: GCF_021369635.1
 # RefSeq assembly and GenBank assemblies identical: yes

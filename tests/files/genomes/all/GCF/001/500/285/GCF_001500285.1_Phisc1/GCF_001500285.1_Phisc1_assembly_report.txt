@@ -14,7 +14,7 @@
 # Assembly method: Allpaths-LG v. R36892
 # Genome coverage: 80.5x
 # Sequencing technology: Illumina
-# RefSeq category: Representative Genome
+# RefSeq category: Reference Genome
 # GenBank assembly accession: GCA_001500285.1
 # RefSeq assembly accession: GCF_001500285.1
 # RefSeq assembly and GenBank assemblies identical: yes

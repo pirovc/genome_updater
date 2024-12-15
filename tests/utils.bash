@@ -13,7 +13,7 @@ count_files() { # $1 outdir, $2 label
 }
 
 find_files() { # $1 outdir, $2 label
-    find ${1}${2}/files/ -type f,l
+    find ${1}${2}/files/ \( -type f -o -type l \)
 }
 
 sanity_check() { # $1 outdir, $2 label, [$3 number of file types]

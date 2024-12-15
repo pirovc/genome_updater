@@ -309,29 +309,20 @@ setup_file() {
 
     # Selection order
     # col5["reference genome"]=1;
-    # col5["representative genome"]=2;
-    # col5["na"]=3;
+    # col5["na"]=2;
     # should always pick the correct refseq category for top superkingdom (just one)
 
-    label="3"
-    rscat="reference genome,representative genome,na"
-    run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A superkingdom:1 -b ${label} -o ${outdir}    
-    sanity_check ${outdir} ${label}
-    # --- no reference genome in example files ---
-    assert_equal "representative genome" "$(get_values_as ${outdir}assembly_summary.txt 5)"
-
     label="2"
-    rscat="representative genome,na"
+    rscat="reference genome,na"
     run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A superkingdom:1 -b ${label} -o ${outdir}    
     sanity_check ${outdir} ${label}
-    assert_equal "representative genome" "$(get_values_as ${outdir}assembly_summary.txt 5)"
+    assert_equal "reference genome" "$(get_values_as ${outdir}assembly_summary.txt 5)"
 
     label="1"
     rscat="na"
     run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A superkingdom:1 -b ${label} -o ${outdir}    
     sanity_check ${outdir} ${label}
     assert_equal "na" "$(get_values_as ${outdir}assembly_summary.txt 5)"
-
 
     outdir=${outprefix}top-assemblies-order-assembly-level/
 

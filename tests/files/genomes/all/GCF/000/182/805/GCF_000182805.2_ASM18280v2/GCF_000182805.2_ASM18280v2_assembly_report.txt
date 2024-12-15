@@ -11,7 +11,7 @@
 # Assembly level: Scaffold
 # Genome representation: full
 # WGS project:    CABT02
-# RefSeq category: Representative Genome
+# RefSeq category: Reference Genome
 # GenBank assembly accession: GCA_000182805.2
 # RefSeq assembly accession: GCF_000182805.2
 # RefSeq assembly and GenBank assemblies identical: yes

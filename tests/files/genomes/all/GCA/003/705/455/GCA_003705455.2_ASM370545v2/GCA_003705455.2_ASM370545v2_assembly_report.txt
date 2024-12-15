@@ -16,7 +16,7 @@
 # Genome coverage: 41x
 # Sequencing technology: Illumina HiSeq 2500
 # Relation to type material: assembly from type material
-# RefSeq category: Representative Genome
+# RefSeq category: Reference Genome
 # GenBank assembly accession: GCA_003705455.2
 #
 ## Assembly-Units:

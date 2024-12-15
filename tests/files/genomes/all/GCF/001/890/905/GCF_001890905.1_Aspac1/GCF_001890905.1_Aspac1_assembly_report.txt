@@ -16,7 +16,7 @@
 # Genome coverage: 32.17x
 # Sequencing technology: 454; Sanger dideoxy sequencing
 # Relation to type material: assembly from type material
-# RefSeq category: Representative Genome
+# RefSeq category: Reference Genome
 # GenBank assembly accession: GCA_001890905.1
 # RefSeq assembly accession: GCF_001890905.1
 # RefSeq assembly and GenBank assemblies identical: yes

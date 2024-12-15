@@ -13,7 +13,7 @@
 # WGS project:    FOZS01
 # Genome coverage: 315x
 # Relation to type material: assembly from type material
-# RefSeq category: Representative Genome
+# RefSeq category: Reference Genome
 # GenBank assembly accession: GCA_900116205.1
 # RefSeq assembly accession: GCF_900116205.1
 # RefSeq assembly and GenBank assemblies identical: yes

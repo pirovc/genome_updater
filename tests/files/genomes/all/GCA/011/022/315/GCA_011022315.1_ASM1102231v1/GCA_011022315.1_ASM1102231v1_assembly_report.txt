@@ -14,7 +14,7 @@
 # Expected final version: yes
 # Genome coverage: 72.0x
 # Sequencing technology: Oxford Nanopore MiniION
-# RefSeq category: Representative Genome
+# RefSeq category: Reference Genome
 # GenBank assembly accession: GCA_011022315.1
 #
 ## Assembly-Units:

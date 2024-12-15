@@ -15,7 +15,7 @@
 # Expected final version: yes
 # Genome coverage: 128.0x
 # Sequencing technology: Illumina
-# RefSeq category: Representative Genome
+# RefSeq category: Reference Genome
 # GenBank assembly accession: GCA_007556565.1
 #
 ## Assembly-Units:

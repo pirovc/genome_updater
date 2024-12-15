@@ -520,8 +520,7 @@ filter_top_assemblies() # parameter: ${1} assembly_summary file, ${2} modified a
     awk -v taxcol="1" 'BEGIN{
             FS=OFS="\t";
             col5["reference genome"]=1;
-            col5["representative genome"]=2;
-            col5["na"]=3;
+            col5["na"]=2;
             col12["Complete Genome"]=1;
             col12["Chromosome"]=2;
             col12["Scaffold"]=3;
@@ -828,7 +827,7 @@ function showhelp {
     echo $' -f file type(s) (comma-separated entries)\n\t[genomic.fna.gz, assembly_report.txt, protein.faa.gz, genomic.gbff.gz]\n\tMore formats at https://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt\n\tDefault: assembly_report.txt'
     echo
     echo $'Filter options:'
-    echo $' -c refseq category (comma-separated entries, empty for all)\n\t[reference genome, representative genome, na]\n\tDefault: ""'
+    echo $' -c refseq category (comma-separated entries, empty for all)\n\t[reference genome, na]\n\tDefault: ""'
     echo $' -l assembly level (comma-separated entries, empty for all)\n\t[complete genome, chromosome, scaffold, contig]\n\tDefault: ""' 
     echo $' -D Start date (>=), based on the sequence release date. Format YYYYMMDD.\n\tDefault: ""'
     echo $' -E End date (<=), based on the sequence release date. Format YYYYMMDD.\n\tDefault: ""'
@@ -1115,7 +1114,7 @@ else
 fi
 
 IFS=","
-valid_refseq_category=( "reference genome" "representative genome" "na" )
+valid_refseq_category=( "reference genome" "na" )
 if [[ ! -z "${refseq_category}" ]]; then
     for rc in ${refseq_category}; do
         # ${rc,,} to lowercase
