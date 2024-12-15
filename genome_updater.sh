@@ -4,7 +4,7 @@ IFS=$' '
 
 # The MIT License (MIT)
  
-# Copyright (c) 2023 - Vitor C. Piro - pirovc.github.io
+# Copyright (c) 2024 - Vitor C. Piro - pirovc.github.io
 # All rights reserved.
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.6.3"
+version="0.6.4"
 
 # Define ncbi_base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -605,7 +605,7 @@ check_md5_ftp() # parameter: ${1} url - returns 0 (ok) / 1 (error)
             ftp_md5=$(echo "${md5checksums_file}" | grep "${file_name}" | cut -f1 -d' ')
             if [ -z "${ftp_md5}" ]; then
                 echolog "${file_name} MD5checksum file not available [${md5checksums_url}] - FILE KEPT"  "0"
-                return 0
+                return 1
             else
                 path_name="${target_output_prefix}$(path_output ${file_name})${file_name}" # local file path and name
                 file_md5=$(md5sum ${path_name} | cut -f1 -d' ')
