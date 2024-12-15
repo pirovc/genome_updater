@@ -51,7 +51,7 @@ rm "${outfld}new_taxdump.tar.gz" "${outfld}taxidlineage.dmp" "${outfld}rankedlin
 #gtdb
 gtdb_out="${outfld}releases/latest/"
 mkdir -p "${gtdb_out}"
-gtdb_tax=( "ar53_taxonomy_r207.tsv.gz" "bac120_taxonomy_r207.tsv.gz" )
+gtdb_tax=( "ar53_taxonomy.tsv.gz" "bac120_taxonomy.tsv.gz" )
 for tax in "${gtdb_tax[@]}"; do
     wget --quiet --show-progress --output-document "${outfld}${tax}" "https://data.gtdb.ecogenomic.org/releases/latest/${tax}"
     join -1 1 -2 1 <(cut -f 1 "${outfld}accessions_taxids.txt" | sort) <(zcat "${outfld}${tax}" | awk 'BEGIN{FS=OFS="\t"}{print $1,$1,$2}' | sed -r 's/^.{3}//' | sort) -t$'\t' -o "2.2,2.3" | gzip > "${gtdb_out}${tax}"
