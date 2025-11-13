@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.6.4"
+version="0.7.0"
 
 # Define ncbi_base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -324,10 +324,10 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
     if [ "$((filtered_lines-columns_lines))" -gt 0 ]; then
         echolog " - $((filtered_lines-columns_lines)) assemblies removed based on filters:" "1"
         echolog "   valid URLs" "1"
-        if [[ "${tax_mode}" == "ncbi" ]]; then echolog "   version status=latest" "1"; fi
-        if [ ! -z "${refseq_category}" ]; then echolog "   refseq category=${refseq_category}" "1"; fi
-        if [ ! -z "${assembly_level}" ]; then echolog "   assembly level=${assembly_level}" "1"; fi
-        if [ ! -z "${custom_filter}" ]; then echolog "   custom filter=${custom_filter}" "1"; fi
+        if [[ "${tax_mode}" == "ncbi" ]]; then echolog "   AND version status = latest" "1"; fi
+        if [ ! -z "${refseq_category}" ]; then echolog "   AND refseq category = ${refseq_category}" "1"; fi
+        if [ ! -z "${assembly_level}" ]; then echolog "   AND assembly level = ${assembly_level}" "1"; fi
+        if [ ! -z "${custom_filter}" ]; then echolog "   AND custom filter (${custom_filter})" "1"; fi
         filtered_lines=${columns_lines}
         if [[ "${filtered_lines}" -eq 0 ]]; then return 0; fi
     fi
@@ -399,52 +399,45 @@ filter_date() # parameter: ${1} assembly_summary file - return number of lines
 
 filter_columns() # parameter: ${1} assembly_summary file - return number of lines
 {
-    # Build string to filter file by columns in the format
-    # colA:val1,val2|colB:val3
-    # AND between cols, OR between values
-    
     # Valid URLs (not na)
-    awk -F "\t" '{if($20!="na"){print $0}}' "${1}" > "${1}_valid"
-
-    colfilter=""
+    colfilter='$20 != "na"'
     if [[ "${tax_mode}" == "ncbi" ]]; then
-        colfilter="11:latest|"
+        colfilter=${colfilter}' && $11 == "latest"'
     fi
     if [[ ! -z "${refseq_category}" ]]; then
-        colfilter="${colfilter}5:${refseq_category}|"
+        IFS=","
+        refseq_category_filter=""
+        for val in ${refseq_category}; do
+            refseq_category_filter=${refseq_category_filter}'$5 == "'${val}'" || '
+        done
+        IFS=$' '
+        colfilter=${colfilter}' && ('${refseq_category_filter::-4}')'
     fi
     if [[ ! -z "${assembly_level}" ]]; then
-        colfilter="${colfilter}12:${assembly_level}|"
+        IFS=","
+        assembly_level_filter=""
+        for val in ${assembly_level}; do
+            assembly_level_filter=${assembly_level_filter}'$12 == "'${val}'" || '
+        done
+        IFS=$' '
+        colfilter=${colfilter}' && ('${assembly_level_filter::-4}')'
     fi
     if [[ ! -z "${custom_filter}" ]]; then
-        colfilter="${colfilter}${custom_filter}|"
+        colfilter=${colfilter}" && (${custom_filter})"
     fi
 
     if [[ ! -z "${colfilter}" ]]; then
-        awk -F "\t" -v colfilter="${colfilter%?}" '
-            function ltrim(s) { sub(/^[ \t\r\n]+/, "", s); return s }
-            function rtrim(s) { sub(/[ \t\r\n]+$/, "", s); return s }
-            function trim(s) { return rtrim(ltrim(s)); }
+        # Run awk inside an awk with getline to be able to evaluate the conditional expresion string
+        awk -F "\t" -v infile="${1}" -v colfilter="${colfilter}" '
             BEGIN{
-            split(colfilter, fields, "|");
-            for(f in fields){
-                split(fields[f], keyvals, ":");
-                filter[keyvals[1]]=keyvals[2];}
-            }{
-                k=0;
-                for(f in filter){
-                    split(filter[f], v, ","); for (i in v) vals[tolower(trim(v[i]))]="";
-                    if(tolower($f) in vals){
-                        k+=1;
-                    }
-                };
-                if(k==length(filter)){
-                    print $0;
+                cmd = "awk -F \047\t\047 \047{if (" colfilter "){print}}\047 " infile;
+                while ((cmd | getline line) > 0){
+                    print line;
                 }
-            }' "${1}_valid" > "${1}"
-        rm -f "${1}_valid"
-    else
-        mv "${1}_valid" "${1}"
+                close(cmd);
+                exit;
+            }' > "${1}_filtered"
+        mv "${1}_filtered" "${1}"
     fi
     count_lines_file "${1}"
 }
@@ -828,10 +821,10 @@ function showhelp {
     echo
     echo $'Filter options:'
     echo $' -c refseq category (comma-separated entries, empty for all)\n\t[reference genome, na]\n\tDefault: ""'
-    echo $' -l assembly level (comma-separated entries, empty for all)\n\t[complete genome, chromosome, scaffold, contig]\n\tDefault: ""' 
+    echo $' -l assembly level (comma-separated entries, empty for all)\n\t[Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: ""' 
     echo $' -D Start date (>=), based on the sequence release date. Format YYYYMMDD.\n\tDefault: ""'
     echo $' -E End date (<=), based on the sequence release date. Format YYYYMMDD.\n\tDefault: ""'
-    echo $' -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive).\n\tExample: -F "2:PRJNA12377,PRJNA670754|14:Partial" (AND between cols, OR between values)\n\tColumn info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
+    echo $' -F Custom filter for the assembly summary. \n\tExamples:\n\t  Single: -F \'$14 = "Full"\'\n\t  Multi:  -F \'($2 == "PRJNA12377" || $2 == "PRJNA670754") && $4 != "Partial"\'\n\t  Regex:  -F \'$8 ~ /bacterium/\'\n\t  Whole-file: -F \'$0 ~ "plasmid"\'\n\tUses awk syntax: $ for column index, || "or", && "and", ! "not", parentheses for nesting. Case sensitive.\n\tColumns info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
     echo
     echo $'Taxonomy options:'
     echo $' -M Taxonomy. gtdb keeps only assemblies in GTDB (latest). ncbi keeps only latest assemblies (version_status). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
@@ -1117,7 +1110,6 @@ IFS=","
 valid_refseq_category=( "reference genome" "na" )
 if [[ ! -z "${refseq_category}" ]]; then
     for rc in ${refseq_category}; do
-        # ${rc,,} to lowercase
         if [[ ! " ${valid_refseq_category[@]} " =~ " ${rc,,} " ]]; then
             echo "${rc}: invalid refseq category [ $(printf "'%s' " "${valid_refseq_category[@]}")]"; exit 1;
         fi
@@ -1127,11 +1119,13 @@ if [[ ! -z "${assembly_level}" ]]; then
     valid_assembly_level=( "complete genome" "chromosome" "scaffold" "contig" )
     for al in ${assembly_level}; do
         # ${al,,} to lowercase
-        if [[ ! " ${valid_assembly_level[@]} " =~ " ${al,,} " ]]; then
+        if [[ ! " ${valid_assembly_level[@],,} " =~ " ${al,,} " ]]; then
             echo "${al}: invalid assembly level [ $(printf "'%s' " "${valid_assembly_level[@]}")]"; exit 1;
         fi
+        formatted_assembly_level+=("${al,,}")
     done
 fi
+echo $assembly_level
 IFS=$' '
 if [[ ! -z "${date_start}" ]]; then
     if ! date "+%Y%m%d" -d "${date_start}" > /dev/null 2>&1; then

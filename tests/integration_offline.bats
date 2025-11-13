@@ -210,7 +210,7 @@ setup_file() {
     aslev=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 12 ) )
 
     # Simulate refseq category and assembly level filter using the custom filter
-    run ./genome_updater.sh -d refseq -F "5:${rscat[0]}|12:${aslev[0]}" -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -F "\$5 == \"${rscat[0]}\" && \$12 == \"${aslev[0]}\"" -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # Check if output contains only selected refseq category
@@ -335,25 +335,25 @@ setup_file() {
     # should always pick the correct assembly level for top superkingdom (just one)
 
     label="4"
-    aslvl="complete genome,chromosome,scaffold,contig"
+    aslvl="Complete Genome,Chromosome,Scaffold,Contig"
     run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}    
     sanity_check ${outdir} ${label}
     assert_equal "Complete Genome" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
     label="3"
-    aslvl="chromosome,scaffold,contig"
+    aslvl="Chromosome,Scaffold,Contig"
     run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}    
     sanity_check ${outdir} ${label}
     assert_equal "Chromosome" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
     label="2"
-    aslvl="scaffold,contig"
+    aslvl="Scaffold,Contig"
     run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}    
     sanity_check ${outdir} ${label}
     assert_equal "Scaffold" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
     label="1"
-    aslvl="contig"
+    aslvl="Contig"
     run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}    
     sanity_check ${outdir} ${label}
     assert_equal "Contig" "$(get_values_as ${outdir}assembly_summary.txt 12)"
