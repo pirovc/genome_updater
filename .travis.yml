@@ -1,5 +1,5 @@
 language: bash
-dist: jammy
+dist: noble
 
 before_install:
   - gem install bashcov codecov
@@ -8,6 +8,7 @@ before_install:
 
 script:
   - bashcov tests/libs/bats/bin/bats tests/integration_offline.bats
+  - shellcheck genome_updater.sh
 
 after_success:
   - curl -Os https://uploader.codecov.io/latest/linux/codecov
