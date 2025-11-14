@@ -1452,6 +1452,7 @@ else # update/fix
         join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' "${new_assembly_summary}" | sort -k 1,1) <(cut -f 1 "${current_assembly_summary}" | sed 's/\.[0-9]*//g' | sort) -o "1.2,1.3" -v 1 | tr ' ' '\t' > "${new}"
         new_lines=$(count_lines_file "${new}")
         echolog "Updates available [${current_label} --> ${new_label}]" "1"
+        echolog " - $(( filtered_lines-update_lines-new_lines )) unchanged entries" "1"
         echolog " - ${update_lines} updated, ${remove_lines} removed, ${new_lines} new entries" "1"
         echolog "" "1"
 
