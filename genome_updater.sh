@@ -408,7 +408,7 @@ filter_columns() # parameter: ${1} assembly_summary file - return number of line
         IFS=","
         refseq_category_filter=""
         for val in ${refseq_category}; do
-            refseq_category_filter=${refseq_category_filter}'$5 == "'${val}'" || '
+            refseq_category_filter=${refseq_category_filter}'tolower($5) == "'${val,,}'" || '
         done
         IFS=$' '
         colfilter=${colfilter}' && ('${refseq_category_filter::-4}')'
@@ -417,7 +417,7 @@ filter_columns() # parameter: ${1} assembly_summary file - return number of line
         IFS=","
         assembly_level_filter=""
         for val in ${assembly_level}; do
-            assembly_level_filter=${assembly_level_filter}'$12 == "'${val}'" || '
+            assembly_level_filter=${assembly_level_filter}'tolower($12) == "'${val,,}'" || '
         done
         IFS=$' '
         colfilter=${colfilter}' && ('${assembly_level_filter::-4}')'
@@ -827,7 +827,7 @@ function showhelp {
     echo $' -F Custom filter for the assembly summary. \n\tExamples:\n\t  Single: -F \'$14 = "Full"\'\n\t  Multi:  -F \'($2 == "PRJNA12377" || $2 == "PRJNA670754") && $4 != "Partial"\'\n\t  Regex:  -F \'$8 ~ /bacterium/\'\n\t  Whole-file: -F \'$0 ~ "plasmid"\'\n\tUses awk syntax: $ for column index, || "or", && "and", ! "not", parentheses for nesting. Case sensitive.\n\tColumns info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
     echo
     echo $'Taxonomy options:'
-    echo $' -M Taxonomy. gtdb keeps only assemblies in GTDB (latest). ncbi keeps only latest assemblies (version_status). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
+    echo $' -M Taxonomy. gtdb keeps only assemblies in the latest GTDB release. ncbi keeps only latest assemblies (version_status=latest). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
     echo $' -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. \n\tSelection by ranks are also supported with rank:number (e.g genus:3)\n\t[species, genus, family, order, class, phylum, kingdom, superkingdom]\n\tSelection order based on: RefSeq Category, Assembly level, Relation to type material, Date.\n\tDefault: 0'
     echo $' -a Keep the current version of the taxonomy database in the output folder'
     echo
@@ -1110,6 +1110,7 @@ IFS=","
 valid_refseq_category=( "reference genome" "na" )
 if [[ ! -z "${refseq_category}" ]]; then
     for rc in ${refseq_category}; do
+        # ${rc,,} to lowercase
         if [[ ! " ${valid_refseq_category[@]} " =~ " ${rc,,} " ]]; then
             echo "${rc}: invalid refseq category [ $(printf "'%s' " "${valid_refseq_category[@]}")]"; exit 1;
         fi
@@ -1119,13 +1120,11 @@ if [[ ! -z "${assembly_level}" ]]; then
     valid_assembly_level=( "complete genome" "chromosome" "scaffold" "contig" )
     for al in ${assembly_level}; do
         # ${al,,} to lowercase
-        if [[ ! " ${valid_assembly_level[@],,} " =~ " ${al,,} " ]]; then
+        if [[ ! " ${valid_assembly_level[@]} " =~ " ${al,,} " ]]; then
             echo "${al}: invalid assembly level [ $(printf "'%s' " "${valid_assembly_level[@]}")]"; exit 1;
         fi
-        formatted_assembly_level+=("${al,,}")
     done
 fi
-echo $assembly_level
 IFS=$' '
 if [[ ! -z "${date_start}" ]]; then
     if ! date "+%Y%m%d" -d "${date_start}" > /dev/null 2>&1; then

@@ -2,6 +2,8 @@
 
 get_values_as() { # $1 assembly_summary file, $2 col
     grep -v "^#" ${1} | cut -f ${2}
+    # | sed 's! !\\ !g'
+    # | awk '{ print "\""$0"\""}' 
 }
 
 count_lines_file(){ # $1 file
