@@ -35,9 +35,10 @@ if [[ -n "${local_dir}" ]]; then
 fi
 ncbi_base_url=${ncbi_base_url:-ftp://ftp.ncbi.nlm.nih.gov/} #Alternative ftp://ftp.ncbi.nih.gov/
 gtdb_base_url="https://data.gtdb.ecogenomic.org/releases/latest/"
+new_taxdump_file=${new_taxdump_file:-}
 retries=${retries:-3}
 timeout=${timeout:-120}
-export retries timeout ncbi_base_url gtdb_base_url local_dir
+export retries timeout ncbi_base_url gtdb_base_url new_taxdump_file local_dir
 
 # Export locale numeric to avoid errors on printf in different setups
 export LC_NUMERIC="en_US.UTF-8"
@@ -289,8 +290,12 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
     elif [[ "${tax_mode}" == "ncbi" && ( -n "${taxids}" || ( -n "${top_assemblies_rank}" && "${top_assemblies_rank}" != "species" ) ) ]]; then
         echolog " - Downloading taxonomy (ncbi)" "1"
         tmp_new_taxdump="${working_dir}new_taxdump.tar.gz"
-        if ! download_retry_md5 "${ncbi_base_url}pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}" "${ncbi_base_url}pub/taxonomy/new_taxdump/new_taxdump.tar.gz.md5" "${retry_download_batch}"; then
-            return 1;
+        if [[ -z "${new_taxdump_file}" ]]; then
+            if ! download_retry_md5 "${ncbi_base_url}pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}" "${ncbi_base_url}pub/taxonomy/new_taxdump/new_taxdump.tar.gz.md5" "${retry_download_batch}"; then
+                return 1;
+            fi
+        else
+            ln -sf "${new_taxdump_file}" "${tmp_new_taxdump}";
         fi
     fi
 
@@ -328,7 +333,7 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
         else
             taxids_lines=$(filter_taxids_gtdb "${assembly_summary}" "${gtdb_tax}")
         fi
-        echolog " - $((filtered_lines-taxids_lines)) assemblies removed not in taxids [${taxids}]" "1"
+        echolog " - $((filtered_lines-taxids_lines)) assemblies removed based on taxids [${taxids}]" "1"
         filtered_lines=${taxids_lines}
         if [[ "${filtered_lines}" -eq 0 ]]; then return 0; fi
     fi
@@ -376,16 +381,29 @@ filter_taxids_ncbi() # parameter: ${1} assembly_summary file, ${2} ncbi_tax file
 {
     # Keep only selected taxid lineage, removing at the end duplicated entries from duplicates on taxids
     tmp_lineage=$(tmp_file "lineage.tmp")
+    tmp_lineage_neg=$(tmp_file "lineage_neg.tmp")
     for tx in ${taxids//,/ }; do
-        txids_lin=$(grep "[^0-9]${tx}[^0-9]" "${2}" | cut -f 1) #get only taxids in the lineage section
-        echolog " - $(count_lines "${txids_lin}") children taxids in the lineage of ${tx}" "0"
-        echo "${txids_lin}" >> "${tmp_lineage}" 
+        txids_lin=$(grep "[^0-9]${tx#^}[^0-9]" "${2}" | cut -f 1) #get only taxids in the lineage section
+        if [[ ${tx} == "^"* ]]; then
+            echolog " - $(count_lines "${txids_lin}") taxa with ${tx#^} in the lineage to be removed" "0"
+            echo -e "${tx#^}\n${txids_lin}" >> "${tmp_lineage_neg}"
+        else
+            echolog " - $(count_lines "${txids_lin}") taxa with ${tx} in the lineage to be included" "0"
+            echo -e "${tx}\n${txids_lin}" >> "${tmp_lineage}" 
+        fi
     done
-    lineage_taxids=$(sort "${tmp_lineage}" | uniq | tr '\n' ',')${taxids} # put lineage back into the taxids variable with the provided taxids
-    rm "${tmp_lineage}"
+
+    # If there's no taxids to include (positive), add all
+    if [ ! -s "${tmp_lineage}" ]; then
+        cut -f 1 "${2}" >> "${tmp_lineage}"
+    fi
+    
+    # Remove taxids from negative list (starting with ^)
+    lineage_taxids=$(join <(sort "${tmp_lineage}"  | uniq) <(sort "${tmp_lineage_neg}" | uniq) -v 1)
+    rm "${tmp_lineage}" "${tmp_lineage_neg}"
 
     # Join with assembly_summary based on taxid field 6
-    join -1 6 -2 1 <(sort -k 6,6 "${1}") <(echo "${lineage_taxids//,/$'\n'}" | sort -k 1,1) -t$'\t' -o ${join_as_fields1} | sort | uniq > "${1}_taxids"
+    join -1 6 -2 1 <(sort -k 6,6 "${1}") <(echo "${lineage_taxids}" | sort) -t$'\t' -o ${join_as_fields1} | sort | uniq > "${1}_taxids"
     mv "${1}_taxids" "${1}"
     count_lines_file "${1}"
 }
@@ -829,7 +847,7 @@ function showhelp {
     echo
     echo $'Organism options:'
     echo $' -g Organism group(s) (comma-separated entries, empty for all)\n\t[archaea, bacteria, fungi, human, invertebrate, metagenomes, \n\tother, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]\n\tDefault: ""'
-    echo $' -T Taxonomic identifier(s) (comma-separated entries, empty for all).\n\tExample: "562" (for -M ncbi) or "s__Escherichia coli" (for -M gtdb)\n\tDefault: ""'
+    echo $' -T Taxonomic identifier(s) with optional negation using the ^ prefix (comma-separated entries, empty for all).\n\tExample: "543,^562" (for -M ncbi) or "f__Enterobacteriaceae,^s__Escherichia coli" (for -M gtdb)\n\tDefault: ""'
     echo
     echo $'File options:'
     echo $' -f file type(s) (comma-separated entries)\n\t[genomic.fna.gz, assembly_report.txt, protein.faa.gz, genomic.gbff.gz]\n\tMore formats at https://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt\n\tDefault: assembly_report.txt'
@@ -1093,7 +1111,7 @@ fi
 
 if [[ "${tax_mode}" == "ncbi" ]]; then
     if [[ -n "${taxids}"  ]]; then
-        if [[ ! "${taxids}" =~ ^[0-9,]+$ ]]; then
+        if [[ ! "${taxids}" =~ ^[0-9,\\^]+$ ]]; then
             echo "${taxids}: invalid taxids"; exit 1;
         fi
     fi
