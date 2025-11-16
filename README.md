@@ -1,27 +1,34 @@
 # genome_updater [![Build Status](https://travis-ci.com/pirovc/genome_updater.svg?branch=main)](https://travis-ci.com/pirovc/genome_updater) [![codecov](https://codecov.io/gh/pirovc/genome_updater/branch/master/graph/badge.svg)](https://codecov.io/gh/pirovc/genome_updater) [![Anaconda-Server Badge](https://anaconda.org/bioconda/genome_updater/badges/downloads.svg)](https://anaconda.org/bioconda/genome_updater)
 
-Bash script to download ***and update*** snapshots of the NCBI genomes repository (refseq/genbank) [1] with filters, detailed log, reports, file integrity check (MD5) and parallel [2] download support.
+genome_updater is a bash script that downloads and updates snapshots of the NCBI Genomes repository (RefSeq/GenBank) [1] with advanced filters, detailed logs and reports, file integrity checks (MD5) and support for parallel [2] downloads.
 
 ## Quick usage guide
 
 ### Get genome_updater
 
-    wget --quiet --show-progress https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
-    chmod +x genome_updater.sh
+```bash
+wget --quiet --show-progress https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
+chmod +x genome_updater.sh
+```
+### Usage
 
-### Download
+#### Download
 
 Download Archaeal complete genome sequences from the refseq repository (`-t` number parallel downloads):
 
-    ./genome_updater.sh -o "arc_refseq_cg" -d "refseq" -g "archaea" -l "complete genome" -f "genomic.fna.gz" -t 12
+```bash
+./genome_updater.sh -o "arc_refseq_cg" -d "refseq" -g "archaea" -l "complete genome" -f "genomic.fna.gz" -t 12
+```
 
-### Update
+#### Update
 
 Some days later, update the repository:
 
     ./genome_updater.sh -o "arc_refseq_cg"
 
- - Add `-k` to perform a dry-run, showing how many files will be downloaded/updated without any changes.
+#### Tips
+
+ - `-k` to perform a dry-run, showing how many files will be downloaded/updated without any changes.
 
  - Newly added sequences will be downloaded and a new version (`-b`, timestamp by default) will be created. Removed or old sequences will be kept but not carried to the new version.
 
@@ -41,22 +48,30 @@ genome_updater downloads and keeps several snapshots of a certain sub-set of the
 
 ## Installation
 
-With conda:
+### conda/mamba
 
-    conda install -c bioconda genome_updater 
+```bash
+conda install -c bioconda genome_updater 
+```
 
-or direct file download:
+### direct file download
 
-    wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
-    chmod +x genome_updater.sh
+```bash
+wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
+chmod +x genome_updater.sh
+```
 
- - genome_updater is portable and depends on the GNU Core Utilities + few additional tools (`awk` `bc` `find` `join` `md5sum` `parallel` `sed` `tar` `wget`/`curl`) which are commonly available and installed in most distributions. If you are not sure if you have them all, just run `genome_updater.sh` and it will tell you if something is missing (otherwise the it will show the help page).
+- genome_updater is portable and depends on the GNU Core Utilities + few additional tools (`awk` `bc` `find` `join` `md5sum` `parallel` `sed` `tar` `wget`/`curl`) which are commonly available and installed in most distributions. 
+
+- If you are not sure if you have them all, just run `genome_updater.sh` and it will tell you if something is missing (otherwise the it will show the help page).
 
 To test if all genome_updater functions are running properly on your system:
 
-    git clone --recurse-submodules https://github.com/pirovc/genome_updater.git
-    cd genome_updater
-    tests/test.sh
+```bash
+git clone --recurse-submodules https://github.com/pirovc/genome_updater.git
+cd genome_updater
+tests/test.sh
+```
 
 ## Examples
 
