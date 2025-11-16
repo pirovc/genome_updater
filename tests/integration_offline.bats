@@ -131,21 +131,17 @@ setup_file() {
 
     outdir=${outprefix}taxids-leaves-ncbi/
     label="test"
-    # Get all possible taxids from base assembly_summary
-    readarray -t txids < <(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 7)
-    #echo ${txids[@]} >&3
-
-    # Use third
-    run ./genome_updater.sh -d refseq -T ${txids[2]} -b ${label} -o ${outdir}
+    
+    # Include only archaea taxids, remove fungi, based on taxid filter
+    run ./genome_updater.sh -d refseq -g archaea,fungi -T '^4751,2157' -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
-    # Check if output contains only used taxids
-    readarray -t txids_ret < <(get_values_as ${outdir}assembly_summary.txt 7)
-    #echo ${txids_ret[@]} >&3
+    # Check if output only archaea accessions
+    readarray -t archaea_acc < <(get_values_as ${local_dir}genomes/refseq/archaea/assembly_summary.txt 1)
+    readarray -t ret_acc < <(get_values_as ${outdir}assembly_summary.txt 1)
 
-    # Used taxid should be the only one 
-    assert_equal ${#txids_ret[@]} 1 #length
-    assert_equal ${txids[2]} ${txids_ret[0]} #same taxid 
+    # Check if output is as expected (only archaea)
+    assert_equal $(echo ${archaea_acc[@]} ${ret_acc[@]} | tr ' ' '\n' | sort | uniq -d | wc -l) $(count_lines_file "${local_dir}genomes/refseq/archaea/assembly_summary.txt")
 }
 
 @test "Taxids leaves gtdb" {
@@ -154,9 +150,9 @@ setup_file() {
     outdir=${outprefix}taxids-leaves-gtdb/
     label="test"
     # Use fixed one
-    run ./genome_updater.sh -d refseq,genbank -T 's__MWBV01 sp002069705' -b ${label} -o ${outdir} -g archaea -M gtdb
+    run ./genome_updater.sh -d refseq,genbank -T 'o__Halobacteriales,^f__Haloferacaceae' -b ${label} -o ${outdir} -g archaea -M gtdb
     sanity_check ${outdir} ${label}
-    assert [ $(count_files ${outdir} ${label}) -eq 1 ]
+    assert [ $(count_files ${outdir} ${label}) -eq 7 ]
 }
 
 @test "Refseq category" {

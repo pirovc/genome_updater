@@ -278,13 +278,11 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
         gtdb_tax=$(tmp_file "gtdb_tax.tmp")
         for url in "${gtdb_urls[@]}"; do
             tmp_tax=$(tmp_file "gtdb_tax.tmp.gz")
-            #if ! download_retry_md5 "${url}" "${tmp_tax}" "${gtdb_base_url}MD5SUM.txt" "${retry_download_batch}"; then
-            if ! download_retry_md5 "${url}" "${tmp_tax}" "" "${retry_download_batch}"; then
+            if ! download_retry_md5 "${url}" "${tmp_tax}" "${gtdb_base_url}MD5SUM.txt" "${retry_download_batch}"; then
                 return 1;
-            else
-                # awk to remove prefix RS_ or GB_
-                zcat "${tmp_tax}" | awk -F "\t" '{print substr($1, 4, length($1))"\t"$2}' >> "${gtdb_tax}"
             fi
+            # awk to remove prefix RS_ or GB_
+            zcat "${tmp_tax}" | awk -F "\t" '{print substr($1, 4, length($1))"\t"$2}' >> "${gtdb_tax}"
             rm -f "${tmp_tax}"
         done
     elif [[ "${tax_mode}" == "ncbi" && ( -n "${taxids}" || ( -n "${top_assemblies_rank}" && "${top_assemblies_rank}" != "species" ) ) ]]; then
@@ -398,27 +396,45 @@ filter_taxids_ncbi() # parameter: ${1} assembly_summary file, ${2} ncbi_tax file
         cut -f 1 "${2}" >> "${tmp_lineage}"
     fi
     
-    # Remove taxids from negative list (starting with ^)
+    # Remove taxids from negative list
     lineage_taxids=$(join <(sort "${tmp_lineage}"  | uniq) <(sort "${tmp_lineage_neg}" | uniq) -v 1)
     rm "${tmp_lineage}" "${tmp_lineage_neg}"
 
     # Join with assembly_summary based on taxid field 6
-    join -1 6 -2 1 <(sort -k 6,6 "${1}") <(echo "${lineage_taxids}" | sort) -t$'\t' -o ${join_as_fields1} | sort | uniq > "${1}_taxids"
-    mv "${1}_taxids" "${1}"
+    join -1 6 -2 1 <(sort -k 6,6 -t$'\t' "${1}") <(echo "${lineage_taxids}" | sort) -t$'\t' -o ${join_as_fields1} | sort | uniq > "${1}_filtered"
+    mv "${1}_filtered" "${1}"
     count_lines_file "${1}"
 }
 
 filter_taxids_gtdb() # parameter: ${1} assembly_summary file, ${2} gtdb_tax file return number of lines
 {
-    tmp_gtdb_acc=$(tmp_file "gtdb_acc.tmp")
+    tmp_lineage=$(tmp_file "lineage.tmp")
+    tmp_lineage_neg=$(tmp_file "lineage_neg.tmp")
+
     IFS=","
     for tx in ${taxids}; do
-        sed -e 's/\t/\t;/g' -e 's/$/;/p' "${2}" | grep ";${tx};" | cut -f 1 >> "${tmp_gtdb_acc}"
+        acc_lin=$(sed -e 's/\t/\t;/g' -e 's/$/;/g' "${2}" | grep ";${tx#^};" | cut -f 1) #get only taxids in the lineage section
+        if [[ ${tx} == "^"* ]]; then
+            echolog " - $(count_lines "${acc_lin}") entrie(s) with ${tx#^} in the lineage to be removed" "0"
+            echo "${acc_lin}" >> "${tmp_lineage_neg}" 
+        else
+            echolog " - $(count_lines "${acc_lin}") entries(s) with ${tx} in the lineage to be included" "0"
+            echo "${acc_lin}" >> "${tmp_lineage}" 
+        fi
     done
     IFS=$' '
-    join -1 1 -2 1 <(sort -k 1,1 "${1}") <(sort -k 1,1 "${tmp_gtdb_acc}" | uniq) -t$'\t' -o ${join_as_fields1} | sort | uniq > "${1}_taxids"
-    mv "${1}_taxids" "${1}"
-    rm "${tmp_gtdb_acc}"
+
+    # If there's no accessions to include (positive), add all
+    if [ ! -s "${tmp_lineage}" ]; then
+        cut -f 1 "${2}" >> "${tmp_lineage}"
+    fi
+
+    # Remove accessions from negative list
+    lineage_accver=$(join <(sort "${tmp_lineage}" | uniq) <(sort "${tmp_lineage_neg}" | uniq) -v 1)
+    rm "${tmp_lineage}" "${tmp_lineage_neg}"
+
+    join -1 1 -2 1 <(sort -k 1,1 -t$'\t' "${1}") <(echo "${lineage_accver}" | sort) -t$'\t' -o ${join_as_fields1} | sort | uniq > "${1}_filtered"
+    mv "${1}_filtered" "${1}"
     count_lines_file "${1}"
 }
 
@@ -1110,16 +1126,18 @@ else
 fi
 
 if [[ "${tax_mode}" == "ncbi" ]]; then
-    if [[ -n "${taxids}"  ]]; then
-        if [[ ! "${taxids}" =~ ^[0-9,\\^]+$ ]]; then
-            echo "${taxids}: invalid taxids"; exit 1;
+    IFS=","
+    for tx in ${taxids}; do
+        if [[ ! "${tx}" =~ ^[\\^]{1}?[0-9]+$ ]]; then
+            echo "${tx}: invalid taxid"; exit 1;
         fi
-    fi
+    done
+    IFS=$' '
     taxids=${taxids// } # remove spaces
 elif [[ "${tax_mode}" == "gtdb" ]]; then
     IFS=","
     for tx in ${taxids}; do
-        if [[ ! "${tx}" =~ ^[dpcofgs]__.* ]]; then
+        if [[ ! "${tx}" =~ ^[\\^]{1}?[dpcofgs]__.* ]]; then
             echo "${tx}: invalid taxid"; exit 1;
         fi
     done
