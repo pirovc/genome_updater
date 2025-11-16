@@ -65,6 +65,8 @@ chmod +x genome_updater.sh
 
 - If you are not sure if you have them all, just run `genome_updater.sh` and it will tell you if something is missing (otherwise the it will show the help page).
 
+### tests
+
 To test if all genome_updater functions are running properly on your system:
 
 ```bash
@@ -77,12 +79,14 @@ tests/test.sh
 
 ### Archaea, Bacteria, Fungi and Viral complete genome sequences from refseq
 
-    # Download (-m to check integrity of downloaded files)
-    ./genome_updater.sh -d "refseq" -g "archaea,bacteria,fungi,viral" -f "genomic.fna.gz" -o "arc_bac_fun_vir_refseq_cg" -t 12 -m
-    
-    # Update (e.g. some days later)
-    ./genome_updater.sh -o "arc_bac_fun_vir_refseq_cg" -m
-    
+```sh
+# Download (-m to check integrity of downloaded files)
+./genome_updater.sh -d "refseq" -g "archaea,bacteria,fungi,viral" -f "genomic.fna.gz" -o "arc_bac_fun_vir_refseq_cg" -t 12 -m
+
+# Update (e.g. some days later)
+./genome_updater.sh -o "arc_bac_fun_vir_refseq_cg" -m
+```
+
 ### All RNA Viruses (under the taxon Riboviria) on refseq
 
     ./genome_updater.sh -d "refseq" -T "2559587" -f "genomic.fna.gz" -o "all_rna_virus" -t 12 -m
