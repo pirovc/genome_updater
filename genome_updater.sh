@@ -4,7 +4,7 @@ IFS=$' '
 
 # The MIT License (MIT)
  
-# Copyright (c) 2024 - Vitor C. Piro - pirovc.github.io
+# Copyright (c) 2025 - Vitor C. Piro - pirovc.github.io
 # All rights reserved.
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -33,8 +33,8 @@ if [[ -n "${local_dir}" ]]; then
     # set local dir with absulute path and "file://"
     local_dir="file://$(cd "${local_dir}" && pwd)"
 fi
-ncbi_base_url=${ncbi_base_url:-ftp://ftp.ncbi.nlm.nih.gov/} #Alternative ftp://ftp.ncbi.nih.gov/
-gtdb_base_url="https://data.gtdb.ecogenomic.org/releases/latest/"
+ncbi_base_url=${ncbi_base_url:-ftp://ftp.ncbi.nlm.nih.gov/}  # Alternative: ftp://ftp.ncbi.nih.gov/, 
+gtdb_base_url=${gtdb_base_url:-https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/}  # Alternative: https://data.gtdb.ecogenomic.org/releases/latest/
 new_taxdump_file=${new_taxdump_file:-}
 retries=${retries:-3}
 timeout=${timeout:-120}
@@ -896,7 +896,7 @@ function showhelp {
     echo $' -b Version label\n\tDefault: current timestamp (YYYY-MM-DD_HH-MM-SS)'
     echo $' -e External "assembly_summary.txt" file to recover data from. Mutually exclusive with -d / -g \n\tDefault: ""'
     echo $' -B Alternative version label to use as the current version. Mutually exclusive with -i.\n\tCan be used to rollback to an older version or to create multiple branches from a base version.\n\tDefault: ""'
-    echo $' -R Number of attempts to retry to download files in batches \n\tDefault: 3'
+    echo $' -R Number of attempts to retry to download files in batches \n\tDefault: 5'
     echo $' -n Conditional exit status based on number of failures accepted, otherwise will Exit Code = 1.\n\tExample: -n 10 will exit code 1 if 10 or more files failed to download\n\t[integer for file number, float for percentage, 0 = off]\n\tDefault: 0'
     echo $' -N Output files in folders like NCBI ftp structure (e.g. files/GCF/000/499/605/GCF_000499605.1_EMW001_assembly_report.txt)'
     echo $' -L Downloader\n\t[wget, curl]\n\tDefault: wget'
@@ -935,7 +935,7 @@ silent_progress=0
 debug_mode=0
 working_dir=""
 external_assembly_summary=""
-retry_download_batch=3
+retry_download_batch=5
 label=""
 rollback_label=""
 threads=1
