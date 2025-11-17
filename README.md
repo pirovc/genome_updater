@@ -1,4 +1,4 @@
-# genome_updater [![Build Status](https://travis-ci.com/pirovc/genome_updater.svg?branch=main)](https://travis-ci.com/pirovc/genome_updater) [![codecov](https://codecov.io/gh/pirovc/genome_updater/branch/master/graph/badge.svg)](https://codecov.io/gh/pirovc/genome_updater) [![Anaconda-Server Badge](https://anaconda.org/bioconda/genome_updater/badges/downloads.svg)](https://anaconda.org/bioconda/genome_updater)
+# genome_updater [![Build Status](https://travis-ci.com/pirovc/genome_updater.svg?branch=main)](https://app.travis-ci.com/pirovc/genome_updater) [![codecov](https://codecov.io/gh/pirovc/genome_updater/branch/master/graph/badge.svg)](https://codecov.io/gh/pirovc/genome_updater) [![Anaconda-Server Badge](https://anaconda.org/bioconda/genome_updater/badges/downloads.svg)](https://anaconda.org/bioconda/genome_updater)
 
 genome_updater is a bash script that downloads and updates (non-redundant) snapshots of the NCBI Genomes repository (RefSeq/GenBank) [[1](https://ftp.ncbi.nlm.nih.gov/genomes/)] with advanced filters, detailed logs and reports, file integrity checks (MD5) and support for parallel [[2](https://doi.org/10.5281/zenodo.1146014)] downloads. genome_updater uses the [assembly_summary.txt](https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt) to retrieve data.
 
@@ -29,7 +29,7 @@ Some days later, update the local repository to download newly added files:
 
 ## Important parameters
 
-A list of all parameters can be found [here](#genome_updater_h)
+A list of all parameters can be found [here](#genome_updater--h)
 
 
 ### Database/Organism/Taxa
@@ -115,7 +115,7 @@ tests/test.sh
 
 ## Examples
 
-### Archaea, Bacteria, Fungi and Viral complete genome sequences from RefSeq
+### Archaea, Bacteria, Fungi and Viral complete genome sequences (RefSeq)
 
 ```bash
 # Download (-m to check integrity of downloaded files)
@@ -125,26 +125,26 @@ tests/test.sh
 ./genome_updater.sh -o "arc_bac_fun_vir_refseq_cg" -m
 ```
 
-### All Riboviria RNA Viruses (txid:2559587) from RefSeq
+### All Riboviria RNA Viruses txid:2559587
 
 ```bash
 # -t 12 for using 12 threads to download in parallel
 ./genome_updater.sh -d "refseq" -T "2559587" -f "genomic.fna.gz" -o "all_rna_virus" -t 12 -m
 ```
 
-### One genome assembly for each bacterial taxonomic node (leaves) from GenBank
+### One genome assembly for each bacterial taxonomic leaf node
 
 ```bash   
 ./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1_bacteria_genbank" -A 1 -t 12 -m 
 ```
 
-### One genome assembly for each bacterial species in genbank
+### One genome assembly for each bacterial species
 
 ```bash   
 ./genome_updater.sh -d "genbank" -g "bacteria" -f "genomic.fna.gz" -o "top1species_bacteria_genbank" -A "species:1" -t 12 -m 
 ```
 
-### All genome sequences used in the latests GTDB release
+### All genomes for the latests GTDB release
 
 ```bash 
 ./genome_updater.sh -d "refseq,genbank" -g "archaea,bacteria" -f "genomic.fna.gz" -o "GTDB_complete" -M "gtdb" -t 12 -m
@@ -162,21 +162,15 @@ tests/test.sh
 ./genome_updater.sh -d "refseq,genbank" -g "archaea,bacteria" -f "genomic.fna.gz" -o "GTDB_family_Gastranaerophilaceae" -M "gtdb" -T "f__Gastranaerophilaceae" -t 12 -m
 ```
 
-### All assemblies from a specific family excluding a genus in GTDB
+### All assemblies from a specific family (excluding a genus) in GTDB
 
 ```bash 
 ./genome_updater.sh -d "refseq,genbank" -g "archaea,bacteria" -f "genomic.fna.gz" -o "GTDB_Mycobacteriacea_minus_Mycobacterium" -M "gtdb" -T "f__Mycobacteriacea,^g__Mycobacterium" -t 12 -m
 ```
 
-### Recovering fasta files from a previously obtained assembly_summary.txt
-
-```bash 
-./genome_updater.sh -e /my/path/assembly_summary.txt -f "genomic.fna.gz" -o "recovered_sequences"
-```
-
 ## Advanced examples
 
-### Downloading genomic sequences (.fna files) for the Complete Genome sequences from RefSeq for Bacteria and Archaea and keep them updated
+### Download, change and update a repository
 
 ```bash 
 # Dry-run to check files available
@@ -195,7 +189,7 @@ tests/test.sh
 ./genome_updater.sh -o "arc_bac_refseq_cg" -u -m
 ```
 
-### Branching base version for specific filters
+### Branch from base version with specific filters
 
 ```bash 
 # Download the complete bacterial refseq
@@ -206,16 +200,22 @@ tests/test.sh
 ./genome_updater.sh -o "bac_refseq" -B "all" -b "reference" -c "reference genome"
 ```
 
-### Download Fungi RefSeq assembly information and generate sequence reports and URLs
+### Generate sequence reports and URLs
 
 ```bash 
 ./genome_updater.sh -d "refseq" -g "fungi" -f "assembly_report.txt" -o "fungi" -t 12 -rpu
 ```
 
-### Use curl (default wget), change timeout and retries for download, increase retries
+### Recovering genomic assemblies from an external assembly_summary.txt
 
 ```bash 
-retries=10 timeout=600 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt" -L curl -R 6
+./genome_updater.sh -e /my/path/assembly_summary.txt -f "genomic.fna.gz" -o "recovered_sequences"
+```
+
+### Use curl instead of wget, change timeout and retries for download, increase retries
+
+```bash 
+retries=10 timeout=600 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic.fna.gz,assembly_report.txt" -L curl -R 10
 ```
 
 ### Use a local taxdump file
@@ -224,7 +224,7 @@ retries=10 timeout=600 ./genome_updater.sh -g "fungi" -o fungi -t 12 -f "genomic
 new_taxdump_file="my/local/new_taxdump.tar.gz" ./genome_updater.sh -T 562 -o 562assemblies -t 12
 ```
 
-- the [new_taxdump](https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/) is required
+- the [new_taxdump](https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/) is required.
 
 
 ### Alternative download URL
@@ -241,7 +241,7 @@ gtdb_base_url="https://data.gtdb.ecogenomic.org/releases/latest/" ./genome_updat
 
 ### assembly accessions
 
-The parameter `-u` activates the output of a list of updated assembly accessions for the entries with all files (`-f`) successfully downloaded. The file `{timestamp}_assembly_accession.txt` has the following fields (tab separated):
+The `-u` parameter activates the output of a list of updated assembly accessions for entries where all files have been successfully downloaded. The file `{timestamp}_assembly_accession.txt` contains the following tab-separated fields:
 
     Added [A] or Removed [R], assembly accession, url
 
@@ -253,7 +253,7 @@ Example:
 
 ### sequence accessions
 
-The parameter `-r` activates the output of a list of updated sequence accessions for the entries with all files (`-f`) successfully downloaded. It is only available when `assembly_report.txt` is one of the file types. The file `{timestamp}_sequence_accession.txt` has the following fields (tab separated):
+The `-r` parameter activates the output of a list of updated sequence accessions for entries for which all files have been successfully downloaded. This option is only available when the file type contains `assembly_report.txt` . The file `{timestamp}_sequence_accession.txt` contains the following tab-separated fields:
 
     Added [A] or Removed [R], assembly accession, genbank accession, refseq accession, sequence length, taxonomic id
 
@@ -262,42 +262,42 @@ Example:
     A	GCA_000243255.1	CM001436.1	NZ_CM001436.1	3200946	937775
     R	GCA_000275865.1	CM001555.1	NZ_CM001555.1	2475100	28892
 
-Obs: if genome_updater breaks or do not finish completely some files may be missing from the assembly and sequence accession reports
+- Note: if genome_updater breaks or does not finish completely, some files may be missing from the assembly and sequence accession reports.
 
 ### URLs (and files)
 
-The parameter `-p` activates the output of a list of failed and successfully downloaded urls to the files `{timestamp}_url_downloaded.txt` and `{timestamp}_url_failed.txt` (failed list will only be complete if command runs until the end, without errors or breaks).
+The `-p` parameter activates the output of a list of failed and successfully downloaded URLs to the files `{timestamp}_url_downloaded.txt` and `{timestamp}_url_failed.txt`. The failed list will only be complete if the command runs to completion without errors or interruptions.
 
-To obtain a list of successfully downloaded files from this report (useful to get only new files after updating):
+To obtain a list of successfully downloaded files from this report, use the command below to get only new files after updating.
 
-    sed 's#.*/##' {timestamp}_url_list_downloaded.txt
-    
-or
-
-    find output_folder/version/files/ -type f
+```bash
+sed 's#.*/##' {timestamp}_url_list_downloaded.txt   
+#or
+find output_folder/version/files/ -type f
+```
 
 ## Top assemblies
 
-`-A` will selected the "best" assemblies for each taxonomic nodes (leaves or specific rank) according to 4 categories (A-D), in the following order of importance:
+The `-A`  option will select the 'best' assemblies for each taxonomic node (leaf or specific rank) according to four categories (A–D), in order of importance:
 
     A) refseq Category: 
         1) reference genome
         2) na
     B) Assembly level:
-        1) Complete Genome
-        2) Chromosome
-        3) Scaffold
-        4) Contig
+        3) Complete Genome
+        4) Chromosome
+        5) Scaffold
+        6) Contig
     C) Relation to type material:
-        1) assembly from type material
-        2) assembly from synonym type material
-        3) assembly from pathotype material
-        4) assembly designated as neotype
-        5) assembly designated as reftype
-        6) ICTV species exemplar
-        7) ICTV additional isolate
+        7) assembly from type material
+        8) assembly from synonym type material
+        9) assembly from pathotype material
+        10) assembly designated as neotype
+        11) assembly designated as reftype
+        12) ICTV species exemplar
+        13) ICTV additional isolate
     D) Date:
-        1) Most recent first
+        14) Most recent first
 
 
 ## `genome_updater -h`
