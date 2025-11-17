@@ -167,7 +167,7 @@ setup_file() {
     sanity_check ${outdir} ${label}
 
     # Get counts of taxids on output
-    txids_ret=$(get_values_as ${outdir}assembly_summary.txt 6 )
+    readarray -t txids_ret < <(get_values_as ${outdir}assembly_summary.txt 6)
     ret_occ=( $( echo ${txids_ret}  | tr ' ' '\n' | sort | uniq -c | awk '{print $1}' ) )
    
     # Should have one assembly for each species taxid

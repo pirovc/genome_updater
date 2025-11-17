@@ -4,7 +4,7 @@ IFS=$' '
 
 # The MIT License (MIT)
  
-# Copyright (c) 2024 - Vitor C. Piro - pirovc.github.io
+# Copyright (c) 2025 - Vitor C. Piro - pirovc.github.io
 # All rights reserved.
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,19 +25,22 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.6.4"
+version="0.7.0"
 
 # Define ncbi_base_url or use local files (for testing)
 local_dir=${local_dir:-}
-if [[ ! -z "${local_dir}" ]]; then
+if [[ -n "${local_dir}" ]]; then
     # set local dir with absulute path and "file://"
     local_dir="file://$(cd "${local_dir}" && pwd)"
 fi
-ncbi_base_url=${ncbi_base_url:-ftp://ftp.ncbi.nlm.nih.gov/} #Alternative ftp://ftp.ncbi.nih.gov/
-gtdb_base_url="https://data.gtdb.ecogenomic.org/releases/latest/"
+# Alternatives: ftp://ftp.ncbi.nih.gov/, https://ftp.ncbi.nih.gov/
+ncbi_base_url=${ncbi_base_url:-ftp://ftp.ncbi.nlm.nih.gov/}
+# Alternatives: https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/, https://data.gtdb.ecogenomic.org/releases/latest/
+gtdb_base_url=${gtdb_base_url:-https://data.gtdb.aau.ecogenomic.org/releases/latest/}
+new_taxdump_file=${new_taxdump_file:-}
 retries=${retries:-3}
 timeout=${timeout:-120}
-export retries timeout ncbi_base_url gtdb_base_url local_dir
+export retries timeout ncbi_base_url gtdb_base_url new_taxdump_file local_dir
 
 # Export locale numeric to avoid errors on printf in different setups
 export LC_NUMERIC="en_US.UTF-8"
@@ -52,7 +55,7 @@ download_url() # parameter: ${1} url, ${2} output file/directory (omit/empty to 
 {
     url="${1}"
     outfiledir="${2:-}"
-    if [[ ! -z "${outfiledir}" ]]; then
+    if [[ -n "${outfiledir}" ]]; then
         if [[ -d "${outfiledir}" ]]; then
             outfile="${outfiledir}/${1##*/}" # based on given output dir and file to download
         else
@@ -63,7 +66,7 @@ download_url() # parameter: ${1} url, ${2} output file/directory (omit/empty to 
     fi
 
     # Replace base url with local directory if provided
-    if [[ ! -z "${local_dir}" ]]; then 
+    if [[ -n "${local_dir}" ]]; then 
         url="${local_dir}/${url#*://*/}";
     fi
     downloader "${outfile}" "${url}"
@@ -84,7 +87,7 @@ download_retry_md5(){ # parameter: ${1} url, ${2} output file, ${3} url MD5 (emp
             if [ -z "${real_md5}" ]; then
                 continue; # did not find url file on md5 file (or empty), try again
             else
-                file_md5=$(md5sum ${2} | cut -f1 -d' ')
+                file_md5=$(md5sum "${2}" | cut -f1 -d' ')
                 if [ "${file_md5}" != "${real_md5}" ]; then
                     continue; # md5 didn't match, try again
                 else
@@ -98,7 +101,7 @@ download_retry_md5(){ # parameter: ${1} url, ${2} output file, ${3} url MD5 (emp
 
 path_output() # parameter: ${1} file/url
 {
-    f=$(basename ${1});
+    f=$(basename "${1}");
     path="${files_dir}";
     if [[ "${ncbi_folders}" -eq 1 ]]; then
         path="${path}${f:0:3}/${f:4:3}/${f:7:3}/${f:10:3}/";
@@ -109,7 +112,7 @@ export -f path_output
 
 link_version() # parameter: ${1} current_output_prefix, ${2} new_output_prefix, ${3} file
 {
-    path_out=$(path_output ${3})
+    path_out=$(path_output "${3}")
     if [[ -f "${1}${path_out}${3}" ]]; then
         mkdir -p "${2}${path_out}";
         ln -s -r "${1}${path_out}${3}" "${2}${path_out}";
@@ -126,9 +129,10 @@ list_local_files() # parameter: ${1} prefix, ${2} 1 to list list all, "" list on
         depth="-mindepth 4";
     fi
     param="-not -empty"
-    if [[ ! -z "${2:-}" ]]; then
+    if [[ -n "${2:-}" ]]; then
         param=""
     fi
+    # shellcheck disable=SC2086
     find "${1}${files_dir}" ${depth} ${param} \( -type f -o -type l \) -printf "%f\n"
 }
 
@@ -139,12 +143,12 @@ unpack() # parameter: ${1} file, ${2} output folder[, ${3} files to unpack]
 
 count_lines() # parameter: ${1} file - return number of lines
 {
-    echo ${1:-} | sed '/^\s*$/d' | wc -l | cut -f1 -d' '
+    echo "${1:-}" | sed '/^\s*$/d' | wc -l | cut -f1 -d' '
 }
 
 count_lines_file() # parameter: ${1} file - return number of lines
 {
-    sed '/^\s*$/d' ${1:-} | wc -l | cut -f1 -d' '
+    sed '/^\s*$/d' "${1:-}" | wc -l | cut -f1 -d' '
 }
 
 check_assembly_summary() # parameter: ${1} assembly_summary file - return 0 true 1 false
@@ -153,27 +157,39 @@ check_assembly_summary() # parameter: ${1} assembly_summary file - return 0 true
     if [ ! -s "${1}" ]; then return 1; fi
 
     # Last char is empty (line break)
-    if [ ! -z $(tail -c -1 "${1}") ]; then return 1; fi
+    if [ -n "$(tail -c -1 "${1}")" ]; then return 1; fi
 
     # if contains header char parts of the header anywhere besides starting lines
-    grep -m 1 "^#" "${1}" > /dev/null 2>&1
-    if [ $? -eq 0 ]; then return 1; fi
+    if grep -qm 1 "^#" "${1}"
+    then 
+        return 1
+    fi
 
     # if contains parts of the header anywhere
     ##   See ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt for a description of the columns in this file.
-    grep -m 1 "ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt" "${1}" > /dev/null 2>&1
-    if [ $? -eq 0 ]; then return 1; fi
+    grep -qm 1 "ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt" "${1}"
+    if grep -qm 1 "ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt" "${1}"
+    then
+        return 1
+    fi
     # assembly_accession    bioproject  biosample   wgs_master  refseq_category taxid   species_taxid   organism_name   infraspecific_name  isolate version_status  assembly_levelrelease_type  genome_rep  seq_rel_date    asm_name    submitter   gbrs_paired_asm paired_asm_comp ftp_path    excluded_from_refseq    relation_to_type_material   asm_not_live_date
-    grep -m 1 " assembly_accession" "${1}" > /dev/null 2>&1
-    if [ $? -eq 0 ]; then return 1; fi
+    if grep -qm 1 " assembly_accession" "${1}"
+    then
+        return 1
+    fi
 
     # if every line has same number of cols (besides headers)
     ncols=$(grep -v "^#" "${1}" | awk 'BEGIN{FS=OFS="\t"}{print NF}' | uniq | wc -l)
-    if [[ ${ncols} -gt 1 ]]; then return 1; fi
+    if [[ ${ncols} -gt 1 ]]
+    then
+        return 1
+    fi
 
     # if every line starts with GCF_ or GCA_
-    grep -v "^GC[FA]_" "${1}" > /dev/null 2>&1
-    if [ $? -eq 0 ]; then return 1; fi
+    if grep -qv "^GC[FA]_" "${1}"
+    then
+        return 1
+    fi
 
     return 0;
 }
@@ -206,7 +222,7 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
     # Download files with retry attempts, checking consistency of assembly_summary after every download
     for as in "${as_to_download[@]}"
     do
-        for (( att=1; att<=${retry_download_batch}; att++ )); do
+        for (( att=1; att<=retry_download_batch; att++ )); do
             if [ "${att}" -gt 1 ]; then
                 echolog " - Failed to download ${as}. Trying again #${att}" "1"
             fi
@@ -214,7 +230,7 @@ get_assembly_summary() # parameter: ${1} assembly_summary file, ${2} database, $
             if check_assembly_summary "${1}.tmp"; then
                 cat "${1}.tmp" >> "${1}"
                 break; 
-            elif [ ${att} -eq ${retry_download_batch} ]; then
+            elif [ ${att} -eq "${retry_download_batch}" ]; then
                 return 1; # failed to download after all attempts
             fi
         done
@@ -236,15 +252,16 @@ write_history(){ # parameter: ${1} current label, ${2} new label, ${3} new times
     # both current and new_label = UPDATE
     # only current_label = FIX
     if [[ "${1}" == "${2}" ]]; then 
-        echo -e "#current_label\tnew_label\ttimestamp\tassembly_summary_entries\targuments" > ${history_file}
-        echo -n -e "\t" >> ${history_file}
+        echo -e "#current_label\tnew_label\ttimestamp\tassembly_summary_entries\targuments" > "${history_file}"
+        echo -n -e "\t" >> "${history_file}"
     else
-        echo -n -e "${1}\t" >> ${history_file}
+        echo -n -e "${1}\t" >> "${history_file}"
     fi
-    echo -n -e "${2}\t" >> ${history_file}
-    echo -n -e "${3}\t" >> ${history_file}
-    echo -n -e "$(count_lines_file ${4})\t" >> ${history_file}
-    echo -e "${genome_updater_args}" >> ${history_file}
+    # shellcheck disable=SC2129
+    echo -n -e "${2}\t" >> "${history_file}"
+    echo -n -e "${3}\t" >> "${history_file}"
+    echo -n -e "$(count_lines_file "${4}")\t" >> "${history_file}"
+    echo -e "${genome_updater_args}" >> "${history_file}"
 }
 
 filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number of lines - return 1 if no lines or failed, 0 success
@@ -266,17 +283,20 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
             #if ! download_retry_md5 "${url}" "${tmp_tax}" "${gtdb_base_url}MD5SUM.txt" "${retry_download_batch}"; then
             if ! download_retry_md5 "${url}" "${tmp_tax}" "" "${retry_download_batch}"; then
                 return 1;
-            else
-                # awk to remove prefix RS_ or GB_
-                zcat "${tmp_tax}" | awk -F "\t" '{print substr($1, 4, length($1))"\t"$2}' >> "${gtdb_tax}"
             fi
+            # awk to remove prefix RS_ or GB_
+            zcat "${tmp_tax}" | awk -F "\t" '{print substr($1, 4, length($1))"\t"$2}' >> "${gtdb_tax}"
             rm -f "${tmp_tax}"
         done
-    elif [[ "${tax_mode}" == "ncbi" && ( ! -z "${taxids}" || ( ! -z "${top_assemblies_rank}" && "${top_assemblies_rank}" != "species" ) ) ]]; then
+    elif [[ "${tax_mode}" == "ncbi" && ( -n "${taxids}" || ( -n "${top_assemblies_rank}" && "${top_assemblies_rank}" != "species" ) ) ]]; then
         echolog " - Downloading taxonomy (ncbi)" "1"
         tmp_new_taxdump="${working_dir}new_taxdump.tar.gz"
-        if ! download_retry_md5 "${ncbi_base_url}pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}" "${ncbi_base_url}pub/taxonomy/new_taxdump/new_taxdump.tar.gz.md5" "${retry_download_batch}"; then
-            return 1;
+        if [[ -z "${new_taxdump_file}" ]]; then
+            if ! download_retry_md5 "${ncbi_base_url}pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}" "${ncbi_base_url}pub/taxonomy/new_taxdump/new_taxdump.tar.gz.md5" "${retry_download_batch}"; then
+                return 1;
+            fi
+        else
+            ln -sf "${new_taxdump_file}" "${tmp_new_taxdump}";
         fi
     fi
 
@@ -288,7 +308,7 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
         # If missing file has entries, report on log
         gtdb_missing_lines=$(count_lines_file "${tmp_gtdb_missing}")
         if [[ "${gtdb_missing_lines}" -gt 0 ]]; then
-            echolog " - Could not retrieve "${gtdb_missing_lines}" GTDB assemblies" "1"
+            echolog " - Could not retrieve ${gtdb_missing_lines} GTDB assemblies" "1"
             cat "${tmp_gtdb_missing}" >> "${log_file}"    
         fi
         rm "${tmp_gtdb_missing}"
@@ -298,7 +318,7 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
     fi
 
     # DATE
-    if [[ ! -z "${date_start}" || ! -z "${date_end}" ]]; then
+    if [[ -n "${date_start}" || -n "${date_end}" ]]; then
         date_lines=$(filter_date "${assembly_summary}")
         echolog " - $((filtered_lines-date_lines)) assemblies removed not in the date range [ ${date_start} .. ${date_end} ]" "1"
         filtered_lines=${date_lines}
@@ -306,7 +326,7 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
     fi
 
     # TAXIDS
-    if [[ ! -z "${taxids}" ]]; then
+    if [[ -n "${taxids}" ]]; then
         if [[ "${tax_mode}" == "ncbi" ]]; then
             unpack "${tmp_new_taxdump}" "${working_dir}" "taxidlineage.dmp"
             ncbi_tax="${working_dir}taxidlineage.dmp"
@@ -314,7 +334,7 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
         else
             taxids_lines=$(filter_taxids_gtdb "${assembly_summary}" "${gtdb_tax}")
         fi
-        echolog " - $((filtered_lines-taxids_lines)) assemblies removed not in taxids [${taxids}]" "1"
+        echolog " - $((filtered_lines-taxids_lines)) assemblies removed based on taxids [${taxids}]" "1"
         filtered_lines=${taxids_lines}
         if [[ "${filtered_lines}" -eq 0 ]]; then return 0; fi
     fi
@@ -324,10 +344,10 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
     if [ "$((filtered_lines-columns_lines))" -gt 0 ]; then
         echolog " - $((filtered_lines-columns_lines)) assemblies removed based on filters:" "1"
         echolog "   valid URLs" "1"
-        if [[ "${tax_mode}" == "ncbi" ]]; then echolog "   version status=latest" "1"; fi
-        if [ ! -z "${refseq_category}" ]; then echolog "   refseq category=${refseq_category}" "1"; fi
-        if [ ! -z "${assembly_level}" ]; then echolog "   assembly level=${assembly_level}" "1"; fi
-        if [ ! -z "${custom_filter}" ]; then echolog "   custom filter=${custom_filter}" "1"; fi
+        if [[ "${tax_mode}" == "ncbi" ]]; then echolog "   AND version status = latest" "1"; fi
+        if [ -n "${refseq_category}" ]; then echolog "   AND refseq category = ${refseq_category}" "1"; fi
+        if [ -n "${assembly_level}" ]; then echolog "   AND assembly level = ${assembly_level}" "1"; fi
+        if [ -n "${custom_filter}" ]; then echolog "   AND custom filter (${custom_filter})" "1"; fi
         filtered_lines=${columns_lines}
         if [[ "${filtered_lines}" -eq 0 ]]; then return 0; fi
     fi
@@ -336,7 +356,7 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
     if [ "${top_assemblies_num}" -gt 0 ]; then
         # Add chosen rank as first col of a temporary assembly_summary
         if [[ "${tax_mode}" == "ncbi" ]]; then
-            if [[ ! -z "${top_assemblies_rank}" && "${top_assemblies_rank}" != "species" ]]; then
+            if [[ -n "${top_assemblies_rank}" && "${top_assemblies_rank}" != "species" ]]; then
                 unpack "${tmp_new_taxdump}" "${working_dir}" "rankedlineage.dmp"    
                 ncbi_rank_tax="${working_dir}rankedlineage.dmp"
             fi
@@ -362,31 +382,62 @@ filter_taxids_ncbi() # parameter: ${1} assembly_summary file, ${2} ncbi_tax file
 {
     # Keep only selected taxid lineage, removing at the end duplicated entries from duplicates on taxids
     tmp_lineage=$(tmp_file "lineage.tmp")
+    tmp_lineage_neg=$(tmp_file "lineage_neg.tmp")
     for tx in ${taxids//,/ }; do
-        txids_lin=$(grep "[^0-9]${tx}[^0-9]" "${2}" | cut -f 1) #get only taxids in the lineage section
-        echolog " - $(count_lines "${txids_lin}") children taxids in the lineage of ${tx}" "0"
-        echo "${txids_lin}" >> "${tmp_lineage}" 
+        txids_lin=$(grep "[^0-9]${tx#^}[^0-9]" "${2}" | cut -f 1) #get only taxids in the lineage section
+        if [[ ${tx} == "^"* ]]; then
+            echolog " - $(count_lines "${txids_lin}") taxa with ${tx#^} in the lineage to be removed" "0"
+            echo -e "${tx#^}\n${txids_lin}" >> "${tmp_lineage_neg}"
+        else
+            echolog " - $(count_lines "${txids_lin}") taxa with ${tx} in the lineage to be included" "0"
+            echo -e "${tx}\n${txids_lin}" >> "${tmp_lineage}" 
+        fi
     done
-    lineage_taxids=$(sort ${tmp_lineage} | uniq | tr '\n' ',')${taxids} # put lineage back into the taxids variable with the provided taxids
-    rm "${tmp_lineage}"
+
+    # If there's no taxids to include (positive), add all
+    if [ ! -s "${tmp_lineage}" ]; then
+        cut -f 1 "${2}" >> "${tmp_lineage}"
+    fi
+    
+    # Remove taxids from negative list
+    lineage_taxids=$(join <(sort "${tmp_lineage}"  | uniq) <(sort "${tmp_lineage_neg}" | uniq) -v 1)
+    rm "${tmp_lineage}" "${tmp_lineage_neg}"
 
     # Join with assembly_summary based on taxid field 6
-    join -1 6 -2 1 <(sort -k 6,6 "${1}") <(echo "${lineage_taxids//,/$'\n'}" | sort -k 1,1) -t$'\t' -o ${join_as_fields1} | sort | uniq > "${1}_taxids"
-    mv "${1}_taxids" "${1}"
+    join -1 6 -2 1 <(sort -k 6,6 -t$'\t' "${1}") <(echo "${lineage_taxids}" | sort) -t$'\t' -o ${join_as_fields1} | sort | uniq > "${1}_filtered"
+    mv "${1}_filtered" "${1}"
     count_lines_file "${1}"
 }
 
 filter_taxids_gtdb() # parameter: ${1} assembly_summary file, ${2} gtdb_tax file return number of lines
 {
-    tmp_gtdb_acc=$(tmp_file "gtdb_acc.tmp")
+    tmp_lineage=$(tmp_file "lineage.tmp")
+    tmp_lineage_neg=$(tmp_file "lineage_neg.tmp")
+
     IFS=","
     for tx in ${taxids}; do
-        sed -e 's/\t/\t;/g' -e 's/$/;/p' ${2} | grep ";${tx};" | cut -f 1 >> "${tmp_gtdb_acc}"
+        acc_lin=$(sed -e 's/\t/\t;/g' -e 's/$/;/g' "${2}" | grep ";${tx#^};" | cut -f 1) #get only taxids in the lineage section
+        if [[ ${tx} == "^"* ]]; then
+            echolog " - $(count_lines "${acc_lin}") entrie(s) with ${tx#^} in the lineage to be removed" "0"
+            echo "${acc_lin}" >> "${tmp_lineage_neg}" 
+        else
+            echolog " - $(count_lines "${acc_lin}") entries(s) with ${tx} in the lineage to be included" "0"
+            echo "${acc_lin}" >> "${tmp_lineage}" 
+        fi
     done
     IFS=$' '
-    join -1 1 -2 1 <(sort -k 1,1 "${1}") <(sort -k 1,1 "${tmp_gtdb_acc}" | uniq) -t$'\t' -o ${join_as_fields1} | sort | uniq > "${1}_taxids"
-    mv "${1}_taxids" "${1}"
-    rm "${tmp_gtdb_acc}"
+
+    # If there's no accessions to include (positive), add all
+    if [ ! -s "${tmp_lineage}" ]; then
+        cut -f 1 "${2}" >> "${tmp_lineage}"
+    fi
+
+    # Remove accessions from negative list
+    lineage_accver=$(join <(sort "${tmp_lineage}" | uniq) <(sort "${tmp_lineage_neg}" | uniq) -v 1)
+    rm "${tmp_lineage}" "${tmp_lineage_neg}"
+
+    join -1 1 -2 1 <(sort -k 1,1 -t$'\t' "${1}") <(echo "${lineage_accver}" | sort) -t$'\t' -o ${join_as_fields1} | sort | uniq > "${1}_filtered"
+    mv "${1}_filtered" "${1}"
     count_lines_file "${1}"
 }
 
@@ -399,52 +450,45 @@ filter_date() # parameter: ${1} assembly_summary file - return number of lines
 
 filter_columns() # parameter: ${1} assembly_summary file - return number of lines
 {
-    # Build string to filter file by columns in the format
-    # colA:val1,val2|colB:val3
-    # AND between cols, OR between values
-    
     # Valid URLs (not na)
-    awk -F "\t" '{if($20!="na"){print $0}}' "${1}" > "${1}_valid"
-
-    colfilter=""
+    colfilter="\$20 != \"na\""
     if [[ "${tax_mode}" == "ncbi" ]]; then
-        colfilter="11:latest|"
+        colfilter="${colfilter} && \$11 == \"latest\""
     fi
-    if [[ ! -z "${refseq_category}" ]]; then
-        colfilter="${colfilter}5:${refseq_category}|"
+    if [[ -n "${refseq_category}" ]]; then
+        IFS=","
+        refseq_category_filter=""
+        for val in ${refseq_category}; do
+            refseq_category_filter="${refseq_category_filter}tolower(\$5) == \"${val,,}\" || "
+        done
+        IFS=$' '
+        colfilter="${colfilter} && (${refseq_category_filter::-4})"
     fi
-    if [[ ! -z "${assembly_level}" ]]; then
-        colfilter="${colfilter}12:${assembly_level}|"
+    if [[ -n "${assembly_level}" ]]; then
+        IFS=","
+        assembly_level_filter=""
+        for val in ${assembly_level}; do
+            assembly_level_filter="${assembly_level_filter}tolower(\$12) == \"${val,,}\" || "
+        done
+        IFS=$' '
+        colfilter="${colfilter} && (${assembly_level_filter::-4})"
     fi
-    if [[ ! -z "${custom_filter}" ]]; then
-        colfilter="${colfilter}${custom_filter}|"
+    if [[ -n "${custom_filter}" ]]; then
+        colfilter="${colfilter} && (${custom_filter})"
     fi
 
-    if [[ ! -z "${colfilter}" ]]; then
-        awk -F "\t" -v colfilter="${colfilter%?}" '
-            function ltrim(s) { sub(/^[ \t\r\n]+/, "", s); return s }
-            function rtrim(s) { sub(/[ \t\r\n]+$/, "", s); return s }
-            function trim(s) { return rtrim(ltrim(s)); }
+    if [[ -n "${colfilter}" ]]; then
+        # Run awk inside an awk with getline to be able to evaluate the conditional expresion string
+        awk -F "\t" -v infile="${1}" -v colfilter="${colfilter}" '
             BEGIN{
-            split(colfilter, fields, "|");
-            for(f in fields){
-                split(fields[f], keyvals, ":");
-                filter[keyvals[1]]=keyvals[2];}
-            }{
-                k=0;
-                for(f in filter){
-                    split(filter[f], v, ","); for (i in v) vals[tolower(trim(v[i]))]="";
-                    if(tolower($f) in vals){
-                        k+=1;
-                    }
-                };
-                if(k==length(filter)){
-                    print $0;
+                cmd = "awk -F \047\t\047 \047{if (" colfilter "){print}}\047 " infile;
+                while ((cmd | getline line) > 0){
+                    print line;
                 }
-            }' "${1}_valid" > "${1}"
-        rm -f "${1}_valid"
-    else
-        mv "${1}_valid" "${1}"
+                close(cmd);
+                exit;
+            }' > "${1}_filtered"
+        mv "${1}_filtered" "${1}"
     fi
     count_lines_file "${1}"
 }
@@ -452,9 +496,9 @@ filter_columns() # parameter: ${1} assembly_summary file - return number of line
 filter_gtdb() # parameter: ${1} assembly_summary file, ${2} gtdb_tax file,  ${3} gtdb_missing file - return number of lines
 {
     # Check for missing entries
-    join -1 1 -2 1 <(sort -k 1,1 "${1}") <(sort -k 1,1 "${2}") -v 2 > ${3}
+    join -1 1 -2 1 <(sort -k 1,1 "${1}") <(sort -k 1,1 "${2}") -v 2 > "${3}"
     # Match entries
-    join -1 1 -2 1 <(sort -k 1,1 "${1}") <(sort -k 1,1 "${2}") -t$'\t' -o ${join_as_fields1} | sort | uniq > "${1}_gtdb"
+    join -1 1 -2 1 <(sort -k 1,1 "${1}") <(sort -k 1,1 "${2}") -t$'\t' -o "${join_as_fields1}" | sort | uniq > "${1}_gtdb"
     mv "${1}_gtdb" "${1}"
     count_lines_file "${1}"
 }
@@ -495,7 +539,7 @@ add_rank_gtdb(){ # parameter: ${1} assembly_summary file, ${2} modified assembly
     # export accession <tab> ranked name
     #if top_assemblies_rank empty, default to species (leaves on gtdb)
     tmp_ranked_accessions=$(tmp_file "ranked_accessions.tmp")
-    cat "${3}" | tr ';' '\t' | awk -v rank="${top_assemblies_rank:-species}" 'BEGIN{
+    tr ';' '\t' < "${3}" | awk -v rank="${top_assemblies_rank:-species}" 'BEGIN{
             FS=OFS="\t";
             r["species"]=8;
             r["genus"]=7;
@@ -548,7 +592,7 @@ list_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url], ${3} e
     # Given an url returns the url and the filename for all extensions
     for extension in ${3//,/ }
     do
-        cut --fields="${2}" ${1} | awk -F "\t" -v ext="${extension}" '{url_count=split($2,url,"/"); print $1 "\t" $2 "\t" url[url_count] "_" ext}'
+        cut --fields="${2}" "${1}" | awk -F "\t" -v ext="${extension}" '{url_count=split($2,url,"/"); print $1 "\t" $2 "\t" url[url_count] "_" ext}'
     done
 }
 
@@ -562,16 +606,16 @@ tmp_file(){ # parameter: ${1} filename - return full path of created file
 print_progress() # parameter: ${1} file number, ${2} total number of files
 {
     if [ "${silent_progress}" -eq 1 ] || [ "${silent}" -eq 0 ] ; then
-        printf "%5d/%d - " ${1} ${2}
-        printf "%2.2f%%\r" $(bc -l <<< "scale=4;(${1}/${2})*100")
+        printf "%5d/%d - " "${1}" "${2}"
+        printf "%2.2f%%\r" "$(bc -l <<< "scale=4;(${1}/${2})*100")"
     fi
 }
 export -f print_progress #export it to be accessible to the parallel call
 
 check_file_folder() # parameter: ${1} url, ${2} log (0->before download/1->after download) - returns 0 (ok) / 1 (error)
 {
-    file_name=$(basename ${1})
-    path_name="${target_output_prefix}$(path_output ${file_name})${file_name}"
+    file_name=$(basename "${1}")
+    path_name="${target_output_prefix}$(path_output "${file_name}")${file_name}"
     # Check if file exists and if it has a size greater than zero (-s)
     if [ ! -s "${path_name}" ]; then
         if [ "${2}" -eq 1 ]; then echolog "${file_name} download failed [${1}]" "0"; fi
@@ -594,8 +638,8 @@ export -f check_file_folder #export it to be accessible to the parallel call
 check_md5_ftp() # parameter: ${1} url - returns 0 (ok) / 1 (error)
 {
     if [ "${check_md5}" -eq 1 ]; then # Only if md5 checking is activated
-        md5checksums_url="$(dirname ${1})/md5checksums.txt" # ftp directory
-        file_name=$(basename ${1}) # downloaded file name
+        md5checksums_url="$(dirname "${1}")/md5checksums.txt" # ftp directory
+        file_name=$(basename "${1}") # downloaded file name
         md5checksums_file=$(download_url "${md5checksums_url}")
         if [ -z "${md5checksums_file}" ]; then
             echolog "${file_name} MD5checksum file download failed [${md5checksums_url}] - FILE KEPT"  "0"
@@ -606,12 +650,12 @@ check_md5_ftp() # parameter: ${1} url - returns 0 (ok) / 1 (error)
                 echolog "${file_name} MD5checksum file not available [${md5checksums_url}] - FILE KEPT"  "0"
                 return 1
             else
-                path_name="${target_output_prefix}$(path_output ${file_name})${file_name}" # local file path and name
-                file_md5=$(md5sum ${path_name} | cut -f1 -d' ')
+                path_name="${target_output_prefix}$(path_output "${file_name}")${file_name}" # local file path and name
+                file_md5=$(md5sum "${path_name}" | cut -f1 -d' ')
                 if [ "${file_md5}" != "${ftp_md5}" ]; then
                     echolog "${file_name} MD5 not matching [${md5checksums_url}] - FILE REMOVED"  "0"
                     # Remove file only when MD5 doesn't match
-                    rm -v "${path_name}" >> ${log_file} 2>&1
+                    rm -v "${path_name}" >> "${log_file}" 2>&1
                     return 1
                 else
                     if [ "${verbose_log}" -eq 1 ]; then
@@ -632,24 +676,24 @@ download() # parameter: ${1} url, ${2} job number, ${3} total files, ${4} url_su
 {
     ex=0
     dl=0
-    if ! check_file_folder ${1} "0"; then # Check if the file is already on the output folder (avoid redundant download)
+    if ! check_file_folder "${1}" "0"; then # Check if the file is already on the output folder (avoid redundant download)
         dl=1
-    elif ! check_md5_ftp ${1}; then # Check if the file already on folder has matching md5
+    elif ! check_md5_ftp "${1}"; then # Check if the file already on folder has matching md5
         dl=1
     fi
     if [ "${dl}" -eq 1 ]; then # If file is not yet on folder, download it
-        path_out="${target_output_prefix}$(path_output ${1})"
+        path_out="${target_output_prefix}$(path_output "${1}")"
         mkdir -p "${path_out}"
         download_url "${1}" "${path_out}"
-        if ! check_file_folder ${1} "1"; then # Check if file was downloaded
+        if ! check_file_folder "${1}" "1"; then # Check if file was downloaded
             ex=1
-        elif ! check_md5_ftp ${1}; then # Check file md5
+        elif ! check_md5_ftp "${1}"; then # Check file md5
             ex=1
         fi
     fi
-    print_progress ${2} ${3}
+    print_progress "${2}" "${3}"
     if [ "${ex}" -eq 0 ]; then
-        echo ${1} >> ${4}
+        echo "${1}" >> "${4}"
     fi
 }
 export -f download
@@ -658,16 +702,16 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
 {
     url_list_download=$(tmp_file "url_list_download.tmp") #Temporary url list of files to download in this call
     # sort files to get all files for the same entry in sequence, in case of failure 
-    if [ -z ${3:-} ]; then #direct download (url+file)
-        cut --fields="${2}" ${1} | tr '\t' '/' | sort > "${url_list_download}"
+    if [ -z "${3:-}" ]; then #direct download (url+file)
+        cut --fields="${2}" "${1}" | tr '\t' '/' | sort > "${url_list_download}"
     else
-        list_files ${1} ${2} ${3} | cut -f 2,3 | tr '\t' '/' | sort > "${url_list_download}"
+        list_files "${1}" "${2}" "${3}" | cut -f 2,3 | tr '\t' '/' | sort > "${url_list_download}"
     fi
     total_files=$(count_lines_file "${url_list_download}")
 
     url_success_download=$(tmp_file "url_success_download.tmp") #Temporary url list of downloaded files
     # Retry download in batches
-    for (( att=1; att<=${retry_download_batch}; att++ )); do
+    for (( att=1; att<=retry_download_batch; att++ )); do
         if [ "${att}" -gt 1 ]; then
             echolog " - Failed download - ${failed_count} files. Trying again #${att}" "1"
             # Make a new list to download without entres already successfuly downloaded
@@ -680,7 +724,7 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
         
         # send url, job number and total files (to print progress)
         # successfuly files are appended to the $url_success_download
-        parallel --gnu --tmpdir ${working_dir} -a ${url_list_download} -j ${threads} download "{}" "{#}" "${total_to_download}" "${url_success_download}"
+        parallel --gnu --tmpdir "${working_dir}" -a "${url_list_download}" -j "${threads}" download "{}" "{#}" "${total_to_download}" "${url_success_download}"
 
         downloaded_count=$(count_lines_file "${url_success_download}")
         failed_count=$(( total_files - downloaded_count ))
@@ -699,24 +743,24 @@ download_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] or 
         # add successful downloads the the downloaded urls
         cat "${url_success_download}" >> "${target_output_prefix}${timestamp}_url_downloaded.txt"
     fi
-    rm -f ${url_list_download} ${url_success_download}
+    rm -f "${url_list_download}" "${url_success_download}"
 }
 
 remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR field [filename], ${3} extension - returns number of deleted files
 {
-    if [ -z ${3:-} ]; then
+    if [ -z "${3:-}" ]; then
         # direct remove (filename)
-        filelist=$(cut --fields="${2}" ${1});
+        filelist=$(cut --fields="${2}" "${1}");
     else
         # generate files
-        filelist=$(list_files ${1} ${2} ${3} | cut -f 3);
+        filelist=$(list_files "${1}" "${2}" "${3}" | cut -f 3);
     fi
     deleted_files=0
-    while read f; do
-        path_name="${target_output_prefix}$(path_output ${f})${f}"
+    while read -r f; do
+        path_name="${target_output_prefix}$(path_output "${f}")${f}"
         # Only delete if delete option is enable or if it's a symbolic link (from updates)
         if [[ -L "${path_name}" || "${delete_extra_files}" -eq 1 ]]; then
-            rm "${path_name}" -v >> ${log_file}
+            rm "${path_name}" -v >> "${log_file}"
             deleted_files=$((deleted_files + 1))
         else
             echolog "kept '${path_name}'" "0"
@@ -727,26 +771,27 @@ remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR fi
 
 check_missing_files() # ${1} file, ${2} fields [assembly_accesion,url], ${3} extension - returns assembly accession, url and filename
 {
-    join -1 3 -2 1 <(list_files ${1} ${2} ${3} | sort -k 3,3 -t$'\t') <(list_local_files "${target_output_prefix}" | sort) -t$'\t' -v 1 -o "1.1,1.2,1.3"
+    join -1 3 -2 1 <(list_files "${1}" "${2}" "${3}" | sort -k 3,3 -t$'\t') <(list_local_files "${target_output_prefix}" | sort) -t$'\t' -v 1 -o "1.1,1.2,1.3"
 }
 
 check_complete_record() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension - returns assembly accession, url
 {
-    expected_files=$(list_files ${1} ${2} ${3} | sort -k 3,3)
+    expected_files=$(list_files "${1}" "${2}" "${3}" | sort -k 3,3)
     join -1 3 -2 1 <(echo "${expected_files}" | sort -k 3,3) <(list_local_files "${target_output_prefix}" | sort) -t$'\t' -o "1.1" -v 1 | sort | uniq | # Check for accessions with at least one missing file
     join -1 1 -2 1 <(echo "${expected_files}" | cut -f 1,2 | sort | uniq) - -t$'\t' -v 1 # Extract just assembly accession and url for complete entries (no missing files)
 }
 
 output_assembly_accession() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension, ${4} mode (A/R) - returns assembly accession, url and mode
 {
-    check_complete_record ${1} ${2} ${3} | sed "s/^/${4}\t/" # add mode
+    check_complete_record "${1}" "${2}" "${3}" | sed "s/^/${4}\t/" # add mode
 }
 
 output_sequence_accession() # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension, ${4} mode (A/R), ${5} assembly_summary (for taxid)
 {
-    join <(list_files ${1} ${2} "assembly_report.txt" | sort -k 1,1) <(check_complete_record ${1} ${2} ${3} | sort -k 1,1) -t$'\t' -o "1.1,1.3" | # List assembly accession and filename for all assembly_report.txt with complete record (no missing files) - returns assembly accesion, filename
-    join - <(sort -k 1,1 ${5}) -t$'\t' -o "1.1,1.2,2.6" |     # Get taxid {1} assembly accession, {2} filename {3} taxid
-    parallel --tmpdir ${working_dir} --colsep "\t" -j ${threads} -k 'grep "^[^#]" "${target_output_prefix}$(path_output {2}){2}" | tr -d "\r" | cut -f 5,7,9 | sed "s/^/{1}\\t/" | sed "s/$/\\t{3}/"' | # Retrieve info from assembly_report.txt and add assemby accession in the beggining and taxid at the end
+    # shellcheck disable=SC2016
+    join <(list_files "${1}" "${2}" "assembly_report.txt" | sort -k 1,1) <(check_complete_record "${1}" "${2}" "${3}" | sort -k 1,1) -t$'\t' -o "1.1,1.3" | # List assembly accession and filename for all assembly_report.txt with complete record (no missing files) - returns assembly accesion, filename
+    join - <(sort -k 1,1 "${5}") -t$'\t' -o "1.1,1.2,2.6" |     # Get taxid {1} assembly accession, {2} filename {3} taxid
+    parallel --tmpdir "${working_dir}" --colsep "\t" -j "${threads}" -k 'grep "^[^#]" "${target_output_prefix}$(path_output {2}){2}" | tr -d "\r" | cut -f 5,7,9 | sed "s/^/{1}\\t/" | sed "s/$/\\t{3}/"' | # Retrieve info from assembly_report.txt and add assemby accession in the beggining and taxid at the end
     sed "s/^/${4}\t/" # Add mode A/R at the end    
 }
 
@@ -766,7 +811,7 @@ exit_status() # parameters: ${1} # expected files, ${2} # current files
         else
             return 0
         fi
-    elif [ $1 -gt 0 ] && [ $2 -eq 0 ]; then # all failed
+    elif [ "${1}" -gt 0 ] && [ "${2}" -eq 0 ]; then # all failed
         return 1
     else
         return 0
@@ -821,20 +866,20 @@ function showhelp {
     echo
     echo $'Organism options:'
     echo $' -g Organism group(s) (comma-separated entries, empty for all)\n\t[archaea, bacteria, fungi, human, invertebrate, metagenomes, \n\tother, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]\n\tDefault: ""'
-    echo $' -T Taxonomic identifier(s) (comma-separated entries, empty for all).\n\tExample: "562" (for -M ncbi) or "s__Escherichia coli" (for -M gtdb)\n\tDefault: ""'
+    echo $' -T Taxonomic identifier(s) with optional negation using the ^ prefix (comma-separated entries, empty for all).\n\tExample: "543,^562" (for -M ncbi) or "f__Enterobacteriaceae,^s__Escherichia coli" (for -M gtdb)\n\tDefault: ""'
     echo
     echo $'File options:'
     echo $' -f file type(s) (comma-separated entries)\n\t[genomic.fna.gz, assembly_report.txt, protein.faa.gz, genomic.gbff.gz]\n\tMore formats at https://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt\n\tDefault: assembly_report.txt'
     echo
     echo $'Filter options:'
     echo $' -c refseq category (comma-separated entries, empty for all)\n\t[reference genome, na]\n\tDefault: ""'
-    echo $' -l assembly level (comma-separated entries, empty for all)\n\t[complete genome, chromosome, scaffold, contig]\n\tDefault: ""' 
+    echo $' -l assembly level (comma-separated entries, empty for all)\n\t[Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: ""' 
     echo $' -D Start date (>=), based on the sequence release date. Format YYYYMMDD.\n\tDefault: ""'
     echo $' -E End date (<=), based on the sequence release date. Format YYYYMMDD.\n\tDefault: ""'
-    echo $' -F custom filter for the assembly summary in the format colA:val1|colB:valX,valY (case insensitive).\n\tExample: -F "2:PRJNA12377,PRJNA670754|14:Partial" (AND between cols, OR between values)\n\tColumn info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
+    echo $' -F Custom filter for the assembly summary. \n\tExamples:\n\t  Single: -F \'$14 = "Full"\'\n\t  Multi:  -F \'($2 == "PRJNA12377" || $2 == "PRJNA670754") && $4 != "Partial"\'\n\t  Regex:  -F \'$8 ~ /bacterium/\'\n\t  Whole-file: -F \'$0 ~ "plasmid"\'\n\tUses awk syntax: $ for column index, || "or", && "and", ! "not", parentheses for nesting. Case sensitive.\n\tColumns info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
     echo
     echo $'Taxonomy options:'
-    echo $' -M Taxonomy. gtdb keeps only assemblies in GTDB (latest). ncbi keeps only latest assemblies (version_status). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
+    echo $' -M Taxonomy. gtdb keeps only assemblies in the latest GTDB release. ncbi keeps only latest assemblies (version_status=latest). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
     echo $' -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. \n\tSelection by ranks are also supported with rank:number (e.g genus:3)\n\t[species, genus, family, order, class, phylum, kingdom, superkingdom]\n\tSelection order based on: RefSeq Category, Assembly level, Relation to type material, Date.\n\tDefault: 0'
     echo $' -a Keep the current version of the taxonomy database in the output folder'
     echo
@@ -854,7 +899,7 @@ function showhelp {
     echo $' -b Version label\n\tDefault: current timestamp (YYYY-MM-DD_HH-MM-SS)'
     echo $' -e External "assembly_summary.txt" file to recover data from. Mutually exclusive with -d / -g \n\tDefault: ""'
     echo $' -B Alternative version label to use as the current version. Mutually exclusive with -i.\n\tCan be used to rollback to an older version or to create multiple branches from a base version.\n\tDefault: ""'
-    echo $' -R Number of attempts to retry to download files in batches \n\tDefault: 3'
+    echo $' -R Number of attempts to retry to download files in batches \n\tDefault: 5'
     echo $' -n Conditional exit status based on number of failures accepted, otherwise will Exit Code = 1.\n\tExample: -n 10 will exit code 1 if 10 or more files failed to download\n\t[integer for file number, float for percentage, 0 = off]\n\tDefault: 0'
     echo $' -N Output files in folders like NCBI ftp structure (e.g. files/GCF/000/499/605/GCF_000499605.1_EMW001_assembly_report.txt)'
     echo $' -L Downloader\n\t[wget, curl]\n\tDefault: wget'
@@ -893,7 +938,7 @@ silent_progress=0
 debug_mode=0
 working_dir=""
 external_assembly_summary=""
-retry_download_batch=3
+retry_download_batch=5
 label=""
 rollback_label=""
 threads=1
@@ -905,7 +950,7 @@ tool_not_found=0
 tools=( "awk" "bc" "find" "join" "md5sum" "parallel" "sed" "tar" "wget" )
 for t in "${tools[@]}"
 do
-    if [ ! -x "$(command -v ${t})" ]; then
+    if [ ! -x "$(command -v "${t}")" ]; then
         echo "${t} not found";
         tool_not_found=1;
     fi
@@ -926,15 +971,15 @@ while getopts "${getopts_list}" opt; do
 done
 
 # If workingdir exists and there's a history file, grab and inject params
-if [[ ! -z "${working_dir}" && -s "${working_dir}/history.tsv" ]]; then
+if [[ -n "${working_dir}" && -s "${working_dir}/history.tsv" ]]; then
     
-    if [[ ! -z "${rollback_label}" ]]; then
+    if [[ -n "${rollback_label}" ]]; then
         # If rolling back, get specific parameters of that version
         rollback_assembly_summary="${working_dir}/${rollback_label}/assembly_summary.txt"
         if [[ -f "${rollback_assembly_summary}" ]]; then
-            declare -a "args=($(awk -F '\t' '$2 == "'${rollback_label}'"' "${working_dir}/history.tsv" | cut -f 5))"
+            declare -a "args=($(awk -F '\t' '$2 == "'"${rollback_label}"'"' "${working_dir}/history.tsv" | cut -f 5))"
         else
-            echo "Rollback label/assembly_summary.txt not found ["${rollback_assembly_summary}"]"; exit 1
+            echo "Rollback label/assembly_summary.txt not found [${rollback_assembly_summary}]"; exit 1
         fi
     else
         # Parse arguments into associative array
@@ -946,7 +991,7 @@ if [[ ! -z "${working_dir}" && -s "${working_dir}/history.tsv" ]]; then
     # add to the end of the array to have priority
     c=${#args[@]}
     for f in "$@"; do 
-        args[$c]="${f}"
+        args[c]="${f}"
         c=$((c+1))
     done
 else
@@ -1000,10 +1045,10 @@ while getopts "${getopts_list}" opt "${args[@]}"; do
   # the args added later have precedence
   if [ "${OPTARG-unset}" = unset ]; then
     bool_args="${bool_args} -${opt}"  # boolean args, OPTARG is not set in getopts
-  elif [[ ! -z "${OPTARG}" ]]; then
+  elif [[ -n "${OPTARG}" ]]; then
     new_args[${opt}]="-${opt} '${OPTARG}'" # args with option argument
   else
-    unset new_args[${opt}] # args with option argument set to ''
+    unset "new_args[${opt}]" # args with option argument set to ''
   fi
 
 done
@@ -1023,34 +1068,34 @@ if [ "${debug_mode}" -eq 1 ] ; then
 fi
 
 # Build argument list to save
-genome_updater_args="${new_args[@]}"
+genome_updater_args="${new_args[*]}"
 export genome_updater_args
 
 ######################### Parameter validation ######################### 
 
 # If fixing/recovering, need to have assembly_summary.txt
-if [[ ! -z "${external_assembly_summary}" ]]; then
+if [[ -n "${external_assembly_summary}" ]]; then
     if [[ ! -f "${external_assembly_summary}" ]] ; then
-        echo "External assembly_summary.txt not found [$(readlink -m ${external_assembly_summary})]"; exit 1;
-    elif [[ ! -z "${database}" || ! -z "${organism_group}" ]]; then
+        echo "External assembly_summary.txt not found [$(readlink -m "${external_assembly_summary}")]"; exit 1;
+    elif [[ -n "${database}" || -n "${organism_group}" ]]; then
         echo "External assembly_summary.txt cannot be used with database (-d) and/or organism group (-g)"; exit 1;
     fi
 fi
 
-if [[ ! -z "${rollback_label}" && "${just_fix}" -eq 1 ]]; then
+if [[ -n "${rollback_label}" && "${just_fix}" -eq 1 ]]; then
     echo "-B and -i are mutually exclusive. To continue an update from a previus run, use -B ''"; exit 1;
 fi
 
-if [[ ! "${file_formats}" =~ "assembly_report.txt" && "${updated_sequence_accession}" -eq 1 ]]; then
+if [[ ! "${file_formats}" =~ assembly_report.txt && "${updated_sequence_accession}" -eq 1 ]]; then
     echo "Updated sequence accessions report (-r) can only be used if -f contains 'assembly_report.txt'"; exit 1;
 fi
 
 if [[ -z "${database}" && -z "${external_assembly_summary}" ]]; then
     echo "Database is required (-d)"; exit 1;
-elif [[ ! -z "${database}" ]]; then
+elif [[ -n "${database}" ]]; then
     valid_databases=( "genbank" "refseq" )
     for d in ${database//,/ }; do
-        if [[ ! " ${valid_databases[@]} " =~ " ${d} " ]]; then
+        if ! printf '%s\n' "${valid_databases[@]}" | grep -Fxq -- "${d}"; then
             echo "${d}: invalid database [ $(printf "'%s' " "${valid_databases[@]}")]"; exit 1;
         fi
     done
@@ -1075,7 +1120,7 @@ if [[ "${tax_mode}" == "gtdb" ]]; then
 elif [[ "${tax_mode}" == "ncbi" ]]; then
     valid_organism_groups=( "archaea" "bacteria" "fungi" "human" "invertebrate" "metagenomes" "other" "plant" "protozoa" "vertebrate_mammalian" "vertebrate_other" "viral" )
     for og in ${organism_group//,/ }; do
-        if [[ ! " ${valid_organism_groups[@]} " =~ " ${og} " ]]; then
+        if ! printf '%s\n' "${valid_organism_groups[@]}" | grep -Fxq -- "${og}"; then
             echo "${og}: invalid organism group [ $(printf "'%s' " "${valid_organism_groups[@]}")]"; exit 1;
         fi
     done
@@ -1084,16 +1129,18 @@ else
 fi
 
 if [[ "${tax_mode}" == "ncbi" ]]; then
-    if [[ ! -z "${taxids}"  ]]; then
-        if [[ ! "${taxids}" =~ ^[0-9,]+$ ]]; then
-            echo "${taxids}: invalid taxids"; exit 1;
+    IFS=","
+    for tx in ${taxids}; do
+        if [[ ! "${tx}" =~ ^[\\^]{1}?[0-9]+$ ]]; then
+            echo "${tx}: invalid taxid"; exit 1;
         fi
-    fi
+    done
+    IFS=$' '
     taxids=${taxids// } # remove spaces
 elif [[ "${tax_mode}" == "gtdb" ]]; then
     IFS=","
     for tx in ${taxids}; do
-        if [[ ! "${tx}" =~ ^[dpcofgs]__.* ]]; then
+        if [[ ! "${tx}" =~ ^[\\^]{1}?[dpcofgs]__.* ]]; then
             echo "${tx}: invalid taxid"; exit 1;
         fi
     done
@@ -1114,31 +1161,31 @@ else
 fi
 
 IFS=","
-valid_refseq_category=( "reference genome" "na" )
-if [[ ! -z "${refseq_category}" ]]; then
+if [[ -n "${refseq_category}" ]]; then
+    valid_refseq_category=( "reference genome" "na" )
     for rc in ${refseq_category}; do
-        # ${rc,,} to lowercase
-        if [[ ! " ${valid_refseq_category[@]} " =~ " ${rc,,} " ]]; then
+        # grep -i ignore case
+        if ! printf '%s\n' "${valid_refseq_category[@]}" | grep -Fxqi -- "${rc}"; then
             echo "${rc}: invalid refseq category [ $(printf "'%s' " "${valid_refseq_category[@]}")]"; exit 1;
         fi
     done
 fi
-if [[ ! -z "${assembly_level}" ]]; then
+if [[ -n "${assembly_level}" ]]; then
     valid_assembly_level=( "complete genome" "chromosome" "scaffold" "contig" )
     for al in ${assembly_level}; do
-        # ${al,,} to lowercase
-        if [[ ! " ${valid_assembly_level[@]} " =~ " ${al,,} " ]]; then
+        # grep -i ignore case
+        if ! printf '%s\n' "${valid_assembly_level[@]}" | grep -Fxqi -- "${al}"; then
             echo "${al}: invalid assembly level [ $(printf "'%s' " "${valid_assembly_level[@]}")]"; exit 1;
         fi
     done
 fi
 IFS=$' '
-if [[ ! -z "${date_start}" ]]; then
+if [[ -n "${date_start}" ]]; then
     if ! date "+%Y%m%d" -d "${date_start}" > /dev/null 2>&1; then
         echo "${date_start}: invalid start date"; exit 1;
     fi
 fi
-if [[ ! -z "${date_end}" ]]; then
+if [[ -n "${date_end}" ]]; then
     if ! date "+%Y%m%d" -d "${date_end}" > /dev/null 2>&1; then
         echo "${date_end}: invalid end date"; exit 1;
     fi
@@ -1147,13 +1194,13 @@ fi
 ######################### Variable assignment ######################### 
 
 # Define downloader to use
-if [[ ! -z "${local_dir}" || "${downloader_tool}" == "curl" ]]; then
+if [[ -n "${local_dir}" || "${downloader_tool}" == "curl" ]]; then
     function downloader(){ # parameter: ${1} output file, ${2} url
-        curl --silent --retry ${retries} --connect-timeout ${timeout} --output "${1}" "${2}"
+        curl --silent --retry "${retries}" --connect-timeout "${timeout}" --output "${1}" "${2}"
     }
 else
     function downloader(){ # parameter: ${1} output file, ${2} url
-        wget --quiet --continue --tries ${retries} --read-timeout ${timeout} --output-document "${1}" "${2}"
+        wget --quiet --continue --tries "${retries}" --read-timeout "${timeout}" --output-document "${1}" "${2}"
     }
 fi
 export -f downloader
@@ -1163,7 +1210,7 @@ if [ "${silent}" -eq 1 ] ; then
 elif [ "${silent_progress}" -eq 1 ] ; then 
     silent=1
 fi
-n_formats=$(echo ${file_formats} | tr -cd , | wc -c) # number of file formats
+n_formats=$(echo "${file_formats}" | tr -cd , | wc -c) # number of file formats
 timestamp=$(date +%Y-%m-%d_%H-%M-%S) # timestamp of the run
 export check_md5 silent silent_progress n_formats timestamp verbose_log # To be accessible in functions called by parallel
 
@@ -1173,7 +1220,7 @@ if [[ -z "${working_dir}" ]]; then
 else
     mkdir -p "${working_dir}" #user input
 fi
-working_dir="$(readlink -m ${working_dir})/"
+working_dir="$(readlink -m "${working_dir}")/"
 files_dir="files/"
 export files_dir working_dir ncbi_folders
 
@@ -1183,7 +1230,7 @@ history_file=${working_dir}history.tsv
 # set MODE
 if [[ "${just_fix}" -eq 1 ]]; then
     MODE="FIX";
-elif [[ ! -f "${default_assembly_summary}" ]] || [[ ! -z "${external_assembly_summary}" ]]; then
+elif [[ ! -f "${default_assembly_summary}" ]] || [[ -n "${external_assembly_summary}" ]]; then
     MODE="NEW";
 else
     MODE="UPDATE";
@@ -1205,13 +1252,13 @@ fi
 
 if [[ "${MODE}" == "UPDATE" ]]; then
     # Rollback to a different base version
-    if [[ ! -z "${rollback_label}" ]]; then
+    if [[ -n "${rollback_label}" ]]; then
         rollback_assembly_summary="${working_dir}/${rollback_label}/assembly_summary.txt"
         if [[ -f "${rollback_assembly_summary}" ]]; then
-            rm ${default_assembly_summary}
+            rm "${default_assembly_summary}"
             ln -s -r "${rollback_assembly_summary}" "${default_assembly_summary}"
         else
-            echo "Rollback label/assembly_summary.txt not found ["${rollback_assembly_summary}"]"; exit 1
+            echo "Rollback label/assembly_summary.txt not found [${rollback_assembly_summary}]"; exit 1
         fi
     fi
 fi
@@ -1221,9 +1268,9 @@ if [[ "${MODE}" == "UPDATE" ]] || [[ "${MODE}" == "FIX" ]]; then # get existing 
     if [[ ! -L "${default_assembly_summary}"  ]]; then
         echo "assembly_summary.txt is not a link to any version [${default_assembly_summary}]"; exit 1
     fi
-    current_assembly_summary="$(readlink -m ${default_assembly_summary})"
-    current_output_prefix="$(dirname ${current_assembly_summary})/"
-    current_label="$(basename ${current_output_prefix})" 
+    current_assembly_summary="$(readlink -m "${default_assembly_summary}")"
+    current_output_prefix="$(dirname "${current_assembly_summary}")/"
+    current_label="$(basename "${current_output_prefix}")" 
 fi
 
 if [[ "${MODE}" == "NEW" ]] || [[ "${MODE}" == "UPDATE" ]]; then # with new info, new variables are necessary
@@ -1236,8 +1283,8 @@ if [[ "${MODE}" == "NEW" ]] || [[ "${MODE}" == "UPDATE" ]]; then # with new info
     new_assembly_summary="${new_output_prefix}assembly_summary.txt"
     # If file already exists and it's a new repo
     if [[ -f "${new_assembly_summary}" ]]; then
-        if [[ ! -z "${label}" ]]; then 
-            echo "Label ["${label}"] already used. Please set another label with -b"; exit 1;
+        if [[ -n "${label}" ]]; then 
+            echo "Label [${label}] already used. Please set another label with -b"; exit 1;
         else 
             echo "Cannot start a new repository with an existing assembly_summary.txt in the new directory [${new_assembly_summary}]"; exit 1;
         fi
@@ -1280,8 +1327,8 @@ if [[ "${MODE}" == "NEW" ]]; then
     target_output_prefix=${new_output_prefix}
     export target_output_prefix
 
-    if [[ ! -z "${external_assembly_summary}" ]]; then
-        echolog "Using external assembly summary [$(readlink -m ${external_assembly_summary})]" "1"
+    if [[ -n "${external_assembly_summary}" ]]; then
+        echolog "Using external assembly summary [$(readlink -m "${external_assembly_summary}")]" "1"
         # Skip possible header lines (|| true -> do not output error if none)
         grep -v "^#" "${external_assembly_summary}" > "${new_assembly_summary}" || true
         if ! check_assembly_summary "${new_assembly_summary}"; then 
@@ -1292,7 +1339,7 @@ if [[ "${MODE}" == "NEW" ]]; then
     else
         echolog "Downloading assembly summary [${new_label}]" "1"
         echolog " - Database [${database}]" "1"
-        if [[ ! -z "${organism_group}" ]]; then
+        if [[ -n "${organism_group}" ]]; then
             echolog " - Organism group [${organism_group}]" "1"
         fi
         if ! get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}"; then 
@@ -1304,7 +1351,7 @@ if [[ "${MODE}" == "NEW" ]]; then
     echolog " - ${all_lines} assembly entries available" "1"
     echolog "" "1"
     echolog "Filtering assembly summary [${new_label}]" "1"
-    if ! filter_assembly_summary "${new_assembly_summary}" ${all_lines}; then
+    if ! filter_assembly_summary "${new_assembly_summary}" "${all_lines}"; then
         echolog " - Failed" "1";
         exit 1;
     fi
@@ -1314,14 +1361,14 @@ if [[ "${MODE}" == "NEW" ]]; then
     
     if [[ "${dry_run}" -eq 1 ]]; then
         rm "${new_assembly_summary}" "${log_file}"
-        if [ ! "$(ls -A ${new_output_prefix}${files_dir})" ]; then rm -r "${new_output_prefix}${files_dir}"; fi #Remove folder that was just created (if there's nothing in it)
-        if [ ! "$(ls -A ${new_output_prefix})" ]; then rm -r "${new_output_prefix}"; fi #Remove folder that was just created (if there's nothing in it)
-        if [ ! "$(ls -A ${working_dir})" ]; then rm -r "${working_dir}"; fi #Remove folder that was just created (if there's nothing in it)
+        if [ ! "$(ls -A "${new_output_prefix}${files_dir}")" ]; then rm -r "${new_output_prefix}${files_dir}"; fi #Remove folder that was just created (if there's nothing in it)
+        if [ ! "$(ls -A "${new_output_prefix}")" ]; then rm -r "${new_output_prefix}"; fi #Remove folder that was just created (if there's nothing in it)
+        if [ ! "$(ls -A "${working_dir}")" ]; then rm -r "${working_dir}"; fi #Remove folder that was just created (if there's nothing in it)
     else
         # Set version - link new assembly as the default
         ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
         # Add entry on history
-        write_history ${new_label} ${new_label} ${timestamp} ${new_assembly_summary}
+        write_history "${new_label}" "${new_label}" "${timestamp}" "${new_assembly_summary}"
 
         if [[ "${filtered_lines}" -gt 0 ]] ; then
             echolog "Downloading $((filtered_lines*(n_formats+1))) files with ${threads} threads" "1"
@@ -1359,7 +1406,7 @@ else # update/fix
         echolog " - ${missing_lines} missing files" "1"
         if [ "${dry_run}" -eq 0 ]; then
             if [ "${just_fix}" -eq 1 ]; then
-                write_history ${current_label} "" ${timestamp} ${current_assembly_summary}
+                write_history "${current_label}" "" "${timestamp}" "${current_assembly_summary}"
             fi
             echolog "Downloading ${missing_lines} files with ${threads} threads" "1"
             download_files "${missing}" "2,3"
@@ -1411,7 +1458,7 @@ else # update/fix
 
         echolog "Downloading assembly summary [${new_label}]" "1"
         echolog " - Database [${database}]" "1"
-        if [[ ! -z "${organism_group}" ]]; then
+        if [[ -n "${organism_group}" ]]; then
             echolog " - Organism group [${organism_group}]" "1";
         fi
         if ! get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}"; then 
@@ -1423,7 +1470,7 @@ else # update/fix
         echolog " - ${all_lines} assembly entries available" "1"
         echolog "" "1"
         echolog "Filtering assembly summary [${new_label}]" "1"
-        if ! filter_assembly_summary "${new_assembly_summary}" ${all_lines}; then
+        if ! filter_assembly_summary "${new_assembly_summary}" "${all_lines}"; then
             echolog " - Failed" "1";
             exit 1;
         fi
@@ -1435,15 +1482,16 @@ else # update/fix
         remove=$(tmp_file "remove.tmp")
         new=$(tmp_file "new.tmp")
         # UPDATED (verify if version or date changed)
-        join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' ${new_assembly_summary} | sort -k 1,1) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' ${current_assembly_summary} | sort -k 1,1) -o "1.2,1.3,1.4,2.2,2.3,2.4" | awk '{if($2>$5 || $1!=$4){print $1"\t"$3"\t"$4"\t"$6}}' > ${update}
+        join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' "${new_assembly_summary}" | sort -k 1,1) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); gsub("/","",$15); print $1,acc_ver,$15,$20}' "${current_assembly_summary}" | sort -k 1,1) -o "1.2,1.3,1.4,2.2,2.3,2.4" | awk '{if($2>$5 || $1!=$4){print $1"\t"$3"\t"$4"\t"$6}}' > "${update}"
         update_lines=$(count_lines_file "${update}")
         # REMOVED
-        join <(cut -f 1 ${new_assembly_summary} | sed 's/\.[0-9]*//g' | sort) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' ${current_assembly_summary} | sort -k 1,1) -v 2 -o "2.2,2.3" | tr ' ' '\t' > ${remove}
+        join <(cut -f 1 "${new_assembly_summary}" | sed 's/\.[0-9]*//g' | sort) <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' "${current_assembly_summary}" | sort -k 1,1) -v 2 -o "2.2,2.3" | tr ' ' '\t' > "${remove}"
         remove_lines=$(count_lines_file "${remove}")
         # NEW
-        join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' ${new_assembly_summary} | sort -k 1,1) <(cut -f 1 ${current_assembly_summary} | sed 's/\.[0-9]*//g' | sort) -o "1.2,1.3" -v 1 | tr ' ' '\t' > ${new}
+        join <(awk -F '\t' '{acc_ver=$1; gsub("\\.[0-9]*","",$1); print $1,acc_ver,$20}' "${new_assembly_summary}" | sort -k 1,1) <(cut -f 1 "${current_assembly_summary}" | sed 's/\.[0-9]*//g' | sort) -o "1.2,1.3" -v 1 | tr ' ' '\t' > "${new}"
         new_lines=$(count_lines_file "${new}")
         echolog "Updates available [${current_label} --> ${new_label}]" "1"
+        echolog " - $(( filtered_lines-update_lines-new_lines )) unchanged entries" "1"
         echolog " - ${update_lines} updated, ${remove_lines} removed, ${new_lines} new entries" "1"
         echolog "" "1"
 
@@ -1461,7 +1509,7 @@ else # update/fix
             rm "${default_assembly_summary}"
             ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
             # Add entry on history
-            write_history ${current_label} ${new_label} ${timestamp} ${new_assembly_summary}
+            write_history "${current_label}" "${new_label}" "${timestamp}" "${new_assembly_summary}"
             echolog " - Done" "1"
             echolog "" "1"
 
@@ -1518,7 +1566,7 @@ else # update/fix
             fi
         fi
         # Remove update files
-        rm ${update} ${remove} ${new}
+        rm "${update}" "${remove}" "${new}"
     fi
 fi
 
@@ -1566,7 +1614,7 @@ if [ "${dry_run}" -eq 0 ]; then
     if [[ "${extra_files}" -gt 0 && "${just_fix}" -eq 1 ]]; then
         echolog " - ${extra_files} extra file(s) found in the output files folder. To delete them, re-run your command with -i -x" "1"
     fi
-    echolog "# Current version: $(dirname $(readlink -m ${default_assembly_summary}))" "1"
+    echolog '# Current version: '"$(dirname "$(readlink -m "${default_assembly_summary}")")" "1"
     echolog "# Log file       : ${log_file}" "1"
     echolog "# History        : ${history_file}" "1"
     [ "${silent}" -eq 0 ] && print_line
@@ -1576,5 +1624,6 @@ if [ "${dry_run}" -eq 0 ]; then
     fi
 
     # Exit conditional status
-    exit $(exit_status ${expected_files} ${current_files})
+    # shellcheck disable=SC2046
+    exit $(exit_status "${expected_files}" "${current_files}")
 fi

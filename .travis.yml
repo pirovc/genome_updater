@@ -1,18 +1,19 @@
 language: bash
-dist: jammy
+dist: noble
 
 before_install:
-  - gem install bashcov codecov
   - sudo apt-get install parallel
-  - echo -e "require 'codecov'\nrequire 'simplecov'\nSimpleCov.formatter = Codecov::SimpleCov::Formatter" > .simplecov
+  - gem install bashcov codecov
+  - echo -e "SimpleCov.start do\n  add_filter 'tests/'\nend" > .simplecov
 
 script:
-  - bashcov tests/libs/bats/bin/bats tests/integration_offline.bats
+  - shellcheck genome_updater.sh
+  - bashcov --skip-uncovered tests/libs/bats/bin/bats tests/integration_offline.bats
 
 after_success:
   - curl -Os https://uploader.codecov.io/latest/linux/codecov
   - chmod +x codecov
-  - ./codecov -f coverage/codecov-result.json -Z
+  - ./codecov -f coverage/.resultset.json -Z
 
 notifications:
   email: false

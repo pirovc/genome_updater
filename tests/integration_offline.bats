@@ -131,21 +131,17 @@ setup_file() {
 
     outdir=${outprefix}taxids-leaves-ncbi/
     label="test"
-    # Get all possible taxids from base assembly_summary
-    txids=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 7 ) )
-    #echo ${txids[@]} >&3
-
-    # Use third
-    run ./genome_updater.sh -d refseq -T "${txids[2]}" -b ${label} -o ${outdir}
+    
+    # Include only archaea taxids, remove fungi, based on taxid filter
+    run ./genome_updater.sh -d refseq -g archaea,fungi -T '^4751,2157' -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
-    # Check if output contains only used taxids
-    txids_ret=( $(get_values_as ${outdir}assembly_summary.txt 7 ) )
-    #echo ${txids_ret[@]} >&3
+    # Check if output only archaea accessions
+    readarray -t archaea_acc < <(get_values_as ${local_dir}genomes/refseq/archaea/assembly_summary.txt 1)
+    readarray -t ret_acc < <(get_values_as ${outdir}assembly_summary.txt 1)
 
-    # Used taxid should be the only one 
-    assert_equal ${#txids_ret[@]} 1 #length
-    assert_equal ${txids[2]} ${txids_ret[0]} #same taxid 
+    # Check if output is as expected (only archaea)
+    assert_equal $(echo ${archaea_acc[@]} ${ret_acc[@]} | tr ' ' '\n' | sort | uniq -d | wc -l) $(count_lines_file "${local_dir}genomes/refseq/archaea/assembly_summary.txt")
 }
 
 @test "Taxids leaves gtdb" {
@@ -154,16 +150,16 @@ setup_file() {
     outdir=${outprefix}taxids-leaves-gtdb/
     label="test"
     # Use fixed one
-    run ./genome_updater.sh -d refseq,genbank -T 's__MWBV01 sp002069705' -b ${label} -o ${outdir} -g archaea -M gtdb
+    run ./genome_updater.sh -d refseq,genbank -T 'o__Halobacteriales,^f__Haloferacaceae' -b ${label} -o ${outdir} -g archaea -M gtdb
     sanity_check ${outdir} ${label}
-    assert [ $(count_files ${outdir} ${label}) -eq 1 ]
+    assert [ $(count_files ${outdir} ${label}) -eq 7 ]
 }
 
 @test "Refseq category" {
     outdir=${outprefix}refseq-category/
     label="test"
     # Get all possible refseq category values from base assembly_summary
-    rscat=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 5 ) )
+    readarray -t rscat < <(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 5)
     #echo ${rscat[@]} >&3
 
     # Use first
@@ -171,7 +167,7 @@ setup_file() {
     sanity_check ${outdir} ${label}
 
     # Check if output contains only selected refseq category
-    rscat_ret=( $(get_values_as ${outdir}assembly_summary.txt 5 ) )
+    readarray -t rscat_ret < <(get_values_as ${outdir}assembly_summary.txt 5)
     #echo ${rscat_ret[@]} >&3
 
     # Should just return same refseq category
@@ -184,7 +180,7 @@ setup_file() {
     outdir=${outprefix}assembly-level/
     label="test"
     # Get all possible assembly level values from base assembly_summary
-    aslev=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 12 ) )
+    readarray -t aslev < <(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 12)
     #echo ${aslev[@]} >&3
 
     # Use first
@@ -192,7 +188,7 @@ setup_file() {
     sanity_check ${outdir} ${label}
 
     # Check if output contains only selected assembly level
-    aslev_ret=( $(get_values_as ${outdir}assembly_summary.txt 12 ) )
+    readarray -t aslev_ret < <(get_values_as ${outdir}assembly_summary.txt 12)
     #echo ${aslev_ret[@]} >&3
 
     # Should just return same assembly level
@@ -206,26 +202,51 @@ setup_file() {
     label="test"
 
     # Get all possible assembly level values from base assembly_summary
-    rscat=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 5 ) )
-    aslev=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 12 ) )
+    readarray -t rscat < <(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 5)
+    readarray -t aslev < <(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 12)
 
     # Simulate refseq category and assembly level filter using the custom filter
-    run ./genome_updater.sh -d refseq -F "5:${rscat[0]}|12:${aslev[0]}" -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -F "\$5 == \"${rscat[0]}\" && \$12 == \"${aslev[0]}\"" -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # Check if output contains only selected refseq category
-    rscat_ret=( $(get_values_as ${outdir}assembly_summary.txt 5 ) )
+    readarray -t rscat_ret < <(get_values_as ${outdir}assembly_summary.txt 5)
     # Should just return same refseq category
     for rsc in ${rscat_ret[@]}; do
         assert_equal ${rsc} ${rscat[0]}
     done
 
     # Check if output contains only selected assembly level
-    aslev_ret=( $(get_values_as ${outdir}assembly_summary.txt 12 ) )
+    readarray -t aslev_ret < <(get_values_as ${outdir}assembly_summary.txt 12)
     # Should just return same assembly level
     for asl in ${aslev_ret[@]}; do
         assert_equal ${asl} ${aslev[0]}
     done
+}
+
+@test "Custom filter regex" {
+    outdir=${outprefix}custom-filter-regex/
+    label="test"
+    pattern="bacterium"
+
+    # Get all possible assembly level values from base assembly_summary
+    readarray -t ogname < <(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 8)
+    ogname_matches=$(printf '%s\n' "${ogname[@]}" | grep "${pattern}" | wc -l)
+
+    # Return only entries matching pattern
+    run ./genome_updater.sh -d refseq -F "\$8 ~ /"${pattern}"/" -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+
+    # Check if all of matching patterns were returned
+    assert [ $(count_files ${outdir} ${label}) -eq ${ogname_matches} ]
+    
+    # Check if output contains matching pattern
+    readarray -t ogname_ret < <(get_values_as ${outdir}assembly_summary.txt 8)
+    for ogn in "${ogname_ret[@]}"; do
+        assert $(grep -q "${pattern}" <<< $ogn)
+    done
+
+
 }
 
 @test "Top 1 leaves ncbi" {
@@ -236,7 +257,7 @@ setup_file() {
     sanity_check ${outdir} ${label}
 
     # Get counts of species taxids on output
-    txids_ret=$(get_values_as ${outdir}assembly_summary.txt 6 )
+    readarray -t txids_ret < <(get_values_as ${outdir}assembly_summary.txt 6)
     ret_occ=( $( echo ${txids_ret}  | tr ' ' '\n' | sort | uniq -c | awk '{print $1}' ) )
    
     # Should have one assembly for each species taxid
@@ -253,7 +274,7 @@ setup_file() {
     sanity_check ${outdir} ${label}
 
     # Get counts of species taxids on output
-    txids_ret=$(get_values_as ${outdir}assembly_summary.txt 7 )
+    readarray -t txids_ret < <(get_values_as ${outdir}assembly_summary.txt 7)
     ret_occ=( $( echo ${txids_ret}  | tr ' ' '\n' | sort | uniq -c | awk '{print $1}' ) )
    
     # Should have one assembly for each species taxid
@@ -335,25 +356,25 @@ setup_file() {
     # should always pick the correct assembly level for top superkingdom (just one)
 
     label="4"
-    aslvl="complete genome,chromosome,scaffold,contig"
+    aslvl="Complete Genome,Chromosome,Scaffold,Contig"
     run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}    
     sanity_check ${outdir} ${label}
     assert_equal "Complete Genome" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
     label="3"
-    aslvl="chromosome,scaffold,contig"
+    aslvl="Chromosome,Scaffold,Contig"
     run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}    
     sanity_check ${outdir} ${label}
     assert_equal "Chromosome" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
     label="2"
-    aslvl="scaffold,contig"
+    aslvl="Scaffold,Contig"
     run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}    
     sanity_check ${outdir} ${label}
     assert_equal "Scaffold" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
     label="1"
-    aslvl="contig"
+    aslvl="Contig"
     run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}    
     sanity_check ${outdir} ${label}
     assert_equal "Contig" "$(get_values_as ${outdir}assembly_summary.txt 12)"
@@ -365,7 +386,7 @@ setup_file() {
     outdir=${outprefix}date-start-filter/
     
     # Get all possible dates and sort it
-    dates=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 15 | sed 's|/||g' | sort) )
+    readarray -t dates < <(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 15 | sed 's|/||g' | sort)
 
     label="test_all"
     # Use first date as start, should return everything
@@ -384,7 +405,7 @@ setup_file() {
     outdir=${outprefix}date-end-filter/
     
     # Get all possible dates and sort it
-    dates=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 15 | sed 's|/||g' | sort) )
+    readarray -t dates < <(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 15 | sed 's|/||g' | sort)
 
     label="test_all"
     # Use last date as end, should return everything
@@ -403,7 +424,7 @@ setup_file() {
     outdir=${outprefix}date-start-end-filter/
     
     # Get all possible dates and sort it
-    dates=( $(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 15 | sed 's|/||g' | sort) )
+    readarray -t dates < <(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 15 | sed 's|/||g' | sort)
 
     label="test_all"
     # Use first date as start, last as end, should return everything
