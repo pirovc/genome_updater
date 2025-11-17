@@ -1,6 +1,6 @@
 # genome_updater [![Build Status](https://app.travis-ci.com/pirovc/genome_updater.svg?branch=main)](https://app.travis-ci.com/pirovc/genome_updater) [![codecov](https://codecov.io/gh/pirovc/genome_updater/branch/master/graph/badge.svg)](https://codecov.io/gh/pirovc/genome_updater) [![Anaconda-Server Badge](https://anaconda.org/bioconda/genome_updater/badges/downloads.svg)](https://anaconda.org/bioconda/genome_updater)
 
-genome_updater is a bash script that downloads and updates (non-redundant) snapshots of the NCBI Genomes repository (RefSeq/GenBank) [[1](https://ftp.ncbi.nlm.nih.gov/genomes/)] with advanced filters, detailed logs and reports, file integrity checks (MD5) and support for parallel [[2](https://doi.org/10.5281/zenodo.1146014)] downloads. genome_updater uses the [assembly_summary.txt](https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt) to retrieve data.
+genome_updater is a bash script that downloads and updates (non-redundant) snapshots of the NCBI Genomes repository (RefSeq/GenBank) [[1](https://ftp.ncbi.nlm.nih.gov/genomes/)] with advanced filters, detailed logs and reports, file integrity checks (MD5), NCBI taxonomy and GTDB [[2](https://gtdb.ecogenomic.org/)] integration and support for parallel [[3](https://doi.org/10.5281/zenodo.1146014)] downloads. genome_updater uses the [assembly_summary.txt](https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt) to retrieve data.
 
 ## Quick usage guide
 
@@ -13,7 +13,7 @@ chmod +x genome_updater.sh
 
 ### Usage
 
-Downloading archaeal complete genome genomic sequences from RefSeq (`-t` number parallel downloads):
+Downloading archaeal complete genome genomic sequences from RefSeq:
 
 ```bash
 ./genome_updater.sh -o "arc_refseq_cg" -d "refseq" -g "archaea" -l "complete genome" -f "genomic.fna.gz" -t 12
@@ -24,13 +24,12 @@ Some days later, update the local repository to download newly added files:
 ```bash
 ./genome_updater.sh -o "arc_refseq_cg"
 ```
-
- - `-k` performs a dry-run, showing how many files can be downloaded/updated.
+ - `-t` number of downloads in parallel.
+ - `-k` can be used to perform a dry-run, showing how many files will be downloaded/updated.
 
 ## Important parameters
 
 A list of all parameters can be found [here](#genome_updater--h)
-
 
 ### Database/Organism/Taxa
 
@@ -63,7 +62,6 @@ A list of all parameters can be found [here](#genome_updater--h)
     - Multi:  `-F '($2 == "PRJNA12377" || $2 == "PRJNA670754") && $4 != "Partial"'`
     - Regex:  `-F '$8 ~ /bacterium/'`
     - Whole-file: `-F '$0 ~ "plasmid"'`
-
 
 ### Taxonomy
 
@@ -226,7 +224,6 @@ new_taxdump_file="my/local/new_taxdump.tar.gz" ./genome_updater.sh -T 562 -o 562
 
 - the [new_taxdump](https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/) is required.
 
-
 ### Alternative download URL
 
 ```bash
@@ -298,7 +295,6 @@ The `-A`  option will select the 'best' assemblies for each taxonomic node (leaf
         13) ICTV additional isolate
     D) Date:
         14) Most recent first
-
 
 ## `genome_updater -h`
 
@@ -407,4 +403,6 @@ Misc. options:
 
 [1] https://ftp.ncbi.nlm.nih.gov/genomes/
 
-[2] O. Tange (2018): GNU Parallel 2018, March 2018, https://doi.org/10.5281/zenodo.1146014.
+[2] https://gtdb.ecogenomic.org/
+
+[3] O. Tange (2018): GNU Parallel 2018, March 2018, https://doi.org/10.5281/zenodo.1146014.
