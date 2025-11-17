@@ -58,7 +58,7 @@ A list of all parameters can be found [here](#genome_updater--h)
   - Example: `-D 20201231 -E 20251231`
 - `-F`: Custom filters for the [assembly_summary.txt](https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt). Can be applied by column (e.g. `$4`) or in the whole file (`$0`). Uses [awk](https://www.gnu.org/software/gawk/manual/gawk.html) conditionals syntax.
   - Examples:
-    - Single: `-F '$14 = "Full"'`
+    - Single: `-F '$14 == "Full"'`
     - Multi:  `-F '($2 == "PRJNA12377" || $2 == "PRJNA670754") && $4 != "Partial"'`
     - Regex:  `-F '$8 ~ /bacterium/'`
     - Whole-file: `-F '$0 ~ "plasmid"'`
@@ -337,7 +337,7 @@ Filter options:
         Default: ""
  -F Custom filter for the assembly summary. 
         Examples:
-          Single: -F '$14 = "Full"'
+          Single: -F '$14 == "Full"'
           Multi:  -F '($2 == "PRJNA12377" || $2 == "PRJNA670754") && $4 != "Partial"'
           Regex:  -F '$8 ~ /bacterium/'
           Whole-file: -F '$0 ~ "plasmid"'

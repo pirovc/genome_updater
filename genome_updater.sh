@@ -876,7 +876,7 @@ function showhelp {
     echo $' -l assembly level (comma-separated entries, empty for all)\n\t[Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: ""' 
     echo $' -D Start date (>=), based on the sequence release date. Format YYYYMMDD.\n\tDefault: ""'
     echo $' -E End date (<=), based on the sequence release date. Format YYYYMMDD.\n\tDefault: ""'
-    echo $' -F Custom filter for the assembly summary. \n\tExamples:\n\t  Single: -F \'$14 = "Full"\'\n\t  Multi:  -F \'($2 == "PRJNA12377" || $2 == "PRJNA670754") && $4 != "Partial"\'\n\t  Regex:  -F \'$8 ~ /bacterium/\'\n\t  Whole-file: -F \'$0 ~ "plasmid"\'\n\tUses awk syntax: $ for column index, || "or", && "and", ! "not", parentheses for nesting. Case sensitive.\n\tColumns info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
+    echo $' -F Custom filter for the assembly summary. \n\tExamples:\n\t  Single: -F \'$14 == "Full"\'\n\t  Multi:  -F \'($2 == "PRJNA12377" || $2 == "PRJNA670754") && $4 != "Partial"\'\n\t  Regex:  -F \'$8 ~ /bacterium/\'\n\t  Whole-file: -F \'$0 ~ "plasmid"\'\n\tUses awk syntax: $ for column index, || "or", && "and", ! "not", parentheses for nesting. Case sensitive.\n\tColumns info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
     echo
     echo $'Taxonomy options:'
     echo $' -M Taxonomy. gtdb keeps only assemblies in the latest GTDB release. ncbi keeps only latest assemblies (version_status=latest). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
