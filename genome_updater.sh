@@ -33,8 +33,10 @@ if [[ -n "${local_dir}" ]]; then
     # set local dir with absulute path and "file://"
     local_dir="file://$(cd "${local_dir}" && pwd)"
 fi
-ncbi_base_url=${ncbi_base_url:-ftp://ftp.ncbi.nlm.nih.gov/}  # Alternative: ftp://ftp.ncbi.nih.gov/, 
-gtdb_base_url=${gtdb_base_url:-https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/}  # Alternative: https://data.gtdb.ecogenomic.org/releases/latest/
+# Alternatives: ftp://ftp.ncbi.nih.gov/, https://ftp.ncbi.nih.gov/
+ncbi_base_url=${ncbi_base_url:-ftp://ftp.ncbi.nlm.nih.gov/}
+# Alternatives: https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/, https://data.gtdb.ecogenomic.org/releases/latest/
+gtdb_base_url=${gtdb_base_url:-https://data.gtdb.aau.ecogenomic.org/releases/latest/}
 new_taxdump_file=${new_taxdump_file:-}
 retries=${retries:-3}
 timeout=${timeout:-120}
@@ -278,7 +280,8 @@ filter_assembly_summary() # parameter: ${1} assembly_summary file, ${2} number o
         gtdb_tax=$(tmp_file "gtdb_tax.tmp")
         for url in "${gtdb_urls[@]}"; do
             tmp_tax=$(tmp_file "gtdb_tax.tmp.gz")
-            if ! download_retry_md5 "${url}" "${tmp_tax}" "${gtdb_base_url}MD5SUM.txt" "${retry_download_batch}"; then
+            #if ! download_retry_md5 "${url}" "${tmp_tax}" "${gtdb_base_url}MD5SUM.txt" "${retry_download_batch}"; then
+            if ! download_retry_md5 "${url}" "${tmp_tax}" "" "${retry_download_batch}"; then
                 return 1;
             fi
             # awk to remove prefix RS_ or GB_
