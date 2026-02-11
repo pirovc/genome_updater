@@ -4,7 +4,7 @@ IFS=$' '
 
 # The MIT License (MIT)
  
-# Copyright (c) 2025 - Vitor C. Piro - pirovc.github.io
+# Copyright (c) 2026 - Vitor C. Piro - pirovc.github.io
 # All rights reserved.
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.7.0"
+version="0.7.1"
 
 # Define ncbi_base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -443,7 +443,8 @@ filter_taxids_gtdb() # parameter: ${1} assembly_summary file, ${2} gtdb_tax file
 
 filter_date() # parameter: ${1} assembly_summary file - return number of lines
 {
-    awk -v dstart="${date_start}" -v dend="${date_end}" 'BEGIN{FS=OFS="\t"}{date=$15; gsub("/","",date); if((date>=dstart || dstart=="") && (date<=dend || dend=="")) print $0}' "${1}" > "${1}_date"
+    # Replace date separator / (changed around 2025 to -). Keep both for backwards-comp.
+    awk -v dstart="${date_start}" -v dend="${date_end}" 'BEGIN{FS=OFS="\t"}{date=$15; gsub("/","",date); gsub("-","",date); if((date>=dstart || dstart=="") && (date<=dend || dend=="")) print $0}' "${1}" > "${1}_date"
     mv "${1}_date" "${1}"
     count_lines_file "${1}"
 }
