@@ -78,7 +78,8 @@ When updating an existing local repository:
 
  - Newly added sequences will be downloaded, creating a new version (`-b`, timestamp by default).
  - Removed or old sequences will be retained, but not transferred to the new version.
- - Repeated/unchanged files are linked to the new version.
+ - Repeated/unchanged files are linked to the new version (symbolic links by default, or hard links with `-H`).
+ - The `-H` flag can be used to create hard links instead of symbolic links. This is particularly useful on HPC systems to save inodes, as hard links point to the same disk data without consuming additional inodes. Note that hard links only work when the working directory and target files are on the same filesystem.
  - Arguments can be added to or changed in the update. For example, use the command `./genome_updater.sh -o "arc_refseq_cg" -t 2` to specify a different number of threads, or use the command `./genome_updater.sh -o "arc_refseq_cg" -l ""` to remove the `complete genome` filter.
  - The file `history.tsv` will be created in the output folder (`-o`), tracking the versions and arguments used. Please note that boolean flags/arguments are not tracked (e.g. `-m`).
 
@@ -364,6 +365,7 @@ Run options:
  -k Dry-run mode. No sequence data is downloaded or updated - just checks for available sequences and changes
  -i Fix only mode. Re-downloads incomplete or failed data from a previous run. Can also be used to change files (-f).
  -m Check MD5 of downloaded files
+ -H Use hard links instead of symbolic links when updating a repository. Useful if you have restrictions on the number of files (inodes). Note: both the previous and new output directories must be on the same filesystem'
 
 Report options:
  -u Updated assembly accessions report
