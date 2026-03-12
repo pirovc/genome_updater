@@ -452,7 +452,7 @@ filter_date() # parameter: ${1} assembly_summary file - return number of lines
 filter_columns() # parameter: ${1} assembly_summary file - return number of lines
 {
     # Valid URLs (not na)
-    colfilter="\$20 != \"na\""
+    colfilter="\$20 !~ /^na/"
     if [[ "${tax_mode}" == "ncbi" ]]; then
         colfilter="${colfilter} && \$11 == \"latest\""
     fi
@@ -593,7 +593,7 @@ list_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url], ${3} e
     # Given an url returns the url and the filename for all extensions
     for extension in ${3//,/ }
     do
-        cut --fields="${2}" "${1}" | awk -F "\t" -v ext="${extension}" '{url_count=split($2,url,"/"); print $1 "\t" $2 "\t" url[url_count] "_" ext}'
+        cut --fields="${2}" "${1}" | sed 's/\/$//' | awk -F "\t" -v ext="${extension}" '{url_count=split($2,url,"/"); print $1 "\t" $2 "\t" url[url_count] "_" ext}'
     done
 }
 
