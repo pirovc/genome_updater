@@ -115,7 +115,11 @@ link_version() # parameter: ${1} current_output_prefix, ${2} new_output_prefix, 
     path_out=$(path_output "${3}")
     if [[ -f "${1}${path_out}${3}" ]]; then
         mkdir -p "${2}${path_out}";
-        ln -s -r "${1}${path_out}${3}" "${2}${path_out}";
+        if [[ "${link_mode}" == "hard" ]]; then
+            ln "${1}${path_out}${3}" "${2}${path_out}";
+        else
+            ln -s -r "${1}${path_out}${3}" "${2}${path_out}";
+        fi
     fi
 }
 export -f link_version  #export it to be accessible to the parallel call
@@ -759,8 +763,11 @@ remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR fi
     deleted_files=0
     while read -r f; do
         path_name="${target_output_prefix}$(path_output "${f}")${f}"
+        # check hard link count.
+        hl_count=$(stat -c '%h' "${path_name}" 2>/dev/null || stat -f '%l' "${path_name}" 2>/dev/null || echo 1)
+
         # Only delete if delete option is enable or if it's a symbolic link (from updates)
-        if [[ -L "${path_name}" || "${delete_extra_files}" -eq 1 ]]; then
+        if [[ -L "${path_name}" || "${delete_extra_files}" -eq 1 || ( "${link_mode}" == "hard" && "${hl_count}" -gt 1 ) ]]; then
             rm "${path_name}" -v >> "${log_file}"
             deleted_files=$((deleted_files + 1))
         else
@@ -890,6 +897,7 @@ function showhelp {
     echo $' -k Dry-run mode. No sequence data is downloaded or updated - just checks for available sequences and changes'
     echo $' -i Fix only mode. Re-downloads incomplete or failed data from a previous run. Can also be used to change files (-f).'
     echo $' -m Check MD5 of downloaded files'
+    echo $' -H Link mode. [hard, soft]. Hard links save inodes (i.e. number of files; useful on HPC systems), but only work if both previous and new output directories are on the same filesystem.\n\tDefault: "hard"'
     echo
     echo $'Report options:'
     echo $' -u Updated assembly accessions report\n\t(Added/Removed, assembly accession, url)'
@@ -926,6 +934,7 @@ date_end=""
 tax_mode="ncbi"
 download_taxonomy=0
 delete_extra_files=0
+link_mode="hard"
 check_md5=0
 updated_assembly_accession=0
 updated_sequence_accession=0
@@ -959,7 +968,7 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 # Parse -o and -B first to detect possible updates
-getopts_list="aA:b:B:c:d:D:e:E:f:F:g:hikl:L:mM:n:No:prR:st:T:uVwxZ"
+getopts_list="aA:b:B:c:d:D:e:E:f:F:g:hH:ikl:L:mM:n:No:prR:st:T:uVwxZ"
 OPTIND=1 # Reset getopts
 # Parses working_dir from "$@"
 while getopts "${getopts_list}" opt; do
@@ -1018,6 +1027,7 @@ while getopts "${getopts_list}" opt "${args[@]}"; do
     F) custom_filter=${OPTARG} ;;
     g) organism_group=${OPTARG// } ;; #remove spaces
     h) showhelp; exit 0 ;;
+    H) link_mode=${OPTARG} ;;
     i) just_fix=1 ;;
     k) dry_run=1 ;;
     l) assembly_level=${OPTARG} ;;
@@ -1089,6 +1099,10 @@ fi
 
 if [[ ! "${file_formats}" =~ assembly_report.txt && "${updated_sequence_accession}" -eq 1 ]]; then
     echo "Updated sequence accessions report (-r) can only be used if -f contains 'assembly_report.txt'"; exit 1;
+fi
+
+if [[ "${link_mode}" != "hard" && "${link_mode}" != "soft" ]]; then
+    echo "${link_mode}: invalid link mode [hard, soft]"; exit 1;
 fi
 
 if [[ -z "${database}" && -z "${external_assembly_summary}" ]]; then
@@ -1213,7 +1227,7 @@ elif [ "${silent_progress}" -eq 1 ] ; then
 fi
 n_formats=$(echo "${file_formats}" | tr -cd , | wc -c) # number of file formats
 timestamp=$(date +%Y-%m-%d_%H-%M-%S) # timestamp of the run
-export check_md5 silent silent_progress n_formats timestamp verbose_log # To be accessible in functions called by parallel
+export check_md5 silent silent_progress n_formats timestamp verbose_log link_mode # To be accessible in functions called by parallel
 
 # Create working directory
 if [[ -z "${working_dir}" ]]; then
