@@ -7,8 +7,7 @@ load 'utils.bash'
 
 setup_file() {
     # Get tests dir
-    DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )"
-   
+    DIR="$(cd "$(dirname "$BATS_TEST_FILENAME")" >/dev/null 2>&1 && pwd)"
 
     files_dir="$DIR/files/"
     export files_dir
@@ -64,7 +63,7 @@ setup_file() {
 
 @test "Database -d refseq,genbank" {
     outdir=${outprefix}d-refseq-genbank/
-    
+
     label="refseq"
     run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
@@ -86,7 +85,7 @@ setup_file() {
     label="refseq-genbank"
     run ./genome_updater.sh -d refseq,genbank -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
-    assert [ $(count_files ${outdir} ${label}) -eq $((files_refseq+files_genbank)) ]
+    assert [ $(count_files ${outdir} ${label}) -eq $((files_refseq + files_genbank)) ]
 }
 
 @test "Organism group -g archaea" {
@@ -123,7 +122,7 @@ setup_file() {
     label="archaea-fungi"
     run ./genome_updater.sh -d refseq -g archaea,fungi -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
-    assert [ $(count_files ${outdir} ${label}) -eq $((files_arc+files_fun)) ]
+    assert [ $(count_files ${outdir} ${label}) -eq $((files_arc + files_fun)) ]
 }
 
 @test "Taxids leaves ncbi" {
@@ -131,7 +130,7 @@ setup_file() {
 
     outdir=${outprefix}taxids-leaves-ncbi/
     label="test"
-    
+
     # Include only archaea taxids, remove fungi, based on taxid filter
     run ./genome_updater.sh -d refseq -g archaea,fungi -T '^4751,2157' -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
@@ -239,13 +238,12 @@ setup_file() {
 
     # Check if all of matching patterns were returned
     assert [ $(count_files ${outdir} ${label}) -eq ${ogname_matches} ]
-    
+
     # Check if output contains matching pattern
     readarray -t ogname_ret < <(get_values_as ${outdir}assembly_summary.txt 8)
     for ogn in "${ogname_ret[@]}"; do
-        assert $(grep -q "${pattern}" <<< $ogn)
+        assert $(grep -q "${pattern}" <<<$ogn)
     done
-
 
 }
 
@@ -258,8 +256,8 @@ setup_file() {
 
     # Get counts of species taxids on output
     readarray -t txids_ret < <(get_values_as ${outdir}assembly_summary.txt 6)
-    ret_occ=( $( echo ${txids_ret}  | tr ' ' '\n' | sort | uniq -c | awk '{print $1}' ) )
-   
+    ret_occ=($(echo ${txids_ret} | tr ' ' '\n' | sort | uniq -c | awk '{print $1}'))
+
     # Should have one assembly for each species taxid
     for occ in ${ret_occ[@]}; do
         assert_equal ${occ} 1
@@ -275,8 +273,8 @@ setup_file() {
 
     # Get counts of species taxids on output
     readarray -t txids_ret < <(get_values_as ${outdir}assembly_summary.txt 7)
-    ret_occ=( $( echo ${txids_ret}  | tr ' ' '\n' | sort | uniq -c | awk '{print $1}' ) )
-   
+    ret_occ=($(echo ${txids_ret} | tr ' ' '\n' | sort | uniq -c | awk '{print $1}'))
+
     # Should have one assembly for each species taxid
     for occ in ${ret_occ[@]}; do
         assert_equal ${occ} 1
@@ -335,13 +333,13 @@ setup_file() {
 
     label="2"
     rscat="reference genome,na"
-    run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A superkingdom:1 -b ${label} -o ${outdir}    
+    run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A superkingdom:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "reference genome" "$(get_values_as ${outdir}assembly_summary.txt 5)"
 
     label="1"
     rscat="na"
-    run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A superkingdom:1 -b ${label} -o ${outdir}    
+    run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A superkingdom:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "na" "$(get_values_as ${outdir}assembly_summary.txt 5)"
 
@@ -357,34 +355,33 @@ setup_file() {
 
     label="4"
     aslvl="Complete Genome,Chromosome,Scaffold,Contig"
-    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}    
+    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "Complete Genome" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
     label="3"
     aslvl="Chromosome,Scaffold,Contig"
-    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}    
+    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "Chromosome" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
     label="2"
     aslvl="Scaffold,Contig"
-    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}    
+    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "Scaffold" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
     label="1"
     aslvl="Contig"
-    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}    
+    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "Contig" "$(get_values_as ${outdir}assembly_summary.txt 12)"
-
 
 }
 
 @test "Date start filter" {
     outdir=${outprefix}date-start-filter/
-    
+
     # Get all possible dates and sort it
     readarray -t dates < <(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 15 | sed 's|/||g' | sort)
 
@@ -403,7 +400,7 @@ setup_file() {
 
 @test "Date end filter" {
     outdir=${outprefix}date-end-filter/
-    
+
     # Get all possible dates and sort it
     readarray -t dates < <(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 15 | sed 's|/||g' | sort)
 
@@ -422,7 +419,7 @@ setup_file() {
 
 @test "Date start-end filter" {
     outdir=${outprefix}date-start-end-filter/
-    
+
     # Get all possible dates and sort it
     readarray -t dates < <(get_values_as ${local_dir}genomes/refseq/assembly_summary_refseq.txt 15 | sed 's|/||g' | sort)
 
@@ -496,10 +493,9 @@ setup_file() {
     sanity_check ${outdir} ${label}
 }
 
-
 @test "Rollback label" {
     outdir=${outprefix}rollback-label/
-    
+
     # Base version with only refseq
     label1="v1"
     run ./genome_updater.sh -d refseq -b ${label1} -o ${outdir} -d refseq
@@ -531,7 +527,7 @@ setup_file() {
 
 @test "Rollback label auto update" {
     outdir=${outprefix}rollback-label-auto-update/
-    
+
     # Base version with only refseq
     label1="v1"
     run ./genome_updater.sh -d refseq -b ${label1} -o ${outdir}
@@ -560,7 +556,7 @@ setup_file() {
     grep "0 updated, 0 removed, [1-9][0-9]* new entries" ${outdir}${label4}/*.log # >&3
     assert_success
 
-    # Continue the update from v4 (without rolling back to v1) 
+    # Continue the update from v4 (without rolling back to v1)
     label5="v5"
     run ./genome_updater.sh -b ${label5} -o ${outdir} -B ""
     sanity_check ${outdir} ${label5}
@@ -587,7 +583,7 @@ setup_file() {
     # Create extra files
     touch "${outdir}${label}/files/ANOTHER_EXTRA_FILE.txt"
     assert_file_exist "${outdir}${label}/files/ANOTHER_EXTRA_FILE.txt"
-    
+
     # update label
     label="update"
     # Update (should not not carry extra file over to new version)
@@ -596,7 +592,6 @@ setup_file() {
 
     assert_not_exist "${outdir}${label}/files/ANOTHER_EXTRA_FILE.txt"
 }
-
 
 @test "Threads" {
     outdir=${outprefix}threads/
@@ -768,7 +763,7 @@ setup_file() {
     label="test"
     run ./genome_updater.sh -d refseq,genbank -g archaea -b ${label} -o ${outdir} -M gtdb
     sanity_check ${outdir} ${label}
-    
+
     # Check log for filer with GTDB
     grep "[1-9][0-9]* assemblies removed not in GTDB" ${outdir}${label}/*.log # >&3
     assert_success
@@ -808,7 +803,7 @@ setup_file() {
     # refseq and genbank base folders are created
     assert_dir_exist "${outdir}${label}/files/GCF/"
     assert_dir_exist "${outdir}${label}/files/GCA/"
-   
+
     # Remove refseq
     label="3-genbank"
     run ./genome_updater.sh -d genbank -g archaea -b ${label} -o ${outdir}
@@ -819,7 +814,7 @@ setup_file() {
 
     # no empty folders
     assert_equal $(find "${outdir}${label}/files/" -type d -empty | wc -l | cut -f1 -d' ') 0
-    
+
     # Update -N, do not consider folder structute and download again to base files folder
     # Remove refseq
     label="4-no-ncbi-folders"
