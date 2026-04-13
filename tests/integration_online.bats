@@ -5,7 +5,8 @@ load 'libs/bats-assert/load'
 load 'libs/bats-file/load'
 load 'utils.bash'
 
-setup_file() {
+setup_file()
+{
     # Get tests dir
     DIR="$(cd "$(dirname "$BATS_TEST_FILENAME")" >/dev/null 2>&1 && pwd)"
 

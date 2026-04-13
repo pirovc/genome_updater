@@ -51,7 +51,8 @@ alias sort="sort --field-separator=$'\t'"
 join_as_fields1="1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22,1.23,1.24,1.25,1.26,1.27,1.28,1.29,1.30,1.31,1.32,1.33,1.34,1.35,1.36,1.37,1.38"
 join_as_fields2="1.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,2.10,2.11,2.12,2.13,2.14,2.15,2.16,2.17,2.18,2.19,2.20,2.21,2.22,2.23,2.24,2.25,2.26,2.27,2.28,2.29,2.30,2.31,2.32,2.33,2.34,2.35,2.36,2.37,2.38"
 
-download_url() { # parameter: ${1} url, ${2} output file/directory (omit/empty to STDOUT)
+download_url()
+{ # parameter: ${1} url, ${2} output file/directory (omit/empty to STDOUT)
     url="${1}"
     outfiledir="${2:-}"
     if [[ -n "${outfiledir}" ]]; then
@@ -72,7 +73,8 @@ download_url() { # parameter: ${1} url, ${2} output file/directory (omit/empty t
 }
 export -f download_url #export it to be accessible to the parallel call
 
-download_retry_md5() { # parameter: ${1} url, ${2} output file, ${3} url MD5 (empty to skip), ${4} re-tries
+download_retry_md5()
+{ # parameter: ${1} url, ${2} output file, ${3} url MD5 (empty to skip), ${4} re-tries
     for ((att = 1; att <= ${4:-1}; att++)); do
         if [ "${att}" -gt 1 ]; then
             echolog " - Failed to download ${url}. Trying again #${att}" "1"
@@ -98,7 +100,8 @@ download_retry_md5() { # parameter: ${1} url, ${2} output file, ${3} url MD5 (em
     return 1 # failed to check md5 after all attempts
 }
 
-path_output() { # parameter: ${1} file/url
+path_output()
+{ # parameter: ${1} file/url
     f=$(basename "${1}")
     path="${files_dir}"
     if [[ "${dir_structure}" == "ncbi" ]]; then
@@ -108,7 +111,8 @@ path_output() { # parameter: ${1} file/url
 }
 export -f path_output
 
-link_version() { # parameter: ${1} current_output_prefix, ${2} new_output_prefix, ${3} file
+link_version()
+{ # parameter: ${1} current_output_prefix, ${2} new_output_prefix, ${3} file
     path_out=$(path_output "${3}")
     if [[ -f "${1}${path_out}${3}" ]]; then
         mkdir -p "${2}${path_out}"
@@ -121,7 +125,8 @@ link_version() { # parameter: ${1} current_output_prefix, ${2} new_output_prefix
 }
 export -f link_version #export it to be accessible to the parallel call
 
-list_local_files() { # parameter: ${1} prefix, ${2} 1 to list list all, "" list only '-not -empty'
+list_local_files()
+{ # parameter: ${1} prefix, ${2} 1 to list list all, "" list only '-not -empty'
     # Returns list of local files, without folder structure
     if [[ "${dir_structure}" == "ncbi" ]]; then
         depth="-mindepth 4"
@@ -136,19 +141,23 @@ list_local_files() { # parameter: ${1} prefix, ${2} 1 to list list all, "" list 
     find "${1}${files_dir}" ${depth} ${param} \( -type f -o -type l \) -printf "%f\n"
 }
 
-unpack() { # parameter: ${1} file, ${2} output folder[, ${3} files to unpack]
+unpack()
+{ # parameter: ${1} file, ${2} output folder[, ${3} files to unpack]
     tar xf "${1}" -C "${2}" "${3}"
 }
 
-count_lines() { # parameter: ${1} file - return number of lines
+count_lines()
+{ # parameter: ${1} file - return number of lines
     echo "${1:-}" | sed '/^\s*$/d' | wc -l | cut -f1 -d' '
 }
 
-count_lines_file() { # parameter: ${1} file - return number of lines
+count_lines_file()
+{ # parameter: ${1} file - return number of lines
     sed '/^\s*$/d' "${1:-}" | wc -l | cut -f1 -d' '
 }
 
-check_assembly_summary() { # parameter: ${1} assembly_summary file - return 0 true 1 false
+check_assembly_summary()
+{ # parameter: ${1} assembly_summary file - return 0 true 1 false
     # file exists and it's not empty
     if [ ! -s "${1}" ]; then return 1; fi
 
@@ -185,7 +194,8 @@ check_assembly_summary() { # parameter: ${1} assembly_summary file - return 0 tr
     return 0
 }
 
-get_assembly_summary() { # parameter: ${1} assembly_summary file, ${2} database, ${3} organism_group - return number of lines
+get_assembly_summary()
+{ # parameter: ${1} assembly_summary file, ${2} database, ${3} organism_group - return number of lines
     # Collect urls to download
     as_to_download=()
     for d in ${2//,/ }; do
@@ -232,7 +242,8 @@ get_assembly_summary() { # parameter: ${1} assembly_summary file, ${2} database,
     fi
 }
 
-write_history() { # parameter: ${1} current label, ${2} new label, ${3} new timestamp, ${4} assembly_summary file
+write_history()
+{ # parameter: ${1} current label, ${2} new label, ${3} new timestamp, ${4} assembly_summary file
     # if current label is the same as new label (new)
     # reading the history
     # Only new_label = NEW
@@ -251,7 +262,8 @@ write_history() { # parameter: ${1} current label, ${2} new label, ${3} new time
     echo -e "${genome_updater_args}" >>"${history_file}"
 }
 
-filter_assembly_summary() { # parameter: ${1} assembly_summary file, ${2} number of lines - return 1 if no lines or failed, 0 success
+filter_assembly_summary()
+{ # parameter: ${1} assembly_summary file, ${2} number of lines - return 1 if no lines or failed, 0 success
     assembly_summary="${1}"
     filtered_lines=${2}
     if [[ "${filtered_lines}" -eq 0 ]]; then return 1; fi
@@ -364,7 +376,8 @@ filter_assembly_summary() { # parameter: ${1} assembly_summary file, ${2} number
     return 0
 }
 
-filter_taxids_ncbi() { # parameter: ${1} assembly_summary file, ${2} ncbi_tax file - return number of lines
+filter_taxids_ncbi()
+{ # parameter: ${1} assembly_summary file, ${2} ncbi_tax file - return number of lines
     # Keep only selected taxid lineage, removing at the end duplicated entries from duplicates on taxids
     tmp_lineage=$(tmp_file "lineage.tmp")
     tmp_lineage_neg=$(tmp_file "lineage_neg.tmp")
@@ -394,7 +407,8 @@ filter_taxids_ncbi() { # parameter: ${1} assembly_summary file, ${2} ncbi_tax fi
     count_lines_file "${1}"
 }
 
-filter_taxids_gtdb() { # parameter: ${1} assembly_summary file, ${2} gtdb_tax file return number of lines
+filter_taxids_gtdb()
+{ # parameter: ${1} assembly_summary file, ${2} gtdb_tax file return number of lines
     tmp_lineage=$(tmp_file "lineage.tmp")
     tmp_lineage_neg=$(tmp_file "lineage_neg.tmp")
 
@@ -425,14 +439,16 @@ filter_taxids_gtdb() { # parameter: ${1} assembly_summary file, ${2} gtdb_tax fi
     count_lines_file "${1}"
 }
 
-filter_date() { # parameter: ${1} assembly_summary file - return number of lines
+filter_date()
+{ # parameter: ${1} assembly_summary file - return number of lines
     # Replace date separator / (changed around 2025 to -). Keep both for backwards-comp.
     awk -v dstart="${date_start}" -v dend="${date_end}" 'BEGIN{FS=OFS="\t"}{date=$15; gsub("/","",date); gsub("-","",date); if((date>=dstart || dstart=="") && (date<=dend || dend=="")) print $0}' "${1}" >"${1}_date"
     mv "${1}_date" "${1}"
     count_lines_file "${1}"
 }
 
-filter_columns() { # parameter: ${1} assembly_summary file - return number of lines
+filter_columns()
+{ # parameter: ${1} assembly_summary file - return number of lines
     # Valid URLs (not na)
     colfilter="\$20 !~ /^na/"
     if [[ "${tax_mode}" == "ncbi" ]]; then
@@ -476,7 +492,8 @@ filter_columns() { # parameter: ${1} assembly_summary file - return number of li
     count_lines_file "${1}"
 }
 
-filter_gtdb() { # parameter: ${1} assembly_summary file, ${2} gtdb_tax file,  ${3} gtdb_missing file - return number of lines
+filter_gtdb()
+{ # parameter: ${1} assembly_summary file, ${2} gtdb_tax file,  ${3} gtdb_missing file - return number of lines
     # Check for missing entries
     join -1 1 -2 1 <(sort -k 1,1 "${1}") <(sort -k 1,1 "${2}") -v 2 >"${3}"
     # Match entries
@@ -485,7 +502,8 @@ filter_gtdb() { # parameter: ${1} assembly_summary file, ${2} gtdb_tax file,  ${
     count_lines_file "${1}"
 }
 
-add_rank_ncbi() { # parameter: ${1} assembly_summary file, ${2} modified assembly_summary file with rank as first col, ${3} ncbi_tax file - return number of lines
+add_rank_ncbi()
+{ # parameter: ${1} assembly_summary file, ${2} modified assembly_summary file with rank as first col, ${3} ncbi_tax file - return number of lines
     # rankedlineage.dmp cols (sep tab|tab):
     # $1=taxid, $3=name, $5=species, $7=genus, $9=family, $11=order, $13=class, $15=phylum, $17=kingdom, $19=superkingdom
     if [[ -z "${top_assemblies_rank}" ]]; then
@@ -515,7 +533,8 @@ add_rank_ncbi() { # parameter: ${1} assembly_summary file, ${2} modified assembl
     count_lines_file "${2}"
 }
 
-add_rank_gtdb() { # parameter: ${1} assembly_summary file, ${2} modified assembly_summary file with rank as first col, ${3} gtdb_tax file - return number of lines
+add_rank_gtdb()
+{ # parameter: ${1} assembly_summary file, ${2} modified assembly_summary file with rank as first col, ${3} gtdb_tax file - return number of lines
     # gtdb taxonomy (RS_ and GB_ already stripped)
     # accession.version <tab> d__Bacteria;p__Firmicutes;c__Bacilli;o__Staphylococcales;f__Staphylococcaceae;g__Staphylococcus;s__Staphylococcus aureus
     # export accession <tab> ranked name
@@ -540,7 +559,8 @@ add_rank_gtdb() { # parameter: ${1} assembly_summary file, ${2} modified assembl
     count_lines_file "${2}"
 }
 
-filter_top_assemblies() { # parameter: ${1} assembly_summary file, ${2} modified assembly_summary file with rank as first col - return number of lines
+filter_top_assemblies()
+{ # parameter: ${1} assembly_summary file, ${2} modified assembly_summary file with rank as first col - return number of lines
     # First col contains rank info (all other get shifted with +1)
     awk -v taxcol="1" 'BEGIN{
             FS=OFS="\t";
@@ -568,21 +588,24 @@ filter_top_assemblies() { # parameter: ${1} assembly_summary file, ${2} modified
     count_lines_file "${1}"
 }
 
-list_files() { # parameter: ${1} file, ${2} fields [assembly_accesion,url], ${3} extensions - returns assembly accession, url and filename (for all selected extensions)
+list_files()
+{ # parameter: ${1} file, ${2} fields [assembly_accesion,url], ${3} extensions - returns assembly accession, url and filename (for all selected extensions)
     # Given an url returns the url and the filename for all extensions
     for extension in ${3//,/ }; do
         cut --fields="${2}" "${1}" | sed 's/\/$//' | awk -F "\t" -v ext="${extension}" '{url_count=split($2,url,"/"); print $1 "\t" $2 "\t" url[url_count] "_" ext}'
     done
 }
 
-tmp_file() { # parameter: ${1} filename - return full path of created file
+tmp_file()
+{ # parameter: ${1} filename - return full path of created file
     f="${working_dir}${1}"
     rm -f "${f}"
     touch "${f}"
     echo "${f}"
 }
 
-print_progress() { # parameter: ${1} file number, ${2} total number of files
+print_progress()
+{ # parameter: ${1} file number, ${2} total number of files
     if [ "${silent_progress}" -eq 1 ] || [ "${silent}" -eq 0 ]; then
         printf "%5d/%d - " "${1}" "${2}"
         printf "%2.2f%%\r" "$(bc -l <<<"scale=4;(${1}/${2})*100")"
@@ -590,7 +613,8 @@ print_progress() { # parameter: ${1} file number, ${2} total number of files
 }
 export -f print_progress #export it to be accessible to the parallel call
 
-check_file_folder() { # parameter: ${1} url, ${2} log (0->before download/1->after download) - returns 0 (ok) / 1 (error)
+check_file_folder()
+{ # parameter: ${1} url, ${2} log (0->before download/1->after download) - returns 0 (ok) / 1 (error)
     file_name=$(basename "${1}")
     path_name="${target_output_prefix}$(path_output "${file_name}")${file_name}"
     # Check if file exists and if it has a size greater than zero (-s)
@@ -612,7 +636,8 @@ check_file_folder() { # parameter: ${1} url, ${2} log (0->before download/1->aft
 }
 export -f check_file_folder #export it to be accessible to the parallel call
 
-check_md5_ftp() {                                             # parameter: ${1} url - returns 0 (ok) / 1 (error)
+check_md5_ftp()
+{                                                             # parameter: ${1} url - returns 0 (ok) / 1 (error)
     if [ "${check_md5}" -eq 1 ]; then                         # Only if md5 checking is activated
         md5checksums_url="$(dirname "${1}")/md5checksums.txt" # ftp directory
         file_name=$(basename "${1}")                          # downloaded file name
@@ -648,7 +673,8 @@ check_md5_ftp() {                                             # parameter: ${1} 
 }
 export -f check_md5_ftp #export it to be accessible to the parallel call
 
-download() { # parameter: ${1} url, ${2} job number, ${3} total files, ${4} url_success_download (append)
+download()
+{ # parameter: ${1} url, ${2} job number, ${3} total files, ${4} url_success_download (append)
     ex=0
     dl=0
     if ! check_file_folder "${1}" "0"; then # Check if the file is already on the output folder (avoid redundant download)
@@ -673,7 +699,8 @@ download() { # parameter: ${1} url, ${2} job number, ${3} total files, ${4} url_
 }
 export -f download
 
-download_files() {                                        # parameter: ${1} file, ${2} fields [assembly_accesion,url] or field [url,filename], ${3} extension
+download_files()
+{                                                         # parameter: ${1} file, ${2} fields [assembly_accesion,url] or field [url,filename], ${3} extension
     url_list_download=$(tmp_file "url_list_download.tmp") #Temporary url list of files to download in this call
     # sort files to get all files for the same entry in sequence, in case of failure
     if [ -z "${3:-}" ]; then #direct download (url+file)
@@ -720,7 +747,8 @@ download_files() {                                        # parameter: ${1} file
     rm -f "${url_list_download}" "${url_success_download}"
 }
 
-remove_files() { # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR field [filename], ${3} extension - returns number of deleted files
+remove_files()
+{ # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR field [filename], ${3} extension - returns number of deleted files
     if [ -z "${3:-}" ]; then
         # direct remove (filename)
         filelist=$(cut --fields="${2}" "${1}")
@@ -737,29 +765,42 @@ remove_files() { # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR 
     echo ${deleted_files}
 }
 
-check_missing_files() { # ${1} file, ${2} fields [assembly_accesion,url], ${3} extension - returns assembly accession, url and filename
+check_missing_files()
+{ # ${1} file, ${2} fields [assembly_accesion,url], ${3} extension - returns assembly accession, url and filename
     join -1 3 -2 1 <(list_files "${1}" "${2}" "${3}" | sort -k 3,3 -t$'\t') <(list_local_files "${target_output_prefix}" | sort) -t$'\t' -v 1 -o "1.1,1.2,1.3"
 }
 
-check_complete_record() { # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension - returns assembly accession, url
+check_complete_record()
+{ # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension - returns assembly accession, url
     expected_files=$(list_files "${1}" "${2}" "${3}" | sort -k 3,3)
-    join -1 3 -2 1 <(echo "${expected_files}" | sort -k 3,3) <(list_local_files "${target_output_prefix}" | sort) -t$'\t' -o "1.1" -v 1 | sort | uniq | # Check for accessions with at least one missing file
-        join -1 1 -2 1 <(echo "${expected_files}" | cut -f 1,2 | sort | uniq) - -t$'\t' -v 1                                                            # Extract just assembly accession and url for complete entries (no missing files)
+    join -1 3 -2 1 <(echo "${expected_files}" | sort -k 3,3) <(list_local_files "${target_output_prefix}" | sort) -t$'\t' -o "1.1" -v 1 | sort | uniq \
+        |
+        # Check for accessions with at least one missing file
+        join -1 1 -2 1 <(echo "${expected_files}" | cut -f 1,2 | sort | uniq) - -t$'\t' -v 1 # Extract just assembly accession and url for complete entries (no missing files)
 }
 
-output_assembly_accession() {                                      # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension, ${4} mode (A/R) - returns assembly accession, url and mode
+output_assembly_accession()
+{                                                                  # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension, ${4} mode (A/R) - returns assembly accession, url and mode
     check_complete_record "${1}" "${2}" "${3}" | sed "s/^/${4}\t/" # add mode
 }
 
-output_sequence_accession() { # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension, ${4} mode (A/R), ${5} assembly_summary (for taxid)
+output_sequence_accession()
+{ # parameters: ${1} file, ${2} field [assembly accession, url], ${3} extension, ${4} mode (A/R), ${5} assembly_summary (for taxid)
     # shellcheck disable=SC2016
-    join <(list_files "${1}" "${2}" "assembly_report.txt" | sort -k 1,1) <(check_complete_record "${1}" "${2}" "${3}" | sort -k 1,1) -t$'\t' -o "1.1,1.3" |                                                     # List assembly accession and filename for all assembly_report.txt with complete record (no missing files) - returns assembly accesion, filename
-        join - <(sort -k 1,1 "${5}") -t$'\t' -o "1.1,1.2,2.6" |                                                                                                                                                 # Get taxid {1} assembly accession, {2} filename {3} taxid
-        parallel --tmpdir "${working_dir}" --colsep "\t" -j "${threads}" -k 'grep "^[^#]" "${target_output_prefix}$(path_output {2}){2}" | tr -d "\r" | cut -f 5,7,9 | sed "s/^/{1}\\t/" | sed "s/$/\\t{3}/"' | # Retrieve info from assembly_report.txt and add assemby accession in the beggining and taxid at the end
-        sed "s/^/${4}\t/"                                                                                                                                                                                       # Add mode A/R at the end
+    join <(list_files "${1}" "${2}" "assembly_report.txt" | sort -k 1,1) <(check_complete_record "${1}" "${2}" "${3}" | sort -k 1,1) -t$'\t' -o "1.1,1.3" \
+        |
+        # List assembly accession and filename for all assembly_report.txt with complete record (no missing files) - returns assembly accesion, filename
+        join - <(sort -k 1,1 "${5}") -t$'\t' -o "1.1,1.2,2.6" \
+        |
+        # Get taxid {1} assembly accession, {2} filename {3} taxid
+        parallel --tmpdir "${working_dir}" --colsep "\t" -j "${threads}" -k 'grep "^[^#]" "${target_output_prefix}$(path_output {2}){2}" | tr -d "\r" | cut -f 5,7,9 | sed "s/^/{1}\\t/" | sed "s/$/\\t{3}/"' \
+        |
+        # Retrieve info from assembly_report.txt and add assemby accession in the beggining and taxid at the end
+        sed "s/^/${4}\t/" # Add mode A/R at the end
 }
 
-exit_status() {                                         # parameters: ${1} # expected files, ${2} # current files
+exit_status()
+{                                                       # parameters: ${1} # expected files, ${2} # current files
     if [[ ${conditional_exit} =~ ^[+-]?[0-9]*$ ]]; then # INTEGER
         if [[ ${conditional_exit} -eq 0 ]]; then        # Condition off
             return 0
@@ -781,7 +822,8 @@ exit_status() {                                         # parameters: ${1} # exp
     fi
 }
 
-echolog() { # parameters: ${1} text, ${2} STDOUT (0->no/1->yes)
+echolog()
+{ # parameters: ${1} text, ${2} STDOUT (0->no/1->yes)
     if [[ "${2:-0}" -eq "1" ]] && [ "${silent}" -eq 0 ]; then
         echo "${1}" # STDOUT
     fi
@@ -789,7 +831,8 @@ echolog() { # parameters: ${1} text, ${2} STDOUT (0->no/1->yes)
 }
 export -f echolog #export it to be accessible to the parallel call
 
-print_debug() { # parameters: ${1} tools
+print_debug()
+{ # parameters: ${1} tools
     echo "========================================================"
     echo "genome_updater version ${version}"
     echo "========================================================"
@@ -806,18 +849,21 @@ print_debug() { # parameters: ${1} tools
     echo "========================================================"
 }
 
-function print_logo {
+function print_logo
+{
     echo "┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐"
     echo "│ ┬├┤ ││││ ││││├┤     │ │├─┘ ││├─┤ │ ├┤ ├┬┘"
     echo "└─┘└─┘┘└┘└─┘┴ ┴└─┘────└─┘┴  ─┴┘┴ ┴ ┴ └─┘┴└─"
     echo "                                     v${version} "
 }
 
-function print_line {
+function print_line
+{
     echo "-------------------------------------------"
 }
 
-function showhelp {
+function showhelp
+{
     echo
     print_logo
     echo
@@ -1204,11 +1250,13 @@ fi
 
 # Define downloader to use
 if [[ -n "${local_dir}" || "${downloader_tool}" == "curl" ]]; then
-    function downloader() { # parameter: ${1} output file, ${2} url
+    function downloader()
+    { # parameter: ${1} output file, ${2} url
         curl --silent --retry "${retries}" --connect-timeout "${timeout}" --output "${1}" "${2}"
     }
 else
-    function downloader() { # parameter: ${1} output file, ${2} url
+    function downloader()
+    { # parameter: ${1} output file, ${2} url
         wget --quiet --continue --tries "${retries}" --read-timeout "${timeout}" --output-document "${1}" "${2}"
     }
 fi
