@@ -762,17 +762,9 @@ remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR fi
     fi
     deleted_files=0
     while read -r f; do
-        path_name="${target_output_prefix}$(path_output "${f}")${f}"
-        # check hard link count: GNU stat: -c '%h' / BSD stat: -f '%l'
-        hl_count=$(stat -c '%h' "${path_name}" 2>/dev/null || stat -f '%l' "${path_name}" 2>/dev/null || echo 1)
-
-        # Only delete if delete option is enable or if it's a symbolic link (from updates)
-        if [[ -L "${path_name}" || "${delete_extra_files}" -eq 1 || ( "${link_mode}" == "hard" && "${hl_count}" -gt 1 ) ]]; then
-            rm "${path_name}" -v >> "${log_file}"
-            deleted_files=$((deleted_files + 1))
-        else
-            echolog "kept '${path_name}'" "0"
-        fi
+        path_name="${target_output_prefix}$(path_output "${f}")${f}";
+        rm "${path_name}" -v >> "${log_file}";
+        deleted_files=$((deleted_files + 1));
     done <<< "${filelist}"
     echo ${deleted_files}
 }
@@ -865,10 +857,12 @@ function print_line {
     echo "-------------------------------------------"
 }
 
+xxx="123"
+
 function showhelp {
     echo
     print_logo
-    echo
+    echo $xxx
     echo $'Database:'
     echo $' -d Database (comma-separated entries)\n\t[genbank, refseq]'
     echo
@@ -1459,7 +1453,7 @@ else # update/fix
     extra_files=$(count_lines_file "${extra}")
     if [ "${extra_files}" -gt 0 ]; then
         echolog " - ${extra_files} extra files" "1"
-        if [ "${dry_run}" -eq 0 ]; then    
+        if [[ "${dry_run}" -eq 0 && "${delete_extra_files}" -eq 1 ]]; then
             del_files=$(remove_files "${extra}" "1")
             echolog " - ${del_files} files successfully deleted" "1";
             # Keep track how many extra files were kept
