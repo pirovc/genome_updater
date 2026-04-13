@@ -763,7 +763,7 @@ remove_files() # parameter: ${1} file, ${2} fields [assembly_accesion,url] OR fi
     deleted_files=0
     while read -r f; do
         path_name="${target_output_prefix}$(path_output "${f}")${f}"
-        # check hard link count.
+        # check hard link count: GNU stat: -c '%h' / BSD stat: -f '%l'
         hl_count=$(stat -c '%h' "${path_name}" 2>/dev/null || stat -f '%l' "${path_name}" 2>/dev/null || echo 1)
 
         # Only delete if delete option is enable or if it's a symbolic link (from updates)
