@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
+# conda install go-shfmt shellcheck ruby
+# gem install bashcov codecov
 
-# conda install shellcheck
+echo "formatting code with shfmt"
+shfmt --binary-next-line --func-next-line --language-dialect bash --indent 4 --write genome_updater.sh
+shfmt --binary-next-line --func-next-line --language-dialect bats --indent 4 --write tests/*.bats
+
 if shellcheck genome_updater.sh
 then
     echo "shellcheck found no issues!"
 fi
 
-# conda install ruby
-# gem install bashcov codecov
-# To generate local html coverage reports
+# Generate local html coverage reports
 echo -e "SimpleCov.start do\n  add_filter 'tests/'\nend" > .simplecov
 bashcov --skip-uncovered tests/libs/bats/bin/bats tests/integration_offline.bats
