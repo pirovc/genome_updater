@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-# apt-get install shellcheck
+# conda install shellcheck
 if shellcheck genome_updater.sh
 then
     echo "shellcheck found no issues!"
 fi
 
-# mamba install ruby
+# conda install ruby
 # gem install bashcov codecov
 # To generate local html coverage reports
 echo -e "SimpleCov.start do\n  add_filter 'tests/'\nend" > .simplecov

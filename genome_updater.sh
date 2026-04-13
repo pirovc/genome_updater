@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.7.2"
+version="0.8.0"
 
 # Define ncbi_base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -103,7 +103,7 @@ path_output() # parameter: ${1} file/url
 {
     f=$(basename "${1}");
     path="${files_dir}";
-    if [[ "${ncbi_folders}" -eq 1 ]]; then
+    if [[ "${dir_structure}" == "ncbi" ]]; then
         path="${path}${f:0:3}/${f:4:3}/${f:7:3}/${f:10:3}/";
     fi
     echo "${path}";
@@ -127,10 +127,10 @@ export -f link_version  #export it to be accessible to the parallel call
 list_local_files() # parameter: ${1} prefix, ${2} 1 to list list all, "" list only '-not -empty'
 {
     # Returns list of local files, without folder structure
-    if [[ "${ncbi_folders}" -eq 0 ]]; then
-        depth="-maxdepth 1";
-    else
+    if [[ "${dir_structure}" == "ncbi" ]]; then
         depth="-mindepth 4";
+    else
+        depth="-maxdepth 1";
     fi
     param="-not -empty"
     if [[ -n "${2:-}" ]]; then
@@ -869,50 +869,52 @@ function showhelp {
     echo
     print_logo
     echo
-    echo $'Database options:'
+    echo $'Database:'
     echo $' -d Database (comma-separated entries)\n\t[genbank, refseq]'
     echo
-    echo $'Organism options:'
+    echo $'Organism/Taxa:'
     echo $' -g Organism group(s) (comma-separated entries, empty for all)\n\t[archaea, bacteria, fungi, human, invertebrate, metagenomes, \n\tother, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]\n\tDefault: ""'
     echo $' -T Taxonomic identifier(s) with optional negation using the ^ prefix (comma-separated entries, empty for all).\n\tExample: "543,^562" (for -M ncbi) or "f__Enterobacteriaceae,^s__Escherichia coli" (for -M gtdb)\n\tDefault: ""'
     echo
-    echo $'File options:'
-    echo $' -f file type(s) (comma-separated entries)\n\t[genomic.fna.gz, assembly_report.txt, protein.faa.gz, genomic.gbff.gz]\n\tMore formats at https://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt\n\tDefault: assembly_report.txt'
+    echo $'File:'
+    echo $' -f file type(s) (comma-separated entries)\n\t[genomic.fna.gz, assembly_report.txt, protein.faa.gz, genomic.gbff.gz, ...]\n\tAll available formats at https://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt\n\tDefault: assembly_report.txt'
     echo
-    echo $'Filter options:'
+    echo $'Filter:'
     echo $' -c refseq category (comma-separated entries, empty for all)\n\t[reference genome, na]\n\tDefault: ""'
     echo $' -l assembly level (comma-separated entries, empty for all)\n\t[Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: ""' 
     echo $' -D Start date (>=), based on the sequence release date. Format YYYYMMDD.\n\tDefault: ""'
     echo $' -E End date (<=), based on the sequence release date. Format YYYYMMDD.\n\tDefault: ""'
     echo $' -F Custom filter for the assembly summary. \n\tExamples:\n\t  Single: -F \'$14 == "Full"\'\n\t  Multi:  -F \'($2 == "PRJNA12377" || $2 == "PRJNA670754") && $4 != "Partial"\'\n\t  Regex:  -F \'$8 ~ /bacterium/\'\n\t  Whole-file: -F \'$0 ~ "plasmid"\'\n\tUses awk syntax: $ for column index, || "or", && "and", ! "not", parentheses for nesting. Case sensitive.\n\tColumns info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
     echo
-    echo $'Taxonomy options:'
+    echo $'Taxonomy:'
     echo $' -M Taxonomy. gtdb keeps only assemblies in the latest GTDB release. ncbi keeps only latest assemblies (version_status=latest). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
     echo $' -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. \n\tSelection by ranks are also supported with rank:number (e.g genus:3)\n\t[species, genus, family, order, class, phylum, kingdom, superkingdom]\n\tSelection order based on: RefSeq Category, Assembly level, Relation to type material, Date.\n\tDefault: 0'
     echo $' -a Keep the current version of the taxonomy database in the output folder'
     echo
-    echo $'Run options:'
-    echo $' -o Output/Working directory \n\tDefault: ./tmp.XXXXXXXXXX'
-    echo $' -t Threads to parallelize download and some file operations\n\tDefault: 1'
+    echo $'Run:'
     echo $' -k Dry-run mode. No sequence data is downloaded or updated - just checks for available sequences and changes'
     echo $' -i Fix only mode. Re-downloads incomplete or failed data from a previous run. Can also be used to change files (-f).'
+    echo $' -t Threads to parallelize download and some file operations\n\tDefault: 1'
+    echo $' -L Downloader\n\t[wget, curl]\n\tDefault: wget'
     echo $' -m Check MD5 of downloaded files'
-    echo $' -H Link mode. [hard, soft]. Hard links save inodes (i.e. number of files; useful on HPC systems), but only work if both previous and new output directories are on the same filesystem.\n\tDefault: "hard"'
     echo
-    echo $'Report options:'
-    echo $' -u Updated assembly accessions report\n\t(Added/Removed, assembly accession, url)'
-    echo $' -r Updated sequence accessions report\n\t(Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid)\n\tOnly available when file format assembly_report.txt is selected and successfully downloaded'
-    echo $' -p Reports URLs successfuly downloaded and failed (url_failed.txt url_downloaded.txt)'
+    echo $'Output:'
+    echo $' -o Output/Working directory \n\tDefault: ./tmp.XXXXXXXXXX'
+    echo $' -b Version label\n\tIdentifier for the downloaded version.\n\tDefault: current timestamp (YYYY-MM-DD_HH-MM-SS)'
+    echo $' -N Output dir structure.\n\tncbi: files/GCF/000/499/605/GCF_000499605.1_...\n\t[ncbi, flat]\n\tDefault: "ncbi"'
     echo
-    echo $'Misc. options:'
-    echo $' -b Version label\n\tDefault: current timestamp (YYYY-MM-DD_HH-MM-SS)'
+    echo $'Report:'
+    echo $' -u Generate a report on updated assembly accessions\n\t(Added/Removed, assembly accession, url)'
+    echo $' -r Generate a report on updated sequence accessions\n\t(Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid)\n\tOnly available when file format assembly_report.txt is selected and successfully downloaded.'
+    echo $' -p Generate a download report with successful and failed URLs (url_failed.txt url_downloaded.txt)'
+    echo
+    echo $'Misc.:'
     echo $' -e External "assembly_summary.txt" file to recover data from. Mutually exclusive with -d / -g \n\tDefault: ""'
     echo $' -B Alternative version label to use as the current version. Mutually exclusive with -i.\n\tCan be used to rollback to an older version or to create multiple branches from a base version.\n\tDefault: ""'
+    echo $' -H Link mode for files kept between versions. Hard links save inodes (i.e. number of files; useful on HPC systems).\n\t[hard, soft]\n\tDefault: "hard"'
     echo $' -R Number of attempts to retry to download files in batches \n\tDefault: 5'
     echo $' -n Conditional exit status based on number of failures accepted, otherwise will Exit Code = 1.\n\tExample: -n 10 will exit code 1 if 10 or more files failed to download\n\t[integer for file number, float for percentage, 0 = off]\n\tDefault: 0'
-    echo $' -N Output files in folders like NCBI ftp structure (e.g. files/GCF/000/499/605/GCF_000499605.1_EMW001_assembly_report.txt)'
-    echo $' -L Downloader\n\t[wget, curl]\n\tDefault: wget'
-    echo $' -x Allow the deletion of regular extra files (not symbolic links) found in the output folder'
+    echo $' -x Allow the deletion of regular extra files (not links) found in the output folder'
     echo $' -s Silent output'
     echo $' -w Silent output with download progress only'
     echo $' -V Verbose log'
@@ -942,7 +944,7 @@ url_list=0
 dry_run=0
 just_fix=0
 conditional_exit=0
-ncbi_folders=0
+dir_structure="ncbi"
 silent=0
 silent_progress=0
 debug_mode=0
@@ -968,7 +970,7 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 # Parse -o and -B first to detect possible updates
-getopts_list="aA:b:B:c:d:D:e:E:f:F:g:hH:ikl:L:mM:n:No:prR:st:T:uVwxZ"
+getopts_list="aA:b:B:c:d:D:e:E:f:F:g:hH:ikl:L:mM:n:N:o:prR:st:T:uVwxZ"
 OPTIND=1 # Reset getopts
 # Parses working_dir from "$@"
 while getopts "${getopts_list}" opt; do
@@ -1035,7 +1037,7 @@ while getopts "${getopts_list}" opt "${args[@]}"; do
     m) check_md5=1 ;;
     M) tax_mode=${OPTARG} ;;
     n) conditional_exit=${OPTARG} ;;
-    N) ncbi_folders=1 ;;
+    N) dir_structure=${OPTARG} ;;
     o) working_dir=${OPTARG} ;;
     p) url_list=1 ;;
     r) updated_sequence_accession=1 ;;
@@ -1103,6 +1105,10 @@ fi
 
 if [[ "${link_mode}" != "hard" && "${link_mode}" != "soft" ]]; then
     echo "${link_mode}: invalid link mode [hard, soft]"; exit 1;
+fi
+
+if [[ "${dir_structure}" != "ncbi" && "${dir_structure}" != "flat" ]]; then
+    echo "${link_mode}: invalid output directory structure [ncbi, flat]"; exit 1;
 fi
 
 if [[ -z "${database}" && -z "${external_assembly_summary}" ]]; then
@@ -1237,7 +1243,7 @@ else
 fi
 working_dir="$(readlink -m "${working_dir}")/"
 files_dir="files/"
-export files_dir working_dir ncbi_folders
+export files_dir working_dir dir_structure
 
 default_assembly_summary=${working_dir}assembly_summary.txt
 history_file=${working_dir}history.tsv
@@ -1588,7 +1594,7 @@ fi
 if [ "${dry_run}" -eq 0 ]; then
 
     # Clean possible empty folders in NCBI structure after update
-    if [[ "${ncbi_folders}" -eq 1 ]]; then
+    if [[ "${dir_structure}" == "ncbi" ]]; then
         find "${target_output_prefix}${files_dir}" -type d -empty -delete
     fi
 
