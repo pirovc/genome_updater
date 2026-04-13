@@ -857,12 +857,10 @@ function print_line {
     echo "-------------------------------------------"
 }
 
-xxx="123"
-
 function showhelp {
     echo
     print_logo
-    echo $xxx
+    echo
     echo $'Database:'
     echo $' -d Database (comma-separated entries)\n\t[genbank, refseq]'
     echo
