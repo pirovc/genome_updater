@@ -2,7 +2,7 @@
 # conda install go-shfmt shellcheck ruby
 # gem install bashcov codecov
 
-shfmt -w genome_updater.sh
+shfmt -ln bash -w -i 4 genome_updater.sh
 if shellcheck genome_updater.sh
 then
     echo "shellcheck found no issues!"
