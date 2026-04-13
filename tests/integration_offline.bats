@@ -566,8 +566,39 @@ setup_file() {
     assert_success
 }
 
-@test "Delete extra files" {
-    outdir=${outprefix}delete-extra-files/
+@test "Delete extra files -N ncbi" {
+    outdir=${outprefix}delete-extra-files-ncbi/
+    label="test"
+    run ./genome_updater.sh -N ncbi -d refseq -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+
+    # Get path from first file and make a copy (extra file)
+    file=$(find "${outdir}${label}/files/" -type f | head -n1)
+    cp "${file}" "${file}.EXTRA_FILE"
+
+    # Create extra files
+    assert_file_exist "${file}.EXTRA_FILE"
+    # Run to fix and delete
+    run ./genome_updater.sh -o ${outdir} -i -x
+    sanity_check ${outdir} ${label}
+    # File was removed
+    assert_not_exist "${file}.EXTRA_FILE"
+
+    # Create extra files
+    cp "${file}" "${file}.ANOTHER_EXTRA_FILE"
+    assert_file_exist "${file}.ANOTHER_EXTRA_FILE"
+
+    # update label
+    label="update"
+    # Update (should not not carry extra file over to new version)
+    run ./genome_updater.sh -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+
+    assert_not_exist "${file}.ANOTHER_EXTRA_FILE"
+}
+
+@test "Delete extra files -N flat" {
+    outdir=${outprefix}delete-extra-files-flat/
     label="test"
     run ./genome_updater.sh -N flat -d refseq -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
@@ -575,7 +606,7 @@ setup_file() {
     touch "${outdir}${label}/files/EXTRA_FILE.txt"
     assert_file_exist "${outdir}${label}/files/EXTRA_FILE.txt"
     # Run to fix and delete
-    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -i -x
+    run ./genome_updater.sh -o ${outdir} -i -x
     sanity_check ${outdir} ${label}
     # File was removed
     assert_not_exist "${outdir}${label}/files/EXTRA_FILE.txt"
@@ -587,7 +618,7 @@ setup_file() {
     # update label
     label="update"
     # Update (should not not carry extra file over to new version)
-    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
+    run ./genome_updater.sh -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     assert_not_exist "${outdir}${label}/files/ANOTHER_EXTRA_FILE.txt"
@@ -785,7 +816,7 @@ setup_file() {
     assert_failure
 }
 
-@test "NCBI folders" {
+@test "NCBI dir structure" {
     outdir=${outprefix}ncbi-folders/
     label="1-refseq"
     run ./genome_updater.sh -N ncbi -d refseq -g archaea -b ${label} -o ${outdir}
@@ -815,7 +846,7 @@ setup_file() {
     # no empty folders
     assert_equal $(find "${outdir}${label}/files/" -type d -empty | wc -l | cut -f1 -d' ') 0
 
-    # Update -N, do not consider folder structute and download again to base files folder
+    # Update -N, do not consider folder structute and download again
     # Remove refseq
     label="4-no-ncbi-folders"
     run ./genome_updater.sh -N flat -d genbank -g archaea -b ${label} -o ${outdir}
@@ -824,4 +855,22 @@ setup_file() {
     # refseq and genbank are no longer
     assert_dir_not_exist "${outdir}${label}/files/GCF/"
     assert_dir_not_exist "${outdir}${label}/files/GCA/"
+}
+
+@test "Flat dir structure" {
+    outdir=${outprefix}flat-folders/
+    label="1-base"
+    run ./genome_updater.sh -N flat -d refseq,genbank -g archaea -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+    # Assert no folder is inside files
+    assert_equal $(find "${outdir}${label}/files" -mindepth 1 -type d | wc -l) 0
+
+    # Update -N, do not consider folder structute and download again
+    label="2-change-ncbi-ncbi-folders"
+    run ./genome_updater.sh -N ncbi -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+
+    # refseq and genbank are now created
+    assert_dir_exist "${outdir}${label}/files/GCF/"
+    assert_dir_exist "${outdir}${label}/files/GCA/"
 }
