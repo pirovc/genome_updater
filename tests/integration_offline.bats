@@ -462,10 +462,10 @@ setup_file() {
     assert_file_not_empty ${outdir}${label}/*_sequence_accession.txt
 }
 
-@test "Report sequence accession with ncbi folder structure" {
+@test "Report sequence accession with flat folder structure" {
     outdir=${outprefix}report-sequence-accession-ncbi-folders/
     label="test"
-    run ./genome_updater.sh -N -d refseq -b ${label} -o ${outdir} -r
+    run ./genome_updater.sh -N flat -d refseq -b ${label} -o ${outdir} -r
     sanity_check ${outdir} ${label}
 
     # Check if report was printed
@@ -573,7 +573,7 @@ setup_file() {
 @test "Delete extra files" {
     outdir=${outprefix}delete-extra-files/
     label="test"
-    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
+    run ./genome_updater.sh -N flat -d refseq -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     # Create extra files
     touch "${outdir}${label}/files/EXTRA_FILE.txt"
@@ -664,26 +664,26 @@ setup_file() {
     sanity_check ${outdir} ${label}
 }
 
-@test "Mode UPDATE ncbi folders" {
+@test "Mode UPDATE flat folders" {
     outdir=${outprefix}mode-update-ncbi-folders/
     label="test"
 
     # Dry-run NEW
-    run ./genome_updater.sh -N -d refseq -b ${label} -o ${outdir} -k
+    run ./genome_updater.sh -N flat -d refseq -b ${label} -o ${outdir} -k
     assert_success
     assert_dir_not_exist ${outdir}
 
     # Real run NEW
-    run ./genome_updater.sh -N -d refseq -b ${label} -o ${outdir}
+    run ./genome_updater.sh -N flat -d refseq -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # Dry-run UPDATE (use another organism group to simulate change)
     label="update"
-    run ./genome_updater.sh -N -d refseq -g archaea,fungi -b ${label} -o ${outdir} -k
+    run ./genome_updater.sh -d refseq -g archaea,fungi -b ${label} -o ${outdir} -k
     assert_success
 
     # Real run FIX
-    run ./genome_updater.sh -N -d refseq -g archaea,fungi -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g archaea,fungi -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 }
 
@@ -725,35 +725,35 @@ setup_file() {
     assert_success
 }
 
-@test "Mode auto UPDATE ncbi folders" {
+@test "Mode auto UPDATE flat folders" {
     outdir=${outprefix}mode-auto-update-ncbi-folders/
     label="test"
 
     # Dry-run NEW
-    run ./genome_updater.sh -N -d refseq -b ${label} -o ${outdir} -g archaea -k
+    run ./genome_updater.sh -N flat -d refseq -b ${label} -o ${outdir} -g archaea -k
     assert_success
     assert_dir_not_exist ${outdir}
 
     # Real run NEW
-    run ./genome_updater.sh -N -d refseq -b ${label} -o ${outdir} -g archaea
+    run ./genome_updater.sh -N flat -d refseq -b ${label} -o ${outdir} -g archaea
     sanity_check ${outdir} ${label}
 
     # Dry-run UPDATE (use same parameters)
     label="update"
-    run ./genome_updater.sh -N -o ${outdir} -b ${label} -k
+    run ./genome_updater.sh -o ${outdir} -b ${label} -k
     assert_success
 
     # Real run (nothing to update, but carry parameters)
-    run ./genome_updater.sh -N -o ${outdir} -b ${label}
+    run ./genome_updater.sh -o ${outdir} -b ${label}
     sanity_check ${outdir} ${label}
 
     # Dry-run UPDATE
     label="update2"
-    run ./genome_updater.sh -N -o ${outdir} -b ${label} -g "" -d refseq,genbank -u -k
+    run ./genome_updater.sh -o ${outdir} -b ${label} -g "" -d refseq,genbank -u -k
     assert_success
 
     # Real run FIX, remove org (get all), add database, add bool report
-    run ./genome_updater.sh -N -o ${outdir} -b ${label} -g "" -d refseq,genbank -u
+    run ./genome_updater.sh -o ${outdir} -b ${label} -g "" -d refseq,genbank -u
     sanity_check ${outdir} ${label}
 
     assert_file_exist ${outdir}${label}/*_assembly_accession.txt
@@ -793,7 +793,7 @@ setup_file() {
 @test "NCBI folders" {
     outdir=${outprefix}ncbi-folders/
     label="1-refseq"
-    run ./genome_updater.sh -N -d refseq -g archaea -b ${label} -o ${outdir}
+    run ./genome_updater.sh -N ncbi -d refseq -g archaea -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # refseq base folder is created, no genbank
@@ -802,7 +802,7 @@ setup_file() {
 
     # Add genbank
     label="2-refseq-genbank"
-    run ./genome_updater.sh -N -d refseq,genbank -g archaea -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq,genbank -g archaea -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # refseq and genbank base folders are created
@@ -811,7 +811,7 @@ setup_file() {
    
     # Remove refseq
     label="3-genbank"
-    run ./genome_updater.sh -N -d genbank -g archaea -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d genbank -g archaea -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     assert_dir_not_exist "${outdir}${label}/files/GCF/"
@@ -820,10 +820,10 @@ setup_file() {
     # no empty folders
     assert_equal $(find "${outdir}${label}/files/" -type d -empty | wc -l | cut -f1 -d' ') 0
     
-    # Update without -N, do not consider folder structute and download again to base files folde
+    # Update -N, do not consider folder structute and download again to base files folder
     # Remove refseq
     label="4-no-ncbi-folders"
-    run ./genome_updater.sh -d genbank -g archaea -b ${label} -o ${outdir}
+    run ./genome_updater.sh -N flat -d genbank -g archaea -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # refseq and genbank are no longer
