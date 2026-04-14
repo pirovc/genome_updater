@@ -912,7 +912,7 @@ function showhelp
     echo $' -H Link mode for files kept between versions. Hard links save inodes (i.e. number of files; useful on HPC systems).\n\t[hard, soft]\n\tDefault: "hard"'
     echo $' -R Number of attempts to retry to download files in batches \n\tDefault: 5'
     echo $' -n Conditional exit status based on number of failures accepted, otherwise will Exit Code = 1.\n\tExample: -n 10 will exit code 1 if 10 or more files failed to download\n\t[integer for file number, float for percentage, 0 = off]\n\tDefault: 0'
-    echo $' -x Allow the deletion of regular extra files (not links) found in the output folder'
+    echo $' -x Look-up for and delete extra files that are not part of the version (inside files/ dir).'
     echo $' -s Silent output'
     echo $' -w Silent output with download progress only'
     echo $' -V Verbose log'
@@ -933,7 +933,7 @@ date_start=""
 date_end=""
 tax_mode="ncbi"
 download_taxonomy=0
-delete_extra_files=0
+find_delete_extra_files=0
 link_mode="hard"
 check_md5=0
 updated_assembly_accession=0
@@ -1055,7 +1055,7 @@ while getopts "${getopts_list}" opt "${args[@]}"; do
     u) updated_assembly_accession=1 ;;
     V) verbose_log=1 ;;
     w) silent_progress=1 ;;
-    x) delete_extra_files=1 ;;
+    x) find_delete_extra_files=1 ;;
     Z) debug_mode=1 ;;
     \?)
         echo "Invalid options" >&2
@@ -1466,12 +1466,12 @@ else # update/fix
     missing_lines=$(count_lines_file "${missing}")
 
     if [ "${missing_lines}" -gt 0 ]; then
-        echolog " - ${missing_lines} missing files" "1"
+        echolog " - ${missing_lines} missing file(s)" "1"
         if [ "${dry_run}" -eq 0 ]; then
             if [ "${just_fix}" -eq 1 ]; then
                 write_history "${current_label}" "" "${timestamp}" "${current_assembly_summary}"
             fi
-            echolog "Downloading ${missing_lines} files with ${threads} threads" "1"
+            echolog "Downloading ${missing_lines} file(s) with ${threads} thread(s)" "1"
             download_files "${missing}" "2,3"
             echolog "" "1"
             # if new files were downloaded, rewrite reports (overwrite information on Removed accessions - all become Added)
@@ -1494,24 +1494,26 @@ else # update/fix
     echolog "" "1"
     rm "${missing}"
 
-    echolog "Checking for extra files in the current version [${current_label}]" "1"
-    extra=$(tmp_file "extra.tmp")
-    # List local files, "1" to list also empty files
-    join <(list_local_files "${current_output_prefix}" "1" | sort) <(list_files "${current_assembly_summary}" "1,20" "${file_formats}" | cut -f 3 | sed -e 's/.*\///' | sort) -v 1 >"${extra}"
-    extra_files=$(count_lines_file "${extra}")
-    if [ "${extra_files}" -gt 0 ]; then
-        echolog " - ${extra_files} extra files" "1"
-        if [[ "${dry_run}" -eq 0 && "${delete_extra_files}" -eq 1 ]]; then
-            del_files=$(remove_files "${extra}" "1")
-            echolog " - ${del_files} files successfully deleted" "1"
-            # Keep track how many extra files were kept
-            extra_files=$((extra_files - del_files))
+    if [[ "${find_delete_extra_files}" -eq 1 ]]; then
+        echolog "Checking for extra files in the current version [${current_label}]" "1"
+        extra=$(tmp_file "extra.tmp")
+        # List local files, "1" to list also empty files
+        join <(list_local_files "${current_output_prefix}" "1" | sort) <(list_files "${current_assembly_summary}" "1,20" "${file_formats}" | cut -f 3 | sed -e 's/.*\///' | sort) -v 1 >"${extra}"
+        extra_files=$(count_lines_file "${extra}")
+        if [ "${extra_files}" -gt 0 ]; then
+            echolog " - ${extra_files} extra files" "1"
+            if [[ "${dry_run}" -eq 0 ]]; then
+                del_files=$(remove_files "${extra}" "1")
+                echolog " - ${del_files} files successfully deleted" "1"
+                # Keep track how many extra files were kept
+                extra_files=$((extra_files - del_files))
+            fi
+        else
+            echolog " - None" "1"
         fi
-    else
-        echolog " - None" "1"
+        echolog "" "1"
+        rm "${extra}"
     fi
-    echolog "" "1"
-    rm "${extra}"
 
     if [[ "${MODE}" == "UPDATE" ]]; then
 
@@ -1673,9 +1675,6 @@ if [ "${dry_run}" -eq 0 ]; then
     # Check if the valid amount of files on folder amount of files on folder
     if [ $((expected_files - current_files)) -gt 0 ]; then
         echolog " - $((expected_files - current_files)) file(s) failed to download. Please re-run your command again with -i to fix it" "1"
-    fi
-    if [[ "${extra_files}" -gt 0 && "${just_fix}" -eq 1 ]]; then
-        echolog " - ${extra_files} extra file(s) found in the output files folder. To delete them, re-run your command with -i -x" "1"
     fi
     echolog '# Current version: '"$(dirname "$(readlink -m "${default_assembly_summary}")")" "1"
     echolog "# Log file       : ${log_file}" "1"
