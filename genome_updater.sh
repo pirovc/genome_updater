@@ -673,6 +673,24 @@ check_md5_ftp()
 }
 export -f check_md5_ftp #export it to be accessible to the parallel call
 
+check_gz_file()
+{ # parameter: ${1} url - returns 0 (ok) / 1 (error)
+    if [ "${check_gz}" -eq 1 ]; then
+        file_name=$(basename "${1}")
+        if [[ ${file_name} =~ \.gz$ ]]; then
+            path_name="${target_output_prefix}$(path_output "${file_name}")${file_name}"
+            if gzip -t "${path_name}" 2>/dev/null; then
+                return 0
+            else
+                echolog "${file_name} corrupted gzip - FILE REMOVED" "0"
+                return 1
+            fi
+        fi
+    fi
+    return 0
+}
+export -f check_gz_file #export it to be accessible to the parallel call
+
 download()
 { # parameter: ${1} url, ${2} job number, ${3} total files, ${4} url_success_download (append)
     ex=0
@@ -680,6 +698,8 @@ download()
     if ! check_file_folder "${1}" "0"; then # Check if the file is already on the output folder (avoid redundant download)
         dl=1
     elif ! check_md5_ftp "${1}"; then # Check if the file already on folder has matching md5
+        dl=1
+    elif ! check_gz_file "${1}"; then
         dl=1
     fi
     if [ "${dl}" -eq 1 ]; then # If file is not yet on folder, download it
@@ -690,6 +710,8 @@ download()
             ex=1
         elif ! check_md5_ftp "${1}"; then # Check file md5
             ex=1
+        elif ! check_gz_file "${1}"; then
+            dl=1
         fi
     fi
     print_progress "${2}" "${3}"
@@ -894,7 +916,8 @@ function showhelp
     echo $' -i Fix only mode. Re-downloads incomplete or failed data from a previous run. Can also be used to change files (-f).'
     echo $' -t Threads to parallelize download and some file operations\n\tDefault: 1'
     echo $' -L Downloader\n\t[wget, curl]\n\tDefault: wget'
-    echo $' -m Check MD5 of downloaded files'
+    echo $' -m Download and compare MD5checksum for all downloaded files.\n\tFile is removed if checksum can be downloaded and does not match.'
+    echo $' -G Check integrity of downloaded .gz files (gzip -t)\n\tFile is removed if test fails.'
     echo
     echo $'Output:'
     echo $' -o Output/Working directory \n\tDefault: ./tmp.XXXXXXXXXX'
@@ -936,6 +959,7 @@ download_taxonomy=0
 find_delete_extra_files=0
 link_mode="hard"
 check_md5=0
+check_gz=0
 updated_assembly_accession=0
 updated_sequence_accession=0
 url_list=0
@@ -957,7 +981,7 @@ downloader_tool="wget"
 
 # Check for required tools
 tool_not_found=0
-tools=("awk" "bc" "find" "join" "md5sum" "parallel" "sed" "tar" "wget")
+tools=("awk" "bc" "find" "gzip" "join" "md5sum" "parallel" "sed" "tar" "wget")
 for t in "${tools[@]}"; do
     if [ ! -x "$(command -v "${t}")" ]; then
         echo "${t} not found"
@@ -967,7 +991,7 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 # Parse -o and -B first to detect possible updates
-getopts_list="aA:b:B:c:d:D:e:E:f:F:g:hH:ikl:L:mM:n:N:o:prR:st:T:uVwxZ"
+getopts_list="aA:b:B:c:d:D:e:E:f:F:g:hH:ikl:L:mGM:n:N:o:prR:st:T:uVwxZ"
 OPTIND=1 # Reset getopts
 # Parses working_dir from "$@"
 while getopts "${getopts_list}" opt; do
@@ -1042,6 +1066,7 @@ while getopts "${getopts_list}" opt "${args[@]}"; do
     l) assembly_level=${OPTARG} ;;
     L) downloader_tool=${OPTARG} ;;
     m) check_md5=1 ;;
+    G) check_gz=1 ;;
     M) tax_mode=${OPTARG} ;;
     n) conditional_exit=${OPTARG} ;;
     N) dir_structure=${OPTARG} ;;
@@ -1267,9 +1292,9 @@ if [ "${silent}" -eq 1 ]; then
 elif [ "${silent_progress}" -eq 1 ]; then
     silent=1
 fi
-n_formats=$(echo "${file_formats}" | tr -cd , | wc -c)                            # number of file formats
-timestamp=$(date +%Y-%m-%d_%H-%M-%S)                                              # timestamp of the run
-export check_md5 silent silent_progress n_formats timestamp verbose_log link_mode # To be accessible in functions called by parallel
+n_formats=$(echo "${file_formats}" | tr -cd , | wc -c)                                     # number of file formats
+timestamp=$(date +%Y-%m-%d_%H-%M-%S)                                                       # timestamp of the run
+export check_md5 check_gz silent silent_progress n_formats timestamp verbose_log link_mode # To be accessible in functions called by parallel
 
 # Create working directory
 if [[ -z "${working_dir}" ]]; then
@@ -1453,7 +1478,7 @@ if [[ "${MODE}" == "NEW" ]]; then
         fi
     fi
 
-else # update/fix
+else # UPDATE/FIX
 
     # SET TARGET for fix
     target_output_prefix=${current_output_prefix}
@@ -1464,7 +1489,6 @@ else # update/fix
     missing=$(tmp_file "missing.tmp")
     check_missing_files "${current_assembly_summary}" "1,20" "${file_formats}" >"${missing}" # assembly accession, url, filename
     missing_lines=$(count_lines_file "${missing}")
-
     if [ "${missing_lines}" -gt 0 ]; then
         echolog " - ${missing_lines} missing file(s)" "1"
         if [ "${dry_run}" -eq 0 ]; then
