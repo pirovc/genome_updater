@@ -46,12 +46,12 @@ setup_file()
     # Protozoa in refseq is the smallest available assembly_summary at the time of writing this test (01.2022)
     # 5820 genus Plasmodium
     label_genus="genus"
-    run ./genome_updater.sh -N -d refseq -g protozoa -T 5820 -b ${label_genus} -t ${threads} -o ${outdir}
+    run ./genome_updater.sh -N ncbi -d refseq -g protozoa -T 5820 -b ${label_genus} -t ${threads} -o ${outdir}
     sanity_check ${outdir} ${label_genus}
 
     # 5794 phylum Apicomplexa
     label_phylum="phylum"
-    run ./genome_updater.sh -N -d refseq -g protozoa -T 5794 -b ${label_phylum} -t ${threads} -o ${outdir}
+    run ./genome_updater.sh -N ncbi -d refseq -g protozoa -T 5794 -b ${label_phylum} -t ${threads} -o ${outdir}
     sanity_check ${outdir} ${label_phylum}
 
     # More files filtering by phylum than genus
@@ -186,6 +186,18 @@ setup_file()
 
     # Check if MD5 is verified
     grep -m 1 "MD5 successfully checked" ${outdir}${label}/*.log
+    assert_success
+}
+
+@test "Gzip test verbose log" {
+    outdir=${outprefix}md5-verbose-log/
+    label="test"
+
+    run ./genome_updater.sh -d refseq -g protozoa -D 20210101 -E 20220101 -b ${label} -o ${outdir} -t ${threads} -G -V
+    sanity_check ${outdir} ${label}
+
+    # Check if gzip file is verified
+    grep -m 1 "valid gzip file" ${outdir}${label}/*.log
     assert_success
 }
 

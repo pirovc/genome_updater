@@ -680,6 +680,9 @@ check_gz_file()
         if [[ ${file_name} =~ \.gz$ ]]; then
             path_name="${target_output_prefix}$(path_output "${file_name}")${file_name}"
             if gzip -t "${path_name}" 2>/dev/null; then
+                if [ "${verbose_log}" -eq 1 ]; then
+                    echolog "${file_name} valid gzip file" "0"
+                fi
                 return 0
             else
                 echolog "${file_name} corrupted gzip - FILE REMOVED" "0"
