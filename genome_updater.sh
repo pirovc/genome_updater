@@ -35,12 +35,38 @@ if [[ -n "${local_dir}" ]]; then
 fi
 # Alternatives: ftp://ftp.ncbi.nih.gov/, https://ftp.ncbi.nih.gov/
 ncbi_base_url=${ncbi_base_url:-ftp://ftp.ncbi.nlm.nih.gov/}
-# Alternatives: https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/, https://data.gtdb.ecogenomic.org/releases/latest/
-gtdb_base_url=${gtdb_base_url:-https://data.gtdb.aau.ecogenomic.org/releases/latest/}
+# Alternatives: https://data.gtdb.aau.ecogenomic.org/releases/}, https://data.gtdb.ecogenomic.org/releases/
+gtdb_base_url=${gtdb_base_url:-https://data.ace.uq.edu.au/public/gtdb/data/releases/}
 new_taxdump_file=${new_taxdump_file:-}
 retries=${retries:-3}
 timeout=${timeout:-120}
 export retries timeout ncbi_base_url gtdb_base_url new_taxdump_file local_dir
+
+# GTDB versions
+declare -A gtdb_bac
+declare -A gtdb_ar
+gtdb_bac["80"]="${gtdb_base_url}release80/80.0/bac_taxonomy_r80.tsv"
+gtdb_bac["83"]="${gtdb_base_url}release83/83.0/bac_taxonomy_r83.tsv"
+gtdb_bac["86.2"]="${gtdb_base_url}release86/86.2/bac120_taxonomy_r86.2.tsv"
+gtdb_bac["89"]="${gtdb_base_url}release89/89.0/bac120_taxonomy_r89.tsv"
+gtdb_bac["95"]="${gtdb_base_url}release95/95.0/bac120_taxonomy_r95.tsv.gz"
+gtdb_bac["202"]="${gtdb_base_url}release202/202.0/bac120_taxonomy_r202.tsv.gz"
+gtdb_bac["207"]="${gtdb_base_url}release207/207.0/bac120_taxonomy_r207.tsv.gz"
+gtdb_bac["214.1"]="${gtdb_base_url}release214/214.1/bac120_taxonomy_r214.tsv.gz"
+gtdb_bac["220"]="${gtdb_base_url}release220/220.0/bac120_taxonomy_r220.tsv.gz"
+gtdb_bac["226"]="${gtdb_base_url}release226/226.0/bac120_taxonomy_r226.tsv.gz"
+gtdb_bac["232"]="${gtdb_base_url}release232/232.0/bac120_taxonomy_r232.tsv.gz"
+gtdb_ar["80"]=""
+gtdb_ar["83"]=""
+gtdb_ar["86.2"]="${gtdb_base_url}release86/86.2/ar122_taxonomy_r86.2.tsv"
+gtdb_ar["89"]="${gtdb_base_url}release89/89.0/ar122_taxonomy_r89.tsv"
+gtdb_ar["95"]="${gtdb_base_url}release95/95.0/ar122_taxonomy_r95.tsv.gz"
+gtdb_ar["202"]="${gtdb_base_url}release202/202.0/ar122_taxonomy_r202.tsv.gz"
+gtdb_ar["207"]="${gtdb_base_url}release207/207.0/ar53_taxonomy_r207.tsv.gz"
+gtdb_ar["214.1"]="${gtdb_base_url}release214/214.1/ar53_taxonomy_r214.tsv.gz"
+gtdb_ar["220"]="${gtdb_base_url}release220/220.0/ar53_taxonomy_r220.tsv.gz"
+gtdb_ar["226"]="${gtdb_base_url}release226/226.0/ar53_taxonomy_r226.tsv.gz"
+gtdb_ar["232"]="${gtdb_base_url}release232/232.0/ar53_taxonomy_r232.tsv.gz"
 
 # Export locale numeric to avoid errors on printf in different setups
 export LC_NUMERIC="en_US.UTF-8"
@@ -202,7 +228,7 @@ get_assembly_summary()
         # If no organism group is chosen, get complete assembly_summary for the database
         if [[ -z "${3}" ]]; then
             as_to_download+=("${ncbi_base_url}genomes/${d}/assembly_summary_${d}.txt")
-            if [[ "${tax_mode}" == "gtdb" ]]; then
+            if [[ "${tax_mode}" =~ ^gtdb ]]; then
                 as_to_download+=("${ncbi_base_url}genomes/${d}/assembly_summary_${d}_historical.txt")
             fi
         else
@@ -210,7 +236,7 @@ get_assembly_summary()
                 #special case: human
                 if [[ "${og}" == "human" ]]; then og="vertebrate_mammalian/Homo_sapiens"; fi
                 as_to_download+=("${ncbi_base_url}genomes/${d}/${og}/assembly_summary.txt")
-                if [[ "${tax_mode}" == "gtdb" ]]; then
+                if [[ "${tax_mode}" =~ ^gtdb ]]; then
                     as_to_download+=("${ncbi_base_url}genomes/${d}/${og}/assembly_summary_historical.txt")
                 fi
             done
@@ -272,8 +298,8 @@ filter_assembly_summary()
     ncbi_tax=""
     ncbi_rank_tax=""
     tmp_new_taxdump=""
-    if [[ "${tax_mode}" == "gtdb" ]]; then
-        echolog " - Downloading taxonomy (gtdb)" "1"
+    if [[ "${tax_mode}" =~ ^gtdb ]]; then
+        echolog " - Downloading taxonomy (${tax_mode})" "1"
         # Download and parse GTDB tax
         gtdb_tax=$(tmp_file "gtdb_tax.tmp")
         for url in "${gtdb_urls[@]}"; do
@@ -283,11 +309,11 @@ filter_assembly_summary()
                 return 1
             fi
             # awk to remove prefix RS_ or GB_
-            zcat "${tmp_tax}" | awk -F "\t" '{print substr($1, 4, length($1))"\t"$2}' >>"${gtdb_tax}"
+            zcat -f "${tmp_tax}" | awk -F "\t" '{print substr($1, 4, length($1))"\t"$2}' >>"${gtdb_tax}"
             rm -f "${tmp_tax}"
         done
     elif [[ "${tax_mode}" == "ncbi" && (-n "${taxids}" || (-n "${top_assemblies_rank}" && "${top_assemblies_rank}" != "species")) ]]; then
-        echolog " - Downloading taxonomy (ncbi)" "1"
+        echolog " - Downloading taxonomy (${tax_mode})" "1"
         tmp_new_taxdump="${working_dir}new_taxdump.tar.gz"
         if [[ -z "${new_taxdump_file}" ]]; then
             if ! download_retry_md5 "${ncbi_base_url}pub/taxonomy/new_taxdump/new_taxdump.tar.gz" "${tmp_new_taxdump}" "${ncbi_base_url}pub/taxonomy/new_taxdump/new_taxdump.tar.gz.md5" "${retry_download_batch}"; then
@@ -298,15 +324,15 @@ filter_assembly_summary()
         fi
     fi
 
-    if [[ "${tax_mode}" == "gtdb" ]]; then
+    if [[ "${tax_mode}" =~ ^gtdb ]]; then
         tmp_gtdb_missing=$(tmp_file "gtdb_missing")
         gtdb_lines=$(filter_gtdb "${assembly_summary}" "${gtdb_tax}" "${tmp_gtdb_missing}")
-        echolog " - $((filtered_lines - gtdb_lines)) assemblies removed not in GTDB" "1"
+        echolog " - $((filtered_lines - gtdb_lines)) assemblies removed not in ${tax_mode} taxonomy files" "1"
 
         # If missing file has entries, report on log
         gtdb_missing_lines=$(count_lines_file "${tmp_gtdb_missing}")
         if [[ "${gtdb_missing_lines}" -gt 0 ]]; then
-            echolog " - Could not retrieve ${gtdb_missing_lines} GTDB assemblies" "1"
+            echolog " - Info: ${gtdb_missing_lines} assemblies from ${tax_mode} not found in the assembly summary files" "1"
             cat "${tmp_gtdb_missing}" >>"${log_file}"
         fi
         rm "${tmp_gtdb_missing}"
@@ -911,7 +937,7 @@ function showhelp
     echo $' -F Custom filter for the assembly summary. \n\tExamples:\n\t  Single: -F \'$14 == "Full"\'\n\t  Multi:  -F \'($2 == "PRJNA12377" || $2 == "PRJNA670754") && $4 != "Partial"\'\n\t  Regex:  -F \'$8 ~ /bacterium/\'\n\t  Whole-file: -F \'$0 ~ "plasmid"\'\n\tUses awk syntax: $ for column index, || "or", && "and", ! "not", parentheses for nesting. Case sensitive.\n\tColumns info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
     echo
     echo $'Taxonomy:'
-    echo $' -M Taxonomy. gtdb keeps only assemblies in the latest GTDB release. ncbi keeps only latest assemblies (version_status=latest). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
+    echo $' -M Taxonomy. gtdb:latest GTDB release assemblies. ncbi: only latest assemblies (version_status=latest). \n\t[ncbi, gtdb'"$(printf ', gtdb-%s' "${!gtdb_bac[@]}")"$']\n\tDefault: "ncbi"'
     echo $' -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. \n\tSelection by ranks are also supported with rank:number (e.g genus:3)\n\t[species, genus, family, order, class, phylum, kingdom, superkingdom]\n\tSelection order based on: RefSeq Category, Assembly level, Relation to type material, Date.\n\tDefault: 0'
     echo $' -a Download taxonomy files in the output folder.'
     echo
@@ -1176,22 +1202,47 @@ elif [[ -n "${database}" ]]; then
 fi
 
 gtdb_urls=()
-if [[ "${tax_mode}" == "gtdb" ]]; then
+if [[ "${tax_mode}" =~ ^gtdb ]]; then
+    if [[ "${tax_mode}" == "gtdb" ]]; then
+        ver="latest"
+        gtdb_bac["${ver}"]="${gtdb_base_url}latest/ar120_taxonomy.tsv.gz"
+        gtdb_ar["${ver}"]="${gtdb_base_url}latest/ar53_taxonomy.tsv.gz"
+    elif [[ "${tax_mode}" =~ ^gtdb- ]]; then
+        ver=$(echo "${tax_mode}" | cut -d '-' -f 2)
+        if ! printf '%s\n' "${!gtdb_bac[@]}" | grep -Fxq -- "${ver}"; then
+            echo "${d}: invalid gtdb version [ $(printf "'%s' " "${!gtdb_bac[@]}")]"
+            exit 1
+        fi
+    else
+        echo "${tax_mode}: invalid taxonomy mode"
+        exit 1
+    fi
+
+    # Append version to base url
+    gtdb_base_url="${gtdb_bac[$ver]%/*}/"
+
     if [[ -z "${organism_group}" ]]; then
-        gtdb_urls+=("${gtdb_base_url}ar53_taxonomy.tsv.gz")
-        gtdb_urls+=("${gtdb_base_url}bac120_taxonomy.tsv.gz")
+        # Check if there's an url (early versiosn do not have archaea)
+        [[ -n ${gtdb_ar[$ver]} ]] && gtdb_urls+=("${gtdb_ar[$ver]}")
+        gtdb_urls+=("${gtdb_bac[$ver]}")
     else
         for og in ${organism_group//,/ }; do
             if [[ "${og}" == "archaea" ]]; then
-                gtdb_urls+=("${gtdb_base_url}ar53_taxonomy.tsv.gz")
+                # Check if there's an url (early versiosn do not have archaea)
+                [[ -n ${gtdb_ar[$ver]} ]] && gtdb_urls+=("${gtdb_ar[$ver]}")
             elif [[ "${og}" == "bacteria" ]]; then
-                gtdb_urls+=("${gtdb_base_url}bac120_taxonomy.tsv.gz")
+                gtdb_urls+=("${gtdb_bac[$ver]}")
             else
                 echo "${og}: invalid organism group for GTDB [ 'archaea' 'bacteria' ] "
                 exit 1
             fi
         done
     fi
+    if ((!${#gtdb_urls[@]})); then
+        echo "no valid URLs for GTDB"
+        exit 1
+    fi
+
 elif [[ "${tax_mode}" == "ncbi" ]]; then
     valid_organism_groups=("archaea" "bacteria" "fungi" "human" "invertebrate" "metagenomes" "other" "plant" "protozoa" "vertebrate_mammalian" "vertebrate_other" "viral")
     for og in ${organism_group//,/ }; do
@@ -1215,7 +1266,7 @@ if [[ "${tax_mode}" == "ncbi" ]]; then
     done
     IFS=$' '
     taxids=${taxids// /} # remove spaces
-elif [[ "${tax_mode}" == "gtdb" ]]; then
+elif [[ "${tax_mode}" =~ ^gtdb ]]; then
     IFS=","
     for tx in ${taxids}; do
         if [[ ! "${tx}" =~ ^[\\^]{1}?[dpcofgs]__.* ]]; then
@@ -1680,6 +1731,7 @@ if [ "${dry_run}" -eq 0 ]; then
             fi
         else
             for url in "${gtdb_urls[@]}"; do
+                echo "${gtdb_base_url}MD5SUM.txt"
                 if ! download_retry_md5 "${url}" "${target_output_prefix}${url##*/}" "${gtdb_base_url}MD5SUM.txt" "${retry_download_batch}"; then
                     echolog " - Failed" "1"
                 else
