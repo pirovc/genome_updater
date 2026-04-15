@@ -35,8 +35,8 @@ if [[ -n "${local_dir}" ]]; then
 fi
 # Alternatives: ftp://ftp.ncbi.nih.gov/, https://ftp.ncbi.nih.gov/
 ncbi_base_url=${ncbi_base_url:-ftp://ftp.ncbi.nlm.nih.gov/}
-# Alternatives: https://data.gtdb.aau.ecogenomic.org/releases/}, https://data.gtdb.ecogenomic.org/releases/
-gtdb_base_url=${gtdb_base_url:-https://data.ace.uq.edu.au/public/gtdb/data/releases/}
+# Alternatives: https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/, https://data.gtdb.ecogenomic.org/releases/latest/
+gtdb_base_url=${gtdb_base_url:-https://data.gtdb.aau.ecogenomic.org/releases/latest/}
 new_taxdump_file=${new_taxdump_file:-}
 retries=${retries:-3}
 timeout=${timeout:-120}
@@ -937,7 +937,7 @@ function showhelp
     echo $' -F Custom filter for the assembly summary. \n\tExamples:\n\t  Single: -F \'$14 == "Full"\'\n\t  Multi:  -F \'($2 == "PRJNA12377" || $2 == "PRJNA670754") && $4 != "Partial"\'\n\t  Regex:  -F \'$8 ~ /bacterium/\'\n\t  Whole-file: -F \'$0 ~ "plasmid"\'\n\tUses awk syntax: $ for column index, || "or", && "and", ! "not", parentheses for nesting. Case sensitive.\n\tColumns info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
     echo
     echo $'Taxonomy:'
-    echo $' -M Taxonomy. gtdb:latest GTDB release assemblies. ncbi: only latest assemblies (version_status=latest). \n\t[ncbi, gtdb'"$(printf ', gtdb-%s' "${!gtdb_bac[@]}")"$']\n\tDefault: "ncbi"'
+    echo $' -M Taxonomy. gtdb: latest GTDB release assemblies. ncbi: latest assemblies (version_status=latest). \n\t[ncbi, gtdb'"$(printf ', gtdb-%s' "${!gtdb_bac[@]}")"$']\n\tDefault: "ncbi"'
     echo $' -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. \n\tSelection by ranks are also supported with rank:number (e.g genus:3)\n\t[species, genus, family, order, class, phylum, kingdom, superkingdom]\n\tSelection order based on: RefSeq Category, Assembly level, Relation to type material, Date.\n\tDefault: 0'
     echo $' -a Download taxonomy files in the output folder.'
     echo
@@ -1731,7 +1731,6 @@ if [ "${dry_run}" -eq 0 ]; then
             fi
         else
             for url in "${gtdb_urls[@]}"; do
-                echo "${gtdb_base_url}MD5SUM.txt"
                 if ! download_retry_md5 "${url}" "${target_output_prefix}${url##*/}" "${gtdb_base_url}MD5SUM.txt" "${retry_download_batch}"; then
                     echolog " - Failed" "1"
                 else
