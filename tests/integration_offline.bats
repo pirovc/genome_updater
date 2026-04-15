@@ -796,8 +796,19 @@ setup_file()
     run ./genome_updater.sh -d refseq,genbank -g archaea -b ${label} -o ${outdir} -M gtdb
     sanity_check ${outdir} ${label}
 
-    # Check log for filer with GTDB
-    grep "[1-9][0-9]* assemblies removed not in GTDB" ${outdir}${label}/*.log # >&3
+    # Check log for filter with GTDB
+    grep "[1-9][0-9]* assemblies removed not in gtdb taxonomy files" ${outdir}${label}/*.log # >&3
+    assert_success
+}
+
+@test "Tax. Mode GTDB versioned" {
+    outdir=${outprefix}tax-gtdb-versioned/
+    label="test"
+    run ./genome_updater.sh -d refseq,genbank -g archaea -b ${label} -o ${outdir} -M gtdb-220
+    sanity_check ${outdir} ${label}
+
+    # Check log for filter with GTDB
+    grep "[1-9][0-9]* assemblies removed not in gtdb-220 taxonomy files" ${outdir}${label}/*.log # >&3
     assert_success
 }
 
