@@ -35,8 +35,8 @@ if [[ -n "${local_dir}" ]]; then
 fi
 # Alternatives: ftp://ftp.ncbi.nih.gov/, https://ftp.ncbi.nih.gov/
 ncbi_base_url=${ncbi_base_url:-ftp://ftp.ncbi.nlm.nih.gov/}
-# Alternatives: https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/, https://data.gtdb.ecogenomic.org/releases/latest/
-gtdb_base_url=${gtdb_base_url:-https://data.gtdb.aau.ecogenomic.org/releases/latest/}
+# Alternatives: https://data.ace.uq.edu.au/public/gtdb/data/releases/, https://data.gtdb.ecogenomic.org/releases/
+gtdb_base_url=${gtdb_base_url:-https://data.gtdb.aau.ecogenomic.org/releases/}
 new_taxdump_file=${new_taxdump_file:-}
 retries=${retries:-3}
 timeout=${timeout:-120}
@@ -92,9 +92,11 @@ download_url()
     fi
 
     # Replace base url with local directory if provided
+    echolog $local_dir
     if [[ -n "${local_dir}" ]]; then
         url="${local_dir}/${url#*://*/}"
     fi
+    echolog $local_dir
     downloader "${outfile}" "${url}"
 }
 export -f download_url #export it to be accessible to the parallel call
