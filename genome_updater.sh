@@ -701,9 +701,9 @@ download()
     local path_out
     if ! check_file_folder "${1}" "0"; then # Check if the file is already on the output folder (avoid redundant download)
         dl=1
-    elif ! check_md5_ftp "${1}"; then # Check if the file already on folder has matching md5
-        dl=1
     elif ! check_gz_file "${1}"; then # Check gz integrity
+        dl=1
+    elif ! check_md5_ftp "${1}"; then # Check if the file already on folder has matching md5
         dl=1
     fi
     if [ "${dl}" -eq 1 ]; then # If file is not yet on folder, download it
@@ -712,9 +712,9 @@ download()
         download_url "${1}" "${path_out}"
         if ! check_file_folder "${1}" "1"; then # Check if file was downloaded
             ex=1
-        elif ! check_md5_ftp "${1}"; then # Check file md5
-            ex=1
         elif ! check_gz_file "${1}"; then # Check gz integrity
+            ex=1
+        elif ! check_md5_ftp "${1}"; then # Check file md5
             ex=1
         fi
     fi
@@ -894,7 +894,7 @@ function showhelp
     print_logo
     echo
     echo $'Database:'
-    echo $' -d Database (comma-separated entries)\n\t[genbank, refseq]'
+    echo $' -d Database (comma-separated entries)\n\t[genbank, refseq]\n\tDefault: ""'
     echo
     echo $'Organism/Taxa:'
     echo $' -g Organism group(s) (comma-separated entries, empty for all)\n\t[archaea, bacteria, fungi, human, invertebrate, metagenomes, \n\tother, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]\n\tDefault: ""'
@@ -913,20 +913,20 @@ function showhelp
     echo $'Taxonomy:'
     echo $' -M Taxonomy. gtdb keeps only assemblies in the latest GTDB release. ncbi keeps only latest assemblies (version_status=latest). \n\t[ncbi, gtdb]\n\tDefault: "ncbi"'
     echo $' -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. \n\tSelection by ranks are also supported with rank:number (e.g genus:3)\n\t[species, genus, family, order, class, phylum, kingdom, superkingdom]\n\tSelection order based on: RefSeq Category, Assembly level, Relation to type material, Date.\n\tDefault: 0'
-    echo $' -a Keep the current version of the taxonomy database in the output folder'
+    echo $' -a Download taxonomy files in the output folder.'
     echo
     echo $'Run:'
     echo $' -k Dry-run mode. No sequence data is downloaded or updated - just checks for available sequences and changes'
     echo $' -i Fix only mode. Re-downloads incomplete or failed data from a previous run. Can also be used to change files (-f).'
     echo $' -t Threads to parallelize download and some file operations\n\tDefault: 1'
     echo $' -L Downloader\n\t[wget, curl]\n\tDefault: wget'
-    echo $' -m Download and compare MD5checksum for all downloaded files.\n\tFile is removed if checksum can be downloaded and does not match.'
     echo $' -G Check integrity of downloaded .gz files (gzip -t)\n\tFile is removed if test fails.'
+    echo $' -m Check for MD5 of all downloaded files.\n\tFile is removed if checksum can be downloaded and does not match.'
     echo
     echo $'Output:'
     echo $' -o Output/Working directory \n\tDefault: ./tmp.XXXXXXXXXX'
     echo $' -b Version label\n\tIdentifier for the downloaded version.\n\tDefault: current timestamp (YYYY-MM-DD_HH-MM-SS)'
-    echo $' -N Output dir structure.\n\tncbi: files/GCF/000/499/605/GCF_000499605.1_...\n\t[ncbi, flat]\n\tDefault: "ncbi"'
+    echo $' -N Output directory structure.\n\tncbi: files/GCF/000/499/605/GCF_000499605.1_genomic.fna.gz\n\tflat: files/GCF_000499605.1_genomic.fna.gz\n\t[ncbi, flat]\n\tDefault: "ncbi"'
     echo
     echo $'Report:'
     echo $' -u Generate a report on updated assembly accessions\n\t(Added/Removed, assembly accession, url)'
@@ -936,10 +936,10 @@ function showhelp
     echo $'Misc.:'
     echo $' -e External "assembly_summary.txt" file to recover data from. Mutually exclusive with -d / -g \n\tDefault: ""'
     echo $' -B Alternative version label to use as the current version. Mutually exclusive with -i.\n\tCan be used to rollback to an older version or to create multiple branches from a base version.\n\tDefault: ""'
-    echo $' -H Link mode for files kept between versions. Hard links save inodes (i.e. number of files; useful on HPC systems).\n\t[hard, soft]\n\tDefault: "hard"'
-    echo $' -R Number of attempts to retry to download files in batches \n\tDefault: 5'
+    echo $' -H Link mode for files kept between versions.\n\tHard links save inodes (useful on HPC systems) and allow version deletion.\n\t[hard, soft]\n\tDefault: "hard"'
+    echo $' -R Number of attempts to retry downloads in batches \n\tDefault: 5'
     echo $' -n Conditional exit status based on number of failures accepted, otherwise will Exit Code = 1.\n\tExample: -n 10 will exit code 1 if 10 or more files failed to download\n\t[integer for file number, float for percentage, 0 = off]\n\tDefault: 0'
-    echo $' -x Look-up for and delete extra files that are not part of the version (inside files/ dir).'
+    echo $' -x Search and delete extra files inside "files/" directory.'
     echo $' -s Silent output'
     echo $' -w Silent output with download progress only'
     echo $' -V Verbose log'
@@ -1667,7 +1667,7 @@ if [ "${dry_run}" -eq 0 ]; then
 
     # Clean possible empty folders in NCBI structure after update
     if [[ "${dir_structure}" == "ncbi" ]]; then
-        find "${target_output_prefix}${files_dir}" -type d -empty -delete
+        find "${target_output_prefix}${files_dir}" -mindepth 1 -type d -empty -delete
     fi
 
     if [ "${download_taxonomy}" -eq 1 ]; then

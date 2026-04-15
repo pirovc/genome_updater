@@ -190,10 +190,10 @@ setup_file()
 }
 
 @test "Gzip test verbose log" {
-    outdir=${outprefix}md5-verbose-log/
+    outdir=${outprefix}gz-verbose-log/
     label="test"
 
-    run ./genome_updater.sh -d refseq -g protozoa -D 20210101 -E 20220101 -b ${label} -o ${outdir} -t ${threads} -G -V
+    run ./genome_updater.sh -d refseq -g protozoa -D 20210101 -E 20210301 -b ${label} -o ${outdir} -t ${threads} -A 1 -f "genomic.fna.gz" -G -V
     sanity_check ${outdir} ${label}
 
     # Check if gzip file is verified
