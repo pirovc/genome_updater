@@ -696,13 +696,14 @@ export -f check_gz_file #export it to be accessible to the parallel call
 
 download()
 { # parameter: ${1} url, ${2} job number, ${3} total files, ${4} url_success_download (append)
-    ex=0
-    dl=0
+    local ex=0
+    local dl=0
+    local path_out
     if ! check_file_folder "${1}" "0"; then # Check if the file is already on the output folder (avoid redundant download)
         dl=1
     elif ! check_md5_ftp "${1}"; then # Check if the file already on folder has matching md5
         dl=1
-    elif ! check_gz_file "${1}"; then
+    elif ! check_gz_file "${1}"; then # Check gz integrity
         dl=1
     fi
     if [ "${dl}" -eq 1 ]; then # If file is not yet on folder, download it
@@ -713,8 +714,8 @@ download()
             ex=1
         elif ! check_md5_ftp "${1}"; then # Check file md5
             ex=1
-        elif ! check_gz_file "${1}"; then
-            dl=1
+        elif ! check_gz_file "${1}"; then # Check gz integrity
+            ex=1
         fi
     fi
     print_progress "${2}" "${3}"
