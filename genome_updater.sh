@@ -92,11 +92,9 @@ download_url()
     fi
 
     # Replace base url with local directory if provided
-    echolog $local_dir
     if [[ -n "${local_dir}" ]]; then
         url="${local_dir}/${url#*://*/}"
     fi
-    echolog $local_dir
     downloader "${outfile}" "${url}"
 }
 export -f download_url #export it to be accessible to the parallel call
