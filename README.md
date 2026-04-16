@@ -26,7 +26,7 @@ Some time later, get a up-to-date version from NCBI, downloading only newly adde
 ./genome_updater.sh -o "arc_refseq_cg" -G
 ```
 
-- Note that boolean flags are not kept between versions (e.g. `-G`) and have to be repeated on the update command to be included.
+- boolean flags (e.g. `-G`) are not tracked between versions and have to be repeated on the update command to be included.
 
 ## Installation
 
@@ -43,11 +43,10 @@ wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updat
 chmod +x genome_updater.sh
 ```
 
-- genome_updater requires bash version 4 and above.
-- genome_updater is portable and depends on the GNU Core Utilities + few additional tools (`awk` `bc` `find` `fmt` `gzip` `join` `md5sum` `parallel` `sed` `tar` `wget` and optionally `curl`) which are commonly available and installed in most distributions.
-- If you are not sure if you have them all, just run `genome_updater.sh` and it will tell you if something is missing (otherwise the it will show the help page).
-
-To test if all genome_updater functions are running properly on your system:
+- `bash>=4.*` or above is required.
+- this script attempts to be portable and only depends on GNU Core Utilities + few additional tools (`awk` `bc` `find` `fmt` `gzip` `join` `md5sum` `parallel` `sed` `tar` `wget` and optionally `curl`) which are commonly available and installed in most distributions.
+- `genome_updater.sh -Z` will show more info about dependencies in your system and report if someting is missing
+- To test if all genome_updater functions are running properly on your system:
 
 ```bash
 git clone --recurse-submodules https://github.com/pirovc/genome_updater.git
