@@ -3,7 +3,7 @@
 # gem install bashcov codecov
 
 echo "formatting code with shfmt"
-shfmt --binary-next-line --func-next-line --language-dialect bash --indent 4 --write genome_updater.sh
+shfmt --binary-next-line --func-next-line --indent 4 --write genome_updater.sh
 shfmt --binary-next-line --func-next-line --language-dialect bats --indent 4 --write tests/*.bats
 
 if shellcheck genome_updater.sh

@@ -282,11 +282,11 @@ setup_file()
     done
 }
 
-@test "Top 1 superkingdom ncbi" {
-    outdir=${outprefix}top-superkingdom-ncbi/
+@test "Top 1 domain ncbi" {
+    outdir=${outprefix}top-domain-ncbi/
     label="test"
-    # Keep only top 1 for superkingdom
-    run ./genome_updater.sh -d refseq -g archaea,fungi -A superkingdom:1 -b ${label} -o ${outdir}
+    # Keep only top 1 for domain
+    run ./genome_updater.sh -d refseq -g archaea,fungi -A domain:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # Check if output contains one file for archaea and one for fungi
@@ -330,17 +330,17 @@ setup_file()
     # Selection order
     # col5["reference genome"]=1;
     # col5["na"]=2;
-    # should always pick the correct refseq category for top superkingdom (just one)
+    # should always pick the correct refseq category for top domain (just one)
 
     label="2"
     rscat="reference genome,na"
-    run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A superkingdom:1 -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A domain:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "reference genome" "$(get_values_as ${outdir}assembly_summary.txt 5)"
 
     label="1"
     rscat="na"
-    run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A superkingdom:1 -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A domain:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "na" "$(get_values_as ${outdir}assembly_summary.txt 5)"
 
@@ -352,29 +352,29 @@ setup_file()
     # col12["Scaffold"]=3;
     # col12["Contig"]=4;
 
-    # should always pick the correct assembly level for top superkingdom (just one)
+    # should always pick the correct assembly level for top domain (just one)
 
     label="4"
     aslvl="Complete Genome,Chromosome,Scaffold,Contig"
-    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A domain:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "Complete Genome" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
     label="3"
     aslvl="Chromosome,Scaffold,Contig"
-    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A domain:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "Chromosome" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
     label="2"
     aslvl="Scaffold,Contig"
-    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A domain:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "Scaffold" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
     label="1"
     aslvl="Contig"
-    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A domain:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "Contig" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
