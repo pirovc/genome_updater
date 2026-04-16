@@ -5,9 +5,10 @@ load 'libs/bats-assert/load'
 load 'libs/bats-file/load'
 load 'utils.bash'
 
-setup_file() {
+setup_file()
+{
     # Get tests dir
-    DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )"
+    DIR="$(cd "$(dirname "$BATS_TEST_FILENAME")" >/dev/null 2>&1 && pwd)"
 
     files_dir="$DIR/files/"
     export files_dir
@@ -45,14 +46,14 @@ setup_file() {
     # Protozoa in refseq is the smallest available assembly_summary at the time of writing this test (01.2022)
     # 5820 genus Plasmodium
     label_genus="genus"
-    run ./genome_updater.sh -N -d refseq -g protozoa -T 5820 -b ${label_genus} -t ${threads} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g protozoa -T 5820 -b ${label_genus} -t ${threads} -o ${outdir}
     sanity_check ${outdir} ${label_genus}
 
     # 5794 phylum Apicomplexa
     label_phylum="phylum"
-    run ./genome_updater.sh -N -d refseq -g protozoa -T 5794 -b ${label_phylum} -t ${threads} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g protozoa -T 5794 -b ${label_phylum} -t ${threads} -o ${outdir}
     sanity_check ${outdir} ${label_phylum}
-    
+
     # More files filtering by phylum than genus
     assert [ $(count_files ${outdir} ${label_phylum}) -gt $(count_files ${outdir} ${label_genus}) ]
     assert [ $(count_files ${outdir} ${label_phylum}) -gt 0 ]
@@ -62,9 +63,9 @@ setup_file() {
 @test "Taxids genus gtdb" {
     outdir=${outprefix}taxids-genus-gtdb/
     # p__Undinarchaeota lineage
-    #d__Archaea; p__Undinarchaeota; c__Undinarchaeia; o__Undinarchaeales; f__Naiadarchaeaceae; g__Naiadarchaeum; s__Naiadarchaeum limnaeum 
+    #d__Archaea; p__Undinarchaeota; c__Undinarchaeia; o__Undinarchaeales; f__Naiadarchaeaceae; g__Naiadarchaeum; s__Naiadarchaeum limnaeum
     #d__Archaea; p__Undinarchaeota; c__Undinarchaeia; o__Undinarchaeales; f__Undinarchaeaceae; g__Undinarchaeum; s__Undinarchaeum marinum
-    #d__Archaea; p__Undinarchaeota; c__Undinarchaeia; o__Undinarchaeales; f__UBA543; g__UBA543; s__UBA543 sp002502135 
+    #d__Archaea; p__Undinarchaeota; c__Undinarchaeia; o__Undinarchaeales; f__UBA543; g__UBA543; s__UBA543 sp002502135
 
     label_genus="genus"
     run ./genome_updater.sh -d genbank -g archaea -M gtdb -T "g__Naiadarchaeum,g__Undinarchaeum" -b ${label_genus} -t ${threads} -o ${outdir}
@@ -73,7 +74,7 @@ setup_file() {
     label_phylum="phylum"
     run ./genome_updater.sh -d genbank -g archaea -M gtdb -T "p__Undinarchaeota" -b ${label_phylum} -t ${threads} -o ${outdir}
     sanity_check ${outdir} ${label_phylum}
-    
+
     # More files filtering by phylum than genus
     assert [ $(count_files ${outdir} ${label_phylum}) -gt $(count_files ${outdir} ${label_genus}) ]
     assert [ $(count_files ${outdir} ${label_phylum}) -gt 0 ]
@@ -123,7 +124,7 @@ setup_file() {
     label="n1"
     run ./genome_updater.sh -n 1 -R 1 -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
     assert_failure
-    
+
     label="n2"
     run ./genome_updater.sh -n 2 -R 1 -o ${outdir}${label}/ -t ${threads} -e ${files_dir}simulated/assembly_summary_some_invalid_url.txt
     assert_failure
@@ -163,13 +164,13 @@ setup_file() {
     label="test"
 
     # 5690 Trypanosoma genus - around 6 genomes, get only one per species (01.2022)
-    run ./genome_updater.sh -d refseq -g protozoa -T 5690 -A 1 -b ${label} -o ${outdir} -t ${threads} 
+    run ./genome_updater.sh -d refseq -g protozoa -T 5690 -A 1 -b ${label} -o ${outdir} -t ${threads}
     sanity_check ${outdir} ${label}
 
     # Get counts of taxids on output
     readarray -t txids_ret < <(get_values_as ${outdir}assembly_summary.txt 6)
-    ret_occ=( $( echo ${txids_ret}  | tr ' ' '\n' | sort | uniq -c | awk '{print $1}' ) )
-   
+    ret_occ=($(echo ${txids_ret} | tr ' ' '\n' | sort | uniq -c | awk '{print $1}'))
+
     # Should have one assembly for each species taxid
     for occ in ${ret_occ[@]}; do
         assert_equal ${occ} 1
@@ -185,6 +186,18 @@ setup_file() {
 
     # Check if MD5 is verified
     grep -m 1 "MD5 successfully checked" ${outdir}${label}/*.log
+    assert_success
+}
+
+@test "Gzip test verbose log" {
+    outdir=${outprefix}gz-verbose-log/
+    label="test"
+
+    run ./genome_updater.sh -d refseq -g protozoa -D 20210101 -E 20210301 -b ${label} -o ${outdir} -t ${threads} -A 1 -f "genomic.fna.gz" -G -V
+    sanity_check ${outdir} ${label}
+
+    # Check if gzip file is verified
+    grep -m 1 "valid gzip file" ${outdir}${label}/*.log
     assert_success
 }
 
