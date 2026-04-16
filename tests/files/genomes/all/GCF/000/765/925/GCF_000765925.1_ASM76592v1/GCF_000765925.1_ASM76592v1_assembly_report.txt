@@ -1,0 +1,112 @@
+# Assembly name:  ASM76592v1
+# Organism name:  Helicobacter bilis (e-proteobacteria)
+# Infraspecific name:  strain=ATCC 49320
+# Taxid:          37372
+# BioSample:      SAMN03075569
+# BioProject:     PRJNA261711
+# Submitter:      Massachusetts Institute of Technology
+# Date:           2014-10-10
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    JRPJ01
+# Assembly method: Velvet v. Mar-2014
+# Expected final version: Yes
+# Sequencing technology: Illumina MiSeq
+# GenBank assembly accession: GCA_000765925.1
+# RefSeq assembly accession: GCF_000765925.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000765935.1	GCF_000765935.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+CONTIG_143	unplaced-scaffold	na	na	JRPJ01000001.1	=	NZ_JRPJ01000001.1	Primary Assembly	1240097	na
+CONTIG_141	unplaced-scaffold	na	na	JRPJ01000002.1	=	NZ_JRPJ01000002.1	Primary Assembly	1175712	na
+CONTIG_22	unplaced-scaffold	na	na	JRPJ01000003.1	=	NZ_JRPJ01000003.1	Primary Assembly	23107	na
+CONTIG_9	unplaced-scaffold	na	na	JRPJ01000004.1	=	NZ_JRPJ01000004.1	Primary Assembly	8673	na
+CONTIG_1	unplaced-scaffold	na	na	JRPJ01000005.1	=	NZ_JRPJ01000005.1	Primary Assembly	7796	na
+CONTIG_18	unplaced-scaffold	na	na	JRPJ01000006.1	=	NZ_JRPJ01000006.1	Primary Assembly	6979	na
+CONTIG_2	unplaced-scaffold	na	na	JRPJ01000007.1	=	NZ_JRPJ01000007.1	Primary Assembly	6573	na
+CONTIG_45	unplaced-scaffold	na	na	JRPJ01000008.1	=	NZ_JRPJ01000008.1	Primary Assembly	6068	na
+CONTIG_3	unplaced-scaffold	na	na	JRPJ01000009.1	=	NZ_JRPJ01000009.1	Primary Assembly	5226	na
+CONTIG_37	unplaced-scaffold	na	na	JRPJ01000010.1	=	NZ_JRPJ01000010.1	Primary Assembly	4832	na
+CONTIG_17	unplaced-scaffold	na	na	JRPJ01000011.1	=	NZ_JRPJ01000011.1	Primary Assembly	4027	na
+CONTIG_38	unplaced-scaffold	na	na	JRPJ01000012.1	=	NZ_JRPJ01000012.1	Primary Assembly	3621	na
+CONTIG_32	unplaced-scaffold	na	na	JRPJ01000013.1	=	NZ_JRPJ01000013.1	Primary Assembly	3487	na
+CONTIG_46	unplaced-scaffold	na	na	JRPJ01000014.1	=	NZ_JRPJ01000014.1	Primary Assembly	3289	na
+CONTIG_7	unplaced-scaffold	na	na	JRPJ01000015.1	=	NZ_JRPJ01000015.1	Primary Assembly	2903	na
+CONTIG_25	unplaced-scaffold	na	na	JRPJ01000016.1	=	NZ_JRPJ01000016.1	Primary Assembly	2721	na
+CONTIG_10	unplaced-scaffold	na	na	JRPJ01000017.1	=	NZ_JRPJ01000017.1	Primary Assembly	2513	na
+CONTIG_54	unplaced-scaffold	na	na	JRPJ01000018.1	=	NZ_JRPJ01000018.1	Primary Assembly	2474	na
+CONTIG_5	unplaced-scaffold	na	na	JRPJ01000019.1	=	NZ_JRPJ01000019.1	Primary Assembly	2413	na
+CONTIG_27	unplaced-scaffold	na	na	JRPJ01000020.1	=	NZ_JRPJ01000020.1	Primary Assembly	2315	na
+CONTIG_6	unplaced-scaffold	na	na	JRPJ01000021.1	=	NZ_JRPJ01000021.1	Primary Assembly	2266	na
+CONTIG_90	unplaced-scaffold	na	na	JRPJ01000022.1	=	NZ_JRPJ01000022.1	Primary Assembly	1739	na
+CONTIG_65	unplaced-scaffold	na	na	JRPJ01000023.1	=	NZ_JRPJ01000023.1	Primary Assembly	1728	na
+CONTIG_109	unplaced-scaffold	na	na	JRPJ01000024.1	=	NZ_JRPJ01000024.1	Primary Assembly	1455	na
+CONTIG_36	unplaced-scaffold	na	na	JRPJ01000025.1	=	NZ_JRPJ01000025.1	Primary Assembly	1354	na
+CONTIG_53	unplaced-scaffold	na	na	JRPJ01000026.1	=	NZ_JRPJ01000026.1	Primary Assembly	1299	na
+CONTIG_8	unplaced-scaffold	na	na	JRPJ01000027.1	=	NZ_JRPJ01000027.1	Primary Assembly	1132	na
+CONTIG_72	unplaced-scaffold	na	na	JRPJ01000028.1	=	NZ_JRPJ01000028.1	Primary Assembly	1107	na
+CONTIG_106	unplaced-scaffold	na	na	JRPJ01000029.1	=	NZ_JRPJ01000029.1	Primary Assembly	1039	na
+CONTIG_68	unplaced-scaffold	na	na	JRPJ01000030.1	=	NZ_JRPJ01000030.1	Primary Assembly	1005	na
+CONTIG_67	unplaced-scaffold	na	na	JRPJ01000031.1	=	NZ_JRPJ01000031.1	Primary Assembly	956	na
+CONTIG_15	unplaced-scaffold	na	na	JRPJ01000032.1	=	NZ_JRPJ01000032.1	Primary Assembly	954	na
+CONTIG_84	unplaced-scaffold	na	na	JRPJ01000033.1	=	NZ_JRPJ01000033.1	Primary Assembly	896	na
+CONTIG_16	unplaced-scaffold	na	na	JRPJ01000034.1	=	NZ_JRPJ01000034.1	Primary Assembly	882	na
+CONTIG_122	unplaced-scaffold	na	na	JRPJ01000035.1	=	NZ_JRPJ01000035.1	Primary Assembly	754	na
+CONTIG_81	unplaced-scaffold	na	na	JRPJ01000036.1	=	NZ_JRPJ01000036.1	Primary Assembly	746	na
+CONTIG_39	unplaced-scaffold	na	na	JRPJ01000037.1	=	NZ_JRPJ01000037.1	Primary Assembly	744	na
+CONTIG_34	unplaced-scaffold	na	na	JRPJ01000038.1	=	NZ_JRPJ01000038.1	Primary Assembly	736	na
+CONTIG_29	unplaced-scaffold	na	na	JRPJ01000039.1	=	NZ_JRPJ01000039.1	Primary Assembly	668	na
+CONTIG_62	unplaced-scaffold	na	na	JRPJ01000040.1	=	NZ_JRPJ01000040.1	Primary Assembly	667	na
+CONTIG_128	unplaced-scaffold	na	na	JRPJ01000041.1	=	NZ_JRPJ01000041.1	Primary Assembly	663	na
+CONTIG_28	unplaced-scaffold	na	na	JRPJ01000042.1	=	NZ_JRPJ01000042.1	Primary Assembly	575	na
+CONTIG_120	unplaced-scaffold	na	na	JRPJ01000043.1	=	NZ_JRPJ01000043.1	Primary Assembly	509	na
+CONTIG_105	unplaced-scaffold	na	na	JRPJ01000044.1	=	NZ_JRPJ01000044.1	Primary Assembly	505	na
+CONTIG_98	unplaced-scaffold	na	na	JRPJ01000045.1	=	NZ_JRPJ01000045.1	Primary Assembly	499	na
+CONTIG_44	unplaced-scaffold	na	na	JRPJ01000046.1	=	NZ_JRPJ01000046.1	Primary Assembly	476	na
+CONTIG_33	unplaced-scaffold	na	na	JRPJ01000047.1	=	NZ_JRPJ01000047.1	Primary Assembly	476	na
+CONTIG_21	unplaced-scaffold	na	na	JRPJ01000048.1	=	NZ_JRPJ01000048.1	Primary Assembly	464	na
+CONTIG_114	unplaced-scaffold	na	na	JRPJ01000049.1	=	NZ_JRPJ01000049.1	Primary Assembly	458	na
+CONTIG_78	unplaced-scaffold	na	na	JRPJ01000050.1	=	NZ_JRPJ01000050.1	Primary Assembly	418	na
+CONTIG_91	unplaced-scaffold	na	na	JRPJ01000051.1	=	NZ_JRPJ01000051.1	Primary Assembly	391	na
+CONTIG_30	unplaced-scaffold	na	na	JRPJ01000052.1	=	NZ_JRPJ01000052.1	Primary Assembly	389	na
+CONTIG_137	unplaced-scaffold	na	na	JRPJ01000053.1	=	NZ_JRPJ01000053.1	Primary Assembly	374	na
+CONTIG_23	unplaced-scaffold	na	na	JRPJ01000054.1	=	NZ_JRPJ01000054.1	Primary Assembly	363	na
+CONTIG_132	unplaced-scaffold	na	na	JRPJ01000055.1	=	NZ_JRPJ01000055.1	Primary Assembly	359	na
+CONTIG_88	unplaced-scaffold	na	na	JRPJ01000056.1	=	NZ_JRPJ01000056.1	Primary Assembly	351	na
+CONTIG_130	unplaced-scaffold	na	na	JRPJ01000057.1	=	NZ_JRPJ01000057.1	Primary Assembly	348	na
+CONTIG_96	unplaced-scaffold	na	na	JRPJ01000058.1	=	NZ_JRPJ01000058.1	Primary Assembly	346	na
+CONTIG_47	unplaced-scaffold	na	na	JRPJ01000059.1	=	NZ_JRPJ01000059.1	Primary Assembly	342	na
+CONTIG_123	unplaced-scaffold	na	na	JRPJ01000060.1	=	NZ_JRPJ01000060.1	Primary Assembly	338	na
+CONTIG_101	unplaced-scaffold	na	na	JRPJ01000061.1	=	NZ_JRPJ01000061.1	Primary Assembly	324	na
+CONTIG_77	unplaced-scaffold	na	na	JRPJ01000062.1	=	NZ_JRPJ01000062.1	Primary Assembly	319	na
+CONTIG_79	unplaced-scaffold	na	na	JRPJ01000063.1	=	NZ_JRPJ01000063.1	Primary Assembly	317	na
+CONTIG_134	unplaced-scaffold	na	na	JRPJ01000064.1	=	NZ_JRPJ01000064.1	Primary Assembly	306	na
+CONTIG_51	unplaced-scaffold	na	na	JRPJ01000065.1	=	NZ_JRPJ01000065.1	Primary Assembly	299	na
+CONTIG_71	unplaced-scaffold	na	na	JRPJ01000066.1	=	NZ_JRPJ01000066.1	Primary Assembly	289	na
+CONTIG_64	unplaced-scaffold	na	na	JRPJ01000067.1	=	NZ_JRPJ01000067.1	Primary Assembly	281	na
+CONTIG_85	unplaced-scaffold	na	na	JRPJ01000068.1	=	NZ_JRPJ01000068.1	Primary Assembly	269	na
+CONTIG_61	unplaced-scaffold	na	na	JRPJ01000069.1	=	NZ_JRPJ01000069.1	Primary Assembly	267	na
+CONTIG_24	unplaced-scaffold	na	na	JRPJ01000070.1	=	NZ_JRPJ01000070.1	Primary Assembly	255	na
+CONTIG_48	unplaced-scaffold	na	na	JRPJ01000071.1	=	NZ_JRPJ01000071.1	Primary Assembly	237	na
+CONTIG_115	unplaced-scaffold	na	na	JRPJ01000072.1	=	NZ_JRPJ01000072.1	Primary Assembly	233	na
+CONTIG_100	unplaced-scaffold	na	na	JRPJ01000073.1	=	NZ_JRPJ01000073.1	Primary Assembly	222	na
+CONTIG_43	unplaced-scaffold	na	na	JRPJ01000074.1	=	NZ_JRPJ01000074.1	Primary Assembly	222	na
+CONTIG_4	unplaced-scaffold	na	na	JRPJ01000075.1	=	NZ_JRPJ01000075.1	Primary Assembly	221	na
+CONTIG_112	unplaced-scaffold	na	na	JRPJ01000076.1	=	NZ_JRPJ01000076.1	Primary Assembly	220	na
+CONTIG_108	unplaced-scaffold	na	na	JRPJ01000077.1	=	NZ_JRPJ01000077.1	Primary Assembly	216	na
+CONTIG_49	unplaced-scaffold	na	na	JRPJ01000078.1	=	NZ_JRPJ01000078.1	Primary Assembly	215	na
+CONTIG_89	unplaced-scaffold	na	na	JRPJ01000079.1	=	NZ_JRPJ01000079.1	Primary Assembly	207	na
+CONTIG_60	unplaced-scaffold	na	na	JRPJ01000080.1	=	NZ_JRPJ01000080.1	Primary Assembly	207	na
+CONTIG_131	unplaced-scaffold	na	na	JRPJ01000081.1	=	NZ_JRPJ01000081.1	Primary Assembly	204	na
+CONTIG_19	unplaced-scaffold	na	na	JRPJ01000082.1	=	NZ_JRPJ01000082.1	Primary Assembly	204	na

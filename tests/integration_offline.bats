@@ -282,11 +282,11 @@ setup_file()
     done
 }
 
-@test "Top 1 superkingdom ncbi" {
-    outdir=${outprefix}top-superkingdom-ncbi/
+@test "Top 1 domain ncbi" {
+    outdir=${outprefix}top-domain-ncbi/
     label="test"
-    # Keep only top 1 for superkingdom
-    run ./genome_updater.sh -d refseq -g archaea,fungi -A superkingdom:1 -b ${label} -o ${outdir}
+    # Keep only top 1 for domain
+    run ./genome_updater.sh -d refseq -g archaea,fungi -A domain:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # Check if output contains one file for archaea and one for fungi
@@ -330,17 +330,17 @@ setup_file()
     # Selection order
     # col5["reference genome"]=1;
     # col5["na"]=2;
-    # should always pick the correct refseq category for top superkingdom (just one)
+    # should always pick the correct refseq category for top domain (just one)
 
     label="2"
     rscat="reference genome,na"
-    run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A superkingdom:1 -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A domain:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "reference genome" "$(get_values_as ${outdir}assembly_summary.txt 5)"
 
     label="1"
     rscat="na"
-    run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A superkingdom:1 -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g archaea -c "${rscat}" -A domain:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "na" "$(get_values_as ${outdir}assembly_summary.txt 5)"
 
@@ -352,29 +352,29 @@ setup_file()
     # col12["Scaffold"]=3;
     # col12["Contig"]=4;
 
-    # should always pick the correct assembly level for top superkingdom (just one)
+    # should always pick the correct assembly level for top domain (just one)
 
     label="4"
     aslvl="Complete Genome,Chromosome,Scaffold,Contig"
-    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A domain:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "Complete Genome" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
     label="3"
     aslvl="Chromosome,Scaffold,Contig"
-    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A domain:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "Chromosome" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
     label="2"
     aslvl="Scaffold,Contig"
-    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A domain:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "Scaffold" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
     label="1"
     aslvl="Contig"
-    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A superkingdom:1 -b ${label} -o ${outdir}
+    run ./genome_updater.sh -d refseq -g archaea -l "${aslvl}" -A domain:1 -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
     assert_equal "Contig" "$(get_values_as ${outdir}assembly_summary.txt 12)"
 
@@ -567,10 +567,10 @@ setup_file()
     assert_success
 }
 
-@test "Delete extra files -N ncbi" {
-    outdir=${outprefix}delete-extra-files-ncbi/
+@test "Delete extra files -N split" {
+    outdir=${outprefix}delete-extra-files-split/
     label="test"
-    run ./genome_updater.sh -N ncbi -d refseq -b ${label} -o ${outdir}
+    run ./genome_updater.sh -N split -d refseq -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # Get path from first file and make a copy (extra file)
@@ -668,8 +668,39 @@ setup_file()
     sanity_check ${outdir} ${label}
 }
 
-@test "Mode UPDATE" {
-    outdir=${outprefix}mode-update/
+@test "Mode UPDATE version" {
+    outdir=${outprefix}mode-update-version/
+    label="test"
+
+    # Dry-run NEW
+    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_refseq_update_v1.txt -k
+    assert_success
+    assert_dir_not_exist ${outdir}
+
+    run ./genome_updater.sh -b ${label} -o ${outdir} -e ${files_dir}simulated/assembly_summary_refseq_update_v1.txt
+    sanity_check ${outdir} ${label}
+
+    # Dry-run UPDATE only required (remove -e)
+    label="update"
+    run ./genome_updater.sh -d refseq -T "37372,2723303,1529041,1806" -b ${label} -o ${outdir} -e "" -k
+    assert_success
+
+    # Real run UPDATE
+    run ./genome_updater.sh -d refseq -T "37372,2723303,1529041,1806" -b ${label} -o ${outdir} -e ""
+    sanity_check ${outdir} ${label}
+
+    # Check log for updates
+    grep "2 unchanged entries" ${outdir}${label}/*.log # >&3
+    assert_success
+    grep "2 updated, 0 removed, 0 new entries" ${outdir}${label}/*.log # >&3
+    assert_success
+
+    # Find symbolic links /should be 0, -H hard by default)
+    assert_equal $(find ${outdir}${label}/files/ -type l | wc -l) 0
+}
+
+@test "Mode UPDATE new and del" {
+    outdir=${outprefix}mode-update-new-del/
     label="test"
 
     # Dry-run NEW
@@ -686,9 +717,35 @@ setup_file()
     run ./genome_updater.sh -d refseq -g archaea,fungi -b ${label} -o ${outdir} -k
     assert_success
 
-    # Real run FIX
+    # Real run UPDATE
     run ./genome_updater.sh -d refseq -g archaea,fungi -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
+
+    grep "0 updated, [1-9][0-9]* removed, [1-9][0-9]* new entries" ${outdir}${label}/*.log # >&3
+    assert_success
+}
+
+@test "Mode UPDATE soft links" {
+    outdir=${outprefix}mode-update-soft-links/
+    label="new"
+
+    # NEW
+    run ./genome_updater.sh -H soft -d refseq -g archaea -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+
+    # UPDATE (no changes, but carry links)
+    label="update"
+    run ./genome_updater.sh -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+
+    # Check log for updates
+    grep "[1-9][0-9]* unchanged entries" ${outdir}${label}/*.log # >&3
+    assert_success
+    grep "0 updated, 0 removed, 0 new entries" ${outdir}${label}/*.log # >&3
+    assert_success
+
+    # Find symbolic links
+    assert_equal $(find ${outdir}${label}/files/ -type l | wc -l) 20
 }
 
 @test "Mode UPDATE flat folders" {
@@ -712,6 +769,9 @@ setup_file()
     # Real run FIX
     run ./genome_updater.sh -d refseq -g archaea,fungi -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
+
+    grep "0 updated, [1-9][0-9]* removed, [1-9][0-9]* new entries" ${outdir}${label}/*.log # >&3
+    assert_success
 }
 
 @test "Mode auto UPDATE" {
@@ -828,10 +888,10 @@ setup_file()
     assert_failure
 }
 
-@test "NCBI dir structure" {
-    outdir=${outprefix}ncbi-folders/
+@test "Split dir structure" {
+    outdir=${outprefix}split-folders/
     label="1-refseq"
-    run ./genome_updater.sh -N ncbi -d refseq -g archaea -b ${label} -o ${outdir}
+    run ./genome_updater.sh -N split -d refseq -g archaea -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # refseq base folder is created, no genbank
@@ -879,7 +939,7 @@ setup_file()
 
     # Update -N, do not consider folder structute and download again
     label="2-change-ncbi-ncbi-folders"
-    run ./genome_updater.sh -N ncbi -b ${label} -o ${outdir}
+    run ./genome_updater.sh -N split -b ${label} -o ${outdir}
     sanity_check ${outdir} ${label}
 
     # refseq and genbank are now created

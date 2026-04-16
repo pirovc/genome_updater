@@ -130,7 +130,7 @@ path_output()
 { # parameter: ${1} file/url
     f=$(basename "${1}")
     path="${files_dir}"
-    if [[ "${dir_structure}" == "ncbi" ]]; then
+    if [[ "${dir_structure}" == "split" ]]; then
         path="${path}${f:0:3}/${f:4:3}/${f:7:3}/${f:10:3}/"
     fi
     echo "${path}"
@@ -154,7 +154,7 @@ export -f link_version #export it to be accessible to the parallel call
 list_local_files()
 { # parameter: ${1} prefix, ${2} 1 to list list all, "" list only '-not -empty'
     # Returns list of local files, without folder structure
-    if [[ "${dir_structure}" == "ncbi" ]]; then
+    if [[ "${dir_structure}" == "split" ]]; then
         depth="-mindepth 4"
     else
         depth="-maxdepth 1"
@@ -531,7 +531,7 @@ filter_gtdb()
 add_rank_ncbi()
 { # parameter: ${1} assembly_summary file, ${2} modified assembly_summary file with rank as first col, ${3} ncbi_tax file - return number of lines
     # rankedlineage.dmp cols (sep tab|tab):
-    # $1=taxid, $3=name, $5=species, $7=genus, $9=family, $11=order, $13=class, $15=phylum, $17=kingdom, $19=superkingdom
+    # $1=taxid, $3=name, $5=species, $7=genus, $9=family, $11=order, $13=class, $15=phylum, $17=kingdom, $19=domain
     if [[ -z "${top_assemblies_rank}" ]]; then
         # Repeat leaf taxid
         awk 'BEGIN{FS=OFS="\t"}{print $6,$0}' "${1}" >"${2}"
@@ -548,7 +548,7 @@ add_rank_ncbi()
                 r["order"]=11;
                 r["class"]=13;
                 r["phylum"]=15;
-                r["superkingdom"]=19;
+                r["domain"]=19;
             }{
                 print $1, $r[rank] ? $r[rank] : $1;
             }' "${3}" >"${tmp_ranked_taxids}"
@@ -574,7 +574,7 @@ add_rank_gtdb()
             r["order"]=5;
             r["class"]=4;
             r["phylum"]=3;
-            r["superkingdom"]=2;
+            r["domain"]=2;
         }{
             print $1, $r[rank] ? $r[rank] : $1;
         }' >"${tmp_ranked_accessions}"
@@ -917,57 +917,114 @@ function print_line
 function showhelp
 {
     echo
-    print_logo
-    echo
-    echo $'Database:'
-    echo $' -d Database (comma-separated entries)\n\t[genbank, refseq]\n\tDefault: ""'
+    echo $'Source:'
+    echo $' -d Database(s) (comma-separated, mandatory)'
+    echo $'\tOptions: "genbank, refseq"'
+    echo $'\tDefault: ""'
+    echo $' -f File type(s) to download (comma-separated, mandatory)'
+    echo $'\tOptions: "genomic.fna.gz, assembly_report.txt, protein.faa.gz, genomic.gbff.gz, ..." all available formats are described at https://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt'
+    echo $'\tDefault: "assembly_report.txt"'
     echo
     echo $'Organism/Taxa:'
-    echo $' -g Organism group(s) (comma-separated entries, empty for all)\n\t[archaea, bacteria, fungi, human, invertebrate, metagenomes, \n\tother, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral]\n\tDefault: ""'
-    echo $' -T Taxonomic identifier(s) with optional negation using the ^ prefix (comma-separated entries, empty for all).\n\tExample: "543,^562" (for -M ncbi) or "f__Enterobacteriaceae,^s__Escherichia coli" (for -M gtdb)\n\tDefault: ""'
-    echo
-    echo $'File:'
-    echo $' -f file type(s) (comma-separated entries)\n\t[genomic.fna.gz, assembly_report.txt, protein.faa.gz, genomic.gbff.gz, ...]\n\tAll available formats at https://ftp.ncbi.nlm.nih.gov/genomes/all/README.txt\n\tDefault: assembly_report.txt'
+    echo $' -g Organism group(s) (comma-separated, empty for all)'
+    echo $'\tOptions: "archaea, bacteria, fungi, human, invertebrate, metagenomes, other, plant, protozoa, vertebrate_mammalian, vertebrate_other, viral"'
+    echo $'\tDefault: ""'
+    echo $' -T Taxonomic group(s) (comma-separated, empty for all)'
+    echo $'\tOptional negation using the ^ prefix.'
+    echo $'\tExample: "543,^562" (for -M ncbi) or "f__Enterobacteriaceae,^s__Escherichia coli" (for -M gtdb)'
+    echo $'\tDefault: ""'
     echo
     echo $'Filter:'
-    echo $' -c refseq category (comma-separated entries, empty for all)\n\t[reference genome, na]\n\tDefault: ""'
-    echo $' -l assembly level (comma-separated entries, empty for all)\n\t[Complete Genome, Chromosome, Scaffold, Contig]\n\tDefault: ""'
-    echo $' -D Start date (>=), based on the sequence release date. Format YYYYMMDD.\n\tDefault: ""'
-    echo $' -E End date (<=), based on the sequence release date. Format YYYYMMDD.\n\tDefault: ""'
-    echo $' -F Custom filter for the assembly summary. \n\tExamples:\n\t  Single: -F \'$14 == "Full"\'\n\t  Multi:  -F \'($2 == "PRJNA12377" || $2 == "PRJNA670754") && $4 != "Partial"\'\n\t  Regex:  -F \'$8 ~ /bacterium/\'\n\t  Whole-file: -F \'$0 ~ "plasmid"\'\n\tUses awk syntax: $ for column index, || "or", && "and", ! "not", parentheses for nesting. Case sensitive.\n\tColumns info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt\n\tDefault: ""'
+    echo $' -c RefSeq category (comma-separated, empty for all)'
+    echo $'\tOptions: "reference genome, na"'
+    echo $'\tDefault: ""'
+    echo $' -l Assembly level (comma-separated, empty for all)'
+    echo $'\tOptions: "Complete Genome, Chromosome, Scaffold, Contig"'
+    echo $'\tDefault: ""'
+    echo $' -D Start date (empty for no filter)'
+    echo $'\tKeep assemblies with sequence release date greater then or equal (>=) to value. Format YYYYMMDD.'
+    echo $'\tDefault: ""'
+    echo $' -E End date (empty for no filter)'
+    echo $'\tKeep assemblies with sequence release date less then or equal (<=) to value. Format YYYYMMDD.'
+    echo $'\tDefault: ""'
+    echo $' -F Custom assembly summary filter (empty for no filter)'
+    echo $'\tUse awk syntax, e.g.: $ for column index, || "or", && "and", ! "not", parentheses for nesting. Case sensitive. Columns info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt'
+    echo $'\tExamples:'
+    echo $'\t  Single: -F \'$14 == "Full"\''
+    echo $'\t  Multi:  -F \'($2 == "PRJNA12377" || $2 == "PRJNA670754") && $4 != "Partial"\''
+    echo $'\t  Regex:  -F \'$8 ~ /bacterium/\''
+    echo $'\t  Whole-file: -F \'$0 ~ "plasmid"\''
+    echo $'\tDefault: ""'
     echo
     echo $'Taxonomy:'
-    echo $' -M Taxonomy. gtdb: latest GTDB release assemblies. ncbi: latest assemblies (version_status=latest). \n\t[ncbi, gtdb'"$(printf ', gtdb-%s' "${!gtdb_bac[@]}")"$']\n\tDefault: "ncbi"'
-    echo $' -A Keep a limited number of assemblies for each selected taxa (leaf nodes). 0 for all. \n\tSelection by ranks are also supported with rank:number (e.g genus:3)\n\t[species, genus, family, order, class, phylum, kingdom, superkingdom]\n\tSelection order based on: RefSeq Category, Assembly level, Relation to type material, Date.\n\tDefault: 0'
-    echo $' -a Download taxonomy files in the output folder.'
+    echo $' -M Taxonomy'
+    echo $'\t"gtdb[-*]" filters assemblies present in the GTDB version, which contains archaea and bacteria only. "gtdb" uses latest GTDB release. "ncbi" filters latest assemblies (version_status=latest). This option changes the behavior of -T -A -a.'
+    echo $'\tOptions: "ncbi, gtdb'"$(printf ', gtdb-%s' "${!gtdb_bac[@]}")"$'"'
+    echo $'\tDefault: "ncbi"'
+    echo $' -A Top assemblies (0 for all)'
+    echo $'\tOption to keep a limited number of assemblies for each taxa leaf nodes. Selection by tax. ranks are supported in the format "rank:number", e.g.: "genus:3" to keep only 3 assemblies for each genus. Top choice based on sorted fields: RefSeq Category, Assembly level, Relation to type material, Date (most recent).'
+    echo $'\tOptions (ranks): "species, genus, family, order, class, phylum, domain"'
+    echo $'\tDefault: 0'
+    echo $' -a (boolean flag)'
+    echo $'\tDownload and keep taxonomy database files in the output folder'
     echo
     echo $'Run:'
-    echo $' -k Dry-run mode. No sequence data is downloaded or updated - just checks for available sequences and changes'
-    echo $' -i Fix only mode. Re-downloads incomplete or failed data from a previous run. Can also be used to change files (-f).'
-    echo $' -t Threads to parallelize download and some file operations\n\tDefault: 1'
-    echo $' -L Downloader\n\t[wget, curl]\n\tDefault: wget'
-    echo $' -G Check integrity of downloaded .gz files (gzip -t)\n\tFile is removed if test fails.'
-    echo $' -m Check for MD5 of all downloaded files.\n\tFile is removed if checksum can be downloaded and does not match.'
+    echo $' -k Dry-run mode'
+    echo $'\tOnly checks for possible actions, no real data is downloaded, deleted or updated'
+    echo $' -i Fix mode'
+    echo $'\tRe-download incomplete or failed data from a previous run. Can also be used to change files (-f).'
+    echo $' -t Threads'
+    echo $'\tNumber of processes to parallelize downloads and some file operations'
+    echo $'\tDefault: 1'
+    echo $' -L Downloader program'
+    echo $'\tOptions: "wget, curl"'
+    echo $'\tDefault: "wget"'
+    echo $' -G gzip check (boolean flag)'
+    echo $'\tCheck integrity of downloaded gzipped files with "gzip -t". Downloaded files are removed if test fail.'
+    echo $' -m MD5 check (boolean flag)'
+    echo $'\tDownload, compute and check the MD5 checksum for all downloaded files. Downloaded files are removed if checksum can be downloaded but does not match.'
     echo
     echo $'Output:'
-    echo $' -o Output/Working directory \n\tDefault: ./tmp.XXXXXXXXXX'
-    echo $' -b Version label\n\tIdentifier for the downloaded version.\n\tDefault: current timestamp (YYYY-MM-DD_HH-MM-SS)'
-    echo $' -N Output directory structure.\n\tncbi: files/GCF/000/499/605/GCF_000499605.1_genomic.fna.gz\n\tflat: files/GCF_000499605.1_genomic.fna.gz\n\t[ncbi, flat]\n\tDefault: "ncbi"'
+    echo $' -o Output directory'
+    echo $'\tDefault: "./tmp.XXXXXXXXXX" (random folder)'
+    echo $' -b Version label'
+    echo $'\tName for the downloaded version. Will generate a directory inside the output directory (-o).'
+    echo $'\tDefault: "YYYY-MM-DD_HH-MM-SS" (current timestamp)'
+    echo $' -N Files directory structure'
+    echo $'\tThe "split" structure store files in sub-directories based on the assembly accession, e.g.: files/GCF/000/499/605/GCF_000499605.1_genomic.fna.gz. The "flat" will store everything under one dir, e.g.: files/GCF_000499605.1_genomic.fna.gz'
+    echo $'\tOptions: "split, flat"'
+    echo $'\tDefault: "split"'
     echo
     echo $'Report:'
-    echo $' -u Generate a report on updated assembly accessions\n\t(Added/Removed, assembly accession, url)'
-    echo $' -r Generate a report on updated sequence accessions\n\t(Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid)\n\tOnly available when file format assembly_report.txt is selected and successfully downloaded.'
-    echo $' -p Generate a download report with successful and failed URLs (url_failed.txt url_downloaded.txt)'
+    echo $' -u Assembly accession report (boolean flag)'
+    echo $'\tGenerate a report (*_assembly_accession.txt) with updated assembly accessions with the fields (tab-separated): Added/Removed, assembly accession, url'
+    echo $' -r Sequence accession report (boolean flag)'
+    echo $'\tGenerate a report (*_sequence_accession.txt) with updated sequence accessions with the fields (tab-separated): Added/Removed, assembly accession, genbank accession, refseq accession, sequence length, taxid. Only available when file format (-f) "assembly_report.txt" is selected and successfully downloaded.'
+    echo $' -p URL report (boolean flag)'
+    echo $'\tGenerate two files with successful and failed URLs (url_downloaded.txt, url_failed.txt)'
     echo
     echo $'Misc.:'
-    echo $' -e External "assembly_summary.txt" file to recover data from. Mutually exclusive with -d / -g \n\tDefault: ""'
-    echo $' -B Alternative version label to use as the current version. Mutually exclusive with -i.\n\tCan be used to rollback to an older version or to create multiple branches from a base version.\n\tDefault: ""'
-    echo $' -H Link mode for files kept between versions.\n\tHard links save inodes (useful on HPC systems) and allow version deletion.\n\t[hard, soft]\n\tDefault: "hard"'
-    echo $' -R Number of attempts to retry downloads in batches \n\tDefault: 5'
-    echo $' -n Conditional exit status based on number of failures accepted, otherwise will Exit Code = 1.\n\tExample: -n 10 will exit code 1 if 10 or more files failed to download\n\t[integer for file number, float for percentage, 0 = off]\n\tDefault: 0'
-    echo $' -x Search and delete extra files inside "files/" directory.'
+    echo $' -e Local assembly_summary.txt'
+    echo $'\tUse provided "assembly_summary.txt" instead of downloading. Mutually exclusive with -d and -g'
+    echo $'\tDefault: ""'
+    echo $' -B Alternative version label'
+    echo $'\tUse a previous version label instead of the latest as base version. Can be also used to rollback to an older version or to create multiple branches from a base version. Mutually exclusive with -i.'
+    echo $'\tDefault: ""'
+    echo $' -H Link mode'
+    echo $'\tChange link type for files kept between versions. Hard links save inodes (useful on HPC systems) and allow version deletion.'
+    echo $'\tOptions: "hard, soft"'
+    echo $'\tDefault: "hard"'
+    echo $' -R Retry batches'
+    echo $'\tNumber of attempts to retry failed downloads in batches.'
+    echo $'\tDefault: "5"'
+    echo $' -n Conditional exit status'
+    echo $'\tChange exit code based on number of failures accepted, otherwise will Exit Code = 1. For example: -n 10 will exit code 1 if 10 or more files failed to download'
+    echo $'\tOptions: integer for file number, float for percentage, 0 = off'
+    echo $'\tDefault: "0"'
+    echo $' -x Delete extra files (boolean flag)'
+    echo $'\tSearch and delete files that do not belong to the current version inside "files/" directory.'
     echo $' -s Silent output'
-    echo $' -w Silent output with download progress only'
+    echo $' -w Silent output with download progress'
     echo $' -V Verbose log'
     echo $' -Z Print debug information and run in debug mode'
     echo
@@ -996,7 +1053,7 @@ url_list=0
 dry_run=0
 just_fix=0
 conditional_exit=0
-dir_structure="ncbi"
+dir_structure="split"
 silent=0
 silent_progress=0
 debug_mode=0
@@ -1011,7 +1068,7 @@ downloader_tool="wget"
 
 # Check for required tools
 tool_not_found=0
-tools=("awk" "bc" "find" "gzip" "join" "md5sum" "parallel" "sed" "tar" "wget")
+tools=("awk" "bc" "find" "fmt" "gzip" "join" "md5sum" "parallel" "sed" "tar" "wget")
 for t in "${tools[@]}"; do
     if [ ! -x "$(command -v "${t}")" ]; then
         echo "${t} not found"
@@ -1087,7 +1144,8 @@ while getopts "${getopts_list}" opt "${args[@]}"; do
     F) custom_filter=${OPTARG} ;;
     g) organism_group=${OPTARG// /} ;; #remove spaces
     h)
-        showhelp
+        print_logo
+        showhelp | fmt -w 120 -s -u
         exit 0
         ;;
     H) link_mode=${OPTARG} ;;
@@ -1136,7 +1194,8 @@ done
 
 # No params
 if [ ${OPTIND} -eq 1 ]; then
-    showhelp
+    print_logo
+    showhelp | fmt -w 120 -s -u
     exit 1
 fi
 
@@ -1183,8 +1242,8 @@ if [[ "${link_mode}" != "hard" && "${link_mode}" != "soft" ]]; then
     exit 1
 fi
 
-if [[ "${dir_structure}" != "ncbi" && "${dir_structure}" != "flat" ]]; then
-    echo "${link_mode}: invalid output directory structure [ncbi, flat]"
+if [[ "${dir_structure}" != "split" && "${dir_structure}" != "flat" ]]; then
+    echo "${link_mode}: invalid output directory structure [split, flat]"
     exit 1
 fi
 
@@ -1222,13 +1281,13 @@ if [[ "${tax_mode}" =~ ^gtdb ]]; then
     gtdb_base_url="${gtdb_bac[$ver]%/*}/"
 
     if [[ -z "${organism_group}" ]]; then
-        # Check if there's an url (early versiosn do not have archaea)
+        # Check if there's a url (early versions do not have archaea)
         [[ -n ${gtdb_ar[$ver]} ]] && gtdb_urls+=("${gtdb_ar[$ver]}")
         gtdb_urls+=("${gtdb_bac[$ver]}")
     else
         for og in ${organism_group//,/ }; do
             if [[ "${og}" == "archaea" ]]; then
-                # Check if there's an url (early versiosn do not have archaea)
+                # Check if there's a url (early versions do not have archaea)
                 [[ -n ${gtdb_ar[$ver]} ]] && gtdb_urls+=("${gtdb_ar[$ver]}")
             elif [[ "${og}" == "bacteria" ]]; then
                 gtdb_urls+=("${gtdb_bac[$ver]}")
@@ -1278,8 +1337,8 @@ elif [[ "${tax_mode}" =~ ^gtdb ]]; then
 fi
 
 # top assemblies by rank
-if [[ ! "${top_assemblies}" =~ ^[0-9]+$ && ! "${top_assemblies}" =~ ^(superkingdom|phylum|class|order|family|genus|species)\:[1-9][0-9]*$ ]]; then
-    echo "${top_assemblies}: invalid top assemblies - should be a number > 0 or [superkingdom|phylum|class|order|family|genus|species]:number"
+if [[ ! "${top_assemblies}" =~ ^[0-9]+$ && ! "${top_assemblies}" =~ ^(domain|phylum|class|order|family|genus|species)\:[1-9][0-9]*$ ]]; then
+    echo "${top_assemblies}: invalid top assemblies - should be a number > 0 or [domain|phylum|class|order|family|genus|species]:number"
     exit 1
 else
     top_assemblies_rank=""
@@ -1716,8 +1775,8 @@ fi
 
 if [ "${dry_run}" -eq 0 ]; then
 
-    # Clean possible empty folders in NCBI structure after update
-    if [[ "${dir_structure}" == "ncbi" ]]; then
+    # Clean possible empty folders in split structure after update
+    if [[ "${dir_structure}" == "split" ]]; then
         find "${target_output_prefix}${files_dir}" -mindepth 1 -type d -empty -delete
     fi
 
