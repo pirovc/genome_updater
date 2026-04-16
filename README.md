@@ -148,11 +148,11 @@ Output:
         Name for the downloaded version. Will generate a directory inside the output directory (-o).
         Default: "YYYY-MM-DD_HH-MM-SS" (current timestamp)
  -N Files directory structure
-        The "ncbi" structure store files in sub-directories based on the assembly accession prefix, e.g.:
-        files/GCF/000/499/605/GCF_000499605.1_genomic.fna.gz. The "flat" will have all files in one dir, e.g.:
-        files/GCF_000499605.1_genomic.fna.gz
-        Options: "ncbi, flat"
-        Default: "ncbi"
+        The "split" structure store files in sub-directories based on the assembly accession, e.g.:
+        files/GCF/000/499/605/GCF_000499605.1_genomic.fna.gz. The "flat" will store everything under one dir,
+        e.g.: files/GCF_000499605.1_genomic.fna.gz
+        Options: "split, flat"
+        Default: "split"
 
 Report:
  -u Assembly accession report (boolean flag)

@@ -130,7 +130,7 @@ path_output()
 { # parameter: ${1} file/url
     f=$(basename "${1}")
     path="${files_dir}"
-    if [[ "${dir_structure}" == "ncbi" ]]; then
+    if [[ "${dir_structure}" == "split" ]]; then
         path="${path}${f:0:3}/${f:4:3}/${f:7:3}/${f:10:3}/"
     fi
     echo "${path}"
@@ -154,7 +154,7 @@ export -f link_version #export it to be accessible to the parallel call
 list_local_files()
 { # parameter: ${1} prefix, ${2} 1 to list list all, "" list only '-not -empty'
     # Returns list of local files, without folder structure
-    if [[ "${dir_structure}" == "ncbi" ]]; then
+    if [[ "${dir_structure}" == "split" ]]; then
         depth="-mindepth 4"
     else
         depth="-maxdepth 1"
@@ -991,9 +991,9 @@ function showhelp
     echo $'\tName for the downloaded version. Will generate a directory inside the output directory (-o).'
     echo $'\tDefault: "YYYY-MM-DD_HH-MM-SS" (current timestamp)'
     echo $' -N Files directory structure'
-    echo $'\tThe "ncbi" structure store files in sub-directories based on the assembly accession prefix, e.g.: files/GCF/000/499/605/GCF_000499605.1_genomic.fna.gz. The "flat" will have all files in one dir, e.g.: files/GCF_000499605.1_genomic.fna.gz'
-    echo $'\tOptions: "ncbi, flat"'
-    echo $'\tDefault: "ncbi"'
+    echo $'\tThe "split" structure store files in sub-directories based on the assembly accession, e.g.: files/GCF/000/499/605/GCF_000499605.1_genomic.fna.gz. The "flat" will store everything under one dir, e.g.: files/GCF_000499605.1_genomic.fna.gz'
+    echo $'\tOptions: "split, flat"'
+    echo $'\tDefault: "split"'
     echo
     echo $'Report:'
     echo $' -u Assembly accession report (boolean flag)'
@@ -1053,7 +1053,7 @@ url_list=0
 dry_run=0
 just_fix=0
 conditional_exit=0
-dir_structure="ncbi"
+dir_structure="split"
 silent=0
 silent_progress=0
 debug_mode=0
@@ -1242,8 +1242,8 @@ if [[ "${link_mode}" != "hard" && "${link_mode}" != "soft" ]]; then
     exit 1
 fi
 
-if [[ "${dir_structure}" != "ncbi" && "${dir_structure}" != "flat" ]]; then
-    echo "${link_mode}: invalid output directory structure [ncbi, flat]"
+if [[ "${dir_structure}" != "split" && "${dir_structure}" != "flat" ]]; then
+    echo "${link_mode}: invalid output directory structure [split, flat]"
     exit 1
 fi
 
@@ -1775,8 +1775,8 @@ fi
 
 if [ "${dry_run}" -eq 0 ]; then
 
-    # Clean possible empty folders in NCBI structure after update
-    if [[ "${dir_structure}" == "ncbi" ]]; then
+    # Clean possible empty folders in split structure after update
+    if [[ "${dir_structure}" == "split" ]]; then
         find "${target_output_prefix}${files_dir}" -mindepth 1 -type d -empty -delete
     fi
 
