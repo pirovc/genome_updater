@@ -1264,7 +1264,7 @@ gtdb_urls=()
 if [[ "${tax_mode}" =~ ^gtdb ]]; then
     if [[ "${tax_mode}" == "gtdb" ]]; then
         ver="latest"
-        gtdb_bac["${ver}"]="${gtdb_base_url}latest/ar120_taxonomy.tsv.gz"
+        gtdb_bac["${ver}"]="${gtdb_base_url}latest/bac120_taxonomy.tsv.gz"
         gtdb_ar["${ver}"]="${gtdb_base_url}latest/ar53_taxonomy.tsv.gz"
     elif [[ "${tax_mode}" =~ ^gtdb- ]]; then
         ver=$(echo "${tax_mode}" | cut -d '-' -f 2)
