@@ -216,7 +216,7 @@ check_assembly_summary()
 
     # Discard lines with too missing columns (probably download interrupted)
     # extra columns may be a tab in data, it is filtered later
-    if ! awk -v excols=${expected_cols} 'BEGIN{FS=OFS="\t"}{if(NF<excols && NF>0) exit 1}' "${1}"; then
+    if ! awk -v excols=${expected_cols} 'BEGIN{FS=OFS="\t"}{if(NF<excols) exit 1}' "${1}"; then
         echolog " - Invalid assembly_summary.txt (missing columns)" "1"
         return 1
     fi
