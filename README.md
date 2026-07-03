@@ -120,7 +120,7 @@ Taxonomy:
         on sorted fields: RefSeq Category, Assembly level, Relation to type material, Date (most recent).
         Options (ranks): "species, genus, family, order, class, phylum, domain"
         Default: 0
- -a Download taxonomy taxonomy (boolean flag)
+ -a Download taxonomy (boolean flag)
         Download and keep taxonomy database files in the output folder
 
 Run:
