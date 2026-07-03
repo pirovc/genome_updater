@@ -311,6 +311,7 @@ filter_assembly_summary()
         mv "${assembly_summary}_vcols" "${assembly_summary}"
         echolog " - $((filtered_lines - valid_cols_lines)) invalid entries removed (too many columns in assembly_summary.txt)" "1"
         filtered_lines=${valid_cols_lines}
+        if [[ "${filtered_lines}" -eq 0 ]]; then return 0; fi
     fi
 
     gtdb_tax=""
