@@ -985,7 +985,7 @@ function showhelp
     echo $'\tOption to keep a limited number of assemblies for each taxa leaf nodes. Selection by tax. ranks are supported in the format "rank:number", e.g.: "genus:3" to keep only 3 assemblies for each genus. Top choice based on sorted fields: RefSeq Category, Assembly level, Relation to type material, Date (most recent).'
     echo $'\tOptions (ranks): "species, genus, family, order, class, phylum, domain"'
     echo $'\tDefault: 0'
-    echo $' -a Download taxonomy taxonomy (boolean flag)'
+    echo $' -a Download taxonomy (boolean flag)'
     echo $'\tDownload and keep taxonomy database files in the output folder'
     echo
     echo $'Run:'
