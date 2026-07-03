@@ -872,10 +872,21 @@ setup_file()
     assert_success
 }
 
+@test "Extra cols assembly_summary.txt" {
+    outdir=${outprefix}extra-cols-as/
+    label="test"
+    run ./genome_updater.sh -b ${label} -o ${outdir} -e ${files_dir}simulated/assembly_summary_extra_cols.txt
+    sanity_check ${outdir} ${label}
+
+    # Check log for filtered extra cols
+    grep "[1-9][0-9]* invalid entries removed (too many columns in assembly_summary.txt)" ${outdir}${label}/*.log # >&3
+    assert_success
+}
+
 @test "Invalid assembly_summary.txt" {
     outdir=${outprefix}invalid-as/
-    label="cols"
-    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_cols.txt
+    label="cols_missing"
+    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_cols_missing.txt
     assert_failure
     label="headermiddle"
     run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_headermiddle.txt

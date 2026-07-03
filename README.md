@@ -62,7 +62,7 @@ tests/test.sh
 ┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐
 │ ┬├┤ ││││ ││││├┤     │ │├─┘ ││├─┤ │ ├┤ ├┬┘
 └─┘└─┘┘└┘└─┘┴ ┴└─┘────└─┘┴  ─┴┘┴ ┴ ┴ └─┘┴└─
-                                     v0.8.0 
+                                     v0.8.2 
 
 Source:
  -d Database(s) (comma-separated, mandatory)
@@ -120,7 +120,7 @@ Taxonomy:
         on sorted fields: RefSeq Category, Assembly level, Relation to type material, Date (most recent).
         Options (ranks): "species, genus, family, order, class, phylum, domain"
         Default: 0
- -a (boolean flag)
+ -a Download taxonomy taxonomy (boolean flag)
         Download and keep taxonomy database files in the output folder
 
 Run:
