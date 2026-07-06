@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.8.1"
+version="0.8.2"
 
 # Define ncbi_base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -74,6 +74,7 @@ export LC_NUMERIC="en_US.UTF-8"
 #activate aliases in the script
 shopt -s expand_aliases
 alias sort="sort --field-separator=$'\t'"
+expected_cols=38
 join_as_fields1="1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.20,1.21,1.22,1.23,1.24,1.25,1.26,1.27,1.28,1.29,1.30,1.31,1.32,1.33,1.34,1.35,1.36,1.37,1.38"
 join_as_fields2="1.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,2.10,2.11,2.12,2.13,2.14,2.15,2.16,2.17,2.18,2.19,2.20,2.21,2.22,2.23,2.24,2.25,2.26,2.27,2.28,2.29,2.30,2.31,2.32,2.33,2.34,2.35,2.36,2.37,2.38"
 
@@ -184,36 +185,45 @@ count_lines_file()
 
 check_assembly_summary()
 { # parameter: ${1} assembly_summary file - return 0 true 1 false
-    # file exists and it's not empty
-    if [ ! -s "${1}" ]; then return 1; fi
-
-    # Last char is empty (line break)
-    if [ -n "$(tail -c -1 "${1}")" ]; then return 1; fi
-
-    # if contains header char parts of the header anywhere besides starting lines
-    if grep -qm 1 "^#" "${1}"; then
+    # file exists and it's empty
+    if [ ! -s "${1}" ]; then
+        echolog " - Invalid assembly_summary.txt (empty file)" "1"
         return 1
     fi
 
+    # Last char is empty (line break)
+    if [ -n "$(tail -c -1 "${1}")" ]; then
+        echolog " - Invalid assembly_summary.txt (file ends on empty char)" "1"
+        return 1
+    fi
+
+    # if contains header char parts of the header anywhere besides starting lines
+    if grep -qm 1 "^#" "${1}"; then
+        echolog " - Invalid assembly_summary.txt (header out of place)" "1"
+        return 1
+    fi
     # if contains parts of the header anywhere
     ##   See ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt for a description of the columns in this file.
-    grep -qm 1 "ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt" "${1}"
     if grep -qm 1 "ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt" "${1}"; then
+        echolog " - Invalid assembly_summary.txt (header out of place)" "1"
         return 1
     fi
     # assembly_accession    bioproject  biosample   wgs_master  refseq_category taxid   species_taxid   organism_name   infraspecific_name  isolate version_status  assembly_levelrelease_type  genome_rep  seq_rel_date    asm_name    submitter   gbrs_paired_asm paired_asm_comp ftp_path    excluded_from_refseq    relation_to_type_material   asm_not_live_date
     if grep -qm 1 " assembly_accession" "${1}"; then
+        echolog " - Invalid assembly_summary.txt (header out of place)" "1"
         return 1
     fi
 
-    # if every line has same number of cols (besides headers)
-    ncols=$(grep -v "^#" "${1}" | awk 'BEGIN{FS=OFS="\t"}{print NF}' | uniq | wc -l)
-    if [[ ${ncols} -gt 1 ]]; then
+    # Discard lines with too missing columns (probably download interrupted)
+    # extra columns may be a tab in data, it is filtered later
+    if ! awk -v excols=${expected_cols} 'BEGIN{FS=OFS="\t"}{if(NF<excols) exit 1}' "${1}"; then
+        echolog " - Invalid assembly_summary.txt (missing columns)" "1"
         return 1
     fi
 
     # if every line starts with GCF_ or GCA_
     if grep -qv "^GC[FA]_" "${1}"; then
+        echolog " - Invalid assembly_summary.txt (line starts without accession)" "1"
         return 1
     fi
 
@@ -293,6 +303,16 @@ filter_assembly_summary()
     assembly_summary="${1}"
     filtered_lines=${2}
     if [[ "${filtered_lines}" -eq 0 ]]; then return 1; fi
+
+    # Discard lines with too many columns (e.g. tabs in data)
+    if ! awk -v excols=${expected_cols} 'BEGIN{FS=OFS="\t"}{if(NF>excols) exit 1}' "${assembly_summary}"; then
+        awk -v excols=${expected_cols} 'BEGIN{FS=OFS="\t"}{if(NF==excols) print}' "${assembly_summary}" >"${assembly_summary}_vcols"
+        valid_cols_lines=$(count_lines_file "${assembly_summary}_vcols")
+        mv "${assembly_summary}_vcols" "${assembly_summary}"
+        echolog " - $((filtered_lines - valid_cols_lines)) invalid entries removed (too many columns in assembly_summary.txt)" "1"
+        filtered_lines=${valid_cols_lines}
+        if [[ "${filtered_lines}" -eq 0 ]]; then return 0; fi
+    fi
 
     gtdb_tax=""
     ncbi_tax=""
@@ -965,7 +985,7 @@ function showhelp
     echo $'\tOption to keep a limited number of assemblies for each taxa leaf nodes. Selection by tax. ranks are supported in the format "rank:number", e.g.: "genus:3" to keep only 3 assemblies for each genus. Top choice based on sorted fields: RefSeq Category, Assembly level, Relation to type material, Date (most recent).'
     echo $'\tOptions (ranks): "species, genus, family, order, class, phylum, domain"'
     echo $'\tDefault: 0'
-    echo $' -a (boolean flag)'
+    echo $' -a Download taxonomy (boolean flag)'
     echo $'\tDownload and keep taxonomy database files in the output folder'
     echo
     echo $'Run:'
