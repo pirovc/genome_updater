@@ -11,7 +11,8 @@ setup_file()
     DIR="$(cd "$(dirname "$BATS_TEST_FILENAME")" >/dev/null 2>&1 && pwd)"
 
     files_dir="$DIR/files/"
-    export files_dir
+    sim_files_dir="$DIR/files_simulated/"
+    export files_dir sim_files_dir
 
     # Export local_dir to use local files offline instead of ncbi ftp online when testing
     local_dir="$DIR/files/"
@@ -195,6 +196,64 @@ setup_file()
     for asl in ${aslev_ret[@]}; do
         assert_equal ${asl} ${aslev[0]}
     done
+}
+
+@test "Version status" {
+    outdir=${outprefix}version-status/
+    label="latest"
+
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -v latest
+    sanity_check ${outdir} ${label}
+
+    # Check if output contains only selected refseq category
+    readarray -t versta_ret < <(get_values_as ${outdir}assembly_summary.txt 11)
+    #echo ${versta_ret[@]} >&3
+
+    # Should just return same refseq category
+    for rsc in ${versta_ret[@]}; do
+        assert_equal ${rsc} "latest"
+    done
+
+    label="suppressed"
+
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -v suppressed
+    sanity_check ${outdir} ${label}
+
+    # Check if output contains only selected refseq category
+    readarray -t versta_ret < <(get_values_as ${outdir}assembly_summary.txt 11)
+    #echo ${versta_ret[@]} >&3
+
+    # Should just return same refseq category
+    for rsc in ${versta_ret[@]}; do
+        assert_equal ${rsc} "suppressed"
+    done
+
+    label="replaced"
+
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -v replaced
+    sanity_check ${outdir} ${label}
+
+    # Check if output contains only selected refseq category
+    readarray -t versta_ret < <(get_values_as ${outdir}assembly_summary.txt 11)
+    #echo ${versta_ret[@]} >&3
+
+    for rsc in ${versta_ret[@]}; do
+        assert_equal ${rsc} "replaced"
+    done
+
+    label="suppressed+replaced"
+
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -v suppressed,replaced
+    sanity_check ${outdir} ${label}
+
+    readarray -t versta_ret < <(get_values_as ${outdir}assembly_summary.txt 11)
+    #echo ${versta_ret[@]} >&3
+
+    for rsc in ${versta_ret[@]}; do
+        echo ${rsc} | grep -Fxq -e "replaced" -e "suppressed"
+        assert_success
+    done
+
 }
 
 @test "Custom filter" {
@@ -673,11 +732,11 @@ setup_file()
     label="test"
 
     # Dry-run NEW
-    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_refseq_update_v1.txt -k
+    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${sim_files_dir}/assembly_summary_refseq_update_v1.txt -k
     assert_success
     assert_dir_not_exist ${outdir}
 
-    run ./genome_updater.sh -b ${label} -o ${outdir} -e ${files_dir}simulated/assembly_summary_refseq_update_v1.txt
+    run ./genome_updater.sh -b ${label} -o ${outdir} -e ${sim_files_dir}/assembly_summary_refseq_update_v1.txt
     sanity_check ${outdir} ${label}
 
     # Dry-run UPDATE only required (remove -e)
@@ -875,7 +934,7 @@ setup_file()
 @test "Extra cols assembly_summary.txt" {
     outdir=${outprefix}extra-cols-as/
     label="test"
-    run ./genome_updater.sh -b ${label} -o ${outdir} -e ${files_dir}simulated/assembly_summary_extra_cols.txt
+    run ./genome_updater.sh -b ${label} -o ${outdir} -e ${sim_files_dir}/assembly_summary_extra_cols.txt
     sanity_check ${outdir} ${label}
 
     # Check log for filtered extra cols
@@ -886,16 +945,16 @@ setup_file()
 @test "Invalid assembly_summary.txt" {
     outdir=${outprefix}invalid-as/
     label="cols_missing"
-    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_cols_missing.txt
+    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${sim_files_dir}/assembly_summary_invalid_cols_missing.txt
     assert_failure
     label="headermiddle"
-    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_headermiddle.txt
+    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${sim_files_dir}/assembly_summary_invalid_headermiddle.txt
     assert_failure
     label="justheader"
-    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_justheader.txt
+    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${sim_files_dir}/assembly_summary_invalid_justheader.txt
     assert_failure
     label="xCF"
-    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${files_dir}simulated/assembly_summary_invalid_xCF.txt
+    run ./genome_updater.sh -o ${outdir} -b ${label} -e ${sim_files_dir}/assembly_summary_invalid_xCF.txt
     assert_failure
 }
 
