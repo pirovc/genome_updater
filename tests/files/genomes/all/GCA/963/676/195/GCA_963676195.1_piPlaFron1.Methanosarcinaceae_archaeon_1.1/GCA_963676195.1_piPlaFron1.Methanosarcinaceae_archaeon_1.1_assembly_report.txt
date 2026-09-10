@@ -1,0 +1,30 @@
+# Assembly name:  piPlaFron1.Methanosarcinaceae_archaeon_1.1
+# Organism name:  Methanosarcinaceae archaeon (euryarchaeotes)
+# Isolate:  49143578-751d-4d73-9964-2185b3227837
+# Taxid:          1945595
+# BioSample:      SAMEA114407589
+# BioProject:     PRJEB69945
+# Submitter:      WELLCOME SANGER INSTITUTE
+# Date:           2023-11-18
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Complete Genome
+# Genome representation: full
+# Assembly method: various
+# Genome coverage: 10x
+# Sequencing technology: PacBio,Arima
+# Excluded from RefSeq: derived from metagenome; genus undefined
+# GenBank assembly accession: GCA_963676195.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_963676194.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+chromosome_1	assembled-molecule	1	Chromosome	OY781046.1	<>	na	Primary Assembly	1940436	na
+chromosome_2	assembled-molecule	2	Chromosome	OY781047.1	<>	na	Primary Assembly	1099830	na

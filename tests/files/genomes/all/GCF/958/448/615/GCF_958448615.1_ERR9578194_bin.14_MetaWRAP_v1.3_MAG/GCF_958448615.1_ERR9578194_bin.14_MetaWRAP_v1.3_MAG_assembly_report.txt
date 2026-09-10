@@ -1,0 +1,64 @@
+# Assembly name:  ERR9578194_bin.14_MetaWRAP_v1.3_MAG
+# Organism name:  Methanobrevibacter arboriphilus (euryarchaeotes)
+# Isolate:  ERR9578194_bin.14_MetaWRAP_v1.3_MAG
+# Taxid:          39441
+# BioSample:      SAMEA114062927
+# BioProject:     PRJEB62820
+# Submitter:      EMG
+# Date:           2023-07-18
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    CAUDEP01
+# Assembly method: metaspades v3.15.3
+# Genome coverage: 67x
+# Sequencing technology: Illumina HiSeq 2000
+# Excluded from RefSeq: annotation fails MAG completeness check; derived from metagenome
+# GenBank assembly accession: GCA_958448615.1
+# RefSeq assembly accession: GCF_958448615.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_958448614.1	GCF_958448614.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ERZ18533825.40	unplaced-scaffold	na	na	CAUDEP010000001.1	=	NZ_CAUDEP010000001.1	Primary Assembly	216496	na
+ERZ18533825.56	unplaced-scaffold	na	na	CAUDEP010000002.1	=	NZ_CAUDEP010000002.1	Primary Assembly	189785	na
+ERZ18533825.73	unplaced-scaffold	na	na	CAUDEP010000003.1	=	NZ_CAUDEP010000003.1	Primary Assembly	169818	na
+ERZ18533825.90	unplaced-scaffold	na	na	CAUDEP010000004.1	=	NZ_CAUDEP010000004.1	Primary Assembly	154688	na
+ERZ18533825.109	unplaced-scaffold	na	na	CAUDEP010000005.1	=	NZ_CAUDEP010000005.1	Primary Assembly	141945	na
+ERZ18533825.133	unplaced-scaffold	na	na	CAUDEP010000006.1	=	NZ_CAUDEP010000006.1	Primary Assembly	125360	na
+ERZ18533825.183	unplaced-scaffold	na	na	CAUDEP010000007.1	=	NZ_CAUDEP010000007.1	Primary Assembly	103574	na
+ERZ18533825.185	unplaced-scaffold	na	na	CAUDEP010000008.1	=	NZ_CAUDEP010000008.1	Primary Assembly	103044	na
+ERZ18533825.198	unplaced-scaffold	na	na	CAUDEP010000009.1	=	NZ_CAUDEP010000009.1	Primary Assembly	101465	na
+ERZ18533825.204	unplaced-scaffold	na	na	CAUDEP010000010.1	=	NZ_CAUDEP010000010.1	Primary Assembly	99283	na
+ERZ18533825.236	unplaced-scaffold	na	na	CAUDEP010000011.1	=	NZ_CAUDEP010000011.1	Primary Assembly	91832	na
+ERZ18533825.262	unplaced-scaffold	na	na	CAUDEP010000012.1	=	NZ_CAUDEP010000012.1	Primary Assembly	86352	na
+ERZ18533825.272	unplaced-scaffold	na	na	CAUDEP010000013.1	=	NZ_CAUDEP010000013.1	Primary Assembly	85734	na
+ERZ18533825.336	unplaced-scaffold	na	na	CAUDEP010000014.1	=	NZ_CAUDEP010000014.1	Primary Assembly	74078	na
+ERZ18533825.342	unplaced-scaffold	na	na	CAUDEP010000015.1	=	NZ_CAUDEP010000015.1	Primary Assembly	72964	na
+ERZ18533825.410	unplaced-scaffold	na	na	CAUDEP010000016.1	=	NZ_CAUDEP010000016.1	Primary Assembly	65816	na
+ERZ18533825.447	unplaced-scaffold	na	na	CAUDEP010000017.1	=	NZ_CAUDEP010000017.1	Primary Assembly	60865	na
+ERZ18533825.756	unplaced-scaffold	na	na	CAUDEP010000018.1	=	NZ_CAUDEP010000018.1	Primary Assembly	41892	na
+ERZ18533825.796	unplaced-scaffold	na	na	CAUDEP010000019.1	=	NZ_CAUDEP010000019.1	Primary Assembly	40519	na
+ERZ18533825.827	unplaced-scaffold	na	na	CAUDEP010000020.1	=	NZ_CAUDEP010000020.1	Primary Assembly	38885	na
+ERZ18533825.947	unplaced-scaffold	na	na	CAUDEP010000021.1	=	NZ_CAUDEP010000021.1	Primary Assembly	34964	na
+ERZ18533825.1032	unplaced-scaffold	na	na	CAUDEP010000022.1	=	NZ_CAUDEP010000022.1	Primary Assembly	32660	na
+ERZ18533825.1328	unplaced-scaffold	na	na	CAUDEP010000023.1	=	NZ_CAUDEP010000023.1	Primary Assembly	26809	na
+ERZ18533825.1368	unplaced-scaffold	na	na	CAUDEP010000024.1	=	NZ_CAUDEP010000024.1	Primary Assembly	26099	na
+ERZ18533825.1690	unplaced-scaffold	na	na	CAUDEP010000025.1	=	NZ_CAUDEP010000025.1	Primary Assembly	21920	na
+ERZ18533825.1871	unplaced-scaffold	na	na	CAUDEP010000026.1	=	NZ_CAUDEP010000026.1	Primary Assembly	19956	na
+ERZ18533825.1878	unplaced-scaffold	na	na	CAUDEP010000027.1	=	NZ_CAUDEP010000027.1	Primary Assembly	19865	na
+ERZ18533825.2006	unplaced-scaffold	na	na	CAUDEP010000028.1	=	NZ_CAUDEP010000028.1	Primary Assembly	18688	na
+ERZ18533825.2442	unplaced-scaffold	na	na	CAUDEP010000029.1	=	NZ_CAUDEP010000029.1	Primary Assembly	15795	na
+ERZ18533825.3057	unplaced-scaffold	na	na	CAUDEP010000030.1	=	NZ_CAUDEP010000030.1	Primary Assembly	12715	na
+ERZ18533825.3260	unplaced-scaffold	na	na	CAUDEP010000031.1	=	NZ_CAUDEP010000031.1	Primary Assembly	11949	na
+ERZ18533825.4118	unplaced-scaffold	na	na	CAUDEP010000032.1	=	NZ_CAUDEP010000032.1	Primary Assembly	9460	na
+ERZ18533825.8455	unplaced-scaffold	na	na	CAUDEP010000033.1	=	NZ_CAUDEP010000033.1	Primary Assembly	4692	na

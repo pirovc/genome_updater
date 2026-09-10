@@ -1,0 +1,99 @@
+# Assembly name:  ASM2817886v1
+# Organism name:  Clostridioides difficile (firmicutes)
+# Infraspecific name:  strain=10092904
+# Taxid:          1496
+# BioSample:      SAMN08464377
+# BioProject:     PRJNA432876
+# Submitter:      Zhejiang University
+# Date:           2023-01-27
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    PRNE01
+# Assembly method: SOAPdenovo v. 3.10.1
+# Expected final version: yes
+# Genome coverage: 300x
+# Sequencing technology: Illumina HiSeq
+# Excluded from RefSeq: from large multi-isolate project
+# GenBank assembly accession: GCA_028178865.1
+# RefSeq assembly accession: GCF_028178865.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_028178875.1	GCF_028178875.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+s10092904_ctg001_36704	unplaced-scaffold	na	na	PRNE01000001.1	=	NZ_PRNE01000001.1	Primary Assembly	36704	na
+s10092904_ctg002_66698	unplaced-scaffold	na	na	PRNE01000002.1	=	NZ_PRNE01000002.1	Primary Assembly	66698	na
+s10092904_ctg003_46313	unplaced-scaffold	na	na	PRNE01000003.1	=	NZ_PRNE01000003.1	Primary Assembly	46313	na
+s10092904_ctg004_22188	unplaced-scaffold	na	na	PRNE01000004.1	=	NZ_PRNE01000004.1	Primary Assembly	22188	na
+s10092904_ctg005_9437	unplaced-scaffold	na	na	PRNE01000005.1	=	NZ_PRNE01000005.1	Primary Assembly	9437	na
+s10092904_ctg006_829	unplaced-scaffold	na	na	PRNE01000006.1	=	NZ_PRNE01000006.1	Primary Assembly	829	na
+s10092904_ctg007_16224	unplaced-scaffold	na	na	PRNE01000007.1	=	NZ_PRNE01000007.1	Primary Assembly	16224	na
+s10092904_ctg008_602	unplaced-scaffold	na	na	PRNE01000008.1	=	NZ_PRNE01000008.1	Primary Assembly	602	na
+s10092904_ctg009_4994	unplaced-scaffold	na	na	PRNE01000009.1	=	NZ_PRNE01000009.1	Primary Assembly	4994	na
+s10092904_ctg010_6083	unplaced-scaffold	na	na	PRNE01000010.1	=	NZ_PRNE01000010.1	Primary Assembly	6083	na
+s10092904_ctg011_18509	unplaced-scaffold	na	na	PRNE01000011.1	=	NZ_PRNE01000011.1	Primary Assembly	18509	na
+s10092904_ctg012_99043	unplaced-scaffold	na	na	PRNE01000012.1	=	NZ_PRNE01000012.1	Primary Assembly	99043	na
+s10092904_ctg013_3031	unplaced-scaffold	na	na	PRNE01000013.1	=	NZ_PRNE01000013.1	Primary Assembly	3031	na
+s10092904_ctg014_124548	unplaced-scaffold	na	na	PRNE01000014.1	=	NZ_PRNE01000014.1	Primary Assembly	124548	na
+s10092904_ctg015_189235	unplaced-scaffold	na	na	PRNE01000015.1	=	NZ_PRNE01000015.1	Primary Assembly	189235	na
+s10092904_ctg016_15489	unplaced-scaffold	na	na	PRNE01000016.1	=	NZ_PRNE01000016.1	Primary Assembly	15489	na
+s10092904_ctg017_130560	unplaced-scaffold	na	na	PRNE01000017.1	=	NZ_PRNE01000017.1	Primary Assembly	130560	na
+s10092904_ctg018_3826	unplaced-scaffold	na	na	PRNE01000018.1	=	NZ_PRNE01000018.1	Primary Assembly	3826	na
+s10092904_ctg019_27494	unplaced-scaffold	na	na	PRNE01000019.1	=	NZ_PRNE01000019.1	Primary Assembly	27494	na
+s10092904_ctg020_1456	unplaced-scaffold	na	na	PRNE01000020.1	=	NZ_PRNE01000020.1	Primary Assembly	1456	na
+s10092904_ctg021_1521	unplaced-scaffold	na	na	PRNE01000021.1	=	NZ_PRNE01000021.1	Primary Assembly	1521	na
+s10092904_ctg022_150858	unplaced-scaffold	na	na	PRNE01000022.1	=	NZ_PRNE01000022.1	Primary Assembly	150858	na
+s10092904_ctg023_37664	unplaced-scaffold	na	na	PRNE01000023.1	=	NZ_PRNE01000023.1	Primary Assembly	37664	na
+s10092904_ctg024_111438	unplaced-scaffold	na	na	PRNE01000024.1	=	NZ_PRNE01000024.1	Primary Assembly	111438	na
+s10092904_ctg025_526	unplaced-scaffold	na	na	PRNE01000025.1	=	NZ_PRNE01000025.1	Primary Assembly	526	na
+s10092904_ctg026_11406	unplaced-scaffold	na	na	PRNE01000026.1	=	NZ_PRNE01000026.1	Primary Assembly	11406	na
+s10092904_ctg027_869	unplaced-scaffold	na	na	PRNE01000027.1	=	NZ_PRNE01000027.1	Primary Assembly	869	na
+s10092904_ctg028_143346	unplaced-scaffold	na	na	PRNE01000028.1	=	NZ_PRNE01000028.1	Primary Assembly	143346	na
+s10092904_ctg029_114633	unplaced-scaffold	na	na	PRNE01000029.1	=	NZ_PRNE01000029.1	Primary Assembly	114633	na
+s10092904_ctg030_235115	unplaced-scaffold	na	na	PRNE01000030.1	=	NZ_PRNE01000030.1	Primary Assembly	235115	na
+s10092904_ctg031_170907	unplaced-scaffold	na	na	PRNE01000031.1	=	NZ_PRNE01000031.1	Primary Assembly	170907	na
+s10092904_ctg032_1615	unplaced-scaffold	na	na	PRNE01000032.1	=	NZ_PRNE01000032.1	Primary Assembly	1615	na
+s10092904_ctg033_22884	unplaced-scaffold	na	na	PRNE01000033.1	=	NZ_PRNE01000033.1	Primary Assembly	22884	na
+s10092904_ctg034_63882	unplaced-scaffold	na	na	PRNE01000034.1	=	NZ_PRNE01000034.1	Primary Assembly	63882	na
+s10092904_ctg035_1974	unplaced-scaffold	na	na	PRNE01000035.1	=	NZ_PRNE01000035.1	Primary Assembly	1974	na
+s10092904_ctg036_5041	unplaced-scaffold	na	na	PRNE01000036.1	=	NZ_PRNE01000036.1	Primary Assembly	5041	na
+s10092904_ctg037_658	unplaced-scaffold	na	na	PRNE01000037.1	=	NZ_PRNE01000037.1	Primary Assembly	658	na
+s10092904_ctg038_50650	unplaced-scaffold	na	na	PRNE01000038.1	=	NZ_PRNE01000038.1	Primary Assembly	50650	na
+s10092904_ctg039_605	unplaced-scaffold	na	na	PRNE01000039.1	=	NZ_PRNE01000039.1	Primary Assembly	605	na
+s10092904_ctg040_528	unplaced-scaffold	na	na	PRNE01000040.1	=	NZ_PRNE01000040.1	Primary Assembly	528	na
+s10092904_ctg041_1583	unplaced-scaffold	na	na	PRNE01000041.1	=	NZ_PRNE01000041.1	Primary Assembly	1583	na
+s10092904_ctg042_571	unplaced-scaffold	na	na	PRNE01000042.1	=	NZ_PRNE01000042.1	Primary Assembly	571	na
+s10092904_ctg043_4126	unplaced-scaffold	na	na	PRNE01000043.1	=	NZ_PRNE01000043.1	Primary Assembly	4126	na
+s10092904_ctg044_194455	unplaced-scaffold	na	na	PRNE01000044.1	=	NZ_PRNE01000044.1	Primary Assembly	194455	na
+s10092904_ctg045_388289	unplaced-scaffold	na	na	PRNE01000045.1	=	NZ_PRNE01000045.1	Primary Assembly	388289	na
+s10092904_ctg046_1495	unplaced-scaffold	na	na	PRNE01000046.1	=	NZ_PRNE01000046.1	Primary Assembly	1495	na
+s10092904_ctg047_3803	unplaced-scaffold	na	na	PRNE01000047.1	=	NZ_PRNE01000047.1	Primary Assembly	3803	na
+s10092904_ctg048_538	unplaced-scaffold	na	na	PRNE01000048.1	=	NZ_PRNE01000048.1	Primary Assembly	538	na
+s10092904_ctg049_739	unplaced-scaffold	na	na	PRNE01000049.1	=	NZ_PRNE01000049.1	Primary Assembly	739	na
+s10092904_ctg050_9964	unplaced-scaffold	na	na	PRNE01000050.1	=	NZ_PRNE01000050.1	Primary Assembly	9964	na
+s10092904_ctg051_4313	unplaced-scaffold	na	na	PRNE01000051.1	=	NZ_PRNE01000051.1	Primary Assembly	4313	na
+s10092904_ctg052_701	unplaced-scaffold	na	na	PRNE01000052.1	=	NZ_PRNE01000052.1	Primary Assembly	701	na
+s10092904_ctg053_610	unplaced-scaffold	na	na	PRNE01000053.1	=	NZ_PRNE01000053.1	Primary Assembly	610	na
+s10092904_ctg054_122493	unplaced-scaffold	na	na	PRNE01000054.1	=	NZ_PRNE01000054.1	Primary Assembly	122493	na
+s10092904_ctg055_485108	unplaced-scaffold	na	na	PRNE01000055.1	=	NZ_PRNE01000055.1	Primary Assembly	485108	na
+s10092904_ctg056_444780	unplaced-scaffold	na	na	PRNE01000056.1	=	NZ_PRNE01000056.1	Primary Assembly	444780	na
+s10092904_ctg057_23987	unplaced-scaffold	na	na	PRNE01000057.1	=	NZ_PRNE01000057.1	Primary Assembly	23987	na
+s10092904_ctg058_249291	unplaced-scaffold	na	na	PRNE01000058.1	=	NZ_PRNE01000058.1	Primary Assembly	249291	na
+s10092904_ctg059_2368	unplaced-scaffold	na	na	PRNE01000059.1	=	NZ_PRNE01000059.1	Primary Assembly	2368	na
+s10092904_ctg060_1932	unplaced-scaffold	na	na	PRNE01000060.1	=	NZ_PRNE01000060.1	Primary Assembly	1932	na
+s10092904_ctg062_135890	unplaced-scaffold	na	na	PRNE01000061.1	=	NZ_PRNE01000061.1	Primary Assembly	135890	na
+s10092904_ctg063_2558	unplaced-scaffold	na	na	PRNE01000062.1	=	NZ_PRNE01000062.1	Primary Assembly	2558	na
+s10092904_ctg064_147250	unplaced-scaffold	na	na	PRNE01000063.1	=	NZ_PRNE01000063.1	Primary Assembly	147250	na
+s10092904_ctg065_3748	unplaced-scaffold	na	na	PRNE01000064.1	=	NZ_PRNE01000064.1	Primary Assembly	3748	na
+s10092904_ctg066_7436	unplaced-scaffold	na	na	PRNE01000065.1	=	NZ_PRNE01000065.1	Primary Assembly	7436	na
+s10092904_ctg067_566	unplaced-scaffold	na	na	PRNE01000066.1	=	NZ_PRNE01000066.1	Primary Assembly	566	na
+s10092904_ctg68_1810	unplaced-scaffold	na	na	PRNE01000067.1	=	NZ_PRNE01000067.1	Primary Assembly	1810	na

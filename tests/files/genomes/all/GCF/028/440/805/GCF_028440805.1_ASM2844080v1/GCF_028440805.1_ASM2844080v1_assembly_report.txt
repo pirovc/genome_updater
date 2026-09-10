@@ -1,0 +1,73 @@
+# Assembly name:  ASM2844080v1
+# Organism name:  Acinetobacter baumannii (g-proteobacteria)
+# Infraspecific name:  strain=19-Pos157
+# Taxid:          470
+# BioSample:      SAMN29993242
+# BioProject:     PRJNA862736
+# Submitter:      Robert Koch-Institute
+# Date:           2023-02-02
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    JAOWVI01
+# Assembly method: SPAdes v. 3.14
+# Expected final version: yes
+# Genome coverage: 50-99x
+# Sequencing technology: Illumina
+# Excluded from RefSeq: from large multi-isolate project
+# GenBank assembly accession: GCA_028440805.1
+# RefSeq assembly accession: GCF_028440805.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_028440835.1	GCF_028440835.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+NODE_10_length_144846_cov_72.382417	unplaced-scaffold	na	na	JAOWVI010000010.1	=	NZ_JAOWVI010000010.1	Primary Assembly	144846	na
+NODE_11_length_125466_cov_83.409250	unplaced-scaffold	na	na	JAOWVI010000011.1	=	NZ_JAOWVI010000011.1	Primary Assembly	125466	na
+NODE_12_length_112660_cov_70.975687	unplaced-scaffold	na	na	JAOWVI010000012.1	=	NZ_JAOWVI010000012.1	Primary Assembly	112660	na
+NODE_13_length_108109_cov_69.284557	unplaced-scaffold	na	na	JAOWVI010000013.1	=	NZ_JAOWVI010000013.1	Primary Assembly	108109	na
+NODE_14_length_103181_cov_76.031857	unplaced-scaffold	na	na	JAOWVI010000014.1	=	NZ_JAOWVI010000014.1	Primary Assembly	103181	na
+NODE_15_length_88888_cov_81.647762	unplaced-scaffold	na	na	JAOWVI010000015.1	=	NZ_JAOWVI010000015.1	Primary Assembly	88888	na
+NODE_16_length_84598_cov_68.012714	unplaced-scaffold	na	na	JAOWVI010000016.1	=	NZ_JAOWVI010000016.1	Primary Assembly	84598	na
+NODE_17_length_83476_cov_71.867269	unplaced-scaffold	na	na	JAOWVI010000017.1	=	NZ_JAOWVI010000017.1	Primary Assembly	83476	na
+NODE_18_length_80185_cov_66.434772	unplaced-scaffold	na	na	JAOWVI010000018.1	=	NZ_JAOWVI010000018.1	Primary Assembly	80185	na
+NODE_19_length_75955_cov_65.896094	unplaced-scaffold	na	na	JAOWVI010000019.1	=	NZ_JAOWVI010000019.1	Primary Assembly	75955	na
+NODE_1_length_559352_cov_73.203467	unplaced-scaffold	na	na	JAOWVI010000001.1	=	NZ_JAOWVI010000001.1	Primary Assembly	559352	na
+NODE_20_length_60838_cov_85.224473	unplaced-scaffold	na	na	JAOWVI010000020.1	=	NZ_JAOWVI010000020.1	Primary Assembly	60838	na
+NODE_21_length_56902_cov_53.837622	unplaced-scaffold	na	na	JAOWVI010000021.1	=	NZ_JAOWVI010000021.1	Primary Assembly	56902	na
+NODE_22_length_54192_cov_66.125534	unplaced-scaffold	na	na	JAOWVI010000022.1	=	NZ_JAOWVI010000022.1	Primary Assembly	54192	na
+NODE_23_length_50296_cov_73.552532	unplaced-scaffold	na	na	JAOWVI010000023.1	=	NZ_JAOWVI010000023.1	Primary Assembly	50296	na
+NODE_24_length_37854_cov_79.993957	unplaced-scaffold	na	na	JAOWVI010000024.1	=	NZ_JAOWVI010000024.1	Primary Assembly	37854	na
+NODE_25_length_33298_cov_81.248018	unplaced-scaffold	na	na	JAOWVI010000025.1	=	NZ_JAOWVI010000025.1	Primary Assembly	33298	na
+NODE_26_length_26705_cov_72.512567	unplaced-scaffold	na	na	JAOWVI010000026.1	=	NZ_JAOWVI010000026.1	Primary Assembly	26705	na
+NODE_27_length_26595_cov_74.525880	unplaced-scaffold	na	na	JAOWVI010000027.1	=	NZ_JAOWVI010000027.1	Primary Assembly	26595	na
+NODE_28_length_26166_cov_60.253197	unplaced-scaffold	na	na	JAOWVI010000028.1	=	NZ_JAOWVI010000028.1	Primary Assembly	26166	na
+NODE_29_length_10490_cov_72.306089	unplaced-scaffold	na	na	JAOWVI010000029.1	=	NZ_JAOWVI010000029.1	Primary Assembly	10490	na
+NODE_2_length_467376_cov_76.538830	unplaced-scaffold	na	na	JAOWVI010000002.1	=	NZ_JAOWVI010000002.1	Primary Assembly	467376	na
+NODE_30_length_6799_cov_56.211481	unplaced-scaffold	na	na	JAOWVI010000030.1	=	NZ_JAOWVI010000030.1	Primary Assembly	6799	na
+NODE_31_length_5518_cov_639.786496	unplaced-scaffold	na	na	JAOWVI010000031.1	=	NZ_JAOWVI010000031.1	Primary Assembly	5518	na
+NODE_32_length_5501_cov_73.536100	unplaced-scaffold	na	na	JAOWVI010000032.1	=	NZ_JAOWVI010000032.1	Primary Assembly	5501	na
+NODE_35_length_4470_cov_44.148515	unplaced-scaffold	na	na	JAOWVI010000033.1	=	NZ_JAOWVI010000033.1	Primary Assembly	4470	na
+NODE_36_length_3994_cov_63.289008	unplaced-scaffold	na	na	JAOWVI010000034.1	=	NZ_JAOWVI010000034.1	Primary Assembly	3994	na
+NODE_37_length_1991_cov_155.951717	unplaced-scaffold	na	na	JAOWVI010000035.1	=	NZ_JAOWVI010000035.1	Primary Assembly	1991	na
+NODE_38_length_1967_cov_113.446739	unplaced-scaffold	na	na	JAOWVI010000036.1	=	NZ_JAOWVI010000036.1	Primary Assembly	1967	na
+NODE_39_length_1967_cov_110.185870	unplaced-scaffold	na	na	JAOWVI010000037.1	=	NZ_JAOWVI010000037.1	Primary Assembly	1967	na
+NODE_3_length_419680_cov_68.136650	unplaced-scaffold	na	na	JAOWVI010000003.1	=	NZ_JAOWVI010000003.1	Primary Assembly	419680	na
+NODE_41_length_1368_cov_647.088638	unplaced-scaffold	na	na	JAOWVI010000038.1	=	NZ_JAOWVI010000038.1	Primary Assembly	1368	na
+NODE_42_length_1334_cov_66.144159	unplaced-scaffold	na	na	JAOWVI010000039.1	=	NZ_JAOWVI010000039.1	Primary Assembly	1334	na
+NODE_43_length_1203_cov_221.050186	unplaced-scaffold	na	na	JAOWVI010000040.1	=	NZ_JAOWVI010000040.1	Primary Assembly	1203	na
+NODE_44_length_1139_cov_99.807312	unplaced-scaffold	na	na	JAOWVI010000041.1	=	NZ_JAOWVI010000041.1	Primary Assembly	1139	na
+NODE_4_length_256526_cov_76.786243	unplaced-scaffold	na	na	JAOWVI010000004.1	=	NZ_JAOWVI010000004.1	Primary Assembly	256526	na
+NODE_5_length_222929_cov_75.841554	unplaced-scaffold	na	na	JAOWVI010000005.1	=	NZ_JAOWVI010000005.1	Primary Assembly	222929	na
+NODE_6_length_194158_cov_78.786436	unplaced-scaffold	na	na	JAOWVI010000006.1	=	NZ_JAOWVI010000006.1	Primary Assembly	194158	na
+NODE_7_length_189433_cov_83.311982	unplaced-scaffold	na	na	JAOWVI010000007.1	=	NZ_JAOWVI010000007.1	Primary Assembly	189433	na
+NODE_8_length_183650_cov_64.738305	unplaced-scaffold	na	na	JAOWVI010000008.1	=	NZ_JAOWVI010000008.1	Primary Assembly	183650	na
+NODE_9_length_175880_cov_65.368301	unplaced-scaffold	na	na	JAOWVI010000009.1	=	NZ_JAOWVI010000009.1	Primary Assembly	175880	na

@@ -1,0 +1,95 @@
+# Assembly name:  SRR20881978_bin.12_MetaWRAP_v1.3_MAG
+# Organism name:  Methanobrevibacter smithii (euryarchaeotes)
+# Isolate:  SRR20881978_bin.12_MetaWRAP_v1.3_MAG
+# Taxid:          2173
+# BioSample:      SAMEA114095628
+# BioProject:     PRJEB63188
+# Submitter:      EMG
+# Date:           2023-07-21
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    CAUELZ01
+# Assembly method: metaspades v3.15.3
+# Genome coverage: 89x
+# Sequencing technology: Illumina HiSeq 4000
+# Excluded from RefSeq: derived from metagenome
+# GenBank assembly accession: GCA_959018705.1
+# RefSeq assembly accession: GCF_959018705.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_959018704.1	GCF_959018704.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ERZ18775403.51	unplaced-scaffold	na	na	CAUELZ010000001.1	=	NZ_CAUELZ010000001.1	Primary Assembly	126904	na
+ERZ18775403.56	unplaced-scaffold	na	na	CAUELZ010000002.1	=	NZ_CAUELZ010000002.1	Primary Assembly	123103	na
+ERZ18775403.58	unplaced-scaffold	na	na	CAUELZ010000003.1	=	NZ_CAUELZ010000003.1	Primary Assembly	121353	na
+ERZ18775403.115	unplaced-scaffold	na	na	CAUELZ010000004.1	=	NZ_CAUELZ010000004.1	Primary Assembly	89144	na
+ERZ18775403.200	unplaced-scaffold	na	na	CAUELZ010000005.1	=	NZ_CAUELZ010000005.1	Primary Assembly	62442	na
+ERZ18775403.218	unplaced-scaffold	na	na	CAUELZ010000006.1	=	NZ_CAUELZ010000006.1	Primary Assembly	60335	na
+ERZ18775403.221	unplaced-scaffold	na	na	CAUELZ010000007.1	=	NZ_CAUELZ010000007.1	Primary Assembly	59682	na
+ERZ18775403.272	unplaced-scaffold	na	na	CAUELZ010000008.1	=	NZ_CAUELZ010000008.1	Primary Assembly	53814	na
+ERZ18775403.283	unplaced-scaffold	na	na	CAUELZ010000009.1	=	NZ_CAUELZ010000009.1	Primary Assembly	52047	na
+ERZ18775403.369	unplaced-scaffold	na	na	CAUELZ010000010.1	=	NZ_CAUELZ010000010.1	Primary Assembly	45373	na
+ERZ18775403.403	unplaced-scaffold	na	na	CAUELZ010000011.1	=	NZ_CAUELZ010000011.1	Primary Assembly	43133	na
+ERZ18775403.405	unplaced-scaffold	na	na	CAUELZ010000012.1	=	NZ_CAUELZ010000012.1	Primary Assembly	43070	na
+ERZ18775403.425	unplaced-scaffold	na	na	CAUELZ010000013.1	=	NZ_CAUELZ010000013.1	Primary Assembly	41855	na
+ERZ18775403.463	unplaced-scaffold	na	na	CAUELZ010000014.1	=	NZ_CAUELZ010000014.1	Primary Assembly	39237	na
+ERZ18775403.482	unplaced-scaffold	na	na	CAUELZ010000015.1	=	NZ_CAUELZ010000015.1	Primary Assembly	38455	na
+ERZ18775403.494	unplaced-scaffold	na	na	CAUELZ010000016.1	=	NZ_CAUELZ010000016.1	Primary Assembly	37733	na
+ERZ18775403.517	unplaced-scaffold	na	na	CAUELZ010000017.1	=	NZ_CAUELZ010000017.1	Primary Assembly	36680	na
+ERZ18775403.589	unplaced-scaffold	na	na	CAUELZ010000018.1	=	NZ_CAUELZ010000018.1	Primary Assembly	32955	na
+ERZ18775403.613	unplaced-scaffold	na	na	CAUELZ010000019.1	=	NZ_CAUELZ010000019.1	Primary Assembly	32060	na
+ERZ18775403.621	unplaced-scaffold	na	na	CAUELZ010000020.1	=	NZ_CAUELZ010000020.1	Primary Assembly	31689	na
+ERZ18775403.743	unplaced-scaffold	na	na	CAUELZ010000021.1	=	NZ_CAUELZ010000021.1	Primary Assembly	27598	na
+ERZ18775403.828	unplaced-scaffold	na	na	CAUELZ010000022.1	=	NZ_CAUELZ010000022.1	Primary Assembly	25253	na
+ERZ18775403.882	unplaced-scaffold	na	na	CAUELZ010000023.1	=	NZ_CAUELZ010000023.1	Primary Assembly	23850	na
+ERZ18775403.899	unplaced-scaffold	na	na	CAUELZ010000024.1	=	NZ_CAUELZ010000024.1	Primary Assembly	23566	na
+ERZ18775403.971	unplaced-scaffold	na	na	CAUELZ010000025.1	=	NZ_CAUELZ010000025.1	Primary Assembly	22203	na
+ERZ18775403.1044	unplaced-scaffold	na	na	CAUELZ010000026.1	=	NZ_CAUELZ010000026.1	Primary Assembly	20489	na
+ERZ18775403.1074	unplaced-scaffold	na	na	CAUELZ010000027.1	=	NZ_CAUELZ010000027.1	Primary Assembly	19853	na
+ERZ18775403.1083	unplaced-scaffold	na	na	CAUELZ010000028.1	=	NZ_CAUELZ010000028.1	Primary Assembly	19743	na
+ERZ18775403.1138	unplaced-scaffold	na	na	CAUELZ010000029.1	=	NZ_CAUELZ010000029.1	Primary Assembly	18919	na
+ERZ18775403.1146	unplaced-scaffold	na	na	CAUELZ010000030.1	=	NZ_CAUELZ010000030.1	Primary Assembly	18872	na
+ERZ18775403.1159	unplaced-scaffold	na	na	CAUELZ010000031.1	=	NZ_CAUELZ010000031.1	Primary Assembly	18732	na
+ERZ18775403.1185	unplaced-scaffold	na	na	CAUELZ010000032.1	=	NZ_CAUELZ010000032.1	Primary Assembly	18190	na
+ERZ18775403.1213	unplaced-scaffold	na	na	CAUELZ010000033.1	=	NZ_CAUELZ010000033.1	Primary Assembly	17855	na
+ERZ18775403.1268	unplaced-scaffold	na	na	CAUELZ010000034.1	=	NZ_CAUELZ010000034.1	Primary Assembly	17125	na
+ERZ18775403.1348	unplaced-scaffold	na	na	CAUELZ010000035.1	=	NZ_CAUELZ010000035.1	Primary Assembly	16323	na
+ERZ18775403.1376	unplaced-scaffold	na	na	CAUELZ010000036.1	=	NZ_CAUELZ010000036.1	Primary Assembly	15918	na
+ERZ18775403.1473	unplaced-scaffold	na	na	CAUELZ010000037.1	=	NZ_CAUELZ010000037.1	Primary Assembly	14742	na
+ERZ18775403.1634	unplaced-scaffold	na	na	CAUELZ010000038.1	=	NZ_CAUELZ010000038.1	Primary Assembly	13172	na
+ERZ18775403.1678	unplaced-scaffold	na	na	CAUELZ010000039.1	=	NZ_CAUELZ010000039.1	Primary Assembly	12732	na
+ERZ18775403.1877	unplaced-scaffold	na	na	CAUELZ010000040.1	=	NZ_CAUELZ010000040.1	Primary Assembly	11325	na
+ERZ18775403.2019	unplaced-scaffold	na	na	CAUELZ010000041.1	=	NZ_CAUELZ010000041.1	Primary Assembly	10408	na
+ERZ18775403.2139	unplaced-scaffold	na	na	CAUELZ010000042.1	=	NZ_CAUELZ010000042.1	Primary Assembly	9595	na
+ERZ18775403.2382	unplaced-scaffold	na	na	CAUELZ010000043.1	=	NZ_CAUELZ010000043.1	Primary Assembly	8372	na
+ERZ18775403.2386	unplaced-scaffold	na	na	CAUELZ010000044.1	=	NZ_CAUELZ010000044.1	Primary Assembly	8360	na
+ERZ18775403.2494	unplaced-scaffold	na	na	CAUELZ010000045.1	=	NZ_CAUELZ010000045.1	Primary Assembly	7921	na
+ERZ18775403.2746	unplaced-scaffold	na	na	CAUELZ010000046.1	=	NZ_CAUELZ010000046.1	Primary Assembly	7103	na
+ERZ18775403.2970	unplaced-scaffold	na	na	CAUELZ010000047.1	=	NZ_CAUELZ010000047.1	Primary Assembly	6419	na
+ERZ18775403.3013	unplaced-scaffold	na	na	CAUELZ010000048.1	=	NZ_CAUELZ010000048.1	Primary Assembly	6341	na
+ERZ18775403.3051	unplaced-scaffold	na	na	CAUELZ010000049.1	=	NZ_CAUELZ010000049.1	Primary Assembly	6264	na
+ERZ18775403.3285	unplaced-scaffold	na	na	CAUELZ010000050.1	=	NZ_CAUELZ010000050.1	Primary Assembly	5734	na
+ERZ18775403.3303	unplaced-scaffold	na	na	CAUELZ010000051.1	=	NZ_CAUELZ010000051.1	Primary Assembly	5679	na
+ERZ18775403.3304	unplaced-scaffold	na	na	CAUELZ010000052.1	=	NZ_CAUELZ010000052.1	Primary Assembly	5678	na
+ERZ18775403.3485	unplaced-scaffold	na	na	CAUELZ010000053.1	=	NZ_CAUELZ010000053.1	Primary Assembly	5350	na
+ERZ18775403.3666	unplaced-scaffold	na	na	CAUELZ010000054.1	=	NZ_CAUELZ010000054.1	Primary Assembly	5080	na
+ERZ18775403.3882	unplaced-scaffold	na	na	CAUELZ010000055.1	=	NZ_CAUELZ010000055.1	Primary Assembly	4800	na
+ERZ18775403.3957	unplaced-scaffold	na	na	CAUELZ010000056.1	=	NZ_CAUELZ010000056.1	Primary Assembly	4702	na
+ERZ18775403.4189	unplaced-scaffold	na	na	CAUELZ010000057.1	=	NZ_CAUELZ010000057.1	Primary Assembly	4436	na
+ERZ18775403.4358	unplaced-scaffold	na	na	CAUELZ010000058.1	=	NZ_CAUELZ010000058.1	Primary Assembly	4287	na
+ERZ18775403.4482	unplaced-scaffold	na	na	CAUELZ010000059.1	=	NZ_CAUELZ010000059.1	Primary Assembly	4169	na
+ERZ18775403.4719	unplaced-scaffold	na	na	CAUELZ010000060.1	=	NZ_CAUELZ010000060.1	Primary Assembly	3963	na
+ERZ18775403.4808	unplaced-scaffold	na	na	CAUELZ010000061.1	=	NZ_CAUELZ010000061.1	Primary Assembly	3883	na
+ERZ18775403.5136	unplaced-scaffold	na	na	CAUELZ010000062.1	=	NZ_CAUELZ010000062.1	Primary Assembly	3654	na
+ERZ18775403.5956	unplaced-scaffold	na	na	CAUELZ010000063.1	=	NZ_CAUELZ010000063.1	Primary Assembly	3224	na
+ERZ18775403.7677	unplaced-scaffold	na	na	CAUELZ010000064.1	=	NZ_CAUELZ010000064.1	Primary Assembly	2586	na

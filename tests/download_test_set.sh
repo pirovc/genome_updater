@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-entries=3
+entries=20
 outfld="files2/"
 mkdir -p ${outfld}
 ext="assembly_report.txt" #,protein.faa.gz"
@@ -16,19 +16,25 @@ do
             mkdir -p "${outfld}genomes/${d}/"
             wget --quiet --show-progress -O "full_assembly_summary.txt" "ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/assembly_summary_${d}.txt"
             out_as="${outfld}genomes/${d}/assembly_summary_$d.txt"
+            wget --quiet --show-progress -O "full_assembly_summary_historical.txt" "ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/assembly_summary_${d}_historical.txt"
+            out_as_his="${outfld}genomes/${d}/assembly_summary_${d}_historical.txt"
         else
             mkdir -p "${outfld}genomes/${d}/${o}/"
             wget --quiet --show-progress -O "full_assembly_summary.txt" "ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/${o}/assembly_summary.txt"
             out_as="${outfld}genomes/${d}/${o}/assembly_summary.txt"
+            wget --quiet --show-progress -O "full_assembly_summary_historical.txt" "ftp://ftp.ncbi.nlm.nih.gov/genomes/${d}/${o}/assembly_summary_historical.txt"
+            out_as_his="${outfld}genomes/${d}/${o}/assembly_summary_historical.txt"
         fi
         head -n 2 "full_assembly_summary.txt" > "${out_as}"
         tail -n+3 "full_assembly_summary.txt" | shuf | head -n ${entries} >> "${out_as}"
-        # create a dummy historical for gtdb tests (just a copy)
-        cp "${out_as}" "${out_as%.*}_historical.txt"
+        head -n 2 "full_assembly_summary_historical.txt" > "${out_as_his}"
+        tail -n+3 "full_assembly_summary_historical.txt" | shuf | head -n ${entries} >> "${out_as_his}"
+
         # Download files
-        tail -n+3 "${out_as}" | cut -f 20 | sed 's/https:/ftp:/g' | xargs -P ${entries} wget --quiet --show-progress --directory-prefix="${outfld}" --recursive --level 2 --accept "${ext}"
+        tail -q -n+3 "${out_as}" "${out_as_his}" | cut -f 20 | sed 's/https:/ftp:/g' | xargs -P ${entries} wget --quiet --show-progress --directory-prefix="${outfld}" --recursive --level 2 --accept "${ext}"
         cp -r "${outfld}ftp.ncbi.nlm.nih.gov/genomes/" "${outfld}"
-        rm -rf "full_assembly_summary.txt" "${outfld}ftp.ncbi.nlm.nih.gov/" 
+        find ${outfld} -name "*assembly_structure" | xargs rm -rf
+        rm -rf "full_assembly_summary.txt" "full_assembly_summary_historical.txt" "${outfld}ftp.ncbi.nlm.nih.gov/" 
     done
 done
 
@@ -49,7 +55,7 @@ md5sum "${outfld}pub/taxonomy/new_taxdump/new_taxdump.tar.gz" > "${outfld}pub/ta
 rm "${outfld}new_taxdump.tar.gz" "${outfld}taxidlineage.dmp" "${outfld}rankedlineage.dmp" "${outfld}pub/taxonomy/new_taxdump/taxidlineage.dmp" "${outfld}pub/taxonomy/new_taxdump/rankedlineage.dmp"
 
 #gtdb
-gtdb_out="${outfld}releases/latest/"
+gtdb_out="${outfld}public/gtdb/data/releases/latest/"
 mkdir -p "${gtdb_out}"
 gtdb_tax=( "ar53_taxonomy.tsv.gz" "bac120_taxonomy.tsv.gz" )
 for tax in "${gtdb_tax[@]}"; do
@@ -57,6 +63,14 @@ for tax in "${gtdb_tax[@]}"; do
     join -1 1 -2 1 <(cut -f 1 "${outfld}accessions_taxids.txt" | sort) <(zcat "${outfld}${tax}" | awk 'BEGIN{FS=OFS="\t"}{print $1,$1,$2}' | sed -r 's/^.{3}//' | sort) -t$'\t' -o "2.2,2.3" | gzip > "${gtdb_out}${tax}"
     rm "${outfld}${tax}"
 done
-
+ln -s public/gtdb/data/releases/ releases
 md5sum ${gtdb_out}*.tsv.gz > "${gtdb_out}MD5SUM"
+
+# copy as symlink to a different version
+gtdb220_out="${outfld}public/gtdb/data/releases/release220/220.0"
+mkdir -p "${gtdb220_out}"
+ln -rs ${gtdb_out}/*.tsv.gz ${gtdb220_out}
+md5sum ${gtdb220_out}/*.tsv.gz > "${gtdb220_out}/MD5SUM"
+
+
 rm ${outfld}accessions_taxids.txt

@@ -1,0 +1,83 @@
+# Assembly name:  ASM4022403v1
+# Organism name:  Pantoea ananatis (enterobacteria)
+# Infraspecific name:  strain=WHRI 5854
+# Taxid:          553
+# BioSample:      SAMN40354447
+# BioProject:     PRJNA1085284
+# Submitter:      University of Exeter
+# Date:           2024-06-17
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    JBEHCK01
+# Assembly method: SPAdes v. 3.15.5
+# Expected final version: yes
+# Genome coverage: 190x
+# Sequencing technology: Illumina NovaSeq
+# GenBank assembly accession: GCA_040224035.1
+# RefSeq assembly accession: GCF_040224035.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_040224045.1	GCF_040224045.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+scf_1149727_1	unplaced-scaffold	na	na	JBEHCK010000001.1	=	NZ_JBEHCK010000001.1	Primary Assembly	759435	na
+scf_1149727_2	unplaced-scaffold	na	na	JBEHCK010000002.1	=	NZ_JBEHCK010000002.1	Primary Assembly	615110	na
+scf_1149727_3	unplaced-scaffold	na	na	JBEHCK010000003.1	=	NZ_JBEHCK010000003.1	Primary Assembly	537255	na
+scf_1149727_4	unplaced-scaffold	na	na	JBEHCK010000004.1	=	NZ_JBEHCK010000004.1	Primary Assembly	447620	na
+scf_1149727_5	unplaced-scaffold	na	na	JBEHCK010000005.1	=	NZ_JBEHCK010000005.1	Primary Assembly	427536	na
+scf_1149727_6	unplaced-scaffold	na	na	JBEHCK010000006.1	=	NZ_JBEHCK010000006.1	Primary Assembly	282073	na
+scf_1149727_7	unplaced-scaffold	na	na	JBEHCK010000007.1	=	NZ_JBEHCK010000007.1	Primary Assembly	272569	na
+scf_1149727_8	unplaced-scaffold	na	na	JBEHCK010000008.1	=	NZ_JBEHCK010000008.1	Primary Assembly	253162	na
+scf_1149727_9	unplaced-scaffold	na	na	JBEHCK010000009.1	=	NZ_JBEHCK010000009.1	Primary Assembly	233095	na
+scf_1149727_10	unplaced-scaffold	na	na	JBEHCK010000010.1	=	NZ_JBEHCK010000010.1	Primary Assembly	195499	na
+scf_1149727_11	unplaced-scaffold	na	na	JBEHCK010000011.1	=	NZ_JBEHCK010000011.1	Primary Assembly	154158	na
+scf_1149727_12	unplaced-scaffold	na	na	JBEHCK010000012.1	=	NZ_JBEHCK010000012.1	Primary Assembly	129212	na
+scf_1149727_13	unplaced-scaffold	na	na	JBEHCK010000013.1	=	NZ_JBEHCK010000013.1	Primary Assembly	118018	na
+scf_1149727_14	unplaced-scaffold	na	na	JBEHCK010000014.1	=	NZ_JBEHCK010000014.1	Primary Assembly	98067	na
+scf_1149727_15	unplaced-scaffold	na	na	JBEHCK010000015.1	=	NZ_JBEHCK010000015.1	Primary Assembly	69799	na
+scf_1149727_16	unplaced-scaffold	na	na	JBEHCK010000016.1	=	NZ_JBEHCK010000016.1	Primary Assembly	48163	na
+scf_1149727_17	unplaced-scaffold	na	na	JBEHCK010000017.1	=	NZ_JBEHCK010000017.1	Primary Assembly	43629	na
+scf_1149727_18	unplaced-scaffold	na	na	JBEHCK010000018.1	=	NZ_JBEHCK010000018.1	Primary Assembly	26109	na
+scf_1149727_19	unplaced-scaffold	na	na	JBEHCK010000019.1	=	NZ_JBEHCK010000019.1	Primary Assembly	26017	na
+scf_1149727_20	unplaced-scaffold	na	na	JBEHCK010000020.1	=	NZ_JBEHCK010000020.1	Primary Assembly	8610	na
+scf_1149727_21	unplaced-scaffold	na	na	JBEHCK010000021.1	=	NZ_JBEHCK010000021.1	Primary Assembly	5366	na
+scf_1149727_22	unplaced-scaffold	na	na	JBEHCK010000022.1	=	NZ_JBEHCK010000022.1	Primary Assembly	4464	na
+scf_1149727_23	unplaced-scaffold	na	na	JBEHCK010000023.1	=	NZ_JBEHCK010000023.1	Primary Assembly	572	na
+scf_1149727_24	unplaced-scaffold	na	na	JBEHCK010000024.1	=	NZ_JBEHCK010000024.1	Primary Assembly	534	na
+scf_1149727_25	unplaced-scaffold	na	na	JBEHCK010000025.1	=	NZ_JBEHCK010000025.1	Primary Assembly	508	na
+scf_1149727_26	unplaced-scaffold	na	na	JBEHCK010000026.1	=	NZ_JBEHCK010000026.1	Primary Assembly	491	na
+scf_1149727_27	unplaced-scaffold	na	na	JBEHCK010000027.1	=	NZ_JBEHCK010000027.1	Primary Assembly	457	na
+scf_1149727_28	unplaced-scaffold	na	na	JBEHCK010000028.1	=	NZ_JBEHCK010000028.1	Primary Assembly	427	na
+scf_1149727_29	unplaced-scaffold	na	na	JBEHCK010000029.1	=	NZ_JBEHCK010000029.1	Primary Assembly	380	na
+scf_1149727_30	unplaced-scaffold	na	na	JBEHCK010000030.1	=	NZ_JBEHCK010000030.1	Primary Assembly	353	na
+scf_1149727_31	unplaced-scaffold	na	na	JBEHCK010000031.1	=	NZ_JBEHCK010000031.1	Primary Assembly	313	na
+scf_1149727_32	unplaced-scaffold	na	na	JBEHCK010000032.1	=	NZ_JBEHCK010000032.1	Primary Assembly	287	na
+scf_1149727_33	unplaced-scaffold	na	na	JBEHCK010000033.1	=	NZ_JBEHCK010000033.1	Primary Assembly	287	na
+scf_1149727_34	unplaced-scaffold	na	na	JBEHCK010000034.1	=	NZ_JBEHCK010000034.1	Primary Assembly	285	na
+scf_1149727_35	unplaced-scaffold	na	na	JBEHCK010000035.1	=	NZ_JBEHCK010000035.1	Primary Assembly	280	na
+scf_1149727_36	unplaced-scaffold	na	na	JBEHCK010000036.1	=	NZ_JBEHCK010000036.1	Primary Assembly	275	na
+scf_1149727_37	unplaced-scaffold	na	na	JBEHCK010000037.1	=	NZ_JBEHCK010000037.1	Primary Assembly	273	na
+scf_1149727_38	unplaced-scaffold	na	na	JBEHCK010000038.1	=	NZ_JBEHCK010000038.1	Primary Assembly	273	na
+scf_1149727_39	unplaced-scaffold	na	na	JBEHCK010000039.1	=	NZ_JBEHCK010000039.1	Primary Assembly	268	na
+scf_1149727_40	unplaced-scaffold	na	na	JBEHCK010000040.1	=	NZ_JBEHCK010000040.1	Primary Assembly	266	na
+scf_1149727_41	unplaced-scaffold	na	na	JBEHCK010000041.1	=	NZ_JBEHCK010000041.1	Primary Assembly	259	na
+scf_1149727_42	unplaced-scaffold	na	na	JBEHCK010000042.1	=	NZ_JBEHCK010000042.1	Primary Assembly	254	na
+scf_1149727_43	unplaced-scaffold	na	na	JBEHCK010000043.1	=	NZ_JBEHCK010000043.1	Primary Assembly	254	na
+scf_1149727_44	unplaced-scaffold	na	na	JBEHCK010000044.1	=	NZ_JBEHCK010000044.1	Primary Assembly	252	na
+scf_1149727_45	unplaced-scaffold	na	na	JBEHCK010000045.1	=	NZ_JBEHCK010000045.1	Primary Assembly	251	na
+scf_1149727_46	unplaced-scaffold	na	na	JBEHCK010000046.1	=	NZ_JBEHCK010000046.1	Primary Assembly	251	na
+scf_1149727_47	unplaced-scaffold	na	na	JBEHCK010000047.1	=	NZ_JBEHCK010000047.1	Primary Assembly	239	na
+scf_1149727_48	unplaced-scaffold	na	na	JBEHCK010000048.1	=	NZ_JBEHCK010000048.1	Primary Assembly	229	na
+scf_1149727_49	unplaced-scaffold	na	na	JBEHCK010000049.1	=	NZ_JBEHCK010000049.1	Primary Assembly	226	na
+scf_1149727_50	unplaced-scaffold	na	na	JBEHCK010000050.1	=	NZ_JBEHCK010000050.1	Primary Assembly	224	na
+scf_1149727_51	unplaced-scaffold	na	na	JBEHCK010000051.1	=	NZ_JBEHCK010000051.1	Primary Assembly	213	na
+scf_1149727_52	unplaced-scaffold	na	na	JBEHCK010000052.1	=	NZ_JBEHCK010000052.1	Primary Assembly	213	na

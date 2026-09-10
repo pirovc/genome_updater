@@ -1,0 +1,57 @@
+# Assembly name:  ASM2083305v1
+# Organism name:  Candidatus Korarchaeum sp. (archaea)
+# Isolate:  Bin S22
+# Taxid:          2831942
+# BioSample:      SAMN18938190
+# BioProject:     PRJNA568220
+# Submitter:      DOE Joint Genome Institute
+# Date:           2021-11-10
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    JAJHQZ01
+# Assembly method: SPAdes v. 3.14
+# Expected final version: yes
+# Genome coverage: 362x
+# Sequencing technology: Illumina NovaSeq
+# Excluded from RefSeq: derived from metagenome
+# GenBank assembly accession: GCA_020833055.1
+# RefSeq assembly accession: GCF_020833055.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_020833075.1	GCF_020833075.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+scaffold_112_c1	unplaced-scaffold	na	na	JAJHQZ010000006.1	=	NZ_JAJHQZ010000006.1	Primary Assembly	49511	na
+scaffold_11_c1	unplaced-scaffold	na	na	JAJHQZ010000003.1	=	NZ_JAJHQZ010000003.1	Primary Assembly	147713	na
+scaffold_1365_c1	unplaced-scaffold	na	na	JAJHQZ010000018.1	=	NZ_JAJHQZ010000018.1	Primary Assembly	10880	na
+scaffold_140_c1	unplaced-scaffold	na	na	JAJHQZ010000008.1	=	NZ_JAJHQZ010000008.1	Primary Assembly	44070	na
+scaffold_1449_c1	unplaced-scaffold	na	na	JAJHQZ010000019.1	=	NZ_JAJHQZ010000019.1	Primary Assembly	10550	na
+scaffold_15_c1	unplaced-scaffold	na	na	JAJHQZ010000004.1	=	NZ_JAJHQZ010000004.1	Primary Assembly	125540	na
+scaffold_15_c2	unplaced-scaffold	na	na	JAJHQZ010000025.1	=	NZ_JAJHQZ010000025.1	Primary Assembly	3952	na
+scaffold_1829_c1	unplaced-scaffold	na	na	JAJHQZ010000020.1	=	NZ_JAJHQZ010000020.1	Primary Assembly	9005	na
+scaffold_1848_c1	unplaced-scaffold	na	na	JAJHQZ010000021.1	=	NZ_JAJHQZ010000021.1	Primary Assembly	8932	na
+scaffold_211_c1	unplaced-scaffold	na	na	JAJHQZ010000010.1	=	NZ_JAJHQZ010000010.1	Primary Assembly	35218	na
+scaffold_244_c1	unplaced-scaffold	na	na	JAJHQZ010000011.1	=	NZ_JAJHQZ010000011.1	Primary Assembly	32342	na
+scaffold_2901_c1	unplaced-scaffold	na	na	JAJHQZ010000022.1	=	NZ_JAJHQZ010000022.1	Primary Assembly	6520	na
+scaffold_2_c1	unplaced-scaffold	na	na	JAJHQZ010000001.1	=	NZ_JAJHQZ010000001.1	Primary Assembly	389235	na
+scaffold_3035_c1	unplaced-scaffold	na	na	JAJHQZ010000023.1	=	NZ_JAJHQZ010000023.1	Primary Assembly	6316	na
+scaffold_30_c1	unplaced-scaffold	na	na	JAJHQZ010000005.1	=	NZ_JAJHQZ010000005.1	Primary Assembly	95970	na
+scaffold_32_c1	unplaced-scaffold	na	na	JAJHQZ010000014.1	=	NZ_JAJHQZ010000014.1	Primary Assembly	26279	na
+scaffold_32_c2	unplaced-scaffold	na	na	JAJHQZ010000007.1	=	NZ_JAJHQZ010000007.1	Primary Assembly	46884	na
+scaffold_334_c1	unplaced-scaffold	na	na	JAJHQZ010000013.1	=	NZ_JAJHQZ010000013.1	Primary Assembly	27541	na
+scaffold_3862_c1	unplaced-scaffold	na	na	JAJHQZ010000024.1	=	NZ_JAJHQZ010000024.1	Primary Assembly	5367	na
+scaffold_633_c1	unplaced-scaffold	na	na	JAJHQZ010000015.1	=	NZ_JAJHQZ010000015.1	Primary Assembly	17694	na
+scaffold_640_c1	unplaced-scaffold	na	na	JAJHQZ010000016.1	=	NZ_JAJHQZ010000016.1	Primary Assembly	17470	na
+scaffold_64_c1	unplaced-scaffold	na	na	JAJHQZ010000009.1	=	NZ_JAJHQZ010000009.1	Primary Assembly	35536	na
+scaffold_64_c2	unplaced-scaffold	na	na	JAJHQZ010000012.1	=	NZ_JAJHQZ010000012.1	Primary Assembly	30586	na
+scaffold_6_c1	unplaced-scaffold	na	na	JAJHQZ010000002.1	=	NZ_JAJHQZ010000002.1	Primary Assembly	194300	na
+scaffold_914_c1	unplaced-scaffold	na	na	JAJHQZ010000017.1	=	NZ_JAJHQZ010000017.1	Primary Assembly	13780	na

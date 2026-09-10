@@ -1,0 +1,149 @@
+# Assembly name:  ASM370623v1
+# Organism name:  Ogataea naganishii (budding yeasts & allies)
+# Infraspecific name:  strain=NRRL Y-7654
+# Taxid:          50265
+# BioSample:      SAMN08343367
+# BioProject:     PRJNA429441
+# Submitter:      UW-Madison
+# Date:           2018-10-31
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    PPKS01
+# Assembly method: SPADES v. 3.7
+# Expected final version: Yes
+# Genome coverage: 152x
+# Sequencing technology: Illumina HiSeq 2500
+# GenBank assembly accession: GCA_003706235.1
+#
+## Assembly-Unit names:
+## Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+NODE_1_length_1633205_cov_71.5147_ID_1	unplaced-scaffold	na	na	PPKS01000001.1	<>	na	Primary Assembly	1633205	na
+NODE_2_length_972366_cov_74.5479_ID_3	unplaced-scaffold	na	na	PPKS01000002.1	<>	na	Primary Assembly	972366	na
+NODE_3_length_860372_cov_71.9849_ID_5	unplaced-scaffold	na	na	PPKS01000003.1	<>	na	Primary Assembly	860372	na
+NODE_4_length_841044_cov_71.5186_ID_7	unplaced-scaffold	na	na	PPKS01000004.1	<>	na	Primary Assembly	841044	na
+NODE_5_length_775831_cov_75.5812_ID_9	unplaced-scaffold	na	na	PPKS01000005.1	<>	na	Primary Assembly	775831	na
+NODE_6_length_768710_cov_73.8521_ID_11	unplaced-scaffold	na	na	PPKS01000006.1	<>	na	Primary Assembly	768710	na
+NODE_7_length_679996_cov_70.6581_ID_13	unplaced-scaffold	na	na	PPKS01000007.1	<>	na	Primary Assembly	679996	na
+NODE_8_length_584629_cov_73.3826_ID_15	unplaced-scaffold	na	na	PPKS01000008.1	<>	na	Primary Assembly	584593	na
+NODE_9_length_518950_cov_71.5829_ID_17	unplaced-scaffold	na	na	PPKS01000009.1	<>	na	Primary Assembly	518950	na
+NODE_10_length_515802_cov_76.8733_ID_19	unplaced-scaffold	na	na	PPKS01000010.1	<>	na	Primary Assembly	515737	na
+NODE_11_length_432301_cov_74.1502_ID_21	unplaced-scaffold	na	na	PPKS01000011.1	<>	na	Primary Assembly	432301	na
+NODE_12_length_396418_cov_70.9058_ID_23	unplaced-scaffold	na	na	PPKS01000012.1	<>	na	Primary Assembly	396418	na
+NODE_13_length_392829_cov_74.6598_ID_25	unplaced-scaffold	na	na	PPKS01000013.1	<>	na	Primary Assembly	392829	na
+NODE_14_length_373348_cov_79.2154_ID_27	unplaced-scaffold	na	na	PPKS01000014.1	<>	na	Primary Assembly	373348	na
+NODE_15_length_358692_cov_73.9701_ID_29	unplaced-scaffold	na	na	PPKS01000015.1	<>	na	Primary Assembly	358692	na
+NODE_16_length_269614_cov_67.8004_ID_31	unplaced-scaffold	na	na	PPKS01000016.1	<>	na	Primary Assembly	269560	na
+NODE_17_length_258948_cov_75.1999_ID_33	unplaced-scaffold	na	na	PPKS01000017.1	<>	na	Primary Assembly	258924	na
+NODE_18_length_201343_cov_74.0127_ID_35	unplaced-scaffold	na	na	PPKS01000018.1	<>	na	Primary Assembly	201343	na
+NODE_19_length_201287_cov_70.2906_ID_37	unplaced-scaffold	na	na	PPKS01000019.1	<>	na	Primary Assembly	201287	na
+NODE_20_length_184659_cov_71.8452_ID_39	unplaced-scaffold	na	na	PPKS01000020.1	<>	na	Primary Assembly	184659	na
+NODE_21_length_176952_cov_79.863_ID_41	unplaced-scaffold	na	na	PPKS01000021.1	<>	na	Primary Assembly	176952	na
+NODE_22_length_128910_cov_70.9562_ID_43	unplaced-scaffold	na	na	PPKS01000022.1	<>	na	Primary Assembly	128910	na
+NODE_23_length_95945_cov_69.2483_ID_45	unplaced-scaffold	na	na	PPKS01000023.1	<>	na	Primary Assembly	95945	na
+NODE_24_length_91208_cov_71.2268_ID_47	unplaced-scaffold	na	na	PPKS01000024.1	<>	na	Primary Assembly	91208	na
+NODE_25_length_51826_cov_72.1866_ID_49	unplaced-scaffold	na	na	PPKS01000025.1	<>	na	Primary Assembly	51826	na
+NODE_26_length_44827_cov_80.5645_ID_51	unplaced-scaffold	na	na	PPKS01000026.1	<>	na	Primary Assembly	44827	na
+NODE_27_length_38318_cov_102.224_ID_53	unplaced-scaffold	na	na	PPKS01000027.1	<>	na	Primary Assembly	38318	na
+NODE_28_length_36153_cov_2617.22_ID_55	unplaced-scaffold	na	na	PPKS01000028.1	<>	na	Primary Assembly	36153	na
+NODE_29_length_19420_cov_73.0436_ID_57	unplaced-scaffold	na	na	PPKS01000029.1	<>	na	Primary Assembly	19420	na
+NODE_30_length_12695_cov_96.3105_ID_59	unplaced-scaffold	na	na	PPKS01000030.1	<>	na	Primary Assembly	12695	na
+NODE_31_length_8319_cov_1163.29_ID_61	unplaced-scaffold	na	na	PPKS01000031.1	<>	na	Primary Assembly	8319	na
+NODE_32_length_8302_cov_299.685_ID_63	unplaced-scaffold	na	na	PPKS01000032.1	<>	na	Primary Assembly	8302	na
+NODE_33_length_5600_cov_88.1513_ID_65	unplaced-scaffold	na	na	PPKS01000033.1	<>	na	Primary Assembly	5600	na
+NODE_34_length_4292_cov_118.254_ID_67	unplaced-scaffold	na	na	PPKS01000034.1	<>	na	Primary Assembly	4292	na
+NODE_35_length_3391_cov_112.818_ID_69	unplaced-scaffold	na	na	PPKS01000035.1	<>	na	Primary Assembly	3391	na
+NODE_36_length_3072_cov_442.95_ID_71	unplaced-scaffold	na	na	PPKS01000036.1	<>	na	Primary Assembly	3072	na
+NODE_37_length_3072_cov_453.112_ID_73	unplaced-scaffold	na	na	PPKS01000037.1	<>	na	Primary Assembly	3072	na
+NODE_38_length_3072_cov_456.77_ID_75	unplaced-scaffold	na	na	PPKS01000038.1	<>	na	Primary Assembly	3072	na
+NODE_39_length_2976_cov_460.541_ID_77	unplaced-scaffold	na	na	PPKS01000039.1	<>	na	Primary Assembly	2976	na
+NODE_40_length_2447_cov_252.65_ID_79	unplaced-scaffold	na	na	PPKS01000040.1	<>	na	Primary Assembly	2447	na
+NODE_41_length_2272_cov_155.348_ID_81	unplaced-scaffold	na	na	PPKS01000041.1	<>	na	Primary Assembly	2272	na
+NODE_42_length_2235_cov_76.9126_ID_83	unplaced-scaffold	na	na	PPKS01000042.1	<>	na	Primary Assembly	2235	na
+NODE_43_length_2190_cov_448.373_ID_85	unplaced-scaffold	na	na	PPKS01000043.1	<>	na	Primary Assembly	2190	na
+NODE_44_length_1918_cov_126.629_ID_87	unplaced-scaffold	na	na	PPKS01000044.1	<>	na	Primary Assembly	1918	na
+NODE_45_length_1534_cov_455.771_ID_89	unplaced-scaffold	na	na	PPKS01000045.1	<>	na	Primary Assembly	1534	na
+NODE_46_length_1417_cov_460.551_ID_91	unplaced-scaffold	na	na	PPKS01000046.1	<>	na	Primary Assembly	1417	na
+NODE_47_length_1308_cov_135.996_ID_93	unplaced-scaffold	na	na	PPKS01000047.1	<>	na	Primary Assembly	1308	na
+NODE_48_length_1052_cov_137.507_ID_95	unplaced-scaffold	na	na	PPKS01000048.1	<>	na	Primary Assembly	1052	na
+NODE_49_length_921_cov_173_ID_97	unplaced-scaffold	na	na	PPKS01000049.1	<>	na	Primary Assembly	921	na
+NODE_50_length_774_cov_153.255_ID_99	unplaced-scaffold	na	na	PPKS01000050.1	<>	na	Primary Assembly	774	na
+NODE_51_length_765_cov_133.399_ID_101	unplaced-scaffold	na	na	PPKS01000051.1	<>	na	Primary Assembly	765	na
+NODE_52_length_750_cov_86.0168_ID_103	unplaced-scaffold	na	na	PPKS01000052.1	<>	na	Primary Assembly	750	na
+NODE_53_length_750_cov_62.9084_ID_105	unplaced-scaffold	na	na	PPKS01000053.1	<>	na	Primary Assembly	750	na
+NODE_54_length_722_cov_519.726_ID_107	unplaced-scaffold	na	na	PPKS01000054.1	<>	na	Primary Assembly	722	na
+NODE_55_length_694_cov_445.913_ID_109	unplaced-scaffold	na	na	PPKS01000055.1	<>	na	Primary Assembly	694	na
+NODE_56_length_674_cov_603.109_ID_111	unplaced-scaffold	na	na	PPKS01000056.1	<>	na	Primary Assembly	674	na
+NODE_57_length_671_cov_157.627_ID_113	unplaced-scaffold	na	na	PPKS01000057.1	<>	na	Primary Assembly	671	na
+NODE_58_length_614_cov_182.133_ID_115	unplaced-scaffold	na	na	PPKS01000058.1	<>	na	Primary Assembly	614	na
+NODE_59_length_560_cov_85.2538_ID_117	unplaced-scaffold	na	na	PPKS01000059.1	<>	na	Primary Assembly	560	na
+NODE_60_length_517_cov_68.4573_ID_119	unplaced-scaffold	na	na	PPKS01000060.1	<>	na	Primary Assembly	517	na
+NODE_61_length_479_cov_94.1901_ID_121	unplaced-scaffold	na	na	PPKS01000061.1	<>	na	Primary Assembly	479	na
+NODE_62_length_478_cov_204.856_ID_123	unplaced-scaffold	na	na	PPKS01000062.1	<>	na	Primary Assembly	478	na
+NODE_64_length_439_cov_86.564_ID_127	unplaced-scaffold	na	na	PPKS01000063.1	<>	na	Primary Assembly	439	na
+NODE_65_length_435_cov_167.924_ID_129	unplaced-scaffold	na	na	PPKS01000064.1	<>	na	Primary Assembly	435	na
+NODE_66_length_425_cov_0.863636_ID_131	unplaced-scaffold	na	na	PPKS01000065.1	<>	na	Primary Assembly	425	na
+NODE_67_length_420_cov_0.913846_ID_133	unplaced-scaffold	na	na	PPKS01000066.1	<>	na	Primary Assembly	420	na
+NODE_68_length_408_cov_0.929712_ID_135	unplaced-scaffold	na	na	PPKS01000067.1	<>	na	Primary Assembly	408	na
+NODE_69_length_404_cov_75.5825_ID_137	unplaced-scaffold	na	na	PPKS01000068.1	<>	na	Primary Assembly	404	na
+NODE_71_length_382_cov_0.930314_ID_141	unplaced-scaffold	na	na	PPKS01000069.1	<>	na	Primary Assembly	382	na
+NODE_73_length_369_cov_0.762774_ID_145	unplaced-scaffold	na	na	PPKS01000070.1	<>	na	Primary Assembly	369	na
+NODE_74_length_368_cov_163.696_ID_147	unplaced-scaffold	na	na	PPKS01000071.1	<>	na	Primary Assembly	368	na
+NODE_75_length_362_cov_88.97_ID_149	unplaced-scaffold	na	na	PPKS01000072.1	<>	na	Primary Assembly	362	na
+NODE_77_length_355_cov_1955.1_ID_153	unplaced-scaffold	na	na	PPKS01000073.1	<>	na	Primary Assembly	355	na
+NODE_78_length_354_cov_0.872587_ID_155	unplaced-scaffold	na	na	PPKS01000074.1	<>	na	Primary Assembly	354	na
+NODE_79_length_348_cov_0.822134_ID_157	unplaced-scaffold	na	na	PPKS01000075.1	<>	na	Primary Assembly	348	na
+NODE_80_length_347_cov_2367.52_ID_159	unplaced-scaffold	na	na	PPKS01000076.1	<>	na	Primary Assembly	347	na
+NODE_81_length_346_cov_2367.9_ID_161	unplaced-scaffold	na	na	PPKS01000077.1	<>	na	Primary Assembly	346	na
+NODE_82_length_344_cov_161.586_ID_163	unplaced-scaffold	na	na	PPKS01000078.1	<>	na	Primary Assembly	344	na
+NODE_83_length_340_cov_1.04898_ID_165	unplaced-scaffold	na	na	PPKS01000079.1	<>	na	Primary Assembly	340	na
+NODE_84_length_339_cov_176.135_ID_167	unplaced-scaffold	na	na	PPKS01000080.1	<>	na	Primary Assembly	339	na
+NODE_85_length_327_cov_208.543_ID_169	unplaced-scaffold	na	na	PPKS01000081.1	<>	na	Primary Assembly	327	na
+NODE_86_length_316_cov_77.6742_ID_171	unplaced-scaffold	na	na	PPKS01000082.1	<>	na	Primary Assembly	316	na
+NODE_87_length_314_cov_142.575_ID_173	unplaced-scaffold	na	na	PPKS01000083.1	<>	na	Primary Assembly	314	na
+NODE_88_length_311_cov_261.704_ID_175	unplaced-scaffold	na	na	PPKS01000084.1	<>	na	Primary Assembly	311	na
+NODE_89_length_299_cov_110.922_ID_177	unplaced-scaffold	na	na	PPKS01000085.1	<>	na	Primary Assembly	299	na
+NODE_90_length_283_cov_117.516_ID_179	unplaced-scaffold	na	na	PPKS01000086.1	<>	na	Primary Assembly	283	na
+NODE_91_length_282_cov_182.278_ID_181	unplaced-scaffold	na	na	PPKS01000087.1	<>	na	Primary Assembly	282	na
+NODE_92_length_280_cov_139.341_ID_183	unplaced-scaffold	na	na	PPKS01000088.1	<>	na	Primary Assembly	280	na
+NODE_93_length_274_cov_224.073_ID_185	unplaced-scaffold	na	na	PPKS01000089.1	<>	na	Primary Assembly	274	na
+NODE_94_length_272_cov_87.4972_ID_187	unplaced-scaffold	na	na	PPKS01000090.1	<>	na	Primary Assembly	272	na
+NODE_95_length_270_cov_116.503_ID_189	unplaced-scaffold	na	na	PPKS01000091.1	<>	na	Primary Assembly	270	na
+NODE_96_length_269_cov_225.052_ID_191	unplaced-scaffold	na	na	PPKS01000092.1	<>	na	Primary Assembly	269	na
+NODE_97_length_263_cov_182.125_ID_193	unplaced-scaffold	na	na	PPKS01000093.1	<>	na	Primary Assembly	263	na
+NODE_98_length_261_cov_127.554_ID_195	unplaced-scaffold	na	na	PPKS01000094.1	<>	na	Primary Assembly	261	na
+NODE_99_length_260_cov_110.982_ID_197	unplaced-scaffold	na	na	PPKS01000095.1	<>	na	Primary Assembly	260	na
+NODE_100_length_260_cov_74.497_ID_199	unplaced-scaffold	na	na	PPKS01000096.1	<>	na	Primary Assembly	260	na
+NODE_101_length_259_cov_254.787_ID_201	unplaced-scaffold	na	na	PPKS01000097.1	<>	na	Primary Assembly	259	na
+NODE_102_length_257_cov_154.142_ID_203	unplaced-scaffold	na	na	PPKS01000098.1	<>	na	Primary Assembly	257	na
+NODE_103_length_257_cov_251.623_ID_205	unplaced-scaffold	na	na	PPKS01000099.1	<>	na	Primary Assembly	257	na
+NODE_104_length_252_cov_191.484_ID_207	unplaced-scaffold	na	na	PPKS01000100.1	<>	na	Primary Assembly	252	na
+NODE_105_length_245_cov_148.82_ID_209	unplaced-scaffold	na	na	PPKS01000101.1	<>	na	Primary Assembly	245	na
+NODE_106_length_231_cov_101.507_ID_211	unplaced-scaffold	na	na	PPKS01000102.1	<>	na	Primary Assembly	231	na
+NODE_107_length_230_cov_132.852_ID_213	unplaced-scaffold	na	na	PPKS01000103.1	<>	na	Primary Assembly	230	na
+NODE_108_length_228_cov_372.459_ID_215	unplaced-scaffold	na	na	PPKS01000104.1	<>	na	Primary Assembly	228	na
+NODE_109_length_227_cov_61.4924_ID_217	unplaced-scaffold	na	na	PPKS01000105.1	<>	na	Primary Assembly	227	na
+NODE_110_length_223_cov_87.2266_ID_219	unplaced-scaffold	na	na	PPKS01000106.1	<>	na	Primary Assembly	223	na
+NODE_111_length_221_cov_87.4524_ID_221	unplaced-scaffold	na	na	PPKS01000107.1	<>	na	Primary Assembly	221	na
+NODE_112_length_215_cov_66_ID_223	unplaced-scaffold	na	na	PPKS01000108.1	<>	na	Primary Assembly	215	na
+NODE_113_length_213_cov_97.0847_ID_225	unplaced-scaffold	na	na	PPKS01000109.1	<>	na	Primary Assembly	213	na
+NODE_114_length_210_cov_151.835_ID_227	unplaced-scaffold	na	na	PPKS01000110.1	<>	na	Primary Assembly	210	na
+NODE_115_length_210_cov_115.426_ID_229	unplaced-scaffold	na	na	PPKS01000111.1	<>	na	Primary Assembly	210	na
+NODE_116_length_209_cov_121.219_ID_231	unplaced-scaffold	na	na	PPKS01000112.1	<>	na	Primary Assembly	209	na
+NODE_117_length_209_cov_112.061_ID_233	unplaced-scaffold	na	na	PPKS01000113.1	<>	na	Primary Assembly	209	na
+NODE_118_length_209_cov_168.553_ID_235	unplaced-scaffold	na	na	PPKS01000114.1	<>	na	Primary Assembly	209	na
+NODE_119_length_209_cov_74.307_ID_237	unplaced-scaffold	na	na	PPKS01000115.1	<>	na	Primary Assembly	209	na
+NODE_120_length_209_cov_202.596_ID_239	unplaced-scaffold	na	na	PPKS01000116.1	<>	na	Primary Assembly	209	na
+NODE_121_length_209_cov_184.649_ID_241	unplaced-scaffold	na	na	PPKS01000117.1	<>	na	Primary Assembly	209	na
+NODE_122_length_206_cov_150.505_ID_243	unplaced-scaffold	na	na	PPKS01000118.1	<>	na	Primary Assembly	206	na
+NODE_123_length_206_cov_126.306_ID_245	unplaced-scaffold	na	na	PPKS01000119.1	<>	na	Primary Assembly	206	na
+NODE_124_length_203_cov_202.074_ID_247	unplaced-scaffold	na	na	PPKS01000120.1	<>	na	Primary Assembly	203	na
+NODE_125_length_200_cov_172.876_ID_249	unplaced-scaffold	na	na	PPKS01000121.1	<>	na	Primary Assembly	200	na

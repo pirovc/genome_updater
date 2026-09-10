@@ -1,0 +1,43 @@
+# Assembly name:  Sc_YJM1400_v1
+# Organism name:  Saccharomyces cerevisiae YJM1400 (baker's yeast)
+# Infraspecific name:  strain=YJM1400
+# Taxid:          1294363
+# BioSample:      SAMN01923177
+# BioProject:     PRJNA189911
+# Submitter:      Duke University
+# Date:           2015-3-26
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# GenBank assembly accession: GCA_000977595.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000977605.1		Primary Assembly
+## GCA_000977615.1		non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+I	assembled-molecule	I	Chromosome	CP004476.1	<>	na	Primary Assembly	189476	na
+II	assembled-molecule	II	Chromosome	CP004658.1	<>	na	Primary Assembly	785202	na
+III	assembled-molecule	III	Chromosome	CP006305.1	<>	na	Primary Assembly	317499	na
+IV	assembled-molecule	IV	Chromosome	CP004726.1	<>	na	Primary Assembly	1457870	na
+V	assembled-molecule	V	Chromosome	CP004821.1	<>	na	Primary Assembly	570335	na
+VI	assembled-molecule	VI	Chromosome	CP004956.1	<>	na	Primary Assembly	294862	na
+VII	assembled-molecule	VII	Chromosome	CP005260.1	<>	na	Primary Assembly	1048149	na
+VIII	assembled-molecule	VIII	Chromosome	CP006093.1	<>	na	Primary Assembly	562346	na
+IX	assembled-molecule	IX	Chromosome	CP005049.1	<>	na	Primary Assembly	425692	na
+X	assembled-molecule	X	Chromosome	CP005162.1	<>	na	Primary Assembly	720137	na
+XI	assembled-molecule	XI	Chromosome	CP005357.1	<>	na	Primary Assembly	663816	na
+XII	assembled-molecule	XII	Chromosome	CP006409.1	<>	na	Primary Assembly	1651440	na
+XIII	assembled-molecule	XIII	Chromosome	CP005458.1	<>	na	Primary Assembly	897758	na
+XIV	assembled-molecule	XIV	Chromosome	CP005560.1	<>	na	Primary Assembly	757132	na
+XV	assembled-molecule	XV	Chromosome	CP005654.1	<>	na	Primary Assembly	1068929	na
+XVI	assembled-molecule	XVI	Chromosome	CP006185.1	<>	na	Primary Assembly	911715	na
+2 micron	assembled-molecule	2 micron	Plasmid	CP004553.1	<>	na	Primary Assembly	6094	na
+MT	assembled-molecule	MT	Mitochondrion	CP006540.1	<>	na	non-nuclear	88306	na

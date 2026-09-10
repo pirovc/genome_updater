@@ -1,0 +1,58 @@
+# Assembly name:  MTG246_bin.5.fa
+# Organism name:  Methanobrevibacter smithii (euryarchaeotes)
+# Isolate:  MTG246_bin.5.fa
+# Taxid:          2173
+# BioSample:      SAMEA13567430
+# BioProject:     PRJEB50699
+# Submitter:      UNIVERSITY OF NEW SOUTH WALES
+# Date:           2022-07-29
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    CAKXKF01
+# Assembly method: MetaWRAP 1.3.2
+# Genome coverage: 33x
+# Sequencing technology: Illumina
+# Excluded from RefSeq: derived from metagenome
+# GenBank assembly accession: GCA_934876175.1
+# RefSeq assembly accession: GCF_934876175.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_934876174.1	GCF_934876174.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+NODE_1_length_579500_cov_33.231672	unplaced-scaffold	na	na	CAKXKF010000001.1	=	NZ_CAKXKF010000001.1	Primary Assembly	579500	na
+NODE_2_length_328683_cov_28.963433	unplaced-scaffold	na	na	CAKXKF010000002.1	=	NZ_CAKXKF010000002.1	Primary Assembly	328683	na
+NODE_3_length_222995_cov_29.618483	unplaced-scaffold	na	na	CAKXKF010000003.1	=	NZ_CAKXKF010000003.1	Primary Assembly	222995	na
+NODE_4_length_178263_cov_30.644091	unplaced-scaffold	na	na	CAKXKF010000004.1	=	NZ_CAKXKF010000004.1	Primary Assembly	178263	na
+NODE_5_length_100602_cov_26.731181	unplaced-scaffold	na	na	CAKXKF010000005.1	=	NZ_CAKXKF010000005.1	Primary Assembly	100602	na
+NODE_6_length_76274_cov_30.896046	unplaced-scaffold	na	na	CAKXKF010000006.1	=	NZ_CAKXKF010000006.1	Primary Assembly	76274	na
+NODE_7_length_62647_cov_32.114032	unplaced-scaffold	na	na	CAKXKF010000007.1	=	NZ_CAKXKF010000007.1	Primary Assembly	62647	na
+NODE_8_length_45794_cov_31.794781	unplaced-scaffold	na	na	CAKXKF010000008.1	=	NZ_CAKXKF010000008.1	Primary Assembly	45794	na
+NODE_9_length_27650_cov_26.431981	unplaced-scaffold	na	na	CAKXKF010000009.1	=	NZ_CAKXKF010000009.1	Primary Assembly	27650	na
+NODE_10_length_5891_cov_35.389921	unplaced-scaffold	na	na	CAKXKF010000010.1	=	NZ_CAKXKF010000010.1	Primary Assembly	5891	na
+NODE_11_length_2460_cov_31.379354	unplaced-scaffold	na	na	CAKXKF010000011.1	=	NZ_CAKXKF010000011.1	Primary Assembly	2460	na
+NODE_12_length_2039_cov_32.790520	unplaced-scaffold	na	na	CAKXKF010000012.1	=	NZ_CAKXKF010000012.1	Primary Assembly	2039	na
+NODE_13_length_1670_cov_26.841808	unplaced-scaffold	na	na	CAKXKF010000013.1	=	NZ_CAKXKF010000013.1	Primary Assembly	1670	na
+NODE_14_length_1663_cov_30.716898	unplaced-scaffold	na	na	CAKXKF010000014.1	=	NZ_CAKXKF010000014.1	Primary Assembly	1663	na
+NODE_15_length_1638_cov_28.926970	unplaced-scaffold	na	na	CAKXKF010000015.1	=	NZ_CAKXKF010000015.1	Primary Assembly	1638	na
+NODE_16_length_1428_cov_4.805329	unplaced-scaffold	na	na	CAKXKF010000016.1	=	NZ_CAKXKF010000016.1	Primary Assembly	1428	na
+NODE_17_length_1159_cov_8.856747	unplaced-scaffold	na	na	CAKXKF010000017.1	=	NZ_CAKXKF010000017.1	Primary Assembly	1159	na
+NODE_18_length_946_cov_4.821634	unplaced-scaffold	na	na	CAKXKF010000018.1	=	NZ_CAKXKF010000018.1	Primary Assembly	946	na
+NODE_19_length_839_cov_7.539370	unplaced-scaffold	na	na	CAKXKF010000019.1	=	NZ_CAKXKF010000019.1	Primary Assembly	839	na
+NODE_20_length_835_cov_3.530343	unplaced-scaffold	na	na	CAKXKF010000020.1	=	NZ_CAKXKF010000020.1	Primary Assembly	835	na
+NODE_21_length_740_cov_17.547511	unplaced-scaffold	na	na	CAKXKF010000021.1	=	NZ_CAKXKF010000021.1	Primary Assembly	740	na
+NODE_22_length_726_cov_12.893683	unplaced-scaffold	na	na	CAKXKF010000022.1	=	NZ_CAKXKF010000022.1	Primary Assembly	726	na
+NODE_23_length_699_cov_1.188103	unplaced-scaffold	na	na	CAKXKF010000023.1	=	NZ_CAKXKF010000023.1	Primary Assembly	699	na
+NODE_24_length_601_cov_25.992366	unplaced-scaffold	na	na	CAKXKF010000024.1	=	NZ_CAKXKF010000024.1	Primary Assembly	601	na
+NODE_25_length_530_cov_5.551876	unplaced-scaffold	na	na	CAKXKF010000025.1	=	NZ_CAKXKF010000025.1	Primary Assembly	530	na
+NODE_26_length_520_cov_2.659142	unplaced-scaffold	na	na	CAKXKF010000026.1	=	NZ_CAKXKF010000026.1	Primary Assembly	520	na
+NODE_27_length_507_cov_4.781395	unplaced-scaffold	na	na	CAKXKF010000027.1	=	NZ_CAKXKF010000027.1	Primary Assembly	507	na

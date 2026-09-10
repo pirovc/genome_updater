@@ -1,0 +1,189 @@
+# Assembly name:  SRR22541668_bin.8_MetaWRAP_v1.3_MAG
+# Organism name:  Methanobrevibacter smithii (euryarchaeotes)
+# Isolate:  SRR22541668_bin.8_MetaWRAP_v1.3_MAG
+# Taxid:          2173
+# BioSample:      SAMEA114065241
+# BioProject:     PRJEB63158
+# Submitter:      EMG
+# Date:           2023-07-18
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    CAUBCS01
+# Assembly method: metaspades v3.15.3
+# Genome coverage: 11x
+# Sequencing technology: Illumina NovaSeq 6000
+# Excluded from RefSeq: derived from metagenome
+# GenBank assembly accession: GCA_958434505.1
+# RefSeq assembly accession: GCF_958434505.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_958434504.1	GCF_958434504.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ERZ18684841.360	unplaced-scaffold	na	na	CAUBCS010000001.1	=	NZ_CAUBCS010000001.1	Primary Assembly	58120	na
+ERZ18684841.918	unplaced-scaffold	na	na	CAUBCS010000002.1	=	NZ_CAUBCS010000002.1	Primary Assembly	35604	na
+ERZ18684841.975	unplaced-scaffold	na	na	CAUBCS010000003.1	=	NZ_CAUBCS010000003.1	Primary Assembly	34196	na
+ERZ18684841.1092	unplaced-scaffold	na	na	CAUBCS010000004.1	=	NZ_CAUBCS010000004.1	Primary Assembly	31854	na
+ERZ18684841.1132	unplaced-scaffold	na	na	CAUBCS010000005.1	=	NZ_CAUBCS010000005.1	Primary Assembly	31267	na
+ERZ18684841.1184	unplaced-scaffold	na	na	CAUBCS010000006.1	=	NZ_CAUBCS010000006.1	Primary Assembly	30410	na
+ERZ18684841.1203	unplaced-scaffold	na	na	CAUBCS010000007.1	=	NZ_CAUBCS010000007.1	Primary Assembly	30175	na
+ERZ18684841.1214	unplaced-scaffold	na	na	CAUBCS010000008.1	=	NZ_CAUBCS010000008.1	Primary Assembly	30049	na
+ERZ18684841.1302	unplaced-scaffold	na	na	CAUBCS010000009.1	=	NZ_CAUBCS010000009.1	Primary Assembly	28970	na
+ERZ18684841.1598	unplaced-scaffold	na	na	CAUBCS010000010.1	=	NZ_CAUBCS010000010.1	Primary Assembly	25499	na
+ERZ18684841.1698	unplaced-scaffold	na	na	CAUBCS010000011.1	=	NZ_CAUBCS010000011.1	Primary Assembly	24487	na
+ERZ18684841.1828	unplaced-scaffold	na	na	CAUBCS010000012.1	=	NZ_CAUBCS010000012.1	Primary Assembly	23161	na
+ERZ18684841.1980	unplaced-scaffold	na	na	CAUBCS010000013.1	=	NZ_CAUBCS010000013.1	Primary Assembly	21811	na
+ERZ18684841.2130	unplaced-scaffold	na	na	CAUBCS010000014.1	=	NZ_CAUBCS010000014.1	Primary Assembly	20563	na
+ERZ18684841.2136	unplaced-scaffold	na	na	CAUBCS010000015.1	=	NZ_CAUBCS010000015.1	Primary Assembly	20538	na
+ERZ18684841.2182	unplaced-scaffold	na	na	CAUBCS010000016.1	=	NZ_CAUBCS010000016.1	Primary Assembly	20248	na
+ERZ18684841.2429	unplaced-scaffold	na	na	CAUBCS010000017.1	=	NZ_CAUBCS010000017.1	Primary Assembly	18715	na
+ERZ18684841.2513	unplaced-scaffold	na	na	CAUBCS010000018.1	=	NZ_CAUBCS010000018.1	Primary Assembly	18211	na
+ERZ18684841.2522	unplaced-scaffold	na	na	CAUBCS010000019.1	=	NZ_CAUBCS010000019.1	Primary Assembly	18163	na
+ERZ18684841.2538	unplaced-scaffold	na	na	CAUBCS010000020.1	=	NZ_CAUBCS010000020.1	Primary Assembly	18065	na
+ERZ18684841.2619	unplaced-scaffold	na	na	CAUBCS010000021.1	=	NZ_CAUBCS010000021.1	Primary Assembly	17572	na
+ERZ18684841.2679	unplaced-scaffold	na	na	CAUBCS010000022.1	=	NZ_CAUBCS010000022.1	Primary Assembly	17273	na
+ERZ18684841.2753	unplaced-scaffold	na	na	CAUBCS010000023.1	=	NZ_CAUBCS010000023.1	Primary Assembly	16905	na
+ERZ18684841.2820	unplaced-scaffold	na	na	CAUBCS010000024.1	=	NZ_CAUBCS010000024.1	Primary Assembly	16632	na
+ERZ18684841.2857	unplaced-scaffold	na	na	CAUBCS010000025.1	=	NZ_CAUBCS010000025.1	Primary Assembly	16502	na
+ERZ18684841.2878	unplaced-scaffold	na	na	CAUBCS010000026.1	=	NZ_CAUBCS010000026.1	Primary Assembly	16392	na
+ERZ18684841.2964	unplaced-scaffold	na	na	CAUBCS010000027.1	=	NZ_CAUBCS010000027.1	Primary Assembly	16019	na
+ERZ18684841.3004	unplaced-scaffold	na	na	CAUBCS010000028.1	=	NZ_CAUBCS010000028.1	Primary Assembly	15821	na
+ERZ18684841.3040	unplaced-scaffold	na	na	CAUBCS010000029.1	=	NZ_CAUBCS010000029.1	Primary Assembly	15666	na
+ERZ18684841.3143	unplaced-scaffold	na	na	CAUBCS010000030.1	=	NZ_CAUBCS010000030.1	Primary Assembly	15206	na
+ERZ18684841.3175	unplaced-scaffold	na	na	CAUBCS010000031.1	=	NZ_CAUBCS010000031.1	Primary Assembly	15063	na
+ERZ18684841.3265	unplaced-scaffold	na	na	CAUBCS010000032.1	=	NZ_CAUBCS010000032.1	Primary Assembly	14753	na
+ERZ18684841.3328	unplaced-scaffold	na	na	CAUBCS010000033.1	=	NZ_CAUBCS010000033.1	Primary Assembly	14476	na
+ERZ18684841.3349	unplaced-scaffold	na	na	CAUBCS010000034.1	=	NZ_CAUBCS010000034.1	Primary Assembly	14407	na
+ERZ18684841.3355	unplaced-scaffold	na	na	CAUBCS010000035.1	=	NZ_CAUBCS010000035.1	Primary Assembly	14393	na
+ERZ18684841.3368	unplaced-scaffold	na	na	CAUBCS010000036.1	=	NZ_CAUBCS010000036.1	Primary Assembly	14353	na
+ERZ18684841.3389	unplaced-scaffold	na	na	CAUBCS010000037.1	=	NZ_CAUBCS010000037.1	Primary Assembly	14263	na
+ERZ18684841.3438	unplaced-scaffold	na	na	CAUBCS010000038.1	=	NZ_CAUBCS010000038.1	Primary Assembly	14068	na
+ERZ18684841.3616	unplaced-scaffold	na	na	CAUBCS010000039.1	=	NZ_CAUBCS010000039.1	Primary Assembly	13488	na
+ERZ18684841.3651	unplaced-scaffold	na	na	CAUBCS010000040.1	=	NZ_CAUBCS010000040.1	Primary Assembly	13390	na
+ERZ18684841.3774	unplaced-scaffold	na	na	CAUBCS010000041.1	=	NZ_CAUBCS010000041.1	Primary Assembly	12988	na
+ERZ18684841.3798	unplaced-scaffold	na	na	CAUBCS010000042.1	=	NZ_CAUBCS010000042.1	Primary Assembly	12919	na
+ERZ18684841.3834	unplaced-scaffold	na	na	CAUBCS010000043.1	=	NZ_CAUBCS010000043.1	Primary Assembly	12821	na
+ERZ18684841.3835	unplaced-scaffold	na	na	CAUBCS010000044.1	=	NZ_CAUBCS010000044.1	Primary Assembly	12821	na
+ERZ18684841.3841	unplaced-scaffold	na	na	CAUBCS010000045.1	=	NZ_CAUBCS010000045.1	Primary Assembly	12800	na
+ERZ18684841.3910	unplaced-scaffold	na	na	CAUBCS010000046.1	=	NZ_CAUBCS010000046.1	Primary Assembly	12578	na
+ERZ18684841.4049	unplaced-scaffold	na	na	CAUBCS010000047.1	=	NZ_CAUBCS010000047.1	Primary Assembly	12198	na
+ERZ18684841.4134	unplaced-scaffold	na	na	CAUBCS010000048.1	=	NZ_CAUBCS010000048.1	Primary Assembly	11990	na
+ERZ18684841.4234	unplaced-scaffold	na	na	CAUBCS010000049.1	=	NZ_CAUBCS010000049.1	Primary Assembly	11762	na
+ERZ18684841.4271	unplaced-scaffold	na	na	CAUBCS010000050.1	=	NZ_CAUBCS010000050.1	Primary Assembly	11679	na
+ERZ18684841.4379	unplaced-scaffold	na	na	CAUBCS010000051.1	=	NZ_CAUBCS010000051.1	Primary Assembly	11414	na
+ERZ18684841.4399	unplaced-scaffold	na	na	CAUBCS010000052.1	=	NZ_CAUBCS010000052.1	Primary Assembly	11365	na
+ERZ18684841.4401	unplaced-scaffold	na	na	CAUBCS010000053.1	=	NZ_CAUBCS010000053.1	Primary Assembly	11364	na
+ERZ18684841.4447	unplaced-scaffold	na	na	CAUBCS010000054.1	=	NZ_CAUBCS010000054.1	Primary Assembly	11257	na
+ERZ18684841.4528	unplaced-scaffold	na	na	CAUBCS010000055.1	=	NZ_CAUBCS010000055.1	Primary Assembly	11075	na
+ERZ18684841.4565	unplaced-scaffold	na	na	CAUBCS010000056.1	=	NZ_CAUBCS010000056.1	Primary Assembly	10987	na
+ERZ18684841.4616	unplaced-scaffold	na	na	CAUBCS010000057.1	=	NZ_CAUBCS010000057.1	Primary Assembly	10900	na
+ERZ18684841.4704	unplaced-scaffold	na	na	CAUBCS010000058.1	=	NZ_CAUBCS010000058.1	Primary Assembly	10717	na
+ERZ18684841.4725	unplaced-scaffold	na	na	CAUBCS010000059.1	=	NZ_CAUBCS010000059.1	Primary Assembly	10684	na
+ERZ18684841.4826	unplaced-scaffold	na	na	CAUBCS010000060.1	=	NZ_CAUBCS010000060.1	Primary Assembly	10472	na
+ERZ18684841.4830	unplaced-scaffold	na	na	CAUBCS010000061.1	=	NZ_CAUBCS010000061.1	Primary Assembly	10464	na
+ERZ18684841.5005	unplaced-scaffold	na	na	CAUBCS010000062.1	=	NZ_CAUBCS010000062.1	Primary Assembly	10125	na
+ERZ18684841.5008	unplaced-scaffold	na	na	CAUBCS010000063.1	=	NZ_CAUBCS010000063.1	Primary Assembly	10118	na
+ERZ18684841.5052	unplaced-scaffold	na	na	CAUBCS010000064.1	=	NZ_CAUBCS010000064.1	Primary Assembly	10039	na
+ERZ18684841.5181	unplaced-scaffold	na	na	CAUBCS010000065.1	=	NZ_CAUBCS010000065.1	Primary Assembly	9823	na
+ERZ18684841.5414	unplaced-scaffold	na	na	CAUBCS010000066.1	=	NZ_CAUBCS010000066.1	Primary Assembly	9402	na
+ERZ18684841.5536	unplaced-scaffold	na	na	CAUBCS010000067.1	=	NZ_CAUBCS010000067.1	Primary Assembly	9234	na
+ERZ18684841.5648	unplaced-scaffold	na	na	CAUBCS010000068.1	=	NZ_CAUBCS010000068.1	Primary Assembly	9067	na
+ERZ18684841.5659	unplaced-scaffold	na	na	CAUBCS010000069.1	=	NZ_CAUBCS010000069.1	Primary Assembly	9055	na
+ERZ18684841.5765	unplaced-scaffold	na	na	CAUBCS010000070.1	=	NZ_CAUBCS010000070.1	Primary Assembly	8871	na
+ERZ18684841.5783	unplaced-scaffold	na	na	CAUBCS010000071.1	=	NZ_CAUBCS010000071.1	Primary Assembly	8849	na
+ERZ18684841.5797	unplaced-scaffold	na	na	CAUBCS010000072.1	=	NZ_CAUBCS010000072.1	Primary Assembly	8836	na
+ERZ18684841.5913	unplaced-scaffold	na	na	CAUBCS010000073.1	=	NZ_CAUBCS010000073.1	Primary Assembly	8707	na
+ERZ18684841.5920	unplaced-scaffold	na	na	CAUBCS010000074.1	=	NZ_CAUBCS010000074.1	Primary Assembly	8700	na
+ERZ18684841.6012	unplaced-scaffold	na	na	CAUBCS010000075.1	=	NZ_CAUBCS010000075.1	Primary Assembly	8564	na
+ERZ18684841.6040	unplaced-scaffold	na	na	CAUBCS010000076.1	=	NZ_CAUBCS010000076.1	Primary Assembly	8530	na
+ERZ18684841.6134	unplaced-scaffold	na	na	CAUBCS010000077.1	=	NZ_CAUBCS010000077.1	Primary Assembly	8406	na
+ERZ18684841.6424	unplaced-scaffold	na	na	CAUBCS010000078.1	=	NZ_CAUBCS010000078.1	Primary Assembly	8021	na
+ERZ18684841.6431	unplaced-scaffold	na	na	CAUBCS010000079.1	=	NZ_CAUBCS010000079.1	Primary Assembly	8012	na
+ERZ18684841.6661	unplaced-scaffold	na	na	CAUBCS010000080.1	=	NZ_CAUBCS010000080.1	Primary Assembly	7774	na
+ERZ18684841.6807	unplaced-scaffold	na	na	CAUBCS010000081.1	=	NZ_CAUBCS010000081.1	Primary Assembly	7630	na
+ERZ18684841.6892	unplaced-scaffold	na	na	CAUBCS010000082.1	=	NZ_CAUBCS010000082.1	Primary Assembly	7538	na
+ERZ18684841.6973	unplaced-scaffold	na	na	CAUBCS010000083.1	=	NZ_CAUBCS010000083.1	Primary Assembly	7446	na
+ERZ18684841.6997	unplaced-scaffold	na	na	CAUBCS010000084.1	=	NZ_CAUBCS010000084.1	Primary Assembly	7420	na
+ERZ18684841.7069	unplaced-scaffold	na	na	CAUBCS010000085.1	=	NZ_CAUBCS010000085.1	Primary Assembly	7353	na
+ERZ18684841.7182	unplaced-scaffold	na	na	CAUBCS010000086.1	=	NZ_CAUBCS010000086.1	Primary Assembly	7250	na
+ERZ18684841.7219	unplaced-scaffold	na	na	CAUBCS010000087.1	=	NZ_CAUBCS010000087.1	Primary Assembly	7219	na
+ERZ18684841.7264	unplaced-scaffold	na	na	CAUBCS010000088.1	=	NZ_CAUBCS010000088.1	Primary Assembly	7176	na
+ERZ18684841.7322	unplaced-scaffold	na	na	CAUBCS010000089.1	=	NZ_CAUBCS010000089.1	Primary Assembly	7129	na
+ERZ18684841.7442	unplaced-scaffold	na	na	CAUBCS010000090.1	=	NZ_CAUBCS010000090.1	Primary Assembly	7042	na
+ERZ18684841.7684	unplaced-scaffold	na	na	CAUBCS010000091.1	=	NZ_CAUBCS010000091.1	Primary Assembly	6854	na
+ERZ18684841.7709	unplaced-scaffold	na	na	CAUBCS010000092.1	=	NZ_CAUBCS010000092.1	Primary Assembly	6840	na
+ERZ18684841.7710	unplaced-scaffold	na	na	CAUBCS010000093.1	=	NZ_CAUBCS010000093.1	Primary Assembly	6839	na
+ERZ18684841.7718	unplaced-scaffold	na	na	CAUBCS010000094.1	=	NZ_CAUBCS010000094.1	Primary Assembly	6834	na
+ERZ18684841.7821	unplaced-scaffold	na	na	CAUBCS010000095.1	=	NZ_CAUBCS010000095.1	Primary Assembly	6747	na
+ERZ18684841.7892	unplaced-scaffold	na	na	CAUBCS010000096.1	=	NZ_CAUBCS010000096.1	Primary Assembly	6705	na
+ERZ18684841.7917	unplaced-scaffold	na	na	CAUBCS010000097.1	=	NZ_CAUBCS010000097.1	Primary Assembly	6688	na
+ERZ18684841.8090	unplaced-scaffold	na	na	CAUBCS010000098.1	=	NZ_CAUBCS010000098.1	Primary Assembly	6563	na
+ERZ18684841.8416	unplaced-scaffold	na	na	CAUBCS010000099.1	=	NZ_CAUBCS010000099.1	Primary Assembly	6321	na
+ERZ18684841.8496	unplaced-scaffold	na	na	CAUBCS010000100.1	=	NZ_CAUBCS010000100.1	Primary Assembly	6263	na
+ERZ18684841.8684	unplaced-scaffold	na	na	CAUBCS010000101.1	=	NZ_CAUBCS010000101.1	Primary Assembly	6127	na
+ERZ18684841.8890	unplaced-scaffold	na	na	CAUBCS010000102.1	=	NZ_CAUBCS010000102.1	Primary Assembly	6005	na
+ERZ18684841.9049	unplaced-scaffold	na	na	CAUBCS010000103.1	=	NZ_CAUBCS010000103.1	Primary Assembly	5900	na
+ERZ18684841.9181	unplaced-scaffold	na	na	CAUBCS010000104.1	=	NZ_CAUBCS010000104.1	Primary Assembly	5834	na
+ERZ18684841.9269	unplaced-scaffold	na	na	CAUBCS010000105.1	=	NZ_CAUBCS010000105.1	Primary Assembly	5782	na
+ERZ18684841.9356	unplaced-scaffold	na	na	CAUBCS010000106.1	=	NZ_CAUBCS010000106.1	Primary Assembly	5717	na
+ERZ18684841.9421	unplaced-scaffold	na	na	CAUBCS010000107.1	=	NZ_CAUBCS010000107.1	Primary Assembly	5680	na
+ERZ18684841.9603	unplaced-scaffold	na	na	CAUBCS010000108.1	=	NZ_CAUBCS010000108.1	Primary Assembly	5587	na
+ERZ18684841.9695	unplaced-scaffold	na	na	CAUBCS010000109.1	=	NZ_CAUBCS010000109.1	Primary Assembly	5541	na
+ERZ18684841.9885	unplaced-scaffold	na	na	CAUBCS010000110.1	=	NZ_CAUBCS010000110.1	Primary Assembly	5449	na
+ERZ18684841.9945	unplaced-scaffold	na	na	CAUBCS010000111.1	=	NZ_CAUBCS010000111.1	Primary Assembly	5411	na
+ERZ18684841.10592	unplaced-scaffold	na	na	CAUBCS010000112.1	=	NZ_CAUBCS010000112.1	Primary Assembly	5113	na
+ERZ18684841.10807	unplaced-scaffold	na	na	CAUBCS010000113.1	=	NZ_CAUBCS010000113.1	Primary Assembly	5022	na
+ERZ18684841.10878	unplaced-scaffold	na	na	CAUBCS010000114.1	=	NZ_CAUBCS010000114.1	Primary Assembly	4989	na
+ERZ18684841.11045	unplaced-scaffold	na	na	CAUBCS010000115.1	=	NZ_CAUBCS010000115.1	Primary Assembly	4913	na
+ERZ18684841.11102	unplaced-scaffold	na	na	CAUBCS010000116.1	=	NZ_CAUBCS010000116.1	Primary Assembly	4896	na
+ERZ18684841.11306	unplaced-scaffold	na	na	CAUBCS010000117.1	=	NZ_CAUBCS010000117.1	Primary Assembly	4816	na
+ERZ18684841.11344	unplaced-scaffold	na	na	CAUBCS010000118.1	=	NZ_CAUBCS010000118.1	Primary Assembly	4802	na
+ERZ18684841.11804	unplaced-scaffold	na	na	CAUBCS010000119.1	=	NZ_CAUBCS010000119.1	Primary Assembly	4636	na
+ERZ18684841.11912	unplaced-scaffold	na	na	CAUBCS010000120.1	=	NZ_CAUBCS010000120.1	Primary Assembly	4604	na
+ERZ18684841.12034	unplaced-scaffold	na	na	CAUBCS010000121.1	=	NZ_CAUBCS010000121.1	Primary Assembly	4558	na
+ERZ18684841.12163	unplaced-scaffold	na	na	CAUBCS010000122.1	=	NZ_CAUBCS010000122.1	Primary Assembly	4518	na
+ERZ18684841.12449	unplaced-scaffold	na	na	CAUBCS010000123.1	=	NZ_CAUBCS010000123.1	Primary Assembly	4424	na
+ERZ18684841.12488	unplaced-scaffold	na	na	CAUBCS010000124.1	=	NZ_CAUBCS010000124.1	Primary Assembly	4410	na
+ERZ18684841.12609	unplaced-scaffold	na	na	CAUBCS010000125.1	=	NZ_CAUBCS010000125.1	Primary Assembly	4373	na
+ERZ18684841.12902	unplaced-scaffold	na	na	CAUBCS010000126.1	=	NZ_CAUBCS010000126.1	Primary Assembly	4278	na
+ERZ18684841.13073	unplaced-scaffold	na	na	CAUBCS010000127.1	=	NZ_CAUBCS010000127.1	Primary Assembly	4223	na
+ERZ18684841.13280	unplaced-scaffold	na	na	CAUBCS010000128.1	=	NZ_CAUBCS010000128.1	Primary Assembly	4171	na
+ERZ18684841.13435	unplaced-scaffold	na	na	CAUBCS010000129.1	=	NZ_CAUBCS010000129.1	Primary Assembly	4130	na
+ERZ18684841.13641	unplaced-scaffold	na	na	CAUBCS010000130.1	=	NZ_CAUBCS010000130.1	Primary Assembly	4076	na
+ERZ18684841.14055	unplaced-scaffold	na	na	CAUBCS010000131.1	=	NZ_CAUBCS010000131.1	Primary Assembly	3968	na
+ERZ18684841.14186	unplaced-scaffold	na	na	CAUBCS010000132.1	=	NZ_CAUBCS010000132.1	Primary Assembly	3940	na
+ERZ18684841.14804	unplaced-scaffold	na	na	CAUBCS010000133.1	=	NZ_CAUBCS010000133.1	Primary Assembly	3801	na
+ERZ18684841.14998	unplaced-scaffold	na	na	CAUBCS010000134.1	=	NZ_CAUBCS010000134.1	Primary Assembly	3756	na
+ERZ18684841.15196	unplaced-scaffold	na	na	CAUBCS010000135.1	=	NZ_CAUBCS010000135.1	Primary Assembly	3716	na
+ERZ18684841.15886	unplaced-scaffold	na	na	CAUBCS010000136.1	=	NZ_CAUBCS010000136.1	Primary Assembly	3590	na
+ERZ18684841.16146	unplaced-scaffold	na	na	CAUBCS010000137.1	=	NZ_CAUBCS010000137.1	Primary Assembly	3543	na
+ERZ18684841.17306	unplaced-scaffold	na	na	CAUBCS010000138.1	=	NZ_CAUBCS010000138.1	Primary Assembly	3333	na
+ERZ18684841.18173	unplaced-scaffold	na	na	CAUBCS010000139.1	=	NZ_CAUBCS010000139.1	Primary Assembly	3197	na
+ERZ18684841.18421	unplaced-scaffold	na	na	CAUBCS010000140.1	=	NZ_CAUBCS010000140.1	Primary Assembly	3161	na
+ERZ18684841.18422	unplaced-scaffold	na	na	CAUBCS010000141.1	=	NZ_CAUBCS010000141.1	Primary Assembly	3161	na
+ERZ18684841.18782	unplaced-scaffold	na	na	CAUBCS010000142.1	=	NZ_CAUBCS010000142.1	Primary Assembly	3113	na
+ERZ18684841.18827	unplaced-scaffold	na	na	CAUBCS010000143.1	=	NZ_CAUBCS010000143.1	Primary Assembly	3106	na
+ERZ18684841.19276	unplaced-scaffold	na	na	CAUBCS010000144.1	=	NZ_CAUBCS010000144.1	Primary Assembly	3042	na
+ERZ18684841.19456	unplaced-scaffold	na	na	CAUBCS010000145.1	=	NZ_CAUBCS010000145.1	Primary Assembly	3019	na
+ERZ18684841.19499	unplaced-scaffold	na	na	CAUBCS010000146.1	=	NZ_CAUBCS010000146.1	Primary Assembly	3014	na
+ERZ18684841.19530	unplaced-scaffold	na	na	CAUBCS010000147.1	=	NZ_CAUBCS010000147.1	Primary Assembly	3010	na
+ERZ18684841.20211	unplaced-scaffold	na	na	CAUBCS010000148.1	=	NZ_CAUBCS010000148.1	Primary Assembly	2930	na
+ERZ18684841.20549	unplaced-scaffold	na	na	CAUBCS010000149.1	=	NZ_CAUBCS010000149.1	Primary Assembly	2895	na
+ERZ18684841.20624	unplaced-scaffold	na	na	CAUBCS010000150.1	=	NZ_CAUBCS010000150.1	Primary Assembly	2886	na
+ERZ18684841.21958	unplaced-scaffold	na	na	CAUBCS010000151.1	=	NZ_CAUBCS010000151.1	Primary Assembly	2747	na
+ERZ18684841.22101	unplaced-scaffold	na	na	CAUBCS010000152.1	=	NZ_CAUBCS010000152.1	Primary Assembly	2730	na
+ERZ18684841.22705	unplaced-scaffold	na	na	CAUBCS010000153.1	=	NZ_CAUBCS010000153.1	Primary Assembly	2672	na
+ERZ18684841.22759	unplaced-scaffold	na	na	CAUBCS010000154.1	=	NZ_CAUBCS010000154.1	Primary Assembly	2667	na
+ERZ18684841.22944	unplaced-scaffold	na	na	CAUBCS010000155.1	=	NZ_CAUBCS010000155.1	Primary Assembly	2651	na
+ERZ18684841.23018	unplaced-scaffold	na	na	CAUBCS010000156.1	=	NZ_CAUBCS010000156.1	Primary Assembly	2644	na
+ERZ18684841.23524	unplaced-scaffold	na	na	CAUBCS010000157.1	=	NZ_CAUBCS010000157.1	Primary Assembly	2596	na
+ERZ18684841.24568	unplaced-scaffold	na	na	CAUBCS010000158.1	=	NZ_CAUBCS010000158.1	Primary Assembly	2506	na

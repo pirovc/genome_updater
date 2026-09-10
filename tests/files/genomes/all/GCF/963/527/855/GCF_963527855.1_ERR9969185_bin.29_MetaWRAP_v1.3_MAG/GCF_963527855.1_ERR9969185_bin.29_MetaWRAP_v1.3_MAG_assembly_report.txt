@@ -1,0 +1,111 @@
+# Assembly name:  ERR9969185_bin.29_MetaWRAP_v1.3_MAG
+# Organism name:  uncultured Capnocytophaga sp. (CFB group bacteria)
+# Isolate:  ERR9969185_bin.29_MetaWRAP_v1.3_MAG
+# Taxid:          159273
+# BioSample:      SAMEA114445317
+# BioProject:     PRJEB65351
+# Submitter:      EMG
+# Date:           2023-10-01
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    CAURTA01
+# Assembly method: metaspades v3.15.3
+# Genome coverage: 17x
+# Sequencing technology: Illumina NovaSeq 6000
+# Excluded from RefSeq: RefSeq annotation failed; derived from metagenome
+# GenBank assembly accession: GCA_963527855.1
+# RefSeq assembly accession: GCF_963527855.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_963527854.1	GCF_963527854.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ERZ21615972.30	unplaced-scaffold	na	na	CAURTA010000001.1	=	NZ_CAURTA010000001.1	Primary Assembly	156889	na
+ERZ21615972.54	unplaced-scaffold	na	na	CAURTA010000002.1	=	NZ_CAURTA010000002.1	Primary Assembly	111858	na
+ERZ21615972.82	unplaced-scaffold	na	na	CAURTA010000003.1	=	NZ_CAURTA010000003.1	Primary Assembly	95623	na
+ERZ21615972.101	unplaced-scaffold	na	na	CAURTA010000004.1	=	NZ_CAURTA010000004.1	Primary Assembly	84579	na
+ERZ21615972.115	unplaced-scaffold	na	na	CAURTA010000005.1	=	NZ_CAURTA010000005.1	Primary Assembly	79104	na
+ERZ21615972.147	unplaced-scaffold	na	na	CAURTA010000006.1	=	NZ_CAURTA010000006.1	Primary Assembly	69873	na
+ERZ21615972.156	unplaced-scaffold	na	na	CAURTA010000007.1	=	NZ_CAURTA010000007.1	Primary Assembly	67077	na
+ERZ21615972.158	unplaced-scaffold	na	na	CAURTA010000008.1	=	NZ_CAURTA010000008.1	Primary Assembly	66575	na
+ERZ21615972.162	unplaced-scaffold	na	na	CAURTA010000009.1	=	NZ_CAURTA010000009.1	Primary Assembly	66112	na
+ERZ21615972.163	unplaced-scaffold	na	na	CAURTA010000010.1	=	NZ_CAURTA010000010.1	Primary Assembly	66081	na
+ERZ21615972.185	unplaced-scaffold	na	na	CAURTA010000011.1	=	NZ_CAURTA010000011.1	Primary Assembly	63287	na
+ERZ21615972.213	unplaced-scaffold	na	na	CAURTA010000012.1	=	NZ_CAURTA010000012.1	Primary Assembly	58403	na
+ERZ21615972.227	unplaced-scaffold	na	na	CAURTA010000013.1	=	NZ_CAURTA010000013.1	Primary Assembly	56484	na
+ERZ21615972.239	unplaced-scaffold	na	na	CAURTA010000014.1	=	NZ_CAURTA010000014.1	Primary Assembly	55596	na
+ERZ21615972.242	unplaced-scaffold	na	na	CAURTA010000015.1	=	NZ_CAURTA010000015.1	Primary Assembly	55310	na
+ERZ21615972.291	unplaced-scaffold	na	na	CAURTA010000016.1	=	NZ_CAURTA010000016.1	Primary Assembly	49092	na
+ERZ21615972.332	unplaced-scaffold	na	na	CAURTA010000017.1	=	NZ_CAURTA010000017.1	Primary Assembly	45748	na
+ERZ21615972.412	unplaced-scaffold	na	na	CAURTA010000018.1	=	NZ_CAURTA010000018.1	Primary Assembly	40541	na
+ERZ21615972.432	unplaced-scaffold	na	na	CAURTA010000019.1	=	NZ_CAURTA010000019.1	Primary Assembly	39575	na
+ERZ21615972.433	unplaced-scaffold	na	na	CAURTA010000020.1	=	NZ_CAURTA010000020.1	Primary Assembly	39562	na
+ERZ21615972.472	unplaced-scaffold	na	na	CAURTA010000021.1	=	NZ_CAURTA010000021.1	Primary Assembly	37105	na
+ERZ21615972.489	unplaced-scaffold	na	na	CAURTA010000022.1	=	NZ_CAURTA010000022.1	Primary Assembly	36365	na
+ERZ21615972.492	unplaced-scaffold	na	na	CAURTA010000023.1	=	NZ_CAURTA010000023.1	Primary Assembly	36210	na
+ERZ21615972.495	unplaced-scaffold	na	na	CAURTA010000024.1	=	NZ_CAURTA010000024.1	Primary Assembly	35994	na
+ERZ21615972.496	unplaced-scaffold	na	na	CAURTA010000025.1	=	NZ_CAURTA010000025.1	Primary Assembly	35960	na
+ERZ21615972.498	unplaced-scaffold	na	na	CAURTA010000026.1	=	NZ_CAURTA010000026.1	Primary Assembly	35881	na
+ERZ21615972.534	unplaced-scaffold	na	na	CAURTA010000027.1	=	NZ_CAURTA010000027.1	Primary Assembly	33633	na
+ERZ21615972.537	unplaced-scaffold	na	na	CAURTA010000028.1	=	NZ_CAURTA010000028.1	Primary Assembly	33471	na
+ERZ21615972.554	unplaced-scaffold	na	na	CAURTA010000029.1	=	NZ_CAURTA010000029.1	Primary Assembly	32696	na
+ERZ21615972.578	unplaced-scaffold	na	na	CAURTA010000030.1	=	NZ_CAURTA010000030.1	Primary Assembly	31623	na
+ERZ21615972.582	unplaced-scaffold	na	na	CAURTA010000031.1	=	NZ_CAURTA010000031.1	Primary Assembly	31470	na
+ERZ21615972.657	unplaced-scaffold	na	na	CAURTA010000032.1	=	NZ_CAURTA010000032.1	Primary Assembly	28104	na
+ERZ21615972.693	unplaced-scaffold	na	na	CAURTA010000033.1	=	NZ_CAURTA010000033.1	Primary Assembly	27112	na
+ERZ21615972.722	unplaced-scaffold	na	na	CAURTA010000034.1	=	NZ_CAURTA010000034.1	Primary Assembly	26222	na
+ERZ21615972.742	unplaced-scaffold	na	na	CAURTA010000035.1	=	NZ_CAURTA010000035.1	Primary Assembly	25610	na
+ERZ21615972.785	unplaced-scaffold	na	na	CAURTA010000036.1	=	NZ_CAURTA010000036.1	Primary Assembly	24313	na
+ERZ21615972.815	unplaced-scaffold	na	na	CAURTA010000037.1	=	NZ_CAURTA010000037.1	Primary Assembly	23613	na
+ERZ21615972.928	unplaced-scaffold	na	na	CAURTA010000038.1	=	NZ_CAURTA010000038.1	Primary Assembly	21541	na
+ERZ21615972.1004	unplaced-scaffold	na	na	CAURTA010000039.1	=	NZ_CAURTA010000039.1	Primary Assembly	20283	na
+ERZ21615972.1058	unplaced-scaffold	na	na	CAURTA010000040.1	=	NZ_CAURTA010000040.1	Primary Assembly	19231	na
+ERZ21615972.1135	unplaced-scaffold	na	na	CAURTA010000041.1	=	NZ_CAURTA010000041.1	Primary Assembly	18010	na
+ERZ21615972.1214	unplaced-scaffold	na	na	CAURTA010000042.1	=	NZ_CAURTA010000042.1	Primary Assembly	17027	na
+ERZ21615972.1243	unplaced-scaffold	na	na	CAURTA010000043.1	=	NZ_CAURTA010000043.1	Primary Assembly	16731	na
+ERZ21615972.1278	unplaced-scaffold	na	na	CAURTA010000044.1	=	NZ_CAURTA010000044.1	Primary Assembly	16370	na
+ERZ21615972.1292	unplaced-scaffold	na	na	CAURTA010000045.1	=	NZ_CAURTA010000045.1	Primary Assembly	16217	na
+ERZ21615972.1402	unplaced-scaffold	na	na	CAURTA010000046.1	=	NZ_CAURTA010000046.1	Primary Assembly	15197	na
+ERZ21615972.1410	unplaced-scaffold	na	na	CAURTA010000047.1	=	NZ_CAURTA010000047.1	Primary Assembly	15055	na
+ERZ21615972.1502	unplaced-scaffold	na	na	CAURTA010000048.1	=	NZ_CAURTA010000048.1	Primary Assembly	14255	na
+ERZ21615972.1743	unplaced-scaffold	na	na	CAURTA010000049.1	=	NZ_CAURTA010000049.1	Primary Assembly	12575	na
+ERZ21615972.2060	unplaced-scaffold	na	na	CAURTA010000050.1	=	NZ_CAURTA010000050.1	Primary Assembly	11100	na
+ERZ21615972.2086	unplaced-scaffold	na	na	CAURTA010000051.1	=	NZ_CAURTA010000051.1	Primary Assembly	10921	na
+ERZ21615972.2189	unplaced-scaffold	na	na	CAURTA010000052.1	=	NZ_CAURTA010000052.1	Primary Assembly	10535	na
+ERZ21615972.2207	unplaced-scaffold	na	na	CAURTA010000053.1	=	NZ_CAURTA010000053.1	Primary Assembly	10464	na
+ERZ21615972.2320	unplaced-scaffold	na	na	CAURTA010000054.1	=	NZ_CAURTA010000054.1	Primary Assembly	10083	na
+ERZ21615972.2339	unplaced-scaffold	na	na	CAURTA010000055.1	=	NZ_CAURTA010000055.1	Primary Assembly	10004	na
+ERZ21615972.2484	unplaced-scaffold	na	na	CAURTA010000056.1	=	NZ_CAURTA010000056.1	Primary Assembly	9488	na
+ERZ21615972.2498	unplaced-scaffold	na	na	CAURTA010000057.1	=	NZ_CAURTA010000057.1	Primary Assembly	9451	na
+ERZ21615972.3347	unplaced-scaffold	na	na	CAURTA010000058.1	=	NZ_CAURTA010000058.1	Primary Assembly	7673	na
+ERZ21615972.4079	unplaced-scaffold	na	na	CAURTA010000059.1	=	NZ_CAURTA010000059.1	Primary Assembly	6596	na
+ERZ21615972.4155	unplaced-scaffold	na	na	CAURTA010000060.1	=	NZ_CAURTA010000060.1	Primary Assembly	6510	na
+ERZ21615972.4500	unplaced-scaffold	na	na	CAURTA010000061.1	=	NZ_CAURTA010000061.1	Primary Assembly	6163	na
+ERZ21615972.4630	unplaced-scaffold	na	na	CAURTA010000062.1	=	NZ_CAURTA010000062.1	Primary Assembly	6041	na
+ERZ21615972.4703	unplaced-scaffold	na	na	CAURTA010000063.1	=	NZ_CAURTA010000063.1	Primary Assembly	5953	na
+ERZ21615972.4835	unplaced-scaffold	na	na	CAURTA010000064.1	=	NZ_CAURTA010000064.1	Primary Assembly	5838	na
+ERZ21615972.5256	unplaced-scaffold	na	na	CAURTA010000065.1	=	NZ_CAURTA010000065.1	Primary Assembly	5485	na
+ERZ21615972.5367	unplaced-scaffold	na	na	CAURTA010000066.1	=	NZ_CAURTA010000066.1	Primary Assembly	5407	na
+ERZ21615972.7373	unplaced-scaffold	na	na	CAURTA010000067.1	=	NZ_CAURTA010000067.1	Primary Assembly	4226	na
+ERZ21615972.7439	unplaced-scaffold	na	na	CAURTA010000068.1	=	NZ_CAURTA010000068.1	Primary Assembly	4196	na
+ERZ21615972.7612	unplaced-scaffold	na	na	CAURTA010000069.1	=	NZ_CAURTA010000069.1	Primary Assembly	4125	na
+ERZ21615972.7920	unplaced-scaffold	na	na	CAURTA010000070.1	=	NZ_CAURTA010000070.1	Primary Assembly	4005	na
+ERZ21615972.8101	unplaced-scaffold	na	na	CAURTA010000071.1	=	NZ_CAURTA010000071.1	Primary Assembly	3929	na
+ERZ21615972.8804	unplaced-scaffold	na	na	CAURTA010000072.1	=	NZ_CAURTA010000072.1	Primary Assembly	3703	na
+ERZ21615972.9526	unplaced-scaffold	na	na	CAURTA010000073.1	=	NZ_CAURTA010000073.1	Primary Assembly	3475	na
+ERZ21615972.9782	unplaced-scaffold	na	na	CAURTA010000074.1	=	NZ_CAURTA010000074.1	Primary Assembly	3404	na
+ERZ21615972.10654	unplaced-scaffold	na	na	CAURTA010000075.1	=	NZ_CAURTA010000075.1	Primary Assembly	3181	na
+ERZ21615972.10743	unplaced-scaffold	na	na	CAURTA010000076.1	=	NZ_CAURTA010000076.1	Primary Assembly	3160	na
+ERZ21615972.10929	unplaced-scaffold	na	na	CAURTA010000077.1	=	NZ_CAURTA010000077.1	Primary Assembly	3119	na
+ERZ21615972.12333	unplaced-scaffold	na	na	CAURTA010000078.1	=	NZ_CAURTA010000078.1	Primary Assembly	2830	na
+ERZ21615972.13213	unplaced-scaffold	na	na	CAURTA010000079.1	=	NZ_CAURTA010000079.1	Primary Assembly	2671	na
+ERZ21615972.13285	unplaced-scaffold	na	na	CAURTA010000080.1	=	NZ_CAURTA010000080.1	Primary Assembly	2659	na

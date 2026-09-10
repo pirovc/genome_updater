@@ -1,0 +1,305 @@
+# Assembly name:  ASM32847v1
+# Organism name:  Ustilago maydis 521 (basidiomycetes)
+# Infraspecific name:  strain=521
+# Taxid:          237631
+# BioSample:      SAMN02900459
+# BioProject:     PRJNA14007
+# Submitter:      Broad Institute
+# Date:           2007-3-5
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    AACP01
+# GenBank assembly accession: GCA_000328475.1
+# RefSeq assembly accession: GCF_000328475.1
+# RefSeq assembly and GenBank assemblies identical: no
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000328485.1	GCF_000328485.1	Primary Assembly
+## GCA_000328495.1	GCF_000328515.1	non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+cont1.1_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000001.1	=	NW_100966.1	Primary Assembly	30180	na
+cont1.2_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000002.1	=	NW_100967.1	Primary Assembly	510685	na
+cont1.3_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000003.1	=	NW_100968.1	Primary Assembly	86435	na
+cont1.4_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000004.1	=	NW_100969.1	Primary Assembly	82161	na
+cont1.5_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000005.1	=	NW_100970.1	Primary Assembly	216058	na
+cont1.6_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000006.1	=	NW_100971.1	Primary Assembly	121012	na
+cont1.7_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000007.1	=	NW_100972.1	Primary Assembly	73393	na
+cont1.8_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000008.1	=	NW_100973.1	Primary Assembly	29886	na
+cont1.9_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000009.1	=	NW_100974.1	Primary Assembly	239778	na
+cont1.10_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000010.1	=	NW_100975.1	Primary Assembly	31953	na
+cont1.11_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000011.1	=	NW_100976.1	Primary Assembly	78405	na
+cont1.12_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000012.1	=	NW_100977.1	Primary Assembly	78712	na
+cont1.13_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000013.1	=	NW_100978.1	Primary Assembly	183620	na
+cont1.14_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000014.1	=	NW_100979.1	Primary Assembly	65739	na
+cont1.15_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000015.1	=	NW_100980.1	Primary Assembly	92509	na
+cont1.16_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000016.1	=	NW_100981.1	Primary Assembly	41274	na
+cont1.17_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000017.1	=	NW_100982.1	Primary Assembly	60879	na
+cont1.18_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000018.1	=	NW_100983.1	Primary Assembly	23181	na
+cont1.19_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000019.1	=	NW_100984.1	Primary Assembly	105840	na
+cont1.20_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000020.1	=	NW_100985.1	Primary Assembly	5909	na
+cont1.21_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000021.1	=	NW_100986.1	Primary Assembly	51290	na
+cont1.22_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000022.1	=	NW_100987.1	Primary Assembly	10118	na
+cont1.23_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000023.1	=	NW_100988.1	Primary Assembly	113966	na
+cont1.24_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000024.1	=	NW_100989.1	Primary Assembly	36205	na
+cont1.25_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000025.1	=	NW_100990.1	Primary Assembly	27253	na
+cont1.26_scaffold1	unlocalized-scaffold	1	Chromosome	AACP01000026.1	=	NW_100991.1	Primary Assembly	68110	na
+cont1.254_scaffold28	unlocalized-scaffold	1	Chromosome	AACP01000254.1	=	NW_101219.1	Primary Assembly	9359	na
+cont1.27_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000027.1	=	NW_100992.1	Primary Assembly	127492	na
+cont1.28_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000028.1	=	NW_100993.1	Primary Assembly	29000	na
+cont1.29_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000029.1	=	NW_100994.1	Primary Assembly	43010	na
+cont1.30_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000030.1	=	NW_100995.1	Primary Assembly	182663	na
+cont1.31_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000031.1	=	NW_100996.1	Primary Assembly	84996	na
+cont1.32_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000032.1	=	NW_100997.1	Primary Assembly	18399	na
+cont1.33_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000033.1	=	NW_100998.1	Primary Assembly	2775	na
+cont1.34_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000034.1	=	NW_100999.1	Primary Assembly	136293	na
+cont1.35_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000035.1	=	NW_101000.1	Primary Assembly	39742	na
+cont1.36_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000036.1	=	NW_101001.1	Primary Assembly	117426	na
+cont1.37_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000037.1	=	NW_101002.1	Primary Assembly	137378	na
+cont1.38_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000038.1	=	NW_101003.1	Primary Assembly	36133	na
+cont1.39_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000039.1	=	NW_101004.1	Primary Assembly	2799	na
+cont1.40_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000040.1	=	NW_101005.1	Primary Assembly	66381	na
+cont1.41_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000041.1	=	NW_101006.1	Primary Assembly	54095	na
+cont1.42_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000042.1	=	NW_101007.1	Primary Assembly	129796	na
+cont1.43_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000043.1	=	NW_101008.1	Primary Assembly	123283	na
+cont1.44_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000044.1	=	NW_101009.1	Primary Assembly	24419	na
+cont1.45_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000045.1	=	NW_101010.1	Primary Assembly	37981	na
+cont1.46_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000046.1	=	NW_101011.1	Primary Assembly	210148	na
+cont1.47_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000047.1	=	NW_101012.1	Primary Assembly	13529	na
+cont1.48_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000048.1	=	NW_101013.1	Primary Assembly	127421	na
+cont1.49_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000049.1	=	NW_101014.1	Primary Assembly	114236	na
+cont1.50_scaffold2	unlocalized-scaffold	2	Chromosome	AACP01000050.1	=	NW_101015.1	Primary Assembly	17623	na
+cont1.51_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000051.1	=	NW_101016.1	Primary Assembly	21713	na
+cont1.52_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000052.1	=	NW_101017.1	Primary Assembly	72467	na
+cont1.53_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000053.1	=	NW_101018.1	Primary Assembly	26640	na
+cont1.54_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000054.1	=	NW_101019.1	Primary Assembly	52658	na
+cont1.55_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000055.1	=	NW_101020.1	Primary Assembly	32212	na
+cont1.56_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000056.1	=	NW_101021.1	Primary Assembly	185820	na
+cont1.57_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000057.1	=	NW_101022.1	Primary Assembly	60735	na
+cont1.58_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000058.1	=	NW_101023.1	Primary Assembly	9725	na
+cont1.59_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000059.1	=	NW_101024.1	Primary Assembly	13510	na
+cont1.60_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000060.1	=	NW_101025.1	Primary Assembly	6277	na
+cont1.61_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000061.1	=	NW_101026.1	Primary Assembly	74108	na
+cont1.62_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000062.1	=	NW_101027.1	Primary Assembly	29964	na
+cont1.63_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000063.1	=	NW_101028.1	Primary Assembly	103895	na
+cont1.64_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000064.1	=	NW_101029.1	Primary Assembly	40659	na
+cont1.65_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000065.1	=	NW_101030.1	Primary Assembly	31473	na
+cont1.66_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000066.1	=	NW_101031.1	Primary Assembly	157552	na
+cont1.67_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000067.1	=	NW_101032.1	Primary Assembly	2748	na
+cont1.68_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000068.1	=	NW_101033.1	Primary Assembly	125299	na
+cont1.69_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000069.1	=	NW_101034.1	Primary Assembly	15761	na
+cont1.70_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000070.1	=	NW_101035.1	Primary Assembly	260592	na
+cont1.71_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000071.1	=	NW_101036.1	Primary Assembly	91892	na
+cont1.72_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000072.1	=	NW_101037.1	Primary Assembly	191309	na
+cont1.73_scaffold3	unlocalized-scaffold	3	Chromosome	AACP01000073.1	=	NW_101038.1	Primary Assembly	11134	na
+cont1.187_scaffold16	unlocalized-scaffold	4	Chromosome	AACP01000187.1	=	NW_101152.1	Primary Assembly	73671	na
+cont1.188_scaffold16	unlocalized-scaffold	4	Chromosome	AACP01000188.1	=	NW_101153.1	Primary Assembly	340920	na
+cont1.189_scaffold16	unlocalized-scaffold	4	Chromosome	AACP01000189.1	=	NW_101154.1	Primary Assembly	79679	na
+cont1.190_scaffold16	unlocalized-scaffold	4	Chromosome	AACP01000190.1	=	NW_101155.1	Primary Assembly	68739	na
+cont1.238_scaffold23	unlocalized-scaffold	4	Chromosome	AACP01000238.1	=	NW_101203.1	Primary Assembly	37128	na
+cont1.239_scaffold23	unlocalized-scaffold	4	Chromosome	AACP01000239.1	=	NW_101204.1	Primary Assembly	3494	na
+cont1.240_scaffold23	unlocalized-scaffold	4	Chromosome	AACP01000240.1	=	NW_101205.1	Primary Assembly	5189	na
+cont1.241_scaffold23	unlocalized-scaffold	4	Chromosome	AACP01000241.1	=	NW_101206.1	Primary Assembly	15657	na
+cont1.242_scaffold23	unlocalized-scaffold	4	Chromosome	AACP01000242.1	=	NW_101207.1	Primary Assembly	203349	na
+cont1.243_scaffold23	unlocalized-scaffold	4	Chromosome	AACP01000243.1	=	NW_101208.1	Primary Assembly	15957	na
+cont1.244_scaffold23	unlocalized-scaffold	4	Chromosome	AACP01000244.1	=	NW_101209.1	Primary Assembly	2962	na
+cont1.245_scaffold23	unlocalized-scaffold	4	Chromosome	AACP01000245.1	=	NW_101210.1	Primary Assembly	37234	na
+cont1.275_scaffold47	unlocalized-scaffold	4	Chromosome	AACP01000275.1	=	NW_101240.1	Primary Assembly	3087	na
+cont1.74_scaffold4	unlocalized-scaffold	5	Chromosome	AACP01000074.1	=	NW_101039.1	Primary Assembly	47066	na
+cont1.75_scaffold4	unlocalized-scaffold	5	Chromosome	AACP01000075.1	=	NW_101040.1	Primary Assembly	89983	na
+cont1.76_scaffold4	unlocalized-scaffold	5	Chromosome	AACP01000076.1	=	NW_101041.1	Primary Assembly	35783	na
+cont1.77_scaffold4	unlocalized-scaffold	5	Chromosome	AACP01000077.1	=	NW_101042.1	Primary Assembly	11231	na
+cont1.78_scaffold4	unlocalized-scaffold	5	Chromosome	AACP01000078.1	=	NW_101043.1	Primary Assembly	78391	na
+cont1.79_scaffold4	unlocalized-scaffold	5	Chromosome	AACP01000079.1	=	NW_101044.1	Primary Assembly	381680	na
+cont1.80_scaffold4	unlocalized-scaffold	5	Chromosome	AACP01000080.1	=	NW_101045.1	Primary Assembly	128203	na
+cont1.81_scaffold4	unlocalized-scaffold	5	Chromosome	AACP01000081.1	=	NW_101046.1	Primary Assembly	49404	na
+cont1.82_scaffold4	unlocalized-scaffold	5	Chromosome	AACP01000082.1	=	NW_101047.1	Primary Assembly	68882	na
+cont1.83_scaffold4	unlocalized-scaffold	5	Chromosome	AACP01000083.1	=	NW_101048.1	Primary Assembly	484144	na
+cont1.84_scaffold5	unlocalized-scaffold	6	Chromosome	AACP01000084.1	=	NW_101049.1	Primary Assembly	108990	na
+cont1.85_scaffold5	unlocalized-scaffold	6	Chromosome	AACP01000085.1	=	NW_101050.1	Primary Assembly	54459	na
+cont1.86_scaffold5	unlocalized-scaffold	6	Chromosome	AACP01000086.1	=	NW_101051.1	Primary Assembly	202614	na
+cont1.87_scaffold5	unlocalized-scaffold	6	Chromosome	AACP01000087.1	=	NW_101052.1	Primary Assembly	3033	na
+cont1.88_scaffold5	unlocalized-scaffold	6	Chromosome	AACP01000088.1	=	NW_101053.1	Primary Assembly	217952	na
+cont1.89_scaffold5	unlocalized-scaffold	6	Chromosome	AACP01000089.1	=	NW_101054.1	Primary Assembly	47824	na
+cont1.90_scaffold5	unlocalized-scaffold	6	Chromosome	AACP01000090.1	=	NW_101055.1	Primary Assembly	60365	na
+cont1.91_scaffold5	unlocalized-scaffold	6	Chromosome	AACP01000091.1	=	NW_101056.1	Primary Assembly	70837	na
+cont1.92_scaffold5	unlocalized-scaffold	6	Chromosome	AACP01000092.1	=	NW_101057.1	Primary Assembly	33456	na
+cont1.93_scaffold5	unlocalized-scaffold	6	Chromosome	AACP01000093.1	=	NW_101058.1	Primary Assembly	39626	na
+cont1.94_scaffold5	unlocalized-scaffold	6	Chromosome	AACP01000094.1	=	NW_101059.1	Primary Assembly	165989	na
+cont1.259_scaffold33	unlocalized-scaffold	6	Chromosome	AACP01000259.1	=	NW_101224.1	Primary Assembly	4323	na
+cont1.260_scaffold33	unlocalized-scaffold	6	Chromosome	AACP01000260.1	=	NW_101225.1	Primary Assembly	4593	na
+cont1.262_scaffold35	unlocalized-scaffold	6	Chromosome	AACP01000262.1	=	NW_101227.1	Primary Assembly	7864	na
+cont1.95_scaffold6	unlocalized-scaffold	7	Chromosome	AACP01000095.1	=	NW_101060.1	Primary Assembly	8955	na
+cont1.96_scaffold6	unlocalized-scaffold	7	Chromosome	AACP01000096.1	=	NW_101061.1	Primary Assembly	22459	na
+cont1.97_scaffold6	unlocalized-scaffold	7	Chromosome	AACP01000097.1	=	NW_101062.1	Primary Assembly	97594	na
+cont1.98_scaffold6	unlocalized-scaffold	7	Chromosome	AACP01000098.1	=	NW_101063.1	Primary Assembly	79703	na
+cont1.99_scaffold6	unlocalized-scaffold	7	Chromosome	AACP01000099.1	=	NW_101064.1	Primary Assembly	78545	na
+cont1.100_scaffold6	unlocalized-scaffold	7	Chromosome	AACP01000100.1	=	NW_101065.1	Primary Assembly	30737	na
+cont1.101_scaffold6	unlocalized-scaffold	7	Chromosome	AACP01000101.1	=	NW_101066.1	Primary Assembly	252357	na
+cont1.102_scaffold6	unlocalized-scaffold	7	Chromosome	AACP01000102.1	=	NW_101067.1	Primary Assembly	46868	na
+cont1.103_scaffold6	unlocalized-scaffold	7	Chromosome	AACP01000103.1	=	NW_101068.1	Primary Assembly	219975	na
+cont1.104_scaffold6	unlocalized-scaffold	7	Chromosome	AACP01000104.1	=	NW_101069.1	Primary Assembly	42684	na
+cont1.105_scaffold6	unlocalized-scaffold	7	Chromosome	AACP01000105.1	=	NW_101070.1	Primary Assembly	68728	na
+cont1.266_scaffold38	unlocalized-scaffold	7	Chromosome	AACP01000266.1	=	NW_101231.1	Primary Assembly	7481	na
+cont1.106_scaffold7	unlocalized-scaffold	8	Chromosome	AACP01000106.1	=	NW_101071.1	Primary Assembly	20868	na
+cont1.107_scaffold7	unlocalized-scaffold	8	Chromosome	AACP01000107.1	=	NW_101072.1	Primary Assembly	2145	na
+cont1.108_scaffold7	unlocalized-scaffold	8	Chromosome	AACP01000108.1	=	NW_101073.1	Primary Assembly	214503	na
+cont1.109_scaffold7	unlocalized-scaffold	8	Chromosome	AACP01000109.1	=	NW_101074.1	Primary Assembly	159412	na
+cont1.110_scaffold7	unlocalized-scaffold	8	Chromosome	AACP01000110.1	=	NW_101075.1	Primary Assembly	36229	na
+cont1.111_scaffold7	unlocalized-scaffold	8	Chromosome	AACP01000111.1	=	NW_101076.1	Primary Assembly	25602	na
+cont1.112_scaffold7	unlocalized-scaffold	8	Chromosome	AACP01000112.1	=	NW_101077.1	Primary Assembly	158045	na
+cont1.113_scaffold7	unlocalized-scaffold	8	Chromosome	AACP01000113.1	=	NW_101078.1	Primary Assembly	55159	na
+cont1.114_scaffold7	unlocalized-scaffold	8	Chromosome	AACP01000114.1	=	NW_101079.1	Primary Assembly	136626	na
+cont1.115_scaffold8	unlocalized-scaffold	9	Chromosome	AACP01000115.1	=	NW_101080.1	Primary Assembly	122259	na
+cont1.116_scaffold8	unlocalized-scaffold	9	Chromosome	AACP01000116.1	=	NW_101081.1	Primary Assembly	157571	na
+cont1.117_scaffold8	unlocalized-scaffold	9	Chromosome	AACP01000117.1	=	NW_101082.1	Primary Assembly	184256	na
+cont1.118_scaffold8	unlocalized-scaffold	9	Chromosome	AACP01000118.1	=	NW_101083.1	Primary Assembly	66272	na
+cont1.119_scaffold8	unlocalized-scaffold	9	Chromosome	AACP01000119.1	=	NW_101084.1	Primary Assembly	54775	na
+cont1.120_scaffold8	unlocalized-scaffold	9	Chromosome	AACP01000120.1	=	NW_101085.1	Primary Assembly	21805	na
+cont1.121_scaffold8	unlocalized-scaffold	9	Chromosome	AACP01000121.1	=	NW_101086.1	Primary Assembly	98192	na
+cont1.122_scaffold8	unlocalized-scaffold	9	Chromosome	AACP01000122.1	=	NW_101087.1	Primary Assembly	28135	na
+cont1.123_scaffold9	unlocalized-scaffold	10	Chromosome	AACP01000123.1	=	NW_101088.1	Primary Assembly	43716	na
+cont1.124_scaffold9	unlocalized-scaffold	10	Chromosome	AACP01000124.1	=	NW_101089.1	Primary Assembly	259224	na
+cont1.125_scaffold9	unlocalized-scaffold	10	Chromosome	AACP01000125.1	=	NW_101090.1	Primary Assembly	12476	na
+cont1.126_scaffold9	unlocalized-scaffold	10	Chromosome	AACP01000126.1	=	NW_101091.1	Primary Assembly	137256	na
+cont1.127_scaffold9	unlocalized-scaffold	10	Chromosome	AACP01000127.1	=	NW_101092.1	Primary Assembly	8395	na
+cont1.128_scaffold9	unlocalized-scaffold	10	Chromosome	AACP01000128.1	=	NW_101093.1	Primary Assembly	58876	na
+cont1.129_scaffold9	unlocalized-scaffold	10	Chromosome	AACP01000129.1	=	NW_101094.1	Primary Assembly	47564	na
+cont1.130_scaffold9	unlocalized-scaffold	10	Chromosome	AACP01000130.1	=	NW_101095.1	Primary Assembly	7788	na
+cont1.131_scaffold9	unlocalized-scaffold	10	Chromosome	AACP01000131.1	=	NW_101096.1	Primary Assembly	116513	na
+cont1.132_scaffold10	unlocalized-scaffold	11	Chromosome	AACP01000132.1	=	NW_101097.1	Primary Assembly	87835	na
+cont1.133_scaffold10	unlocalized-scaffold	11	Chromosome	AACP01000133.1	=	NW_101098.1	Primary Assembly	42651	na
+cont1.134_scaffold10	unlocalized-scaffold	11	Chromosome	AACP01000134.1	=	NW_101099.1	Primary Assembly	18486	na
+cont1.135_scaffold10	unlocalized-scaffold	11	Chromosome	AACP01000135.1	=	NW_101100.1	Primary Assembly	48469	na
+cont1.136_scaffold10	unlocalized-scaffold	11	Chromosome	AACP01000136.1	=	NW_101101.1	Primary Assembly	90607	na
+cont1.137_scaffold10	unlocalized-scaffold	11	Chromosome	AACP01000137.1	=	NW_101102.1	Primary Assembly	53061	na
+cont1.138_scaffold10	unlocalized-scaffold	11	Chromosome	AACP01000138.1	=	NW_101103.1	Primary Assembly	13920	na
+cont1.139_scaffold10	unlocalized-scaffold	11	Chromosome	AACP01000139.1	=	NW_101104.1	Primary Assembly	73935	na
+cont1.140_scaffold10	unlocalized-scaffold	11	Chromosome	AACP01000140.1	=	NW_101105.1	Primary Assembly	114495	na
+cont1.141_scaffold10	unlocalized-scaffold	11	Chromosome	AACP01000141.1	=	NW_101106.1	Primary Assembly	61168	na
+cont1.142_scaffold10	unlocalized-scaffold	11	Chromosome	AACP01000142.1	=	NW_101107.1	Primary Assembly	84989	na
+cont1.272_scaffold44	unlocalized-scaffold	11	Chromosome	AACP01000272.1	=	NW_101237.1	Primary Assembly	3641	na
+cont1.143_scaffold11	unlocalized-scaffold	12	Chromosome	AACP01000143.1	=	NW_101108.1	Primary Assembly	12302	na
+cont1.144_scaffold11	unlocalized-scaffold	12	Chromosome	AACP01000144.1	=	NW_101109.1	Primary Assembly	72998	na
+cont1.145_scaffold11	unlocalized-scaffold	12	Chromosome	AACP01000145.1	=	NW_101110.1	Primary Assembly	31490	na
+cont1.146_scaffold11	unlocalized-scaffold	12	Chromosome	AACP01000146.1	=	NW_101111.1	Primary Assembly	2451	na
+cont1.147_scaffold11	unlocalized-scaffold	12	Chromosome	AACP01000147.1	=	NW_101112.1	Primary Assembly	8358	na
+cont1.148_scaffold11	unlocalized-scaffold	12	Chromosome	AACP01000148.1	=	NW_101113.1	Primary Assembly	146113	na
+cont1.149_scaffold11	unlocalized-scaffold	12	Chromosome	AACP01000149.1	=	NW_101114.1	Primary Assembly	118526	na
+cont1.150_scaffold11	unlocalized-scaffold	12	Chromosome	AACP01000150.1	=	NW_101115.1	Primary Assembly	258049	na
+cont1.274_scaffold46	unlocalized-scaffold	12	Chromosome	AACP01000274.1	=	NW_101239.1	Primary Assembly	3444	na
+cont1.159_scaffold13	unlocalized-scaffold	13	Chromosome	AACP01000159.1	=	NW_101124.1	Primary Assembly	31597	na
+cont1.160_scaffold13	unlocalized-scaffold	13	Chromosome	AACP01000160.1	=	NW_101125.1	Primary Assembly	39404	na
+cont1.161_scaffold13	unlocalized-scaffold	13	Chromosome	AACP01000161.1	=	NW_101126.1	Primary Assembly	48778	na
+cont1.162_scaffold13	unlocalized-scaffold	13	Chromosome	AACP01000162.1	=	NW_101127.1	Primary Assembly	69001	na
+cont1.163_scaffold13	unlocalized-scaffold	13	Chromosome	AACP01000163.1	=	NW_101128.1	Primary Assembly	15370	na
+cont1.164_scaffold13	unlocalized-scaffold	13	Chromosome	AACP01000164.1	=	NW_101129.1	Primary Assembly	90367	na
+cont1.165_scaffold13	unlocalized-scaffold	13	Chromosome	AACP01000165.1	=	NW_101130.1	Primary Assembly	16035	na
+cont1.166_scaffold13	unlocalized-scaffold	13	Chromosome	AACP01000166.1	=	NW_101131.1	Primary Assembly	5854	na
+cont1.167_scaffold13	unlocalized-scaffold	13	Chromosome	AACP01000167.1	=	NW_101132.1	Primary Assembly	58089	na
+cont1.168_scaffold13	unlocalized-scaffold	13	Chromosome	AACP01000168.1	=	NW_101133.1	Primary Assembly	76163	na
+cont1.169_scaffold13	unlocalized-scaffold	13	Chromosome	AACP01000169.1	=	NW_101134.1	Primary Assembly	87905	na
+cont1.170_scaffold13	unlocalized-scaffold	13	Chromosome	AACP01000170.1	=	NW_101135.1	Primary Assembly	66413	na
+cont1.151_scaffold12	unlocalized-scaffold	14	Chromosome	AACP01000151.1	=	NW_101116.1	Primary Assembly	25016	na
+cont1.152_scaffold12	unlocalized-scaffold	14	Chromosome	AACP01000152.1	=	NW_101117.1	Primary Assembly	50663	na
+cont1.153_scaffold12	unlocalized-scaffold	14	Chromosome	AACP01000153.1	=	NW_101118.1	Primary Assembly	29646	na
+cont1.154_scaffold12	unlocalized-scaffold	14	Chromosome	AACP01000154.1	=	NW_101119.1	Primary Assembly	169804	na
+cont1.155_scaffold12	unlocalized-scaffold	14	Chromosome	AACP01000155.1	=	NW_101120.1	Primary Assembly	8632	na
+cont1.156_scaffold12	unlocalized-scaffold	14	Chromosome	AACP01000156.1	=	NW_101121.1	Primary Assembly	14722	na
+cont1.157_scaffold12	unlocalized-scaffold	14	Chromosome	AACP01000157.1	=	NW_101122.1	Primary Assembly	269051	na
+cont1.158_scaffold12	unlocalized-scaffold	14	Chromosome	AACP01000158.1	=	NW_101123.1	Primary Assembly	43234	na
+cont1.180_scaffold15	unlocalized-scaffold	15	Chromosome	AACP01000180.1	=	NW_101145.1	Primary Assembly	131044	na
+cont1.181_scaffold15	unlocalized-scaffold	15	Chromosome	AACP01000181.1	=	NW_101146.1	Primary Assembly	25361	na
+cont1.182_scaffold15	unlocalized-scaffold	15	Chromosome	AACP01000182.1	=	NW_101147.1	Primary Assembly	54151	na
+cont1.183_scaffold15	unlocalized-scaffold	15	Chromosome	AACP01000183.1	=	NW_101148.1	Primary Assembly	82884	na
+cont1.184_scaffold15	unlocalized-scaffold	15	Chromosome	AACP01000184.1	=	NW_101149.1	Primary Assembly	30706	na
+cont1.185_scaffold15	unlocalized-scaffold	15	Chromosome	AACP01000185.1	=	NW_101150.1	Primary Assembly	84706	na
+cont1.186_scaffold15	unlocalized-scaffold	15	Chromosome	AACP01000186.1	=	NW_101151.1	Primary Assembly	165968	na
+cont1.253_scaffold27	unlocalized-scaffold	15	Chromosome	AACP01000253.1	=	NW_101218.1	Primary Assembly	9377	na
+cont1.258_scaffold32	unlocalized-scaffold	15	Chromosome	AACP01000258.1	=	NW_101223.1	Primary Assembly	9109	na
+cont1.271_scaffold43	unlocalized-scaffold	15	Chromosome	AACP01000271.1	=	NW_101236.1	Primary Assembly	3729	na
+cont1.204_scaffold19	unlocalized-scaffold	16	Chromosome	AACP01000204.1	=	NW_101169.1	Primary Assembly	21850	na
+cont1.205_scaffold19	unlocalized-scaffold	16	Chromosome	AACP01000205.1	=	NW_101170.1	Primary Assembly	20550	na
+cont1.206_scaffold19	unlocalized-scaffold	16	Chromosome	AACP01000206.1	=	NW_101171.1	Primary Assembly	205518	na
+cont1.207_scaffold19	unlocalized-scaffold	16	Chromosome	AACP01000207.1	=	NW_101172.1	Primary Assembly	30752	na
+cont1.208_scaffold19	unlocalized-scaffold	16	Chromosome	AACP01000208.1	=	NW_101173.1	Primary Assembly	51045	na
+cont1.209_scaffold19	unlocalized-scaffold	16	Chromosome	AACP01000209.1	=	NW_101174.1	Primary Assembly	2380	na
+cont1.210_scaffold19	unlocalized-scaffold	16	Chromosome	AACP01000210.1	=	NW_101175.1	Primary Assembly	80910	na
+cont1.211_scaffold19	unlocalized-scaffold	16	Chromosome	AACP01000211.1	=	NW_101176.1	Primary Assembly	46903	na
+cont1.212_scaffold19	unlocalized-scaffold	16	Chromosome	AACP01000212.1	=	NW_101177.1	Primary Assembly	92061	na
+cont1.171_scaffold14	unlocalized-scaffold	17	Chromosome	AACP01000171.1	=	NW_101136.1	Primary Assembly	37625	na
+cont1.172_scaffold14	unlocalized-scaffold	17	Chromosome	AACP01000172.1	=	NW_101137.1	Primary Assembly	133607	na
+cont1.173_scaffold14	unlocalized-scaffold	17	Chromosome	AACP01000173.1	=	NW_101138.1	Primary Assembly	42362	na
+cont1.174_scaffold14	unlocalized-scaffold	17	Chromosome	AACP01000174.1	=	NW_101139.1	Primary Assembly	21563	na
+cont1.175_scaffold14	unlocalized-scaffold	17	Chromosome	AACP01000175.1	=	NW_101140.1	Primary Assembly	192789	na
+cont1.176_scaffold14	unlocalized-scaffold	17	Chromosome	AACP01000176.1	=	NW_101141.1	Primary Assembly	24870	na
+cont1.177_scaffold14	unlocalized-scaffold	17	Chromosome	AACP01000177.1	=	NW_101142.1	Primary Assembly	90993	na
+cont1.178_scaffold14	unlocalized-scaffold	17	Chromosome	AACP01000178.1	=	NW_101143.1	Primary Assembly	27034	na
+cont1.179_scaffold14	unlocalized-scaffold	17	Chromosome	AACP01000179.1	=	NW_101144.1	Primary Assembly	4984	na
+cont1.195_scaffold18	unlocalized-scaffold	18	Chromosome	AACP01000195.1	=	NW_101160.1	Primary Assembly	75567	na
+cont1.196_scaffold18	unlocalized-scaffold	18	Chromosome	AACP01000196.1	=	NW_101161.1	Primary Assembly	2646	na
+cont1.197_scaffold18	unlocalized-scaffold	18	Chromosome	AACP01000197.1	=	NW_101162.1	Primary Assembly	115728	na
+cont1.198_scaffold18	unlocalized-scaffold	18	Chromosome	AACP01000198.1	=	NW_101163.1	Primary Assembly	104078	na
+cont1.199_scaffold18	unlocalized-scaffold	18	Chromosome	AACP01000199.1	=	NW_101164.1	Primary Assembly	24665	na
+cont1.200_scaffold18	unlocalized-scaffold	18	Chromosome	AACP01000200.1	=	NW_101165.1	Primary Assembly	21697	na
+cont1.201_scaffold18	unlocalized-scaffold	18	Chromosome	AACP01000201.1	=	NW_101166.1	Primary Assembly	58705	na
+cont1.202_scaffold18	unlocalized-scaffold	18	Chromosome	AACP01000202.1	=	NW_101167.1	Primary Assembly	4427	na
+cont1.203_scaffold18	unlocalized-scaffold	18	Chromosome	AACP01000203.1	=	NW_101168.1	Primary Assembly	152416	na
+cont1.273_scaffold45	unlocalized-scaffold	18	Chromosome	AACP01000273.1	=	NW_101238.1	Primary Assembly	3497	na
+cont1.191_scaffold17	unlocalized-scaffold	19	Chromosome	AACP01000191.1	=	NW_101156.1	Primary Assembly	229107	na
+cont1.192_scaffold17	unlocalized-scaffold	19	Chromosome	AACP01000192.1	=	NW_101157.1	Primary Assembly	316980	na
+cont1.193_scaffold17	unlocalized-scaffold	19	Chromosome	AACP01000193.1	=	NW_101158.1	Primary Assembly	3664	na
+cont1.194_scaffold17	unlocalized-scaffold	19	Chromosome	AACP01000194.1	=	NW_101159.1	Primary Assembly	12279	na
+cont1.213_scaffold20	unlocalized-scaffold	20	Chromosome	AACP01000213.1	=	NW_101178.1	Primary Assembly	12335	na
+cont1.214_scaffold20	unlocalized-scaffold	20	Chromosome	AACP01000214.1	=	NW_101179.1	Primary Assembly	158759	na
+cont1.215_scaffold20	unlocalized-scaffold	20	Chromosome	AACP01000215.1	=	NW_101180.1	Primary Assembly	169298	na
+cont1.216_scaffold20	unlocalized-scaffold	20	Chromosome	AACP01000216.1	=	NW_101181.1	Primary Assembly	56985	na
+cont1.217_scaffold20	unlocalized-scaffold	20	Chromosome	AACP01000217.1	=	NW_101182.1	Primary Assembly	13887	na
+cont1.218_scaffold20	unlocalized-scaffold	20	Chromosome	AACP01000218.1	=	NW_101183.1	Primary Assembly	2520	na
+cont1.219_scaffold20	unlocalized-scaffold	20	Chromosome	AACP01000219.1	=	NW_101184.1	Primary Assembly	14916	na
+cont1.220_scaffold20	unlocalized-scaffold	20	Chromosome	AACP01000220.1	=	NW_101185.1	Primary Assembly	2068	na
+cont1.221_scaffold20	unlocalized-scaffold	20	Chromosome	AACP01000221.1	=	NW_101186.1	Primary Assembly	45685	na
+cont1.222_scaffold20	unlocalized-scaffold	20	Chromosome	AACP01000222.1	=	NW_101187.1	Primary Assembly	22621	na
+cont1.223_scaffold20	unlocalized-scaffold	20	Chromosome	AACP01000223.1	=	NW_101188.1	Primary Assembly	23810	na
+cont1.224_scaffold21	unlocalized-scaffold	21	Chromosome	AACP01000224.1	=	NW_101189.1	Primary Assembly	96742	na
+cont1.225_scaffold21	unlocalized-scaffold	21	Chromosome	AACP01000225.1	=	NW_101190.1	Primary Assembly	53539	na
+cont1.226_scaffold21	unlocalized-scaffold	21	Chromosome	AACP01000226.1	=	NW_101191.1	Primary Assembly	17415	na
+cont1.227_scaffold21	unlocalized-scaffold	21	Chromosome	AACP01000227.1	=	NW_101192.1	Primary Assembly	80973	na
+cont1.228_scaffold21	unlocalized-scaffold	21	Chromosome	AACP01000228.1	=	NW_101193.1	Primary Assembly	76835	na
+cont1.229_scaffold21	unlocalized-scaffold	21	Chromosome	AACP01000229.1	=	NW_101194.1	Primary Assembly	13141	na
+cont1.230_scaffold21	unlocalized-scaffold	21	Chromosome	AACP01000230.1	=	NW_101195.1	Primary Assembly	125470	na
+cont1.231_scaffold21	unlocalized-scaffold	21	Chromosome	AACP01000231.1	=	NW_101196.1	Primary Assembly	3247	na
+cont1.232_scaffold21	unlocalized-scaffold	21	Chromosome	AACP01000232.1	=	NW_101197.1	Primary Assembly	2344	na
+cont1.233_scaffold22	unlocalized-scaffold	22	Chromosome	AACP01000233.1	=	NW_101198.1	Primary Assembly	63540	na
+cont1.234_scaffold22	unlocalized-scaffold	22	Chromosome	AACP01000234.1	=	NW_101199.1	Primary Assembly	117537	na
+cont1.235_scaffold22	unlocalized-scaffold	22	Chromosome	AACP01000235.1	=	NW_101200.1	Primary Assembly	11265	na
+cont1.236_scaffold22	unlocalized-scaffold	22	Chromosome	AACP01000236.1	=	NW_101201.1	Primary Assembly	64825	na
+cont1.237_scaffold22	unlocalized-scaffold	22	Chromosome	AACP01000237.1	=	NW_101202.1	Primary Assembly	146027	na
+cont1.247_scaffold24	unlocalized-scaffold	23	Chromosome	AACP01000247.1	=	NW_101212.1	Primary Assembly	137574	na
+cont1.248_scaffold24	unlocalized-scaffold	23	Chromosome	AACP01000248.1	=	NW_101213.1	Primary Assembly	114582	na
+cont1.249_scaffold24	unlocalized-scaffold	23	Chromosome	AACP01000249.1	=	NW_101214.1	Primary Assembly	33940	na
+cont1.250_scaffold24	unlocalized-scaffold	23	Chromosome	AACP01000250.1	=	NW_101215.1	Primary Assembly	58531	na
+cont1.252_scaffold26	unplaced-scaffold	na	na	AACP01000252.1	=	NW_101217.1	Primary Assembly	11352	na
+cont1.255_scaffold29	unplaced-scaffold	na	na	AACP01000255.1	=	NW_101220.1	Primary Assembly	9310	na
+cont1.256_scaffold30	unplaced-scaffold	na	na	AACP01000256.1	=	NW_101221.1	Primary Assembly	9182	na
+cont1.257_scaffold31	unplaced-scaffold	na	na	AACP01000257.1	=	NW_101222.1	Primary Assembly	9147	na
+cont1.261_scaffold34	unplaced-scaffold	na	na	AACP01000261.1	=	NW_101226.1	Primary Assembly	8693	na
+cont1.263_scaffold36	unplaced-scaffold	na	na	AACP01000263.1	=	NW_101228.1	Primary Assembly	7584	na
+cont1.264_scaffold37	unplaced-scaffold	na	na	AACP01000264.1	=	NW_101229.1	Primary Assembly	2211	na
+cont1.265_scaffold37	unplaced-scaffold	na	na	AACP01000265.1	=	NW_101230.1	Primary Assembly	5343	na
+cont1.267_scaffold39	unplaced-scaffold	na	na	AACP01000267.1	=	NW_101232.1	Primary Assembly	6430	na
+cont1.268_scaffold40	unplaced-scaffold	na	na	AACP01000268.1	=	NW_101233.1	Primary Assembly	5675	na
+cont1.269_scaffold41	unplaced-scaffold	na	na	AACP01000269.1	=	NW_101234.1	Primary Assembly	5609	na
+cont1.270_scaffold42	unplaced-scaffold	na	na	AACP01000270.1	=	NW_101235.1	Primary Assembly	3758	na
+cont1.276_scaffold48	unplaced-scaffold	na	na	AACP01000276.1	=	NW_101241.1	Primary Assembly	3049	na
+MT	assembled-molecule	MT	Mitochondrion	na	<>	NC_008368.1	non-nuclear	56814	na
+contig1.277	unlocalized-scaffold	MT	Mitochondrion	AACP01000277.1	<>	na	non-nuclear	41883	na
+cont1.278	unlocalized-scaffold	MT	Mitochondrion	AACP01000278.1	<>	na	non-nuclear	17212	na

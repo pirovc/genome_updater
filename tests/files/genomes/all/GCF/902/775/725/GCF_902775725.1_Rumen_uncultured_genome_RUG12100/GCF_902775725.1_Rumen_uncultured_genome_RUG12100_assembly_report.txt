@@ -1,0 +1,80 @@
+# Assembly name:  Rumen uncultured genome RUG12100
+# Organism name:  uncultured Methanobrevibacter sp. (euryarchaeotes)
+# Isolate:  RUG12100
+# Taxid:          253161
+# BioSample:      SAMEA6150235
+# BioProject:     PRJEB31266
+# Submitter:      THE ROSLIN INSTITUTE
+# Date:           2020-02-15
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    CACYNI01
+# Assembly method: IDBA-UD
+# Genome coverage: 30x
+# Sequencing technology: Illumina
+# Excluded from RefSeq: annotation fails MAG completeness check; derived from metagenome
+# GenBank assembly accession: GCA_902775725.1
+# RefSeq assembly accession: GCF_902775725.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_902775724.1	GCF_902775724.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig1	unplaced-scaffold	na	na	CACYNI010000001.1	=	NZ_CACYNI010000001.1	Primary Assembly	110624	na
+contig2	unplaced-scaffold	na	na	CACYNI010000002.1	=	NZ_CACYNI010000002.1	Primary Assembly	75807	na
+contig3	unplaced-scaffold	na	na	CACYNI010000003.1	=	NZ_CACYNI010000003.1	Primary Assembly	200880	na
+contig4	unplaced-scaffold	na	na	CACYNI010000004.1	=	NZ_CACYNI010000004.1	Primary Assembly	92742	na
+contig5	unplaced-scaffold	na	na	CACYNI010000005.1	=	NZ_CACYNI010000005.1	Primary Assembly	63382	na
+contig6	unplaced-scaffold	na	na	CACYNI010000006.1	=	NZ_CACYNI010000006.1	Primary Assembly	46089	na
+contig7	unplaced-scaffold	na	na	CACYNI010000007.1	=	NZ_CACYNI010000007.1	Primary Assembly	86939	na
+contig8	unplaced-scaffold	na	na	CACYNI010000008.1	=	NZ_CACYNI010000008.1	Primary Assembly	37948	na
+contig9	unplaced-scaffold	na	na	CACYNI010000009.1	=	NZ_CACYNI010000009.1	Primary Assembly	56585	na
+contig10	unplaced-scaffold	na	na	CACYNI010000010.1	=	NZ_CACYNI010000010.1	Primary Assembly	74975	na
+contig11	unplaced-scaffold	na	na	CACYNI010000011.1	=	NZ_CACYNI010000011.1	Primary Assembly	35839	na
+contig12	unplaced-scaffold	na	na	CACYNI010000012.1	=	NZ_CACYNI010000012.1	Primary Assembly	27471	na
+contig13	unplaced-scaffold	na	na	CACYNI010000013.1	=	NZ_CACYNI010000013.1	Primary Assembly	38494	na
+contig14	unplaced-scaffold	na	na	CACYNI010000014.1	=	NZ_CACYNI010000014.1	Primary Assembly	26964	na
+contig15	unplaced-scaffold	na	na	CACYNI010000015.1	=	NZ_CACYNI010000015.1	Primary Assembly	31544	na
+contig16	unplaced-scaffold	na	na	CACYNI010000016.1	=	NZ_CACYNI010000016.1	Primary Assembly	22971	na
+contig17	unplaced-scaffold	na	na	CACYNI010000017.1	=	NZ_CACYNI010000017.1	Primary Assembly	62521	na
+contig18	unplaced-scaffold	na	na	CACYNI010000018.1	=	NZ_CACYNI010000018.1	Primary Assembly	21543	na
+contig19	unplaced-scaffold	na	na	CACYNI010000019.1	=	NZ_CACYNI010000019.1	Primary Assembly	51974	na
+contig20	unplaced-scaffold	na	na	CACYNI010000020.1	=	NZ_CACYNI010000020.1	Primary Assembly	46898	na
+contig21	unplaced-scaffold	na	na	CACYNI010000021.1	=	NZ_CACYNI010000021.1	Primary Assembly	33038	na
+contig22	unplaced-scaffold	na	na	CACYNI010000022.1	=	NZ_CACYNI010000022.1	Primary Assembly	52847	na
+contig23	unplaced-scaffold	na	na	CACYNI010000023.1	=	NZ_CACYNI010000023.1	Primary Assembly	82585	na
+contig24	unplaced-scaffold	na	na	CACYNI010000024.1	=	NZ_CACYNI010000024.1	Primary Assembly	22696	na
+contig25	unplaced-scaffold	na	na	CACYNI010000025.1	=	NZ_CACYNI010000025.1	Primary Assembly	37712	na
+contig26	unplaced-scaffold	na	na	CACYNI010000026.1	=	NZ_CACYNI010000026.1	Primary Assembly	35212	na
+contig27	unplaced-scaffold	na	na	CACYNI010000027.1	=	NZ_CACYNI010000027.1	Primary Assembly	68889	na
+contig28	unplaced-scaffold	na	na	CACYNI010000028.1	=	NZ_CACYNI010000028.1	Primary Assembly	35123	na
+contig29	unplaced-scaffold	na	na	CACYNI010000029.1	=	NZ_CACYNI010000029.1	Primary Assembly	22418	na
+contig30	unplaced-scaffold	na	na	CACYNI010000030.1	=	NZ_CACYNI010000030.1	Primary Assembly	15203	na
+contig31	unplaced-scaffold	na	na	CACYNI010000031.1	=	NZ_CACYNI010000031.1	Primary Assembly	26719	na
+contig32	unplaced-scaffold	na	na	CACYNI010000032.1	=	NZ_CACYNI010000032.1	Primary Assembly	54746	na
+contig33	unplaced-scaffold	na	na	CACYNI010000033.1	=	NZ_CACYNI010000033.1	Primary Assembly	21779	na
+contig34	unplaced-scaffold	na	na	CACYNI010000034.1	=	NZ_CACYNI010000034.1	Primary Assembly	33371	na
+contig35	unplaced-scaffold	na	na	CACYNI010000035.1	=	NZ_CACYNI010000035.1	Primary Assembly	32587	na
+contig36	unplaced-scaffold	na	na	CACYNI010000036.1	=	NZ_CACYNI010000036.1	Primary Assembly	17930	na
+contig37	unplaced-scaffold	na	na	CACYNI010000037.1	=	NZ_CACYNI010000037.1	Primary Assembly	19663	na
+contig38	unplaced-scaffold	na	na	CACYNI010000038.1	=	NZ_CACYNI010000038.1	Primary Assembly	7658	na
+contig39	unplaced-scaffold	na	na	CACYNI010000039.1	=	NZ_CACYNI010000039.1	Primary Assembly	14261	na
+contig40	unplaced-scaffold	na	na	CACYNI010000040.1	=	NZ_CACYNI010000040.1	Primary Assembly	22650	na
+contig41	unplaced-scaffold	na	na	CACYNI010000041.1	=	NZ_CACYNI010000041.1	Primary Assembly	17910	na
+contig42	unplaced-scaffold	na	na	CACYNI010000042.1	=	NZ_CACYNI010000042.1	Primary Assembly	8120	na
+contig43	unplaced-scaffold	na	na	CACYNI010000043.1	=	NZ_CACYNI010000043.1	Primary Assembly	10010	na
+contig44	unplaced-scaffold	na	na	CACYNI010000044.1	=	NZ_CACYNI010000044.1	Primary Assembly	5371	na
+contig45	unplaced-scaffold	na	na	CACYNI010000045.1	=	NZ_CACYNI010000045.1	Primary Assembly	5071	na
+contig46	unplaced-scaffold	na	na	CACYNI010000046.1	=	NZ_CACYNI010000046.1	Primary Assembly	4242	na
+contig47	unplaced-scaffold	na	na	CACYNI010000047.1	=	NZ_CACYNI010000047.1	Primary Assembly	5739	na
+contig48	unplaced-scaffold	na	na	CACYNI010000048.1	=	NZ_CACYNI010000048.1	Primary Assembly	2789	na
+contig49	unplaced-scaffold	na	na	CACYNI010000049.1	=	NZ_CACYNI010000049.1	Primary Assembly	4453	na

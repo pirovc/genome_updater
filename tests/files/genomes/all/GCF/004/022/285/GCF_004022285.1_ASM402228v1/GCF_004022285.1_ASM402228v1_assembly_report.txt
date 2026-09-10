@@ -1,0 +1,229 @@
+# Assembly name:  ASM402228v1
+# Organism name:  Bradyrhizobium yuanmingense (a-proteobacteria)
+# Infraspecific name:  strain=P10 130
+# Taxid:          108015
+# BioSample:      SAMN10693296
+# BioProject:     PRJNA513056
+# Submitter:      Instituto de Biotecnologia y Biologia Molecular
+# Date:           2019-01-14
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    SATS01
+# Assembly method: Newbler v. 2.8
+# Expected final version: No
+# Sequencing technology: Illumina MiSeq
+# GenBank assembly accession: GCA_004022285.1
+# RefSeq assembly accession: GCF_004022285.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_004022315.1	GCF_004022315.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig00001	unplaced-scaffold	na	na	SATS01000001.1	=	NZ_SATS01000001.1	Primary Assembly	901782	na
+contig00002	unplaced-scaffold	na	na	SATS01000002.1	=	NZ_SATS01000002.1	Primary Assembly	790271	na
+contig00003	unplaced-scaffold	na	na	SATS01000003.1	=	NZ_SATS01000003.1	Primary Assembly	249212	na
+contig00004	unplaced-scaffold	na	na	SATS01000004.1	=	NZ_SATS01000004.1	Primary Assembly	5537	na
+contig00005	unplaced-scaffold	na	na	SATS01000005.1	=	NZ_SATS01000005.1	Primary Assembly	689667	na
+contig00006	unplaced-scaffold	na	na	SATS01000006.1	=	NZ_SATS01000006.1	Primary Assembly	239314	na
+contig00007	unplaced-scaffold	na	na	SATS01000007.1	=	NZ_SATS01000007.1	Primary Assembly	477293	na
+contig00008	unplaced-scaffold	na	na	SATS01000008.1	=	NZ_SATS01000008.1	Primary Assembly	95454	na
+contig00009	unplaced-scaffold	na	na	SATS01000009.1	=	NZ_SATS01000009.1	Primary Assembly	633099	na
+contig00010	unplaced-scaffold	na	na	SATS01000010.1	=	NZ_SATS01000010.1	Primary Assembly	509140	na
+contig00011	unplaced-scaffold	na	na	SATS01000011.1	=	NZ_SATS01000011.1	Primary Assembly	409980	na
+contig00012	unplaced-scaffold	na	na	SATS01000012.1	=	NZ_SATS01000012.1	Primary Assembly	246266	na
+contig00013	unplaced-scaffold	na	na	SATS01000013.1	=	NZ_SATS01000013.1	Primary Assembly	200102	na
+contig00014	unplaced-scaffold	na	na	SATS01000014.1	=	NZ_SATS01000014.1	Primary Assembly	1015	na
+contig00015	unplaced-scaffold	na	na	SATS01000015.1	=	NZ_SATS01000015.1	Primary Assembly	44134	na
+contig00016	unplaced-scaffold	na	na	SATS01000016.1	=	NZ_SATS01000016.1	Primary Assembly	81752	na
+contig00017	unplaced-scaffold	na	na	SATS01000017.1	=	NZ_SATS01000017.1	Primary Assembly	1936	na
+contig00018	unplaced-scaffold	na	na	SATS01000018.1	=	NZ_SATS01000018.1	Primary Assembly	161442	na
+contig00019	unplaced-scaffold	na	na	SATS01000019.1	=	NZ_SATS01000019.1	Primary Assembly	237436	na
+contig00020	unplaced-scaffold	na	na	SATS01000020.1	=	NZ_SATS01000020.1	Primary Assembly	218177	na
+contig00021	unplaced-scaffold	na	na	SATS01000021.1	=	NZ_SATS01000021.1	Primary Assembly	205252	na
+contig00022	unplaced-scaffold	na	na	SATS01000022.1	=	NZ_SATS01000022.1	Primary Assembly	191566	na
+contig00023	unplaced-scaffold	na	na	SATS01000023.1	=	NZ_SATS01000023.1	Primary Assembly	148114	na
+contig00024	unplaced-scaffold	na	na	SATS01000024.1	=	NZ_SATS01000024.1	Primary Assembly	126964	na
+contig00025	unplaced-scaffold	na	na	SATS01000025.1	=	NZ_SATS01000025.1	Primary Assembly	85219	na
+contig00026	unplaced-scaffold	na	na	SATS01000026.1	=	NZ_SATS01000026.1	Primary Assembly	15474	na
+contig00027	unplaced-scaffold	na	na	SATS01000027.1	=	NZ_SATS01000027.1	Primary Assembly	57417	na
+contig00028	unplaced-scaffold	na	na	SATS01000028.1	=	NZ_SATS01000028.1	Primary Assembly	45409	na
+contig00029	unplaced-scaffold	na	na	SATS01000029.1	=	NZ_SATS01000029.1	Primary Assembly	10841	na
+contig00030	unplaced-scaffold	na	na	SATS01000030.1	=	NZ_SATS01000030.1	Primary Assembly	50030	na
+contig00031	unplaced-scaffold	na	na	SATS01000031.1	=	NZ_SATS01000031.1	Primary Assembly	48736	na
+contig00032	unplaced-scaffold	na	na	SATS01000032.1	=	NZ_SATS01000032.1	Primary Assembly	45870	na
+contig00033	unplaced-scaffold	na	na	SATS01000033.1	=	NZ_SATS01000033.1	Primary Assembly	44943	na
+contig00034	unplaced-scaffold	na	na	SATS01000034.1	=	NZ_SATS01000034.1	Primary Assembly	42376	na
+contig00035	unplaced-scaffold	na	na	SATS01000035.1	=	NZ_SATS01000035.1	Primary Assembly	40783	na
+contig00036	unplaced-scaffold	na	na	SATS01000036.1	=	NZ_SATS01000036.1	Primary Assembly	35703	na
+contig00037	unplaced-scaffold	na	na	SATS01000037.1	=	NZ_SATS01000037.1	Primary Assembly	33613	na
+contig00038	unplaced-scaffold	na	na	SATS01000038.1	=	NZ_SATS01000038.1	Primary Assembly	27095	na
+contig00039	unplaced-scaffold	na	na	SATS01000039.1	=	NZ_SATS01000039.1	Primary Assembly	24802	na
+contig00040	unplaced-scaffold	na	na	SATS01000040.1	=	NZ_SATS01000040.1	Primary Assembly	12576	na
+contig00041	unplaced-scaffold	na	na	SATS01000041.1	=	NZ_SATS01000041.1	Primary Assembly	12144	na
+contig00042	unplaced-scaffold	na	na	SATS01000042.1	=	NZ_SATS01000042.1	Primary Assembly	7628	na
+contig00043	unplaced-scaffold	na	na	SATS01000043.1	=	NZ_SATS01000043.1	Primary Assembly	5716	na
+contig00044	unplaced-scaffold	na	na	SATS01000044.1	=	NZ_SATS01000044.1	Primary Assembly	5253	na
+contig00045	unplaced-scaffold	na	na	SATS01000045.1	=	NZ_SATS01000045.1	Primary Assembly	4655	na
+contig00047	unplaced-scaffold	na	na	SATS01000046.1	=	NZ_SATS01000046.1	Primary Assembly	2744	na
+contig00048	unplaced-scaffold	na	na	SATS01000047.1	=	NZ_SATS01000047.1	Primary Assembly	2642	na
+contig00049	unplaced-scaffold	na	na	SATS01000048.1	=	NZ_SATS01000048.1	Primary Assembly	1810	na
+contig00050	unplaced-scaffold	na	na	SATS01000049.1	=	NZ_SATS01000049.1	Primary Assembly	1674	na
+contig00051	unplaced-scaffold	na	na	SATS01000050.1	=	NZ_SATS01000050.1	Primary Assembly	1537	na
+contig00052	unplaced-scaffold	na	na	SATS01000051.1	=	NZ_SATS01000051.1	Primary Assembly	1435	na
+contig00053	unplaced-scaffold	na	na	SATS01000052.1	=	NZ_SATS01000052.1	Primary Assembly	1397	na
+contig00054	unplaced-scaffold	na	na	SATS01000053.1	=	NZ_SATS01000053.1	Primary Assembly	1346	na
+contig00055	unplaced-scaffold	na	na	SATS01000054.1	=	NZ_SATS01000054.1	Primary Assembly	1268	na
+contig00056	unplaced-scaffold	na	na	SATS01000055.1	=	NZ_SATS01000055.1	Primary Assembly	1078	na
+contig00057	unplaced-scaffold	na	na	SATS01000056.1	=	NZ_SATS01000056.1	Primary Assembly	811	na
+contig00058	unplaced-scaffold	na	na	SATS01000057.1	=	NZ_SATS01000057.1	Primary Assembly	597	na
+contig00059	unplaced-scaffold	na	na	SATS01000058.1	=	NZ_SATS01000058.1	Primary Assembly	570	na
+contig00060	unplaced-scaffold	na	na	SATS01000059.1	=	NZ_SATS01000059.1	Primary Assembly	512	na
+contig00061	unplaced-scaffold	na	na	SATS01000060.1	=	NZ_SATS01000060.1	Primary Assembly	480	na
+contig00062	unplaced-scaffold	na	na	SATS01000061.1	=	NZ_SATS01000061.1	Primary Assembly	467	na
+contig00063	unplaced-scaffold	na	na	SATS01000062.1	=	NZ_SATS01000062.1	Primary Assembly	465	na
+contig00064	unplaced-scaffold	na	na	SATS01000063.1	=	NZ_SATS01000063.1	Primary Assembly	467	na
+contig00065	unplaced-scaffold	na	na	SATS01000064.1	=	NZ_SATS01000064.1	Primary Assembly	466	na
+contig00066	unplaced-scaffold	na	na	SATS01000065.1	=	NZ_SATS01000065.1	Primary Assembly	467	na
+contig00067	unplaced-scaffold	na	na	SATS01000066.1	=	NZ_SATS01000066.1	Primary Assembly	465	na
+contig00068	unplaced-scaffold	na	na	SATS01000067.1	=	NZ_SATS01000067.1	Primary Assembly	466	na
+contig00069	unplaced-scaffold	na	na	SATS01000068.1	=	NZ_SATS01000068.1	Primary Assembly	464	na
+contig00070	unplaced-scaffold	na	na	SATS01000069.1	=	NZ_SATS01000069.1	Primary Assembly	463	na
+contig00071	unplaced-scaffold	na	na	SATS01000070.1	=	NZ_SATS01000070.1	Primary Assembly	463	na
+contig00072	unplaced-scaffold	na	na	SATS01000071.1	=	NZ_SATS01000071.1	Primary Assembly	463	na
+contig00073	unplaced-scaffold	na	na	SATS01000072.1	=	NZ_SATS01000072.1	Primary Assembly	460	na
+contig00074	unplaced-scaffold	na	na	SATS01000073.1	=	NZ_SATS01000073.1	Primary Assembly	461	na
+contig00075	unplaced-scaffold	na	na	SATS01000074.1	=	NZ_SATS01000074.1	Primary Assembly	461	na
+contig00076	unplaced-scaffold	na	na	SATS01000075.1	=	NZ_SATS01000075.1	Primary Assembly	460	na
+contig00077	unplaced-scaffold	na	na	SATS01000076.1	=	NZ_SATS01000076.1	Primary Assembly	460	na
+contig00078	unplaced-scaffold	na	na	SATS01000077.1	=	NZ_SATS01000077.1	Primary Assembly	449	na
+contig00079	unplaced-scaffold	na	na	SATS01000078.1	=	NZ_SATS01000078.1	Primary Assembly	445	na
+contig00080	unplaced-scaffold	na	na	SATS01000079.1	=	NZ_SATS01000079.1	Primary Assembly	444	na
+contig00081	unplaced-scaffold	na	na	SATS01000080.1	=	NZ_SATS01000080.1	Primary Assembly	443	na
+contig00082	unplaced-scaffold	na	na	SATS01000081.1	=	NZ_SATS01000081.1	Primary Assembly	443	na
+contig00083	unplaced-scaffold	na	na	SATS01000082.1	=	NZ_SATS01000082.1	Primary Assembly	444	na
+contig00084	unplaced-scaffold	na	na	SATS01000083.1	=	NZ_SATS01000083.1	Primary Assembly	441	na
+contig00085	unplaced-scaffold	na	na	SATS01000084.1	=	NZ_SATS01000084.1	Primary Assembly	444	na
+contig00086	unplaced-scaffold	na	na	SATS01000085.1	=	NZ_SATS01000085.1	Primary Assembly	442	na
+contig00087	unplaced-scaffold	na	na	SATS01000086.1	=	NZ_SATS01000086.1	Primary Assembly	439	na
+contig00088	unplaced-scaffold	na	na	SATS01000087.1	=	NZ_SATS01000087.1	Primary Assembly	439	na
+contig00089	unplaced-scaffold	na	na	SATS01000088.1	=	NZ_SATS01000088.1	Primary Assembly	440	na
+contig00093	unplaced-scaffold	na	na	SATS01000089.1	=	NZ_SATS01000089.1	Primary Assembly	424	na
+contig00094	unplaced-scaffold	na	na	SATS01000090.1	=	NZ_SATS01000090.1	Primary Assembly	416	na
+contig00095	unplaced-scaffold	na	na	SATS01000091.1	=	NZ_SATS01000091.1	Primary Assembly	407	na
+contig00096	unplaced-scaffold	na	na	SATS01000092.1	=	NZ_SATS01000092.1	Primary Assembly	405	na
+contig00097	unplaced-scaffold	na	na	SATS01000093.1	=	NZ_SATS01000093.1	Primary Assembly	405	na
+contig00098	unplaced-scaffold	na	na	SATS01000094.1	=	NZ_SATS01000094.1	Primary Assembly	401	na
+contig00099	unplaced-scaffold	na	na	SATS01000095.1	=	NZ_SATS01000095.1	Primary Assembly	394	na
+contig00100	unplaced-scaffold	na	na	SATS01000096.1	=	NZ_SATS01000096.1	Primary Assembly	391	na
+contig00101	unplaced-scaffold	na	na	SATS01000097.1	=	NZ_SATS01000097.1	Primary Assembly	391	na
+contig00102	unplaced-scaffold	na	na	SATS01000098.1	=	NZ_SATS01000098.1	Primary Assembly	385	na
+contig00103	unplaced-scaffold	na	na	SATS01000099.1	=	NZ_SATS01000099.1	Primary Assembly	381	na
+contig00104	unplaced-scaffold	na	na	SATS01000100.1	=	NZ_SATS01000100.1	Primary Assembly	380	na
+contig00105	unplaced-scaffold	na	na	SATS01000101.1	=	NZ_SATS01000101.1	Primary Assembly	378	na
+contig00106	unplaced-scaffold	na	na	SATS01000102.1	=	NZ_SATS01000102.1	Primary Assembly	370	na
+contig00107	unplaced-scaffold	na	na	SATS01000103.1	=	NZ_SATS01000103.1	Primary Assembly	375	na
+contig00108	unplaced-scaffold	na	na	SATS01000104.1	=	NZ_SATS01000104.1	Primary Assembly	374	na
+contig00109	unplaced-scaffold	na	na	SATS01000105.1	=	NZ_SATS01000105.1	Primary Assembly	374	na
+contig00110	unplaced-scaffold	na	na	SATS01000106.1	=	NZ_SATS01000106.1	Primary Assembly	374	na
+contig00111	unplaced-scaffold	na	na	SATS01000107.1	=	NZ_SATS01000107.1	Primary Assembly	374	na
+contig00112	unplaced-scaffold	na	na	SATS01000108.1	=	NZ_SATS01000108.1	Primary Assembly	374	na
+contig00113	unplaced-scaffold	na	na	SATS01000109.1	=	NZ_SATS01000109.1	Primary Assembly	369	na
+contig00114	unplaced-scaffold	na	na	SATS01000110.1	=	NZ_SATS01000110.1	Primary Assembly	366	na
+contig00115	unplaced-scaffold	na	na	SATS01000111.1	=	NZ_SATS01000111.1	Primary Assembly	366	na
+contig00116	unplaced-scaffold	na	na	SATS01000112.1	=	NZ_SATS01000112.1	Primary Assembly	362	na
+contig00117	unplaced-scaffold	na	na	SATS01000113.1	=	NZ_SATS01000113.1	Primary Assembly	361	na
+contig00118	unplaced-scaffold	na	na	SATS01000114.1	=	NZ_SATS01000114.1	Primary Assembly	361	na
+contig00119	unplaced-scaffold	na	na	SATS01000115.1	=	NZ_SATS01000115.1	Primary Assembly	359	na
+contig00120	unplaced-scaffold	na	na	SATS01000116.1	=	NZ_SATS01000116.1	Primary Assembly	359	na
+contig00121	unplaced-scaffold	na	na	SATS01000117.1	=	NZ_SATS01000117.1	Primary Assembly	356	na
+contig00122	unplaced-scaffold	na	na	SATS01000118.1	=	NZ_SATS01000118.1	Primary Assembly	356	na
+contig00123	unplaced-scaffold	na	na	SATS01000119.1	=	NZ_SATS01000119.1	Primary Assembly	355	na
+contig00124	unplaced-scaffold	na	na	SATS01000120.1	=	NZ_SATS01000120.1	Primary Assembly	354	na
+contig00125	unplaced-scaffold	na	na	SATS01000121.1	=	NZ_SATS01000121.1	Primary Assembly	352	na
+contig00126	unplaced-scaffold	na	na	SATS01000122.1	=	NZ_SATS01000122.1	Primary Assembly	350	na
+contig00127	unplaced-scaffold	na	na	SATS01000123.1	=	NZ_SATS01000123.1	Primary Assembly	348	na
+contig00128	unplaced-scaffold	na	na	SATS01000124.1	=	NZ_SATS01000124.1	Primary Assembly	347	na
+contig00129	unplaced-scaffold	na	na	SATS01000125.1	=	NZ_SATS01000125.1	Primary Assembly	347	na
+contig00130	unplaced-scaffold	na	na	SATS01000126.1	=	NZ_SATS01000126.1	Primary Assembly	345	na
+contig00131	unplaced-scaffold	na	na	SATS01000127.1	=	NZ_SATS01000127.1	Primary Assembly	341	na
+contig00132	unplaced-scaffold	na	na	SATS01000128.1	=	NZ_SATS01000128.1	Primary Assembly	339	na
+contig00133	unplaced-scaffold	na	na	SATS01000129.1	=	NZ_SATS01000129.1	Primary Assembly	336	na
+contig00134	unplaced-scaffold	na	na	SATS01000130.1	=	NZ_SATS01000130.1	Primary Assembly	336	na
+contig00135	unplaced-scaffold	na	na	SATS01000131.1	=	NZ_SATS01000131.1	Primary Assembly	335	na
+contig00136	unplaced-scaffold	na	na	SATS01000132.1	=	NZ_SATS01000132.1	Primary Assembly	319	na
+contig00137	unplaced-scaffold	na	na	SATS01000133.1	=	NZ_SATS01000133.1	Primary Assembly	318	na
+contig00138	unplaced-scaffold	na	na	SATS01000134.1	=	NZ_SATS01000134.1	Primary Assembly	318	na
+contig00139	unplaced-scaffold	na	na	SATS01000135.1	=	NZ_SATS01000135.1	Primary Assembly	316	na
+contig00140	unplaced-scaffold	na	na	SATS01000136.1	=	NZ_SATS01000136.1	Primary Assembly	312	na
+contig00141	unplaced-scaffold	na	na	SATS01000137.1	=	NZ_SATS01000137.1	Primary Assembly	312	na
+contig00142	unplaced-scaffold	na	na	SATS01000138.1	=	NZ_SATS01000138.1	Primary Assembly	306	na
+contig00143	unplaced-scaffold	na	na	SATS01000139.1	=	NZ_SATS01000139.1	Primary Assembly	305	na
+contig00144	unplaced-scaffold	na	na	SATS01000140.1	=	NZ_SATS01000140.1	Primary Assembly	304	na
+contig00145	unplaced-scaffold	na	na	SATS01000141.1	=	NZ_SATS01000141.1	Primary Assembly	302	na
+contig00146	unplaced-scaffold	na	na	SATS01000142.1	=	NZ_SATS01000142.1	Primary Assembly	301	na
+contig00147	unplaced-scaffold	na	na	SATS01000143.1	=	NZ_SATS01000143.1	Primary Assembly	300	na
+contig00148	unplaced-scaffold	na	na	SATS01000144.1	=	NZ_SATS01000144.1	Primary Assembly	301	na
+contig00149	unplaced-scaffold	na	na	SATS01000145.1	=	NZ_SATS01000145.1	Primary Assembly	300	na
+contig00150	unplaced-scaffold	na	na	SATS01000146.1	=	NZ_SATS01000146.1	Primary Assembly	300	na
+contig00151	unplaced-scaffold	na	na	SATS01000147.1	=	NZ_SATS01000147.1	Primary Assembly	300	na
+contig00152	unplaced-scaffold	na	na	SATS01000148.1	=	NZ_SATS01000148.1	Primary Assembly	300	na
+contig00153	unplaced-scaffold	na	na	SATS01000149.1	=	NZ_SATS01000149.1	Primary Assembly	299	na
+contig00154	unplaced-scaffold	na	na	SATS01000150.1	=	NZ_SATS01000150.1	Primary Assembly	298	na
+contig00155	unplaced-scaffold	na	na	SATS01000151.1	=	NZ_SATS01000151.1	Primary Assembly	293	na
+contig00156	unplaced-scaffold	na	na	SATS01000152.1	=	NZ_SATS01000152.1	Primary Assembly	281	na
+contig00157	unplaced-scaffold	na	na	SATS01000153.1	=	NZ_SATS01000153.1	Primary Assembly	281	na
+contig00158	unplaced-scaffold	na	na	SATS01000154.1	=	NZ_SATS01000154.1	Primary Assembly	281	na
+contig00159	unplaced-scaffold	na	na	SATS01000155.1	=	NZ_SATS01000155.1	Primary Assembly	280	na
+contig00160	unplaced-scaffold	na	na	SATS01000156.1	=	NZ_SATS01000156.1	Primary Assembly	272	na
+contig00161	unplaced-scaffold	na	na	SATS01000157.1	=	NZ_SATS01000157.1	Primary Assembly	272	na
+contig00162	unplaced-scaffold	na	na	SATS01000158.1	=	NZ_SATS01000158.1	Primary Assembly	268	na
+contig00163	unplaced-scaffold	na	na	SATS01000159.1	=	NZ_SATS01000159.1	Primary Assembly	266	na
+contig00164	unplaced-scaffold	na	na	SATS01000160.1	=	NZ_SATS01000160.1	Primary Assembly	266	na
+contig00165	unplaced-scaffold	na	na	SATS01000161.1	=	NZ_SATS01000161.1	Primary Assembly	265	na
+contig00166	unplaced-scaffold	na	na	SATS01000162.1	=	NZ_SATS01000162.1	Primary Assembly	261	na
+contig00167	unplaced-scaffold	na	na	SATS01000163.1	=	NZ_SATS01000163.1	Primary Assembly	261	na
+contig00168	unplaced-scaffold	na	na	SATS01000164.1	=	NZ_SATS01000164.1	Primary Assembly	260	na
+contig00169	unplaced-scaffold	na	na	SATS01000165.1	=	NZ_SATS01000165.1	Primary Assembly	260	na
+contig00170	unplaced-scaffold	na	na	SATS01000166.1	=	NZ_SATS01000166.1	Primary Assembly	250	na
+contig00171	unplaced-scaffold	na	na	SATS01000167.1	=	NZ_SATS01000167.1	Primary Assembly	250	na
+contig00172	unplaced-scaffold	na	na	SATS01000168.1	=	NZ_SATS01000168.1	Primary Assembly	249	na
+contig00173	unplaced-scaffold	na	na	SATS01000169.1	=	NZ_SATS01000169.1	Primary Assembly	245	na
+contig00174	unplaced-scaffold	na	na	SATS01000170.1	=	NZ_SATS01000170.1	Primary Assembly	243	na
+contig00175	unplaced-scaffold	na	na	SATS01000171.1	=	NZ_SATS01000171.1	Primary Assembly	242	na
+contig00176	unplaced-scaffold	na	na	SATS01000172.1	=	NZ_SATS01000172.1	Primary Assembly	235	na
+contig00178	unplaced-scaffold	na	na	SATS01000173.1	=	NZ_SATS01000173.1	Primary Assembly	234	na
+contig00179	unplaced-scaffold	na	na	SATS01000174.1	=	NZ_SATS01000174.1	Primary Assembly	233	na
+contig00180	unplaced-scaffold	na	na	SATS01000175.1	=	NZ_SATS01000175.1	Primary Assembly	233	na
+contig00181	unplaced-scaffold	na	na	SATS01000176.1	=	NZ_SATS01000176.1	Primary Assembly	233	na
+contig00182	unplaced-scaffold	na	na	SATS01000177.1	=	NZ_SATS01000177.1	Primary Assembly	233	na
+contig00183	unplaced-scaffold	na	na	SATS01000178.1	=	NZ_SATS01000178.1	Primary Assembly	232	na
+contig00184	unplaced-scaffold	na	na	SATS01000179.1	=	NZ_SATS01000179.1	Primary Assembly	232	na
+contig00185	unplaced-scaffold	na	na	SATS01000180.1	=	NZ_SATS01000180.1	Primary Assembly	231	na
+contig00186	unplaced-scaffold	na	na	SATS01000181.1	=	NZ_SATS01000181.1	Primary Assembly	231	na
+contig00187	unplaced-scaffold	na	na	SATS01000182.1	=	NZ_SATS01000182.1	Primary Assembly	231	na
+contig00188	unplaced-scaffold	na	na	SATS01000183.1	=	NZ_SATS01000183.1	Primary Assembly	231	na
+contig00189	unplaced-scaffold	na	na	SATS01000184.1	=	NZ_SATS01000184.1	Primary Assembly	230	na
+contig00190	unplaced-scaffold	na	na	SATS01000185.1	=	NZ_SATS01000185.1	Primary Assembly	230	na
+contig00191	unplaced-scaffold	na	na	SATS01000186.1	=	NZ_SATS01000186.1	Primary Assembly	230	na
+contig00192	unplaced-scaffold	na	na	SATS01000187.1	=	NZ_SATS01000187.1	Primary Assembly	229	na
+contig00193	unplaced-scaffold	na	na	SATS01000188.1	=	NZ_SATS01000188.1	Primary Assembly	229	na
+contig00194	unplaced-scaffold	na	na	SATS01000189.1	=	NZ_SATS01000189.1	Primary Assembly	226	na
+contig00195	unplaced-scaffold	na	na	SATS01000190.1	=	NZ_SATS01000190.1	Primary Assembly	225	na
+contig00196	unplaced-scaffold	na	na	SATS01000191.1	=	NZ_SATS01000191.1	Primary Assembly	220	na
+contig00197	unplaced-scaffold	na	na	SATS01000192.1	=	NZ_SATS01000192.1	Primary Assembly	220	na
+contig00198	unplaced-scaffold	na	na	SATS01000193.1	=	NZ_SATS01000193.1	Primary Assembly	220	na
+contig00199	unplaced-scaffold	na	na	SATS01000194.1	=	NZ_SATS01000194.1	Primary Assembly	214	na
+contig00200	unplaced-scaffold	na	na	SATS01000195.1	=	NZ_SATS01000195.1	Primary Assembly	214	na
+contig00201	unplaced-scaffold	na	na	SATS01000196.1	=	NZ_SATS01000196.1	Primary Assembly	214	na
+contig00202	unplaced-scaffold	na	na	SATS01000197.1	=	NZ_SATS01000197.1	Primary Assembly	211	na
+contig00203	unplaced-scaffold	na	na	SATS01000198.1	=	NZ_SATS01000198.1	Primary Assembly	207	na
+contig00204	unplaced-scaffold	na	na	SATS01000199.1	=	NZ_SATS01000199.1	Primary Assembly	201	na

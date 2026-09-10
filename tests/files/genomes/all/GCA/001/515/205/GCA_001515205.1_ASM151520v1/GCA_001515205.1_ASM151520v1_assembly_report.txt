@@ -1,0 +1,96 @@
+# Assembly name:  ASM151520v1
+# Organism name:  Candidatus Hadarchaeum yellowstonense (archaea)
+# Isolate:  YNP_45
+# Taxid:          1776334
+# BioSample:      SAMN04159681
+# BioProject:     PRJNA298487
+# Submitter:      Univ of Texas Austin
+# Date:           2016-01-14
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    LQMQ01
+# Assembly method: IDBA-UD v. 1.0.9
+# Expected final version: Yes
+# Genome coverage: 12.0x
+# Sequencing technology: Illumina HiSeq
+# Excluded from RefSeq: derived from metagenome
+# GenBank assembly accession: GCA_001515205.1
+#
+## Assembly-Unit names:
+## Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig_124_10393	unplaced-scaffold	na	na	LQMQ01000001.1	<>	na	Primary Assembly	7960	na
+contig_124_1071	unplaced-scaffold	na	na	LQMQ01000002.1	<>	na	Primary Assembly	31370	na
+contig_124_1106	unplaced-scaffold	na	na	LQMQ01000003.1	<>	na	Primary Assembly	30926	na
+contig_124_11164	unplaced-scaffold	na	na	LQMQ01000004.1	<>	na	Primary Assembly	7557	na
+contig_124_112	unplaced-scaffold	na	na	LQMQ01000005.1	<>	na	Primary Assembly	74826	na
+contig_124_12018	unplaced-scaffold	na	na	LQMQ01000006.1	<>	na	Primary Assembly	7170	na
+contig_124_130	unplaced-scaffold	na	na	LQMQ01000007.1	<>	na	Primary Assembly	72018	na
+contig_124_13169	unplaced-scaffold	na	na	LQMQ01000008.1	<>	na	Primary Assembly	6706	na
+contig_124_14815	unplaced-scaffold	na	na	LQMQ01000009.1	<>	na	Primary Assembly	6133	na
+contig_124_1503	unplaced-scaffold	na	na	LQMQ01000010.1	<>	na	Primary Assembly	26714	na
+contig_124_1534	unplaced-scaffold	na	na	LQMQ01000011.1	<>	na	Primary Assembly	26373	na
+contig_124_15516	unplaced-scaffold	na	na	LQMQ01000012.1	<>	na	Primary Assembly	5937	na
+contig_124_1579	unplaced-scaffold	na	na	LQMQ01000013.1	<>	na	Primary Assembly	25893	na
+contig_124_1610	unplaced-scaffold	na	na	LQMQ01000014.1	<>	na	Primary Assembly	25722	na
+contig_124_16101	unplaced-scaffold	na	na	LQMQ01000015.1	<>	na	Primary Assembly	5778	na
+contig_124_16148	unplaced-scaffold	na	na	LQMQ01000016.1	<>	na	Primary Assembly	5763	na
+contig_124_16455	unplaced-scaffold	na	na	LQMQ01000017.1	<>	na	Primary Assembly	5693	na
+contig_124_16459	unplaced-scaffold	na	na	LQMQ01000018.1	<>	na	Primary Assembly	5692	na
+contig_124_17209	unplaced-scaffold	na	na	LQMQ01000019.1	<>	na	Primary Assembly	5513	na
+contig_124_17875	unplaced-scaffold	na	na	LQMQ01000020.1	<>	na	Primary Assembly	5367	na
+contig_124_1859	unplaced-scaffold	na	na	LQMQ01000021.1	<>	na	Primary Assembly	23895	na
+contig_124_1873	unplaced-scaffold	na	na	LQMQ01000022.1	<>	na	Primary Assembly	23761	na
+contig_124_18875	unplaced-scaffold	na	na	LQMQ01000023.1	<>	na	Primary Assembly	5147	na
+contig_124_19534	unplaced-scaffold	na	na	LQMQ01000024.1	<>	na	Primary Assembly	5014	na
+contig_124_1963	unplaced-scaffold	na	na	LQMQ01000025.1	<>	na	Primary Assembly	23261	na
+contig_124_1996	unplaced-scaffold	na	na	LQMQ01000026.1	<>	na	Primary Assembly	23091	na
+contig_124_202	unplaced-scaffold	na	na	LQMQ01000027.1	<>	na	Primary Assembly	62001	na
+contig_124_2113	unplaced-scaffold	na	na	LQMQ01000028.1	<>	na	Primary Assembly	22321	na
+contig_124_2135	unplaced-scaffold	na	na	LQMQ01000029.1	<>	na	Primary Assembly	22188	na
+contig_124_2158	unplaced-scaffold	na	na	LQMQ01000030.1	<>	na	Primary Assembly	22062	na
+contig_124_2173	unplaced-scaffold	na	na	LQMQ01000031.1	<>	na	Primary Assembly	21974	na
+contig_124_2217	unplaced-scaffold	na	na	LQMQ01000032.1	<>	na	Primary Assembly	21704	na
+contig_124_2515	unplaced-scaffold	na	na	LQMQ01000033.1	<>	na	Primary Assembly	20277	na
+contig_124_2694	unplaced-scaffold	na	na	LQMQ01000034.1	<>	na	Primary Assembly	19535	na
+contig_124_2720	unplaced-scaffold	na	na	LQMQ01000035.1	<>	na	Primary Assembly	19446	na
+contig_124_2864	unplaced-scaffold	na	na	LQMQ01000036.1	<>	na	Primary Assembly	18918	na
+contig_124_3162	unplaced-scaffold	na	na	LQMQ01000037.1	<>	na	Primary Assembly	17893	na
+contig_124_3189	unplaced-scaffold	na	na	LQMQ01000038.1	<>	na	Primary Assembly	17826	na
+contig_124_319	unplaced-scaffold	na	na	LQMQ01000039.1	<>	na	Primary Assembly	51958	na
+contig_124_3323	unplaced-scaffold	na	na	LQMQ01000040.1	<>	na	Primary Assembly	17370	na
+contig_124_3739	unplaced-scaffold	na	na	LQMQ01000041.1	<>	na	Primary Assembly	16099	na
+contig_124_4507	unplaced-scaffold	na	na	LQMQ01000042.1	<>	na	Primary Assembly	14233	na
+contig_124_4564	unplaced-scaffold	na	na	LQMQ01000043.1	<>	na	Primary Assembly	14105	na
+contig_124_4654	unplaced-scaffold	na	na	LQMQ01000044.1	<>	na	Primary Assembly	13942	na
+contig_124_4748	unplaced-scaffold	na	na	LQMQ01000045.1	<>	na	Primary Assembly	13752	na
+contig_124_4996	unplaced-scaffold	na	na	LQMQ01000046.1	<>	na	Primary Assembly	13234	na
+contig_124_511	unplaced-scaffold	na	na	LQMQ01000047.1	<>	na	Primary Assembly	42668	na
+contig_124_5140	unplaced-scaffold	na	na	LQMQ01000048.1	<>	na	Primary Assembly	12983	na
+contig_124_541	unplaced-scaffold	na	na	LQMQ01000049.1	<>	na	Primary Assembly	41875	na
+contig_124_569	unplaced-scaffold	na	na	LQMQ01000050.1	<>	na	Primary Assembly	41202	na
+contig_124_5729	unplaced-scaffold	na	na	LQMQ01000051.1	<>	na	Primary Assembly	12098	na
+contig_124_5753	unplaced-scaffold	na	na	LQMQ01000052.1	<>	na	Primary Assembly	12055	na
+contig_124_5992	unplaced-scaffold	na	na	LQMQ01000053.1	<>	na	Primary Assembly	11665	na
+contig_124_6466	unplaced-scaffold	na	na	LQMQ01000054.1	<>	na	Primary Assembly	11089	na
+contig_124_653	unplaced-scaffold	na	na	LQMQ01000055.1	<>	na	Primary Assembly	39119	na
+contig_124_7083	unplaced-scaffold	na	na	LQMQ01000056.1	<>	na	Primary Assembly	10425	na
+contig_124_717	unplaced-scaffold	na	na	LQMQ01000057.1	<>	na	Primary Assembly	37878	na
+contig_124_7288	unplaced-scaffold	na	na	LQMQ01000058.1	<>	na	Primary Assembly	10224	na
+contig_124_7745	unplaced-scaffold	na	na	LQMQ01000059.1	<>	na	Primary Assembly	9808	na
+contig_124_7852	unplaced-scaffold	na	na	LQMQ01000060.1	<>	na	Primary Assembly	9717	na
+contig_124_8103	unplaced-scaffold	na	na	LQMQ01000061.1	<>	na	Primary Assembly	9500	na
+contig_124_8590	unplaced-scaffold	na	na	LQMQ01000062.1	<>	na	Primary Assembly	9085	na
+contig_124_8750	unplaced-scaffold	na	na	LQMQ01000063.1	<>	na	Primary Assembly	8972	na
+contig_124_8872	unplaced-scaffold	na	na	LQMQ01000064.1	<>	na	Primary Assembly	8888	na
+contig_124_907	unplaced-scaffold	na	na	LQMQ01000065.1	<>	na	Primary Assembly	33771	na
+contig_124_9155	unplaced-scaffold	na	na	LQMQ01000066.1	<>	na	Primary Assembly	8681	na
+contig_124_9530	unplaced-scaffold	na	na	LQMQ01000067.1	<>	na	Primary Assembly	8465	na

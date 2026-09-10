@@ -1,0 +1,41 @@
+# Assembly name:  piHetPala1.Methanobacterium_sp_1.1
+# Organism name:  uncultured Methanobacterium sp. (euryarchaeotes)
+# Isolate:  ac387dc6-a7b2-4ec9-b929-065393db3f1a
+# Taxid:          176306
+# BioSample:      SAMEA114301965
+# BioProject:     PRJEB66947
+# Submitter:      WELLCOME SANGER INSTITUTE
+# Date:           2023-11-17
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Complete Genome
+# Genome representation: full
+# Assembly method: various
+# Genome coverage: 17x
+# Sequencing technology: PacBio
+# Excluded from RefSeq: derived from metagenome
+# GenBank assembly accession: GCA_963665055.1
+# RefSeq assembly accession: GCF_963665055.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_963665054.1	GCF_963665054.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+chromosome_1	assembled-molecule	1	Chromosome	OY762012.1	=	NZ_OY762012.1	Primary Assembly	7813	na
+chromosome_2	assembled-molecule	2	Chromosome	OY762013.1	=	NZ_OY762013.1	Primary Assembly	9028	na
+chromosome_3	assembled-molecule	3	Chromosome	OY762014.1	=	NZ_OY762014.1	Primary Assembly	79407	na
+chromosome_4	assembled-molecule	4	Chromosome	OY762015.1	=	NZ_OY762015.1	Primary Assembly	3039039	na
+chromosome_5	assembled-molecule	5	Chromosome	OY762016.1	=	NZ_OY762016.1	Primary Assembly	16881	na
+chromosome_6	assembled-molecule	6	Chromosome	OY762017.1	=	NZ_OY762017.1	Primary Assembly	10456	na
+chromosome_7	assembled-molecule	7	Chromosome	OY762018.1	=	NZ_OY762018.1	Primary Assembly	12841	na
+chromosome_8	assembled-molecule	8	Chromosome	OY762019.1	=	NZ_OY762019.1	Primary Assembly	15847	na
+chromosome_9	assembled-molecule	9	Chromosome	OY762020.1	=	NZ_OY762020.1	Primary Assembly	14090	na
+chromosome_10	assembled-molecule	10	Chromosome	OY762021.1	=	NZ_OY762021.1	Primary Assembly	12783	na
+chromosome_11	assembled-molecule	11	Chromosome	OY762022.1	=	NZ_OY762022.1	Primary Assembly	7834	na

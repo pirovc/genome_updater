@@ -1,0 +1,89 @@
+# Assembly name:  10541_2#30
+# Organism name:  Salmonella enterica subsp. enterica serovar Typhi (enterobacteria)
+# Infraspecific name:  strain=MDUST304
+# Taxid:          90370
+# BioSample:      SAMEA2162641
+# BioProject:     PRJEB3215
+# Submitter:      SC
+# Date:           2015-07-10
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    CJEB01
+# Assembly method: Prokka
+# Genome coverage: 100x
+# Sequencing technology: SLX
+# Excluded from RefSeq: RefSeq annotation failed
+# GenBank assembly accession: GCA_001118905.1
+# RefSeq assembly accession: GCF_001118905.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_001118915.1	GCF_001118915.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+CJEB01000001	unplaced-scaffold	na	na	CJEB01000001.1	=	NZ_CJEB01000001.1	Primary Assembly	490328	na
+CJEB01000002	unplaced-scaffold	na	na	CJEB01000002.1	=	NZ_CJEB01000002.1	Primary Assembly	392984	na
+CJEB01000003	unplaced-scaffold	na	na	CJEB01000003.1	=	NZ_CJEB01000003.1	Primary Assembly	251102	na
+CJEB01000004	unplaced-scaffold	na	na	CJEB01000004.1	=	NZ_CJEB01000004.1	Primary Assembly	249540	na
+CJEB01000005	unplaced-scaffold	na	na	CJEB01000005.1	=	NZ_CJEB01000005.1	Primary Assembly	244969	na
+CJEB01000006	unplaced-scaffold	na	na	CJEB01000006.1	=	NZ_CJEB01000006.1	Primary Assembly	217869	na
+CJEB01000007	unplaced-scaffold	na	na	CJEB01000007.1	=	NZ_CJEB01000007.1	Primary Assembly	206202	na
+CJEB01000008	unplaced-scaffold	na	na	CJEB01000008.1	=	NZ_CJEB01000008.1	Primary Assembly	204306	na
+CJEB01000009	unplaced-scaffold	na	na	CJEB01000009.1	=	NZ_CJEB01000009.1	Primary Assembly	183516	na
+CJEB01000010	unplaced-scaffold	na	na	CJEB01000010.1	=	NZ_CJEB01000010.1	Primary Assembly	172616	na
+CJEB01000011	unplaced-scaffold	na	na	CJEB01000011.1	=	NZ_CJEB01000011.1	Primary Assembly	172100	na
+CJEB01000012	unplaced-scaffold	na	na	CJEB01000012.1	=	NZ_CJEB01000012.1	Primary Assembly	163126	na
+CJEB01000013	unplaced-scaffold	na	na	CJEB01000013.1	=	NZ_CJEB01000013.1	Primary Assembly	153701	na
+CJEB01000014	unplaced-scaffold	na	na	CJEB01000014.1	=	NZ_CJEB01000014.1	Primary Assembly	149559	na
+CJEB01000015	unplaced-scaffold	na	na	CJEB01000015.1	=	NZ_CJEB01000015.1	Primary Assembly	149402	na
+CJEB01000016	unplaced-scaffold	na	na	CJEB01000016.1	=	NZ_CJEB01000016.1	Primary Assembly	143684	na
+CJEB01000017	unplaced-scaffold	na	na	CJEB01000017.1	=	NZ_CJEB01000017.1	Primary Assembly	133918	na
+CJEB01000018	unplaced-scaffold	na	na	CJEB01000018.1	=	NZ_CJEB01000018.1	Primary Assembly	111834	na
+CJEB01000019	unplaced-scaffold	na	na	CJEB01000019.1	=	NZ_CJEB01000019.1	Primary Assembly	98000	na
+CJEB01000020	unplaced-scaffold	na	na	CJEB01000020.1	=	NZ_CJEB01000020.1	Primary Assembly	81048	na
+CJEB01000021	unplaced-scaffold	na	na	CJEB01000021.1	=	NZ_CJEB01000021.1	Primary Assembly	72553	na
+CJEB01000022	unplaced-scaffold	na	na	CJEB01000022.1	=	NZ_CJEB01000022.1	Primary Assembly	62984	na
+CJEB01000023	unplaced-scaffold	na	na	CJEB01000023.1	=	NZ_CJEB01000023.1	Primary Assembly	60634	na
+CJEB01000024	unplaced-scaffold	na	na	CJEB01000024.1	=	NZ_CJEB01000024.1	Primary Assembly	56237	na
+CJEB01000025	unplaced-scaffold	na	na	CJEB01000025.1	=	NZ_CJEB01000025.1	Primary Assembly	53560	na
+CJEB01000026	unplaced-scaffold	na	na	CJEB01000026.1	=	NZ_CJEB01000026.1	Primary Assembly	49152	na
+CJEB01000027	unplaced-scaffold	na	na	CJEB01000027.1	=	NZ_CJEB01000027.1	Primary Assembly	43890	na
+CJEB01000028	unplaced-scaffold	na	na	CJEB01000028.1	=	NZ_CJEB01000028.1	Primary Assembly	43619	na
+CJEB01000029	unplaced-scaffold	na	na	CJEB01000029.1	=	NZ_CJEB01000029.1	Primary Assembly	43348	na
+CJEB01000030	unplaced-scaffold	na	na	CJEB01000030.1	=	NZ_CJEB01000030.1	Primary Assembly	42768	na
+CJEB01000031	unplaced-scaffold	na	na	CJEB01000031.1	=	NZ_CJEB01000031.1	Primary Assembly	33341	na
+CJEB01000032	unplaced-scaffold	na	na	CJEB01000032.1	=	NZ_CJEB01000032.1	Primary Assembly	31914	na
+CJEB01000033	unplaced-scaffold	na	na	CJEB01000033.1	=	NZ_CJEB01000033.1	Primary Assembly	30948	na
+CJEB01000034	unplaced-scaffold	na	na	CJEB01000034.1	=	NZ_CJEB01000034.1	Primary Assembly	26308	na
+CJEB01000035	unplaced-scaffold	na	na	CJEB01000035.1	=	NZ_CJEB01000035.1	Primary Assembly	22324	na
+CJEB01000036	unplaced-scaffold	na	na	CJEB01000036.1	=	NZ_CJEB01000036.1	Primary Assembly	12375	na
+CJEB01000037	unplaced-scaffold	na	na	CJEB01000037.1	=	NZ_CJEB01000037.1	Primary Assembly	11469	na
+CJEB01000038	unplaced-scaffold	na	na	CJEB01000038.1	=	NZ_CJEB01000038.1	Primary Assembly	8605	na
+CJEB01000039	unplaced-scaffold	na	na	CJEB01000039.1	=	NZ_CJEB01000039.1	Primary Assembly	7896	na
+CJEB01000040	unplaced-scaffold	na	na	CJEB01000040.1	=	NZ_CJEB01000040.1	Primary Assembly	7095	na
+CJEB01000041	unplaced-scaffold	na	na	CJEB01000041.1	=	NZ_CJEB01000041.1	Primary Assembly	6674	na
+CJEB01000042	unplaced-scaffold	na	na	CJEB01000042.1	=	NZ_CJEB01000042.1	Primary Assembly	5781	na
+CJEB01000043	unplaced-scaffold	na	na	CJEB01000043.1	=	NZ_CJEB01000043.1	Primary Assembly	4569	na
+CJEB01000044	unplaced-scaffold	na	na	CJEB01000044.1	=	NZ_CJEB01000044.1	Primary Assembly	4497	na
+CJEB01000045	unplaced-scaffold	na	na	CJEB01000045.1	=	NZ_CJEB01000045.1	Primary Assembly	4138	na
+CJEB01000046	unplaced-scaffold	na	na	CJEB01000046.1	=	NZ_CJEB01000046.1	Primary Assembly	3355	na
+CJEB01000047	unplaced-scaffold	na	na	CJEB01000047.1	=	NZ_CJEB01000047.1	Primary Assembly	3134	na
+CJEB01000048	unplaced-scaffold	na	na	CJEB01000048.1	=	NZ_CJEB01000048.1	Primary Assembly	2720	na
+CJEB01000049	unplaced-scaffold	na	na	CJEB01000049.1	=	NZ_CJEB01000049.1	Primary Assembly	1789	na
+CJEB01000050	unplaced-scaffold	na	na	CJEB01000050.1	=	NZ_CJEB01000050.1	Primary Assembly	1683	na
+CJEB01000051	unplaced-scaffold	na	na	CJEB01000051.1	=	NZ_CJEB01000051.1	Primary Assembly	1636	na
+CJEB01000052	unplaced-scaffold	na	na	CJEB01000052.1	=	NZ_CJEB01000052.1	Primary Assembly	1439	na
+CJEB01000053	unplaced-scaffold	na	na	CJEB01000053.1	=	NZ_CJEB01000053.1	Primary Assembly	1439	na
+CJEB01000054	unplaced-scaffold	na	na	CJEB01000054.1	=	NZ_CJEB01000054.1	Primary Assembly	719	na
+CJEB01000055	unplaced-scaffold	na	na	CJEB01000055.1	=	NZ_CJEB01000055.1	Primary Assembly	668	na
+CJEB01000056	unplaced-scaffold	na	na	CJEB01000056.1	=	NZ_CJEB01000056.1	Primary Assembly	588	na
+CJEB01000057	unplaced-scaffold	na	na	CJEB01000057.1	=	NZ_CJEB01000057.1	Primary Assembly	419	na
+CJEB01000058	unplaced-scaffold	na	na	CJEB01000058.1	=	NZ_CJEB01000058.1	Primary Assembly	373	na

@@ -1,0 +1,147 @@
+# Assembly name:  amd a-plasma
+# Organism name:  Thermoplasmatales archaeon A-plasma (archaea)
+# Taxid:          667135
+# BioSample:      SAMN02981548
+# BioProject:     PRJNA209806
+# Submitter:      University of California Berkeley
+# Date:           2013-08-14
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    ATMF01
+# Assembly method: IDBA_UD v. 1.1.0
+# Sequencing technology: Illumina HiSeq
+# Excluded from RefSeq: derived from metagenome; genus undefined
+# GenBank assembly accession: GCA_000447225.1
+# RefSeq assembly accession: GCF_000447225.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000447235.1	GCF_000447235.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+AMDU1_APLC00001	unplaced-scaffold	na	na	ATMF01000001.1	=	NZ_ATMF01000001.1	Primary Assembly	61478	na
+AMDU1_APLC00002	unplaced-scaffold	na	na	ATMF01000002.1	=	NZ_ATMF01000002.1	Primary Assembly	1969	na
+AMDU1_APLC00003	unplaced-scaffold	na	na	ATMF01000003.1	=	NZ_ATMF01000003.1	Primary Assembly	22568	na
+AMDU1_APLC00004	unplaced-scaffold	na	na	ATMF01000004.1	=	NZ_ATMF01000004.1	Primary Assembly	60722	na
+AMDU1_APLC00005	unplaced-scaffold	na	na	ATMF01000005.1	=	NZ_ATMF01000005.1	Primary Assembly	55471	na
+AMDU1_APLC00006	unplaced-scaffold	na	na	ATMF01000006.1	=	NZ_ATMF01000006.1	Primary Assembly	37654	na
+AMDU1_APLC00007	unplaced-scaffold	na	na	ATMF01000007.1	=	NZ_ATMF01000007.1	Primary Assembly	48456	na
+AMDU1_APLC00008	unplaced-scaffold	na	na	ATMF01000008.1	=	NZ_ATMF01000008.1	Primary Assembly	7015	na
+AMDU1_APLC00009	unplaced-scaffold	na	na	ATMF01000009.1	=	NZ_ATMF01000009.1	Primary Assembly	39815	na
+AMDU1_APLC00010	unplaced-scaffold	na	na	ATMF01000010.1	=	NZ_ATMF01000010.1	Primary Assembly	106143	na
+AMDU1_APLC00011	unplaced-scaffold	na	na	ATMF01000011.1	=	NZ_ATMF01000011.1	Primary Assembly	27822	na
+AMDU1_APLC00012	unplaced-scaffold	na	na	ATMF01000012.1	=	NZ_ATMF01000012.1	Primary Assembly	6148	na
+AMDU1_APLC00013	unplaced-scaffold	na	na	ATMF01000013.1	=	NZ_ATMF01000013.1	Primary Assembly	92026	na
+AMDU1_APLC00014	unplaced-scaffold	na	na	ATMF01000014.1	=	NZ_ATMF01000014.1	Primary Assembly	45538	na
+AMDU1_APLC00015	unplaced-scaffold	na	na	ATMF01000015.1	=	NZ_ATMF01000015.1	Primary Assembly	2784	na
+AMDU1_APLC00016	unplaced-scaffold	na	na	ATMF01000016.1	=	NZ_ATMF01000016.1	Primary Assembly	20450	na
+AMDU1_APLC00017	unplaced-scaffold	na	na	ATMF01000017.1	=	NZ_ATMF01000017.1	Primary Assembly	72519	na
+AMDU1_APLC00018	unplaced-scaffold	na	na	ATMF01000018.1	=	NZ_ATMF01000018.1	Primary Assembly	16306	na
+AMDU1_APLC00019	unplaced-scaffold	na	na	ATMF01000019.1	=	NZ_ATMF01000019.1	Primary Assembly	2812	na
+AMDU1_APLC00020	unplaced-scaffold	na	na	ATMF01000020.1	=	NZ_ATMF01000020.1	Primary Assembly	74576	na
+AMDU1_APLC00021	unplaced-scaffold	na	na	ATMF01000021.1	=	NZ_ATMF01000021.1	Primary Assembly	46831	na
+AMDU1_APLC00022	unplaced-scaffold	na	na	ATMF01000022.1	=	NZ_ATMF01000022.1	Primary Assembly	3732	na
+AMDU1_APLC00023	unplaced-scaffold	na	na	ATMF01000023.1	=	NZ_ATMF01000023.1	Primary Assembly	5453	na
+AMDU1_APLC00024	unplaced-scaffold	na	na	ATMF01000024.1	=	NZ_ATMF01000024.1	Primary Assembly	68050	na
+AMDU1_APLC00025	unplaced-scaffold	na	na	ATMF01000025.1	=	NZ_ATMF01000025.1	Primary Assembly	8286	na
+AMDU1_APLC00026	unplaced-scaffold	na	na	ATMF01000026.1	=	NZ_ATMF01000026.1	Primary Assembly	6864	na
+AMDU1_APLC00027	unplaced-scaffold	na	na	ATMF01000027.1	=	NZ_ATMF01000027.1	Primary Assembly	8046	na
+AMDU1_APLC00028	unplaced-scaffold	na	na	ATMF01000028.1	=	NZ_ATMF01000028.1	Primary Assembly	1884	na
+AMDU1_APLC00029	unplaced-scaffold	na	na	ATMF01000029.1	=	NZ_ATMF01000029.1	Primary Assembly	78888	na
+AMDU1_APLC00030	unplaced-scaffold	na	na	ATMF01000030.1	=	NZ_ATMF01000030.1	Primary Assembly	30100	na
+AMDU1_APLC00031	unplaced-scaffold	na	na	ATMF01000031.1	=	NZ_ATMF01000031.1	Primary Assembly	48580	na
+AMDU1_APLC00032	unplaced-scaffold	na	na	ATMF01000032.1	=	NZ_ATMF01000032.1	Primary Assembly	37969	na
+AMDU1_APLC00033	unplaced-scaffold	na	na	ATMF01000033.1	=	NZ_ATMF01000033.1	Primary Assembly	26464	na
+AMDU1_APLC00034	unplaced-scaffold	na	na	ATMF01000034.1	=	NZ_ATMF01000034.1	Primary Assembly	1443	na
+AMDU1_APLC00035	unplaced-scaffold	na	na	ATMF01000035.1	=	NZ_ATMF01000035.1	Primary Assembly	7117	na
+AMDU1_APLC00036	unplaced-scaffold	na	na	ATMF01000036.1	=	NZ_ATMF01000036.1	Primary Assembly	12981	na
+AMDU1_APLC00037	unplaced-scaffold	na	na	ATMF01000037.1	=	NZ_ATMF01000037.1	Primary Assembly	16088	na
+AMDU1_APLC00038	unplaced-scaffold	na	na	ATMF01000038.1	=	NZ_ATMF01000038.1	Primary Assembly	24009	na
+AMDU1_APLC00039	unplaced-scaffold	na	na	ATMF01000039.1	=	NZ_ATMF01000039.1	Primary Assembly	31291	na
+AMDU1_APLC00040	unplaced-scaffold	na	na	ATMF01000040.1	=	NZ_ATMF01000040.1	Primary Assembly	1924	na
+AMDU1_APLC00041	unplaced-scaffold	na	na	ATMF01000041.1	=	NZ_ATMF01000041.1	Primary Assembly	3639	na
+AMDU1_APLC00042	unplaced-scaffold	na	na	ATMF01000042.1	=	NZ_ATMF01000042.1	Primary Assembly	2088	na
+AMDU1_APLC00043	unplaced-scaffold	na	na	ATMF01000043.1	=	NZ_ATMF01000043.1	Primary Assembly	41393	na
+AMDU1_APLC00044	unplaced-scaffold	na	na	ATMF01000044.1	=	NZ_ATMF01000044.1	Primary Assembly	57876	na
+AMDU1_APLC00045	unplaced-scaffold	na	na	ATMF01000045.1	=	NZ_ATMF01000045.1	Primary Assembly	4695	na
+AMDU1_APLC00046	unplaced-scaffold	na	na	ATMF01000046.1	=	NZ_ATMF01000046.1	Primary Assembly	52054	na
+AMDU1_APLC00047	unplaced-scaffold	na	na	ATMF01000047.1	=	NZ_ATMF01000047.1	Primary Assembly	18475	na
+AMDU1_APLC00048	unplaced-scaffold	na	na	ATMF01000048.1	=	NZ_ATMF01000048.1	Primary Assembly	7210	na
+AMDU1_APLC00049	unplaced-scaffold	na	na	ATMF01000049.1	=	NZ_ATMF01000049.1	Primary Assembly	2419	na
+AMDU1_APLC00050	unplaced-scaffold	na	na	ATMF01000050.1	=	NZ_ATMF01000050.1	Primary Assembly	2053	na
+AMDU1_APLC00051	unplaced-scaffold	na	na	ATMF01000051.1	=	NZ_ATMF01000051.1	Primary Assembly	16546	na
+AMDU1_APLC00052	unplaced-scaffold	na	na	ATMF01000052.1	=	NZ_ATMF01000052.1	Primary Assembly	22488	na
+AMDU1_APLC00053	unplaced-scaffold	na	na	ATMF01000053.1	=	NZ_ATMF01000053.1	Primary Assembly	3577	na
+AMDU1_APLC00054	unplaced-scaffold	na	na	ATMF01000054.1	=	NZ_ATMF01000054.1	Primary Assembly	1174	na
+AMDU1_APLC00055	unplaced-scaffold	na	na	ATMF01000055.1	=	NZ_ATMF01000055.1	Primary Assembly	10124	na
+AMDU1_APLC00056	unplaced-scaffold	na	na	ATMF01000056.1	=	NZ_ATMF01000056.1	Primary Assembly	2935	na
+AMDU1_APLC00057	unplaced-scaffold	na	na	ATMF01000057.1	=	NZ_ATMF01000057.1	Primary Assembly	78255	na
+AMDU1_APLC00058	unplaced-scaffold	na	na	ATMF01000058.1	=	NZ_ATMF01000058.1	Primary Assembly	33419	na
+AMDU1_APLC00059	unplaced-scaffold	na	na	ATMF01000059.1	=	NZ_ATMF01000059.1	Primary Assembly	3297	na
+AMDU1_APLC00060	unplaced-scaffold	na	na	ATMF01000060.1	=	NZ_ATMF01000060.1	Primary Assembly	4874	na
+AMDU1_APLC00061	unplaced-scaffold	na	na	ATMF01000061.1	=	NZ_ATMF01000061.1	Primary Assembly	10996	na
+AMDU1_APLC00062	unplaced-scaffold	na	na	ATMF01000062.1	=	NZ_ATMF01000062.1	Primary Assembly	21932	na
+AMDU1_APLC00063	unplaced-scaffold	na	na	ATMF01000063.1	=	NZ_ATMF01000063.1	Primary Assembly	1576	na
+AMDU1_APLC00064	unplaced-scaffold	na	na	ATMF01000064.1	=	NZ_ATMF01000064.1	Primary Assembly	13466	na
+AMDU1_APLC00065	unplaced-scaffold	na	na	ATMF01000065.1	=	NZ_ATMF01000065.1	Primary Assembly	7021	na
+AMDU1_APLC00066	unplaced-scaffold	na	na	ATMF01000066.1	=	NZ_ATMF01000066.1	Primary Assembly	2051	na
+AMDU1_APLC00067	unplaced-scaffold	na	na	ATMF01000067.1	=	NZ_ATMF01000067.1	Primary Assembly	5208	na
+AMDU1_APLC00068	unplaced-scaffold	na	na	ATMF01000068.1	=	NZ_ATMF01000068.1	Primary Assembly	4838	na
+AMDU1_APLC00069	unplaced-scaffold	na	na	ATMF01000069.1	=	NZ_ATMF01000069.1	Primary Assembly	15259	na
+AMDU1_APLC00070	unplaced-scaffold	na	na	ATMF01000070.1	=	NZ_ATMF01000070.1	Primary Assembly	16987	na
+AMDU1_APLC00071	unplaced-scaffold	na	na	ATMF01000071.1	=	NZ_ATMF01000071.1	Primary Assembly	1928	na
+AMDU1_APLC00072	unplaced-scaffold	na	na	ATMF01000072.1	=	NZ_ATMF01000072.1	Primary Assembly	4248	na
+AMDU1_APLC00073	unplaced-scaffold	na	na	ATMF01000073.1	=	NZ_ATMF01000073.1	Primary Assembly	7976	na
+AMDU1_APLC00074	unplaced-scaffold	na	na	ATMF01000074.1	=	NZ_ATMF01000074.1	Primary Assembly	3858	na
+AMDU1_APLC00075	unplaced-scaffold	na	na	ATMF01000075.1	=	NZ_ATMF01000075.1	Primary Assembly	2751	na
+AMDU1_APLC00076	unplaced-scaffold	na	na	ATMF01000076.1	=	NZ_ATMF01000076.1	Primary Assembly	4704	na
+AMDU1_APLC00077	unplaced-scaffold	na	na	ATMF01000077.1	=	NZ_ATMF01000077.1	Primary Assembly	5984	na
+AMDU1_APLC00078	unplaced-scaffold	na	na	ATMF01000078.1	=	NZ_ATMF01000078.1	Primary Assembly	8331	na
+AMDU1_APLC00079	unplaced-scaffold	na	na	ATMF01000079.1	=	NZ_ATMF01000079.1	Primary Assembly	2369	na
+AMDU1_APLC00080	unplaced-scaffold	na	na	ATMF01000080.1	=	NZ_ATMF01000080.1	Primary Assembly	19078	na
+AMDU1_APLC00081	unplaced-scaffold	na	na	ATMF01000081.1	=	NZ_ATMF01000081.1	Primary Assembly	4613	na
+AMDU1_APLC00082	unplaced-scaffold	na	na	ATMF01000082.1	=	NZ_ATMF01000082.1	Primary Assembly	34859	na
+AMDU1_APLC00083	unplaced-scaffold	na	na	ATMF01000083.1	=	NZ_ATMF01000083.1	Primary Assembly	1919	na
+AMDU1_APLC00084	unplaced-scaffold	na	na	ATMF01000084.1	=	NZ_ATMF01000084.1	Primary Assembly	2115	na
+AMDU1_APLC00085	unplaced-scaffold	na	na	ATMF01000085.1	=	NZ_ATMF01000085.1	Primary Assembly	3208	na
+AMDU1_APLC00086	unplaced-scaffold	na	na	ATMF01000086.1	=	NZ_ATMF01000086.1	Primary Assembly	1763	na
+AMDU1_APLC00087	unplaced-scaffold	na	na	ATMF01000087.1	=	NZ_ATMF01000087.1	Primary Assembly	6492	na
+AMDU1_APLC00088	unplaced-scaffold	na	na	ATMF01000088.1	=	NZ_ATMF01000088.1	Primary Assembly	23808	na
+AMDU1_APLC00089	unplaced-scaffold	na	na	ATMF01000089.1	=	NZ_ATMF01000089.1	Primary Assembly	5026	na
+AMDU1_APLC00090	unplaced-scaffold	na	na	ATMF01000090.1	=	NZ_ATMF01000090.1	Primary Assembly	5389	na
+AMDU1_APLC00091	unplaced-scaffold	na	na	ATMF01000091.1	=	NZ_ATMF01000091.1	Primary Assembly	3997	na
+AMDU1_APLC00092	unplaced-scaffold	na	na	ATMF01000092.1	=	NZ_ATMF01000092.1	Primary Assembly	1534	na
+AMDU1_APLC00093	unplaced-scaffold	na	na	ATMF01000093.1	=	NZ_ATMF01000093.1	Primary Assembly	10479	na
+AMDU1_APLC00094	unplaced-scaffold	na	na	ATMF01000094.1	=	NZ_ATMF01000094.1	Primary Assembly	1691	na
+AMDU1_APLC00095	unplaced-scaffold	na	na	ATMF01000095.1	=	NZ_ATMF01000095.1	Primary Assembly	4036	na
+AMDU1_APLC00096	unplaced-scaffold	na	na	ATMF01000096.1	=	NZ_ATMF01000096.1	Primary Assembly	2321	na
+AMDU1_APLC00097	unplaced-scaffold	na	na	ATMF01000097.1	=	NZ_ATMF01000097.1	Primary Assembly	2660	na
+AMDU1_APLC00098	unplaced-scaffold	na	na	ATMF01000098.1	=	NZ_ATMF01000098.1	Primary Assembly	6228	na
+AMDU1_APLC00099	unplaced-scaffold	na	na	ATMF01000099.1	=	NZ_ATMF01000099.1	Primary Assembly	15166	na
+AMDU1_APLC00100	unplaced-scaffold	na	na	ATMF01000100.1	=	NZ_ATMF01000100.1	Primary Assembly	2980	na
+AMDU1_APLC00101	unplaced-scaffold	na	na	ATMF01000101.1	=	NZ_ATMF01000101.1	Primary Assembly	1986	na
+AMDU1_APLC00102	unplaced-scaffold	na	na	ATMF01000102.1	=	NZ_ATMF01000102.1	Primary Assembly	5340	na
+AMDU1_APLC00103	unplaced-scaffold	na	na	ATMF01000103.1	=	NZ_ATMF01000103.1	Primary Assembly	1544	na
+AMDU1_APLC00104	unplaced-scaffold	na	na	ATMF01000104.1	=	NZ_ATMF01000104.1	Primary Assembly	3286	na
+AMDU1_APLC00105	unplaced-scaffold	na	na	ATMF01000105.1	=	NZ_ATMF01000105.1	Primary Assembly	7939	na
+AMDU1_APLC00106	unplaced-scaffold	na	na	ATMF01000106.1	=	NZ_ATMF01000106.1	Primary Assembly	2898	na
+AMDU1_APLC00107	unplaced-scaffold	na	na	ATMF01000107.1	=	NZ_ATMF01000107.1	Primary Assembly	1521	na
+AMDU1_APLC00108	unplaced-scaffold	na	na	ATMF01000108.1	=	NZ_ATMF01000108.1	Primary Assembly	4904	na
+AMDU1_APLC00109	unplaced-scaffold	na	na	ATMF01000109.1	=	NZ_ATMF01000109.1	Primary Assembly	2904	na
+AMDU1_APLC00110	unplaced-scaffold	na	na	ATMF01000110.1	=	NZ_ATMF01000110.1	Primary Assembly	1608	na
+AMDU1_APLC00111	unplaced-scaffold	na	na	ATMF01000111.1	=	NZ_ATMF01000111.1	Primary Assembly	1787	na
+AMDU1_APLC00112	unplaced-scaffold	na	na	ATMF01000112.1	=	NZ_ATMF01000112.1	Primary Assembly	2370	na
+AMDU1_APLC00113	unplaced-scaffold	na	na	ATMF01000113.1	=	NZ_ATMF01000113.1	Primary Assembly	1500	na
+AMDU1_APLC00114	unplaced-scaffold	na	na	ATMF01000114.1	=	NZ_ATMF01000114.1	Primary Assembly	1479	na
+AMDU1_APLC00115	unplaced-scaffold	na	na	ATMF01000115.1	=	NZ_ATMF01000115.1	Primary Assembly	3714	na
+AMDU1_APLC00116	unplaced-scaffold	na	na	ATMF01000116.1	=	NZ_ATMF01000116.1	Primary Assembly	2883	na
+AMDU1_APLC00117	unplaced-scaffold	na	na	ATMF01000117.1	=	NZ_ATMF01000117.1	Primary Assembly	2710	na
+AMDU1_APLC00118	unplaced-scaffold	na	na	ATMF01000118.1	=	NZ_ATMF01000118.1	Primary Assembly	1523	na

@@ -1,0 +1,121 @@
+# Assembly name:  ASM1871985v1
+# Organism name:  Lactobacillus delbrueckii subsp. bulgaricus (firmicutes)
+# Infraspecific name:  strain=WMGA47-6
+# Taxid:          1585
+# BioSample:      SAMN05915578
+# BioProject:     PRJNA348770
+# Submitter:      Inner Mongolia Agricultural University
+# Date:           2021-06-04
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    MROB01
+# Assembly method: SOAPdenovo v. 2.04
+# Expected final version: no
+# Genome coverage: 115.8x
+# Sequencing technology: Illumina Hiseq 4000
+# Excluded from RefSeq: from large multi-isolate project
+# GenBank assembly accession: GCA_018719855.1
+# RefSeq assembly accession: GCF_018719855.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_018719865.1	GCF_018719865.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+IMAU20257_Scaffold1	unplaced-scaffold	na	na	MU237260.1	=	NZ_MU237260.1	Primary Assembly	414230	na
+IMAU20257_Scaffold2	unplaced-scaffold	na	na	MU237261.1	=	NZ_MU237261.1	Primary Assembly	200267	na
+IMAU20257_Scaffold3	unplaced-scaffold	na	na	MU237262.1	=	NZ_MU237262.1	Primary Assembly	155328	na
+IMAU20257_Scaffold4	unplaced-scaffold	na	na	MU237263.1	=	NZ_MU237263.1	Primary Assembly	101712	na
+IMAU20257_Scaffold5	unplaced-scaffold	na	na	MU237264.1	=	NZ_MU237264.1	Primary Assembly	89537	na
+IMAU20257_Scaffold6	unplaced-scaffold	na	na	MU237265.1	=	NZ_MU237265.1	Primary Assembly	52662	na
+IMAU20257_Scaffold7	unplaced-scaffold	na	na	MU237266.1	=	NZ_MU237266.1	Primary Assembly	48402	na
+IMAU20257_Scaffold8	unplaced-scaffold	na	na	MU237267.1	=	NZ_MU237267.1	Primary Assembly	41827	na
+IMAU20257_Scaffold9	unplaced-scaffold	na	na	MU237268.1	=	NZ_MU237268.1	Primary Assembly	37999	na
+IMAU20257_Scaffold10	unplaced-scaffold	na	na	MU237269.1	=	NZ_MU237269.1	Primary Assembly	36492	na
+IMAU20257_Scaffold11	unplaced-scaffold	na	na	MU237270.1	=	NZ_MU237270.1	Primary Assembly	35736	na
+IMAU20257_Scaffold12	unplaced-scaffold	na	na	MU237271.1	=	NZ_MU237271.1	Primary Assembly	31282	na
+IMAU20257_Scaffold13	unplaced-scaffold	na	na	MU237272.1	=	NZ_MU237272.1	Primary Assembly	30171	na
+IMAU20257_Scaffold14	unplaced-scaffold	na	na	MU237273.1	=	NZ_MU237273.1	Primary Assembly	29010	na
+IMAU20257_Scaffold15	unplaced-scaffold	na	na	MU237274.1	=	NZ_MU237274.1	Primary Assembly	28343	na
+IMAU20257_Scaffold16	unplaced-scaffold	na	na	MU237275.1	=	NZ_MU237275.1	Primary Assembly	26945	na
+IMAU20257_Scaffold17	unplaced-scaffold	na	na	MU237276.1	=	NZ_MU237276.1	Primary Assembly	26588	na
+IMAU20257_Scaffold18	unplaced-scaffold	na	na	MU237277.1	=	NZ_MU237277.1	Primary Assembly	25294	na
+IMAU20257_Scaffold19	unplaced-scaffold	na	na	MU237278.1	=	NZ_MU237278.1	Primary Assembly	23384	na
+IMAU20257_Scaffold20	unplaced-scaffold	na	na	MU237279.1	=	NZ_MU237279.1	Primary Assembly	23191	na
+IMAU20257_Scaffold21	unplaced-scaffold	na	na	MU237280.1	=	NZ_MU237280.1	Primary Assembly	21782	na
+IMAU20257_Scaffold22	unplaced-scaffold	na	na	MU237281.1	=	NZ_MU237281.1	Primary Assembly	21327	na
+IMAU20257_Scaffold23	unplaced-scaffold	na	na	MU237282.1	=	NZ_MU237282.1	Primary Assembly	21128	na
+IMAU20257_Scaffold24	unplaced-scaffold	na	na	MU237283.1	=	NZ_MU237283.1	Primary Assembly	20357	na
+IMAU20257_Scaffold25	unplaced-scaffold	na	na	MU237284.1	=	NZ_MU237284.1	Primary Assembly	18763	na
+IMAU20257_Scaffold26	unplaced-scaffold	na	na	MU237285.1	=	NZ_MU237285.1	Primary Assembly	16477	na
+IMAU20257_Scaffold27	unplaced-scaffold	na	na	MU237286.1	=	NZ_MU237286.1	Primary Assembly	14679	na
+IMAU20257_Scaffold28	unplaced-scaffold	na	na	MU237287.1	=	NZ_MU237287.1	Primary Assembly	14347	na
+IMAU20257_Scaffold29	unplaced-scaffold	na	na	MU237288.1	=	NZ_MU237288.1	Primary Assembly	14130	na
+IMAU20257_Scaffold30	unplaced-scaffold	na	na	MU237289.1	=	NZ_MU237289.1	Primary Assembly	9883	na
+IMAU20257_Scaffold31	unplaced-scaffold	na	na	MU237290.1	=	NZ_MU237290.1	Primary Assembly	9825	na
+IMAU20257_Scaffold32	unplaced-scaffold	na	na	MU237291.1	=	NZ_MU237291.1	Primary Assembly	9280	na
+IMAU20257_Scaffold33	unplaced-scaffold	na	na	MU237292.1	=	NZ_MU237292.1	Primary Assembly	8964	na
+IMAU20257_Scaffold34	unplaced-scaffold	na	na	MU237293.1	=	NZ_MU237293.1	Primary Assembly	8891	na
+IMAU20257_Scaffold35	unplaced-scaffold	na	na	MU237294.1	=	NZ_MU237294.1	Primary Assembly	7921	na
+IMAU20257_Scaffold36	unplaced-scaffold	na	na	MU237295.1	=	NZ_MU237295.1	Primary Assembly	5540	na
+IMAU20257_Scaffold37	unplaced-scaffold	na	na	MU237296.1	=	NZ_MU237296.1	Primary Assembly	5488	na
+IMAU20257_Scaffold38	unplaced-scaffold	na	na	MU237297.1	=	NZ_MU237297.1	Primary Assembly	5254	na
+IMAU20257_Scaffold39	unplaced-scaffold	na	na	MU237298.1	=	NZ_MU237298.1	Primary Assembly	4919	na
+IMAU20257_Scaffold40	unplaced-scaffold	na	na	MU237299.1	=	NZ_MU237299.1	Primary Assembly	3586	na
+IMAU20257_Scaffold41	unplaced-scaffold	na	na	MU237300.1	=	NZ_MU237300.1	Primary Assembly	3545	na
+IMAU20257_Scaffold42	unplaced-scaffold	na	na	MU237301.1	=	NZ_MU237301.1	Primary Assembly	2781	na
+IMAU20257_Scaffold43	unplaced-scaffold	na	na	MU237302.1	=	NZ_MU237302.1	Primary Assembly	1524	na
+IMAU20257_Scaffold44	unplaced-scaffold	na	na	MU237303.1	=	NZ_MU237303.1	Primary Assembly	1461	na
+IMAU20257_Scaffold45	unplaced-scaffold	na	na	MU237304.1	=	NZ_MU237304.1	Primary Assembly	1456	na
+IMAU20257_Scaffold46	unplaced-scaffold	na	na	MU237305.1	=	NZ_MU237305.1	Primary Assembly	1187	na
+IMAU20257_Scaffold47	unplaced-scaffold	na	na	MU237306.1	=	NZ_MU237306.1	Primary Assembly	1085	na
+IMAU20257_Scaffold48	unplaced-scaffold	na	na	MU237307.1	=	NZ_MU237307.1	Primary Assembly	1033	na
+IMAU20257_Scaffold49	unplaced-scaffold	na	na	MU237308.1	=	NZ_MU237308.1	Primary Assembly	984	na
+IMAU20257_Scaffold50	unplaced-scaffold	na	na	MU237309.1	=	NZ_MU237309.1	Primary Assembly	786	na
+IMAU20257_Scaffold51	unplaced-scaffold	na	na	MU237310.1	=	NZ_MU237310.1	Primary Assembly	722	na
+IMAU20257_Scaffold52	unplaced-scaffold	na	na	MU237311.1	=	NZ_MU237311.1	Primary Assembly	589	na
+IMAU20257_Scaffold53	unplaced-scaffold	na	na	MU237312.1	=	NZ_MU237312.1	Primary Assembly	554	na
+IMAU20257_Scaffold54	unplaced-scaffold	na	na	MU237313.1	=	NZ_MU237313.1	Primary Assembly	520	na
+IMAU20257_Scaffold55	unplaced-scaffold	na	na	MU237314.1	=	NZ_MU237314.1	Primary Assembly	456	na
+IMAU20257_Scaffold56	unplaced-scaffold	na	na	MU237315.1	=	NZ_MU237315.1	Primary Assembly	450	na
+IMAU20257_Scaffold57	unplaced-scaffold	na	na	MU237316.1	=	NZ_MU237316.1	Primary Assembly	264	na
+IMAU20257_Scaffold58	unplaced-scaffold	na	na	MU237317.1	=	NZ_MU237317.1	Primary Assembly	423	na
+IMAU20257_Scaffold59	unplaced-scaffold	na	na	MU237318.1	=	NZ_MU237318.1	Primary Assembly	337	na
+IMAU20257_Scaffold60	unplaced-scaffold	na	na	MU237319.1	=	NZ_MU237319.1	Primary Assembly	310	na
+IMAU20257_Scaffold61	unplaced-scaffold	na	na	MU237320.1	=	NZ_MU237320.1	Primary Assembly	307	na
+IMAU20257_Scaffold62	unplaced-scaffold	na	na	MU237321.1	=	NZ_MU237321.1	Primary Assembly	305	na
+IMAU20257_Scaffold63	unplaced-scaffold	na	na	MU237322.1	=	NZ_MU237322.1	Primary Assembly	296	na
+IMAU20257_Scaffold64	unplaced-scaffold	na	na	MU237323.1	=	NZ_MU237323.1	Primary Assembly	279	na
+IMAU20257_Scaffold65	unplaced-scaffold	na	na	MU237324.1	=	NZ_MU237324.1	Primary Assembly	273	na
+IMAU20257_Scaffold66	unplaced-scaffold	na	na	MU237325.1	=	NZ_MU237325.1	Primary Assembly	273	na
+IMAU20257_Scaffold67	unplaced-scaffold	na	na	MU237326.1	=	NZ_MU237326.1	Primary Assembly	272	na
+IMAU20257_Scaffold68	unplaced-scaffold	na	na	MU237327.1	=	NZ_MU237327.1	Primary Assembly	269	na
+IMAU20257_Scaffold69	unplaced-scaffold	na	na	MU237328.1	=	NZ_MU237328.1	Primary Assembly	259	na
+IMAU20257_Scaffold70	unplaced-scaffold	na	na	MU237329.1	=	NZ_MU237329.1	Primary Assembly	255	na
+IMAU20257_Scaffold71	unplaced-scaffold	na	na	MU237330.1	=	NZ_MU237330.1	Primary Assembly	243	na
+IMAU20257_Scaffold72	unplaced-scaffold	na	na	MU237331.1	=	NZ_MU237331.1	Primary Assembly	241	na
+IMAU20257_Scaffold73	unplaced-scaffold	na	na	MU237332.1	=	NZ_MU237332.1	Primary Assembly	241	na
+IMAU20257_Scaffold74	unplaced-scaffold	na	na	MU237333.1	=	NZ_MU237333.1	Primary Assembly	238	na
+IMAU20257_Scaffold75	unplaced-scaffold	na	na	MU237334.1	=	NZ_MU237334.1	Primary Assembly	238	na
+IMAU20257_Scaffold76	unplaced-scaffold	na	na	MU237335.1	=	NZ_MU237335.1	Primary Assembly	234	na
+IMAU20257_Scaffold77	unplaced-scaffold	na	na	MU237336.1	=	NZ_MU237336.1	Primary Assembly	233	na
+IMAU20257_Scaffold79	unplaced-scaffold	na	na	MU237337.1	=	NZ_MU237337.1	Primary Assembly	229	na
+IMAU20257_Scaffold80	unplaced-scaffold	na	na	MU237338.1	=	NZ_MU237338.1	Primary Assembly	228	na
+IMAU20257_Scaffold81	unplaced-scaffold	na	na	MU237339.1	=	NZ_MU237339.1	Primary Assembly	228	na
+IMAU20257_Scaffold82	unplaced-scaffold	na	na	MU237340.1	=	NZ_MU237340.1	Primary Assembly	227	na
+IMAU20257_Scaffold83	unplaced-scaffold	na	na	MU237341.1	=	NZ_MU237341.1	Primary Assembly	227	na
+IMAU20257_Scaffold84	unplaced-scaffold	na	na	MU237342.1	=	NZ_MU237342.1	Primary Assembly	226	na
+IMAU20257_Scaffold85	unplaced-scaffold	na	na	MU237343.1	=	NZ_MU237343.1	Primary Assembly	226	na
+IMAU20257_Scaffold86	unplaced-scaffold	na	na	MU237344.1	=	NZ_MU237344.1	Primary Assembly	222	na
+IMAU20257_Scaffold87	unplaced-scaffold	na	na	MU237345.1	=	NZ_MU237345.1	Primary Assembly	219	na
+IMAU20257_Scaffold88	unplaced-scaffold	na	na	MU237346.1	=	NZ_MU237346.1	Primary Assembly	217	na
+IMAU20257_Scaffold89	unplaced-scaffold	na	na	MU237347.1	=	NZ_MU237347.1	Primary Assembly	216	na
+IMAU20257_Scaffold91	unplaced-scaffold	na	na	MU237348.1	=	NZ_MU237348.1	Primary Assembly	209	na

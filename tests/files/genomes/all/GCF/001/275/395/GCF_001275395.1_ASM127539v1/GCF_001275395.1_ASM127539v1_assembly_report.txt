@@ -1,0 +1,147 @@
+# Assembly name:  ASM127539v1
+# Organism name:  Hapalosiphon sp. MRB220 (cyanobacteria)
+# Infraspecific name:  strain=MRB220
+# Taxid:          1704290
+# BioSample:      SAMN04002543
+# BioProject:     PRJNA293405
+# Submitter:      Singapore-MIT Alliance for Research and Technology
+# Date:           2015-08-27
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    LIRN01
+# Assembly method: CLC Genomics Workbench v. 7
+# Expected final version: Yes
+# Sequencing technology: Illumina HiSeq
+# Excluded from RefSeq: contaminated
+# Assembly anomaly: contaminated
+# GenBank assembly accession: GCA_001275395.1
+# RefSeq assembly accession: GCF_001275395.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_001275425.1	GCF_001275425.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig_1	unplaced-scaffold	na	na	LIRN01000001.1	=	NZ_LIRN01000001.1	Primary Assembly	145232	na
+contig_10	unplaced-scaffold	na	na	LIRN01000002.1	=	NZ_LIRN01000002.1	Primary Assembly	68112	na
+contig_100	unplaced-scaffold	na	na	LIRN01000003.1	=	NZ_LIRN01000003.1	Primary Assembly	22907	na
+contig_102	unplaced-scaffold	na	na	LIRN01000004.1	=	NZ_LIRN01000004.1	Primary Assembly	224059	na
+contig_103	unplaced-scaffold	na	na	LIRN01000005.1	=	NZ_LIRN01000005.1	Primary Assembly	10653	na
+contig_105	unplaced-scaffold	na	na	LIRN01000006.1	=	NZ_LIRN01000006.1	Primary Assembly	21394	na
+contig_106	unplaced-scaffold	na	na	LIRN01000007.1	=	NZ_LIRN01000007.1	Primary Assembly	51981	na
+contig_107	unplaced-scaffold	na	na	LIRN01000008.1	=	NZ_LIRN01000008.1	Primary Assembly	48905	na
+contig_108	unplaced-scaffold	na	na	LIRN01000009.1	=	NZ_LIRN01000009.1	Primary Assembly	160697	na
+contig_109	unplaced-scaffold	na	na	LIRN01000010.1	=	NZ_LIRN01000010.1	Primary Assembly	49849	na
+contig_11	unplaced-scaffold	na	na	LIRN01000011.1	=	NZ_LIRN01000011.1	Primary Assembly	91582	na
+contig_110	unplaced-scaffold	na	na	LIRN01000012.1	=	NZ_LIRN01000012.1	Primary Assembly	49709	na
+contig_112	unplaced-scaffold	na	na	LIRN01000013.1	=	NZ_LIRN01000013.1	Primary Assembly	72120	na
+contig_113	unplaced-scaffold	na	na	LIRN01000014.1	=	NZ_LIRN01000014.1	Primary Assembly	57710	na
+contig_114	unplaced-scaffold	na	na	LIRN01000015.1	=	NZ_LIRN01000015.1	Primary Assembly	61656	na
+contig_115	unplaced-scaffold	na	na	LIRN01000016.1	=	NZ_LIRN01000016.1	Primary Assembly	12746	na
+contig_116	unplaced-scaffold	na	na	LIRN01000017.1	=	NZ_LIRN01000017.1	Primary Assembly	11500	na
+contig_12	unplaced-scaffold	na	na	LIRN01000018.1	=	NZ_LIRN01000018.1	Primary Assembly	244786	na
+contig_122	unplaced-scaffold	na	na	LIRN01000019.1	=	NZ_LIRN01000019.1	Primary Assembly	4695	na
+contig_125	unplaced-scaffold	na	na	LIRN01000020.1	=	NZ_LIRN01000020.1	Primary Assembly	30861	na
+contig_126	unplaced-scaffold	na	na	LIRN01000021.1	=	NZ_LIRN01000021.1	Primary Assembly	2906	na
+contig_127	unplaced-scaffold	na	na	LIRN01000022.1	=	NZ_LIRN01000022.1	Primary Assembly	14538	na
+contig_13	unplaced-scaffold	na	na	LIRN01000023.1	=	NZ_LIRN01000023.1	Primary Assembly	477470	na
+contig_130	unplaced-scaffold	na	na	LIRN01000024.1	=	NZ_LIRN01000024.1	Primary Assembly	11333	na
+contig_131	unplaced-scaffold	na	na	LIRN01000025.1	=	NZ_LIRN01000025.1	Primary Assembly	9187	na
+contig_132	unplaced-scaffold	na	na	LIRN01000026.1	=	NZ_LIRN01000026.1	Primary Assembly	52145	na
+contig_133	unplaced-scaffold	na	na	LIRN01000027.1	=	NZ_LIRN01000027.1	Primary Assembly	1293	na
+contig_134	unplaced-scaffold	na	na	LIRN01000028.1	=	NZ_LIRN01000028.1	Primary Assembly	33191	na
+contig_138	unplaced-scaffold	na	na	LIRN01000029.1	=	NZ_LIRN01000029.1	Primary Assembly	32545	na
+contig_139	unplaced-scaffold	na	na	LIRN01000030.1	=	NZ_LIRN01000030.1	Primary Assembly	5879	na
+contig_14	unplaced-scaffold	na	na	LIRN01000031.1	=	NZ_LIRN01000031.1	Primary Assembly	239288	na
+contig_140	unplaced-scaffold	na	na	LIRN01000032.1	=	NZ_LIRN01000032.1	Primary Assembly	2442	na
+contig_142	unplaced-scaffold	na	na	LIRN01000033.1	=	NZ_LIRN01000033.1	Primary Assembly	21473	na
+contig_146	unplaced-scaffold	na	na	LIRN01000034.1	=	NZ_LIRN01000034.1	Primary Assembly	9526	na
+contig_148	unplaced-scaffold	na	na	LIRN01000035.1	=	NZ_LIRN01000035.1	Primary Assembly	2634	na
+contig_149	unplaced-scaffold	na	na	LIRN01000036.1	=	NZ_LIRN01000036.1	Primary Assembly	20337	na
+contig_15	unplaced-scaffold	na	na	LIRN01000037.1	=	NZ_LIRN01000037.1	Primary Assembly	48632	na
+contig_151	unplaced-scaffold	na	na	LIRN01000038.1	=	NZ_LIRN01000038.1	Primary Assembly	2404	na
+contig_157	unplaced-scaffold	na	na	LIRN01000039.1	=	NZ_LIRN01000039.1	Primary Assembly	2826	na
+contig_158	unplaced-scaffold	na	na	LIRN01000040.1	=	NZ_LIRN01000040.1	Primary Assembly	10089	na
+contig_159	unplaced-scaffold	na	na	LIRN01000041.1	=	NZ_LIRN01000041.1	Primary Assembly	7664	na
+contig_16	unplaced-scaffold	na	na	LIRN01000042.1	=	NZ_LIRN01000042.1	Primary Assembly	23654	na
+contig_160	unplaced-scaffold	na	na	LIRN01000043.1	=	NZ_LIRN01000043.1	Primary Assembly	6025	na
+contig_162	unplaced-scaffold	na	na	LIRN01000044.1	=	NZ_LIRN01000044.1	Primary Assembly	21569	na
+contig_164	unplaced-scaffold	na	na	LIRN01000045.1	=	NZ_LIRN01000045.1	Primary Assembly	4058	na
+contig_167	unplaced-scaffold	na	na	LIRN01000046.1	=	NZ_LIRN01000046.1	Primary Assembly	2482	na
+contig_168	unplaced-scaffold	na	na	LIRN01000047.1	=	NZ_LIRN01000047.1	Primary Assembly	8251	na
+contig_17	unplaced-scaffold	na	na	LIRN01000048.1	=	NZ_LIRN01000048.1	Primary Assembly	74119	na
+contig_172	unplaced-scaffold	na	na	LIRN01000049.1	=	NZ_LIRN01000049.1	Primary Assembly	19145	na
+contig_18	unplaced-scaffold	na	na	LIRN01000050.1	=	NZ_LIRN01000050.1	Primary Assembly	79504	na
+contig_181	unplaced-scaffold	na	na	LIRN01000051.1	=	NZ_LIRN01000051.1	Primary Assembly	14683	na
+contig_19	unplaced-scaffold	na	na	LIRN01000052.1	=	NZ_LIRN01000052.1	Primary Assembly	40738	na
+contig_190	unplaced-scaffold	na	na	LIRN01000053.1	=	NZ_LIRN01000053.1	Primary Assembly	4954	na
+contig_191	unplaced-scaffold	na	na	LIRN01000054.1	=	NZ_LIRN01000054.1	Primary Assembly	1489	na
+contig_194	unplaced-scaffold	na	na	LIRN01000055.1	=	NZ_LIRN01000055.1	Primary Assembly	12786	na
+contig_198	unplaced-scaffold	na	na	LIRN01000056.1	=	NZ_LIRN01000056.1	Primary Assembly	12036	na
+contig_2	unplaced-scaffold	na	na	LIRN01000057.1	=	NZ_LIRN01000057.1	Primary Assembly	2726	na
+contig_20	unplaced-scaffold	na	na	LIRN01000058.1	=	NZ_LIRN01000058.1	Primary Assembly	39334	na
+contig_201	unplaced-scaffold	na	na	LIRN01000059.1	=	NZ_LIRN01000059.1	Primary Assembly	1692	na
+contig_206	unplaced-scaffold	na	na	LIRN01000060.1	=	NZ_LIRN01000060.1	Primary Assembly	2087	na
+contig_212	unplaced-scaffold	na	na	LIRN01000061.1	=	NZ_LIRN01000061.1	Primary Assembly	11684	na
+contig_215	unplaced-scaffold	na	na	LIRN01000062.1	=	NZ_LIRN01000062.1	Primary Assembly	2993	na
+contig_23	unplaced-scaffold	na	na	LIRN01000063.1	=	NZ_LIRN01000063.1	Primary Assembly	1449	na
+contig_24	unplaced-scaffold	na	na	LIRN01000064.1	=	NZ_LIRN01000064.1	Primary Assembly	454803	na
+contig_243	unplaced-scaffold	na	na	LIRN01000065.1	=	NZ_LIRN01000065.1	Primary Assembly	1055	na
+contig_247	unplaced-scaffold	na	na	LIRN01000066.1	=	NZ_LIRN01000066.1	Primary Assembly	1582	na
+contig_248	unplaced-scaffold	na	na	LIRN01000067.1	=	NZ_LIRN01000067.1	Primary Assembly	1703	na
+contig_249	unplaced-scaffold	na	na	LIRN01000068.1	=	NZ_LIRN01000068.1	Primary Assembly	1239	na
+contig_25	unplaced-scaffold	na	na	LIRN01000069.1	=	NZ_LIRN01000069.1	Primary Assembly	214461	na
+contig_253	unplaced-scaffold	na	na	LIRN01000070.1	=	NZ_LIRN01000070.1	Primary Assembly	1294	na
+contig_26	unplaced-scaffold	na	na	LIRN01000071.1	=	NZ_LIRN01000071.1	Primary Assembly	268006	na
+contig_27	unplaced-scaffold	na	na	LIRN01000072.1	=	NZ_LIRN01000072.1	Primary Assembly	810851	na
+contig_28	unplaced-scaffold	na	na	LIRN01000073.1	=	NZ_LIRN01000073.1	Primary Assembly	184975	na
+contig_29	unplaced-scaffold	na	na	LIRN01000074.1	=	NZ_LIRN01000074.1	Primary Assembly	120911	na
+contig_3	unplaced-scaffold	na	na	LIRN01000075.1	=	NZ_LIRN01000075.1	Primary Assembly	13239	na
+contig_313	unplaced-scaffold	na	na	LIRN01000076.1	=	NZ_LIRN01000076.1	Primary Assembly	1058	na
+contig_34	unplaced-scaffold	na	na	LIRN01000077.1	=	NZ_LIRN01000077.1	Primary Assembly	200621	na
+contig_35	unplaced-scaffold	na	na	LIRN01000078.1	=	NZ_LIRN01000078.1	Primary Assembly	38554	na
+contig_36	unplaced-scaffold	na	na	LIRN01000079.1	=	NZ_LIRN01000079.1	Primary Assembly	41373	na
+contig_38	unplaced-scaffold	na	na	LIRN01000080.1	=	NZ_LIRN01000080.1	Primary Assembly	138930	na
+contig_39	unplaced-scaffold	na	na	LIRN01000081.1	=	NZ_LIRN01000081.1	Primary Assembly	24685	na
+contig_40	unplaced-scaffold	na	na	LIRN01000082.1	=	NZ_LIRN01000082.1	Primary Assembly	232792	na
+contig_42	unplaced-scaffold	na	na	LIRN01000083.1	=	NZ_LIRN01000083.1	Primary Assembly	138702	na
+contig_44	unplaced-scaffold	na	na	LIRN01000084.1	=	NZ_LIRN01000084.1	Primary Assembly	53336	na
+contig_45	unplaced-scaffold	na	na	LIRN01000085.1	=	NZ_LIRN01000085.1	Primary Assembly	91862	na
+contig_46	unplaced-scaffold	na	na	LIRN01000086.1	=	NZ_LIRN01000086.1	Primary Assembly	25353	na
+contig_47	unplaced-scaffold	na	na	LIRN01000087.1	=	NZ_LIRN01000087.1	Primary Assembly	11215	na
+contig_48	unplaced-scaffold	na	na	LIRN01000088.1	=	NZ_LIRN01000088.1	Primary Assembly	190527	na
+contig_49	unplaced-scaffold	na	na	LIRN01000089.1	=	NZ_LIRN01000089.1	Primary Assembly	54261	na
+contig_5	unplaced-scaffold	na	na	LIRN01000090.1	=	NZ_LIRN01000090.1	Primary Assembly	158734	na
+contig_50	unplaced-scaffold	na	na	LIRN01000091.1	=	NZ_LIRN01000091.1	Primary Assembly	81756	na
+contig_51	unplaced-scaffold	na	na	LIRN01000092.1	=	NZ_LIRN01000092.1	Primary Assembly	9680	na
+contig_56	unplaced-scaffold	na	na	LIRN01000093.1	=	NZ_LIRN01000093.1	Primary Assembly	5968	na
+contig_57	unplaced-scaffold	na	na	LIRN01000094.1	=	NZ_LIRN01000094.1	Primary Assembly	87496	na
+contig_63	unplaced-scaffold	na	na	LIRN01000095.1	=	NZ_LIRN01000095.1	Primary Assembly	46268	na
+contig_65	unplaced-scaffold	na	na	LIRN01000096.1	=	NZ_LIRN01000096.1	Primary Assembly	16367	na
+contig_66	unplaced-scaffold	na	na	LIRN01000097.1	=	NZ_LIRN01000097.1	Primary Assembly	56676	na
+contig_67	unplaced-scaffold	na	na	LIRN01000098.1	=	NZ_LIRN01000098.1	Primary Assembly	47219	na
+contig_68	unplaced-scaffold	na	na	LIRN01000099.1	=	NZ_LIRN01000099.1	Primary Assembly	29282	na
+contig_72	unplaced-scaffold	na	na	LIRN01000100.1	=	NZ_LIRN01000100.1	Primary Assembly	22835	na
+contig_73	unplaced-scaffold	na	na	LIRN01000101.1	=	NZ_LIRN01000101.1	Primary Assembly	60362	na
+contig_74	unplaced-scaffold	na	na	LIRN01000102.1	=	NZ_LIRN01000102.1	Primary Assembly	43430	na
+contig_76	unplaced-scaffold	na	na	LIRN01000103.1	=	NZ_LIRN01000103.1	Primary Assembly	10334	na
+contig_77	unplaced-scaffold	na	na	LIRN01000104.1	=	NZ_LIRN01000104.1	Primary Assembly	19572	na
+contig_79	unplaced-scaffold	na	na	LIRN01000105.1	=	NZ_LIRN01000105.1	Primary Assembly	53509	na
+contig_8	unplaced-scaffold	na	na	LIRN01000106.1	=	NZ_LIRN01000106.1	Primary Assembly	178679	na
+contig_84	unplaced-scaffold	na	na	LIRN01000107.1	=	NZ_LIRN01000107.1	Primary Assembly	10337	na
+contig_85	unplaced-scaffold	na	na	LIRN01000108.1	=	NZ_LIRN01000108.1	Primary Assembly	33121	na
+contig_87	unplaced-scaffold	na	na	LIRN01000109.1	=	NZ_LIRN01000109.1	Primary Assembly	15034	na
+contig_88	unplaced-scaffold	na	na	LIRN01000110.1	=	NZ_LIRN01000110.1	Primary Assembly	2532	na
+contig_91	unplaced-scaffold	na	na	LIRN01000111.1	=	NZ_LIRN01000111.1	Primary Assembly	197048	na
+contig_92	unplaced-scaffold	na	na	LIRN01000112.1	=	NZ_LIRN01000112.1	Primary Assembly	44853	na
+contig_97	unplaced-scaffold	na	na	LIRN01000113.1	=	NZ_LIRN01000113.1	Primary Assembly	29299	na
+contig_98	unplaced-scaffold	na	na	LIRN01000114.1	=	NZ_LIRN01000114.1	Primary Assembly	2351	na
+contig_99	unplaced-scaffold	na	na	LIRN01000115.1	=	NZ_LIRN01000115.1	Primary Assembly	13176	na

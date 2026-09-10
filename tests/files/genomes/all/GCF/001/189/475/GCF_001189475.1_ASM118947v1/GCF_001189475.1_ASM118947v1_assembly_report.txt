@@ -1,0 +1,131 @@
+# Assembly name:  ASM118947v1
+# Organism name:  [Candida] auris (budding yeasts & others)
+# Infraspecific name:  strain=6684
+# Taxid:          498019
+# BioSample:      SAMN03200169
+# BioProject:     PRJNA267757
+# Submitter:      Indian Institute of Science (IISc)
+# Date:           2015-07-30
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    LGST01
+# Assembly method: Newbler v. 2.8; SSPACE-STANDARD v. 3.0
+# Expected final version: yes
+# Genome coverage: 179.0x
+# Sequencing technology: Illumina HiSeq; Illumina MiSeq
+# Excluded from RefSeq: superseded by newer assembly for species
+# GenBank assembly accession: GCA_001189475.1
+# RefSeq assembly accession: GCF_001189475.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_001189485.1	GCF_001189485.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+Scaffold1	unplaced-scaffold	na	na	LGST01000001.1	=	NW_017263931.1	Primary Assembly	26480	na
+Scaffold2	unplaced-scaffold	na	na	LGST01000002.1	=	NW_017263932.1	Primary Assembly	267017	na
+Scaffold3	unplaced-scaffold	na	na	LGST01000003.1	=	NW_017263933.1	Primary Assembly	365080	na
+Scaffold4	unplaced-scaffold	na	na	LGST01000004.1	=	NW_017263934.1	Primary Assembly	339450	na
+Scaffold5	unplaced-scaffold	na	na	LGST01000005.1	=	NW_017263935.1	Primary Assembly	29727	na
+Scaffold6	unplaced-scaffold	na	na	LGST01000006.1	=	NW_017263936.1	Primary Assembly	263247	na
+Scaffold7	unplaced-scaffold	na	na	LGST01000007.1	=	NW_017263937.1	Primary Assembly	133982	na
+Scaffold8	unplaced-scaffold	na	na	LGST01000008.1	=	NW_017263938.1	Primary Assembly	500863	na
+Scaffold9	unplaced-scaffold	na	na	LGST01000009.1	=	NW_017263939.1	Primary Assembly	248153	na
+Scaffold10	unplaced-scaffold	na	na	LGST01000010.1	=	NW_017263940.1	Primary Assembly	2917	na
+Scaffold11	unplaced-scaffold	na	na	LGST01000011.1	=	NW_017263941.1	Primary Assembly	108880	na
+Scaffold12	unplaced-scaffold	na	na	LGST01000012.1	=	NW_017263942.1	Primary Assembly	77813	na
+Scaffold13	unplaced-scaffold	na	na	LGST01000013.1	=	NW_017263943.1	Primary Assembly	128131	na
+Scaffold14	unplaced-scaffold	na	na	LGST01000014.1	=	NW_017263944.1	Primary Assembly	2556	na
+Scaffold15	unplaced-scaffold	na	na	LGST01000015.1	=	NW_017263945.1	Primary Assembly	1235	na
+Scaffold16	unplaced-scaffold	na	na	LGST01000016.1	=	NW_017263946.1	Primary Assembly	753471	na
+Scaffold17	unplaced-scaffold	na	na	LGST01000017.1	=	NW_017263947.1	Primary Assembly	279351	na
+Scaffold18	unplaced-scaffold	na	na	LGST01000018.1	=	NW_017263948.1	Primary Assembly	513308	na
+Scaffold19	unplaced-scaffold	na	na	LGST01000019.1	=	NW_017263949.1	Primary Assembly	253427	na
+Scaffold20	unplaced-scaffold	na	na	LGST01000020.1	=	NW_017263950.1	Primary Assembly	346690	na
+Scaffold21	unplaced-scaffold	na	na	LGST01000021.1	=	NW_017263951.1	Primary Assembly	378605	na
+Scaffold22	unplaced-scaffold	na	na	LGST01000022.1	=	NW_017263952.1	Primary Assembly	190946	na
+Scaffold23	unplaced-scaffold	na	na	LGST01000023.1	=	NW_017263953.1	Primary Assembly	364640	na
+Scaffold24	unplaced-scaffold	na	na	LGST01000024.1	=	NW_017263954.1	Primary Assembly	8666	na
+Scaffold25	unplaced-scaffold	na	na	LGST01000025.1	=	NW_017263955.1	Primary Assembly	260832	na
+Scaffold26	unplaced-scaffold	na	na	LGST01000026.1	=	NW_017263956.1	Primary Assembly	181430	na
+Scaffold27	unplaced-scaffold	na	na	LGST01000027.1	=	NW_017263957.1	Primary Assembly	238590	na
+Scaffold28	unplaced-scaffold	na	na	LGST01000028.1	=	NW_017263958.1	Primary Assembly	19233	na
+Scaffold29	unplaced-scaffold	na	na	LGST01000029.1	=	NW_017263959.1	Primary Assembly	173722	na
+Scaffold30	unplaced-scaffold	na	na	LGST01000030.1	=	NW_017263960.1	Primary Assembly	63074	na
+Scaffold31	unplaced-scaffold	na	na	LGST01000031.1	=	NW_017263961.1	Primary Assembly	552353	na
+Scaffold32	unplaced-scaffold	na	na	LGST01000032.1	=	NW_017263962.1	Primary Assembly	99885	na
+Scaffold33	unplaced-scaffold	na	na	LGST01000033.1	=	NW_017263963.1	Primary Assembly	153938	na
+Scaffold34	unplaced-scaffold	na	na	LGST01000034.1	=	NW_017263964.1	Primary Assembly	196826	na
+Scaffold35	unplaced-scaffold	na	na	LGST01000035.1	=	NW_017263965.1	Primary Assembly	130730	na
+Scaffold36	unplaced-scaffold	na	na	LGST01000036.1	=	NW_017263966.1	Primary Assembly	12177	na
+Scaffold37	unplaced-scaffold	na	na	LGST01000037.1	=	NW_017263967.1	Primary Assembly	224364	na
+Scaffold38	unplaced-scaffold	na	na	LGST01000038.1	=	NW_017263968.1	Primary Assembly	60801	na
+Scaffold39	unplaced-scaffold	na	na	LGST01000039.1	=	NW_017263969.1	Primary Assembly	71032	na
+Scaffold40	unplaced-scaffold	na	na	LGST01000040.1	=	NW_017263970.1	Primary Assembly	510034	na
+Scaffold41	unplaced-scaffold	na	na	LGST01000041.1	=	NW_017263971.1	Primary Assembly	860371	na
+Scaffold42	unplaced-scaffold	na	na	LGST01000042.1	=	NW_017263972.1	Primary Assembly	62671	na
+Scaffold43	unplaced-scaffold	na	na	LGST01000043.1	=	NW_017263973.1	Primary Assembly	312972	na
+Scaffold44	unplaced-scaffold	na	na	LGST01000044.1	=	NW_017263974.1	Primary Assembly	21332	na
+Scaffold45	unplaced-scaffold	na	na	LGST01000045.1	=	NW_017263975.1	Primary Assembly	68706	na
+Scaffold46	unplaced-scaffold	na	na	LGST01000046.1	=	NW_017263976.1	Primary Assembly	70056	na
+Scaffold47	unplaced-scaffold	na	na	LGST01000047.1	=	NW_017263977.1	Primary Assembly	141781	na
+Scaffold48	unplaced-scaffold	na	na	LGST01000048.1	=	NW_017263978.1	Primary Assembly	129969	na
+Scaffold49	unplaced-scaffold	na	na	LGST01000049.1	=	NW_017263979.1	Primary Assembly	27425	na
+Scaffold50	unplaced-scaffold	na	na	LGST01000050.1	=	NW_017263980.1	Primary Assembly	171353	na
+Scaffold51	unplaced-scaffold	na	na	LGST01000051.1	=	NW_017263981.1	Primary Assembly	123788	na
+Scaffold52	unplaced-scaffold	na	na	LGST01000052.1	=	NW_017263982.1	Primary Assembly	115099	na
+Scaffold53	unplaced-scaffold	na	na	LGST01000053.1	=	NW_017263983.1	Primary Assembly	57332	na
+Scaffold54	unplaced-scaffold	na	na	LGST01000054.1	=	NW_017263984.1	Primary Assembly	56946	na
+Scaffold55	unplaced-scaffold	na	na	LGST01000055.1	=	NW_017263985.1	Primary Assembly	108284	na
+Scaffold56	unplaced-scaffold	na	na	LGST01000056.1	=	NW_017263986.1	Primary Assembly	91714	na
+Scaffold57	unplaced-scaffold	na	na	LGST01000057.1	=	NW_017263987.1	Primary Assembly	256008	na
+Scaffold58	unplaced-scaffold	na	na	LGST01000058.1	=	NW_017263988.1	Primary Assembly	95401	na
+Scaffold59	unplaced-scaffold	na	na	LGST01000059.1	=	NW_017263989.1	Primary Assembly	94552	na
+Scaffold60	unplaced-scaffold	na	na	LGST01000060.1	=	NW_017263990.1	Primary Assembly	19101	na
+Scaffold61	unplaced-scaffold	na	na	LGST01000061.1	=	NW_017263991.1	Primary Assembly	65995	na
+Scaffold62	unplaced-scaffold	na	na	LGST01000062.1	=	NW_017263992.1	Primary Assembly	77583	na
+Scaffold63	unplaced-scaffold	na	na	LGST01000063.1	=	NW_017263993.1	Primary Assembly	73995	na
+Scaffold64	unplaced-scaffold	na	na	LGST01000064.1	=	NW_017263994.1	Primary Assembly	138115	na
+Scaffold65	unplaced-scaffold	na	na	LGST01000065.1	=	NW_017263995.1	Primary Assembly	73796	na
+Scaffold66	unplaced-scaffold	na	na	LGST01000066.1	=	NW_017263996.1	Primary Assembly	247943	na
+Scaffold67	unplaced-scaffold	na	na	LGST01000067.1	=	NW_017263997.1	Primary Assembly	68448	na
+Scaffold68	unplaced-scaffold	na	na	LGST01000068.1	=	NW_017263998.1	Primary Assembly	55832	na
+Scaffold69	unplaced-scaffold	na	na	LGST01000069.1	=	NW_017263999.1	Primary Assembly	21437	na
+Scaffold70	unplaced-scaffold	na	na	LGST01000070.1	=	NW_017264000.1	Primary Assembly	28942	na
+Scaffold71	unplaced-scaffold	na	na	LGST01000071.1	=	NW_017264001.1	Primary Assembly	2645	na
+Scaffold72	unplaced-scaffold	na	na	LGST01000072.1	=	NW_017264002.1	Primary Assembly	24129	na
+Scaffold73	unplaced-scaffold	na	na	LGST01000073.1	=	NW_017264003.1	Primary Assembly	34750	na
+Scaffold74	unplaced-scaffold	na	na	LGST01000074.1	=	NW_017264004.1	Primary Assembly	43940	na
+Scaffold75	unplaced-scaffold	na	na	LGST01000075.1	=	NW_017264005.1	Primary Assembly	16034	na
+Scaffold76	unplaced-scaffold	na	na	LGST01000076.1	=	NW_017264006.1	Primary Assembly	13969	na
+Scaffold77	unplaced-scaffold	na	na	LGST01000077.1	=	NW_017264007.1	Primary Assembly	13076	na
+Scaffold78	unplaced-scaffold	na	na	LGST01000078.1	=	NW_017264008.1	Primary Assembly	9745	na
+Scaffold79	unplaced-scaffold	na	na	LGST01000079.1	=	NW_017264009.1	Primary Assembly	9028	na
+Scaffold80	unplaced-scaffold	na	na	LGST01000080.1	=	NW_017264010.1	Primary Assembly	10061	na
+Scaffold81	unplaced-scaffold	na	na	LGST01000081.1	=	NW_017264011.1	Primary Assembly	6946	na
+Scaffold82	unplaced-scaffold	na	na	LGST01000082.1	=	NW_017264012.1	Primary Assembly	5017	na
+Scaffold83	unplaced-scaffold	na	na	LGST01000083.1	=	NW_017264013.1	Primary Assembly	4853	na
+Scaffold84	unplaced-scaffold	na	na	LGST01000084.1	=	NW_017264014.1	Primary Assembly	5752	na
+Scaffold85	unplaced-scaffold	na	na	LGST01000085.1	=	NW_017264015.1	Primary Assembly	1089	na
+Scaffold86	unplaced-scaffold	na	na	LGST01000086.1	=	NW_017264016.1	Primary Assembly	3418	na
+Scaffold87	unplaced-scaffold	na	na	LGST01000087.1	=	NW_017264017.1	Primary Assembly	4856	na
+Scaffold88	unplaced-scaffold	na	na	LGST01000088.1	=	NW_017264018.1	Primary Assembly	8252	na
+Scaffold89	unplaced-scaffold	na	na	LGST01000089.1	=	NW_017264019.1	Primary Assembly	1037	na
+Scaffold90	unplaced-scaffold	na	na	LGST01000090.1	=	NW_017264020.1	Primary Assembly	4484	na
+Scaffold91	unplaced-scaffold	na	na	LGST01000091.1	=	NW_017264021.1	Primary Assembly	762	na
+Scaffold92	unplaced-scaffold	na	na	LGST01000092.1	=	NW_017264022.1	Primary Assembly	654	na
+Scaffold93	unplaced-scaffold	na	na	LGST01000093.1	=	NW_017264023.1	Primary Assembly	600	na
+Scaffold94	unplaced-scaffold	na	na	LGST01000094.1	=	NW_017264024.1	Primary Assembly	596	na
+Scaffold95	unplaced-scaffold	na	na	LGST01000095.1	=	NW_017264025.1	Primary Assembly	271	na
+Scaffold96	unplaced-scaffold	na	na	LGST01000096.1	=	NW_017264026.1	Primary Assembly	591	na
+Scaffold97	unplaced-scaffold	na	na	LGST01000097.1	=	NW_017264027.1	Primary Assembly	551	na
+Scaffold98	unplaced-scaffold	na	na	LGST01000098.1	=	NW_017264028.1	Primary Assembly	546	na
+Scaffold99	unplaced-scaffold	na	na	LGST01000099.1	=	NW_017264029.1	Primary Assembly	508	na

@@ -1,0 +1,66 @@
+# Assembly name:  v1.0
+# Organism name:  Schizophyllum commune H4-8 (basidiomycete fungi)
+# Infraspecific name:  strain=H4-8
+# Taxid:          578458
+# BioSample:      SAMN02194201
+# BioProject:     PRJNA32757
+# Submitter:      US DOE Joint Genome Institute (JGI-PGF)
+# Date:           2010-07-02
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    ADMJ01
+# Assembly method: Arachne v. Jun 3, 2008
+# Genome coverage: 8.29x
+# Sequencing technology: Sanger
+# GenBank assembly accession: GCA_000143185.1
+# RefSeq assembly accession: GCF_000143185.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000143195.1	GCF_000143195.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+SCHCOscaffold_1	unplaced-scaffold	na	na	GL377302.1	=	NW_003315672.1	Primary Assembly	7102125	na
+SCHCOscaffold_2	unplaced-scaffold	na	na	GL377303.1	=	NW_003315671.1	Primary Assembly	4447522	na
+SCHCOscaffold_3	unplaced-scaffold	na	na	GL377304.1	=	NW_003315670.1	Primary Assembly	3523165	na
+SCHCOscaffold_4	unplaced-scaffold	na	na	GL377305.1	=	NW_003315669.1	Primary Assembly	3469213	na
+SCHCOscaffold_5	unplaced-scaffold	na	na	GL377306.1	=	NW_003315668.1	Primary Assembly	2548518	na
+SCHCOscaffold_6	unplaced-scaffold	na	na	GL377307.1	=	NW_003315667.1	Primary Assembly	2443607	na
+SCHCOscaffold_7	unplaced-scaffold	na	na	GL377308.1	=	NW_003315666.1	Primary Assembly	2410501	na
+SCHCOscaffold_8	unplaced-scaffold	na	na	GL377309.1	=	NW_003315665.1	Primary Assembly	2124220	na
+SCHCOscaffold_9	unplaced-scaffold	na	na	GL377310.1	=	NW_003315664.1	Primary Assembly	1927671	na
+SCHCOscaffold_10	unplaced-scaffold	na	na	GL377311.1	=	NW_003315663.1	Primary Assembly	1836888	na
+SCHCOscaffold_11	unplaced-scaffold	na	na	GL377312.1	=	NW_003315662.1	Primary Assembly	1558342	na
+SCHCOscaffold_12	unplaced-scaffold	na	na	GL377313.1	=	NW_003315661.1	Primary Assembly	1142480	na
+SCHCOscaffold_13	unplaced-scaffold	na	na	GL377314.1	=	NW_003315660.1	Primary Assembly	659395	na
+SCHCOscaffold_14	unplaced-scaffold	na	na	GL377315.1	=	NW_003315659.1	Primary Assembly	647034	na
+SCHCOscaffold_15	unplaced-scaffold	na	na	GL377316.1	=	NW_003315658.1	Primary Assembly	603592	na
+SCHCOscaffold_16	unplaced-scaffold	na	na	GL377317.1	=	NW_003315657.1	Primary Assembly	572908	na
+SCHCOscaffold_17	unplaced-scaffold	na	na	GL377318.1	=	NW_003315656.1	Primary Assembly	527367	na
+SCHCOscaffold_18	unplaced-scaffold	na	na	GL377319.1	=	NW_003315655.1	Primary Assembly	510829	na
+SCHCOscaffold_19	unplaced-scaffold	na	na	GL377320.1	=	NW_003315654.1	Primary Assembly	89976	na
+SCHCOscaffold_20	unplaced-scaffold	na	na	GL377321.1	=	NW_003315653.1	Primary Assembly	87688	na
+SCHCOscaffold_21	unplaced-scaffold	na	na	GL377322.1	=	NW_003315652.1	Primary Assembly	68363	na
+SCHCOscaffold_24	unplaced-scaffold	na	na	GL377323.1	=	NW_003315651.1	Primary Assembly	41843	na
+SCHCOscaffold_25	unplaced-scaffold	na	na	GL377324.1	=	NW_003315650.1	Primary Assembly	66719	na
+SCHCOscaffold_27	unplaced-scaffold	na	na	GL377325.1	=	NW_003315649.1	Primary Assembly	13188	na
+SCHCOscaffold_28	unplaced-scaffold	na	na	GL377326.1	=	NW_003315648.1	Primary Assembly	12320	na
+SCHCOscaffold_29	unplaced-scaffold	na	na	GL377327.1	=	NW_003315647.1	Primary Assembly	8647	na
+SCHCOscaffold_30	unplaced-scaffold	na	na	GL377328.1	=	NW_003315646.1	Primary Assembly	8125	na
+SCHCOscaffold_32	unplaced-scaffold	na	na	GL377329.1	=	NW_003315645.1	Primary Assembly	6225	na
+SCHCOscaffold_34	unplaced-scaffold	na	na	GL377330.1	=	NW_003315644.1	Primary Assembly	4981	na
+SCHCOscaffold_36	unplaced-scaffold	na	na	GL377331.1	=	NW_003315643.1	Primary Assembly	4405	na
+SCHCOscaffold_39	unplaced-scaffold	na	na	GL377332.1	=	NW_003315642.1	Primary Assembly	4319	na
+SCHCOscaffold_52	unplaced-scaffold	na	na	GL377333.1	=	NW_003315641.1	Primary Assembly	3658	na
+SCHCOscaffold_68	unplaced-scaffold	na	na	GL377334.1	=	NW_003315640.1	Primary Assembly	2800	na
+SCHCOscaffold_79	unplaced-scaffold	na	na	GL377335.1	=	NW_003315639.1	Primary Assembly	1418	na
+SCHCOscaffold_80	unplaced-scaffold	na	na	GL377336.1	=	NW_003315638.1	Primary Assembly	1050	na
+SCHCOscaffold_81	unplaced-scaffold	na	na	GL377337.1	=	NW_003315637.1	Primary Assembly	924	na

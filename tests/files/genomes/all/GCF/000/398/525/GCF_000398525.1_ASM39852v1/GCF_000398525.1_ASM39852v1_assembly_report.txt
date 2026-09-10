@@ -1,0 +1,50 @@
+# Assembly name:  ASM39852v1
+# Organism name:  candidate division pSL4 archaeon SCGC AAA471-J07 (archaea)
+# Infraspecific name:  strain=SCGC AAA471-J07
+# Taxid:          1052832
+# BioSample:      SAMN02441627
+# BioProject:     PRJNA192310
+# Submitter:      DOE Joint Genome Institute
+# Date:           2013-05-16
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: partial
+# WGS project:    ASLW01
+# Assembly method: Velvet v. 1.1.04; ALLPATHS v. R37654
+# Single cell amplification: MDA
+# Sequencing technology: Illumina HiSeq 2000
+# Excluded from RefSeq: derived from single cell; genus undefined; partial
+# GenBank assembly accession: GCA_000398525.1
+# RefSeq assembly accession: GCF_000398525.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000398535.1	GCF_000398535.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+A471J7DRAFT_contig_0_0.1_C	unplaced-scaffold	na	na	ASLW01000001.1	=	NZ_ASLW01000001.1	Primary Assembly	33878	na
+A471J7DRAFT_contig_1_0.2_C	unplaced-scaffold	na	na	ASLW01000002.1	=	NZ_ASLW01000002.1	Primary Assembly	25994	na
+A471J7DRAFT_contig_2_0.3_C	unplaced-scaffold	na	na	ASLW01000003.1	=	NZ_ASLW01000003.1	Primary Assembly	14018	na
+A471J7DRAFT_contig_3_0.4_C	unplaced-scaffold	na	na	ASLW01000004.1	=	NZ_ASLW01000004.1	Primary Assembly	13743	na
+A471J7DRAFT_contig_4_0.5_C	unplaced-scaffold	na	na	ASLW01000005.1	=	NZ_ASLW01000005.1	Primary Assembly	24298	na
+A471J7DRAFT_contig_5_0.6_C	unplaced-scaffold	na	na	ASLW01000006.1	=	NZ_ASLW01000006.1	Primary Assembly	19422	na
+A471J7DRAFT_contig_6_0.7_C	unplaced-scaffold	na	na	ASLW01000007.1	=	NZ_ASLW01000007.1	Primary Assembly	18934	na
+A471J7DRAFT_contig_7_0.8_C	unplaced-scaffold	na	na	ASLW01000008.1	=	NZ_ASLW01000008.1	Primary Assembly	18425	na
+A471J7DRAFT_contig_8_0.9_C	unplaced-scaffold	na	na	ASLW01000009.1	=	NZ_ASLW01000009.1	Primary Assembly	16908	na
+A471J7DRAFT_contig_9_0.10_C	unplaced-scaffold	na	na	ASLW01000010.1	=	NZ_ASLW01000010.1	Primary Assembly	14847	na
+A471J7DRAFT_contig_10_0.11_C	unplaced-scaffold	na	na	ASLW01000011.1	=	NZ_ASLW01000011.1	Primary Assembly	11862	na
+A471J7DRAFT_contig_11_0.12_C	unplaced-scaffold	na	na	ASLW01000012.1	=	NZ_ASLW01000012.1	Primary Assembly	8659	na
+A471J7DRAFT_contig_12_0.13_C	unplaced-scaffold	na	na	ASLW01000013.1	=	NZ_ASLW01000013.1	Primary Assembly	8297	na
+A471J7DRAFT_contig_14_0.14_C	unplaced-scaffold	na	na	ASLW01000014.1	=	NZ_ASLW01000014.1	Primary Assembly	4280	na
+A471J7DRAFT_contig_15_0.15_C	unplaced-scaffold	na	na	ASLW01000015.1	=	NZ_ASLW01000015.1	Primary Assembly	2857	na
+A471J7DRAFT_contig_16_0.16_C	unplaced-scaffold	na	na	ASLW01000016.1	=	NZ_ASLW01000016.1	Primary Assembly	2721	na
+A471J7DRAFT_contig_17_0.17_C	unplaced-scaffold	na	na	ASLW01000017.1	=	NZ_ASLW01000017.1	Primary Assembly	2617	na
+A471J7DRAFT_contig_18_0.18_C	unplaced-scaffold	na	na	ASLW01000018.1	=	NZ_ASLW01000018.1	Primary Assembly	2419	na
+A471J7DRAFT_redundant_region_0.19_C	unplaced-scaffold	na	na	ASLW01000019.1	=	NZ_ASLW01000019.1	Primary Assembly	5613	na

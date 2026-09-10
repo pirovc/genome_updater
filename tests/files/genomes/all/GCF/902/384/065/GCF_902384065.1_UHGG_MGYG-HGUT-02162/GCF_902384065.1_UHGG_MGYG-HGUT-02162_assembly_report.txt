@@ -1,0 +1,90 @@
+# Assembly name:  UHGG_MGYG-HGUT-02162
+# Organism name:  Methanobrevibacter oralis (euryarchaeotes)
+# Isolate:  MGYG-HGUT-02162
+# Taxid:          66851
+# BioSample:      SAMEA5851666
+# BioProject:     PRJEB33885
+# Submitter:      EMG
+# Date:           2019-08-15
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    CABMAB01
+# Assembly method: Unknown
+# Genome coverage: 10x
+# Sequencing technology: Illumina
+# Excluded from RefSeq: annotation fails completeness check; many frameshifted proteins
+# GenBank assembly accession: GCA_902384065.1
+# RefSeq assembly accession: GCF_902384065.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Unit names:
+## Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig1	unplaced-scaffold	na	na	CABMAB010000001.1	=	NZ_CABMAB010000001.1	Primary Assembly	1726	na
+contig2	unplaced-scaffold	na	na	CABMAB010000002.1	=	NZ_CABMAB010000002.1	Primary Assembly	310354	na
+contig3	unplaced-scaffold	na	na	CABMAB010000003.1	=	NZ_CABMAB010000003.1	Primary Assembly	155386	na
+contig4	unplaced-scaffold	na	na	CABMAB010000004.1	=	NZ_CABMAB010000004.1	Primary Assembly	15017	na
+contig5	unplaced-scaffold	na	na	CABMAB010000005.1	=	NZ_CABMAB010000005.1	Primary Assembly	6134	na
+contig6	unplaced-scaffold	na	na	CABMAB010000006.1	=	NZ_CABMAB010000006.1	Primary Assembly	27388	na
+contig7	unplaced-scaffold	na	na	CABMAB010000007.1	=	NZ_CABMAB010000007.1	Primary Assembly	23770	na
+contig8	unplaced-scaffold	na	na	CABMAB010000008.1	=	NZ_CABMAB010000008.1	Primary Assembly	89418	na
+contig9	unplaced-scaffold	na	na	CABMAB010000009.1	=	NZ_CABMAB010000009.1	Primary Assembly	2572	na
+contig10	unplaced-scaffold	na	na	CABMAB010000010.1	=	NZ_CABMAB010000010.1	Primary Assembly	35247	na
+contig11	unplaced-scaffold	na	na	CABMAB010000011.1	=	NZ_CABMAB010000011.1	Primary Assembly	44864	na
+contig12	unplaced-scaffold	na	na	CABMAB010000012.1	=	NZ_CABMAB010000012.1	Primary Assembly	55729	na
+contig13	unplaced-scaffold	na	na	CABMAB010000013.1	=	NZ_CABMAB010000013.1	Primary Assembly	5018	na
+contig14	unplaced-scaffold	na	na	CABMAB010000014.1	=	NZ_CABMAB010000014.1	Primary Assembly	13695	na
+contig15	unplaced-scaffold	na	na	CABMAB010000015.1	=	NZ_CABMAB010000015.1	Primary Assembly	52168	na
+contig16	unplaced-scaffold	na	na	CABMAB010000016.1	=	NZ_CABMAB010000016.1	Primary Assembly	8483	na
+contig17	unplaced-scaffold	na	na	CABMAB010000017.1	=	NZ_CABMAB010000017.1	Primary Assembly	28848	na
+contig18	unplaced-scaffold	na	na	CABMAB010000018.1	=	NZ_CABMAB010000018.1	Primary Assembly	31311	na
+contig19	unplaced-scaffold	na	na	CABMAB010000019.1	=	NZ_CABMAB010000019.1	Primary Assembly	10786	na
+contig20	unplaced-scaffold	na	na	CABMAB010000020.1	=	NZ_CABMAB010000020.1	Primary Assembly	17354	na
+contig21	unplaced-scaffold	na	na	CABMAB010000021.1	=	NZ_CABMAB010000021.1	Primary Assembly	46594	na
+contig22	unplaced-scaffold	na	na	CABMAB010000022.1	=	NZ_CABMAB010000022.1	Primary Assembly	98468	na
+contig23	unplaced-scaffold	na	na	CABMAB010000023.1	=	NZ_CABMAB010000023.1	Primary Assembly	25853	na
+contig24	unplaced-scaffold	na	na	CABMAB010000024.1	=	NZ_CABMAB010000024.1	Primary Assembly	55428	na
+contig25	unplaced-scaffold	na	na	CABMAB010000025.1	=	NZ_CABMAB010000025.1	Primary Assembly	21116	na
+contig26	unplaced-scaffold	na	na	CABMAB010000026.1	=	NZ_CABMAB010000026.1	Primary Assembly	77806	na
+contig27	unplaced-scaffold	na	na	CABMAB010000027.1	=	NZ_CABMAB010000027.1	Primary Assembly	16089	na
+contig28	unplaced-scaffold	na	na	CABMAB010000028.1	=	NZ_CABMAB010000028.1	Primary Assembly	11480	na
+contig29	unplaced-scaffold	na	na	CABMAB010000029.1	=	NZ_CABMAB010000029.1	Primary Assembly	45343	na
+contig30	unplaced-scaffold	na	na	CABMAB010000030.1	=	NZ_CABMAB010000030.1	Primary Assembly	32883	na
+contig31	unplaced-scaffold	na	na	CABMAB010000031.1	=	NZ_CABMAB010000031.1	Primary Assembly	114553	na
+contig32	unplaced-scaffold	na	na	CABMAB010000032.1	=	NZ_CABMAB010000032.1	Primary Assembly	10479	na
+contig33	unplaced-scaffold	na	na	CABMAB010000033.1	=	NZ_CABMAB010000033.1	Primary Assembly	11591	na
+contig34	unplaced-scaffold	na	na	CABMAB010000034.1	=	NZ_CABMAB010000034.1	Primary Assembly	126230	na
+contig35	unplaced-scaffold	na	na	CABMAB010000035.1	=	NZ_CABMAB010000035.1	Primary Assembly	93739	na
+contig36	unplaced-scaffold	na	na	CABMAB010000036.1	=	NZ_CABMAB010000036.1	Primary Assembly	23083	na
+contig37	unplaced-scaffold	na	na	CABMAB010000037.1	=	NZ_CABMAB010000037.1	Primary Assembly	6540	na
+contig38	unplaced-scaffold	na	na	CABMAB010000038.1	=	NZ_CABMAB010000038.1	Primary Assembly	5904	na
+contig39	unplaced-scaffold	na	na	CABMAB010000039.1	=	NZ_CABMAB010000039.1	Primary Assembly	88069	na
+contig40	unplaced-scaffold	na	na	CABMAB010000040.1	=	NZ_CABMAB010000040.1	Primary Assembly	4530	na
+contig41	unplaced-scaffold	na	na	CABMAB010000041.1	=	NZ_CABMAB010000041.1	Primary Assembly	6241	na
+contig42	unplaced-scaffold	na	na	CABMAB010000042.1	=	NZ_CABMAB010000042.1	Primary Assembly	5237	na
+contig43	unplaced-scaffold	na	na	CABMAB010000043.1	=	NZ_CABMAB010000043.1	Primary Assembly	6975	na
+contig44	unplaced-scaffold	na	na	CABMAB010000044.1	=	NZ_CABMAB010000044.1	Primary Assembly	4509	na
+contig45	unplaced-scaffold	na	na	CABMAB010000045.1	=	NZ_CABMAB010000045.1	Primary Assembly	32427	na
+contig46	unplaced-scaffold	na	na	CABMAB010000046.1	=	NZ_CABMAB010000046.1	Primary Assembly	875	na
+contig47	unplaced-scaffold	na	na	CABMAB010000047.1	=	NZ_CABMAB010000047.1	Primary Assembly	34490	na
+contig48	unplaced-scaffold	na	na	CABMAB010000048.1	=	NZ_CABMAB010000048.1	Primary Assembly	11833	na
+contig49	unplaced-scaffold	na	na	CABMAB010000049.1	=	NZ_CABMAB010000049.1	Primary Assembly	22773	na
+contig50	unplaced-scaffold	na	na	CABMAB010000050.1	=	NZ_CABMAB010000050.1	Primary Assembly	29062	na
+contig51	unplaced-scaffold	na	na	CABMAB010000051.1	=	NZ_CABMAB010000051.1	Primary Assembly	4714	na
+contig52	unplaced-scaffold	na	na	CABMAB010000052.1	=	NZ_CABMAB010000052.1	Primary Assembly	7858	na
+contig53	unplaced-scaffold	na	na	CABMAB010000053.1	=	NZ_CABMAB010000053.1	Primary Assembly	24295	na
+contig54	unplaced-scaffold	na	na	CABMAB010000054.1	=	NZ_CABMAB010000054.1	Primary Assembly	12032	na
+contig55	unplaced-scaffold	na	na	CABMAB010000055.1	=	NZ_CABMAB010000055.1	Primary Assembly	7580	na
+contig56	unplaced-scaffold	na	na	CABMAB010000056.1	=	NZ_CABMAB010000056.1	Primary Assembly	9681	na
+contig57	unplaced-scaffold	na	na	CABMAB010000057.1	=	NZ_CABMAB010000057.1	Primary Assembly	5531	na
+contig58	unplaced-scaffold	na	na	CABMAB010000058.1	=	NZ_CABMAB010000058.1	Primary Assembly	1113	na
+contig59	unplaced-scaffold	na	na	CABMAB010000059.1	=	NZ_CABMAB010000059.1	Primary Assembly	2922	na
+contig60	unplaced-scaffold	na	na	CABMAB010000060.1	=	NZ_CABMAB010000060.1	Primary Assembly	2317	na

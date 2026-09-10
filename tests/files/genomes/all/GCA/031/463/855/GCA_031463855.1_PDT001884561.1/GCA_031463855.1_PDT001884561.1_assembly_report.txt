@@ -1,0 +1,110 @@
+# Assembly name:  PDT001884561.1
+# Description:    NCBI Pathogen Detection Assembly PDT001884561.1
+# Organism name:  Proteus mirabilis (enterobacteria)
+# Infraspecific name:  strain=2023GN-00454
+# Taxid:          584
+# BioSample:      SAMN37385802
+# BioProject:     PRJNA288601
+# Submitter:      Centers for Disease Control and Prevention. Division of Healthcare Quality Promotion
+# Date:           2023-09-14
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    ABMHEK01
+# Assembly method: SKESA v. 2.2
+# Expected final version: no
+# Genome coverage: 186x
+# Sequencing technology: ILLUMINA
+# Excluded from RefSeq: from large multi-isolate project
+# GenBank assembly accession: GCA_031463855.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_031463865.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+SAMN37385802-rid19417833.denovo.01	unplaced-scaffold	na	na	ABMHEK010000001.1	<>	na	Primary Assembly	249076	na
+SAMN37385802-rid19417833.denovo.02	unplaced-scaffold	na	na	ABMHEK010000002.1	<>	na	Primary Assembly	248649	na
+SAMN37385802-rid19417833.denovo.03	unplaced-scaffold	na	na	ABMHEK010000003.1	<>	na	Primary Assembly	233802	na
+SAMN37385802-rid19417833.denovo.04	unplaced-scaffold	na	na	ABMHEK010000004.1	<>	na	Primary Assembly	188192	na
+SAMN37385802-rid19417833.denovo.05	unplaced-scaffold	na	na	ABMHEK010000005.1	<>	na	Primary Assembly	182780	na
+SAMN37385802-rid19417833.denovo.06	unplaced-scaffold	na	na	ABMHEK010000006.1	<>	na	Primary Assembly	180401	na
+SAMN37385802-rid19417833.denovo.07	unplaced-scaffold	na	na	ABMHEK010000007.1	<>	na	Primary Assembly	156830	na
+SAMN37385802-rid19417833.denovo.08	unplaced-scaffold	na	na	ABMHEK010000008.1	<>	na	Primary Assembly	134258	na
+SAMN37385802-rid19417833.denovo.09	unplaced-scaffold	na	na	ABMHEK010000009.1	<>	na	Primary Assembly	132521	na
+SAMN37385802-rid19417833.denovo.10	unplaced-scaffold	na	na	ABMHEK010000010.1	<>	na	Primary Assembly	126362	na
+SAMN37385802-rid19417833.denovo.11	unplaced-scaffold	na	na	ABMHEK010000011.1	<>	na	Primary Assembly	122574	na
+SAMN37385802-rid19417833.denovo.12	unplaced-scaffold	na	na	ABMHEK010000012.1	<>	na	Primary Assembly	122396	na
+SAMN37385802-rid19417833.denovo.13	unplaced-scaffold	na	na	ABMHEK010000013.1	<>	na	Primary Assembly	112000	na
+SAMN37385802-rid19417833.denovo.14	unplaced-scaffold	na	na	ABMHEK010000014.1	<>	na	Primary Assembly	110673	na
+SAMN37385802-rid19417833.denovo.15	unplaced-scaffold	na	na	ABMHEK010000015.1	<>	na	Primary Assembly	105756	na
+SAMN37385802-rid19417833.denovo.16	unplaced-scaffold	na	na	ABMHEK010000016.1	<>	na	Primary Assembly	100579	na
+SAMN37385802-rid19417833.denovo.17	unplaced-scaffold	na	na	ABMHEK010000017.1	<>	na	Primary Assembly	84904	na
+SAMN37385802-rid19417833.denovo.18	unplaced-scaffold	na	na	ABMHEK010000018.1	<>	na	Primary Assembly	78763	na
+SAMN37385802-rid19417833.denovo.19	unplaced-scaffold	na	na	ABMHEK010000019.1	<>	na	Primary Assembly	77209	na
+SAMN37385802-rid19417833.denovo.20	unplaced-scaffold	na	na	ABMHEK010000020.1	<>	na	Primary Assembly	72589	na
+SAMN37385802-rid19417833.denovo.21	unplaced-scaffold	na	na	ABMHEK010000021.1	<>	na	Primary Assembly	67231	na
+SAMN37385802-rid19417833.denovo.22	unplaced-scaffold	na	na	ABMHEK010000022.1	<>	na	Primary Assembly	66441	na
+SAMN37385802-rid19417833.denovo.23	unplaced-scaffold	na	na	ABMHEK010000023.1	<>	na	Primary Assembly	61040	na
+SAMN37385802-rid19417833.denovo.24	unplaced-scaffold	na	na	ABMHEK010000024.1	<>	na	Primary Assembly	52664	na
+SAMN37385802-rid19417833.denovo.25	unplaced-scaffold	na	na	ABMHEK010000025.1	<>	na	Primary Assembly	50323	na
+SAMN37385802-rid19417833.denovo.26	unplaced-scaffold	na	na	ABMHEK010000026.1	<>	na	Primary Assembly	49363	na
+SAMN37385802-rid19417833.denovo.27	unplaced-scaffold	na	na	ABMHEK010000027.1	<>	na	Primary Assembly	47866	na
+SAMN37385802-rid19417833.denovo.28	unplaced-scaffold	na	na	ABMHEK010000028.1	<>	na	Primary Assembly	47597	na
+SAMN37385802-rid19417833.denovo.29	unplaced-scaffold	na	na	ABMHEK010000029.1	<>	na	Primary Assembly	45624	na
+SAMN37385802-rid19417833.denovo.30	unplaced-scaffold	na	na	ABMHEK010000030.1	<>	na	Primary Assembly	43123	na
+SAMN37385802-rid19417833.denovo.31	unplaced-scaffold	na	na	ABMHEK010000031.1	<>	na	Primary Assembly	42904	na
+SAMN37385802-rid19417833.denovo.32	unplaced-scaffold	na	na	ABMHEK010000032.1	<>	na	Primary Assembly	42052	na
+SAMN37385802-rid19417833.denovo.33	unplaced-scaffold	na	na	ABMHEK010000033.1	<>	na	Primary Assembly	40960	na
+SAMN37385802-rid19417833.denovo.34	unplaced-scaffold	na	na	ABMHEK010000034.1	<>	na	Primary Assembly	36537	na
+SAMN37385802-rid19417833.denovo.35	unplaced-scaffold	na	na	ABMHEK010000035.1	<>	na	Primary Assembly	33405	na
+SAMN37385802-rid19417833.denovo.36	unplaced-scaffold	na	na	ABMHEK010000036.1	<>	na	Primary Assembly	31326	na
+SAMN37385802-rid19417833.denovo.37	unplaced-scaffold	na	na	ABMHEK010000037.1	<>	na	Primary Assembly	29581	na
+SAMN37385802-rid19417833.denovo.38	unplaced-scaffold	na	na	ABMHEK010000038.1	<>	na	Primary Assembly	28220	na
+SAMN37385802-rid19417833.denovo.39	unplaced-scaffold	na	na	ABMHEK010000039.1	<>	na	Primary Assembly	26145	na
+SAMN37385802-rid19417833.denovo.40	unplaced-scaffold	na	na	ABMHEK010000040.1	<>	na	Primary Assembly	25382	na
+SAMN37385802-rid19417833.denovo.41	unplaced-scaffold	na	na	ABMHEK010000041.1	<>	na	Primary Assembly	24655	na
+SAMN37385802-rid19417833.denovo.42	unplaced-scaffold	na	na	ABMHEK010000042.1	<>	na	Primary Assembly	21664	na
+SAMN37385802-rid19417833.denovo.43	unplaced-scaffold	na	na	ABMHEK010000043.1	<>	na	Primary Assembly	20682	na
+SAMN37385802-rid19417833.denovo.44	unplaced-scaffold	na	na	ABMHEK010000044.1	<>	na	Primary Assembly	20277	na
+SAMN37385802-rid19417833.denovo.45	unplaced-scaffold	na	na	ABMHEK010000045.1	<>	na	Primary Assembly	19691	na
+SAMN37385802-rid19417833.denovo.46	unplaced-scaffold	na	na	ABMHEK010000046.1	<>	na	Primary Assembly	16628	na
+SAMN37385802-rid19417833.denovo.47	unplaced-scaffold	na	na	ABMHEK010000047.1	<>	na	Primary Assembly	15386	na
+SAMN37385802-rid19417833.denovo.49	unplaced-scaffold	na	na	ABMHEK010000048.1	<>	na	Primary Assembly	13509	na
+SAMN37385802-rid19417833.denovo.50	unplaced-scaffold	na	na	ABMHEK010000049.1	<>	na	Primary Assembly	12387	na
+SAMN37385802-rid19417833.denovo.51	unplaced-scaffold	na	na	ABMHEK010000050.1	<>	na	Primary Assembly	11780	na
+SAMN37385802-rid19417833.denovo.53	unplaced-scaffold	na	na	ABMHEK010000051.1	<>	na	Primary Assembly	7796	na
+SAMN37385802-rid19417833.denovo.54	unplaced-scaffold	na	na	ABMHEK010000052.1	<>	na	Primary Assembly	5827	na
+SAMN37385802-rid19417833.denovo.56	unplaced-scaffold	na	na	ABMHEK010000053.1	<>	na	Primary Assembly	5560	na
+SAMN37385802-rid19417833.denovo.57	unplaced-scaffold	na	na	ABMHEK010000054.1	<>	na	Primary Assembly	4726	na
+SAMN37385802-rid19417833.denovo.58	unplaced-scaffold	na	na	ABMHEK010000055.1	<>	na	Primary Assembly	4718	na
+SAMN37385802-rid19417833.denovo.59	unplaced-scaffold	na	na	ABMHEK010000056.1	<>	na	Primary Assembly	4679	na
+SAMN37385802-rid19417833.denovo.60	unplaced-scaffold	na	na	ABMHEK010000057.1	<>	na	Primary Assembly	4085	na
+SAMN37385802-rid19417833.denovo.61	unplaced-scaffold	na	na	ABMHEK010000058.1	<>	na	Primary Assembly	3720	na
+SAMN37385802-rid19417833.denovo.62	unplaced-scaffold	na	na	ABMHEK010000059.1	<>	na	Primary Assembly	3428	na
+SAMN37385802-rid19417833.denovo.63	unplaced-scaffold	na	na	ABMHEK010000060.1	<>	na	Primary Assembly	2539	na
+SAMN37385802-rid19417833.denovo.64	unplaced-scaffold	na	na	ABMHEK010000061.1	<>	na	Primary Assembly	2525	na
+SAMN37385802-rid19417833.denovo.66	unplaced-scaffold	na	na	ABMHEK010000062.1	<>	na	Primary Assembly	1821	na
+SAMN37385802-rid19417833.denovo.67	unplaced-scaffold	na	na	ABMHEK010000063.1	<>	na	Primary Assembly	879	na
+SAMN37385802-rid19417833.denovo.68	unplaced-scaffold	na	na	ABMHEK010000064.1	<>	na	Primary Assembly	832	na
+SAMN37385802-rid19417833.denovo.69	unplaced-scaffold	na	na	ABMHEK010000065.1	<>	na	Primary Assembly	620	na
+SAMN37385802-rid19417833.denovo.70	unplaced-scaffold	na	na	ABMHEK010000066.1	<>	na	Primary Assembly	619	na
+SAMN37385802-rid19417833.denovo.71	unplaced-scaffold	na	na	ABMHEK010000067.1	<>	na	Primary Assembly	557	na
+SAMN37385802-rid19417833.denovo.72	unplaced-scaffold	na	na	ABMHEK010000068.1	<>	na	Primary Assembly	462	na
+SAMN37385802-rid19417833.denovo.73	unplaced-scaffold	na	na	ABMHEK010000069.1	<>	na	Primary Assembly	451	na
+SAMN37385802-rid19417833.denovo.74	unplaced-scaffold	na	na	ABMHEK010000070.1	<>	na	Primary Assembly	378	na
+SAMN37385802-rid19417833.denovo.76	unplaced-scaffold	na	na	ABMHEK010000071.1	<>	na	Primary Assembly	348	na
+SAMN37385802-rid19417833.denovo.78	unplaced-scaffold	na	na	ABMHEK010000072.1	<>	na	Primary Assembly	332	na
+SAMN37385802-rid19417833.denovo.79	unplaced-scaffold	na	na	ABMHEK010000073.1	<>	na	Primary Assembly	281	na
+SAMN37385802-rid19417833.denovo.80	unplaced-scaffold	na	na	ABMHEK010000074.1	<>	na	Primary Assembly	271	na
+SAMN37385802-rid19417833.denovo.81	unplaced-scaffold	na	na	ABMHEK010000075.1	<>	na	Primary Assembly	261	na
+SAMN37385802-rid19417833.guided.48	unplaced-scaffold	na	na	ABMHEK010000076.1	<>	na	Primary Assembly	13668	na
+SAMN37385802-rid19417833.guided.52	unplaced-scaffold	na	na	ABMHEK010000077.1	<>	na	Primary Assembly	8730	na
+SAMN37385802-rid19417833.guided.55	unplaced-scaffold	na	na	ABMHEK010000078.1	<>	na	Primary Assembly	5665	na
+SAMN37385802-rid19417833.guided.65	unplaced-scaffold	na	na	ABMHEK010000079.1	<>	na	Primary Assembly	2009	na

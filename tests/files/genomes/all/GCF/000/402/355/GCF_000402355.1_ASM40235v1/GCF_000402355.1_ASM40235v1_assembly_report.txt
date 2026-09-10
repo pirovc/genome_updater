@@ -1,0 +1,74 @@
+# Assembly name:  ASM40235v1
+# Organism name:  Candidatus Iainarchaeum andersonii SCGC AAA011-E11 (archaea)
+# Infraspecific name:  strain=SCGC AAA011-E11
+# Taxid:          1104576
+# BioSample:      SAMN02441399
+# BioProject:     PRJNA207378
+# Submitter:      DOE Joint Genome Institute
+# Date:           2013-5-29
+# Assembly type:  n/a
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    AQRS01
+# Assembly method: Velvet v. 1.1.04; ALLPATHS v. 41043
+# Single cell amplification: MDA
+# Genome coverage: Unknown
+# Sequencing technology: Illumina
+# GenBank assembly accession: GCA_000402355.1
+# RefSeq assembly accession: GCF_000402355.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000402365.1	GCF_000402365.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+A11E11DRAFT_contig_42_0.43_C	unplaced-scaffold	na	na	AQRS01000001.1	=	NZ_AQRS01000001.1	Primary Assembly	5764	na
+A11E11DRAFT_contig_41_0.42_C	unplaced-scaffold	na	na	AQRS01000002.1	=	NZ_AQRS01000002.1	Primary Assembly	5827	na
+A11E11DRAFT_contig_40_0.41_C	unplaced-scaffold	na	na	AQRS01000003.1	=	NZ_AQRS01000003.1	Primary Assembly	6300	na
+A11E11DRAFT_contig_39_0.40_C	unplaced-scaffold	na	na	AQRS01000004.1	=	NZ_AQRS01000004.1	Primary Assembly	8415	na
+A11E11DRAFT_contig_38_0.39_C	unplaced-scaffold	na	na	AQRS01000005.1	=	NZ_AQRS01000005.1	Primary Assembly	8801	na
+A11E11DRAFT_contig_37_0.38_C	unplaced-scaffold	na	na	AQRS01000006.1	=	NZ_AQRS01000006.1	Primary Assembly	9251	na
+A11E11DRAFT_contig_36_0.37_C	unplaced-scaffold	na	na	AQRS01000007.1	=	NZ_AQRS01000007.1	Primary Assembly	9426	na
+A11E11DRAFT_contig_35_0.36_C	unplaced-scaffold	na	na	AQRS01000008.1	=	NZ_AQRS01000008.1	Primary Assembly	9496	na
+A11E11DRAFT_contig_34_0.35_C	unplaced-scaffold	na	na	AQRS01000009.1	=	NZ_AQRS01000009.1	Primary Assembly	9592	na
+A11E11DRAFT_contig_33_0.34_C	unplaced-scaffold	na	na	AQRS01000010.1	=	NZ_AQRS01000010.1	Primary Assembly	9472	na
+A11E11DRAFT_contig_32_0.33_C	unplaced-scaffold	na	na	AQRS01000011.1	=	NZ_AQRS01000011.1	Primary Assembly	13109	na
+A11E11DRAFT_contig_31_0.32_C	unplaced-scaffold	na	na	AQRS01000012.1	=	NZ_AQRS01000012.1	Primary Assembly	13976	na
+A11E11DRAFT_contig_30_0.31_C	unplaced-scaffold	na	na	AQRS01000013.1	=	NZ_AQRS01000013.1	Primary Assembly	14381	na
+A11E11DRAFT_contig_29_0.30_C	unplaced-scaffold	na	na	AQRS01000014.1	=	NZ_AQRS01000014.1	Primary Assembly	15022	na
+A11E11DRAFT_contig_28_0.29_C	unplaced-scaffold	na	na	AQRS01000015.1	=	NZ_AQRS01000015.1	Primary Assembly	16006	na
+A11E11DRAFT_contig_27_0.28_C	unplaced-scaffold	na	na	AQRS01000016.1	=	NZ_AQRS01000016.1	Primary Assembly	16493	na
+A11E11DRAFT_contig_26_0.27_C	unplaced-scaffold	na	na	AQRS01000017.1	=	NZ_AQRS01000017.1	Primary Assembly	16812	na
+A11E11DRAFT_contig_25_0.26_C	unplaced-scaffold	na	na	AQRS01000018.1	=	NZ_AQRS01000018.1	Primary Assembly	18297	na
+A11E11DRAFT_contig_24_0.25_C	unplaced-scaffold	na	na	AQRS01000019.1	=	NZ_AQRS01000019.1	Primary Assembly	21317	na
+A11E11DRAFT_contig_23_0.24_C	unplaced-scaffold	na	na	AQRS01000020.1	=	NZ_AQRS01000020.1	Primary Assembly	22664	na
+A11E11DRAFT_contig_22_0.23_C	unplaced-scaffold	na	na	AQRS01000021.1	=	NZ_AQRS01000021.1	Primary Assembly	23045	na
+A11E11DRAFT_contig_21_0.22_C	unplaced-scaffold	na	na	AQRS01000022.1	=	NZ_AQRS01000022.1	Primary Assembly	24861	na
+A11E11DRAFT_contig_20_0.21_C	unplaced-scaffold	na	na	AQRS01000023.1	=	NZ_AQRS01000023.1	Primary Assembly	27352	na
+A11E11DRAFT_contig_19_0.20_C	unplaced-scaffold	na	na	AQRS01000024.1	=	NZ_AQRS01000024.1	Primary Assembly	31160	na
+A11E11DRAFT_contig_18_0.19_C	unplaced-scaffold	na	na	AQRS01000025.1	=	NZ_AQRS01000025.1	Primary Assembly	33174	na
+A11E11DRAFT_contig_17_0.18_C	unplaced-scaffold	na	na	AQRS01000026.1	=	NZ_AQRS01000026.1	Primary Assembly	34602	na
+A11E11DRAFT_contig_16_0.17_C	unplaced-scaffold	na	na	AQRS01000027.1	=	NZ_AQRS01000027.1	Primary Assembly	9805	na
+A11E11DRAFT_contig_15_0.16_C	unplaced-scaffold	na	na	AQRS01000028.1	=	NZ_AQRS01000028.1	Primary Assembly	12629	na
+A11E11DRAFT_contig_14_0.15_C	unplaced-scaffold	na	na	AQRS01000029.1	=	NZ_AQRS01000029.1	Primary Assembly	12687	na
+A11E11DRAFT_contig_13_0.14_C	unplaced-scaffold	na	na	AQRS01000030.1	=	NZ_AQRS01000030.1	Primary Assembly	8292	na
+A11E11DRAFT_contig_12_0.13_C	unplaced-scaffold	na	na	AQRS01000031.1	=	NZ_AQRS01000031.1	Primary Assembly	26405	na
+A11E11DRAFT_contig_11_0.12_C	unplaced-scaffold	na	na	AQRS01000032.1	=	NZ_AQRS01000032.1	Primary Assembly	36112	na
+A11E11DRAFT_contig_10_0.11_C	unplaced-scaffold	na	na	AQRS01000033.1	=	NZ_AQRS01000033.1	Primary Assembly	37074	na
+A11E11DRAFT_contig_9_0.10_C	unplaced-scaffold	na	na	AQRS01000034.1	=	NZ_AQRS01000034.1	Primary Assembly	38779	na
+A11E11DRAFT_contig_8_0.9_C	unplaced-scaffold	na	na	AQRS01000035.1	=	NZ_AQRS01000035.1	Primary Assembly	40521	na
+A11E11DRAFT_contig_7_0.8_C	unplaced-scaffold	na	na	AQRS01000036.1	=	NZ_AQRS01000036.1	Primary Assembly	41722	na
+A11E11DRAFT_contig_6_0.7_C	unplaced-scaffold	na	na	AQRS01000037.1	=	NZ_AQRS01000037.1	Primary Assembly	20508	na
+A11E11DRAFT_contig_5_0.6_C	unplaced-scaffold	na	na	AQRS01000038.1	=	NZ_AQRS01000038.1	Primary Assembly	22024	na
+A11E11DRAFT_contig_4_0.5_C	unplaced-scaffold	na	na	AQRS01000039.1	=	NZ_AQRS01000039.1	Primary Assembly	46182	na
+A11E11DRAFT_contig_3_0.4_C	unplaced-scaffold	na	na	AQRS01000040.1	=	NZ_AQRS01000040.1	Primary Assembly	50761	na
+A11E11DRAFT_contig_2_0.3_C	unplaced-scaffold	na	na	AQRS01000041.1	=	NZ_AQRS01000041.1	Primary Assembly	59683	na
+A11E11DRAFT_contig_1_0.2_C	unplaced-scaffold	na	na	AQRS01000042.1	=	NZ_AQRS01000042.1	Primary Assembly	74786	na
+A11E11DRAFT_contig_0_0.1_C	unplaced-scaffold	na	na	AQRS01000043.1	=	NZ_AQRS01000043.1	Primary Assembly	135457	na
