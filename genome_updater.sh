@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.8.2"
+version="0.9.0"
 
 # Define ncbi_base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -699,9 +699,9 @@ check_md5_ftp()
             else
                 path_name="${target_output_prefix}$(path_output "${file_name}")${file_name}" # local file path and name
                 file_md5=$(md5sum "${path_name}" | cut -f1 -d' ')
+                # Remove file only with mismatching MD5
                 if [ "${file_md5}" != "${ftp_md5}" ]; then
                     echolog "${file_name} MD5 not matching [${md5checksums_url}] - FILE REMOVED" "0"
-                    # Remove file only when MD5 doesn't match
                     rm -v "${path_name}" >>"${log_file}" 2>&1
                     return 1
                 else
@@ -732,6 +732,7 @@ check_gz_file()
                 return 0
             else
                 echolog "${file_name} corrupted gzip - FILE REMOVED" "0"
+                rm -v "${path_name}" >>"${log_file}" 2>&1
                 return 1
             fi
         fi
