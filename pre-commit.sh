@@ -12,5 +12,5 @@ then
 fi
 
 # Generate local html coverage reports
-echo -e "SimpleCov.start do\n  add_filter 'tests/'\nend" > .simplecov
+echo -e "SimpleCov.skip 'tests/'" > .simplecov
 bashcov --skip-uncovered tests/libs/bats/bin/bats tests/integration_offline.bats

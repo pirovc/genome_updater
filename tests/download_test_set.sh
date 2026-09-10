@@ -34,6 +34,8 @@ do
         tail -q -n+3 "${out_as}" "${out_as_his}" | cut -f 20 | sed 's/https:/ftp:/g' | xargs -P ${entries} wget --quiet --show-progress --directory-prefix="${outfld}" --recursive --level 2 --accept "${ext}"
         cp -r "${outfld}ftp.ncbi.nlm.nih.gov/genomes/" "${outfld}"
         find ${outfld} -name "*assembly_structure" | xargs rm -rf
+        # Replace content with placeholder to save space
+        find ${outfld}/genomes/all/ -name "*.txt" | xargs -I {} sh -c 'echo "placeholder" > {}'
         rm -rf "full_assembly_summary.txt" "full_assembly_summary_historical.txt" "${outfld}ftp.ncbi.nlm.nih.gov/" 
     done
 done
@@ -71,6 +73,5 @@ gtdb220_out="${outfld}public/gtdb/data/releases/release220/220.0"
 mkdir -p "${gtdb220_out}"
 ln -rs ${gtdb_out}/*.tsv.gz ${gtdb220_out}
 md5sum ${gtdb220_out}/*.tsv.gz > "${gtdb220_out}/MD5SUM"
-
 
 rm ${outfld}accessions_taxids.txt
