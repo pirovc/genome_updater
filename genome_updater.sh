@@ -986,7 +986,7 @@ function showhelp
     echo $' -E End date (empty for no filter)'
     echo $'\tKeep assemblies with sequence release date less then or equal (<=) to value. Format YYYYMMDD.'
     echo $'\tDefault: ""'
-    echo $' -v Version status (comma-separated, empty for all)'
+    echo $' -v Version status (comma-separated, mandatory)'
     echo $'\tOptions: "latest, replaced, suppressed"'
     echo $'\tRelease status for the genome assembly version. If replaced or suppressed are included, historical entries will be included. All options are enforced if -M gtdb.'
     echo $'\tDefault: "latest"'
