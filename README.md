@@ -57,12 +57,11 @@ tests/test.sh
 ## Parameters
 
 ```
-./genome_updater -h
-
+$ ./genome_updater.sh 
 ┌─┐┌─┐┌┐┌┌─┐┌┬┐┌─┐    ┬ ┬┌─┐┌┬┐┌─┐┌┬┐┌─┐┬─┐
 │ ┬├┤ ││││ ││││├┤     │ │├─┘ ││├─┤ │ ├┤ ├┬┘
 └─┘└─┘┘└┘└─┘┴ ┴└─┘────└─┘┴  ─┴┘┴ ┴ ┴ └─┘┴└─
-                                     v0.8.2 
+                                     v0.9.0 
 
 Source:
  -d Database(s) (comma-separated, mandatory)
@@ -96,6 +95,11 @@ Filter:
  -E End date (empty for no filter)
         Keep assemblies with sequence release date less then or equal (<=) to value. Format YYYYMMDD.
         Default: ""
+ -v Version status (comma-separated, mandatory)
+        Options: "latest, replaced, suppressed"
+        Release status for the genome assembly version. If replaced or suppressed are included, historical entries
+        will be included. All options are enforced if -M gtdb.
+        Default: "latest"
  -F Custom assembly summary filter (empty for no filter)
         Use awk syntax, e.g.: $ for column index, || "or", && "and", ! "not", parentheses for nesting. Case
         sensitive. Columns info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt

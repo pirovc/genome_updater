@@ -1,2 +1,6 @@
 # Test results 
 tests/results/*
+
+# Infra
+.simplecov
+coverage/

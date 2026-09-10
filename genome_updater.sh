@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.8.2"
+version="0.9.0"
 
 # Define ncbi_base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -231,14 +231,25 @@ check_assembly_summary()
 }
 
 get_assembly_summary()
-{ # parameter: ${1} assembly_summary file, ${2} database, ${3} organism_group - return number of lines
+{ # parameter: ${1} assembly_summary file, ${2} database, ${3} organism_group - return 0 success 1 failed
+
+    if [[ "${version_status}" =~ suppressed || "${version_status}" =~ replaced ]]; then
+        echolog "Downloading assembly summary + historical [${new_label}]" "1"
+    else
+        echolog "Downloading assembly summary [${new_label}]" "1"
+    fi
+    echolog " - Database [${database}]" "1"
+    if [[ -n "${organism_group}" ]]; then
+        echolog " - Organism group [${organism_group}]" "1"
+    fi
+
     # Collect urls to download
     as_to_download=()
     for d in ${2//,/ }; do
         # If no organism group is chosen, get complete assembly_summary for the database
         if [[ -z "${3}" ]]; then
             as_to_download+=("${ncbi_base_url}genomes/${d}/assembly_summary_${d}.txt")
-            if [[ "${tax_mode}" =~ ^gtdb ]]; then
+            if [[ "${version_status}" =~ suppressed || "${version_status}" =~ replaced ]]; then
                 as_to_download+=("${ncbi_base_url}genomes/${d}/assembly_summary_${d}_historical.txt")
             fi
         else
@@ -246,7 +257,7 @@ get_assembly_summary()
                 #special case: human
                 if [[ "${og}" == "human" ]]; then og="vertebrate_mammalian/Homo_sapiens"; fi
                 as_to_download+=("${ncbi_base_url}genomes/${d}/${og}/assembly_summary.txt")
-                if [[ "${tax_mode}" =~ ^gtdb ]]; then
+                if [[ "${version_status}" =~ suppressed || "${version_status}" =~ replaced ]]; then
                     as_to_download+=("${ncbi_base_url}genomes/${d}/${og}/assembly_summary_historical.txt")
                 fi
             done
@@ -274,6 +285,7 @@ get_assembly_summary()
     if check_assembly_summary "${1}"; then
         return 0
     else
+        echolog " - Failed to download one or more assembly summary files" "1"
         return 1
     fi
 }
@@ -388,7 +400,7 @@ filter_assembly_summary()
     if [ "$((filtered_lines - columns_lines))" -gt 0 ]; then
         echolog " - $((filtered_lines - columns_lines)) assemblies removed based on filters:" "1"
         echolog "   valid URLs" "1"
-        if [[ "${tax_mode}" == "ncbi" ]]; then echolog "   AND version status = latest" "1"; fi
+        echolog "   AND version status = ${version_status}" "1"
         if [ -n "${refseq_category}" ]; then echolog "   AND refseq category = ${refseq_category}" "1"; fi
         if [ -n "${assembly_level}" ]; then echolog "   AND assembly level = ${assembly_level}" "1"; fi
         if [ -n "${custom_filter}" ]; then echolog "   AND custom filter (${custom_filter})" "1"; fi
@@ -497,8 +509,14 @@ filter_columns()
 { # parameter: ${1} assembly_summary file - return number of lines
     # Valid URLs (not na)
     colfilter="\$20 !~ /^na/"
-    if [[ "${tax_mode}" == "ncbi" ]]; then
-        colfilter="${colfilter} && \$11 == \"latest\""
+    if [[ -n "${version_status}" ]]; then
+        IFS=","
+        version_status_filter=""
+        for val in ${version_status}; do
+            version_status_filter="${version_status_filter}tolower(\$11) == \"${val,,}\" || "
+        done
+        IFS=$' '
+        colfilter="${colfilter} && (${version_status_filter::-4})"
     fi
     if [[ -n "${refseq_category}" ]]; then
         IFS=","
@@ -699,9 +717,9 @@ check_md5_ftp()
             else
                 path_name="${target_output_prefix}$(path_output "${file_name}")${file_name}" # local file path and name
                 file_md5=$(md5sum "${path_name}" | cut -f1 -d' ')
+                # Remove file only with mismatching MD5
                 if [ "${file_md5}" != "${ftp_md5}" ]; then
                     echolog "${file_name} MD5 not matching [${md5checksums_url}] - FILE REMOVED" "0"
-                    # Remove file only when MD5 doesn't match
                     rm -v "${path_name}" >>"${log_file}" 2>&1
                     return 1
                 else
@@ -732,6 +750,7 @@ check_gz_file()
                 return 0
             else
                 echolog "${file_name} corrupted gzip - FILE REMOVED" "0"
+                rm -v "${path_name}" >>"${log_file}" 2>&1
                 return 1
             fi
         fi
@@ -967,6 +986,10 @@ function showhelp
     echo $' -E End date (empty for no filter)'
     echo $'\tKeep assemblies with sequence release date less then or equal (<=) to value. Format YYYYMMDD.'
     echo $'\tDefault: ""'
+    echo $' -v Version status (comma-separated, mandatory)'
+    echo $'\tOptions: "latest, replaced, suppressed"'
+    echo $'\tRelease status for the genome assembly version. If replaced or suppressed are included, historical entries will be included. All options are enforced if -M gtdb.'
+    echo $'\tDefault: "latest"'
     echo $' -F Custom assembly summary filter (empty for no filter)'
     echo $'\tUse awk syntax, e.g.: $ for column index, || "or", && "and", ! "not", parentheses for nesting. Case sensitive. Columns info at https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt'
     echo $'\tExamples:'
@@ -1056,6 +1079,7 @@ organism_group=""
 taxids=""
 refseq_category=""
 assembly_level=""
+version_status="latest"
 custom_filter=""
 file_formats="assembly_report.txt"
 top_assemblies=0
@@ -1098,7 +1122,7 @@ done
 if [ "${tool_not_found}" -eq 1 ]; then exit 1; fi
 
 # Parse -o and -B first to detect possible updates
-getopts_list="aA:b:B:c:d:D:e:E:f:F:g:hH:ikl:L:mGM:n:N:o:prR:st:T:uVwxZ"
+getopts_list="aA:b:B:c:d:D:e:E:f:F:g:hH:ikl:L:mGM:n:N:o:prR:st:T:uv:VwxZ"
 OPTIND=1 # Reset getopts
 # Parses working_dir from "$@"
 while getopts "${getopts_list}" opt; do
@@ -1186,6 +1210,7 @@ while getopts "${getopts_list}" opt "${args[@]}"; do
     t) threads=${OPTARG} ;;
     T) taxids=${OPTARG} ;;
     u) updated_assembly_accession=1 ;;
+    v) version_status=${OPTARG} ;;
     V) verbose_log=1 ;;
     w) silent_progress=1 ;;
     x) find_delete_extra_files=1 ;;
@@ -1391,6 +1416,24 @@ if [[ -n "${assembly_level}" ]]; then
         fi
     done
 fi
+
+if [[ -z "${version_status}" ]]; then
+    echo "Version status is required (-v)"
+    exit 1
+else
+    valid_version_status=("latest" "replaced" "suppressed")
+    if [[ "${tax_mode}" =~ ^gtdb ]]; then
+        version_status="${valid_version_status[*]}"
+    else
+        for vs in ${version_status}; do
+            # grep -i ignore case
+            if ! printf '%s\n' "${valid_version_status[@]}" | grep -Fxqi -- "${vs}"; then
+                echo "${vs}: invalid version status [ $(printf "'%s' " "${valid_version_status[@]}")]"
+                exit 1
+            fi
+        done
+    fi
+fi
 IFS=$' '
 if [[ -n "${date_start}" ]]; then
     if ! date "+%Y%m%d" -d "${date_start}" >/dev/null 2>&1; then
@@ -1559,13 +1602,7 @@ if [[ "${MODE}" == "NEW" ]]; then
         fi
         all_lines=$(count_lines_file "${new_assembly_summary}")
     else
-        echolog "Downloading assembly summary [${new_label}]" "1"
-        echolog " - Database [${database}]" "1"
-        if [[ -n "${organism_group}" ]]; then
-            echolog " - Organism group [${organism_group}]" "1"
-        fi
         if ! get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}"; then
-            echolog " - Failed to download one or more assembly_summary files" "1"
             exit 1
         fi
         all_lines=$(count_lines_file "${new_assembly_summary}")
@@ -1679,13 +1716,7 @@ else # UPDATE/FIX
         target_output_prefix=${new_output_prefix}
         export target_output_prefix
 
-        echolog "Downloading assembly summary [${new_label}]" "1"
-        echolog " - Database [${database}]" "1"
-        if [[ -n "${organism_group}" ]]; then
-            echolog " - Organism group [${organism_group}]" "1"
-        fi
         if ! get_assembly_summary "${new_assembly_summary}" "${database}" "${organism_group}"; then
-            echolog " - Failed to download one or more assembly_summary files" "1"
             exit 1
         fi
         all_lines=$(count_lines_file "${new_assembly_summary}")
