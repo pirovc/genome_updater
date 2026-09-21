@@ -1184,14 +1184,7 @@ if [[ -n "${working_dir}" && -s "${working_dir}/history.tsv" ]]; then
         args[c]="${f}"
         c=$((c + 1))
     done
-else
-    # if history file does not exist, but default assembly summary is a softlink, get the current_label from here
-    if [[ -n "${working_dir}" && -L "${working_dir}/assembly_summary.txt" ]]; then
-        default_assembly_summary="${working_dir}/assembly_summary.txt"
-        current_assembly_summary="$(readlink -m "${default_assembly_summary}")"
-        current_output_prefix="$(dirname "${current_assembly_summary}")/"
-        current_label="$(basename "${current_output_prefix}")"
-    fi
+else    
     # parse command line arguments by default
     declare -a "args=($(printf "%q " "$@"))"
 fi

@@ -807,33 +807,6 @@ setup_file()
     assert_equal $(find ${outdir}${label}/files/ -type l | wc -l) 20
 }
 
-@test "Mode UPDATE soft links no history" {
-    outdir=${outprefix}mode-update-soft-links-no-history/
-    label="new"
-
-    # NEW
-    run ./genome_updater.sh -H soft -d refseq -g archaea -b ${label} -o ${outdir}
-    sanity_check ${outdir} ${label}
-
-    # Delete history file
-    assert_file_exist "${outdir}history.tsv"
-    rm "${outdir}history.tsv"
-
-    # UPDATE (no changes, but carry links)
-    label="update"
-    run ./genome_updater.sh -H soft -d refseq -g archaea -b ${label} -o ${outdir}
-    sanity_check ${outdir} ${label}
-
-    # Check log for updates
-    grep "[1-9][0-9]* unchanged entries" ${outdir}${label}/*.log # >&3
-    assert_success
-    grep "0 updated, 0 removed, 0 new entries" ${outdir}${label}/*.log # >&3
-    assert_success
-
-    # Find symbolic links
-    assert_equal $(find ${outdir}${label}/files/ -type l | wc -l) 20
-}
-
 @test "Mode UPDATE copy" {
     outdir=${outprefix}mode-update-copy/
     label="new"
