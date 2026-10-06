@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.9.0"
+version="0.10.0"
 
 # Define ncbi_base_url or use local files (for testing)
 local_dir=${local_dir:-}
