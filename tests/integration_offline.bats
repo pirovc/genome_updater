@@ -626,6 +626,26 @@ setup_file()
     assert_success
 }
 
+@test "Rollback label invalid" {
+    outdir=${outprefix}rollback-label-invalid/
+
+    # Base version with only refseq
+    label1="v1"
+    run ./genome_updater.sh -d refseq -b ${label1} -o ${outdir} -d refseq
+    sanity_check ${outdir} ${label1}
+
+    # Second version with more entries (refseq,genbank)
+    label2="v2"
+    run ./genome_updater.sh -b ${label2} -o ${outdir} -d refseq,genbank
+    sanity_check ${outdir} ${label2}
+
+    # Fourth version with the same as second but rolling back from first, re-download files
+    label3="v3"
+    run ./genome_updater.sh -b ${label3} -o ${outdir} -d refseq,genbank -B vXXX
+    assert_failure
+    assert_output --partial "Rollback label not found [vXXX]."
+}
+
 @test "Delete extra files -N split" {
     outdir=${outprefix}delete-extra-files-split/
     label="test"
@@ -725,6 +745,38 @@ setup_file()
     # Real run FIX
     run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -i
     sanity_check ${outdir} ${label}
+}
+
+@test "Mode FIX/UPDATE without history" {
+    outdir=${outprefix}mode-fix-wo-history/
+    label="test"
+
+    # Real run NEW
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
+    sanity_check ${outdir} ${label}
+
+    # Remove history to simulate failure
+    rm -rf ${outdir}history.tsv
+
+    # Dry-run FIX
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -k -i
+    assert_failure
+    assert_output --partial "Could not define the label from the history / file missing"
+
+    # Real run FIX
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -i
+    assert_failure
+    assert_output --partial "Could not define the label from the history / file missing"
+
+    # Dry-run UPDATE
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir} -k
+    assert_failure
+    assert_output --partial "Cannot start a new repository with an existing assembly_summary.txt in the working directory"
+
+    # Real run FIX
+    run ./genome_updater.sh -d refseq -b ${label} -o ${outdir}
+    assert_failure
+    assert_output --partial "Cannot start a new repository with an existing assembly_summary.txt in the working directory"
 }
 
 @test "Mode UPDATE version" {
