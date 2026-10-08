@@ -1156,26 +1156,29 @@ while getopts "${getopts_list}" opt; do
     esac
 done
 
-# If workingdir exists and there's a history file, grab and inject params and the last updated label
-if [[ -n "${working_dir}" && -s "${working_dir}/history.tsv" ]]; then
+current_label=""
+tmp_history_file="${working_dir}/history.tsv"
+# If directory exists with a history file, set current_label for UPDATE/FIX
+if [[ -n "${working_dir}" && -s "${tmp_history_file}" ]]; then
 
     if [[ -n "${rollback_label}" ]]; then
-        # If rolling back, get specific parameters of that version
-        rollback_assembly_summary="${working_dir}/${rollback_label}/assembly_summary.txt"
-        if [[ -f "${rollback_assembly_summary}" ]]; then
-            declare -a "args=($(awk -F '\t' '$2 == "'"${rollback_label}"'"' "${working_dir}/history.tsv" | cut -f 5))"
-        else
-            echo "Rollback label/assembly_summary.txt not found [${rollback_assembly_summary}]"
+        rollback_args=$(awk -F '\t' '$2 == "'"${rollback_label}"'"' "${tmp_history_file}" | cut -f5)
+        if [[ -z "${rollback_args}" ]]; then
+            echo "Rollback label not found [${rollback_label}]."
             exit 1
         fi
+        # Parse arguments into associative array automatically detecting and replacing the escaped non-printable characters (e.g.: complete\ genome)
+        # Inject params from the selected rollback label
+        declare -a "args=(${rollback_args})"
+        # Set current as rollback
+        current_label="${rollback_label}"
     else
-        # Parse arguments into associative array
-        # automatically detecting and replacing the escaped non-printable characters (e.g.: complete\ genome)
-        declare -a "args=($(cut -f 5 "${working_dir}/history.tsv" | tail -n 1))"
+        # Parse arguments into associative array automatically detecting and replacing the escaped non-printable characters (e.g.: complete\ genome)
+        # Set arguments from last line in history file
+        declare -a "args=($(cut -f5 "${tmp_history_file}" | tail -n 1))"
+        # Set current version label based on latest valid "new_label" entry of history file (last may be empty in case of fix)
+        current_label="$(cut -f2 "${tmp_history_file}" | sed '/\S/!d' | tail -1)"
     fi
-
-    # Set label of the current version
-    current_label="$(cut -f2 -d$'\t' "${working_dir}/history.tsv" | sed '/\S/!d' | tail -1)"
 
     # For each entry of the current argument list $@
     # add to the end of the array to have priority
@@ -1184,7 +1187,7 @@ if [[ -n "${working_dir}" && -s "${working_dir}/history.tsv" ]]; then
         args[c]="${f}"
         c=$((c + 1))
     done
-else    
+else
     # parse command line arguments by default
     declare -a "args=($(printf "%q " "$@"))"
 fi
@@ -1503,33 +1506,27 @@ files_dir="files/"
 export files_dir working_dir dir_structure
 
 default_assembly_summary=${working_dir}assembly_summary.txt
-history_file=${working_dir}history.tsv
+history_file="${working_dir}history.tsv"
 
 # set MODE
 if [[ "${just_fix}" -eq 1 ]]; then
     MODE="FIX"
-elif [[ ! -f "${default_assembly_summary}" ]] || [[ -n "${external_assembly_summary}" ]]; then
+elif [[ ! -f "${history_file}" ]] || [[ -n "${external_assembly_summary}" ]]; then
     MODE="NEW"
 else
     MODE="UPDATE"
 fi
 
-# If file already exists and it's a new repo
 if [[ "${MODE}" == "NEW" ]]; then
     if [[ -f "${default_assembly_summary}" ]]; then
         echo "Cannot start a new repository with an existing assembly_summary.txt in the working directory [${default_assembly_summary}]"
         exit 1
     fi
-else
-    if [[ -n "${rollback_label}" ]]; then
-        current_label="${rollback_label}"
-    fi
-fi
+else # UPDATE/FIX
 
-if [[ "${MODE}" == "UPDATE" ]] || [[ "${MODE}" == "FIX" ]]; then # get existing version information
-    # Stop update or fix, if the current label is unknown
+    # Stop update or fix, if the current label is unknown (possible missing history.tsv)
     if [[ -z "${current_label}" ]]; then
-        echo "Could not identify the current label to ${MODE,,}."
+        echo "Could not define the label from the history / file missing [${history_file}]."
         exit 1
     fi
 
