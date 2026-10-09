@@ -25,7 +25,7 @@ IFS=$' '
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-version="0.9.0"
+version="0.10.0"
 
 # Define ncbi_base_url or use local files (for testing)
 local_dir=${local_dir:-}
@@ -69,7 +69,7 @@ gtdb_ar["226"]="${gtdb_base_url}release226/226.0/ar53_taxonomy_r226.tsv.gz"
 gtdb_ar["232"]="${gtdb_base_url}release232/232.0/ar53_taxonomy_r232.tsv.gz"
 
 # Export locale numeric to avoid errors on printf in different setups
-export LC_NUMERIC="en_US.UTF-8"
+export LC_NUMERIC="C.UTF-8"
 
 #activate aliases in the script
 shopt -s expand_aliases
@@ -145,12 +145,28 @@ link_version()
         mkdir -p "${2}${path_out}"
         if [[ "${link_mode}" == "hard" ]]; then
             ln "${1}${path_out}${3}" "${2}${path_out}"
+        elif [[ "${link_mode}" == "copy" ]]; then
+            cp "${1}${path_out}${3}" "${2}${path_out}"
         else
             ln -s -r "${1}${path_out}${3}" "${2}${path_out}"
         fi
     fi
 }
 export -f link_version #export it to be accessible to the parallel call
+
+copy_or_link()
+{ # parameter: ${1} original file, ${2} target file (copy or link)
+    if [[ -f "${1}" && -d "${2%/*}" ]]; then
+        if [[ "${link_mode}" == "hard" ]]; then
+            ln -fT "${1}" "${2}"
+        elif [[ "${link_mode}" == "copy" ]]; then
+            cp "${1}" "${2}"
+        else
+            ln -srfT "${1}" "${2}"
+        fi
+    fi
+}
+export -f copy_or_link # export it to be accessible to the parallel call
 
 list_local_files()
 { # parameter: ${1} prefix, ${2} 1 to list list all, "" list only '-not -empty'
@@ -352,7 +368,7 @@ filter_assembly_summary()
                 return 1
             fi
         else
-            ln -sf "${new_taxdump_file}" "${tmp_new_taxdump}"
+            copy_or_link "${new_taxdump_file}" "${tmp_new_taxdump}"
         fi
     fi
 
@@ -1054,8 +1070,8 @@ function showhelp
     echo $'\tUse a previous version label instead of the latest as base version. Can be also used to rollback to an older version or to create multiple branches from a base version. Mutually exclusive with -i.'
     echo $'\tDefault: ""'
     echo $' -H Link mode'
-    echo $'\tChange link type for files kept between versions. Hard links save inodes (useful on HPC systems) and allow version deletion.'
-    echo $'\tOptions: "hard, soft"'
+    echo $'\tChange link type for files kept between versions. Hard links save inodes (useful on HPC systems) and allow version deletion. \'copy\' produces redundant disk space consumption but enables the use on filesystems that do not support any type of links.'
+    echo $'\tOptions: "hard, soft, copy"'
     echo $'\tDefault: "hard"'
     echo $' -R Retry batches'
     echo $'\tNumber of attempts to retry failed downloads in batches.'
@@ -1140,22 +1156,28 @@ while getopts "${getopts_list}" opt; do
     esac
 done
 
-# If workingdir exists and there's a history file, grab and inject params
-if [[ -n "${working_dir}" && -s "${working_dir}/history.tsv" ]]; then
+current_label=""
+tmp_history_file="${working_dir}/history.tsv"
+# If directory exists with a history file, set current_label for UPDATE/FIX
+if [[ -n "${working_dir}" && -s "${tmp_history_file}" ]]; then
 
     if [[ -n "${rollback_label}" ]]; then
-        # If rolling back, get specific parameters of that version
-        rollback_assembly_summary="${working_dir}/${rollback_label}/assembly_summary.txt"
-        if [[ -f "${rollback_assembly_summary}" ]]; then
-            declare -a "args=($(awk -F '\t' '$2 == "'"${rollback_label}"'"' "${working_dir}/history.tsv" | cut -f 5))"
-        else
-            echo "Rollback label/assembly_summary.txt not found [${rollback_assembly_summary}]"
+        rollback_args=$(awk -F '\t' '$2 == "'"${rollback_label}"'"' "${tmp_history_file}" | cut -f5)
+        if [[ -z "${rollback_args}" ]]; then
+            echo "Rollback label not found [${rollback_label}]."
             exit 1
         fi
+        # Parse arguments into associative array automatically detecting and replacing the escaped non-printable characters (e.g.: complete\ genome)
+        # Inject params from the selected rollback label
+        declare -a "args=(${rollback_args})"
+        # Set current as rollback
+        current_label="${rollback_label}"
     else
-        # Parse arguments into associative array
-        # automatically detecting and replacing the escaped non-printable characters (e.g.: complete\ genome)
-        declare -a "args=($(cut -f 5 "${working_dir}/history.tsv" | tail -n 1))"
+        # Parse arguments into associative array automatically detecting and replacing the escaped non-printable characters (e.g.: complete\ genome)
+        # Set arguments from last line in history file
+        declare -a "args=($(cut -f5 "${tmp_history_file}" | tail -n 1))"
+        # Set current version label based on latest valid "new_label" entry of history file (last may be empty in case of fix)
+        current_label="$(cut -f2 "${tmp_history_file}" | sed '/\S/!d' | tail -1)"
     fi
 
     # For each entry of the current argument list $@
@@ -1282,8 +1304,8 @@ if [[ ! "${file_formats}" =~ assembly_report.txt && "${updated_sequence_accessio
     exit 1
 fi
 
-if [[ "${link_mode}" != "hard" && "${link_mode}" != "soft" ]]; then
-    echo "${link_mode}: invalid link mode [hard, soft]"
+if [[ "${link_mode}" != "hard" && "${link_mode}" != "copy" && "${link_mode}" != "soft" ]]; then
+    echo "${link_mode}: invalid link mode [hard, soft, copy]"
     exit 1
 fi
 
@@ -1484,56 +1506,38 @@ files_dir="files/"
 export files_dir working_dir dir_structure
 
 default_assembly_summary=${working_dir}assembly_summary.txt
-history_file=${working_dir}history.tsv
+history_file="${working_dir}history.tsv"
 
 # set MODE
 if [[ "${just_fix}" -eq 1 ]]; then
     MODE="FIX"
-elif [[ ! -f "${default_assembly_summary}" ]] || [[ -n "${external_assembly_summary}" ]]; then
+elif [[ ! -f "${history_file}" ]] || [[ -n "${external_assembly_summary}" ]]; then
     MODE="NEW"
 else
     MODE="UPDATE"
 fi
 
-# If file already exists and it's a new repo
 if [[ "${MODE}" == "NEW" ]]; then
-    if [[ -f "${default_assembly_summary}" || -L "${default_assembly_summary}" ]]; then
+    if [[ -f "${default_assembly_summary}" ]]; then
         echo "Cannot start a new repository with an existing assembly_summary.txt in the working directory [${default_assembly_summary}]"
         exit 1
     fi
-fi
+else # UPDATE/FIX
 
-# If file already exists and it's a new repo
-if [[ "${MODE}" == "FIX" ]]; then
-    if [[ ! -f "${default_assembly_summary}" ]]; then
-        echo "Cannot find assembly_summary.txt version to fix [${default_assembly_summary}]"
+    # Stop update or fix, if the current label is unknown (possible missing history.tsv)
+    if [[ -z "${current_label}" ]]; then
+        echo "Could not define the label from the history / file missing [${history_file}]."
         exit 1
     fi
-fi
 
-if [[ "${MODE}" == "UPDATE" ]]; then
-    # Rollback to a different base version
-    if [[ -n "${rollback_label}" ]]; then
-        rollback_assembly_summary="${working_dir}/${rollback_label}/assembly_summary.txt"
-        if [[ -f "${rollback_assembly_summary}" ]]; then
-            rm "${default_assembly_summary}"
-            ln -s -r "${rollback_assembly_summary}" "${default_assembly_summary}"
-        else
-            echo "Rollback label/assembly_summary.txt not found [${rollback_assembly_summary}]"
-            exit 1
-        fi
-    fi
-fi
-
-if [[ "${MODE}" == "UPDATE" ]] || [[ "${MODE}" == "FIX" ]]; then # get existing version information
-    # Check if default assembly_summary is a symbolic link to some version
-    if [[ ! -L "${default_assembly_summary}" ]]; then
-        echo "assembly_summary.txt is not a link to any version [${default_assembly_summary}]"
+    # Check for the assembly summary based on the current label
+    current_output_prefix="${working_dir}/${current_label}/"
+    current_assembly_summary="${current_output_prefix}/assembly_summary.txt"
+    if [[ ! -f "${current_assembly_summary}" ]]; then
+        echo "Cannot find assembly_summary.txt version to ${MODE,,} [${current_assembly_summary}]"
         exit 1
     fi
-    current_assembly_summary="$(readlink -m "${default_assembly_summary}")"
-    current_output_prefix="$(dirname "${current_assembly_summary}")/"
-    current_label="$(basename "${current_output_prefix}")"
+    copy_or_link "${current_assembly_summary}" "${default_assembly_summary}"
 fi
 
 if [[ "${MODE}" == "NEW" ]] || [[ "${MODE}" == "UPDATE" ]]; then # with new info, new variables are necessary
@@ -1625,7 +1629,8 @@ if [[ "${MODE}" == "NEW" ]]; then
         if [ ! "$(ls -A "${working_dir}")" ]; then rm -r "${working_dir}"; fi                                     #Remove folder that was just created (if there's nothing in it)
     else
         # Set version - link new assembly as the default
-        ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
+        copy_or_link "${new_assembly_summary}" "${default_assembly_summary}"
+
         # Add entry on history
         write_history "${new_label}" "${new_label}" "${timestamp}" "${new_assembly_summary}"
 
@@ -1761,7 +1766,7 @@ else # UPDATE/FIX
             # set version - update default assembly summary
             echolog "Setting-up new version [${new_label}]" "1"
             rm "${default_assembly_summary}"
-            ln -s -r "${new_assembly_summary}" "${default_assembly_summary}"
+            copy_or_link "${new_assembly_summary}" "${default_assembly_summary}"
             # Add entry on history
             write_history "${current_label}" "${new_label}" "${timestamp}" "${new_assembly_summary}"
             echolog " - Done" "1"
